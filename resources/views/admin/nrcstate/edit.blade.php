@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'NRCCode')
+@section('title', 'NRCState')
 
 @section('content_header')
 @stop

@@ -41,7 +41,7 @@
         $name = isset($_GET['name'])?$_GET['name']:'';
 ?>
 <div>
-  <p style="font-size: 20px">NRC Code Management</p>
+  <h5 style="color: #1179C2">NRC Code Management</h5>
  <form action="{{route('nrccode.store')}}" method="post" enctype="multipart/form-data">
         @csrf
 

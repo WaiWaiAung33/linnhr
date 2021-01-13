@@ -42,7 +42,7 @@
         $name = isset($_GET['name'])?$_GET['name']:'';
 ?>
 <div>
-  <p style="font-size: 20px">Branch Management</p>
+  <h5 style="color: #1179C2">Branch Management</h5>
  <form action="{{route('branch.store')}}" method="post" enctype="multipart/form-data" style="padding-top: 10px">
         @csrf
         <div class="row form-group">

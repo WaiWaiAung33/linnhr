@@ -325,9 +325,62 @@
                 </div>
             </div>
 
-            <div class="tabby-tab" >
+
+             <div class="tabby-tab" style="margin-right: 5px;">
                 <input type="radio" id="tab-3" name="tabby-tabs" disabled="true">
-                <label for="tab-3">Employment</label>
+                <label for="tab-3">Qualification</label>
+                <div class="tabby-content">
+                    <br>
+                     <div class="row">
+                        <div class="col-md-6">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <h6 style="font-weight:bold;font-size:15px;">Qualification</h6>
+                                </div>
+
+                                <div class="col-md-8 {{ $errors->first('name', 'has-error') }}">
+
+                                    <input type="text" name="qualification" class="form-control unicode" placeholder="Grade-10" id="city" value="{{$employees->qualification}}">
+
+                                </div>
+                            </div>
+                        </div>
+                       <!--  <div class="col-md-6">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <h6 style="font-weight:bold;font-size:15px;">Mobile*</h6>
+                                </div>
+
+                                <div class="col-md-8">
+                                    <input type="number" name="phone_no" class="form-control unicode" id="mobile" placeholder="09 xxx xxx xxx">
+                                </div>
+                            </div>
+                        </div> -->
+                    </div>
+                    <br>
+
+                  
+                    <div style="width: 100%">
+                        <a class="btn btn-primary unicode" id="assign_back" style="float: left;">Back</a>
+                        <a class="btn btn-success unicode" id="assign_next" style="float: right;">Next</a>
+                        <!-- <div class="col-md-1"></div>
+                        <div class="col-md-2">
+                            <a class="btn btn-primary unicode" id="photo_back">Back</a>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="row">
+                                <a class="btn btn-success unicode" id="photo_next">Next</a> 
+                            </div>
+                            
+                        </div> -->
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="tabby-tab" >
+                <input type="radio" id="tab-4" name="tabby-tabs" disabled="true">
+                <label for="tab-4">Employment</label>
                 <div class="tabby-content">
                     <br>
                     <div class="row">
@@ -398,7 +451,7 @@
                     </div>
                     <br>
                     <div style="width: 100%">
-                        <a class="btn btn-primary unicode" id="assign_back" style="float: left;">Back</a>
+                        <a class="btn btn-primary unicode" id="install_back" style="float: left;">Back</a>
                         <button type="submit" class="btn btn-success unicode" style="float: right;">Save</button>
                         <!-- <div class="col-md-4"></div>
                         <div class="col-md-2">

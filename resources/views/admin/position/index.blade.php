@@ -41,7 +41,7 @@
         $name = isset($_GET['name'])?$_GET['name']:'';
 ?>
 <div>
-  <p style="font-size: 20px">Rank Management</p>
+  <h5 style="color: #1179C2">Rank Management</h5>
  <form action="{{route('position.store')}}" method="post" enctype="multipart/form-data">
         @csrf
 

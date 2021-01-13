@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
@@ -49,6 +50,7 @@
     @yield('adminlte_css')
 
     {{-- Favicon --}}
+    <link rel="icon" type="image/jpg" href="{{ asset('vendor/adminlte/dist/img/linn.jpg') }}">
     @if(config('adminlte.use_ico_only'))
         <link rel="shortcut icon" href="{{ asset('favicons/favicon.ico') }}" />
     @elseif(config('adminlte.use_full_favicon'))
@@ -70,6 +72,38 @@
         <meta name="msapplication-TileColor" content="#ffffff">
         <meta name="msapplication-TileImage" content="{{ asset('favicon/ms-icon-144x144.png') }}">
     @endif
+
+<link rel="stylesheet" href='https://mmwebfonts.comquas.com/fonts/?font=pyidaungsu' />
+    
+    
+    <style type="text/css" media="screen">
+        body {
+            font-family: Pyidaungsu, Yunghkio, 'Masterpiece Uni Sans' !important;
+        }
+    
+        .unicode {
+            font-family: Pyidaungsu, Yunghkio, 'Masterpiece Uni Sans' !important;
+        }
+    
+        .help-block {
+            color: red;
+            font-family: Pyidaungsu, Yunghkio, 'Masterpiece Uni Sans' !important;
+            font-size: 12px;
+        }
+    
+        p, table, label, input, a, textarea{
+            font-family: Pyidaungsu, Yunghkio, 'Masterpiece Uni Sans' !important;
+            font-size: 13px !important;
+        }
+        h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6 {
+            font-family: Pyidaungsu, Yunghkio, 'Masterpiece Uni Sans' !important;
+        }
+
+        select {
+            font-family: Pyidaungsu, Yunghkio, 'Masterpiece Uni Sans' !important;
+            font-size: 13px !important;
+        }
+    </style>
 
 </head>
 

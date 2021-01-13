@@ -45,7 +45,7 @@
 ?>
 
 <div >
-   <p style="font-size: 20px">Department Management</p>
+   <h5 style="color: #1179C2">Department Management</h5>
  <form action="{{route('department.store')}}" method="post" enctype="multipart/form-data" style="padding-top: 10px">
        @csrf
 

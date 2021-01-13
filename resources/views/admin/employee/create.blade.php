@@ -10,7 +10,7 @@
         border-collapse: collapse;
         /*margin: 25px 0;*/
         font-size: 0.9em;
-        font-family: sans-serif;
+        
         min-width: 400px;
         box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
     }
@@ -82,7 +82,7 @@
                         <div class="col-md-6">
                             <div class="row">
                                 <div class="col-md-2">
-                                    <h6 style="font-weight: bold;;font-size:15px;">Name*</h6>
+                                    <h6 style="font-weight:bold;font-size:15px;">Name*</h6>
                                 </div>
 
                                 <div class="col-md-8 {{ $errors->first('name', 'has-error') }}">
@@ -95,7 +95,7 @@
                         <div class="col-md-6">
                             <div class="row">
                                 <div class="col-md-3">
-                                    <h6 style="font-weight: bold;;font-size:15px;">Father's Name</h6>
+                                    <h6 style="font-weight:bold;font-size:15px;">Father's Name</h6>
                                 </div>
 
                                 <div class="col-md-8">
@@ -109,7 +109,7 @@
                         <div class="col-md-6">
                             <div class="row">
                                 <div class="col-md-2">
-                                    <h6 style="font-weight: bold;;font-size:15px;">Gender*</h6>
+                                    <h6 style="font-weight:bold;font-size:15px;">Gender*</h6>
                                 </div>
 
 
@@ -123,7 +123,7 @@
                             </div><br>
                             <div class="row">
                                 <div class="col-md-2">
-                                    <h6 style="font-weight: bold;;font-size:15px;">Date of Birth*</h6>
+                                    <h6 style="font-weight:bold;font-size:15px;">Date of Birth*</h6>
                                 </div>
 
                                 <div class="col-md-8 {{ $errors->first('lat', 'has-error') }}">
@@ -133,7 +133,7 @@
                             </div><br>
                             <div class="row">
                                 <div class="col-md-2">
-                                    <h6 style="font-weight: bold;;font-size:15px;">NRC*</h6>
+                                    <h6 style="font-weight:bold;font-size:15px;">NRC*</h6>
                                 </div>
 
                                 <div class="col-md-2 {{ $errors->first('name', 'has-error') }}">
@@ -182,7 +182,7 @@
                         <div class="col-md-6">
                             <div class="row">
                                 <div class="col-md-3">
-                                    <h6 style="font-weight: bold;;font-size:15px;">Photo*</h6>
+                                    <h6 style="font-weight:bold;font-size:15px;">Photo*</h6>
                                 </div>
 
                                 <div class="col-md-8 ">
@@ -200,7 +200,7 @@
                 <div class="col-md-6">
                     <div class="row">
                         <div class="col-md-2">
-                            <h6 style="font-weight: bold;;font-size:15px;">Photo</h6>
+                            <h6 style="font-weight:bold;font-size:15px;">Photo</h6>
                         </div>
                         
                         <div class="col-md-8">
@@ -233,7 +233,9 @@
                 </div>
 
 
-</div>
+            </div>
+
+
             <div class="tabby-tab" style="margin-right: 5px;">
                 <input type="radio" id="tab-2" name="tabby-tabs" disabled="true">
                 <label for="tab-2">Contact</label>
@@ -243,12 +245,12 @@
                         <div class="col-md-6">
                             <div class="row">
                                 <div class="col-md-2">
-                                    <h6 style="font-weight: bold;;font-size:15px;">Address*</h6>
+                                    <h6 style="font-weight:bold;font-size:15px;">Address*</h6>
                                 </div>
 
                                 <div class="col-md-8 {{ $errors->first('name', 'has-error') }}">
 
-                                   <textarea name="address" rows="4" class="form-control unicode" id="address"></textarea>
+                                   <textarea name="address" rows="4" class="form-control unicode" id="address" placeholder="Paung Long 4 street,Pyinmana"></textarea>
 
                                 </div>
                             </div>
@@ -256,11 +258,11 @@
                         <div class="col-md-6">
                             <div class="row">
                                 <div class="col-md-3">
-                                    <h6 style="font-weight: bold;;font-size:15px;">Mobile*</h6>
+                                    <h6 style="font-weight:bold;font-size:15px;">Mobile*</h6>
                                 </div>
 
                                 <div class="col-md-8">
-                                    <input type="number" name="phone_no" class="form-control unicode" id="mobile">
+                                    <input type="number" name="phone_no" class="form-control unicode" id="mobile" placeholder="09 xxx xxx xxx">
                                 </div>
                             </div>
                         </div>
@@ -271,7 +273,7 @@
                         <div class="col-md-6">
                             <div class="row">
                                 <div class="col-md-2">
-                                    <h6 style="font-weight: bold;;font-size:15px;">City*</h6>
+                                    <h6 style="font-weight:bold;font-size:15px;">City*</h6>
                                 </div>
 
                                 <div class="col-md-8 {{ $errors->first('name', 'has-error') }}">
@@ -284,7 +286,7 @@
                         <div class="col-md-6">
                             <div class="row">
                                 <div class="col-md-3">
-                                    <h6 style="font-weight: bold;;font-size:15px;">Township*</h6>
+                                    <h6 style="font-weight:bold;font-size:15px;">Township*</h6>
                                 </div>
 
                                 <div class="col-md-8">
@@ -313,9 +315,63 @@
                 </div>
             </div>
 
-            <div class="tabby-tab" >
+            <div class="tabby-tab" style="margin-right: 5px;">
                 <input type="radio" id="tab-3" name="tabby-tabs" disabled="true">
-                <label for="tab-3">Employment</label>
+                <label for="tab-3">Qualification</label>
+                <div class="tabby-content">
+                    <br>
+                     <div class="row">
+                        <div class="col-md-6">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <h6 style="font-weight:bold;font-size:15px;">Qualification</h6>
+                                </div>
+
+                                <div class="col-md-8 {{ $errors->first('name', 'has-error') }}">
+
+                                    <input type="text" name="qualification" class="form-control unicode" placeholder="Grade-10" id="city">
+
+                                </div>
+                            </div>
+                        </div>
+                       <!--  <div class="col-md-6">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <h6 style="font-weight:bold;font-size:15px;">Mobile*</h6>
+                                </div>
+
+                                <div class="col-md-8">
+                                    <input type="number" name="phone_no" class="form-control unicode" id="mobile" placeholder="09 xxx xxx xxx">
+                                </div>
+                            </div>
+                        </div> -->
+                    </div>
+                    <br>
+
+                  
+                    <div style="width: 100%">
+                        <a class="btn btn-primary unicode" id="assign_back" style="float: left;">Back</a>
+                        <a class="btn btn-success unicode" id="assign_next" style="float: right;">Next</a>
+                        <!-- <div class="col-md-1"></div>
+                        <div class="col-md-2">
+                            <a class="btn btn-primary unicode" id="photo_back">Back</a>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="row">
+                                <a class="btn btn-success unicode" id="photo_next">Next</a> 
+                            </div>
+                            
+                        </div> -->
+
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="tabby-tab" >
+                <input type="radio" id="tab-4" name="tabby-tabs" disabled="true">
+                <label for="tab-4">Employment</label>
                 <div class="tabby-content">
                     <br>
                     <div class="row">
@@ -323,7 +379,7 @@
                             <div class="row">
                                 <!-- <label class="col-md-3 unicode" style="text-align: right;">Assign</label> -->
                                 <div class="col-md-2">
-                                    <h6 style="font-weight: bold;;font-size:15px;">Join Date*</h6>
+                                    <h6 style="font-weight:bold;font-size:15px;">Join Date*</h6>
                                 </div>
                                 <div class="col-md-8">
                                     <input type="date" name="join_date" class="form-control unicode" id="join_date">
@@ -334,7 +390,7 @@
                         <div class="col-md-6">
                             <div class="row">
                                 <div class="col-md-2">
-                                    <h6 style="font-weight: bold;;font-size:15px;">Rank*</h6>
+                                    <h6 style="font-weight:bold;font-size:15px;">Rank*</h6>
                                 </div>
                                 <!-- <label class="col-md-3 unicode" id="appointment_label" style="text-align: right;">Appoint Date</label> -->
                                 <div class="col-md-8">
@@ -353,7 +409,7 @@
                         <div class="col-md-6">
                             <div class="row">
                                 <div class="col-md-2">
-                                    <h6 style="font-weight: bold;;font-size:15px;" id="assign_label">Department*</h6>
+                                    <h6 style="font-weight:bold;font-size:15px;" id="assign_label">Department*</h6>
                                 </div>
                                 <!-- <label class="col-md-3 unicode" id="assign_label" style="text-align: right;">Assign Date</label> -->
                                 <div class="col-md-8">
@@ -369,7 +425,7 @@
                         <div class="col-md-6">
                                  <div class="row">
                                 <div class="col-md-2">
-                                    <h6 style="font-weight: bold;;font-size:15px;" id="assign_label">Branch*</h6>
+                                    <h6 style="font-weight:bold;font-size:15px;" id="assign_label">Branch*</h6>
                                 </div>
                                 <!-- <label class="col-md-3 unicode" id="assign_label" style="text-align: right;">Assign Date</label> -->
                                 <div class="col-md-8">
@@ -385,7 +441,7 @@
                     </div>
                     <br>
                     <div style="width: 100%">
-                        <a class="btn btn-primary unicode" id="assign_back" style="float: left;">Back</a>
+                        <a class="btn btn-primary unicode" id="install_back" style="float: left;">Back</a>
                         <button type="submit" class="btn btn-success unicode" style="float: right;">Save</button>
                         <!-- <div class="col-md-4"></div>
                         <div class="col-md-2">
@@ -764,23 +820,23 @@
             });
         });
         $("#assign_next").click(function(){
-            var join_date = $("#join_date").val();
-            var rank = $("#rank option:selected").text();
-            var department = $("#department").val();
-            var branch = $("branch").val();
-            if (join_date && rank != "Rank" && department != "Department" && branch != "Branch") {
+            // var join_date = $("#join_date").val();
+            // var rank = $("#rank option:selected").text();
+            // var department = $("#department").val();
+            // var branch = $("branch").val();
+            // if (join_date && rank != "Rank" && department != "Department" && branch != "Branch") {
                 $("#tab-4").prop("checked", true);
                 $("#tab-3").prop("disabled", false);
                 $("#tab-4").prop("disabled", false);
-            }else if(!join_date){
-                alert("Join date is ampty");
-            }else if(rank == "Rank"){
-                alert("Rank is empty");
-            }else if(department == "Department"){
-                alert("Department is empty");
-            }else if(branch == "Branch"){
-                alert("Branch is empty");
-            }
+            // }else if(!join_date){
+            //     alert("Join date is ampty");
+            // }else if(rank == "Rank"){
+            //     alert("Rank is empty");
+            // }else if(department == "Department"){
+            //     alert("Department is empty");
+            // }else if(branch == "Branch"){
+            //     alert("Branch is empty");
+            // }
             
         });
         $("#assign_back").click(function(){

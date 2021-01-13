@@ -49,16 +49,16 @@
   ?>
 
   <div>
-    <p style="font-size: 18px">Employee Management</p>
+    <h5 style="color:#1179C2 ">Employee Management</h5><br>
     <form action="{{route('employee.index')}}" method="get" accept-charset="utf-8" class="form-horizontal">
-            <div class="row" class="col-md-9">
+            <div class="row form-group" class="col-md-9">
                         <div class="col-md-3">
                            
                             <input type="text" name="name" id="name" class="form-control" placeholder="Search..." value="{{ old('name',$name) }}">
                         </div>
                       
                 
-            </div><br>
+            </div>
             <div class="row">
                 <div class="col-md-3">
                             
