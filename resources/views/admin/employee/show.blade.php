@@ -242,7 +242,7 @@
                         <div class="col-md-6">
                             <div class="row">
                                 <div class="col-md-3">
-                                    <h6 style="font-weight: bold;;font-size:15px;">Qualification</h6>
+                                    <h6 style="font-weight: bold;;font-size:15px;">University/School</h6>
                                 </div>
 
                                 <div class="col-md-8">
