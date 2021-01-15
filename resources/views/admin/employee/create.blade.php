@@ -129,7 +129,7 @@
                                 </div>
 
                                 <div class="col-md-8 {{ $errors->first('lat', 'has-error') }}">
-                                     <input type="text" name="date_of_birth" class="form-control unicode" id="date_of_birth">
+                                     <input type="text" name="date_of_birth" class="form-control unicode" id="date_of_birth" placeholder="01-01-2020">
 
                                 </div>
                             </div><br>
@@ -384,7 +384,7 @@
                                     <h6 style="font-weight:bold;font-size:15px;">Join Date*</h6>
                                 </div>
                                 <div class="col-md-8">
-                                    <input type="text" name="join_date" class="form-control unicode" id="join_date">
+                                    <input type="text" name="join_date" class="form-control unicode" id="join_date" placeholder="1-01-2021">
 
                                 </div>
                             </div>
