@@ -66,11 +66,11 @@
         </div>
 
 </form>
-     @if ($message = Session::get('success'))
+      {{-- @if ($message = Session::get('success'))
             <div class="alert alert-success">
                 <p>{{ $message }}</p>
             </div>
-     @endif
+      @endif --}}
 
       <form action="{{route('nrcstate.index')}}" method="get" accept-charset="utf-8" class="form-horizontal">
      <div class="row form-group">
@@ -129,6 +129,14 @@
 
 @section('js')
  <script> 
+   @if(Session::has('success'))
+            toastr.options =
+            {
+            "closeButton" : true,
+            "progressBar" : true
+            }
+            toastr.success("{{ session('success') }}");
+        @endif
         $(document).ready(function(){
             setTimeout(function(){
             $("div.alert").remove();
