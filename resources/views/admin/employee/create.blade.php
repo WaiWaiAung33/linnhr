@@ -4,7 +4,9 @@
 @section('title', 'Employee')
 
 @section('content_header')
-<link rel="stylesheet" type="text/css" href="{{asset('jquery-ui.css')}}">
+<!-- <link rel="stylesheet" type="text/css" href="{{asset('jquery-ui.css')}}"> -->
+<link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.1/themes/base/jquery-ui.css" rel="stylesheet" />
+
 <style type="text/css">
     .styled-table {
         border-collapse: collapse;
@@ -127,7 +129,7 @@
                                 </div>
 
                                 <div class="col-md-8 {{ $errors->first('lat', 'has-error') }}">
-                                     <input type="date" name="date_of_birth" class="form-control unicode" id="date_of_birth">
+                                     <input type="text" name="date_of_birth" class="form-control unicode" id="date_of_birth">
 
                                 </div>
                             </div><br>
@@ -382,7 +384,7 @@
                                     <h6 style="font-weight:bold;font-size:15px;">Join Date*</h6>
                                 </div>
                                 <div class="col-md-8">
-                                    <input type="date" name="join_date" class="form-control unicode" id="join_date">
+                                    <input type="text" name="join_date" class="form-control unicode" id="join_date">
 
                                 </div>
                             </div>
@@ -789,6 +791,7 @@
 
     @section('js')
     <script src="{{ asset('jquery.js') }}"></script>
+
     <script type="text/javascript" src="{{ asset('jquery-ui.js') }}"></script>
     <script type="text/javascript" src="{{ asset('select2/js/select2.min.js') }}"></script>
     <script type="text/javascript">
@@ -916,22 +919,12 @@
         });
     });
 
+         $("#date_of_birth").datepicker({ dateFormat: 'dd-mm-yy' });
+         $("#join_date").datepicker({ dateFormat: 'dd-mm-yy' });
+
          
 });
 
-
-$(".btn-danger").on("click",function(e){
-            e.preventDefault();
-            if ($(".checkbox").prop('checked') == true) {
-                $('#check_all').prop('checked',false);
-                $('.checkbox').prop('checked',false);
-                $('.item').remove();
-                $("#total_amount").val(0);
-                $("#sub_total").val(0);
-                $("#install_charge").val(0);
-                $(".btn-danger").hide(); 
-            }
-        });
 
     </script>
 
