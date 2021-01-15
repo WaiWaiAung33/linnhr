@@ -30,9 +30,9 @@
               border-bottom: 1px solid #dddddd;
           }
 
-          .styled-table tbody tr:nth-of-type(even) {
+          /*.styled-table tbody tr:nth-of-type(even) {
               background-color: #c7d4dd;
-          }
+          }*/
 
           .styled-table tbody tr:last-of-type {
               border-bottom: 2px solid #1179C2;
@@ -50,6 +50,11 @@
 
   <div>
     <h5 style="color:#1179C2 ">Employee Management</h5><br>
+     @if ($message = Session::get('success'))
+            <div class="alert alert-success">
+                <p>{{ $message }}</p>
+            </div>
+     @endif
     <form action="{{route('employee.index')}}" method="get" accept-charset="utf-8" class="form-horizontal">
             <div class="row form-group" class="col-md-9">
                         <div class="col-md-3">
@@ -121,10 +126,41 @@
                              <td>{{$employee->viewPosition->name}}</td>
                             <td>{{$employee->viewDepartment->name}}</td>
                             <td>{{$employee->viewBranch->name}}</td>
-                            <td>{{date('d-m-Y',strtotime($employee->join_date))}}
+                            <?php 
+                                  $currentyear = date('Y');
+                                  $currentday = date('m');
+                                  $creentmonth = date('d');
+                                  // dd($creentmonth);
+                                  $joinday = date('m',strtotime($employee->join_date));
+                                  $joinyear = date('Y',strtotime($employee->join_date));
+                                  $joinmonth = date('d',strtotime($employee->join_date));
+                                  // dd($joinmonth);
+                                  if($currentday < $joinday || $creentmonth < $joinmonth) {
+                                    $work = $currentyear - $joinyear;
+                                    $workyear = $work - 1;
+                                  }else {
+                                    $workyear = $currentyear - $joinyear;
+                                  }
+                              ?>
+                             
+                            <td>{{date('d-m-Y',strtotime($employee->join_date))}} ({{$workyear}}) years
                             </td>
                             <td>{{$employee->fullnrc}}</td>
-                            <td>{{date('d-m-Y',strtotime($employee->date_of_birth))}}</td>
+                            <?php 
+                                  $currentyearbirth = date('Y');
+                                  $currentdaybitrh = date('m');
+                                  $currentmonthbirth = date('d');
+                                  $joindaybirth = date('m',strtotime($employee->date_of_birth));
+                                  $joinyearbirth = date('Y',strtotime($employee->date_of_birth));
+                                  $joinmonthbirth = date('d',strtotime($employee->date_of_birth));
+                                  if($currentdaybitrh < $joindaybirth || $currentmonthbirth < $joinmonthbirth) {
+                                    $workbirth = $currentyearbirth - $joinyearbirth;
+                                    $workyearbirth = $workbirth - 1;
+                                  }else {
+                                    $workyearbirth = $currentyearbirth - $joinyearbirth;
+                                  }
+                              ?>
+                            <td>{{date('d-m-Y',strtotime($employee->date_of_birth))}} ({{$workyearbirth}}) years</td>
                             <!-- <td>
                               <img src="{{ asset('uploads/employeePhoto/'.$employee->photo) }}" alt="photo" width="50px" height="35px">
                             </td> -->

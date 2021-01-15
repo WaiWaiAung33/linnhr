@@ -28,9 +28,9 @@
               border-bottom: 1px solid #dddddd;
           }
 
-          .styled-table tbody tr:nth-of-type(even) {
+         /* .styled-table tbody tr:nth-of-type(even) {
               background-color: #c7d4dd;
-          }
+          }*/
 
           .styled-table tbody tr:last-of-type {
               border-bottom: 2px solid #1179C2;
