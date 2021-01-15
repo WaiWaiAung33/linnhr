@@ -246,7 +246,7 @@
                                 </div>
 
                                 <div class="col-md-8">
-                                    <input type="number" name="qualification" class="form-control unicode" id="mobile" value="{{$employees->qualification}}" readonly>
+                                    <input type="text" name="qualification" class="form-control unicode" id="mobile" value="{{$employees->qualification}}" readonly>
                                 </div>
                             </div>
                         </div>
