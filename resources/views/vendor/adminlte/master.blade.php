@@ -50,7 +50,7 @@
     @yield('adminlte_css')
 
     {{-- Favicon --}}
-    <link rel="icon" type="image/jpg" href="{{ asset('vendor/adminlte/dist/img/linn.jpg') }}">
+    <link rel="icon" type="image/png" href="{{ asset('vendor/adminlte/dist/img/linn.png') }}">
     @if(config('adminlte.use_ico_only'))
         <link rel="shortcut icon" href="{{ asset('favicons/favicon.ico') }}" />
     @elseif(config('adminlte.use_full_favicon'))
@@ -105,6 +105,8 @@
         }
     </style>
 
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+
 </head>
 
 <body class="@yield('classes_body')" @yield('body_data')>
@@ -117,6 +119,7 @@
         <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
         <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
         <script src="{{ asset('vendor/overlayScrollbars/js/jquery.overlayScrollbars.min.js') }}"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 
         {{-- Configured Scripts --}}
         @include('adminlte::plugins', ['type' => 'js'])
