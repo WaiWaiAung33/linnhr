@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Employee extends Model
 {
     protected $table ='employee';
-    protected $fillable =['branch_id','dep_id','position_id','name','gender','father_name','phone_no','nrc_code','nrc_state','nrc_status','nrc','fullnrc','date_of_birth','join_date','address','city','township','qualification','salary','photo'];
+    protected $fillable =['emp_id','branch_id','dep_id','position_id','name','gender','father_name','phone_no','nrc_code','nrc_state','nrc_status','nrc','fullnrc','date_of_birth','join_date','address','city','township','qualification','salary','photo'];
 
     public function viewBranch()
     {
@@ -33,4 +33,5 @@ class Employee extends Model
     {
         return $this->hasOne('App\NRCState','id','nrc_state');
     }
+    
 }
