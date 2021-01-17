@@ -26,6 +26,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::resource('employee','EmployeeController');
 	Route::resource('nrccode','NRCCodeController');
 	Route::resource('nrcstate','NRCStateController');
+	Route::resource('salary','SalaryController');
 	Route::post('select-ajax-code','EmployeeController@selectcode')->name('select-ajax-code');
 });
 

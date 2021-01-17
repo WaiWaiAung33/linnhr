@@ -275,6 +275,11 @@ return [
         // ],
         ['header' => 'MASTER DATA'],
         [
+                    'text' => 'Salary',
+                    'url' => 'salary',
+                    'icon' => 'fa fa-credit-card',
+        ],
+        [
                     'text' => 'Branch',
                     'url'  => 'branch',
                     'icon' => 'fa fa-location-arrow',

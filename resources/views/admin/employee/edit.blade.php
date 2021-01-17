@@ -389,6 +389,18 @@
                             <div class="row">
                                 <!-- <label class="col-md-3 unicode" style="text-align: right;">Assign</label> -->
                                 <div class="col-md-2">
+                                    <h6 style="font-weight: bold;;font-size:15px;">Employee Id</h6>
+                                </div>
+                                <div class="col-md-8">
+                                    <input type="text" name="emp_id" class="form-control unicode" value="{{ old('emp_id',$employees->emp_id) }}">
+
+                                </div>
+                            </div>
+                        </div>
+                         <div class="col-md-6">
+                            <div class="row">
+                                <!-- <label class="col-md-3 unicode" style="text-align: right;">Assign</label> -->
+                                <div class="col-md-2">
                                     <h6 style="font-weight: bold;;font-size:15px;">Join Date</h6>
                                 </div>
                                 <div class="col-md-8">
@@ -397,24 +409,9 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <div class="row">
-                                <div class="col-md-2">
-                                    <h6 style="font-weight: bold;;font-size:15px;">Rank</h6>
-                                </div>
-                                <!-- <label class="col-md-3 unicode" id="appointment_label" style="text-align: right;">Appoint Date</label> -->
-                                <div class="col-md-8">
-                                      <select class="form-control" name="position" id="rank">
-                                        <option value="">Rank</option>
-                                        @foreach($positions as $position)
-                                         <option value="{{$position->id}}" {{ (old('position',$employees->position_id)==$position->id)?'selected':'' }}>{{$position->name}}</option>
-                                       @endforeach
-                                    </select>   
-                                </div>
-                            </div>
-                        </div>
                     </div>
                     <br>
+
                     <div class="row">
                         <div class="col-md-6">
                             <div class="row">
@@ -451,6 +448,26 @@
                         </div>
                     </div>
                     <br>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <h6 style="font-weight: bold;;font-size:15px;">Rank</h6>
+                                </div>
+                                <!-- <label class="col-md-3 unicode" id="appointment_label" style="text-align: right;">Appoint Date</label> -->
+                                <div class="col-md-8">
+                                      <select class="form-control" name="position" id="rank">
+                                        <option value="">Rank</option>
+                                        @foreach($positions as $position)
+                                         <option value="{{$position->id}}" {{ (old('position',$employees->position_id)==$position->id)?'selected':'' }}>{{$position->name}}</option>
+                                       @endforeach
+                                    </select>   
+                                </div>
+                            </div>
+                        </div>
+                    </div><br>
+
                     <div style="width: 100%">
                         <a class="btn btn-primary unicode" id="install_back" style="float: left;">Back</a>
                         <button type="submit" class="btn btn-success unicode" style="float: right;">Save</button>

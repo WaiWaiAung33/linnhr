@@ -37,8 +37,14 @@ class EmployeeController extends Controller
         if ($request->position_id != '') {
             $employees = $employees->where('position_id',$request->position_id);
         }
+        if ($request->join_date != '') {
+            $startDate = date('Y-m-d', strtotime($request->join_date))." 00:00:00";
+            $employees = $employees->where('join_date',$startDate);
+            // dd($customers);
+        }
         $count = $employees->get()->count();
         $employees = $employees->orderBy('created_at','desc')->paginate(10);
+    
         return view('admin.employee.index',compact('branchs','departments','positions','employees','count'))->with('i', (request()->input('page', 1) - 1) * 10);
     }
 
@@ -81,6 +87,7 @@ class EmployeeController extends Controller
         // dd($fullnrc);
 
          $employee=Employee::create([
+            'emp_id'=>$request->emp_id,
             'branch_id'=>$request->branch,
             'dep_id'=>$request->department,
             'position_id'=>$request->position,
@@ -166,6 +173,7 @@ class EmployeeController extends Controller
         $fullnrc = $nrccode->name.'/'.$nrcstate->name."(".$request->nrc_status.')'.$request->nrc;
         
          $employees = $employees->update([
+            'emp_id'=>$request->emp_id,
             'branch_id'=>$request->branch,
             'dep_id'=>$request->department,
             'position_id'=>$request->position,

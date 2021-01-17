@@ -6,8 +6,9 @@
 
 @section('content_header')
 
-
+<link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.1/themes/base/jquery-ui.css" rel="stylesheet" />
 <style type="text/css">
+  
    .styled-table {
           border-collapse: collapse;
           /*margin: 25px 0;*/
@@ -46,6 +47,7 @@
   $branch_id = isset($_GET['branch_id'])?$_GET['branch_id']:''; 
   $dep_id = isset($_GET['dep_id'])?$_GET['dep_id']:''; 
   $position_id = isset($_GET['position_id'])?$_GET['position_id']:''; 
+  $join_date = isset($_GET['join_date'])?$_GET['join_date']:'';
   ?>
 
   <div>
@@ -55,47 +57,55 @@
                 <p>{{ $message }}</p>
             </div>
       @endif --}}
-    <form action="{{route('employee.index')}}" method="get" accept-charset="utf-8" class="form-horizontal">
-            <div class="row form-group" class="col-md-9">
-                        <div class="col-md-3">
-                           
+   
+
+         <form action="{{route('employee.index')}}" method="get" accept-charset="utf-8" class="form-horizontal">
+            <div class="row form-group">
+                <div class="col-md-10">
+                    <div class="row">
+                        <div class="col-md-2">
+                            <label for="">Search by Keyword</label>
                             <input type="text" name="name" id="name" class="form-control" placeholder="Search..." value="{{ old('name',$name) }}">
-                        </div>
-                      
-                
-            </div>
-            <div class="row">
-                <div class="col-md-3">
-                            
-                           <select class="form-control" id="branch_id" name="branch_id">
-                                <option value="">Select Branch</option>
+                        </div> 
+                        <div class="col-md-2">
+                            <label for="">Select Branch</label>
+                          <select class="form-control" id="branch_id" name="branch_id">
+                                <option value="">All</option>
                                 @foreach($branchs as $branch)
                                 <option value="{{$branch->id}}" {{ (old('branch_id',$branch_id)==$branch->id)?'selected':'' }}>{{$branch->name}}</option>
                                 @endforeach
                             </select>
-                </div>
-               <div class="col-md-3">
-                          
-                  <select class="form-control" id="dep_id" name="dep_id">
-                          <option value="">Select Department</option>
-                                @foreach($departments as $department)
-                                          <option value="{{$department->id}}" {{ (old('dep_id',$dep_id)==$department->id)?'selected':'' }}>{{$department->name}}</option>
-                                @endforeach
-                      </select>
-                </div>
-
-                 <div class="col-md-3">
-                  
-                    <select class="form-control" id="position_id" name="position_id">
-                        <option value="">Select Rank</option>
+                        </div>
+                        <div class="col-md-2">
+                           <label for="">Select Department</label>
+                            <select class="form-control" id="dep_id" name="dep_id">
+                              <option value="">All</option>
+                                    @foreach($departments as $department)
+                                              <option value="{{$department->id}}" {{ (old('dep_id',$dep_id)==$department->id)?'selected':'' }}>{{$department->name}}</option>
+                                    @endforeach
+                          </select>
+                        </div>
+                        <div class="col-md-2">
+                             <label for="">Select Rank</label>
+                            <select class="form-control" id="position_id" name="position_id">
+                            <option value="">All</option>
                                @foreach($positions as $position)
                                                 <option value="{{$position->id}}" {{ (old('position_id',$position_id)==$position->id)?'selected':'' }}>{{$position->name}}</option>
                                 @endforeach
                        
-                    </select>
+                             </select>
+                        </div>
+                        <div class="col-md-2">
+                            <label>Join Date</label>
+                             <input type="text" name="join_date" id="join_date"class="form-control unicode" placeholder="01-08-2020" value="{{ old('join_date',$join_date) }}">
+                        </div>
+                    </div>
                 </div>
+               
             </div>
         </form>
+
+
   </div>
   <!-- <p style="font-size: 18px" class="col-md-3">Employee Management</p> -->
   <div style="position: absolute;bottom: 15px;right: 15px">
@@ -107,6 +117,8 @@
                   <thead>
                     <tr> 
                       <th>No</th>
+                      <th>Employee Id</th>
+                      <th>Image</th>
                        <th>Name</th>
                        <th>Rank</th>
                         <th>Department</th>
@@ -122,6 +134,8 @@
               		 @foreach($employees as $employee)
                         <tr class="table-tr" data-url="{{route('employee.show',$employee->id)}}">
                             <td>{{++$i}}</td>
+                            <td>{{$employee->emp_id}}</td>
+                            <td> <img src="{{ asset('uploads/employeePhoto/'.$employee->photo) }}" alt="photo" width="80px" height="80px"></td>
                             <td>{{$employee->name}}</td>
                              <td>{{$employee->viewPosition->name}}</td>
                             <td>{{$employee->viewDepartment->name}}</td>
@@ -194,6 +208,10 @@
 @stop
 
 @section('js')
+ <script src="{{ asset('jquery.js') }}"></script>
+
+    <script type="text/javascript" src="{{ asset('jquery-ui.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('select2/js/select2.min.js') }}"></script>
  <script> 
         @if(Session::has('success'))
             toastr.options =
@@ -220,6 +238,10 @@
                $('#position_id').on('change',function(e){
                 this.form.submit();
               });
+                $('#join_date').on('change',function(e) {
+                this.form.submit();
+               // $( "#form_id" )[0].submit();   
+            });
    
         });
           $(function() {
@@ -227,6 +249,7 @@
             window.location = $(this).data("url");
           });
         });
+          $("#join_date").datepicker({ dateFormat: 'dd-mm-yy' });
          
         });
      </script>
