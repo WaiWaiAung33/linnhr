@@ -92,10 +92,10 @@
 			<tr>
 				<th style="width: 200px">No</th>
 				<th style="width: 100px">Photo</th>
-				@foreach($salarys as $salary)
+				
 
-				<th colspan="2" style="text-align: center;">{{$salary->pay_date}}</th>
-				@endforeach
+				<th colspan="2" style="text-align: center;">January</th>
+			
 				<!-- <th>Febuary</th>
 				<th>March</th>
 				<th>April</th>
