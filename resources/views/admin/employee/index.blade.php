@@ -105,13 +105,36 @@
             </div>
         </form>
 
+        <form class="form-horizontal" action="{{route('import')}}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    <div class="row form-group">
+                        <div class="col-md-3">
+                            <input type="file" name="file" class="form-control">
+                            @if ($errors->has('file'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('file') }}</strong>
+                                </span>
+                            @endif
+                        </div>
+                        <div class="col-md-3">
+                        <button class="btn btn-success btn-sm"><i class="fas fa-file-csv" style="padding-left: 6px;padding-right: 6px;padding-top: 6px;padding-bottom: 6px"></i> Import CSV</button>
+                        </div>
+                       <div class="col-md-5"></div>
+                       <!-- <div class="col-md-1">
+                        <a class="btn btn-warning btn-sm" id="export_btn" style="float: right;" ><i class="fa fa-fw fa-file-excel"></i>Export</a>
+                       </div> -->
+                       
+                    
+                    </div>
+        </form>
+
 
   </div>
   <!-- <p style="font-size: 18px" class="col-md-3">Employee Management</p> -->
   <div style="position: absolute;bottom: 15px;right: 15px">
                     <a class="btn btn-primary unicode" href="{{route('employee.create')}}" style="width: 50px;height: 50px;border-radius: 25px"><i class="fa fa-plus" style="padding-top: 10px" /></i></a>
   </div>
-  <p style="padding-top: 35px">Total record: {{$count}}</p>
+  <p style="padding-top: 20px">Total record: {{$count}}</p>
     <div class="table-responsive" style="font-size:15px;">
                 <table class="table table-bordered styled-table">
                   <thead>

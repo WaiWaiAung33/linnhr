@@ -37,15 +37,52 @@
 @stop
 
 @section('content')
-<div style="position: absolute;bottom: 15px;right: 15px">
+<!-- <div style="position: absolute;bottom: 15px;right: 15px">
         <a class="btn btn-primary unicode" href="{{route('salary.create')}}" style="width: 50px;height: 50px;border-radius: 25px"><i class="fa fa-plus" style="padding-top: 10px" /></i></a>
-</div>
+</div> -->
+
+<?php
+        $name = isset($_GET['name'])?$_GET['name']:'';  
+        $dep_id = isset($_GET['dep_id'])?$_GET['dep_id']:''; 
+        // $brand_id = isset($_GET['brand_id'])?$_GET['brand_id']:''; 
+?>
 
  {{-- @if ($message = Session::get('success'))
             <div class="alert alert-success">
                 <p>{{ $message }}</p>
             </div>
         @endif --}}
+
+   <form action="{{route('salary.index')}}" method="get" accept-charset="utf-8" class="form-horizontal">
+            <div class="row">
+                        <div class="col-md-3">
+                           
+                            <input type="text" name="name" id="name" value="{{ old('name',$name) }}" class="form-control" placeholder="Search...">
+                        </div>
+                        <div class="col-md-3">
+                            
+                           
+                            <select class="form-control" id="dep_id" name="dep_id">
+                                <option value="">Select Department</option>
+                                @foreach($departments as $department)
+                                <option value="{{$department->name}}" {{ (old('dep_id',$dep_id)==$department->id)?'selected':'' }}>{{$department->name}}</option>
+                                @endforeach
+                            </select>
+                           
+                        </div>
+                        <div class="col-md-3">
+                          
+                            <!-- <select class="form-control" id="brand_id" name="brand_id">
+                             
+                            </select> -->
+                        </div>
+                        <div class="col-md-3">
+                             <a class="btn btn-success unicode" href="{{route('salary.create')}}" style="float: right;"><i class="fas fa-plus"> Salary</i></a>
+                        </div>
+               
+            </div>
+        </form><br>
+           
 
 <div class="table-responsive" style="font-size:15px;">
 	<table class="table table-bordered styled-table">
@@ -55,7 +92,10 @@
 			<tr>
 				<th style="width: 200px">No</th>
 				<th style="width: 100px">Photo</th>
-				<th colspan="2" style="text-align: center;">January</th>
+				@foreach($salarys as $salary)
+
+				<th colspan="2" style="text-align: center;">{{$salary->pay_date}}</th>
+				@endforeach
 				<!-- <th>Febuary</th>
 				<th>March</th>
 				<th>April</th>
@@ -71,6 +111,7 @@
 		</thead>
 		<tbody>
 			@foreach($salarys as $salary)
+				@if($salary->emp_id)
 			  <tr> 
 			  	<td><b>Name:</b> <span style="padding-left: 10px"><b>{{$salary->viewEmployee->name}}</b></span></td>
 			  	<td rowspan = "3"><img src="{{ asset('uploads/employeePhoto/'.$salary->viewEmployee->photo) }}" alt="photo" width="80px" height="80px"></td>
@@ -97,6 +138,7 @@
 			  	<td>DOB: <span style="padding-left: 10px">{{date('d-m-Y',strtotime($salary->viewEmployee->date_of_birth))}}</span></td>
 			  	
 			  </tr>
+			  @endif
 			@endforeach
 		</tbody>
 	</table>
@@ -121,6 +163,21 @@
             }
             toastr.success("{{ session('success') }}");
         @endif
+
+         $(document).ready(function(){
+         	 $(function() {
+                $('#name').on('change',function(e) {
+                this.form.submit();
+               // $( "#form_id" )[0].submit();   
+            }); 
+                $('#dep_id').on('change',function(e){
+                this.form.submit();
+              });
+              //    $('#brand_id').on('change',function(e){
+              //   this.form.submit();
+              // });
+        });
+         });
 </script>
         
 @stop

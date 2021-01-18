@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Employee;
 use Illuminate\Http\Request;
+use App\Imports\EmployeeImport;
+use Maatwebsite\Excel\Facades\Excel;
 use App\Branch;
 use App\Department;
 use App\Position;
@@ -223,6 +225,34 @@ class EmployeeController extends Controller
                 echo "<option value='".$state->id."'>".$state->name."</opiton>";
             }
         }
+    }
+
+    public function get_department_data(Request $request){
+      // dd($request->all());
+      
+      $employee = new Employee();
+
+       $employee = $employee->leftjoin('department','department.id','=','employee.dep_id')
+                            ->leftjoin('branch','branch.id','=','employee.branch_id')
+                       ->select(
+                        'department.name',
+                        'branch.name AS branch_name',
+                        'employee.name AS employee_name'
+                       );
+        $search_employee = $employee->find($request->emp_id);
+      // dd($search_employee);
+      return response()->json($search_employee);
+    }
+
+    public function import(Request $request) 
+    {
+        $request->validate([
+            'file'=>'required',
+        ]);
+
+        Excel::import(new EmployeeImport,request()->file('file'));
+             
+        return back();
     }
 
 }

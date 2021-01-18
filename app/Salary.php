@@ -7,7 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Salary extends Model
 {
     protected $table = 'salarys';
-    protected $fillable = ['emp_id','pay_date','salary_amt','bonus'];
+    protected $fillable = ['emp_id','name','department','branch','pay_date','year','salary_amt','bonus'];
+    
     public function viewEmployee()
     {
         return $this->hasOne('App\Employee','id','emp_id');

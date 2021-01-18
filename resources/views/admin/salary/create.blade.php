@@ -32,12 +32,47 @@
 
                                 <div class="col-md-8">
 
-                                      <select class="form-control" name="emp_id" id="catselect">
-			                            <option value="">Select Category</option>
+                                      <select class="form-control ctr_item_option" name="emp_id" id="select_1" >
+			                            <option value="">Select Emplyee</option>
 			                            @foreach ($employees as $employee )
-			                              <option  value="{{$employee->id}}" id="catoption">{{$employee->name}}</option>
+			                              <option  value="{{$employee->id}}" data_branch_id="{{ $employee->branch_id }}" id="catoption" data_is_employee={{$employee->id}}>{{$employee->name}}</option>
 			                            @endforeach
 			                        </select> 
+
+
+                                </div>
+                            </div>
+              </div>
+        </div>
+
+         <input type="hidden" name="name" class="form-control unicode" id="name" value="{{$employee->viewDepartment->name}}">
+
+        <div class="row form-group">
+            <div class="col-md-6">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <h6 style="font-weight:bold;font-size:15px;">Department</h6>
+                                </div>
+
+                                <div class="col-md-8">
+
+                                       <input type="text" name="department" class="form-control unicode" id="department" > 
+
+                                </div>
+                            </div>
+              </div>
+        </div>
+
+        <div class="row form-group">
+            <div class="col-md-6">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <h6 style="font-weight:bold;font-size:15px;">Branch</h6>
+                                </div>
+
+                                <div class="col-md-8">
+
+                                       <input type="text" name="branch" class="form-control unicode" id="branch" > 
 
                                 </div>
                             </div>
@@ -48,12 +83,12 @@
         	<div class="col-md-6">
                             <div class="row">
                                 <div class="col-md-3">
-                                    <h6 style="font-weight:bold;font-size:15px;">Pay Date</h6>
+                                    <h6 style="font-weight:bold;font-size:15px;">Pay Month</h6>
                                 </div>
 
                                 <div class="col-md-8">
 
-                                    <input type="text" name="pay_date" class="form-control unicode" placeholder="01-10-2021" id="pay_date"> 
+                                    <input type="month" name="pay_date" class="form-control unicode" placeholder="01-10-2021" > 
 
                                 </div>
                             </div>
@@ -119,5 +154,27 @@
 	$(document).ready(function(){
 		  $("#pay_date").datepicker({ dateFormat: 'dd-mm-yy' });
 	});
+
+    $(document).on("change",".ctr_item_option", function (e) {
+
+        var is_employee =$(this).find(':selected').attr('data_is_employee');
+        // alert(is_employee);
+         $.ajax({
+                type: "GET",
+                dataType: "json",
+                url: "<?php echo route('get_department_data') ?>",
+                data: {'emp_id': is_employee},
+                success: function(data){
+                    $("#department").val(data.name);
+                    $("#branch").val(data.branch_name);
+                    $("#name").val(data.employee_name);
+                    // console.log(data.name);
+                }
+            });
+      
+        // var branch_id =$(this).find(':selected').attr('data_branch_id');
+        // $("#branch").val(branch_id);
+
+    });
 </script>
 @stop
