@@ -4,6 +4,8 @@ namespace App\Imports;
 
 use App\Employee;
 use App\Salary;
+use App\Branch;
+use App\Department;
 
 use Maatwebsite\Excel\Concerns\ToModel;
 use Illuminate\Support\Collection;
@@ -36,10 +38,32 @@ class SalaryImport implements ToCollection,WithHeadingRow
                 {
                      // dd($row);
                         $employees = Employee::all();
+                        $branchs = Branch::all();
+                        $departments = Department::all();
+
                         foreach ($employees as $key => $value) {
                             if($row['name'] == $value->name){
                                 $employeeid = $value->id;
                                 // dd($nrcodeid);
+                            }
+                        }
+
+                      
+                        $search_employee = $employees->find($employeeid);
+                        $branchid = $search_employee->branch_id;
+                        $departmentid = $search_employee->dep_id;
+                        // dd($branchid);
+
+                        foreach ($branchs as $key => $value) {
+                            if ($value->id == $branchid) {
+                               $branchname=$value->name;
+                               // dd($branchname);
+                            }
+                        }
+
+                        foreach ($departments as $key => $value) {
+                            if ($value->id == $departmentid) {
+                                $departmentname = $value->name;
                             }
                         }
 
@@ -72,8 +96,8 @@ class SalaryImport implements ToCollection,WithHeadingRow
                          $arr=[
                         'emp_id'=>$employeeid,
                         'name'=>$row['name'],
-                        'department'=>$row['department'],
-                        'branch'=>$row['branch'],
+                        'department'=>$departmentname,
+                        'branch'=>$branchname,
                         'pay_date'=>$dates,
                         'year'=>$row['year'],
                         'salary_amt'=>$row['amount'],
