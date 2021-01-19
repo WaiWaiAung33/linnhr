@@ -115,13 +115,21 @@
                         <button class="btn btn-success btn-sm"><i class="fas fa-file-csv" style="padding-left: 6px;padding-right: 6px;padding-top: 6px;padding-bottom: 6px"></i> Import CSV</button>
                         </div>
                        <div class="col-md-5"></div>
-                       <!-- <div class="col-md-1">
+                       <div class="col-md-1">
                         <a class="btn btn-warning btn-sm" id="export_btn" style="float: right;" ><i class="fa fa-fw fa-file-excel"></i>Export</a>
-                       </div> -->
+                       </div>
                        
                     
                     </div>
         </form>
+
+         <form id="excel_form" action="{{ route('export') }}"  method="POST">
+                @csrf
+                @method('post')
+                <input type="hidden" id="branch_id" name="branch_id" value="{{ $branch_id }}">
+                <input type="hidden" id="dep_id" name="dep_id" value="{{ $dep_id }}">
+                <input type="hidden" id="position_id" name="position_id" value="{{ $position_id }}">
+         </form>
 
   <p style="padding-top: 20px">Total record: {{$count}}</p>
     <div class="table-responsive" style="font-size:15px;">
@@ -249,6 +257,10 @@
           });
         });
           $("#join_date").datepicker({ dateFormat: 'dd-mm-yy' });
+
+           $('#export_btn').click(function(){
+                $('#excel_form').submit();
+            });
          
         });
      </script>

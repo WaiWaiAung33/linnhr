@@ -15,7 +15,7 @@
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
     }
     .styled-table thead tr {
-        background-color: #5a4080;
+        background-color: #1179C2;
         color: #ffffff;
         text-align: left;
     }

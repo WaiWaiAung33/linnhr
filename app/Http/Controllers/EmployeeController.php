@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Employee;
 use Illuminate\Http\Request;
 use App\Imports\EmployeeImport;
+use App\Exports\EmployeeExport;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Branch;
 use App\Department;
@@ -253,6 +254,11 @@ class EmployeeController extends Controller
         Excel::import(new EmployeeImport,request()->file('file'));
              
         return back();
+    }
+
+     public function export() 
+    {
+        return Excel::download(new EmployeeExport, 'employee.xlsx');
     }
 
 }
