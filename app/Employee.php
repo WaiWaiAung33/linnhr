@@ -33,5 +33,10 @@ class Employee extends Model
     {
         return $this->hasOne('App\NRCState','id','nrc_state');
     }
+
+    public function viewSalary()
+    {
+        return $this->hasMany('App\Salary','emp_id');
+    }
     
 }

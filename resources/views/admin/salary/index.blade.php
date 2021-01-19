@@ -65,7 +65,7 @@
                             <select class="form-control" id="dep_id" name="dep_id">
                                 <option value="">Select Department</option>
                                 @foreach($departments as $department)
-                                <option value="{{$department->name}}" {{ (old('dep_id',$dep_id)==$department->id)?'selected':'' }}>{{$department->name}}</option>
+                                <option value="{{$department->id}}" {{ (old('dep_id',$dep_id)==$department->id)?'selected':'' }}>{{$department->name}}</option>
                                 @endforeach
                             </select>
                            
@@ -113,56 +113,46 @@
 
 		<thead>
 			<tr>
-				<th style="width: 200px">No</th>
-				<th style="width: 100px">Photo</th>
-				
-
-				<th colspan="2" style="text-align: center;">January</th>
-			
-				<!-- <th>Febuary</th>
-				<th>March</th>
-				<th>April</th>
-				<th>May</th>
-				<th>June</th>
-				<th>July</th>
-				<th>Augest</th>
-				<th>September</th>
-				<th>October</th>
-				<th>November</th>
-				<th>December</th> -->
+				<th style="width: 300px">Customer Information</th>
+				<th style="width: 350px">Photo</th>
+				<th colspan="12" style="text-align: center;" style="width: 250px">Month</th>
 			</tr>
 		</thead>
+
 		<tbody>
-			@foreach($salarys as $salary)
-				@if($salary->emp_id)
-			  <tr> 
-			  	<td><b>Name:</b> <span style="padding-left: 10px"><b>{{$salary->viewEmployee->name}}</b></span></td>
-			  	<td rowspan = "3"><img src="{{ asset('uploads/employeePhoto/'.$salary->viewEmployee->photo) }}" alt="photo" width="80px" height="80px"></td>
-			  	<td rowspan = "1">Salary</td>
-			  	<td rowspan = "1">Bonus</td>
-			  	<!-- <td rowspan = "3">nar</td>
-			  	<td rowspan = "3">apy</td>
-			  	<td rowspan = "3">may</td>
-			  	<td rowspan = "3">june</td>
-			  	<td rowspan = "3">july</td>
-			  	<td rowspan = "3">augest</td>
-			  	<td rowspan = "3">sep</td>
-			  	<td rowspan = "3">oct</td>
-			  	<td rowspan = "3">nov</td>
-			  	<td rowspan = "3">dec </td>
-			  	<td rowspan = "3">dec </td> -->
-			  </tr>
-			  <tr>
-			  	<td>ID: <span style="padding-left: 25px">{{$salary->viewEmployee->emp_id}}</span></td>
-			  	<td rowspan="2">{{$salary->salary_amt}}</td>
-			  	<td rowspan="2">{{$salary->bonus}}</td>
-			  </tr>
-			  <tr>
-			  	<td>DOB: <span style="padding-left: 10px">{{date('d-m-Y',strtotime($salary->viewEmployee->date_of_birth))}}</span></td>
-			  	
-			  </tr>
-			  @endif
-			@endforeach
+   
+      @foreach($employees as $employee)
+    
+		  <tr>
+        <td>
+          Employee ID : {{$employee->emp_id}} <br>
+          Name : {{$employee->name}}
+        </td>  
+        <td>
+          <img src="{{ asset('uploads/employeePhoto/default.png') }}" alt="photo" width="80px" height="80px">
+        </td>
+
+        <!-- @foreach($employee->viewSalary as $salary)
+          <td>{{$salary->pay_date}}</td>
+          @endforeach -->
+
+          <td>
+           
+
+            @if($employee->viewSalary->first())
+             {{$employee->viewSalary->first()->pay_date}} <br>
+              Salary : {{
+                $employee->viewSalary->first()->salary_amt
+              }}<br>
+              Bonus : {{
+              $employee->viewSalary->first()->bonus
+            }}
+             @endif
+          </td>
+      </tr>	
+      @endforeach
+    
+      
 		</tbody>
 	</table>
 </div>

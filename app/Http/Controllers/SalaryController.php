@@ -8,6 +8,7 @@ use App\Imports\SalaryImport;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Employee;
 use App\Department;
+use DB;
 
 class SalaryController extends Controller
 {
@@ -19,16 +20,21 @@ class SalaryController extends Controller
     public function index(Request $request)
     {
 
-        $employees =Employee::all();
-        $salarys = Salary::all();
+        $employees =Employee::with('viewSalary')->get();
+        // dd($employees->viewSalary);
         $departments = Department::all();
-        if ($request->name != '') {
-            $salarys = $salarys->Where('name','like','%'.$request->name.'%');
-        }
-        if ($request->dep_id != '') {
-            $salarys = $salarys->where('department',$request->dep_id);
-        }
-        // dd($employees);
+
+         $salarys = new Salary();
+
+        // if ($request->name != '') {
+        //     $salarys = $salarys->Where('name','like','%'.$request->name.'%');
+        // }
+        // if ($request->dep_id != '') {
+        //     $salarys = $salarys->where('department',$request->dep_id);
+        // }
+
+        $salarys = $salarys->get();
+        // dd(DB::table('salarys')->latest()->get()->first());
         return view('admin.salary.index',compact('employees','salarys','departments'));
     }
 
@@ -52,7 +58,7 @@ class SalaryController extends Controller
     public function store(Request $request)
     {
         $date = date('m',strtotime($request->pay_date));
-        
+        // dd($date);
         if($date == '01'){
             $dates = "Jan";
         }elseif ($date == '02') {
@@ -72,12 +78,13 @@ class SalaryController extends Controller
         }elseif ($date == '09') {
             $dates = "Sep";
         }elseif ($date == '10') {
-            $dates == "Oct";
+            $dates = "Oct";
         }elseif ($date == '11') {
-            $dates == "Nov";
+            $dates = "Nov";
         }elseif ($date == '12') {
-            $dates == "Dec";
+            $dates = "Dec";
         }
+
         $salary=Salary::create([
             'emp_id'=>$request->emp_id,
             'name'=>$request->name,

@@ -86,11 +86,11 @@ class SalaryImport implements ToCollection,WithHeadingRow
                         }elseif ($row['month'] == '9') {
                             $dates = "Sep";
                         }elseif ($row['month'] == '10') {
-                            $dates == "Oct";
+                            $dates = "Oct";
                         }elseif ($row['month'] == '11') {
-                            $dates == "Nov";
+                            $dates = "Nov";
                         }elseif ($row['month'] == '12') {
-                            $dates == "Dec";
+                            $dates = "Dec";
                         }
                     
                          $arr=[

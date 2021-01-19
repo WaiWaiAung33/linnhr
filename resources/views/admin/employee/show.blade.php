@@ -111,7 +111,7 @@
              <table class="table table-bordered styled-table">
                 <thead>
                     <tr>
-                        <th style="font-size: 16px"><i class="fa fa-address-book" ></i> Personal Detail</th>
+                        <th style="font-size: 16px"><i class="fa fa-address-book" ></i> Personal Data</th>
                         
                     </tr>
                 </thead>
@@ -147,7 +147,7 @@
              <table class="table table-bordered styled-table">
                 <thead>
                     <tr>
-                        <th style="font-size: 16px"><i class="fa fa-briefcase"></i> Company Detail</th>
+                        <th style="font-size: 16px"><i class="fa fa-briefcase"></i>Employee Data</th>
                         
                     </tr>
                 </thead>

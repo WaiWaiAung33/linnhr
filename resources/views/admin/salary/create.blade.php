@@ -7,13 +7,7 @@
 @stop
 
 @section('content')
- <div class="row">
-        @if ($message = Session::get('success'))
-        <div class="alert alert-success">
-            <p>{{ $message }}</p>
-        </div>
-        @endif
-    </div>
+ 
     <!-- <div class="row">
         <div class="col-lg-11">
             <a class="btn btn-success unicode" href="{{route('employee.index')}}"> Back</a>
