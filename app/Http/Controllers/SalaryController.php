@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Salary;
 use Illuminate\Http\Request;
+use App\Imports\SalaryImport;
+use Maatwebsite\Excel\Facades\Excel;
 use App\Employee;
 use App\Department;
 
@@ -134,5 +136,16 @@ class SalaryController extends Controller
     public function destroy(Salary $salary)
     {
         //
+    }
+
+      public function import(Request $request) 
+    {
+        $request->validate([
+            'file'=>'required',
+        ]);
+
+        Excel::import(new SalaryImport,request()->file('file'));
+             
+        return back();
     }
 }

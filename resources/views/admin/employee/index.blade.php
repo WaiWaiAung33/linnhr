@@ -61,7 +61,7 @@
 
          <form action="{{route('employee.index')}}" method="get" accept-charset="utf-8" class="form-horizontal">
             <div class="row form-group">
-                <div class="col-md-10">
+                <div class="col-md-12">
                     <div class="row">
                         <div class="col-md-2">
                             <label for="">Search by Keyword</label>
@@ -99,6 +99,10 @@
                             <label>Join Date</label>
                              <input type="text" name="join_date" id="join_date"class="form-control unicode" placeholder="01-08-2020" value="{{ old('join_date',$join_date) }}">
                         </div>
+                        <div class="col-md-2">
+                         
+                             <a class="btn btn-success unicode" href="{{route('employee.create')}}" style="float: right;"><i class="fas fa-plus"> Employee</i></a>
+                        </div>
                     </div>
                 </div>
                
@@ -131,9 +135,9 @@
 
   </div>
   <!-- <p style="font-size: 18px" class="col-md-3">Employee Management</p> -->
-  <div style="position: absolute;bottom: 15px;right: 15px">
+  <!-- <div style="position: absolute;bottom: 15px;right: 15px">
                     <a class="btn btn-primary unicode" href="{{route('employee.create')}}" style="width: 50px;height: 50px;border-radius: 25px"><i class="fa fa-plus" style="padding-top: 10px" /></i></a>
-  </div>
+  </div> -->
   <p style="padding-top: 20px">Total record: {{$count}}</p>
     <div class="table-responsive" style="font-size:15px;">
                 <table class="table table-bordered styled-table">

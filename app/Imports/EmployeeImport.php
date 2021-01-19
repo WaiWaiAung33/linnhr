@@ -5,6 +5,9 @@ namespace App\Imports;
 use App\Employee;
 use App\NRCCode;
 use App\NRCState;
+use App\Branch;
+use App\Department;
+use App\Position;
 
 use Maatwebsite\Excel\Concerns\ToModel;
 use Illuminate\Support\Collection;
@@ -36,21 +39,59 @@ class EmployeeImport implements ToCollection,WithHeadingRow
                 foreach ($rows as $row) 
                 {
                      // dd($row);
-                        $nrccode = NRCCode::find($row['nrc_code']);
-                        $nrcstate = NRCState::find($row['nrc_state']);
-                        $fullnrc = $nrccode->name.'/'.$nrcstate->name."(".$row['nrc_status'].')'.$row['nrc'];
+                        $nrccodes = NRCCode::all();
+                        foreach ($nrccodes as $key => $value) {
+                            if($row['nrc_code'] == $value->name){
+                                $nrcodeid = $value->id;
+                                // dd($nrcodeid);
+                            }
+                        }
+                        $nrcstates = NRCState::all();
+                        foreach ($nrcstates as $key => $value) {
+                           if ($row['nrc_state'] == $value->name) {
+                               $nrcstateid = $value->id;
+                           }
+                        }
+
+                        $branchs = Branch::all();
+                        foreach ($branchs as $key => $value) {
+                            if($row['branch'] == $value->name){
+                                $branchid = $value->id;
+                            }
+                        }
+
+                        $departments = Department::all();
+                        foreach ($departments as $key => $value) {
+                            if ($row['department'] == $value->name) {
+                               $departmentid = $value->id;
+                            }
+                        }
+
+                        $positions = Position::all();
+                        foreach ($positions as $key => $value) {
+                           if ($row['position'] == $value->name) {
+                              $positionid = $value->id;
+                           }
+                        }
+
+
+                        // dd($nrccodes);
+                        // $nrccode = NRCCode::find($row['nrc_code']);
+                        // dd($nrccode);
+                        // $nrcstate = NRCState::find($row['nrc_state']);
+                        $fullnrc = $row['nrc_code'].'/'.$row['nrc_state']."(".$row['nrc_status'].')'.$row['nrc'];
                     
                          $arr=[
                         'emp_id'=>$row['emp_id'],
-                        'branch_id'=>$row['branch'],
-                        'dep_id'=>$row['department'],
-                        'position_id'=>$row['position'],
+                        'branch_id'=>$branchid,
+                        'dep_id'=>$departmentid,
+                        'position_id'=>$positionid,
                         'name'=> $row['name'],
                         'gender'=>$row['gender'],
                         'father_name'=>$row['father_name'],
                         'phone_no'=>$row['phone'],
-                        'nrc_code'=>$row['nrc_code'],
-                        'nrc_state'=>$row['nrc_state'],
+                        'nrc_code'=>$nrcodeid,
+                        'nrc_state'=>$nrcstateid,
                         'nrc_status'=>$row['nrc_status'],
                         'nrc'=>$row['nrc'],
                         'fullnrc'=>$fullnrc,
