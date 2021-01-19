@@ -31,14 +31,6 @@
               border-bottom: 1px solid #dddddd;
           }
 
-          /*.styled-table tbody tr:nth-of-type(even) {
-              background-color: #c7d4dd;
-          }*/
-
-          .styled-table tbody tr:last-of-type {
-              border-bottom: 2px solid #1179C2;
-          }
-
 </style>
 @stop
 @section('content')
@@ -50,7 +42,6 @@
   $join_date = isset($_GET['join_date'])?$_GET['join_date']:'';
   ?>
 
-  <div>
     <h5 style="color:#1179C2 ">Employee Management</h5><br>
      {{-- @if ($message = Session::get('success'))
             <div class="alert alert-success">
@@ -132,12 +123,6 @@
                     </div>
         </form>
 
-
-  </div>
-  <!-- <p style="font-size: 18px" class="col-md-3">Employee Management</p> -->
-  <!-- <div style="position: absolute;bottom: 15px;right: 15px">
-                    <a class="btn btn-primary unicode" href="{{route('employee.create')}}" style="width: 50px;height: 50px;border-radius: 25px"><i class="fa fa-plus" style="padding-top: 10px" /></i></a>
-  </div> -->
   <p style="padding-top: 20px">Total record: {{$count}}</p>
     <div class="table-responsive" style="font-size:15px;">
                 <table class="table table-bordered styled-table">
@@ -145,7 +130,7 @@
                     <tr> 
                       <th>No</th>
                       <th>Employee Id</th>
-                      <th>Image</th>
+                      <!-- <th>Image</th> -->
                        <th>Name</th>
                        <th>Rank</th>
                         <th>Department</th>
@@ -162,7 +147,7 @@
                         <tr class="table-tr" data-url="{{route('employee.show',$employee->id)}}">
                             <td>{{++$i}}</td>
                             <td>{{$employee->emp_id}}</td>
-                            <td> <img src="{{ asset('uploads/employeePhoto/'.$employee->photo) }}" alt="photo" width="80px" height="80px"></td>
+                           <!--  <td> <img src="{{ asset('uploads/employeePhoto/'.$employee->photo) }}" alt="photo" width="80px" height="80px"></td> -->
                             <td>{{$employee->name}}</td>
                              <td>{{$employee->viewPosition->name}}</td>
                             <td>{{$employee->viewDepartment->name}}</td>
@@ -202,21 +187,7 @@
                                   }
                               ?>
                             <td>{{date('d-m-Y',strtotime($employee->date_of_birth))}} ({{$workyearbirth}}) years</td>
-                            <!-- <td>
-                              <img src="{{ asset('uploads/employeePhoto/'.$employee->photo) }}" alt="photo" width="50px" height="35px">
-                            </td> -->
-                           <!--  <td>
-                                <form action="{{route('employee.destroy',$employee->id)}}" method="post"
-                                    onsubmit="return confirm('Do you want to delete?');">
-                                   @csrf
-                                   @method('DELETE')
-                                    <a class="btn btn-sm btn-info" href="{{route('employee.show',$employee->id)}}"><i class="fa fa-fw fa-eye" /></i></a> 
-                                    <a class="btn btn-sm btn-primary" href="{{route('employee.edit',$employee->id)}}"><i class="fa fa-fw fa-edit"></i></a>
-                                    <button class="btn btn-sm btn-danger btn-sm" type="submit">
-                                        <i class="fa fa-fw fa-trash" title="Delete"></i>
-                                    </button>
-                                </form>
-                            </td> -->
+                           
                         </tr>
                         
 			           @endforeach
@@ -227,6 +198,7 @@
                   @endif
                     </tbody>
            </table> 
+    </div>
            {!! $employees->appends(request()->input())->links() !!}
 
 @stop 
@@ -239,7 +211,7 @@
 
     <script type="text/javascript" src="{{ asset('jquery-ui.js') }}"></script>
     <script type="text/javascript" src="{{ asset('select2/js/select2.min.js') }}"></script>
- <script> 
+ <script type="text/javascript"> 
         @if(Session::has('success'))
             toastr.options =
             {
