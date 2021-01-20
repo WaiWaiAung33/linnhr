@@ -113,7 +113,7 @@
 
 		<thead>
 			<tr>
-				<th style="width: 300px">Customer Information</th>
+				<th style="width: 300px">Employee Information</th>
 				<th style="width: 350px">Photo</th>
 				<th colspan="12" style="text-align: center;" style="width: 250px">Month</th>
 			</tr>
@@ -123,7 +123,7 @@
    
       @foreach($employees as $employee)
     
-		  <tr>
+		  <tr class="table-tr" data-url="{{route('salary.show',$employee->id)}}">
         <td>
           Employee ID : {{$employee->emp_id}} <br>
           Name : {{$employee->name}}
@@ -190,6 +190,12 @@
               //   this.form.submit();
               // });
         });
+
+          $(function() {
+          $('table').on("click", "tr.table-tr", function() {
+            // window.location = $(this).data("url");
+            alert("hello");
+          });
          });
 </script>
         
