@@ -189,13 +189,15 @@
               //    $('#brand_id').on('change',function(e){
               //   this.form.submit();
               // });
+              $('table').on("click", "tr.table-tr", function() {
+            window.location = $(this).data("url");
+            // alert("hello");
+          });
+              
         });
 
-          $(function() {
-          $('table').on("click", "tr.table-tr", function() {
-            // window.location = $(this).data("url");
-            alert("hello");
-          });
+         
+        
          });
 </script>
         

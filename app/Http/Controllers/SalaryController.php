@@ -60,9 +60,9 @@ class SalaryController extends Controller
         $date = date('m',strtotime($request->pay_date));
         // dd($date);
         if($date == '01'){
-            $dates = "Jan";
+            $dates = "January";
         }elseif ($date == '02') {
-            $dates = "Feb";
+            $dates = "Febuary";
         }elseif ($date == '03') {
             $dates = "March";
         }elseif ($date == '04') {
@@ -70,19 +70,19 @@ class SalaryController extends Controller
         }elseif ($date == '05') {
             $dates = "May";
         }elseif ($date == '06') {
-            $dates = "Jun";
+            $dates = "June";
         }elseif ($date == '07') {
             $dates = "July";
         }elseif ($date == '08') {
-            $dates = "Aug";
+            $dates = "Augest";
         }elseif ($date == '09') {
-            $dates = "Sep";
+            $dates = "September";
         }elseif ($date == '10') {
-            $dates = "Oct";
+            $dates = "October";
         }elseif ($date == '11') {
-            $dates = "Nov";
+            $dates = "November";
         }elseif ($date == '12') {
-            $dates = "Dec";
+            $dates = "December";
         }
 
         $salary=Salary::create([
@@ -106,9 +106,12 @@ class SalaryController extends Controller
      * @param  \App\Salary  $salary
      * @return \Illuminate\Http\Response
      */
-    public function show(Salary $salary)
+    public function show($id)
     {
-        //
+
+        $employees = Employee::find($id);
+        $salarys = Salary::all();
+        return view('admin.salary.show',compact('employees','salarys'));
     }
 
     /**
