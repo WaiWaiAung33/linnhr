@@ -42,19 +42,9 @@
         <div class="col-lg-10">
              <a class="btn btn-success unicode" href="{{route('salary.index')}}"> Back</a>
         </div>
-        <div class="col-lg-2">
-            <div class="pull-right">
-              <form action="#" method="POST" onsubmit="return confirm('Do you really want to delete?');">
-                                @csrf
-                                @method('DELETE')
+        
+ </div><br>
 
-                                <a class="btn btn-sm btn-primary" href="#"><i class="fa fa-fw fa-edit" /></i></a>
-
-                                <button type="submit" class="btn btn-sm btn-danger"><i class="fa fa-fw fa-trash" /></i></button> 
-                            </form>
-            </div>
-        </div>
-    </div><br>
   <div class="row">
         <div class="col-lg-12">
             <div>
@@ -72,6 +62,7 @@
 				<th style="width: 300px">Month</th>
 				<th style="width: 350px">Salary</th>
 				<th style="text-align: center;" style="width: 250px">Bonus</th>
+        <th>Action</th>
 			</tr>
 		</thead>
     <tbody>
@@ -81,6 +72,16 @@
         <td>{{$salary->pay_date}}</td>
         <td>{{$salary->salary_amt}}</td>
         <td>{{$salary->bonus}}</td>
+        
+           <td>
+                  <form action="#" method="POST" onsubmit="return confirm('Do you really want to delete?');">
+                    @csrf
+                    @method('DELETE')
+                    <a class="btn btn-sm btn-primary" href="{{route('salary.edit',$salary->id)}}" ><i class="fa fa-fw fa-edit" style="padding-top: 5px;padding-bottom: 5px;padding-left: 2px;padding-right: 5px"/></i></a> 
+                     <button type="submit" class="btn btn-sm btn-danger" style="margin-left: 10px"><i class="fa fa-fw fa-trash" /></i></button> 
+                   </form>
+                </td>
+       
       </tr>
       @endif
       @endforeach
@@ -89,7 +90,7 @@
 	
 	</table>
 </div>
- 
+
 @stop 
 
 

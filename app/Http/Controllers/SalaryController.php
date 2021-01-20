@@ -120,9 +120,10 @@ class SalaryController extends Controller
      * @param  \App\Salary  $salary
      * @return \Illuminate\Http\Response
      */
-    public function edit(Salary $salary)
+    public function edit($id)
     {
-        //
+        $salarys = Salary::find($id);
+        return view('admin.salary.edit',compact('salarys'));
     }
 
     /**
