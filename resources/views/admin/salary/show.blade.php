@@ -74,7 +74,7 @@
         <td>{{$salary->bonus}}</td>
         
            <td>
-                  <form action="#" method="POST" onsubmit="return confirm('Do you really want to delete?');">
+                  <form action="{{route('salary.destroy',$salary->id)}}" method="POST" onsubmit="return confirm('Do you really want to delete?');">
                     @csrf
                     @method('DELETE')
                     <a class="btn btn-sm btn-primary" href="{{route('salary.edit',$salary->id)}}" ><i class="fa fa-fw fa-edit" style="padding-top: 5px;padding-bottom: 5px;padding-left: 2px;padding-right: 5px"/></i></a> 

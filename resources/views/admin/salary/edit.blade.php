@@ -9,9 +9,9 @@
 @section('content')
  
   
-  <form action="#" method="POST" class="form-horizontal" enctype="multipart/form-data">
+  <form action="{{route('salary.update',$salarys->id)}}" method="POST" class="form-horizontal" enctype="multipart/form-data">
         @csrf
-        @method('post')
+        @method('PUT')
 
         <div class="row form-group">
         	<div class="col-md-6">
@@ -22,12 +22,15 @@
 
                                 <div class="col-md-8">
 
-                                     <input type="text" name="department" class="form-control unicode" id="department" readonly value="{{$salarys->name}}"> 
+                                     <input type="text" name="name" class="form-control unicode" id="department" readonly value="{{$salarys->name}}"> 
 
                                 </div>
                             </div>
               </div>
         </div>
+
+        <input type="hidden" name="year" class="form-control unicode" id="name" value="{{$salarys->year}}">
+        <input type="hidden" name="emp_id" class="form-control unicode" id="emp_id" value="{{$salarys->emp_id}}">
 
         <div class="row form-group">
             <div class="col-md-6">

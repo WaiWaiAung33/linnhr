@@ -42,10 +42,13 @@
 </div> -->
 
 <?php
-        $name = isset($_GET['name'])?$_GET['name']:'';  
+        $name = isset($_GET['name'])?$_GET['name']:''; 
+        // dd($name);
         $dep_id = isset($_GET['dep_id'])?$_GET['dep_id']:''; 
         // $brand_id = isset($_GET['brand_id'])?$_GET['brand_id']:''; 
 ?>
+
+<h5 style="color:#1179C2 ">Salary Management</h5>
 
  {{-- @if ($message = Session::get('success'))
             <div class="alert alert-success">
@@ -54,16 +57,18 @@
         @endif --}}
 
    <form action="{{route('salary.index')}}" method="get" accept-charset="utf-8" class="form-horizontal">
-            <div class="row">
+            <div class="row form-group">
+               <div class="col-md-12">
+                    <div class="row">
                         <div class="col-md-3">
-                           
-                            <input type="text" name="name" id="name" value="{{ old('name',$name) }}" class="form-control" placeholder="Search...">
+                           <label for="">Search by Keyword</label>
+                            <input type="text" name="name" id="name" class="form-control" placeholder="Search..." value="{{ old('name',$name) }}">
                         </div>
                         <div class="col-md-3">
                             
-                           
+                            <label for="">Select Department</label>
                             <select class="form-control" id="dep_id" name="dep_id">
-                                <option value="">Select Department</option>
+                                <option value="">All</option>
                                 @foreach($departments as $department)
                                 <option value="{{$department->id}}" {{ (old('dep_id',$dep_id)==$department->id)?'selected':'' }}>{{$department->name}}</option>
                                 @endforeach
@@ -81,7 +86,9 @@
                         </div>
                
             </div>
-        </form><br>
+          </div>
+        </div>
+        </form>
 
           <form class="form-horizontal" action="{{route('salaryimport')}}" method="POST" enctype="multipart/form-data">
                     @csrf
@@ -106,7 +113,7 @@
                     </div>
         </form>
            
-
+ <p style="padding-top: 20px">Total record: {{$count}}</p>
 <div class="table-responsive" style="font-size:15px;">
 	<table class="table table-bordered styled-table">
 
@@ -120,7 +127,7 @@
 		</thead>
 
 		<tbody>
-   
+     @if($employees->count()>0)
       @foreach($employees as $employee)
     
 		  <tr class="table-tr" data-url="{{route('salary.show',$employee->id)}}">
@@ -151,11 +158,16 @@
           </td>
       </tr>	
       @endforeach
-    
-      
+        @else
+          <tr align="center">
+            <td colspan="10">No Data!</td>
+          </tr>
+      @endif   
 		</tbody>
 	</table>
+
 </div>
+{{ $employees->appends(['sort' => 'votes'])->links() }}
 @stop 
 
 

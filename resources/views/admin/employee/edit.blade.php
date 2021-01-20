@@ -389,7 +389,7 @@
                             <div class="row">
                                 <!-- <label class="col-md-3 unicode" style="text-align: right;">Assign</label> -->
                                 <div class="col-md-2">
-                                    <h6 style="font-weight: bold;;font-size:15px;">Employee Id</h6>
+                                    <h6 style="font-weight: bold;font-size:15px;">Employee Id</h6>
                                 </div>
                                 <div class="col-md-8">
                                     <input type="text" name="emp_id" class="form-control unicode" value="{{ old('emp_id',$employees->emp_id) }}">

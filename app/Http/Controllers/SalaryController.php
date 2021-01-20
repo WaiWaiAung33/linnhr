@@ -20,22 +20,31 @@ class SalaryController extends Controller
     public function index(Request $request)
     {
 
-        $employees =Employee::with('viewSalary')->get();
-        // dd($employees->viewSalary);
+        // $employees =Employee::with('viewSalary')->get();
+         $employees = new Employee();
+      
+        // dd($employees);
+       
         $departments = Department::all();
 
          $salarys = new Salary();
 
-        // if ($request->name != '') {
-        //     $salarys = $salarys->Where('name','like','%'.$request->name.'%');
-        // }
-        // if ($request->dep_id != '') {
-        //     $salarys = $salarys->where('department',$request->dep_id);
-        // }
+        if($request->name != '') {
+            // dd($request->name);
+        $employees = $employees->Where('name','like','%'.$request->name.'%');
+        // dd($employees);
+        }
+         if ($request->dep_id != '') {
+            $employees = $employees->where('dep_id',$request->dep_id);
+        }
 
         $salarys = $salarys->get();
+        $employees = $employees->get();
+        $count = $employees->count();
+        $employees = Employee::paginate(5);
+
         // dd(DB::table('salarys')->latest()->get()->first());
-        return view('admin.salary.index',compact('employees','salarys','departments'));
+        return view('admin.salary.index',compact('employees','salarys','departments','count'));
     }
 
     /**
@@ -133,9 +142,21 @@ class SalaryController extends Controller
      * @param  \App\Salary  $salary
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Salary $salary)
+    public function update(Request $request, $id)
     {
-        //
+        // dd($request->all());
+         $salarys = Salary::find($id);
+          $salarys = $salarys->update([
+            'emp_id'=>$request->emp_id,
+            'name'=>$request->name,
+            'department'=>$request->department,
+            'branch'=>$request->branch,
+            'pay_date'=>$request->pay_date,
+            'year'=>$request->year,
+            'salary_amt'=>$request->salary_amt,
+            'bonus'=>$request->bonus,
+        ]);
+         return redirect()->route('salary.index')->with('success','Salary updated successfully');
     }
 
     /**
@@ -144,9 +165,12 @@ class SalaryController extends Controller
      * @param  \App\Salary  $salary
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Salary $salary)
+    public function destroy($id)
     {
-        //
+        $salary = Salary::findorfail($id);
+        $salary->delete();
+        return redirect()->route('salary.index')
+                        ->with('success','Salary deleted successfully');
     }
 
       public function import(Request $request) 
