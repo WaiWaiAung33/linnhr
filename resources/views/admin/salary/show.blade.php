@@ -48,7 +48,7 @@
   <div class="row">
         <div class="col-lg-12">
             <div>
-                <h6 class="text-center text-dark text-md"><b>{{$employees->name}} 's Information</b></h6>
+                <h6 class="text-center text-dark text-md"><b>{{$employees->name}} 's Salary Information</b></h6>
             </div>
         </div>
     </div>
