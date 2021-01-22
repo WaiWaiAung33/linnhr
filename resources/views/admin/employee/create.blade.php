@@ -4,8 +4,9 @@
 @section('title', 'Employee')
 
 @section('content_header')
-<!-- <link rel="stylesheet" type="text/css" href="{{asset('jquery-ui.css')}}"> -->
-<link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.1/themes/base/jquery-ui.css" rel="stylesheet" />
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+   
+<link id="bsdp-css" href="https://unpkg.com/bootstrap-datepicker@1.9.0/dist/css/bootstrap-datepicker3.min.css" rel="stylesheet">
 
 <style type="text/css">
     .styled-table {
@@ -809,7 +810,7 @@
     @section('js')
     <script src="{{ asset('jquery.js') }}"></script>
 
-    <script type="text/javascript" src="{{ asset('jquery-ui.js') }}"></script>
+    <script src="https://unpkg.com/bootstrap-datepicker@1.9.0/dist/js/bootstrap-datepicker.min.js"></script>
     <script type="text/javascript" src="{{ asset('select2/js/select2.min.js') }}"></script>
     <script type="text/javascript">
         $(document).ready(function(){

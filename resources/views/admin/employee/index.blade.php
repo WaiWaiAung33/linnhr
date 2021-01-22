@@ -6,7 +6,9 @@
 
 @section('content_header')
 
-<link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.1/themes/base/jquery-ui.css" rel="stylesheet" />
+ <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+   
+<link id="bsdp-css" href="https://unpkg.com/bootstrap-datepicker@1.9.0/dist/css/bootstrap-datepicker3.min.css" rel="stylesheet">
 <style type="text/css">
   
    .styled-table {
@@ -138,14 +140,14 @@
                     <tr> 
                       <th>No</th>
                       <th>Employee Id</th>
-                      <!-- <th>Image</th> -->
+                      <th>Image</th>
                        <th>Name</th>
                        <th>Rank</th>
                         <th>Department</th>
                         <th>Branch</th>
                         <th>Joined Date</th>
-                        <th>NRC</th>
-                        <th>DOB</th>
+                       <!--  <th>NRC</th>
+                        <th>DOB</th> -->
                         <!-- <th>Action</th> -->
                     </tr>
                   </thead>
@@ -155,7 +157,15 @@
                         <tr class="table-tr" data-url="{{route('employee.show',$employee->id)}}">
                             <td>{{++$i}}</td>
                             <td>{{$employee->emp_id}}</td>
-                           <!--  <td> <img src="{{ asset('uploads/employeePhoto/'.$employee->photo) }}" alt="photo" width="80px" height="80px"></td> -->
+                            @if($employee->photo == '')
+                            <td>
+                            <img src="{{ asset('uploads/employeePhoto/default.png') }}" alt="photo" width="80px" height="80px">
+                            </td>
+                            @else
+                            <td>
+                             <img src="{{ asset('uploads/employeePhoto/'.$employee->photo) }}" alt="photo" width="80px" height="80px">
+                             </td>
+                             @endif
                             <td>{{$employee->name}}</td>
                              <td>{{$employee->viewPosition->name}}</td>
                             <td>{{$employee->viewDepartment->name}}</td>
@@ -179,22 +189,7 @@
                              
                             <td>{{date('d-m-Y',strtotime($employee->join_date))}} ({{$workyear}}) years
                             </td>
-                            <td>{{$employee->fullnrc}}</td>
-                            <?php 
-                                  $currentyearbirth = date('Y');
-                                  $currentdaybitrh = date('m');
-                                  $currentmonthbirth = date('d');
-                                  $joindaybirth = date('m',strtotime($employee->date_of_birth));
-                                  $joinyearbirth = date('Y',strtotime($employee->date_of_birth));
-                                  $joinmonthbirth = date('d',strtotime($employee->date_of_birth));
-                                  if($currentdaybitrh < $joindaybirth || $currentmonthbirth < $joinmonthbirth) {
-                                    $workbirth = $currentyearbirth - $joinyearbirth;
-                                    $workyearbirth = $workbirth - 1;
-                                  }else {
-                                    $workyearbirth = $currentyearbirth - $joinyearbirth;
-                                  }
-                              ?>
-                            <td>{{date('d-m-Y',strtotime($employee->date_of_birth))}} ({{$workyearbirth}}) years</td>
+                           
                            
                         </tr>
                         
@@ -206,18 +201,20 @@
                   @endif
                     </tbody>
            </table> 
+        {!! $employees->appends(request()->input())->links() !!}
     </div>
-           {!! $employees->appends(request()->input())->links() !!}
+         
 
 @stop 
 @section('css')
-    <link rel="stylesheet" href="/css/admin_custom.css">
+ <link rel="stylesheet" href="/css/admin_custom.css">
+  
 @stop
 
 @section('js')
  <script src="{{ asset('jquery.js') }}"></script>
 
-    <script type="text/javascript" src="{{ asset('jquery-ui.js') }}"></script>
+   <script src="https://unpkg.com/bootstrap-datepicker@1.9.0/dist/js/bootstrap-datepicker.min.js"></script>
     <script type="text/javascript" src="{{ asset('select2/js/select2.min.js') }}"></script>
  <script type="text/javascript"> 
         @if(Session::has('success'))

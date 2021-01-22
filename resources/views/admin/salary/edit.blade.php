@@ -31,6 +31,7 @@
 
         <input type="hidden" name="year" class="form-control unicode" id="name" value="{{$salarys->year}}">
         <input type="hidden" name="emp_id" class="form-control unicode" id="emp_id" value="{{$salarys->emp_id}}">
+        <input type="hidden" name="month_total" class="form-control unicode" id="month_total" value="">
 
         <div class="row form-group">
             <div class="col-md-6">
@@ -82,14 +83,14 @@
 
          <div class="row form-group">
         	<div class="col-md-6">
-                            <div class="row">
+                            <div class="row salary">
                                 <div class="col-md-3">
                                     <h6 style="font-weight:bold;font-size:15px;">Salary Amout</h6>
                                 </div>
 
                                 <div class="col-md-8">
 
-                                    <input type="text" name="salary_amt" class="form-control unicode" value="{{$salarys->salary_amt}}" > 
+                                    <input type="text" name="salary_amt" class="form-control unicode" value="{{$salarys->salary_amt}}" id="salary"> 
 
                                 </div>
                             </div>
@@ -98,14 +99,14 @@
 
         <div class="row form-group">
         	<div class="col-md-6">
-                            <div class="row">
+                            <div class="row salary">
                                 <div class="col-md-3">
                                     <h6 style="font-weight:bold;font-size:15px;">Bonus</h6>
                                 </div>
 
                                 <div class="col-md-8">
 
-                                    <input type="text" name="bonus" class="form-control unicode" placeholder="10000" value="{{$salarys->bonus}}" > 
+                                    <input type="text" name="bonus" class="form-control unicode" placeholder="10000" value="{{$salarys->bonus}}" id="bonus" > 
 
                                 </div>
                             </div>
@@ -138,7 +139,19 @@
 <script type="text/javascript">
 	$(document).ready(function(){
 		  $("#pay_date").datepicker({ dateFormat: 'dd-mm-yy' });
+          var salary = $("#salary").val();
+          var bonus = $("#bonus").val();
+          var total =  parseInt(salary) +  parseInt(bonus);
+          $("#month_total").val(total);
+        
 	});
+
+      $(document).on("change",".salary", function (e) {
+         var salary = $("#salary").val();
+         var bonus = $("#bonus").val();
+         var total =  parseInt(salary) +  parseInt(bonus);
+          $("#month_total").val(total);
+    });
 
     $(document).on("change",".ctr_item_option", function (e) {
 

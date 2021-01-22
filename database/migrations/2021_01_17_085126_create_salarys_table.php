@@ -19,6 +19,7 @@ class CreateSalarysTable extends Migration
             $table->string('pay_date');
             $table->string('salary_amt');
             $table->string('bonus');
+            $table->string('month_total');
             $table->timestamps();
         });
     }

@@ -30,13 +30,7 @@
 @stop
 
 @section('content')
-    <div class="row">
-        @if ($message = Session::get('success'))
-            <div class="alert alert-success">
-                <p>{{ $message }}</p>
-            </div>
-        @endif
-    </div>
+   
  <?php 
       $currentyear = date('Y');
       $currentday = date('m');
@@ -82,7 +76,7 @@
                                 <a class="btn btn-sm btn-primary" href="{{route('employee.edit',$employees->id)}}"><i class="fa fa-fw fa-edit" /></i></a>
 
                                 <button type="submit" class="btn btn-sm btn-danger"><i class="fa fa-fw fa-trash" /></i></button> 
-                            </form>
+              </form>
             </div>
         </div>
     </div><br>
@@ -99,12 +93,7 @@
             <div class="header">
                 <h6 style="color: gray;padding-top: 10px">{{$employees->name}}</h6>
             </div>
-            <!-- <div class="header">
-                <h8 style="color: gray">{{$employees->viewPosition->name}}</h8>
-            </div> -->
-           <!--  <div style="text-align: center;background-color: #5a4080;color: white;padding-top: 5px;padding-bottom: 5px;margin-top: 10px;width: 200px;margin-left:130px">
-                <h9>At work for :<h9> <span style="font-size: 14px">({{$workyear}}) years</span></h8>
-            </div> -->
+          
         </div>
         <div class="col-md-7">
         <div class="table-responsive">
@@ -147,7 +136,7 @@
              <table class="table table-bordered styled-table">
                 <thead>
                     <tr>
-                        <th style="font-size: 16px"><i class="fa fa-briefcase"></i>Employee Data</th>
+                        <th style="font-size: 16px"><i class="fa fa-briefcase"> </i> Employee Data</th>
                         
                     </tr>
                 </thead>
@@ -173,26 +162,6 @@
              </table>
          
         </div>
+        @stop 
+     </div>
 
-
-        </div>
-
-
-
-    </div>
-
-
-@stop 
-
-
-
-@section('css')
-
-@stop
-
-
-
-@section('js')
-
-        
-@stop

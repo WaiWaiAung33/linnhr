@@ -37,9 +37,6 @@
 @stop
 
 @section('content')
-<!-- <div style="position: absolute;bottom: 15px;right: 15px">
-        <a class="btn btn-primary unicode" href="{{route('salary.create')}}" style="width: 50px;height: 50px;border-radius: 25px"><i class="fa fa-plus" style="padding-top: 10px" /></i></a>
-</div> -->
 
 <?php
         $name = isset($_GET['name'])?$_GET['name']:''; 
@@ -48,7 +45,7 @@
         // $brand_id = isset($_GET['brand_id'])?$_GET['brand_id']:''; 
 ?>
 
-<h5 style="color:#1179C2 ">Salary Management</h5>
+<h5 style="color:#1179C2 ">Salary Management</h5><br>
 
  {{-- @if ($message = Session::get('success'))
             <div class="alert alert-success">
@@ -116,8 +113,6 @@
  <p style="padding-top: 20px">Total record: {{$count}}</p>
 <div class="table-responsive" style="font-size:15px;">
 	<table class="table table-bordered styled-table">
-
-
 		<thead>
 			<tr>
 				<th style="width: 300px">Employee Information</th>
@@ -149,10 +144,10 @@
             @if($employee->viewSalary->first())
              {{$employee->viewSalary->first()->pay_date}} <br>
               Salary : {{
-                $employee->viewSalary->first()->salary_amt
+               number_format($employee->viewSalary->first()->salary_amt)
               }}<br>
               Bonus : {{
-              $employee->viewSalary->first()->bonus
+              number_format($employee->viewSalary->first()->bonus)
             }}
              @endif
           </td>
@@ -165,9 +160,9 @@
       @endif   
 		</tbody>
 	</table>
-
-</div>
 {{ $employees->appends(['sort' => 'votes'])->links() }}
+</div>
+
 @stop 
 
 

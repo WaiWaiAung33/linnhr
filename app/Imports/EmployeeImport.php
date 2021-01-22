@@ -14,6 +14,7 @@ use Illuminate\Support\Collection;
 use Maatwebsite\Excel\Concerns\ToCollection;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use DB;
+use Carbon;
 class EmployeeImport implements ToCollection,WithHeadingRow
 {
     /**
@@ -38,7 +39,10 @@ class EmployeeImport implements ToCollection,WithHeadingRow
                 
                 foreach ($rows as $row) 
                 {
-                     // dd($row);
+                    
+                    $dob = $this->transformDate($row['dob'])->format("Y-m-d");
+                    $jdate = $this->transformDate($row['join_date'])->format("Y-m-d");
+                    // dd($dobs);
                         $nrccodes = NRCCode::all();
                         foreach ($nrccodes as $key => $value) {
                             if($row['nrc_code'] == $value->name){
@@ -95,8 +99,8 @@ class EmployeeImport implements ToCollection,WithHeadingRow
                         'nrc_status'=>$row['nrc_status'],
                         'nrc'=>$row['nrc'],
                         'fullnrc'=>$fullnrc,
-                        'date_of_birth'=>$row['dob'],
-                        'join_date'=>$row['join_date'],
+                        'date_of_birth'=>$dob,
+                        'join_date'=>$jdate,
                         'address'=>$row['address'],
                         'city'=>$row['city'],
                         'township'=>$row['township'],
@@ -115,4 +119,13 @@ class EmployeeImport implements ToCollection,WithHeadingRow
                             ->with('error','Something wrong!');
          }
     }
+
+   public function transformDate($value, $format = 'Y-m-d')
+        {
+            try {
+                return \Carbon\Carbon::instance(\PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($value));
+            } catch (\ErrorException $e) {
+                return \Carbon\Carbon::createFromFormat($format, $value);
+            }
+        }
 }
