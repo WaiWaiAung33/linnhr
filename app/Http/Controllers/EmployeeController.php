@@ -24,6 +24,7 @@ class EmployeeController extends Controller
      */
     public function index(Request $request)
     {
+      // dd($request->join_month);
         $branchs = Branch::all();
         $departments = Department::all();
         $positions = Position::all();
@@ -39,6 +40,10 @@ class EmployeeController extends Controller
         }
         if ($request->position_id != '') {
             $employees = $employees->where('position_id',$request->position_id);
+        }
+
+        if ($request->join_month != '') {
+            $employees = $employees->where('join_month',$request->join_month);
         }
         if ($request->join_date != '') {
             $startDate = date('Y-m-d', strtotime($request->join_date))." 00:00:00";
@@ -89,6 +94,9 @@ class EmployeeController extends Controller
         $fullnrc = $nrccode->name.'/'.$nrcstate->name."(".$request->nrc_status.')'.$request->nrc;
         // dd($fullnrc);
 
+        $month = date('m',strtotime($request->join_date));
+        // dd($date);
+
          $employee=Employee::create([
             'emp_id'=>$request->emp_id,
             'branch_id'=>$request->branch,
@@ -105,6 +113,7 @@ class EmployeeController extends Controller
             'fullnrc'=>$fullnrc,
             'date_of_birth'=>$request->date_of_birth,
             'join_date'=>$request->join_date,
+            'join_month'=>$month,
             'address'=>$request->address,
             'city'=>$request->city,
             'township'=>$request->township,
@@ -174,7 +183,10 @@ class EmployeeController extends Controller
         $nrccode = NRCCode::find($request->nrc_code);
         $nrcstate = NRCState::find($request->nrc_state);
         $fullnrc = $nrccode->name.'/'.$nrcstate->name."(".$request->nrc_status.')'.$request->nrc;
-        
+
+        $month = date('m',strtotime($request->join_date));
+        // dd($date);
+      
          $employees = $employees->update([
             'emp_id'=>$request->emp_id,
             'branch_id'=>$request->branch,
@@ -191,6 +203,7 @@ class EmployeeController extends Controller
             'fullnrc'=>$fullnrc,
             'date_of_birth'=>$request->date_of_birth,
             'join_date'=>$request->join_date,
+            'join_month'=>$month,
             'address'=>$request->address,
             'city'=>$request->city,
             'township'=>$request->township,

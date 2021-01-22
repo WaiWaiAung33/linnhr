@@ -29,6 +29,7 @@ class CreateEmployeeTable extends Migration
             $table->string('fullnrc'),
             $table->string('date_of_birth');
             $table->string('join_date');
+            $table->string('join_month');
             $table->string('address');
             $table->string('city');
             $table->string('township');

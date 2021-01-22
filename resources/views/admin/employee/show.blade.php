@@ -155,7 +155,7 @@
                         <td>Branch<span style="padding-left: 195px">{{$employees->viewBranch->name}}</span></td>
                     </tr>
                     <tr>
-                        <td>Join Ddate <span style="padding-left: 170px">{{date('d-m-Y',strtotime($employees->join_date))}} </span><span>({{$workyear}}) years</span></td>
+                        <td>Join Date <span style="padding-left: 170px">{{date('d-m-Y',strtotime($employees->join_date))}} </span><span>({{$workyear}}) years</span></td>
                     </tr>
                    
                 </tbody>

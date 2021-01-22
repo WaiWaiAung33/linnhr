@@ -9,6 +9,7 @@
  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
    
 <link id="bsdp-css" href="https://unpkg.com/bootstrap-datepicker@1.9.0/dist/css/bootstrap-datepicker3.min.css" rel="stylesheet">
+
 <style type="text/css">
   
    .styled-table {
@@ -42,6 +43,7 @@
   $dep_id = isset($_GET['dep_id'])?$_GET['dep_id']:''; 
   $position_id = isset($_GET['position_id'])?$_GET['position_id']:''; 
   $join_date = isset($_GET['join_date'])?$_GET['join_date']:'';
+  $join_month = isset($_GET['join_month'])?$_GET['join_month']:'';
   ?>
 
     <h5 style="color:#1179C2 ">Employee Management</h5><br>
@@ -50,8 +52,14 @@
                 <p>{{ $message }}</p>
             </div>
       @endif --}}
-   
 
+<div class="row form-group">
+  <div class="col-md-12">
+                         
+              <a class="btn btn-success unicode" href="{{route('employee.create')}}" style="float: right;"><i class="fas fa-plus"> Employee</i></a>
+         </div>
+</div>
+          
          <form action="{{route('employee.index')}}" method="get" accept-charset="utf-8" class="form-horizontal">
             <div class="row form-group">
                 <div class="col-md-12">
@@ -92,10 +100,15 @@
                             <label>Join Date</label>
                              <input type="text" name="join_date" id="join_date"class="form-control unicode" placeholder="01-08-2020" value="{{ old('join_date',$join_date) }}">
                         </div>
-                        <div class="col-md-2">
+
+                         <div class="col-md-2">
+                            <label>Join Month</label>
+                             <input type="text" name="join_month" id="join_month"class="form-control unicode" placeholder="January" value="{{ old('join_month',$join_month) }}">
+                        </div>
+                       <!--  <div class="col-md-2">
                          
                              <a class="btn btn-success unicode" href="{{route('employee.create')}}" style="float: right;"><i class="fas fa-plus"> Employee</i></a>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
                
@@ -216,6 +229,7 @@
 
    <script src="https://unpkg.com/bootstrap-datepicker@1.9.0/dist/js/bootstrap-datepicker.min.js"></script>
     <script type="text/javascript" src="{{ asset('select2/js/select2.min.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js"></script>
  <script type="text/javascript"> 
         @if(Session::has('success'))
             toastr.options =
@@ -246,6 +260,12 @@
                 this.form.submit();
                // $( "#form_id" )[0].submit();   
             });
+             $('#join_month').on('change',function(e) {
+                this.form.submit();
+               // $( "#form_id" )[0].submit();   
+            });
+
+
    
         });
           $(function() {
@@ -254,6 +274,11 @@
           });
         });
           $("#join_date").datepicker({ dateFormat: 'dd-mm-yy' });
+
+
+           $("#join_month").datepicker({  format: "mm",
+          viewMode: "months", 
+          minViewMode: "months" });
 
            $('#export_btn').click(function(){
                 $('#excel_form').submit();
