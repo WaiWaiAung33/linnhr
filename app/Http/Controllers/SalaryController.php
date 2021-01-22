@@ -20,28 +20,25 @@ class SalaryController extends Controller
     public function index(Request $request)
     {
 
-        // $employees =Employee::with('viewSalary')->get();
-         $employees = new Employee();
-      
-        // dd($employees);
-       
         $departments = Department::all();
 
          $salarys = new Salary();
 
+        $employees = new Employee();
         if($request->name != '') {
-            // dd($request->name);
         $employees = $employees->Where('name','like','%'.$request->name.'%');
-        // dd($employees);
+        // dd($employees->get());
         }
          if ($request->dep_id != '') {
             $employees = $employees->where('dep_id',$request->dep_id);
         }
 
+       
+
         $salarys = $salarys->get();
-        $employees = $employees->get();
+       
         $count = $employees->count();
-        $employees = Employee::paginate(5);
+        $employees = $employees->paginate(5);
 
         // dd(DB::table('salarys')->latest()->get()->first());
         return view('admin.salary.index',compact('employees','salarys','departments','count'));
@@ -93,6 +90,7 @@ class SalaryController extends Controller
         }elseif ($date == '12') {
             $dates = "December";
         }
+        // dd($request->month_total);
 
         $salary=Salary::create([
             'emp_id'=>$request->emp_id,
@@ -103,6 +101,7 @@ class SalaryController extends Controller
             'year'=>date('Y',strtotime($request->pay_date)),
             'salary_amt'=>$request->salary_amt,
             'bonus'=>$request->bonus,
+            'month_total'=>$request->month_total,
         ]
         );
 
@@ -115,12 +114,18 @@ class SalaryController extends Controller
      * @param  \App\Salary  $salary
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request,$id)
     {
-
-        $employees = Employee::find($id);
+        // dd($request->year);
         $salarys = Salary::all();
-        return view('admin.salary.show',compact('employees','salarys'));
+        if ($request->year != '') {
+            $salarys = $salarys->where('year',$request->year);
+            // dd($salarys);
+        }
+        $employees = Employee::find($id);
+        $count = $salarys->count();
+       
+        return view('admin.salary.show',compact('employees','salarys','count'));
     }
 
     /**
@@ -155,6 +160,7 @@ class SalaryController extends Controller
             'year'=>$request->year,
             'salary_amt'=>$request->salary_amt,
             'bonus'=>$request->bonus,
+            'month_total'=>$request->month_total,
         ]);
          return redirect()->route('salary.index')->with('success','Salary updated successfully');
     }

@@ -3,6 +3,7 @@
 @section('title', 'Employee')
 
 @section('content_header')
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <style type="text/css">
   
    .styled-table {
@@ -26,6 +27,10 @@
           .styled-table tbody tr {
               border-bottom: 1px solid #dddddd;
           }
+
+          .styled-table tbody tr:last-of-type {
+        border-bottom: 2px solid #1179C2;
+           }
 
           /*.styled-table tbody tr:nth-of-type(even) {
               background-color: #c7d4dd;
@@ -111,13 +116,25 @@
         </form>
            
  <p style="padding-top: 20px">Total record: {{$count}}</p>
-<div class="table-responsive" style="font-size:15px;">
-	<table class="table table-bordered styled-table">
+<div class="table-responsive" style="font-size:15px;overflow-x:auto;">
+	<table class="table table-bordered styled-table ">
 		<thead>
 			<tr>
-				<th style="width: 300px">Employee Information</th>
-				<th style="width: 350px">Photo</th>
-				<th colspan="12" style="text-align: center;" style="width: 250px">Month</th>
+				<th colspan="2">No</th>
+				<th>Photo</th>
+        <th colspan="2">January</th>
+        <th colspan="2">Febuary</th>
+        <th colspan="2">March</th>
+        <th colspan="2">April</th>
+        <th colspan="2">May</th>
+        <th colspan="2">June</th>
+        <th colspan="2">July</th>
+        <th colspan="2">Augest</th>
+        <th colspan="2">September</th>
+        <th colspan="2">October</th>
+        <th colspan="2">November</th>
+        <th colspan="2">December</th>
+				<!-- <th colspan="12" style="text-align: center;" style="width: 250px">Month</th> -->
 			</tr>
 		</thead>
 
@@ -126,19 +143,396 @@
       @foreach($employees as $employee)
     
 		  <tr class="table-tr" data-url="{{route('salary.show',$employee->id)}}">
-        <td>
-          Employee ID : {{$employee->emp_id}} <br>
-          Name : {{$employee->name}}
+         <td><p style="width: 100px;font-weight: bold;">Employee ID </p>
+           
+          {{$employee->emp_id}} 
+        </td>  
+        <td><p style="font-weight: bold;width: 100px">Name</p>
+           {{$employee->name}}
         </td>  
         <td>
           <img src="{{ asset('uploads/employeePhoto/default.png') }}" alt="photo" width="80px" height="80px">
         </td>
 
+        <td> <p style="font-weight: bold">Salary</p>  
+           @foreach($employee->viewSalary as $salary)
+             @if($salary->pay_date == "January")
+              {{
+               number_format($salary->salary_amt)
+              }}
+            @endif
+            @endforeach
+        </td>
+        <td> <p style="font-weight: bold;">Bonus</p>
+           @foreach($employee->viewSalary as $salary)
+             @if($salary->pay_date == "January")
+              {{
+               number_format($salary->bonus)
+              }}
+            @endif
+          @endforeach
+        </td>
+
+        <td> <p style="font-weight: bold">Salary</p>
+          @foreach($employee->viewSalary as $salary)
+             @if($salary->pay_date == "Febuary")
+              {{
+               number_format($salary->salary_amt)
+              }}
+            @endif
+          @endforeach
+        </td>
+        <td><p style="font-weight: bold;">Bonus</p>
+           @foreach($employee->viewSalary as $salary)
+             @if($salary->pay_date == "Febuary")
+              {{
+               number_format($salary->bonus)
+              }}
+            @endif
+          @endforeach
+        </td>
+
+        <td> <p style="font-weight: bold">Salary</p>
+           @foreach($employee->viewSalary as $salary)
+             @if($salary->pay_date == "March")
+              {{
+               number_format($salary->salary_amt)
+              }}
+            @endif
+          @endforeach
+        </td>
+        <td><p style="font-weight: bold;">Bonus</p>
+           @foreach($employee->viewSalary as $salary)
+             @if($salary->pay_date == "March")
+              {{
+               number_format($salary->bonus)
+              }}
+            @endif
+          @endforeach
+        </td>
+
+        <td> <p style="font-weight: bold">Salary</p>
+          @foreach($employee->viewSalary as $salary)
+             @if($salary->pay_date == "April")
+              {{
+               number_format($salary->salary_amt)
+              }}
+            @endif
+          @endforeach
+        </td>
+        <td><p style="font-weight: bold;">Bonus</p>
+           @foreach($employee->viewSalary as $salary)
+             @if($salary->pay_date == "April")
+              {{
+               number_format($salary->bonus)
+              }}
+            @endif
+          @endforeach
+        </td>
+
+        <td> <p style="font-weight: bold">Salary</p>
+           @foreach($employee->viewSalary as $salary)
+             @if($salary->pay_date == "May")
+              {{
+               number_format($salary->salary_amt)
+              }}
+            @endif
+          @endforeach
+        </td>
+        <td><p style="font-weight: bold;">Bonus</p>
+           @foreach($employee->viewSalary as $salary)
+             @if($salary->pay_date == "May")
+              {{
+               number_format($salary->bonus)
+              }}
+            @endif
+          @endforeach
+        </td>
+
+        <td><p style="font-weight: bold">Salary</p>
+            @foreach($employee->viewSalary as $salary)
+             @if($salary->pay_date == "June")
+              {{
+               number_format($salary->salary_amt)
+              }}
+            @endif
+          @endforeach
+        </td>
+        <td><p style="font-weight: bold;">Bonus</p>
+           @foreach($employee->viewSalary as $salary)
+             @if($salary->pay_date == "June")
+              {{
+               number_format($salary->bonus)
+              }}
+            @endif
+          @endforeach
+        </td>
+
+        <td><p style="font-weight: bold">Salary</p>
+            @foreach($employee->viewSalary as $salary)
+             @if($salary->pay_date == "July")
+              {{
+               number_format($salary->salary_amt)
+              }}
+            @endif
+          @endforeach
+        </td>
+        <td><p style="font-weight: bold;">Bonus</p>
+            @foreach($employee->viewSalary as $salary)
+             @if($salary->pay_date == "July")
+              {{
+               number_format($salary->bonus)
+              }}
+            @endif
+          @endforeach
+        </td>
+
+        <td><p style="font-weight: bold">Salary</p>
+           @foreach($employee->viewSalary as $salary)
+             @if($salary->pay_date == "Augest")
+              {{
+               number_format($salary->salary_amt)
+              }}
+            @endif
+          @endforeach
+        </td>
+        <td><p style="font-weight: bold;">Bonus</p>
+          @foreach($employee->viewSalary as $salary)
+             @if($salary->pay_date == "Augest")
+              {{
+               number_format($salary->bonus)
+              }}
+            @endif
+          @endforeach
+        </td>
+
+        <td><p style="font-weight: bold">Salary</p>
+           @foreach($employee->viewSalary as $salary)
+             @if($salary->pay_date == "September")
+              {{
+               number_format($salary->salary_amt)
+              }}
+            @endif
+          @endforeach
+        </td>
+        <td><p style="font-weight: bold;">Bonus</p>
+           @foreach($employee->viewSalary as $salary)
+             @if($salary->pay_date == "September")
+              {{
+               number_format($salary->bonus)
+              }}
+            @endif
+          @endforeach
+        </td>
+
+        <td><p style="font-weight: bold">Salary</p>
+            @foreach($employee->viewSalary as $salary)
+             @if($salary->pay_date == "October")
+              {{
+               number_format($salary->salary_amt)
+              }}
+            @endif
+          @endforeach
+        </td>
+        <td><p style="font-weight: bold;">Bonus</p>
+            @foreach($employee->viewSalary as $salary)
+             @if($salary->pay_date == "October")
+              {{
+               number_format($salary->bonus)
+              }}
+            @endif
+          @endforeach
+        </td>
+
+        <td><p style="font-weight: bold">Salary</p>
+           @foreach($employee->viewSalary as $salary)
+             @if($salary->pay_date == "November")
+              {{
+               number_format($salary->salary_amt)
+              }}
+            @endif
+          @endforeach
+        </td>
+        <td><p style="font-weight: bold;">Bonus</p>
+           @foreach($employee->viewSalary as $salary)
+             @if($salary->pay_date == "November")
+              {{
+               number_format($salary->bonus)
+              }}
+            @endif
+          @endforeach
+        </td>
+
+        <td><p style="font-weight: bold">Salary</p>
+            @foreach($employee->viewSalary as $salary)
+             @if($salary->pay_date == "December")
+              {{
+               number_format($salary->salary_amt)
+              }}
+            @endif
+          @endforeach
+        </td>
+        <td><p style="font-weight: bold;">Bonus</p>
+           @foreach($employee->viewSalary as $salary)
+             @if($salary->pay_date == "December")
+              {{
+               number_format($salary->bonus)
+              }}
+            @endif
+          @endforeach
+        </td>
+
         <!-- @foreach($employee->viewSalary as $salary)
           <td>{{$salary->pay_date}}</td>
           @endforeach -->
-
+          
+        <!--   <td>
+            
+            @foreach($employee->viewSalary as $salary)
+             @if($salary->pay_date == "January")
+              Salary : {{
+               number_format($salary->salary_amt)
+              }}<br>
+              Bonus : {{
+              number_format($salary->bonus)
+            }}
+            @endif
+            @endforeach
+           
+          </td>
           <td>
+            @foreach($employee->viewSalary as $salary)
+             @if($salary->pay_date == "Febuary")
+              Salary : {{
+               number_format($salary->salary_amt)
+              }}<br>
+              Bonus : {{
+              number_format($salary->bonus)
+            }}
+            @endif
+            @endforeach
+          </td>
+          <td>
+             @foreach($employee->viewSalary as $salary)
+             @if($salary->pay_date == "March")
+              Salary : {{
+               number_format($salary->salary_amt)
+              }}<br>
+              Bonus : {{
+              number_format($salary->bonus)
+            }}
+            @endif
+            @endforeach
+          </td>
+          <td>
+            @foreach($employee->viewSalary as $salary)
+             @if($salary->pay_date == "April")
+              Salary : {{
+               number_format($salary->salary_amt)
+              }}<br>
+              Bonus : {{
+              number_format($salary->bonus)
+            }}
+            @endif
+            @endforeach
+          </td>
+          <td>
+             @foreach($employee->viewSalary as $salary)
+             @if($salary->pay_date == "May")
+              Salary : {{
+               number_format($salary->salary_amt)
+              }}<br>
+              Bonus : {{
+              number_format($salary->bonus)
+            }}
+            @endif
+            @endforeach
+          </td>
+          <td>
+            @foreach($employee->viewSalary as $salary)
+             @if($salary->pay_date == "June")
+              Salary : {{
+               number_format($salary->salary_amt)
+              }}<br>
+              Bonus : {{
+              number_format($salary->bonus)
+            }}
+            @endif
+            @endforeach
+          </td>
+          <td>
+            @foreach($employee->viewSalary as $salary)
+             @if($salary->pay_date == "July")
+              Salary : {{
+               number_format($salary->salary_amt)
+              }}<br>
+              Bonus : {{
+              number_format($salary->bonus)
+            }}
+            @endif
+            @endforeach
+          </td>
+          <td>
+             @foreach($employee->viewSalary as $salary)
+             @if($salary->pay_date == "Augest")
+              Salary : {{
+               number_format($salary->salary_amt)
+              }}<br>
+              Bonus : {{
+              number_format($salary->bonus)
+            }}
+            @endif
+            @endforeach
+          </td>
+          <td>
+             @foreach($employee->viewSalary as $salary)
+             @if($salary->pay_date == "September")
+              Salary : {{
+               number_format($salary->salary_amt)
+              }}<br>
+              Bonus : {{
+              number_format($salary->bonus)
+            }}
+            @endif
+            @endforeach
+          </td>
+          <td>
+            @foreach($employee->viewSalary as $salary)
+             @if($salary->pay_date == "October")
+              Salary : {{
+               number_format($salary->salary_amt)
+              }}<br>
+              Bonus : {{
+              number_format($salary->bonus)
+            }}
+            @endif
+            @endforeach
+          </td>
+          <td>
+            @foreach($employee->viewSalary as $salary)
+             @if($salary->pay_date == "November")
+              Salary : {{
+               number_format($salary->salary_amt)
+              }}<br>
+              Bonus : {{
+              number_format($salary->bonus)
+            }}
+            @endif
+            @endforeach
+          </td>
+          <td>
+             @foreach($employee->viewSalary as $salary)
+             @if($salary->pay_date == "December")
+              Salary : {{
+               number_format($salary->salary_amt)
+              }}<br>
+              Bonus : {{
+              number_format($salary->bonus)
+            }}
+            @endif
+            @endforeach
+          </td> -->
+        <!--   <td>
            
 
             @if($employee->viewSalary->first())
@@ -150,8 +544,9 @@
               number_format($employee->viewSalary->first()->bonus)
             }}
              @endif
-          </td>
+          </td> -->
       </tr>	
+      
       @endforeach
         @else
           <tr align="center">
