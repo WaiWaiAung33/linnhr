@@ -273,6 +273,17 @@ return [
         //         ],
         //     ],
         // ],
+        ['header' => 'Recruitment'],
+        [
+                    'text' => 'Job Openings',
+                    'url' => 'jobopening',
+                    'icon' => 'fa fa-globe',
+        ],
+        [
+                    'text' => 'Job Applications',
+                    'url' => '#',
+                    'icon' => 'fa fa-certificate',
+        ],
         ['header' => 'MASTER DATA'],
         [
                     'text' => 'Salary',
