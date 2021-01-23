@@ -88,18 +88,14 @@ class DepartmentController extends Controller
      */
     public function update(Request $request, $id)
     {
-       $rules = [
-            'name'=>'required',
-        ];
-
-         $this->validate($request,$rules);
-        $departments=Department::create([
+       $departments=Department::find($id);
+        $departments=$departments->update([
             'name'=> $request->name,
             'in_time'=>$request->in_time,
             'out_time'=>$request->out_time,
         ]
         );
-        return redirect()->route('department.index')->with('success','Department created successfully');;;
+        return redirect()->route('department.index')->with('success','Department updated successfully');;;
     }
 
     /**

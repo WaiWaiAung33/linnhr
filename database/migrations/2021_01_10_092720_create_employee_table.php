@@ -26,7 +26,7 @@ class CreateEmployeeTable extends Migration
             $table->string('nrc_state');
             $table->string('nrc_status');
             $table->string('nrc');
-            $table->string('fullnrc'),
+            $table->string('fullnrc');
             $table->string('date_of_birth');
             $table->string('join_date');
             $table->string('join_month');
