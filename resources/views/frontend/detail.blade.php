@@ -245,7 +245,7 @@
     <br>
     <div class="row">
       <div class="col-md-4" style="text-align: left;">
-        <label>၆။ အိမ်ထောင်ရှိ/မရှိ</label>
+        <label>၆။ ကျား/မ</label>
       </div>
       <div class="col-md-1">
           <input type="radio" name="marrical_status" value="male" id="gender" checked> 
