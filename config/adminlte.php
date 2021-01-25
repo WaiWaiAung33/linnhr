@@ -281,7 +281,7 @@ return [
         ],
         [
                     'text' => 'Job Applications',
-                    'url' => '#',
+                    'url' => 'jobapplication',
                     'icon' => 'fa fa-certificate',
         ],
         ['header' => 'MASTER DATA'],

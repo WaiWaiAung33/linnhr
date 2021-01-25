@@ -21,6 +21,7 @@ class CreateJobopeningTable extends Migration
             $table->string('posted_date');
             $table->string('last_date');
             $table->string('close_date');
+            $table->string('photo');
             $table->timestamps();
         });
     }

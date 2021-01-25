@@ -81,6 +81,21 @@
               </div>
         </div>
 
+         <div class="row form-group">
+            <div class="col-md-6">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <h6 style="font-weight:bold;font-size:15px;">Photo</h6>
+                                </div>
+
+                                <div class="col-md-8">
+                                <input type="file" name="photo" class="form-control unicode">
+
+                                </div>
+                            </div>
+              </div>
+        </div>
+
         <div class="row form-group">
             <div class="col-md-6">
                             <div class="row">

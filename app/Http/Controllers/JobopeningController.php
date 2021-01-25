@@ -6,6 +6,8 @@ use App\Jobopening;
 use App\Department;
 use App\Position;
 use Illuminate\Http\Request;
+use File;
+use Illuminate\Support\Str;
 
 class JobopeningController extends Controller
 {
@@ -48,12 +50,26 @@ class JobopeningController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request->all());
+        $destinationPath = public_path() . '/uploads/jobopeningPhoto/';
+        $photo = "";
+        //upload image
+        if ($file = $request->file('photo')) {
+            $extension = $file->getClientOriginalExtension();
+            $var = Str::random(32) . '.' . $extension;
+            $file->move($destinationPath, $var);
+            $photo = $var;
+            // dd($photo);
+
+        }
+
          $rules = [
             'dep_id'=>'required',
             'description'=>'required',
             'posted_date'=>'required',
             'last_date'=>'required',
             'close_date'=>'required',
+           
         ];
 
          $this->validate($request,$rules);
@@ -63,9 +79,12 @@ class JobopeningController extends Controller
             'description'=>$request->description,
             'posted_date'=>$request->posted_date,
             'last_date'=>$request->last_date,
-            'close_date'=>$request->close_date
+            'close_date'=>$request->close_date,
+            'photo'=>$photo,
+            
         ]
         );
+        // dd($jobopening);
         return redirect()->route('jobopening.index')->with('success','Jobopening created successfully');
     }
 
@@ -89,6 +108,7 @@ class JobopeningController extends Controller
     public function edit($id)
     {
         $jobopenings=Jobopening::find($id);
+      
         $departments = Department::all();
         $positions = Position::all();
         return view('admin.jobopening.edit',compact('jobopenings','departments','positions'));
@@ -104,13 +124,25 @@ class JobopeningController extends Controller
     public function update(Request $request, $id)
     {
         $jobopenings = Jobopening::find($id);
+        $destinationPath = public_path() . '/uploads/jobopeningPhoto/';
+        $photo = ($request->photo != '') ? $request->photo : $jobopenings->photo;
+        //upload image
+        if ($file = $request->file('photo')) {
+            $extension = $file->getClientOriginalExtension();
+            $var = Str::random(32) . '.' . $extension;
+            
+            $file->move($destinationPath, $var);
+            $photo = $var;
+        }
+       
         $jobopenings=$jobopenings->update([
             'dep_id'=> $request->dep_id,
             'position_id'=>$request->position_id,
             'description'=>$request->description,
             'posted_date'=>$request->posted_date,
             'last_date'=>$request->last_date,
-            'close_date'=>$request->close_date
+            'close_date'=>$request->close_date,
+            'photo'=>$photo
         ]
         );
         return redirect()->route('jobopening.index')->with('success','Jobopening updated successfully');

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Jobopening extends Model
 {
     protected $table ='jobopening';
-    protected $fillable =['dep_id','position_id','description','posted_date','last_date','close_date'];
+    protected $fillable =['dep_id','position_id','description','posted_date','last_date','close_date','photo'];
 
       public function viewDepartment()
     {
