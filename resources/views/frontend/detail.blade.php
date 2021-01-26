@@ -371,7 +371,7 @@
         <label class="unicode">၁၅။ လျှောက်လွှာတင်သည့်ရက်စွဲ</label>
       </div>
       <div class="col-md-8">
-        <input type="text" name="appliedDate" id="appliedate">
+        <input type="text" name="appliedDate" value="{{date('d-m-Y')}}" readonly>
       </div>
     </div>
     <br>
