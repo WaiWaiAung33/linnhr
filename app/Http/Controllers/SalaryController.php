@@ -22,7 +22,7 @@ class SalaryController extends Controller
 
         $departments = Department::all();
 
-         $salarys = new Salary();
+         $salarys = Salary::all();
 
         $employees = new Employee();
         if($request->name != '') {
@@ -33,9 +33,13 @@ class SalaryController extends Controller
             $employees = $employees->where('dep_id',$request->dep_id);
         }
 
-       
+        if ($request->year != '') {
+            $salarys = $salarys->where('year',$request->year);
+            // dd($salarys);
+           
+        }
 
-        $salarys = $salarys->get();
+        // dd($salarys);
        
         $count = $employees->count();
         $employees = $employees->paginate(5);

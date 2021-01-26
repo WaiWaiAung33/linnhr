@@ -31,7 +31,7 @@
           <div class="row payyear">
           <div class="col-md-2">
              <label for="">Payment year</label>
-             <input type="text" name="year" id="year"class="form-control unicode" placeholder="2020" value="{{ old('year',$year) }}">
+             <input type="text" name="year" id="year"class="form-control unicode" placeholder="2021" value="{{ old('year',$year) }}">
           </div>
         </div>
       </div>
@@ -57,6 +57,7 @@
 
 		<thead>
 			<tr>
+        <th>Year</th>
 				<th>Month</th>
 				<th >Salary</th>
 				<th style="width: 250px">Bonus</th>
@@ -68,6 +69,7 @@
       @foreach($salarys as $salary)
       @if($salary->emp_id == $employees->id)
       <tr>
+        <td>{{$salary->year}}</td>
         <td>{{$salary->pay_date}}</td>
         <td>{{number_format($salary->salary_amt)}}</td>
         <td>{{number_format($salary->bonus)}}</td>

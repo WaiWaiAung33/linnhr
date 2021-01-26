@@ -36,7 +36,9 @@ class SalaryImport implements ToCollection,WithHeadingRow
                 
                 foreach ($rows as $row) 
                 {
-                     // dd($row);
+                    
+                        $month_total = $row['amount']+$row['bonus']; 
+
                         $employees = Employee::all();
                         $branchs = Branch::all();
                         $departments = Department::all();
@@ -68,9 +70,9 @@ class SalaryImport implements ToCollection,WithHeadingRow
                         }
 
                         if($row['month'] == '1'){
-                            $dates = "Jan";
+                            $dates = "January";
                         }elseif ($row['month'] == '2') {
-                            $dates = "Feb";
+                            $dates = "Febuary";
                         }elseif ($row['month'] == '3') {
                             $dates = "March";
                         }elseif ($row['month'] == '4') {
@@ -78,19 +80,19 @@ class SalaryImport implements ToCollection,WithHeadingRow
                         }elseif ($row['month'] == '5') {
                             $dates = "May";
                         }elseif ($row['month'] == '6') {
-                            $dates = "Jun";
+                            $dates = "June";
                         }elseif ($row['month'] == '7') {
                             $dates = "July";
                         }elseif ($row['month'] == '8') {
-                            $dates = "Aug";
+                            $dates = "Augest";
                         }elseif ($row['month'] == '9') {
-                            $dates = "Sep";
+                            $dates = "September";
                         }elseif ($row['month'] == '10') {
-                            $dates = "Oct";
+                            $dates = "October";
                         }elseif ($row['month'] == '11') {
-                            $dates = "Nov";
+                            $dates = "November";
                         }elseif ($row['month'] == '12') {
-                            $dates = "Dec";
+                            $dates = "December";
                         }
                     
                          $arr=[
@@ -102,6 +104,7 @@ class SalaryImport implements ToCollection,WithHeadingRow
                         'year'=>$row['year'],
                         'salary_amt'=>$row['amount'],
                         'bonus'=>$row['bonus'],
+                        'month_total'=>$month_total,
                         ];
                        
                         Salary::create($arr);
