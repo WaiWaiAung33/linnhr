@@ -23,41 +23,7 @@
     <link rel="stylesheet" href="css/carousel.css">
     <link rel="stylesheet" href="style.css">
 
-    <style type="text/css">
-            .card {
-        margin: 0 auto; /* Added */
-        float: none; /* Added */
-        margin-bottom: 10px; /* Added */
-        background-color: #EAF2F8;
-       /* width: 60%;*/
-        border-width: 1px;
-        border-radius: 5px;
-        height:1000px;
 
-        }
-
-        .column {
-        float: left;
-        }
-
-        /* Set width length for the left, right and middle columns */
-        .left {
-        width: 20%;
-        }
-
-        .middle {
-        width: 50%;
-        }
-        .right{
-            width: 15%
-        }
-    
-    .row:after {
-    content: "";
-    display: table;
-    clear: both;
-    }
-    </style>
 
 </head>
 <body>
@@ -91,37 +57,44 @@
             </div><!-- end container -->
         </section><!-- end section -->
     </div>
-
-    @foreach($jobopenings as $jobopening)
+   <?php
+    $colors = ["#f89f51","#4dd153","#2da0f3","#af74f7","#17b6e6","#6094c1","#ee335d"];
+   ?>
+<div class="row" style="margin: 20px">
+    @foreach($jobopenings as $i=>$jobopening)
     
-    <div class="row" style="background-color: #F8F9F9;border-width: 1px;border-radius: 10px;margin:10px">
-        
-        <div class="column left">
-        @if($jobopening->photo == '')
+    <div class="col-md-3">
+                    <div class="card text-white" style="background-color: {!! $colors[$i] !!};border-radius: 5px 5px 5px 5px">
+                        <a href="{{route('cvform.show',$jobopening->id)}}" class="text-white">
+                         <p style="margin-top: 5px;margin-left: 5px;color: white">Close Date:<span style="float: right;">{{date('d-m-Y',strtotime($jobopening->close_date))}}</span></p>
+                        <div class="card-body row">
+                            <div class="col-md-4" >
+                            @if($jobopening->photo == '')
 
-         <img src="linn3.png" alt="photo" width="100">
-       
-         @else
-         <!--  <div style="background-color: #D1F2EB ;margin:5px;padding: 5px;border-radius: 120px"> -->
-          <img src="{{ asset('uploads/jobopeningPhoto/'.$jobopening->photo) }}" alt="photo" width="100">
-      <!-- </div> -->
-         @endif
-        </div>
-        <div class="column middle" style="padding-left: 20px">
-            <h2>{{$jobopening->description}}</h2>
-            <p><span style="font-weight: bold;"> Department:</span>{{$jobopening->viewDepartment->name}}</p>
-            <p><span style="font-weight: bold;"> Position:</span>{{$jobopening->viewPosition->name}}</p>
-            <p><span style="font-weight: bold;"> Close Date:</span>{{date('d-m-Y',strtotime($jobopening->close_date))}}</p>
-        </div>
-
-        <div class="column right" style="margin-top: 10px">
-            <a href="{{route('cvform.show',$jobopening->id)}}" style="float: right;" class="btn btn-sm btn-primary">Apply</a>
-        </div>
-       
-    </div>
+                             <img src="linn3.png" alt="photo" width="100">
+                           
+                             @else
+                             <!--  <div style="background-color: #D1F2EB ;margin:5px;padding: 5px;border-radius: 120px"> -->
+                              <img src="{{ asset('uploads/jobopeningPhoto/'.$jobopening->photo) }}" alt="photo" width="100">
+                          <!-- </div> -->
+                             @endif
+                             </div>
+                             <div class="col-md-8" >
+                           <h4 style="color: white">{{$jobopening->description}}</h4>
+                            <p style="color: white">{{$jobopening->viewDepartment->name}}</p>
+                            <p style="color: white">{{$jobopening->viewPosition->name}}</p>
+                             <a href="{{route('cvform.show',$jobopening->id)}}" style="float: right;margin-right: 5px;margin-bottom: 5px" class="btn btn-sm btn-primary">Apply</a>
+                            </div>
+           
+                            
+                            
+                        </div>
+                        </a>
+                    </div>
+                </div>
     @endforeach
 
-      
+    </div> 
         <section class="section overfree">
            
             <div class="container">
@@ -169,7 +142,7 @@
             </div><!-- end container -->
         </section><!-- end section -->
 
-       <footer class="footer primary-footer" style="background-color: #2E86C1">
+       <footer class="footer primary-footer" style="background-color: #2a3c66;">
             <div class="container">
                 <div class="row">
                     <div class="col-md-4 col-sm-4">
