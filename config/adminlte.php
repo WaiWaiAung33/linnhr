@@ -316,6 +316,12 @@ return [
                     'url'  => 'nrcstate',
                     'icon' => 'fa fa-bullseye',
          ],
+         ['header' => 'Account Setting'],
+          [
+            'text' => 'Login User',
+            'url'  => '#',
+            'icon' => 'fas fa-user-plus',
+        ],
     ],
 
     /*

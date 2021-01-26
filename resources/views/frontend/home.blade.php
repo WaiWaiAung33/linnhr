@@ -66,7 +66,7 @@
     <div class="col-md-3">
                     <div class="card text-white" style="background-color: {!! $colors[$i] !!};border-radius: 5px 5px 5px 5px">
                         <a href="{{route('cvform.show',$jobopening->id)}}" class="text-white">
-                         <p style="margin-top: 5px;margin-left: 5px;color: white" class="unicode">Close Date:<span style="float: right;">{{date('d-m-Y',strtotime($jobopening->close_date))}}</span></p>
+                         <p style="margin-top: 5px;margin-left: 5px;color: black;font-weight: bold;" class="unicode">Close Date:<span style="float: right;">{{date('d-m-Y',strtotime($jobopening->close_date))}}</span></p>
                         <div class="card-body row">
                             <div class="col-md-4" >
                             @if($jobopening->photo == '')
@@ -80,9 +80,9 @@
                              @endif
                              </div>
                              <div class="col-md-8" >
-                           <h4 style="color: white" class="unicode">{{$jobopening->description}}</h4>
-                            <p style="color: white" class="unicode">{{$jobopening->viewDepartment->name}}</p>
-                            <p style="color: white" class="unicode">{{$jobopening->viewPosition->name}}</p>
+                           <h4 style="color: black" class="unicode">{{$jobopening->description}}</h4>
+                            <p style="color: black" class="unicode">{{$jobopening->viewDepartment->name}}</p>
+                            <p style="color: black" class="unicode">{{$jobopening->viewPosition->name}}</p>
                              <a href="{{route('cvform.show',$jobopening->id)}}" style="float: right;margin-right: 5px;margin-bottom: 5px" class="btn btn-sm btn-primary" class="unicode">Apply</a>
                             </div>
            
