@@ -157,7 +157,7 @@
   <div class="row">
     <div class="col-md-8">
       <img src="{{ asset('uploads/jobopeningPhoto/linn3.png') }}" style="width:200;height: 200;float: left;">
-      <h4 style="margin-top: 70px;color: blue;font-weight: bold;text-align: center;">CV Form</h4>
+      <h4 style="margin-top: 70px;color: blue;font-weight: bold;text-align: center;" class="unicode">CV Form</h4>
     </div>
     <div class="photo">
       <input type="file" id="imgupload" style="display:none" name="myPhoto" onchange="PreviewImage();"/> 
@@ -171,7 +171,7 @@
     <div class="col-md-12">
     <div class="row">
       <div class="col-md-4" style="text-align: left;">
-        <label>၁။ အမည်</label>
+        <label class="unicode">၁။ အမည်</label>
       </div>
       <div class="col-md-8">
         <input type="text" name="name">
@@ -180,10 +180,10 @@
     <br>
     <div class="row">
       <div class="col-md-4" style="text-align: left;">
-        <label>၂။ အမျိုးသား မှတ်ပုံတင်အမှတ်</label>
+        <label class="unicode">၂။ အမျိုးသား မှတ်ပုံတင်အမှတ်</label>
       </div>
       <div class="col-md-2">
-        <select class="form-control select2bs4" name="nrc_code" id="code_id" onchange="changeNRC();">
+        <select class="form-control select2bs4 unicode" name="nrc_code" id="code_id" onchange="changeNRC();">
               <option value="">-</option>
               @foreach ($nrccodes as $nrccode )
                 <option  value="{{$nrccode->id}}">{{$nrccode->name}}</option>
@@ -192,7 +192,7 @@
           </select>   
       </div>
       <div class="col-md-2">
-         <select class="form-control" name="nrc_state" id="state_id">
+         <select class="form-control unicode" name="nrc_state" id="state_id">
             <option value="">-</option>
            <!--  @foreach ($departments as $department )
               <option  value="{{$department->id}}">{{$department->name}}</option>
@@ -200,7 +200,7 @@
         </select>   
       </div>
       <div class="col-md-2">
-         <select name="nrc_status" id="nrc_status" class="form-control select2bs4">
+         <select name="nrc_status" id="nrc_status" class="form-control select2bs4 unicode">
                       <option value="N" selected>N</option>
                       <option value="P">P</option>
                       <option value="E">E</option>
@@ -218,7 +218,7 @@
     <br>
     <div class="row">
       <div class="col-md-4" style="text-align: left;">
-        <label>၃။ မွေးသက္ကရာဇ်</label>
+        <label class="unicode">၃။ မွေးသက္ကရာဇ်</label>
       </div>
       <div class="col-md-8">
         <input type="text" name="dob" id="date_of_birth">
@@ -227,7 +227,7 @@
     <br>
     <div class="row">
       <div class="col-md-4" style="text-align: left;">
-        <label>၄။ ပညာအရည်အချင်း</label>
+        <label class="unicode">၄။ ပညာအရည်အချင်း</label>
       </div>
       <div class="col-md-8">
         <input type="text" name="education">
@@ -236,7 +236,7 @@
     <br>
     <div class="row">
       <div class="col-md-4" style="text-align: left;">
-        <label>၅။ ကိုးကွယ်သည့်ဘာသာ/လူမျိုး</label>
+        <label class="unicode">၅။ ကိုးကွယ်သည့်ဘာသာ/လူမျိုး</label>
       </div>
       <div class="col-md-8">
         <input type="text" name="religion">
@@ -245,18 +245,18 @@
     <br>
     <div class="row">
       <div class="col-md-4" style="text-align: left;">
-        <label>၆။ ကျား/မ</label>
+        <label class="unicode">၆။ ကျား/မ</label>
       </div>
       <div class="col-md-1">
           <input type="radio" name="marrical_status" value="male" id="gender" checked> 
           
       </div> 
-      <div class="col-md-1"><label>ကျား</label></div>  
+      <div class="col-md-1"><label class="unicode">ကျား</label></div>  
       <div class="col-md-1">
           <input type="radio" name="marrical_status" value="female" id="gender"> 
       </div> 
       <div class="col-md-2">
-        <label>မ</label>
+        <label class="unicode">မ</label>
       </div>
      <!--  <div class="col-md-6">
         <input type="text" name="marrical_status">
@@ -265,7 +265,7 @@
     <br>
     <div class="row">
       <div class="col-md-4" style="text-align: left;">
-        <label>၇။ E-Mail Address</label>
+        <label class="unicode">၇။ E-Mail Address</label>
       </div>
       <div class="col-md-8">
         <input type="text" name="email">
@@ -274,7 +274,7 @@
     <br>
     <div class="row">
       <div class="col-md-4" style="text-align: left;">
-        <label>၈။ မိဘအမည်</label>
+        <label class="unicode">၈။ မိဘအမည်</label>
       </div>
       <div class="col-md-8">
         <input type="text" name="pName">
@@ -283,7 +283,7 @@
     <br>
     <div class="row">
       <div class="col-md-4" style="red;text-align: left;">
-        <label>၉။ မိဘ၏ ဖုန်းနံပါတ်</label>
+        <label class="unicode">၉။ မိဘ၏ ဖုန်းနံပါတ်</label>
       </div>
       <div class="col-md-8">
         <input type="number" name="pPhone">
@@ -292,7 +292,7 @@
     <br>
     <div class="row">
       <div class="col-md-4" style="text-align: left;">
-        <label>၁၀။ လုပ်ငန်းအတွေ့အကြုံ</label>
+        <label class="unicode">၁၀။ လုပ်ငန်းအတွေ့အကြုံ</label>
       </div>
       <div class="col-md-8">
         <input type="text" name="experience">
@@ -302,7 +302,7 @@
 
      <div class="row">
       <div class="col-md-4" style="text-align: left;">
-        <label>၁၁။ တာဝန်ထမ်းဆောင်လိုသောဌာန</label>
+        <label class="unicode">၁၁။ တာဝန်ထမ်းဆောင်လိုသောဌာန</label>
       </div>
     
       <div class="col-md-8">
@@ -315,7 +315,7 @@
 
     <div class="row">
       <div class="col-md-4" style="text-align: left;">
-        <label>၁၂။ တာဝန်ထမ်းဆောင်လိုသောရာထူး</label>
+        <label class="unicode">၁၂။ တာဝန်ထမ်းဆောင်လိုသောရာထူး</label>
       </div>
     
 
@@ -337,7 +337,9 @@
     <br> -->
     <div class="row">
     <div class="col-md-4">
+      <label class="unicode">
       ၁၃။ မျှော်မှန်းလစာ
+    </label>
     </div> 
       <div class="col-md-8">
         <input type="text" name="salary">
@@ -346,18 +348,18 @@
     <br>
     <div class="row">
       <div class="col-md-4">
-        <label>၁၄။ အဆောင်နေ/မနေ</label>
+        <label class="unicode">၁၄။ အဆောင်နေ/မနေ</label>
       </div>
        <div class="col-md-1">
           <input type="radio" name="isHostel" value="နေ" checked> 
           
       </div> 
-      <div class="col-md-1"><label>နေ</label></div>  
+      <div class="col-md-1"><label class="unicode">နေ</label></div>  
       <div class="col-md-1">
           <input type="radio" name="isHostel" value="နေ" > 
       </div> 
       <div class="col-md-2">
-        <label>မနေ</label>
+        <label class="unicode">မနေ</label>
       </div>
      <!--  <div class="col-md-6">
         <input type="text" name="isHostel">
@@ -366,7 +368,7 @@
     <br>
     <div class="row">
       <div class="col-md-4">
-        <label>၁၅။ လျှောက်လွှာတင်သည့်ရက်စွဲ</label>
+        <label class="unicode">၁၅။ လျှောက်လွှာတင်သည့်ရက်စွဲ</label>
       </div>
       <div class="col-md-8">
         <input type="text" name="appliedDate" id="appliedate">
@@ -375,7 +377,7 @@
     <br>
     <div class="row">
       <div class="col-md-4">
-        <label>၁၆။ ဆက်သွယ်ရန် လိပ်စာအပြည့်အစုံ</label>
+        <label class="unicode">၁၆။ ဆက်သွယ်ရန် လိပ်စာအပြည့်အစုံ</label>
       </div>
       <div class="col-md-8">
         <input type="text" name="address" >
@@ -384,7 +386,7 @@
     <br>
     <div class="row">
       <div class="col-md-4">
-        <label>၁၇။ဖုန်းနံပါတ်</label>
+        <label class="unicode">၁၇။ဖုန်းနံပါတ်</label>
       </div>
       <div class="col-md-8">
         <input type="number" name="phone">
@@ -392,7 +394,7 @@
     </div>
     <br>
     <div class="row">
-        <label style="text-align: right;" class="col-md-12">လက်မှတ်</label>
+        <label style="text-align: right;" class="col-md-12 unicode">လက်မှတ်</label>
     </div>
     <div class="row">
       <div class="col-md-7"></div>

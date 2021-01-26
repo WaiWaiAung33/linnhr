@@ -11,7 +11,7 @@
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     
     <!-- Site Meta -->
-    <title>Linn Profile</title>
+    <title class="unicode">Linn Profile</title>
     <meta name="keywords" content="">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -38,7 +38,7 @@
                     <div class="col-md-7 col-sm-12">
                         <nav class="topbar-menu"><br><br>
                             <div class="list-inline text-right navbar-right">
-                                <a href="https://web.facebook.com/linncomputerstore/"><img src="{{ asset('uploads/jobopeningPhoto/flogo.png') }}" alt="Linda" style="height:10" width="50">Linn Facebook</a>
+                                <a href="https://web.facebook.com/linncomputerstore/"><img src="{{ asset('uploads/jobopeningPhoto/flogo.png') }}" alt="Linda" style="height:10" width="50" class="unicode">Linn Facebook</a>
                                <!--  <a href="https://linn.com.mm/"><i class="fa fa-cart-arrow-down"> Linn OnlineShop </i></a> -->
                             </div><!-- end list -->
                         </nav><!-- end menu -->
@@ -50,8 +50,8 @@
             <div class="container">
                 <div class="row">   
                     <div class="col-md-10 col-md-offset-1 col-sm-12 text-center">
-                        <h2  style="color:#000 ">Linn IT Solution Co.,Ltd </h2><br>
-                        <h4 class="lead" style="color:#2E86C1">ဝန်ထမ်းလျှောက်လွှာခေါ်ယူခြင်း</h4>
+                        <h2  style="color:#000 " class="unicode" class="unicode">Linn IT Solution Co.,Ltd </h2><br>
+                        <h4 class="lead" style="color:#2E86C1" class="unicode">ဝန်ထမ်းလျှောက်လွှာခေါ်ယူခြင်း</h4>
                     </div><!-- end col -->
                 </div><!-- end row -->
             </div><!-- end container -->
@@ -66,7 +66,7 @@
     <div class="col-md-3">
                     <div class="card text-white" style="background-color: {!! $colors[$i] !!};border-radius: 5px 5px 5px 5px">
                         <a href="{{route('cvform.show',$jobopening->id)}}" class="text-white">
-                         <p style="margin-top: 5px;margin-left: 5px;color: white">Close Date:<span style="float: right;">{{date('d-m-Y',strtotime($jobopening->close_date))}}</span></p>
+                         <p style="margin-top: 5px;margin-left: 5px;color: white" class="unicode">Close Date:<span style="float: right;">{{date('d-m-Y',strtotime($jobopening->close_date))}}</span></p>
                         <div class="card-body row">
                             <div class="col-md-4" >
                             @if($jobopening->photo == '')
@@ -80,10 +80,10 @@
                              @endif
                              </div>
                              <div class="col-md-8" >
-                           <h4 style="color: white">{{$jobopening->description}}</h4>
-                            <p style="color: white">{{$jobopening->viewDepartment->name}}</p>
-                            <p style="color: white">{{$jobopening->viewPosition->name}}</p>
-                             <a href="{{route('cvform.show',$jobopening->id)}}" style="float: right;margin-right: 5px;margin-bottom: 5px" class="btn btn-sm btn-primary">Apply</a>
+                           <h4 style="color: white" class="unicode">{{$jobopening->description}}</h4>
+                            <p style="color: white" class="unicode">{{$jobopening->viewDepartment->name}}</p>
+                            <p style="color: white" class="unicode">{{$jobopening->viewPosition->name}}</p>
+                             <a href="{{route('cvform.show',$jobopening->id)}}" style="float: right;margin-right: 5px;margin-bottom: 5px" class="btn btn-sm btn-primary" class="unicode">Apply</a>
                             </div>
            
                             
@@ -99,8 +99,8 @@
            
             <div class="container">
                 <div class="section-title text-center">
-                    <small>Welcome to the best Linn Services</small>
-                    <h3>Top Reasons to Choose Us</h3>
+                    <small class="unicode">Welcome to the best Linn Services</small>
+                    <h3 class="unicode">Top Reasons to Choose Us</h3>
                     <!-- <hr>
                     <p class="lead"> Best Service!! Best</p> -->
                 </div><!-- end section-title -->
@@ -110,9 +110,9 @@
                         <div class="service-wrapper wow fadeIn">    
                               <img src="{{ asset('uploads/images/trophy.png') }}" alt="photo" width="80px" height="80px">
                             <div class="service-details">
-                                <h4><a href="service-01.html" title="">What We Do</a></h4>
-                                <p>We listen to your feedback. We provide a high level of support. We focus on the quality of our services.</p>
-                                <a href="https://web.facebook.com/linncomputerstore/" class="readmore" target="_blank">View Details</a>
+                                <h4 class="unicode"><a href="service-01.html" title="">What We Do</a></h4>
+                                <p class="unicode">We listen to your feedback. We provide a high level of support. We focus on the quality of our services.</p>
+                                <a href="https://web.facebook.com/linncomputerstore/" class="readmore" target="_blank" class="unicode">View Details</a>
                             </div>
                         </div><!-- end service-wrapper -->
                     </div><!-- end col -->
@@ -121,9 +121,9 @@
                         <div class="service-wrapper wow fadeIn">    
                              <img src="{{ asset('uploads/images/sharing-content.png') }}" alt="photo" width="80px" height="80px">
                             <div class="service-details">
-                                <h4><a href="service-02.html" title="">Who We Are</a></h4>
-                                <p>We are best service provider</p>
-                                <a href="https://web.facebook.com/linncomputerstore/" class="readmore" target="_blank">View Details</a>
+                                <h4 class="unicode"><a href="service-02.html" title="">Who We Are</a></h4>
+                                <p class="unicode">We are best service provider</p>
+                                <a href="https://web.facebook.com/linncomputerstore/" class="readmore" target="_blank" class="unicode">View Details</a>
                             </div>
                         </div><!-- end service-wrapper -->
                     </div><!-- end col -->
@@ -132,9 +132,9 @@
                         <div class="service-wrapper wow fadeIn">    
                         <img src="{{ asset('uploads/images/our-mission.png') }}" alt="photo" width="80px" height="80px">
                             <div class="service-details">
-                                <h4><a href="service-02.html" title="">Our Mission</a></h4>
-                                <p> To provide our customers with special services "Give us a chance and we will prove our efficiency"</p>
-                                <a href="https://web.facebook.com/linncomputerstore/" class="readmore" target="_blank">View Details</a>
+                                <h4 class="unicode"><a href="service-02.html" title="">Our Mission</a></h4>
+                                <p class="unicode"> To provide our customers with special services "Give us a chance and we will prove our efficiency"</p>
+                                <a href="https://web.facebook.com/linncomputerstore/" class="readmore" target="_blank" class="unicode">View Details</a>
                             </div>
                         </div><!-- end service-wrapper -->
                     </div><!-- end col -->
@@ -148,12 +148,12 @@
                     <div class="col-md-4 col-sm-4">
                         <div class="widget clearfix" >
                             <div style="margin-left: 20px">
-                            <h4 class="widget-title" style="color: white;padding-left: 20px;">Branch</h4>
+                            <h4 class="widget-title" style="color: white;padding-left: 20px;" class="unicode">Branch</h4>
                             </div>
                             <ul style="list-style-type: none;">
-                                <li><a href="#" style="color: white">Head Office</a></li>
-                                <li><a href="#" style="color: white">Linn 1</a></li>
-                                <li><a href="#" style="color: white">Linn 2</a></li>
+                                <li><a href="#" style="color: white" class="unicode">Head Office</a></li>
+                                <li><a href="#" style="color: white" class="unicode">Linn 1</a></li>
+                                <li><a href="#" style="color: white" class="unicode">Linn 2</a></li>
                             </ul>
                         </div><!-- end widget -->
                     </div><!-- end col -->
@@ -161,12 +161,12 @@
                     <div class="col-md-4 col-sm-4">
                         <div class="widget clearfix">
                              <div style="margin-left: 20px">
-                            <h4 class="widget-title"  style="color: white;padding-left: 20px;">Phone No</h4>
+                            <h4 class="widget-title"  style="color: white;padding-left: 20px;" class="unicode">Phone No</h4>
                         </div>
                             <ul style="list-style-type: none;">
-                                <li><a href="#" style="color: white">09 400887799</a></li>
-                                <li><a href="#" style="color: white">067-24488, 26884</a></li>
-                                <li><a href="#" style="color: white">067-414884,414885,432884</a></li>
+                                <li><a href="#" style="color: white" class="unicode">09 400887799</a></li>
+                                <li><a href="#" style="color: white" class="unicode">067-24488, 26884</a></li>
+                                <li><a href="#" style="color: white" class="unicode">067-414884,414885,432884</a></li>
                             </ul>
                         </div><!-- end widget -->
                     </div><!-- end col -->
@@ -174,12 +174,12 @@
                     <div class="col-md-4 col-sm-4">
                         <div class="widget clearfix">
                              <div style="margin-left: 20px">
-                            <h4 class="widget-title" style="color: white;padding-left: 20px;">Address</h4>
+                            <h4 class="widget-title" style="color: white;padding-left: 20px;" class="unicode">Address</h4>
                         </div>
                             <ul style="list-style-type: none;">
-                                <li><a href="#" style="color: white">No. 14/585, 4th Street, Paung Laung Quarter, Pyinmana.</a></li>
-                                <li><a href="#" style="color: white">No.11/7, Bogyoke Road, Pyinmana</a></li>
-                                <li><a href="#" style="color: white">No.117, Thapyagone Quarter, Naypyitaw</a></li>
+                                <li><a href="#" style="color: white" class="unicode">No. 14/585, 4th Street, Paung Laung Quarter, Pyinmana.</a></li>
+                                <li><a href="#" style="color: white" class="unicode">No.11/7, Bogyoke Road, Pyinmana</a></li>
+                                <li><a href="#" style="color: white" class="unicode">No.117, Thapyagone Quarter, Naypyitaw</a></li>
                             </ul>
                         </div><!-- end widget -->
                     </div><!-- end col -->
