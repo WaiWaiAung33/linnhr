@@ -8,7 +8,7 @@
 
 <link id="bsdp-css" href="https://unpkg.com/bootstrap-datepicker@1.9.0/dist/css/bootstrap-datepicker3.min.css" rel="stylesheet">
 
- <h5 style="color: blue;">Employee Management</h5>
+ <h5 style="color: blue;" class="unicode">Employee Management</h5>
     <script src=" {{ asset('toasterjquery.js') }}" ></script>
     <link rel="stylesheet" type="text/css" href="{{asset('toasterbootstrap.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('toastermin.css')}}">
@@ -33,7 +33,7 @@
 <div class="row form-group">
   <div class="col-md-12">
                          
-              <a class="btn btn-success unicode" href="{{route('employee.create')}}" style="float: right;"><i class="fas fa-plus"> Employee</i></a>
+              <a class="btn btn-success unicode" href="{{route('employee.create')}}" style="float: right;" class="unicode"><i class="fas fa-plus"> Employee</i></a>
          </div>
 </div>
           
@@ -42,7 +42,7 @@
                 <div class="col-md-12">
                     <div class="row">
                         <div class="col-md-2">
-                            <label for="">Search by Keyword</label>
+                            <label for="" class="unicode">Search by Keyword</label>
                             <input type="text" name="name" id="name" class="form-control" placeholder="Search..." value="{{ old('name',$name) }}">
                         </div> 
                         <div class="col-md-2">
@@ -123,7 +123,7 @@
                 <input type="hidden" id="position_id" name="position_id" value="{{ $position_id }}">
          </form>
 
-  <p style="padding-top: 20px">Total record: {{$count}}</p>
+  <p style="padding-top: 20px" class="unicode">Total record: {{$count}}</p>
     <div class="table-responsive" style="font-size:15px;">
                 <table class="table table-bordered styled-table">
                   <thead>
