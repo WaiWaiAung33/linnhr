@@ -38,6 +38,7 @@ class CreateCvformTable extends Migration
             $table->string('phone');
             $table->string('photo');
             $table->string('signature');
+            $table->integer('status')->default(0);
             $table->timestamps();
         });
     }

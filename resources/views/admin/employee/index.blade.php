@@ -24,12 +24,6 @@
   $join_month = isset($_GET['join_month'])?$_GET['join_month']:'';
   ?>
 
-     {{-- @if ($message = Session::get('success'))
-            <div class="alert alert-success">
-                <p>{{ $message }}</p>
-            </div>
-      @endif --}}
-
 <div class="row form-group">
   <div class="col-md-12">
                          

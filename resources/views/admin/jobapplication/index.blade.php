@@ -53,8 +53,8 @@
                     <tbody>
                    @if($jobapplications->count()>0)
                    @foreach($jobapplications as $jobapplication)
-                        <tr class="table-tr" data-url="{{route('jobapplication.show',$jobapplication->id)}}">
-                            <td>{{++$i}}</td>
+                        <tr class="table-tr" data-url="{{route('jobapplication.show',$jobapplication->id)}}" >
+                            <td style="{{ $jobapplication->status == 1 ? 'color: #2874A6 ' : '' }}">{{++$i}}</td>
                              @if($jobapplication->photo == '')
                             <td>
                             <img src="{{ asset('uploads/employeePhoto/default.png') }}" alt="photo" width="80px" height="80px">
@@ -64,7 +64,7 @@
                              <img src="{{ asset('uploads/jobapplicationPhoto/'.$jobapplication->photo) }}" alt="photo" width="80px" height="80px">
                              </td>
                              @endif
-                            <td>{{$jobapplication->name}}</td>
+                            <td style="{{ $jobapplication->status == 1 ? 'color: #2874A6 ' : '' }}">{{$jobapplication->name}}</td>
                            
                              <?php 
                               foreach ($departments as $key => $value) {
@@ -73,17 +73,17 @@
                               
                               }
                               ?>
-                           <td>{{$depname}}</td>
+                           <td style="{{ $jobapplication->status == 1 ? 'color: #2874A6 ' : '' }}">{{$depname}}</td>
                             <?php 
                           foreach ($positions as $key => $value) {
                            if($value->id == $jobapplication->position_id);
                            $name = $value->name;
                           }
                           ?>
-                           <td>{{ $name}}</td>
-                           <td>{{$jobapplication->edu}}</td>
-                           <td>{{$jobapplication->exp_salary}}</td>
-                           <td>{{$jobapplication->experience}}</td>
+                           <td style="{{ $jobapplication->status == 1 ? 'color: #2874A6 ' : '' }}">{{ $name}}</td>
+                           <td style="{{ $jobapplication->status == 1 ? 'color: #2874A6 ' : '' }}">{{$jobapplication->edu}}</td>
+                           <td style="{{ $jobapplication->status == 1 ? 'color: #2874A6 ' : '' }}">{{$jobapplication->exp_salary}}</td>
+                           <td style="{{ $jobapplication->status == 1 ? 'color: #2874A6 ' : '' }}">{{$jobapplication->experience}}</td>
                         </tr>
                         
                  @endforeach

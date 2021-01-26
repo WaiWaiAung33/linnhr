@@ -120,6 +120,12 @@ class EmployeeController extends Controller
             'qualification'=>$request->qualification,
             'salary'=>$request->salary,
             'photo'=>$photo,
+            'religion'=>$request->religion,
+            'email'=>$request->email,
+            'fPhone'=>$request->pPhone,
+            'experience'=>$request->experience,
+            'exp_salary'=>$request->salary,
+            'hostel'=>$request->isHostel,
         ]
         );
 

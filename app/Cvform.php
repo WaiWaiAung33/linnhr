@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Cvform extends Model
 {
      protected $table = "cvform";
-	 protected $fillable = ['name','nrc_code','nrc_state','nrc_status','nrc','fullnrc','dob','edu','religion','marrical_status','email','fName','fPhone','experience','job','department','exp_salary','hostel','applied_date','address','phone','photo','signature'];
+	 protected $fillable = ['name','nrc_code','nrc_state','nrc_status','nrc','fullnrc','dob','edu','religion','marrical_status','email','fName','fPhone','experience','job','department','exp_salary','hostel','applied_date','address','phone','photo','signature','status'];
 
 	  public function viewCode()
     {

@@ -7,7 +7,11 @@ use App\Department;
 use App\Position;
 use App\NRCCode;
 use App\NRCState;
+use App\Employee;
 use Illuminate\Http\Request;
+use File;
+use Illuminate\Support\Str;
+use DB;
 
 class JobapplicationController extends Controller
 {
@@ -47,84 +51,69 @@ class JobapplicationController extends Controller
      */
     public function store(Request $request)
     {
-          $rules = [
-            'name'=>'required',
-            'nrc'=>'required',
-            'dob'=>'required',
-            'education'=>'required',
-            'religion'=>'required',
-            'marrical_status'=>'required',
-            'pName'=>'required',
-            'pPhone'=>'required',
-            'experience'=>'required',
-            'location'=>'required',
-            'salary'=>'required',
-            'isHostel'=>'required',
-            'appliedDate'=>'required',
-            'address'=>'required',
-            'phone'=>'required',
-            'signed'=>'required',
-            'myphoto'=>'required'
-        ];
+        $departments = Department::all();
+        $positions = Position::all();
+        $destinationPath = public_path() . '/uploads/employeePhoto/';
+        $photo = ($request->photo != '') ? $request->photo : null;
+        //upload image
+        if ($file = $request->file('photo')) {
+            $extension = $file->getClientOriginalExtension();
+            $var = Str::random(32) . '.' . $extension;
+            $file->move($destinationPath, $var);
+            $photo = $var;
+        }
+        foreach ($departments as $key => $value) {
+            if ($value->name == $request->department) {
+               $dep_id = $value->id ;
+            }
+        }
+        foreach ($positions as $key => $value) {
+           if ($value->name == $request->location) {
+             $pos_id = $value->id;
+             // dd($pos_id);
+           }
+        }
+  
+        $date = date('d-m-Y');
+        $month = date('m');
 
-        $customMessage = [
-            'name.required'=>'Please enter your name',
-            'nrc.required'=>'Please enter your nrc number',
-            'dob.required'=>'Please enter your date of birth',
-            'education.required'=>'Please enter your education',
-            'religion.required'=>'Please enter your religion',
-            'marrical_status.required'=>'Please enter marrical status',
-            'pName.required'=>'Please enter your parents name',
-            'pPhone.required'=>'Please enter your parents phone number',
-            'experience.required'=>'Please enter your experience',
-            'location.required'=>'Please enter your location',
-            'salary.required'=>'Pleae enter expected salary',
-            'isHostel.required'=>'Please enter living or not living at hostel',
-            'appliedDate.required'=>'Please enter applied date',
-            'address.required'=>'Please enter your eddress',
-            'phone.required'=>'Please enter your phone number',
-            'signed.required'=>'Please enter your signature',
-            'myphoto.required'=>'Please enter your photo'
-        ];
-
-        $this->validate($request,$rules,$customMessage);
-
-        // $folderPath = public_path('upload/');
-      
-        // $image_parts = explode(";base64,", $request->signed);
-            
-        // $image_type_aux = explode("image/", $image_parts[0]);
-          
-        // $image_type = $image_type_aux[1];
-          
-        // $image_base64 = base64_decode($image_parts[1]);
-          
-        // $file = $folderPath . uniqid() . '.'.$image_type;
-        // // dd(uniqid() . '.'.$image_type);
-        // file_put_contents($file, $image_base64);
-
-        $cvform = Cvform::create([
-            'name'=>$request->name,
+         $employee=Employee::create([
+            'emp_id'=>111111,
+            'branch_id'=>1,
+            'dep_id'=>$dep_id,
+            'position_id'=>$pos_id,
+            'name'=> $request->name,
+            'gender'=>$request->marrical_status,
+            'father_name'=>$request->fName,
+            'phone_no'=>$request->phone,
+            'nrc_code'=>$request->nrc_code,
+            'nrc_state'=>$request->nrc_state,
+            'nrc_status'=>$request->nrc_status,
             'nrc'=>$request->nrc,
-            'dob'=>$request->dob,
-            'edu'=>$request->education,
-            'religion'=>$request->religion,
-            'marrical_status'=>$request->marrical_status,
-            'email'=>$request->email,
-            'fName'=>$request->pName,
-            'fPhone'=>$request->pPhone,
-            'experience'=>$request->experience,
-            'job'=>$request->location,
-            'exp_salary'=>$request->salary,
-            'hostel'=>$request->isHostel,
-            'applied_date'=>$request->appliedDate,
+            'fullnrc'=>$request->fullnrc,
+            'date_of_birth'=>$request->dob,
+            'join_date'=>$date ,
+            'join_month'=>$month,
             'address'=>$request->address,
-            'phone'=>$request->phone,
-            'signature'=>$request->signed,
-            'photo'=>$request->myPhoto
-        ]);
-        // dd($cvform);
-        return back()->with('success', 'success Full upload signature');
+            'city'=>null,
+            'township'=>null,
+            'qualification'=>$request->education,
+            'photo'=>$photo,
+            'religion'=>$request->religion,
+            'email'=>$request->email,
+            'fPhone'=>$request->fPhone,
+            'experience'=>$request->experience,
+            'exp_salary'=>$request->salary,
+            'hostel'=>$request->hostel,
+        ]
+        );
+
+         $updatedata = DB::table('cvform')
+                        ->update(['status' => 1]);
+
+         DB::commit();
+
+          return redirect()->route('jobapplication.index')->with('success','Employee created successfully');;
     }
 
     /**

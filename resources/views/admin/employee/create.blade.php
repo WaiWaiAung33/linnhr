@@ -57,8 +57,10 @@
                         </div>
                     </div>
                     <br>
+
                     <div class="row">
                         <div class="col-md-6">
+                            
                             <div class="row">
                                 <div class="col-md-2">
                                     <h6 style="font-weight:bold;font-size:15px;">Gender*</h6>
@@ -132,6 +134,16 @@
                             </div>
                         </div>
                         <div class="col-md-6">
+                             <div class="row">
+                                <div class="col-md-3">
+                                    <h6 style="font-weight:bold;font-size:15px;"> Religion</h6>
+                                </div>
+
+                                <div class="col-md-8 {{ $errors->first('lat', 'has-error') }}">
+                                     <input type="text" name="religion" class="form-control unicode">
+
+                                </div>
+                            </div><br>
                             <div class="row">
                                 <div class="col-md-3">
                                     <h6 style="font-weight:bold;font-size:15px;">Photo*</h6>
@@ -210,11 +222,39 @@
                         <div class="col-md-6">
                             <div class="row">
                                 <div class="col-md-3">
-                                    <h6 style="font-weight:bold;font-size:15px;">Mobile*</h6>
+                                    <h6 style="font-weight:bold;font-size:15px;">Phone*</h6>
                                 </div>
 
                                 <div class="col-md-8">
                                     <input type="number" name="phone_no" class="form-control unicode" id="mobile" placeholder="09 xxx xxx xxx">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+
+                       <div class="row">
+                        <div class="col-md-6">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <h6 style="font-weight:bold;font-size:15px;">Email*</h6>
+                                </div>
+
+                                <div class="col-md-8 {{ $errors->first('name', 'has-error') }}">
+
+                                   <input type="email" name="email" class="form-control unicode">
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <h6 style="font-weight:bold;font-size:15px;">Parent Phone*</h6>
+                                </div>
+
+                                <div class="col-md-8">
+                                    <input type="number" name="pPhone" class="form-control unicode">
                                 </div>
                             </div>
                         </div>
@@ -408,7 +448,51 @@
                                 </div>
                             </div>
                         </div>
+                          <div class="col-md-6">
+                            <div class="row">
+                                <!-- <label class="col-md-3 unicode" style="text-align: right;">Assign</label> -->
+                                <div class="col-md-2">
+                                    <h6 style="font-weight:bold;font-size:15px;">Hostel*</h6>
+                                </div>
+                                  <div class="col-md-2 {{ $errors->first('gender', 'has-error') }}">
+                                    <input type="radio" name="isHostel" value="နေ" checked> Yes
+                                    
+                                </div>   
+                                <div class="col-md-2">
+                                    <input type="radio" name="isHostel" value="မနေ"> No
+                                </div> 
+                            </div>
+                        </div>
+                    </div><br>
+
+
+                     <div class="row">
+                         <div class="col-md-6">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <h6 style="font-weight:bold;font-size:15px;">Expected Salary</h6>
+                                </div>
+                                <!-- <label class="col-md-3 unicode" id="appointment_label" style="text-align: right;">Appoint Date</label> -->
+                                <div class="col-md-8">
+                                      <input type="text" name="salary" class="form-control unicode"> 
+                                </div>
+                            </div>
+                        </div>
+                          <div class="col-md-6">
+                            <div class="row">
+                                <!-- <label class="col-md-3 unicode" style="text-align: right;">Assign</label> -->
+                                <div class="col-md-2">
+                                    <h6 style="font-weight:bold;font-size:15px;">Experince</h6>
+                                </div>
+                                  <div class="col-md-8">
+                                      <input type="text" name="experience" class="form-control unicode"> 
+                                </div>
+
+                            </div>
+                        </div>
                     </div>
+
+
                     <div style="width: 100%">
                         <a class="btn btn-primary unicode" id="install_back" style="float: left;">Back</a>
                         <button type="submit" class="btn btn-success unicode" style="float: right;">Save</button>

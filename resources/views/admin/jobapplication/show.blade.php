@@ -18,16 +18,41 @@
         <div class="col-lg-10">
              <a class="btn btn-success unicode" href="{{route('jobapplication.index')}}"> Back</a>
         </div>
-        <div class="col-lg-2">
-            <div class="pull-right">
-             <form action="{{route('jobapplication.update',$jobapplications->id)}}" method="POST" class="form-horizontal" enctype="multipart/form-data">
-              @csrf
-              @method('PUT')
-              <button type="submit" class="btn btn-sm btn-primary">Accept</button> 
-           </form>
-            </div>
-        </div>
+        
     </div><br>
+
+      <form action="{{route('jobapplication.store')}}" method="POST" class="form-horizontal" enctype="multipart/form-data">
+         @csrf
+        @method('post')
+        @if($jobapplications->status == 0)
+         <div class="pull-right">
+           
+              <button type="submit" class="btn btn-sm btn-primary" style="float: right;">Accept</button>
+         </div><br>
+        @endif
+    <input type="hidden" name="photo" value="{{$jobapplications->photo}}">
+    <input type="hidden" name="name" value="{{$jobapplications->name}}">
+    <input type="hidden" name="phone" value="{{$jobapplications->phone}}">
+    <input type="hidden" name="nrc_code" value="{{$jobapplications->nrc_code}}">
+     <input type="hidden" name="nrc_state" value="{{$jobapplications->nrc_state}}">
+    <input type="hidden" name="nrc_status" value="{{$jobapplications->nrc_status}}">
+    <input type="hidden" name="nrc" value="{{$jobapplications->nrc}}">
+     <input type="hidden" name="fullnrc" value="{{$jobapplications->fullnrc}}">
+     <input type="hidden" name="dob" value="{{$jobapplications->dob}}">
+     <input type="hidden" name="education" value="{{$jobapplications->edu}}">
+    <input type="hidden" name="religion" value="{{$jobapplications->religion}}">
+    <input type="hidden" name="marrical_status" value="{{$jobapplications->marrical_status}}">
+    <input type="hidden" name="email" value="{{$jobapplications->email}}">
+    <input type="hidden" name="fName" value="{{$jobapplications->fName}}">
+     <input type="hidden" name="fPhone" value="{{$jobapplications->fPhone}}">
+    <input type="hidden" name="experience" value="{{$jobapplications->experience}}">
+     <input type="hidden" name="department" value="{{$jobapplications->department}}">
+      <input type="hidden" name="location" value="{{$jobapplications->job}}">
+     <input type="hidden" name="salary" value="{{$jobapplications->exp_salary}}">
+    <input type="hidden" name="hostel" value="{{$jobapplications->hostel}}">
+    <input type="hidden" name="appliedDate" value="{{$jobapplications->applied_date}}">
+     <input type="hidden" name="address" value="{{$jobapplications->address}}">
+
 
     <div class="row form-group">
         <div class="col-md-4">
@@ -38,10 +63,10 @@
                  <img src="{{ asset('uploads/jobapplicationPhoto/'.$jobapplications->photo) }}" alt="photo" width="150px" height="150px">
                  @endif
             </div>
+           
             <div class="header">
                 <h6 style="color: gray;padding-top: 10px">{{$jobapplications->name}}</h6>
             </div>
-          
         </div>
         <div class="col-md-7">
         <div class="table-responsive">
@@ -119,4 +144,5 @@
         </div>
         @stop 
      </div>
+    </form>
 

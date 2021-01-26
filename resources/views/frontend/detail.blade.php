@@ -265,7 +265,7 @@
     <br>
     <div class="row">
       <div class="col-md-4" style="text-align: left;">
-        <label class="unicode">၇။ E-Mail Address</label>
+        <label class="unicode">၇။အီးမေးလ်</label>
       </div>
       <div class="col-md-8">
         <input type="text" name="email">
@@ -356,7 +356,7 @@
       </div> 
       <div class="col-md-1"><label class="unicode">နေ</label></div>  
       <div class="col-md-1">
-          <input type="radio" name="isHostel" value="နေ" > 
+          <input type="radio" name="isHostel" value="မနေ" > 
       </div> 
       <div class="col-md-2">
         <label class="unicode">မနေ</label>
