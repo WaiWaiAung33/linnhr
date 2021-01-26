@@ -6,35 +6,13 @@
 
 @section('content_header')
 
- <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
-   
 <link id="bsdp-css" href="https://unpkg.com/bootstrap-datepicker@1.9.0/dist/css/bootstrap-datepicker3.min.css" rel="stylesheet">
 
-<style type="text/css">
-  
-   .styled-table {
-          border-collapse: collapse;
-          /*margin: 25px 0;*/
-          font-size: 0.9em;
-          font-family: sans-serif;
-          min-width: 400px;
-          box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-          }
-          .styled-table thead tr {
-              background-color: #1179C2;
-              color: #ffffff;
-              text-align: left;
-          }
-          .styled-table th,
-          .styled-table td {
-              padding: 12px 15px;
-          }
-
-          .styled-table tbody tr {
-              border-bottom: 1px solid #dddddd;
-          }
-
-</style>
+ <h5 style="color: blue;">Employee Management</h5>
+    <script src=" {{ asset('toasterjquery.js') }}" ></script>
+    <link rel="stylesheet" type="text/css" href="{{asset('toasterbootstrap.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('toastermin.css')}}">
+    <script type="text/javascript" src="{{asset('toastermin.js')}}"></script>
 @stop
 @section('content')
  <?php
@@ -46,7 +24,6 @@
   $join_month = isset($_GET['join_month'])?$_GET['join_month']:'';
   ?>
 
-    <h5 style="color:#1179C2 ">Employee Management</h5><br>
      {{-- @if ($message = Session::get('success'))
             <div class="alert alert-success">
                 <p>{{ $message }}</p>

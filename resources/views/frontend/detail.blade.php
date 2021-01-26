@@ -304,16 +304,9 @@
       <div class="col-md-4" style="text-align: left;">
         <label>၁၁။ တာဝန်ထမ်းဆောင်လိုသောဌာန</label>
       </div>
-      <?php 
-      foreach ($departments as $key => $value) {
-       if($value->id == $jobopenings->dep_id);
-       $depname = $value->name;
-       $depid = $value->id;
-      }
-      ?>
-
+    
       <div class="col-md-8">
-        <input type="text" name="department" value="{{$depname}}" readonly>
+        <input type="text" name="department" value="{{$jobopenings->viewDepartment->name}}" readonly>
       </div>
      
     </div>
@@ -324,16 +317,10 @@
       <div class="col-md-4" style="text-align: left;">
         <label>၁၂။ တာဝန်ထမ်းဆောင်လိုသောရာထူး</label>
       </div>
-      <?php 
-      foreach ($positions as $key => $value) {
-       if($value->id == $jobopenings->position_id);
-       $name = $value->name;
-       $id = $value->id;
-      }
-      ?>
+    
 
       <div class="col-md-8">
-        <input type="text" name="location" value="{{$name}}" readonly>
+        <input type="text" name="location" value="{{$jobopenings->viewPosition->name}}" readonly>
       </div>
      
     </div>

@@ -8,52 +8,7 @@
    
 <link id="bsdp-css" href="https://unpkg.com/bootstrap-datepicker@1.9.0/dist/css/bootstrap-datepicker3.min.css" rel="stylesheet">
 
-<style type="text/css">
-    .styled-table {
-        border-collapse: collapse;
-        /*margin: 25px 0;*/
-        font-size: 0.9em;
-        
-        min-width: 400px;
-        box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-    }
 
-    .styled-table thead tr {
-        background-color: #009879;
-        color: #ffffff;
-        text-align: left;
-    }
-
-    .styled-table th,
-    .styled-table td {
-        padding: 12px 15px;
-    }
-
-    .styled-table tbody tr {
-        border-bottom: 1px solid #dddddd;
-    }
-
-    /*    .styled-table tbody tr:nth-of-type(even) {
-        background-color: #c7d4dd;
-    }*/
-
-    .styled-table tbody tr:last-of-type {
-        border-bottom: 2px solid #009879;
-    }
-
-    /*input.ibtnDel{
-            width: 100%;  
-            padding: 12px 40px;  
-            margin: 8px 0;  
-            display: inline-block;  
-            border: 1px solid #ccc;  
-            box-sizing: border-box;
-    }*/
-    .checkbox {
-        width: 30px;
-        height: 20px;
-    }
-</style>
 @stop
 
 @section('content')
@@ -535,11 +490,11 @@
             display: block;
             box-sizing: border-box;
             /* tab content must clear this */
-            height: 45px;
+            height: 40px;
 
             padding: 10px;
             text-align: center;
-            background: #1179C2;
+            background:  #2a3c66;
             color: white;
             cursor: pointer;
             transition: background 0.5s ease;
@@ -547,8 +502,8 @@
 
         .tabby-tab label:hover {
             background: white;
-            color: #1179C2;
-            border-bottom: 1px solid #1179C2;
+            color:  #2a3c66;
+            border-bottom: 1px solid  #2a3c66;
         }
 
         .tabby-content {
@@ -585,8 +540,8 @@
         [name="tabby-tabs"]:checked~label {
             background: white;
             z-index: 2;
-            color: #1179C2;
-            border-bottom: 1px solid #1179C2;
+            color:  #2a3c66;
+            border-bottom: 1px solid  #2a3c66;
         }
 
         [name="tabby-tabs"]:checked~label~.tabby-content {
