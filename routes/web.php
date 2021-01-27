@@ -35,6 +35,8 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::post('import',[App\Http\Controllers\EmployeeController::class, 'import'])->name('import');
 	Route::post('salaryimport',[App\Http\Controllers\SalaryController::class, 'import'])->name('salaryimport');
 	Route::post('export', [App\Http\Controllers\EmployeeController::class, 'export'])->name('export');
+	Route::get('/employees/csv/download', 'EmployeeController@downloadEmployeesCSV')->name('employees.download.csv');
+	Route::get('/salarys/csv/download','SalaryController@downloadSalarysCSV')->name('salarys.download.csv');
 });
 
 Route::get('/', [App\Http\Controllers\CvformController::class, 'index'])->name('frontend.home');

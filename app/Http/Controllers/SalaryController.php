@@ -9,6 +9,7 @@ use Maatwebsite\Excel\Facades\Excel;
 use App\Employee;
 use App\Department;
 use DB;
+use File;
 
 class SalaryController extends Controller
 {
@@ -193,4 +194,25 @@ class SalaryController extends Controller
              
         return back();
     }
+
+     public function downloadSalarysCSV()
+    {
+
+        $strpath = public_path().'/uploads/files/salarys.xlsx';
+        // dd($strpath);
+        $isExists = File::exists($strpath);
+
+        if(!$isExists){
+            return redirect()->back()->with('error','File does not exists!');
+        }
+
+        $csvFile = str_replace("\\", '/', $strpath);
+        $headers = ['Content-Type: application/*'];
+        $fileName = 'Salary Template.xlsx';
+
+        return response()->download($csvFile, $fileName, $headers);
+
+        
+    }
+
 }

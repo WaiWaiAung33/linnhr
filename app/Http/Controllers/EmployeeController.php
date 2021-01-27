@@ -280,4 +280,24 @@ class EmployeeController extends Controller
         return Excel::download(new EmployeeExport, 'employee.xlsx');
     }
 
+     public function downloadEmployeesCSV()
+    {
+
+        $strpath = public_path().'/uploads/files/employees.xlsx';
+
+        $isExists = File::exists($strpath);
+
+        if(!$isExists){
+            return redirect()->back()->with('error','File does not exists!');
+        }
+
+        $csvFile = str_replace("\\", '/', $strpath);
+        $headers = ['Content-Type: application/*'];
+        $fileName = 'Employee Template.xlsx';
+
+        return response()->download($csvFile, $fileName, $headers);
+
+        
+    }
+
 }

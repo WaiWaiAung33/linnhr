@@ -86,10 +86,11 @@
             </div>
         </form>
 
+        <div class="row">
         <form class="form-horizontal" action="{{route('import')}}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="row form-group">
-                        <div class="col-md-3">
+                        <div class="col-md-4">
                             <input type="file" name="file" class="form-control">
                             @if ($errors->has('file'))
                                 <span class="help-block">
@@ -97,17 +98,18 @@
                                 </span>
                             @endif
                         </div>
-                        <div class="col-md-3">
-                        <button class="btn btn-success btn-sm"><i class="fas fa-file-csv" style="padding-left: 6px;padding-right: 6px;padding-top: 6px;padding-bottom: 6px"></i> Import CSV</button>
-                        </div>
-                       <div class="col-md-5"></div>
-                       <div class="col-md-1">
-                        <a class="btn btn-warning btn-sm" id="export_btn" style="float: right;" ><i class="fa fa-fw fa-file-excel"></i>Export</a>
-                       </div>
+                        
+                        <button class="btn btn-success btn-sm"><i class="fas fa-file-csv" style="margin-left: 10px "></i> Import CSV</button>
                        
+                        <a class="btn btn-primary btn-sm"  href="{{ route('employees.download.csv') }}" style="margin-left: 10px "><i class="fa fa-fw fa-download" style="padding-top: 8px" ></i>Demo CSV File</a>
+                       
+                      
+                        <a class="btn btn-warning btn-sm" id="export_btn" style="margin-left: 10px " ><i class="fa fa-fw fa-file-excel" style="padding-top: 8px"></i>Export</a>
+                     
                     
                     </div>
         </form>
+      </div>
 
          <form id="excel_form" action="{{ route('export') }}"  method="POST">
                 @csrf

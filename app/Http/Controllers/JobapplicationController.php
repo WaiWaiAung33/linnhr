@@ -51,6 +51,7 @@ class JobapplicationController extends Controller
      */
     public function store(Request $request)
     {
+
         $departments = Department::all();
         $positions = Position::all();
         $destinationPath = public_path() . '/uploads/employeePhoto/';
@@ -73,12 +74,13 @@ class JobapplicationController extends Controller
              // dd($pos_id);
            }
         }
-  
+        $max = DB::table('employee')->max('emp_id');
+        $max_id = ++$max;
         $date = date('d-m-Y');
         $month = date('m');
 
          $employee=Employee::create([
-            'emp_id'=>111111,
+            'emp_id'=>$max_id,
             'branch_id'=>1,
             'dep_id'=>$dep_id,
             'position_id'=>$pos_id,
