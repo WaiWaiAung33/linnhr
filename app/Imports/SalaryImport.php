@@ -36,7 +36,7 @@ class SalaryImport implements ToCollection,WithHeadingRow
                 
                 foreach ($rows as $row) 
                 {
-                    
+                    // dd($row);
                         $month_total = $row['amount']+$row['bonus']; 
 
                         $employees = Employee::all();
@@ -44,9 +44,10 @@ class SalaryImport implements ToCollection,WithHeadingRow
                         $departments = Department::all();
 
                         foreach ($employees as $key => $value) {
-                            if($row['name'] == $value->name){
+                            if($row['emp_id'] == $value->emp_id){
+                                $employee_name= $value->name;
                                 $employeeid = $value->id;
-                                // dd($nrcodeid);
+                                // dd( $employee_name);
                             }
                         }
 
@@ -97,7 +98,7 @@ class SalaryImport implements ToCollection,WithHeadingRow
                     
                          $arr=[
                         'emp_id'=>$employeeid,
-                        'name'=>$row['name'],
+                        'name'=>$employee_name,
                         'department'=>$departmentname,
                         'branch'=>$branchname,
                         'pay_date'=>$dates,

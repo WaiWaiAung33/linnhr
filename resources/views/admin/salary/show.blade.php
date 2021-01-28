@@ -93,7 +93,7 @@
       @endif
       @endforeach
        <tr style=" background-color: #c7d4dd;">
-        <td>Month Total</td>
+        <td colspan="2">Month Total</td>
         <td>{{number_format($salary_total)}}</td>
         <td>{{number_format($bonus_total)}}</td>
         <?php

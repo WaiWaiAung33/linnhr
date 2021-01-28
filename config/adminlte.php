@@ -187,7 +187,7 @@ return [
     */
 
     'use_route_url' => false,
-    'dashboard_url' => 'home',
+    'dashboard_url' => 'dashboard',
     'logout_url' => 'logout',
     'login_url' => 'login',
     'register_url' => 'register',
@@ -273,6 +273,12 @@ return [
         //         ],
         //     ],
         // ],
+        ['header' => 'Payroll'],
+        [
+                    'text' => 'Salary',
+                    'url' => 'salary',
+                    'icon' => 'fa fa-credit-card',
+        ],
         ['header' => 'Recruitment'],
         [
                     'text' => 'Job Openings',
@@ -284,12 +290,9 @@ return [
                     'url' => 'jobapplication',
                     'icon' => 'fa fa-certificate',
         ],
+
         ['header' => 'MASTER DATA'],
-        [
-                    'text' => 'Salary',
-                    'url' => 'salary',
-                    'icon' => 'fa fa-credit-card',
-        ],
+        
         [
                     'text' => 'Branch',
                     'url'  => 'branch',

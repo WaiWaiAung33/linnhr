@@ -18,6 +18,10 @@ Route::get('/', function () {
     // return view('dashboard');
     return redirect()->route('dashboard');
 })->middleware('auth');
+Route::get('/home', function () {
+    // return view('dashboard');
+    return redirect()->route('dashboard');
+})->middleware('auth');
 Route::group(['middleware' => 'auth'], function () {
 	Route::get('dashboard','HomeController@index')->name('dashboard');
 	Route::resource('branch','BranchController');

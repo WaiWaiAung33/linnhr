@@ -205,21 +205,9 @@
                 <label for="tab-2">Contact</label>
                 <div class="tabby-content">
                     <br>
+
                      <div class="row">
-                        <div class="col-md-6">
-                            <div class="row">
-                                <div class="col-md-2">
-                                    <h6 style="font-weight:bold;font-size:15px;">Address*</h6>
-                                </div>
-
-                                <div class="col-md-8 {{ $errors->first('name', 'has-error') }}">
-
-                                   <textarea name="address" rows="4" class="form-control unicode" id="address" placeholder="Paung Long 4 street,Pyinmana"></textarea>
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
+                         <div class="col-md-6">
                             <div class="row">
                                 <div class="col-md-3">
                                     <h6 style="font-weight:bold;font-size:15px;">Phone*</h6>
@@ -230,13 +218,52 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="col-md-6">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <h6 style="font-weight:bold;font-size:15px;">City*</h6>
+                                </div>
+
+                                <div class="col-md-8 {{ $errors->first('name', 'has-error') }}">
+
+                                   <input type="text" name="city" class="form-control unicode" placeholder="Naypyidaw" id="city">
+
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <br>
 
                        <div class="row">
                         <div class="col-md-6">
                             <div class="row">
-                                <div class="col-md-2">
+                                <div class="col-md-3">
+                                    <h6 style="font-weight:bold;font-size:15px;">Parent Phone*</h6>
+                                </div>
+
+                                <div class="col-md-8">
+                                    <input type="number" name="pPhone" class="form-control unicode">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <h6 style="font-weight:bold;font-size:15px;">Township*</h6>
+                                </div>
+
+                                <div class="col-md-8">
+                                     <input type="text" name="township" class="form-control unicode" placeholder="pyinmana" id="township">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+
+                      <div class="row">
+                        <div class="col-md-6">
+                            <div class="row">
+                                <div class="col-md-3">
                                     <h6 style="font-weight:bold;font-size:15px;">Email*</h6>
                                 </div>
 
@@ -250,39 +277,13 @@
                         <div class="col-md-6">
                             <div class="row">
                                 <div class="col-md-3">
-                                    <h6 style="font-weight:bold;font-size:15px;">Parent Phone*</h6>
-                                </div>
-
-                                <div class="col-md-8">
-                                    <input type="number" name="pPhone" class="form-control unicode">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <br>
-
-                     <div class="row">
-                        <div class="col-md-6">
-                            <div class="row">
-                                <div class="col-md-2">
-                                    <h6 style="font-weight:bold;font-size:15px;">City*</h6>
+                                    <h6 style="font-weight:bold;font-size:15px;">Address*</h6>
                                 </div>
 
                                 <div class="col-md-8 {{ $errors->first('name', 'has-error') }}">
 
-                                   <input type="text" name="city" class="form-control unicode" placeholder="Naypyidaw" id="city">
+                                   <textarea name="address" rows="4" class="form-control unicode" id="address" placeholder="Paung Long 4 street,Pyinmana"></textarea>
 
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="row">
-                                <div class="col-md-3">
-                                    <h6 style="font-weight:bold;font-size:15px;">Township*</h6>
-                                </div>
-
-                                <div class="col-md-8">
-                                     <input type="text" name="township" class="form-control unicode" placeholder="pyinmana" id="township">
                                 </div>
                             </div>
                         </div>
