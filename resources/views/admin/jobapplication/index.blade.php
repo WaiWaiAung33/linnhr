@@ -66,21 +66,10 @@
                              @endif
                             <td style="{{ $jobapplication->status == 1 ? 'color: #2874A6 ' : '' }}">{{$jobapplication->name}}</td>
                            
-                             <?php 
-                              foreach ($departments as $key => $value) {
-                               if($value->id == $jobapplication->dep_id);
-                               $depname = $value->name;
-                              
-                              }
-                              ?>
-                           <td style="{{ $jobapplication->status == 1 ? 'color: #2874A6 ' : '' }}">{{$depname}}</td>
-                            <?php 
-                          foreach ($positions as $key => $value) {
-                           if($value->id == $jobapplication->position_id);
-                           $name = $value->name;
-                          }
-                          ?>
-                           <td style="{{ $jobapplication->status == 1 ? 'color: #2874A6 ' : '' }}">{{ $name}}</td>
+                           
+                           <td style="{{ $jobapplication->status == 1 ? 'color: #2874A6 ' : '' }}">{{$jobapplication->department}}</td>
+                          
+                           <td style="{{ $jobapplication->status == 1 ? 'color: #2874A6 ' : '' }}">{{ $jobapplication->job}}</td>
                            <td style="{{ $jobapplication->status == 1 ? 'color: #2874A6 ' : '' }}">{{$jobapplication->edu}}</td>
                            <td style="{{ $jobapplication->status == 1 ? 'color: #2874A6 ' : '' }}">{{$jobapplication->exp_salary}}</td>
                            <td style="{{ $jobapplication->status == 1 ? 'color: #2874A6 ' : '' }}">{{$jobapplication->experience}}</td>
