@@ -1,160 +1,362 @@
-<!doctype html>
-<!--[if IE 9]> <html class="no-js ie9 fixed-layout" lang="en"> <![endif]-->
-<!--[if gt IE 9]><!--> <html class="no-js " lang="en"> <!--<![endif]-->
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Job</title>
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta name="author" content="Themesdesign" />
 
-    <!-- Basic -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    
-    <!-- Mobile Meta -->
-    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    
-    <!-- Site Meta -->
-    <title class="unicode">Linn Profile</title>
-    <meta name="keywords" content="">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <link rel="shortcut icon" href="images/favicon.ico">
 
-    <!-- Custom & Default Styles -->
-    <link rel="stylesheet" href="css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/animate.css">
-    <link rel="stylesheet" href="css/carousel.css">
-    <link rel="stylesheet" href="style.css">
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstraps.min.css') }}">
 
+    <!--Material Icon -->
+    <link rel="stylesheet" type="text/css" href="{{asset('css/materialdesignicons.min.css')}}" />
 
+    <link rel="stylesheet" type="text/css" href="{{asset('css/fontawesome.css')}}" />
+
+    <!-- selectize css -->
+    <link rel="stylesheet" type="text/css" href="{{asset('css/selectize.css')}}" />
+
+    <!--Slider-->
+    <link rel="stylesheet" href="{{asset('css/owl.carousel.css')}}" />
+    <link rel="stylesheet" href="{{asset('css/owl.theme.css')}}" />
+    <link rel="stylesheet" href="{{asset('css/owl.transitions.css')}}" />
+
+    <!-- Custom  Css -->
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
 
 </head>
-<body>
-    
-    <div id="wrapper">
-        <div class="topbar" style="background-color: #AED6F1">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-5 col-sm-12">
-                        <a class="navbar-brand" href="index.html"><img src="{{ asset('uploads/images/linn_logo2.png') }}" alt="Linda" style="height:10"></a>
-                    </div>
-                    <div class="col-md-7 col-sm-12">
-                        <nav class="topbar-menu"><br><br>
-                            <div class="list-inline text-right navbar-right">
-                                <a href="https://web.facebook.com/linncomputerstore/"><img src="{{ asset('uploads/jobopeningPhoto/flogo.png') }}" alt="Linda" style="height:10" width="50" class="unicode">Linn Facebook</a>
-                               <!--  <a href="https://linn.com.mm/"><i class="fa fa-cart-arrow-down"> Linn OnlineShop </i></a> -->
-                            </div><!-- end list -->
-                        </nav><!-- end menu -->
-                    </div><!-- end col -->
-                </div><!-- end row --><br>
-            </div><!-- end container -->
-       <!-- end topbar -->
-        <section class="section transheader homepage parallax" data-stellar-background-ratio="0.1" style="background-color:#AED6F1; ">
-            <div class="container">
-                <div class="row">   
-                    <div class="col-md-10 col-md-offset-1 col-sm-12 text-center">
-                        <h2  style="color:#000 " class="unicode" class="unicode">Linn IT Solution Co.,Ltd </h2><br>
-                        <h4 class="lead" style="color:#2E86C1" class="unicode">ဝန်ထမ်းလျှောက်လွှာခေါ်ယူခြင်း</h4>
-                    </div><!-- end col -->
-                </div><!-- end row -->
-            </div><!-- end container -->
-        </section><!-- end section -->
-    </div>
-   <?php
-    $colors = ["#f89f51","#4dd153","#2da0f3","#af74f7","#17b6e6","#6094c1","#ee335d"];
-   ?>
-<div class="row" style="margin: 20px">
-    @foreach($jobopenings as $i=>$jobopening)
-    
-    <div class="col-md-3">
-                    <div class="card text-white" style="background-color: {!! $colors[$i] !!};border-radius: 5px 5px 5px 5px">
-                        <a href="{{route('cvform.show',$jobopening->id)}}" class="text-white">
-                         <p style="margin-top: 5px;margin-left: 5px;color: black;font-weight: bold;" class="unicode">Close Date:<span style="float: right;">{{date('d-m-Y',strtotime($jobopening->close_date))}}</span></p>
-                        <div class="card-body row">
-                            <div class="col-md-4" >
-                            @if($jobopening->photo == '')
 
-                             <img src="linn3.png" alt="photo" width="100">
-                           
-                             @else
-                             <!--  <div style="background-color: #D1F2EB ;margin:5px;padding: 5px;border-radius: 120px"> -->
-                              <img src="{{ asset('uploads/jobopeningPhoto/'.$jobopening->photo) }}" alt="photo" width="100">
-                          <!-- </div> -->
-                             @endif
-                             </div>
-                             <div class="col-md-8" >
-                           <h4 style="color: black" class="unicode">{{$jobopening->description}}</h4>
-                            <p style="color: black" class="unicode">{{$jobopening->viewDepartment->name}}</p>
-                            <p style="color: black" class="unicode">{{$jobopening->viewPosition->name}}</p>
-                             <a href="{{route('cvform.show',$jobopening->id)}}" style="float: right;margin-right: 5px;margin-bottom: 5px" class="btn btn-sm btn-primary" class="unicode">Apply</a>
-                            </div>
-           
-                            
-                            
-                        </div>
+<body>
+    <!-- Loader -->
+    <div id="preloader">
+        <div id="status">
+            <div class="spinner">
+                <div class="double-bounce1"></div>
+                <div class="double-bounce2"></div>
+            </div>
+        </div>
+    </div>
+    <!-- Loader -->
+
+    <!-- Navigation Bar-->
+    <header id="topnav" class="defaultscroll scroll-active">
+        <!-- Tagline STart -->
+        <div class="tagline">
+            <div class="container">
+                <div class="float-left">
+
+                    <div class="phone">
+                        <i class="mdi mdi-phone-classic"></i> 09 400887799
+                    </div>
+                    <div class="email">
+                        <a href="#">
+                            <i class="mdi mdi-email"></i> linncomputer@gmail.com
                         </a>
                     </div>
                 </div>
-    @endforeach
+                <div class="float-right">
+                    <ul class="topbar-list list-unstyled d-flex" style="margin: 11px 0px;">
+                       
+                        <li class="list-inline-item">
+                            <select id="select-lang" class="demo-default">
+                                <option value="">Language</option>
+                                <option value="4">English</option>
+                            </select>
+                        </li>
+                    </ul>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+        <!-- Tagline End -->
 
-    </div> 
-        <section class="section overfree">
+        <!-- Menu Start -->
+        <div class="container">
+            <!-- Logo container-->
+            <div>
+                <a href="index.html" class="logo">
+                    <img src="images/logo-light.png" alt="" class="logo-light" height="18" />
+                    <img src="images/logo-dark.png" alt="" class="logo-dark" height="18" />
+                </a>
+            </div>                 
+            <div class="buy-button">
+                 <a href="https://shopping.linncomputer.com/"> <img src="{{ asset('uploads/images/shopping-cart.png') }}" alt="photo" width="20"> Linn OnlineShop </a>
+            </div>
+            <!--end login button-->
+            <!-- End Logo container-->
+            <div class="menu-extras">
+                <div class="menu-item">
+                    <!-- Mobile menu toggle-->
+                    <a class="navbar-toggle">
+                        <div class="lines">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </a>
+                    <!-- End mobile menu toggle-->
+                </div>
+            </div>
+    
+            <div id="navigation" >
+                <!-- Navigation Menu-->   
+                <ul class="navigation-menu">
+                    <li><a href="{{route('frontend.home')}}">Home</a></li>
+                    <li class="has-submenu">
+                        <a href="#">Job List</a>
+                      
+                    </li>
+    
+                    <li class="has-submenu">
+                        <a href="#">About us</a>
+                    
+                    </li>
+                    <li>
+                        <a href="#">contact</a>
+                    </li>
+                </ul><!--end navigation menu-->
+            </div><!--end navigation-->
+        </div><!--end container-->
+        <!--end end-->
+    </header><!--end header-->
+    <!-- Navbar End -->
+
+    <!-- Start Home -->
+    <section class="bg-home" style="background-image: url('uploads/images/webbacklogo.jpg');">
+        <div class="bg-overlay"></div>
+        <div class="home-center">
+          
+                    <div class="home-form-position">
+                        <div class="row">
+                           <div class="col-md-12 col-md-offset-1 col-sm-12 text-center">
+                            <h2  style="color:white " class="unicode" class="unicode">Linn IT Solution Co.,Ltd </h2><br>
+                            <h4 class="lead" style="color:white" class="unicode">ဝန်ထမ်းလျှောက်လွှာခေါ်ယူခြင်း</h4>
+                            </div>
+                          
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end home -->
+
+   
+
+    <!-- all jobs start -->
+    <section class="section bg-light">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12">
+                    <div class="section-title text-center mb-4 pb-2">
+                        <h4 class="title title-line pb-5">Find Your Jobs</h4>
+                       
+                    </div>
+                </div>
+            </div>
            
-            <div class="container">
-                <div class="section-title text-center">
-                    <small class="unicode">Welcome to the best Linn Services</small>
-                    <h3 class="unicode">Top Reasons to Choose Us</h3>
-                    <!-- <hr>
-                    <p class="lead"> Best Service!! Best</p> -->
-                </div><!-- end section-title -->
 
-                <div class="row service-list text-center">
-                    <div class="col-md-4 col-sm-12 col-xs-12 first">
-                        <div class="service-wrapper wow fadeIn">    
-                              <img src="{{ asset('uploads/images/trophy.png') }}" alt="photo" width="80px" height="80px">
-                            <div class="service-details">
-                                <h4 class="unicode"><a href="service-01.html" title="">What We Do</a></h4>
-                                <p class="unicode">We listen to your feedback. We provide a high level of support. We focus on the quality of our services.</p>
-                                <a href="https://web.facebook.com/linncomputerstore/" class="readmore" target="_blank" class="unicode">View Details</a>
+            @foreach($jobopenings as $i=>$jobopening)
+            <div class="row" >
+                <div class="col-12">
+                    <div class="tab-content mt-2" id="pills-tabContent">
+                        <div class="tab-pane fade show active" id="recent-job" role="tabpanel" aria-labelledby="recent-job-tab">
+
+                     
+                            <div class="row" >
+                                <div class="col-lg-12" >
+
+                                    <div class="job-box bg-white overflow-hidden border rounded mt-4 position-relative overflow-hidden">
+                                        <div class="lable text-center pt-2 pb-2">
+                                            <ul class="list-unstyled best text-white mb-0 text-uppercase">
+                                                <li class="list-inline-item"><i class="mdi mdi-star"></i></li>
+                                            </ul>
+                                        </div>
+                                        <div class="p-4">
+                                            <div class="row align-items-center">
+                                                <div class="col-md-2">
+                                                    <div class="mo-mb-2">
+                                                         @if($jobopening->photo == '')
+
+                                                         <img src="linn3.png" alt="photo" width="100">
+                                                       
+                                                         @else
+                                                         <!--  <div style="background-color: #D1F2EB ;margin:5px;padding: 5px;border-radius: 120px"> -->
+                                                          <img src="{{ asset('uploads/jobopeningPhoto/'.$jobopening->photo) }}" alt="photo" width="100">
+                                                      <!-- </div> -->
+                                                         @endif
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div>
+                                                        <h5 class="f-18"><a href="#" class="text-dark">{{$jobopening->description}}</a></h5>
+                                                        <p class="text-muted mb-0">{{$jobopening->viewPosition->name}}</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div>
+                                                        <p class="text-muted mb-0"><i class="mdi mdi-map-marker text-primary mr-2"></i>Naypyidaw</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <div>
+                                                        <p class="text-muted mb-0 mo-mb-2"><span class="text-primary">$</span>‌Negotiation</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <!-- <div>
+                                                        <p class="text-muted mb-0">Full Time</p>
+                                                    </div> -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="p-3 bg-light">
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <div>
+                                                        <p class="text-muted mb-0 mo-mb-2"><span class="text-dark">Close Date :</span> {{date('d-m-Y',strtotime($jobopening->close_date))}}</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div>
+                                                        <p class="text-muted mb-0 mo-mb-2"><span class="text-dark">Notes :</span> {{$jobopening->description}} </p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <div>
+                                                        <a href="{{route('cvform.show',$jobopening->id)}}" class="text-primary">Apply Now <i class="mdi mdi-chevron-double-right"></i></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                       
+                               
+                                </div>
                             </div>
-                        </div><!-- end service-wrapper -->
-                    </div><!-- end col -->
+                        </div>
+                          @endforeach
 
-                    <div class="col-md-4 col-sm-12 col-xs-12">
-                        <div class="service-wrapper wow fadeIn">    
-                             <img src="{{ asset('uploads/images/sharing-content.png') }}" alt="photo" width="80px" height="80px">
-                            <div class="service-details">
-                                <h4 class="unicode"><a href="service-02.html" title="">Who We Are</a></h4>
-                                <p class="unicode">We are best service provider</p>
-                                <a href="https://web.facebook.com/linncomputerstore/" class="readmore" target="_blank" class="unicode">View Details</a>
+        
+    </section>
+    <!-- all jobs end -->
+
+    <!-- How it Work start -->
+    <section class="section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12">
+                    <div class="section-title text-center mb-4 pb-2">
+                        <h4 class="title title-line pb-5">Top Reasons to Choose Us</h4>
+                      
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 mt-4 pt-2">
+                    <div class="how-it-work-box bg-light p-4 text-center rounded shadow">
+                        <div class="how-it-work-img position-relative rounded-pill mb-3">
+
+                            <img src="{{ asset('uploads/images/trophy.png') }}" alt="" class="mx-auto d-block" height="50">
+                        </div>
+                        <div>
+                            <h5>What We Do</h5>
+                            <p class="text-muted">We listen to your feedback. We provide a high level of support. We focus on the quality of our services.</p>
+                            <a href="#" class="text-primary">Read more <i class="mdi mdi-chevron-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mt-4 pt-2">
+                    <div class="how-it-work-box bg-light p-4 text-center rounded shadow">
+                        <div class="how-it-work-img position-relative rounded-pill mb-3">
+                            <img src="{{ asset('uploads/images/sharing-content.png') }}" alt="" class="mx-auto d-block" height="50">
+                        </div>
+                        <div>
+                            <h5>Who We Are</h5>
+                            <p class="text-muted">We are best service provider.</p>
+                            <a href="#" class="text-primary">Read more <i class="mdi mdi-chevron-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mt-4 pt-2">
+                    <div class="how-it-work-box bg-light p-4 text-center rounded shadow">
+                        <div class="how-it-work-img position-relative rounded-pill mb-3">
+                            <img src="{{ asset('uploads/images/our-mission.png') }}" alt="" class="mx-auto d-block" height="50">
+                        </div>
+                        <div>
+                            <h5>Our Mission</h5>
+                            <p class="text-muted">To provide our customers with special services "Give us a chance and we will prove our efficiency".</p>
+                            <a href="#" class="text-primary">Read more <i class="mdi mdi-chevron-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- How it Work end -->
+
+    
+
+    
+  
+
+    <!-- subscribe start -->
+    <section class="section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-5">
+                    <div class="float-left position-relative notification-icon mr-2">
+                        <i class="mdi mdi-bell-outline text-primary"></i>
+                        <span class="badge badge-pill badge-danger">1</span>
+                    </div>
+                    <h5 class="mt-2 mb-0">Your Job Notification</h5>
+                </div>
+                <div class="col-lg-8 col-md-7 mt-4 mt-sm-0">
+                    <form>
+                        <div class="form-group mb-0">
+                            <div class="input-group mb-0">
+                                <input name="email" id="email" type="email" class="form-control" placeholder="Your email :" required="" aria-describedby="newssubscribebtn">
+                                <div class="input-group-append">
+                                    <button class="btn btn-primary submitBnt" type="submit" id="newssubscribebtn">Subscribe</button>
+                                </div>
                             </div>
-                        </div><!-- end service-wrapper -->
-                    </div><!-- end col -->
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- subscribe end -->
 
-                    <div class="col-md-4 col-sm-12 col-xs-12 last">
-                        <div class="service-wrapper wow fadeIn">    
-                        <img src="{{ asset('uploads/images/our-mission.png') }}" alt="photo" width="80px" height="80px">
-                            <div class="service-details">
-                                <h4 class="unicode"><a href="service-02.html" title="">Our Mission</a></h4>
-                                <p class="unicode"> To provide our customers with special services "Give us a chance and we will prove our efficiency"</p>
-                                <a href="https://web.facebook.com/linncomputerstore/" class="readmore" target="_blank" class="unicode">View Details</a>
-                            </div>
-                        </div><!-- end service-wrapper -->
-                    </div><!-- end col -->
-                </div><!-- end row -->
-            </div><!-- end container -->
-        </section><!-- end section -->
-
-       <footer class="footer primary-footer" style="background-color: #2a3c66;">
-            <div class="container">
+    <!-- footer start -->
+    <footer class="footer">
+          <div class="container">
                 <div class="row">
                     <div class="col-md-4 col-sm-4">
                         <div class="widget clearfix" >
-                            <div style="margin-left: 20px">
-                            <h4 class="widget-title" style="color: white;padding-left: 20px;" class="unicode">Branch</h4>
+
+
+                            <div >
+                            <h4 class="widget-title" style="color: white;" class="unicode">Branch</h4>
                             </div>
-                            <ul style="list-style-type: none;">
+                            <ul class="social list-inline mb-0">
                                 <li><a href="#" style="color: white" class="unicode">Head Office</a></li>
                                 <li><a href="#" style="color: white" class="unicode">Linn 1</a></li>
                                 <li><a href="#" style="color: white" class="unicode">Linn 2</a></li>
                             </ul>
+                              <ul class="social-icon social list-inline mb-0">
+                            <li class="list-inline-item"><a href="https://www.facebook.com/linncomputerstore/" class="rounded"><i class="mdi mdi-facebook"></i></a></li>
+                            <li class="list-inline-item"><a href="#" class="rounded"><i class="mdi mdi-twitter"></i></a></li>
+                            <li class="list-inline-item"><a href="#" class="rounded"><i class="mdi mdi-instagram"></i></a></li>
+                            <li class="list-inline-item"><a href="#" class="rounded"><i class="mdi mdi-google"></i></a></li>
+                        </ul>
                         </div><!-- end widget -->
                     </div><!-- end col -->
 
@@ -185,16 +387,22 @@
                     </div><!-- end col -->
                 </div><!-- end row -->
             </div><!-- end container -->
-        </footer><!-- end primary-footer -->
-      
+    </footer>
+   
 
-    <!-- jQuery Files -->
-    <script src="{{ asset('jquery.min.js') }}"></script>
-    <script src="{{ asset('bootstrap.min.js') }}"></script>
-    <script src="{{ asset('parallax.js') }}"></script>
-    <script src="{{ asset('animate.js') }}"></script>
-    <script src="{{ asset('owl.carousel.js') }}"></script>
-    <script src="{{ asset('custom.js') }}"></script>
+    <!-- javascript -->
+    <script type="text/javascript" src="{{asset('js/jquerys.min.js')}}"></script>
 
+
+     <script type="text/javascript" src="{{asset('js/bootstrap.bundle.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('js/jquery.easing.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('js/plugins.js')}}"></script>
+     <script type="text/javascript" src="{{asset('js/selectize.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('js/jquery.nice-select.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('js/owl.carousel.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('js/counter.int.js')}}"></script>
+    <script type="text/javascript" src="{{asset('js/apps.js')}}"></script>
+    <script type="text/javascript" src="{{asset('js/home.js')}}"></script>
+   
 </body>
 </html>

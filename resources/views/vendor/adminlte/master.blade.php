@@ -81,9 +81,10 @@
             font-family: Pyidaungsu, Yunghkio, 'Masterpiece Uni Sans' !important;
         }
     
-        .unicode {
+       .unicode {
             font-family: Pyidaungsu, Yunghkio, 'Masterpiece Uni Sans' !important;
         }
+
     
         .help-block {
             color: red;
@@ -103,6 +104,7 @@
             font-family: Pyidaungsu, Yunghkio, 'Masterpiece Uni Sans' !important;
             font-size: 13px !important;
         }
+
     </style>
 
    <link rel="stylesheet" type="text/css" href="{{ asset('css/custom.css') }}">

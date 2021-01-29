@@ -37,7 +37,7 @@ IMPORT FILES
 ************************************/
 
 @font-face {
-    font-family: "Flaticon";
+    /*font-family: "Flaticon";*/
     src: url("fonts/Flaticon.eot");
     src: url("fonts/Flaticon.eot?#iefix") format("embedded-opentype"), url("fonts/Flaticon.woff") format("woff"), url("fonts/Flaticon.ttf") format("truetype"), url("fonts/Flaticon.svg#Flaticon") format("svg");
     font-weight: normal;
@@ -46,7 +46,7 @@ IMPORT FILES
 
 @media screen and (-webkit-min-device-pixel-ratio:0) {
     @font-face {
-        font-family: "Flaticon";
+       /* font-family: "Flaticon";*/
         src: url("fonts/Flaticon.svg#Flaticon") format("svg");
     }
 }
@@ -55,7 +55,7 @@ IMPORT FILES
 [class*=" flaticon-"]:before,
 [class^="flaticon-"]:after,
 [class*=" flaticon-"]:after {
-    font-family: Flaticon;
+   /* font-family: Flaticon;*/
     font-style: normal;
 }
 
@@ -142,7 +142,7 @@ body {
     font-size: 16px;
     font-weight: 300;
     line-height: 26px;
-    font-family: 'Source Sans Pro', sans-serif;
+   
 }
 
 p {
@@ -150,7 +150,7 @@ p {
     line-height: 26px;
     margin-bottom: 15px;
     opacity: 0.95;
-    font-family: 'Source Sans Pro', sans-serif;
+  
 }
 
 a {
@@ -170,7 +170,7 @@ h4,
 h5,
 h6 {
     color: #232323;
-    font-family: 'Source Sans Pro', sans-serif;
+   
 }
 
 
@@ -574,7 +574,7 @@ SECTION
 
 .section-title .lead {
     color: #767676;
-    font-family: Trebuchet MS;
+   /* font-family: Trebuchet MS;*/
     font-size: 18px;
     line-height: 1.6;
     margin-bottom: 0;
@@ -683,7 +683,7 @@ SIDEBAR
 .category-widget li:before {
     content: "\f178";
     margin-right: 10px;
-    font-family: FontAwesome;
+/*    font-family: FontAwesome;*/
 }
 
 
@@ -857,7 +857,7 @@ hr.invis2 {
 
 .readmore:hover:after {
     content: "\f105";
-    font-family: FontAwesome;
+   /* font-family: FontAwesome;*/
     display: inline-block;
     padding: 0 0 0 5px;
 }
@@ -1439,13 +1439,13 @@ SEO TEST
 .good:before {
     content: "\f00c";
     margin-right: 10px;
-    font-family: FontAwesome;
+    /*font-family: FontAwesome;*/
 }
 
 .bad:before {
     content: "\f00d";
     margin-right: 10px;
-    font-family: FontAwesome;
+   /* font-family: FontAwesome;*/
 }
 
 .circle-detail .progress {
@@ -2589,7 +2589,7 @@ SERVICES & CASE
 
 .feature-list li:before {
     content: "\f00c";
-    font-family: FontAwesome;
+   /* font-family: FontAwesome;*/
     position: absolute;
     display: inline-block;
     left: 10px;
@@ -2733,7 +2733,7 @@ FOOTER
 .NotGeneric-Title {
     font-weight: 300 !important;
     color: #212121;
-    font-family: 'Source Sans Pro', sans-serif;
+   /* font-family: 'Source Sans Pro', sans-serif;*/
 }
 
 .tp-caption.NotGeneric-Title.fstrong,
@@ -2741,7 +2741,7 @@ FOOTER
     font-weight: bold !important;
     color: #212121;
     letter-spacing: 0 !important;
-    font-family: 'Source Sans Pro', sans-serif;
+    /*font-family: 'Source Sans Pro', sans-serif;*/
 }
 
 .tp-caption.NotGeneric-Title span,
@@ -2752,7 +2752,7 @@ FOOTER
 .tp-caption.NotGeneric-SubTitle,
 .NotGeneric-SubTitle {
     color: #767676;
-    font-family: 'Source Sans Pro', sans-serif;
+    /*font-family: 'Source Sans Pro', sans-serif;*/
     letter-spacing: 0;
 }
 
@@ -2760,7 +2760,7 @@ FOOTER
 .tp-caption.NotGeneric-CallToAction:hover,
 .NotGeneric-CallToAction,
 .tp-caption.NotGeneric-CallToAction {
-    font-family: 'Source Sans Pro', sans-serif;
+    /*font-family: 'Source Sans Pro', sans-serif;*/
     letter-spacing: 0;
     border-width: 2px !important;
     border-radius: 500px;

@@ -72,13 +72,13 @@
                  @endif
             </div>
             <div class="header">
-                <h6 style="color: gray;padding-top: 10px">{{$employees->name}}</h6>
+                <h6 style="color: gray;padding-top: 10px" class="unicode">{{$employees->name}}</h6>
             </div>
           
         </div>
         <div class="col-md-7">
         <div class="table-responsive">
-             <table class="table table-bordered styled-table">
+             <table class="table table-bordered styled-table unicode">
                 <thead>
                     <tr>
                         <th style="font-size: 16px"><i class="fa fa-address-book" ></i> Personal Data</th>

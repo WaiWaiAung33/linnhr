@@ -39,7 +39,7 @@ class EmployeeImport implements ToCollection,WithHeadingRow
                 
                 foreach ($rows as $row) 
                 {
-                    
+                    // dd($row);
                     $dob = $this->transformDate($row['dob'])->format("Y-m-d");
                     $jdate = $this->transformDate($row['join_date'])->format("Y-m-d");
                     // dd($dobs);
@@ -104,7 +104,13 @@ class EmployeeImport implements ToCollection,WithHeadingRow
                         'address'=>$row['address'],
                         'city'=>$row['city'],
                         'township'=>$row['township'],
-                        'qualification'=>$row['qualification']
+                        'qualification'=>$row['qualification'],
+                        'religion'=>$row['religion'],
+                        'email'=>$row['email'],
+                        'fPhone'=>$row['father_phone'],
+                        'experience'=>$row['experience'],
+                        'exp_salary'=>$row['exp_salary'],
+                        'hostel'=>$row['hostel'],
                         ];
                        
                         Employee::create($arr);

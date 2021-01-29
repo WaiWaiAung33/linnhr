@@ -31,7 +31,7 @@
          </div>
 </div>
           
-         <form action="{{route('employee.index')}}" method="get" accept-charset="utf-8" class="form-horizontal">
+         <form action="{{route('employee.index')}}" method="get" accept-charset="utf-8" class="form-horizontal unicode" >
             <div class="row form-group">
                 <div class="col-md-12">
                     <div class="row">
@@ -87,7 +87,7 @@
         </form>
 
         <div class="row">
-        <form class="form-horizontal" action="{{route('import')}}" method="POST" enctype="multipart/form-data">
+        <form class="form-horizontal unicode" action="{{route('import')}}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="row form-group">
                         <div class="col-md-4">
@@ -111,7 +111,7 @@
         </form>
       </div>
 
-         <form id="excel_form" action="{{ route('export') }}"  method="POST">
+         <form id="excel_form" action="{{ route('export') }}"  method="POST" class="unicode">
                 @csrf
                 @method('post')
                 <input type="hidden" id="branch_id" name="branch_id" value="{{ $branch_id }}">
@@ -120,8 +120,8 @@
          </form>
 
   <p style="padding-top: 20px" class="unicode">Total record: {{$count}}</p>
-    <div class="table-responsive" style="font-size:15px;">
-                <table class="table table-bordered styled-table">
+    <div class="table-responsive unicode" style="font-size:15px;">
+                <table class="table table-bordered styled-table unicode">
                   <thead>
                     <tr> 
                       <th>No</th>
@@ -193,7 +193,6 @@
 
 @stop 
 @section('css')
- <link rel="stylesheet" href="/css/admin_custom.css">
   
 @stop
 
