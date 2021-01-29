@@ -24,6 +24,7 @@ class CreateCvformTable extends Migration
             $table->string('dob');
             $table->string('edu');
             $table->string('religion');
+            $table->string('gender');
             $table->string('marrical_status');
             $table->string('email');
             $table->string('fName');

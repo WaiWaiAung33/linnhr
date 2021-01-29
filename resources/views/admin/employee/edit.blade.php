@@ -147,6 +147,32 @@
 
                             <div class="row">
                                 <div class="col-md-3">
+                                    <h6 style="font-weight:bold;font-size:15px;"> Religion</h6>
+                                </div>
+
+                                <div class="col-md-8 {{ $errors->first('lat', 'has-error') }}">
+                                     <input type="text" name="religion" class="form-control unicode" value="{{$employees->religion}}">
+
+                                </div>
+                            </div><br>
+
+                               <div class="row">
+                                <div class="col-md-3">
+                                    <h6 style="font-weight:bold;font-size:15px;">Marrical Stauts*</h6>
+                                </div>
+
+
+                                 <div class="col-md-2 {{ $errors->first('marrical_status', 'has-error') }}">
+                                    <input type="radio" name="marrical_status"  id="marrical_status" value="marry" {{ $employees->marrical_status == 'marry' ? 'checked' : '' }}> ရှိ
+                                    
+                                </div>   
+                                <div class="col-md-2">
+                                    <input type="radio" name="marrical_status" id="marrical_status" value="singal" {{ $employees->marrical_status == 'singal' ? 'checked' : '' }}> မရှိ
+                                </div> 
+                            </div><br>
+
+                            <div class="row">
+                                <div class="col-md-3">
                                     <h6 style="font-weight: bold;;font-size:15px;">Photo</h6>
                                 </div>
 
@@ -186,7 +212,7 @@
                     </div>
                 </div>
             </div> -->
-                    <br>
+                   
                     <div style="width: 100%">
                         <!-- <div class="col-md-6">
                 </div>
@@ -214,39 +240,22 @@
                 <label for="tab-2">Contact</label>
                 <div class="tabby-content">
                     <br>
-                     <div class="row">
-                        <div class="col-md-6">
+                      <div class="row">
+                         <div class="col-md-6">
                             <div class="row">
-                                <div class="col-md-2">
-                                    <h6 style="font-weight: bold;;font-size:15px;">Address</h6>
+                                <div class="col-md-3">
+                                    <h6 style="font-weight:bold;font-size:15px;">Phone*</h6>
                                 </div>
 
-                                <div class="col-md-8 {{ $errors->first('name', 'has-error') }}">
-
-                                   <textarea name="address" rows="4" class="form-control unicode" id="address">{{$employees->address}}</textarea>
-
+                                <div class="col-md-8">
+                                    <input type="number" name="phone_no" class="form-control unicode" id="mobile" placeholder="09 xxx xxx xxx" value="{{$employees->phone_no}}">
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="row">
                                 <div class="col-md-3">
-                                    <h6 style="font-weight: bold;;font-size:15px;">Mobile</h6>
-                                </div>
-
-                                <div class="col-md-8">
-                                    <input type="number" name="phone_no" class="form-control unicode" id="mobile" value="{{$employees->phone_no}}">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <br>
-
-                     <div class="row">
-                        <div class="col-md-6">
-                            <div class="row">
-                                <div class="col-md-2">
-                                    <h6 style="font-weight: bold;;font-size:15px;">City</h6>
+                                    <h6 style="font-weight:bold;font-size:15px;">City*</h6>
                                 </div>
 
                                 <div class="col-md-8 {{ $errors->first('name', 'has-error') }}">
@@ -256,10 +265,25 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
+                    <br>
+
+                       <div class="row">
                         <div class="col-md-6">
                             <div class="row">
                                 <div class="col-md-3">
-                                    <h6 style="font-weight: bold;;font-size:15px;">Township</h6>
+                                    <h6 style="font-weight:bold;font-size:15px;">Parent Phone*</h6>
+                                </div>
+
+                                <div class="col-md-8">
+                                    <input type="number" name="pPhone" class="form-control unicode" value="{{$employees->fPhone}}">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <h6 style="font-weight:bold;font-size:15px;">Township*</h6>
                                 </div>
 
                                 <div class="col-md-8">
@@ -270,6 +294,35 @@
                     </div>
                     <br>
 
+                      <div class="row">
+                        <div class="col-md-6">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <h6 style="font-weight:bold;font-size:15px;">Email*</h6>
+                                </div>
+
+                                <div class="col-md-8 {{ $errors->first('name', 'has-error') }}">
+
+                                   <input type="email" name="email" class="form-control unicode" value="{{$employees->email}}">
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <h6 style="font-weight:bold;font-size:15px;">Address*</h6>
+                                </div>
+
+                                <div class="col-md-8 {{ $errors->first('name', 'has-error') }}">
+
+                                   <textarea name="address" rows="4" class="form-control unicode" id="address" placeholder="Paung Long 4 street,Pyinmana" >{{$employees->address}}</textarea>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
                     <div style="width: 100%">
                         <a class="btn btn-primary unicode" id="photo_back" style="float: left;">Back</a>
                         <a class="btn btn-success unicode" id="photo_next" style="float: right;">Next</a>
@@ -428,7 +481,48 @@
                                 </div>
                             </div>
                         </div>
+                         <div class="col-md-6">
+                            <div class="row">
+                                <!-- <label class="col-md-3 unicode" style="text-align: right;">Assign</label> -->
+                                <div class="col-md-2">
+                                    <h6 style="font-weight:bold;font-size:15px;">Hostel</h6>
+                                </div>
+                                  <div class="col-md-2 ">
+                                    <input type="radio" name="isHostel" value="နေ" {{ $employees->hostel == 'နေ' ? 'checked' : '' }}> Yes
+                                    
+                                </div>   
+                                <div class="col-md-2">
+                                    <input type="radio" name="isHostel" value="မနေ" {{ $employees->hostel == 'မနေ' ? 'checked' : '' }}> No
+                                </div> 
+                            </div>
+                        </div>
                     </div><br>
+
+                       <div class="row">
+                         <div class="col-md-6">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <h6 style="font-weight:bold;font-size:15px;">Expected Salary</h6>
+                                </div>
+                                <!-- <label class="col-md-3 unicode" id="appointment_label" style="text-align: right;">Appoint Date</label> -->
+                                <div class="col-md-8">
+                                      <input type="text" name="salary" class="form-control unicode" value="{{$employees->salary}}"> 
+                                </div>
+                            </div>
+                        </div>
+                          <div class="col-md-6">
+                            <div class="row">
+                                <!-- <label class="col-md-3 unicode" style="text-align: right;">Assign</label> -->
+                                <div class="col-md-2">
+                                    <h6 style="font-weight:bold;font-size:15px;">Experince</h6>
+                                </div>
+                                  <div class="col-md-8">
+                                      <input type="text" name="experience" class="form-control unicode" value="{{$employees->experience}}"> 
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
 
                     <div style="width: 100%">
                         <a class="btn btn-primary unicode" id="install_back" style="float: left;">Back</a>

@@ -243,17 +243,37 @@
       </div>
     </div>
     <br>
+     <div class="row">
+      <div class="col-md-4" style="text-align: left;">
+        <label class="unicode">၆။ အိမ်ထောင်ရှိ / မရှိ</label>
+      </div>
+      <div class="col-md-1">
+          <input type="radio" name="marrical_status" value="marry" id="marry" checked> 
+          
+      </div> 
+      <div class="col-md-1"><label class="unicode">ရှိ</label></div>  
+      <div class="col-md-1">
+          <input type="radio" name="marrical_status" value="singal" id="singnal"> 
+      </div> 
+      <div class="col-md-2">
+        <label class="unicode">မရှိ</label>
+      </div>
+     <!--  <div class="col-md-6">
+        <input type="text" name="marrical_status">
+      </div> -->
+    </div>
+    <br>
     <div class="row">
       <div class="col-md-4" style="text-align: left;">
         <label class="unicode">၆။ ကျား/မ</label>
       </div>
       <div class="col-md-1">
-          <input type="radio" name="marrical_status" value="male" id="gender" checked> 
+          <input type="radio" name="gender" value="male" id="gender" checked> 
           
       </div> 
       <div class="col-md-1"><label class="unicode">ကျား</label></div>  
       <div class="col-md-1">
-          <input type="radio" name="marrical_status" value="female" id="gender"> 
+          <input type="radio" name="gender" value="female" id="gender"> 
       </div> 
       <div class="col-md-2">
         <label class="unicode">မ</label>

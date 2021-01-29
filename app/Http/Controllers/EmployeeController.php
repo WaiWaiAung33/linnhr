@@ -104,6 +104,7 @@ class EmployeeController extends Controller
             'position_id'=>$request->position,
             'name'=> $request->name,
             'gender'=>$request->gender,
+            'marrical_status'=>$request->marrical_status,
             'father_name'=>$request->father_name,
             'phone_no'=>$request->phone_no,
             'nrc_code'=>$request->nrc_code,
@@ -200,6 +201,7 @@ class EmployeeController extends Controller
             'position_id'=>$request->position,
             'name'=> $request->name,
             'gender'=>$request->gender,
+            'marrical_status'=>$request->marrical_status,
             'father_name'=>$request->father_name,
             'phone_no'=>$request->phone_no,
             'nrc_code'=>$request->nrc_code,
@@ -216,6 +218,12 @@ class EmployeeController extends Controller
             'qualification'=>$request->qualification,
             'salary'=>$request->salary,
             'photo'=>$photo,
+            'religion'=>$request->religion,
+            'email'=>$request->email,
+            'fPhone'=>$request->pPhone,
+            'experience'=>$request->experience,
+            'exp_salary'=>$request->salary,
+            'hostel'=>$request->isHostel,
             
 
         ]);

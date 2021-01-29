@@ -65,6 +65,7 @@ class JobopeningController extends Controller
 
          $rules = [
             'dep_id'=>'required',
+            'title'=>'required',
             'description'=>'required',
             'posted_date'=>'required',
             'last_date'=>'required',
@@ -76,6 +77,7 @@ class JobopeningController extends Controller
         $jobopening=Jobopening::create([
             'dep_id'=> $request->dep_id,
             'position_id'=>$request->position_id,
+            'title'=>$request->title,
             'description'=>$request->description,
             'posted_date'=>$request->posted_date,
             'last_date'=>$request->last_date,
@@ -138,6 +140,7 @@ class JobopeningController extends Controller
         $jobopenings=$jobopenings->update([
             'dep_id'=> $request->dep_id,
             'position_id'=>$request->position_id,
+            'title'=>$request->title,
             'description'=>$request->description,
             'posted_date'=>$request->posted_date,
             'last_date'=>$request->last_date,

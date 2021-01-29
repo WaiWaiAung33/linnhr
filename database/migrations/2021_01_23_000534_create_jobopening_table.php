@@ -17,6 +17,7 @@ class CreateJobopeningTable extends Migration
             $table->id();
             $table->integer('dep_id');
             $table->integer('position_id');
+            $table->string('title');
             $table->string('description');
             $table->string('posted_date');
             $table->string('last_date');

@@ -48,6 +48,7 @@
                   <thead>
                     <tr> 
                       <th>No</th>
+                      <th>Title</th>
                         <th>Department Name</th>
                         <th>Rank</th>
                         <th>Posted Date</th>
@@ -61,6 +62,7 @@
               		@foreach($jobopenings as $jobopening)
                         <tr>
                             <td>{{++$i}}</td>
+                            <td>{{$jobopening->title}}</td>
                             <td>{{$jobopening->viewDepartment->name}}</td>
                             <td>{{$jobopening->viewPosition->name}}</td>
                             <td>{{date('d/m/Y',strtotime($jobopening->posted_date))}}</td>

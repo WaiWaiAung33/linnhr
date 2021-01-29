@@ -52,6 +52,7 @@
     <input type="hidden" name="hostel" value="{{$jobapplications->hostel}}">
     <input type="hidden" name="appliedDate" value="{{$jobapplications->applied_date}}">
      <input type="hidden" name="address" value="{{$jobapplications->address}}">
+      <input type="hidden" name="gender" value="{{$jobapplications->gender}}">
 
 
     <div class="row form-group">

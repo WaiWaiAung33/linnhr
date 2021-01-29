@@ -63,7 +63,21 @@
               </div>
         </div>
 
+         <div class="row form-group">
+            <div class="col-md-6">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <h6 style="font-weight:bold;font-size:15px;">Title</h6>
+                                </div>
 
+                                <div class="col-md-8 $errors->first('title', 'has-error')">
+
+                                       <input type="text" name="title" class="form-control unicode" id="title" value="{{$jobopenings->title}}"> 
+                                       
+                                </div>
+                            </div>
+              </div>
+        </div>
 
         <div class="row form-group">
             <div class="col-md-6">

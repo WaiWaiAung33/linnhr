@@ -76,6 +76,27 @@
               </div>
         </div>
 
+         <div class="row form-group">
+            <div class="col-md-6">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <h6 style="font-weight:bold;font-size:15px;">Title</h6>
+                                </div>
+
+                                <div class="col-md-8 $errors->first('title', 'has-error')">
+
+                                       <input type="text" name="title" class="form-control unicode" id="title" > 
+                                         @if($errors->first('title'))
+                                            <span class="help-block">
+                                                <small>{{ $errors->first('title') }}</small>
+                                            </span>
+                                         @endif
+
+                                </div>
+                            </div>
+              </div>
+        </div>
+
 
         <div class="row form-group">
             <div class="col-md-6">

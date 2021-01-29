@@ -195,11 +195,11 @@
                                                 </div>
                                                 <div class="col-md-3">
                                                     <div>
-                                                        <h5 class="f-18"><a href="#" class="text-dark">{{$jobopening->description}}</a></h5>
+                                                        <h5 class="f-18"><a href="#" class="text-dark">{{$jobopening->title}}</a></h5>
                                                         <p class="text-muted mb-0">{{$jobopening->viewPosition->name}}</p>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-3">
+                                               <!--  <div class="col-md-3">
                                                     <div>
                                                         <p class="text-muted mb-0"><i class="mdi mdi-map-marker text-primary mr-2"></i>Naypyidaw</p>
                                                     </div>
@@ -208,7 +208,7 @@
                                                     <div>
                                                         <p class="text-muted mb-0 mo-mb-2"><span class="text-primary">$</span>‌Negotiation</p>
                                                     </div>
-                                                </div>
+                                                </div> -->
                                                 <div class="col-md-2">
                                                     <!-- <div>
                                                         <p class="text-muted mb-0">Full Time</p>

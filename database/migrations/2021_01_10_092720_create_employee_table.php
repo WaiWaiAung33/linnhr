@@ -20,6 +20,7 @@ class CreateEmployeeTable extends Migration
             $table->integer('position_id');
             $table->string('name');
             $table->string('gender');
+            $table->string('marrical_status');
             $table->string('father_name');
             $table->string('phone_no');
             $table->string('nrc_code');

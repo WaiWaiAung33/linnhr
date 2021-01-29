@@ -144,6 +144,23 @@
 
                                 </div>
                             </div><br>
+
+                               <div class="row">
+                                <div class="col-md-3">
+                                    <h6 style="font-weight:bold;font-size:15px;">Marrical Stauts*</h6>
+                                </div>
+
+
+                                 <div class="col-md-2 {{ $errors->first('marrical_status', 'has-error') }}">
+                                    <input type="radio" name="marrical_status" value="marry" id="marrical_status" checked> ရှိ
+                                    
+                                </div>   
+                                <div class="col-md-2">
+                                    <input type="radio" name="marrical_status" value="singal" id="marrical_status"> မရှိ
+                                </div> 
+                            </div><br>
+
+
                             <div class="row">
                                 <div class="col-md-3">
                                     <h6 style="font-weight:bold;font-size:15px;">Photo*</h6>

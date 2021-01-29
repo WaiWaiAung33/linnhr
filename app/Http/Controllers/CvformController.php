@@ -78,6 +78,7 @@ class CvformController extends Controller
             'dob'=>$request->dob,
             'edu'=>$request->education,
             'religion'=>$request->religion,
+            'gender'=>$request->gender,
             'marrical_status'=>$request->marrical_status,
             'email'=>$request->email,
             'fName'=>$request->pName,
