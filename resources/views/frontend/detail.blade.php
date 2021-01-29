@@ -265,7 +265,7 @@
     <br>
     <div class="row">
       <div class="col-md-4" style="text-align: left;">
-        <label class="unicode">၆။ ကျား/မ</label>
+        <label class="unicode">၇။ ကျား/မ</label>
       </div>
       <div class="col-md-1">
           <input type="radio" name="gender" value="male" id="gender" checked> 
@@ -285,7 +285,7 @@
     <br>
     <div class="row">
       <div class="col-md-4" style="text-align: left;">
-        <label class="unicode">၇။အီးမေးလ်</label>
+        <label class="unicode">၈။အီးမေးလ်</label>
       </div>
       <div class="col-md-8">
         <input type="text" name="email">
@@ -294,7 +294,7 @@
     <br>
     <div class="row">
       <div class="col-md-4" style="text-align: left;">
-        <label class="unicode">၈။ မိဘအမည်</label>
+        <label class="unicode">၉။ မိဘအမည်</label>
       </div>
       <div class="col-md-8">
         <input type="text" name="pName">
@@ -303,7 +303,7 @@
     <br>
     <div class="row">
       <div class="col-md-4" style="red;text-align: left;">
-        <label class="unicode">၉။ မိဘ၏ ဖုန်းနံပါတ်</label>
+        <label class="unicode">၁၀။ မိဘ၏ ဖုန်းနံပါတ်</label>
       </div>
       <div class="col-md-8">
         <input type="number" name="pPhone">
@@ -312,7 +312,7 @@
     <br>
     <div class="row">
       <div class="col-md-4" style="text-align: left;">
-        <label class="unicode">၁၀။ လုပ်ငန်းအတွေ့အကြုံ</label>
+        <label class="unicode">၁၁။ လုပ်ငန်းအတွေ့အကြုံ</label>
       </div>
       <div class="col-md-8">
         <input type="text" name="experience">
@@ -322,7 +322,7 @@
 
      <div class="row">
       <div class="col-md-4" style="text-align: left;">
-        <label class="unicode">၁၁။ တာဝန်ထမ်းဆောင်လိုသောဌာန</label>
+        <label class="unicode">၁၂။ တာဝန်ထမ်းဆောင်လိုသောဌာန</label>
       </div>
     
       <div class="col-md-8">
@@ -335,7 +335,7 @@
 
     <div class="row">
       <div class="col-md-4" style="text-align: left;">
-        <label class="unicode">၁၂။ တာဝန်ထမ်းဆောင်လိုသောရာထူး</label>
+        <label class="unicode">၁၃။ တာဝန်ထမ်းဆောင်လိုသောရာထူး</label>
       </div>
     
 
@@ -358,7 +358,7 @@
     <div class="row">
     <div class="col-md-4">
       <label class="unicode">
-      ၁၃။ မျှော်မှန်းလစာ
+      ၁၄။ မျှော်မှန်းလစာ
     </label>
     </div> 
       <div class="col-md-8">
@@ -368,7 +368,7 @@
     <br>
     <div class="row">
       <div class="col-md-4">
-        <label class="unicode">၁၄။ အဆောင်နေ/မနေ</label>
+        <label class="unicode">၁၅။ အဆောင်နေ/မနေ</label>
       </div>
        <div class="col-md-1">
           <input type="radio" name="isHostel" value="နေ" checked> 
@@ -388,7 +388,7 @@
     <br>
     <div class="row">
       <div class="col-md-4">
-        <label class="unicode">၁၅။ လျှောက်လွှာတင်သည့်ရက်စွဲ</label>
+        <label class="unicode">၁၆။ လျှောက်လွှာတင်သည့်ရက်စွဲ</label>
       </div>
       <div class="col-md-8">
         <input type="text" name="appliedDate" value="{{date('d-m-Y')}}" readonly>
@@ -397,7 +397,7 @@
     <br>
     <div class="row">
       <div class="col-md-4">
-        <label class="unicode">၁၆။ ဆက်သွယ်ရန် လိပ်စာအပြည့်အစုံ</label>
+        <label class="unicode">၁၇။ ဆက်သွယ်ရန် လိပ်စာအပြည့်အစုံ</label>
       </div>
       <div class="col-md-8">
         <input type="text" name="address" >
@@ -406,7 +406,7 @@
     <br>
     <div class="row">
       <div class="col-md-4">
-        <label class="unicode">၁၇။ဖုန်းနံပါတ်</label>
+        <label class="unicode">၁၈။ဖုန်းနံပါတ်</label>
       </div>
       <div class="col-md-8">
         <input type="number" name="phone">
