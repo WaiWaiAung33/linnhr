@@ -88,10 +88,15 @@ class CvformController extends Controller
 
         $cvfile_photo = "";
         if ($file = $request->file('cvfile')) {
-            $extension = $file->getClientOriginalExtension();
-            $var = Str::random(32) . '.' . $extension;
-            $file->move($destinationPath, $var);
-            $cvfile_photo = $var;
+            $name = $file->getClientOriginalName();
+            $destinationPath = public_path('/uploads/jobapplicationPhoto/');
+            $file->move($destinationPath, $name);
+            $cvfile_photo=$name;
+            // dd($cvfile_photo);
+            // $extension = $file->getClientOriginalExtension();
+            // $var = Str::random(32) . '.' . $extension;
+            // $file->move($destinationPath, $var);
+            // $cvfile_photo = $var;
             // dd($cvfile_photo);
         }
 
