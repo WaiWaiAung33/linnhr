@@ -30,8 +30,22 @@
     <!-- Custom  Css -->
     <link rel="stylesheet" type="text/css" href="css/styles.css" />
 
-</head>
+    <script src=" {{ asset('toasterjquery.js') }}" ></script>
+    <link rel="stylesheet" type="text/css" href="{{asset('toasterbootstrap.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('toastermin.css')}}">
+   
 
+</head>
+<script type="text/javascript">
+      @if(Session::has('success'))
+            toastr.options =
+            {
+            "closeButton" : true,
+            "progressBar" : true
+            }
+            toastr.success("{{ session('success') }}");
+        @endif
+</script>
 <body>
     <!-- Loader -->
     <div id="preloader">
@@ -440,6 +454,7 @@
     <script type="text/javascript" src="{{asset('js/counter.int.js')}}"></script>
     <script type="text/javascript" src="{{asset('js/apps.js')}}"></script>
     <script type="text/javascript" src="{{asset('js/home.js')}}"></script>
+    <script type="text/javascript" src="{{asset('toastermin.js')}}"></script>
    
 </body>
 </html>

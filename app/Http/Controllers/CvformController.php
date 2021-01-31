@@ -158,7 +158,7 @@ class CvformController extends Controller
             'otherfile'=> $otherfile_photo
         ]);
     
-        return back()->with('success', 'success Full upload signature');
+         return redirect()->route('frontend.home')->with('success','Created successfully');;
     }
 
     /**
