@@ -40,6 +40,23 @@ class CreateCvformTable extends Migration
             $table->string('photo');
             $table->string('signature');
             $table->integer('status')->default(0);
+            $table->string('city');
+            $table->string('township');
+            $table->string('graduation');
+            $table->string('degree');
+            $table->string('level');
+            $table->string('course_title');
+            $table->string('exp_company');
+            $table->string('exp_position');
+            $table->string('exp_location');
+            $table->string('exp_date_from');
+            $table->string('exp_date_to');
+            $table->string('skills');
+            $table->string('proficiency');
+            $table->string('police_reco');
+            $table->string('ward_reco');
+            $table->string('cvfile');
+            $table->string('otherfile');
             $table->timestamps();
         });
     }

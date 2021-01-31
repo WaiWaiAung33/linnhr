@@ -1,20 +1,44 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" class="no-js">
+
 <head>
-  <title>Linn CV Form</title>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CV form</title>
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta name="author" content="Themesdesign" />
+
+    <link rel="shortcut icon" href="images/favicon.ico">
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="{{ asset('css/bootstraps.min.css') }}" type="text/css">
+
+    <!--Material Icon -->
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/materialdesignicons.min.css') }}" />
+
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/fontawesome.css') }}" />
+
+    <!-- selectize css -->
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/selectize.css') }}" />
+
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/nice-select.css') }}" />
+
+    <!-- Custom  Css -->
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/styles.css') }}" />
+
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-   <script type="text/javascript" src="{{ asset('select2/js/select2.min.js') }}"></script>
-  
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+     <script type="text/javascript" src="{{ asset('select2/js/select2.min.js') }}"></script>
 
-  <!-- for signature -->
+
+      <!-- for signature -->
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.css">
   
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> 
@@ -27,106 +51,16 @@
 
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-    <script src="blueimp-file-upload/js/jquery.fileupload.js"></script>
-    <script src="http://hayageek.github.io/jQuery-Upload-File/4.0.11/jquery.uploadfile.min.js"></script>
-   
-<link id="bsdp-css" href="https://unpkg.com/bootstrap-datepicker@1.9.0/dist/css/bootstrap-datepicker3.min.css" rel="stylesheet">
- <script src="https://unpkg.com/bootstrap-datepicker@1.9.0/dist/js/bootstrap-datepicker.min.js"></script>
+    <link id="bsdp-css" href="https://unpkg.com/bootstrap-datepicker@1.9.0/dist/css/bootstrap-datepicker3.min.css" rel="stylesheet">
+  
 
-<style type="text/css">
-  .kbw-signature { width: 100%; height: 200px;}
-    #sig canvas{
-            width: 100% !important;
-            height: 100%;
-            background-color: white;
-        }
-    hr.headerline {
-      background: linear-gradient(to right, blue, lightblue);
-      height: 5px
-  }
-
-  hr.footer{
-  height: 2px solid blue;
-  }
-
-  input {
-    width: 100%;
-    border: none;
-    border-bottom: 2px dotted black;
-    outline: 0;
-    border-width: 0 0 2px;
-    border-color: black;
-   
-  }
-
-  input:focus {
-    border-color: blue
-  }
-
-  u {
-      text-decoration: none;
-      border-bottom: 5px solid blue;
-    }​
-
-  u.next{
-      text-decoration: none;
-      border-bottom: 2px solid red;
-    }
-
-    #sign{
-      border:4px solid #ccc;
-    }
-    div.photo {
-      border-top: 3px solid blue;
-      /*height: 200px;*/
-      /*margin: 10px auto;*/
-      position: relative;
-      width: 100%;
-      margin-bottom: 100px;
-  }
-
-  div.next {
-      background: #fff none repeat scroll 0 0;
-      height: auto;
-      left: 80%;
-      padding: 3px 5px;
-      position: absolute;
-      top: -50px;
-      width: 100px;
-      height: 100px;
-      border: 1px solid black
-  }
-
-  div.sign{
-    border:1px solid black;
-    width: 100px;
-    height: 100px;
-    }
-
-  #myDiv{
-    background-color: red;
-  }
-
-  #mySpan{
-  writing-mode: vertical-lr; 
-  transform: rotate(180deg);
-  /*font-size: 80px;*/
-  /*font-size: 4.6em;*/
-  font-size: 4.8vw;
-  /*background-color: green;*/
-  width: 12%;
-  text-align: right;
-  color: gray;
-  /*height: 1000px;*/
-
-  }
- </style>
 </head>
-
 <script type="text/javascript">
-  $(document).ready(function(){
+      $(function(){
      $("#date_of_birth").datepicker({ dateFormat: 'dd-mm-yy' });
      $("#appliedate").datepicker({ dateFormat: 'dd-mm-yy' });
+     $("#exp_date_from").datepicker({ dateFormat: 'dd-mm-yy' });
+     $("#exp_date_to").datepicker({ dateFormat: 'dd-mm-yy' });
      $("select[name='nrc_code']").change(function(){
        var code_id = $(this).val();
         var token = $("input[name='_token']").val();
@@ -147,322 +81,672 @@
      
   
   });
-
 </script>
 
-<body style="background-color: #E5E4E2">
-<div class="container" style="background-color: white;width: 60%" >
-  <form method="POST" action="{{route('cvform.store')}}" enctype="multipart/form-data">
-  @csrf
-  <div class="row">
-    <div class="col-md-8">
-      <img src="{{ asset('uploads/jobopeningPhoto/linn3.png') }}" style="width:200;height: 200;float: left;">
-      <h4 style="margin-top: 70px;color: blue;font-weight: bold;text-align: center;" class="unicode">CV Form</h4>
+<body>
+    <!-- Loader -->
+    <div id="preloader">
+        <div id="status">
+            <div class="spinner">
+                <div class="double-bounce1"></div>
+                <div class="double-bounce2"></div>
+            </div>
+        </div>
     </div>
-    <div class="photo">
-      <input type="file" id="imgupload" style="display:none" name="myPhoto" onchange="PreviewImage();"/> 
-      <div class="next" id="file" type="file">
-        <img id="blah" src="{{ asset('uploads/jobopeningPhoto/nophoto.png') }}" alt="your image" style="width: 90px;height: 90px;" />
-      </div>
-  </div>
-  </div>
-  <div class="row">
-   
-    <div class="col-md-12">
-    <div class="row">
-      <div class="col-md-4" style="text-align: left;">
-        <label class="unicode">၁။ အမည်</label>
-      </div>
-      <div class="col-md-8">
-        <input type="text" name="name">
-      </div>
-    </div>
-    <br>
-    <div class="row">
-      <div class="col-md-4" style="text-align: left;">
-        <label class="unicode">၂။ အမျိုးသား မှတ်ပုံတင်အမှတ်</label>
-      </div>
-      <div class="col-md-2">
-        <select class="form-control select2bs4 unicode" name="nrc_code" id="code_id" onchange="changeNRC();">
-              <option value="">-</option>
-              @foreach ($nrccodes as $nrccode )
-                <option  value="{{$nrccode->id}}">{{$nrccode->name}}</option>
-             
-              @endforeach
-          </select>   
-      </div>
-      <div class="col-md-2">
-         <select class="form-control unicode" name="nrc_state" id="state_id">
-            <option value="">-</option>
-           <!--  @foreach ($departments as $department )
-              <option  value="{{$department->id}}">{{$department->name}}</option>
-            @endforeach -->
-        </select>   
-      </div>
-      <div class="col-md-2">
-         <select name="nrc_status" id="nrc_status" class="form-control select2bs4 unicode">
-                      <option value="N" selected>N</option>
-                      <option value="P">P</option>
-                      <option value="E">E</option>
-                      <option value="A">A</option>
-                      <option value="F">F</option>
-                      <option value="TH">TH</option>
-                      <option value="G">G</option>
+    <!-- Loader -->
 
-      </select>
-      </div>
-      <div class="col-md-2">
-         <input type="text" name="nrc" class="form-control unicode" id="nrc">
-      </div>
-    </div>
-    <br>
-    <div class="row">
-      <div class="col-md-4" style="text-align: left;">
-        <label class="unicode">၃။ မွေးသက္ကရာဇ်</label>
-      </div>
-      <div class="col-md-8">
-        <input type="text" name="dob" id="date_of_birth">
-      </div>
-    </div>
-    <br>
-    <div class="row">
-      <div class="col-md-4" style="text-align: left;">
-        <label class="unicode">၄။ ပညာအရည်အချင်း</label>
-      </div>
-      <div class="col-md-8">
-        <input type="text" name="education">
-      </div>
-    </div>
-    <br>
-    <div class="row">
-      <div class="col-md-4" style="text-align: left;">
-        <label class="unicode">၅။ ကိုးကွယ်သည့်ဘာသာ/လူမျိုး</label>
-      </div>
-      <div class="col-md-8">
-        <input type="text" name="religion">
-      </div>
-    </div>
-    <br>
-     <div class="row">
-      <div class="col-md-4" style="text-align: left;">
-        <label class="unicode">၆။ အိမ်ထောင်ရှိ / မရှိ</label>
-      </div>
-      <div class="col-md-1">
-          <input type="radio" name="marrical_status" value="marry" id="marry" checked> 
-          
-      </div> 
-      <div class="col-md-1"><label class="unicode">ရှိ</label></div>  
-      <div class="col-md-1">
-          <input type="radio" name="marrical_status" value="singal" id="singnal"> 
-      </div> 
-      <div class="col-md-2">
-        <label class="unicode">မရှိ</label>
-      </div>
-     <!--  <div class="col-md-6">
-        <input type="text" name="marrical_status">
-      </div> -->
-    </div>
-    <br>
-    <div class="row">
-      <div class="col-md-4" style="text-align: left;">
-        <label class="unicode">၇။ ကျား/မ</label>
-      </div>
-      <div class="col-md-1">
-          <input type="radio" name="gender" value="male" id="gender" checked> 
-          
-      </div> 
-      <div class="col-md-1"><label class="unicode">ကျား</label></div>  
-      <div class="col-md-1">
-          <input type="radio" name="gender" value="female" id="gender"> 
-      </div> 
-      <div class="col-md-2">
-        <label class="unicode">မ</label>
-      </div>
-     <!--  <div class="col-md-6">
-        <input type="text" name="marrical_status">
-      </div> -->
-    </div>
-    <br>
-    <div class="row">
-      <div class="col-md-4" style="text-align: left;">
-        <label class="unicode">၈။အီးမေးလ်</label>
-      </div>
-      <div class="col-md-8">
-        <input type="text" name="email">
-      </div>
-    </div>
-    <br>
-    <div class="row">
-      <div class="col-md-4" style="text-align: left;">
-        <label class="unicode">၉။ မိဘအမည်</label>
-      </div>
-      <div class="col-md-8">
-        <input type="text" name="pName">
-      </div>
-    </div>
-    <br>
-    <div class="row">
-      <div class="col-md-4" style="red;text-align: left;">
-        <label class="unicode">၁၀။ မိဘ၏ ဖုန်းနံပါတ်</label>
-      </div>
-      <div class="col-md-8">
-        <input type="number" name="pPhone">
-      </div>
-    </div>
-    <br>
-    <div class="row">
-      <div class="col-md-4" style="text-align: left;">
-        <label class="unicode">၁၁။ လုပ်ငန်းအတွေ့အကြုံ</label>
-      </div>
-      <div class="col-md-8">
-        <input type="text" name="experience">
-      </div>
-    </div>
-    <br>
-
-     <div class="row">
-      <div class="col-md-4" style="text-align: left;">
-        <label class="unicode">၁၂။ တာဝန်ထမ်းဆောင်လိုသောဌာန</label>
-      </div>
-    
-      <div class="col-md-8">
-        <input type="text" name="department" value="{{$jobopenings->viewDepartment->name}}" readonly>
-      </div>
-     
-    </div>
-
-    <br>
-
-    <div class="row">
-      <div class="col-md-4" style="text-align: left;">
-        <label class="unicode">၁၃။ တာဝန်ထမ်းဆောင်လိုသောရာထူး</label>
-      </div>
-    
-
-      <div class="col-md-8">
-        <input type="text" name="location" value="{{$jobopenings->viewPosition->name}}" readonly>
-      </div>
-     
-    </div>
-
-    <br>
-    <!-- <div class="row">
-      <div class="col-md-6" style="text-align: left;">
-        <label>၁၂။ တာဝန်ထမ်းဆောင်လိုသောရာထူး</label>
-      </div>
-      <div class="col-md-6">
-        <input type="text" name="location">
-      </div>
-    </div>
-    <br> -->
-    <div class="row">
-    <div class="col-md-4">
-      <label class="unicode">
-      ၁၄။ မျှော်မှန်းလစာ
-    </label>
-    </div> 
-      <div class="col-md-8">
-        <input type="text" name="salary">
-      </div>
-    </div>
-    <br>
-    <div class="row">
-      <div class="col-md-4">
-        <label class="unicode">၁၅။ အဆောင်နေ/မနေ</label>
-      </div>
-       <div class="col-md-1">
-          <input type="radio" name="isHostel" value="နေ" checked> 
-          
-      </div> 
-      <div class="col-md-1"><label class="unicode">နေ</label></div>  
-      <div class="col-md-1">
-          <input type="radio" name="isHostel" value="မနေ" > 
-      </div> 
-      <div class="col-md-2">
-        <label class="unicode">မနေ</label>
-      </div>
-     <!--  <div class="col-md-6">
-        <input type="text" name="isHostel">
-      </div> -->
-    </div>
-    <br>
-    <div class="row">
-      <div class="col-md-4">
-        <label class="unicode">၁၆။ လျှောက်လွှာတင်သည့်ရက်စွဲ</label>
-      </div>
-      <div class="col-md-8">
-        <input type="text" name="appliedDate" value="{{date('d-m-Y')}}" readonly>
-      </div>
-    </div>
-    <br>
-    <div class="row">
-      <div class="col-md-4">
-        <label class="unicode">၁၇။ ဆက်သွယ်ရန် လိပ်စာအပြည့်အစုံ</label>
-      </div>
-      <div class="col-md-8">
-        <input type="text" name="address" >
-      </div>
-    </div>
-    <br>
-    <div class="row">
-      <div class="col-md-4">
-        <label class="unicode">၁၈။ဖုန်းနံပါတ်</label>
-      </div>
-      <div class="col-md-8">
-        <input type="number" name="phone">
-      </div>
-    </div>
-    <br>
-    <div class="row">
-        <label style="text-align: right;" class="col-md-12 unicode">လက်မှတ်</label>
-    </div>
-    <div class="row">
-      <div class="col-md-7"></div>
-        <div class="col-md-5">
-                    <div id="sig" ></div>
-                    <br/>
-                    <div class="row" style="justify-content: center;">
-                        <button id="clear" class="btn btn-danger btn-sm" style="margin-right: 10px;">Clear Signature</button>
-                        <button class="btn btn-success" type="submit">Save</button>
+    <!-- Navigation Bar-->
+    <header id="topnav" class="defaultscroll scroll-active">
+        <!-- Tagline STart -->
+        <div class="tagline">
+            <div class="container">
+                <div class="float-left">
+                    <div class="phone">
+                        <i class="mdi mdi-phone-classic"></i>  09 400887799
                     </div>
-                            
-                        <textarea id="signature64" name="signed" style="display: none"></textarea>
+                    <div class="email">
+                        <a href="#">
+                            <i class="mdi mdi-email"></i> linncomputer@gmail.com
+                        </a>
+                    </div>
                 </div>
-            <br/>
-    </div>
-    <br>
-  </div>
-  <div class="row col-md-12" style="background-color: #85C1E9;height: 100px;margin-left: 1px;">
-    <div class="col-md-6">
-      <div class="row" style="align-items: center;">
-        <img src="{{ asset('uploads/jobopeningPhoto/flogo.png') }}" style="width: 60px;height:60px;">
-      <a href="https://www.facebook.com/linncomputerstore" target="blank"><p style="font-size: 18px;color: white;">www.facebook.com/linncomputer</p></a>
-      </div>
-    </div>
+                <div class="float-right">
+                    <ul class="topbar-list list-unstyled d-flex" style="margin: 11px 0px;">
+                       
+                        <li class="list-inline-item">
+                            <select id="select-lang" class="demo-default">
+                                <option value="">Language</option>
+                                <option value="4">English</option>
+                            </select>
+                        </li>
+                    </ul>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+        <!-- Tagline End -->
 
-    <div class="col-md-6" style="align-items: center;justify-content: center;margin-top: 10px;">
-        <div class="row">
-        <img src="{{ asset('uploads/jobopeningPhoto/wlogo1.png') }}" style="width: 30px;height:30px;margin-right: 10px;">
-      <a href="https://shopping.linncomputer.com/" target="blank"><p style="font-size: 18px;color: white">shopping.linncomputer.com</p></a>
-      </div>
-      </div>
-    </div>
-  </div>
-  </form>
-</div>
-<!-- <div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div data-toggle="signature" style="background-color: white">
-          <input type="text" name="Signature">
-      </div>
-      </div>  
-    </div>
-</div> -->
+        <!-- Menu Start -->
+        <div class="container">
+            <!-- Logo container-->
+            <div>
+                <a href="index.html" class="logo">
+                    <img src="images/logo-light.png" alt="" class="logo-light" height="18" />
+                    <img src="images/logo-dark.png" alt="" class="logo-dark" height="18" />
+                </a>
+            </div>                 
+            <div class="buy-button">
+                 <a href="https://shopping.linncomputer.com/"> <img src="{{ asset('uploads/images/shopping-cart.png') }}" alt="photo" width="20"> Linn OnlineShop </a>
+            </div><!--end login button-->
+            <!-- End Logo container-->
+            <div class="menu-extras">
+                <div class="menu-item">
+                    <!-- Mobile menu toggle-->
+                    <a class="navbar-toggle">
+                        <div class="lines">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </a>
+                    <!-- End mobile menu toggle-->
+                </div>
+            </div>
+    
+            <div id="navigation">
+                <!-- Navigation Menu-->   
+               <ul class="navigation-menu">
+                    <li><a href="{{route('frontend.home')}}">Home</a></li>
+                    <li class="has-submenu">
+                        <a href="javascript:void(0)">Jobs</a><span class="menu-arrow"></span>
+                        <ul class="submenu">
+                            <li><a href="{{route('joblist.jobList')}}">Job List</a></li>
+                           
+                            <li><a href="#">Job Details</a></li>
+                           
+                        </ul>
+                    </li>
+    
+                    <li class="has-submenu">
+                        <a href="#">About us</a>
+                    
+                    </li>
+                    <li>
+                        <a href="#">contact</a>
+                    </li>
+                </ul><!--end navigation menu-->
+            </div><!--end navigation-->
+        </div><!--end container-->
+        <!--end end-->
+    </header><!--end header-->
+    <!-- Navbar End -->
+    
+   <!-- Start Home -->
+    <section class="bg-home" style="background-image: url('uploads/images/webbacklogo.jpg')">
+        <div class="bg-overlay"></div>
+        <div class="home-center">
+          
+                    <div class="home-form-position">
+                        <div class="row">
+                           <div class="col-md-12 col-md-offset-1 col-sm-12 text-center">
+                            <h2  style="color:white " class="unicode" class="unicode">{{$jobopenings->title}}</h2><br>
+                           
+                            </div>
+                          
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end home -->
+
+   <!-- CREATE RESUME START -->
+    
+    <section class="section">
+      <form method="POST" action="{{route('cvform.store')}}" enctype="multipart/form-data">
+         @csrf
+         @method('post')
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h5 class="text-dark">General Information :</h5>
+                </div>
+ 
+                <div class="col-12 mt-3">
+                    <div class="custom-form p-4 border rounded">
+                         <div style="text-align: center;">
+                          <input type="file" id="imgupload" name="myPhoto" onchange="PreviewImage();" style="display: none;" /> 
+                          <div class="next" id="file" type="file">
+                            <img id="blah" src="{{ asset('uploads/jobopeningPhoto/nophoto.png') }}" alt="your image" style="width: 90px;height: 90px;border-radius: 45px" />
+                          </div>
+                          </div>
+                        
+                      
+                            <div class="row mt-4">
+                                <div class="col-md-4">
+                                    <div class="form-group app-label">
+                                        <label class="text-muted">Name<span class="text-danger">*</span> :</label>
+                                        <input id="first-name" type="text" name="name" class="form-control resume" placeholder="Name :">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="form-group app-label">
+                                        <label class="text-muted">Parent Name<span class="text-danger">*</span> :</label>
+                                        <input type="text" class="form-control resume" placeholder="Parent Name :" name="pName">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="form-group app-label">
+                                        <label class="text-muted">Date of birth<span class="text-danger">*</span> :</label>
+                                        <input type="text" class="form-control resume" placeholder="01-01-2021 :" name="dob" id="date_of_birth">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="form-group app-label">
+                                        <label class="text-muted">Religion<span class="text-danger">*</span> :</label>
+                                        <input type="text" class="form-control resume" name="religion">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="form-group app-label">
+                                        <label class="text-muted">Sex<span class="text-danger">*</span> :</label>
+                                        <div class="row">
+                                          <div class="col-md-1">
+                                            <input type="radio" name="gender" value="male" id="gender" checked> 
+                                            
+                                          </div> 
+                                          <div class="col-md-3"><label class="unicode">‌Male</label></div>  
+                                          <div class="col-md-1">
+                                              <input type="radio" name="gender" value="female" id="gender"> 
+                                          </div> 
+                                          <div class="col-md-3">
+                                            <label class="unicode">Female</label>
+                                          </div>
+                                          </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="form-group app-label">
+                                        <label class="text-muted">Marital Status</label>
+                                        <div class="row">
+                                             <div class="col-md-1">
+                                              <input type="radio" name="marrical_status" value="marry" id="marry" checked> 
+                                              
+                                              </div> 
+                                              <div class="col-md-3"><label class="unicode">Married</label></div>  
+                                              <div class="col-md-1">
+                                                  <input type="radio" name="marrical_status" value="singal" id="singnal"> 
+                                              </div> 
+                                              <div class="col-md-3">
+                                                <label class="unicode">Unmarried</label>
+                                              </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                   <div class="col-md-4">
+                                    <div class="form-group app-label">
+                                        <label class="text-muted">Email<span class="text-danger">*</span> :</label>
+                                        <input type="email" class="form-control resume" placeholder="email :" name="email">
+                                    </div>
+                                </div>
+
+                                   <div class="col-md-8">
+                                    <div>
+                                        <label class="text-muted">NRC<span class="text-danger">*</span> :</label>
+                                        <div class="row">
+                                           <div class="col-md-2 {{ $errors->first('name', 'has-error') }}">
+                                
+                                             <select class="form-control select2bs4 unicode" name="nrc_code" id="code_id">
+                                                  <option value="">-</option>
+                                                  @foreach ($nrccodes as $nrccode )
+                                                    <option  value="{{$nrccode->id}}">{{$nrccode->name}}</option>
+                                                 
+                                                  @endforeach
+                                              </select>   
+                                         
+                                        </div>  
+                            
+                                         <div class="col-md-3 {{ $errors->first('name', 'has-error') }}">
+                                            
+                                             <select class="form-control unicode" name="nrc_state" id="state_id">
+                                                <option value="">-</option>
+                                               <!--  @foreach ($departments as $department )
+                                                  <option  value="{{$department->id}}">{{$department->name}}</option>
+                                                @endforeach -->
+                                            </select>   
+                                         
+                                        </div>  
+
+                                        <div class="col-md-2{{ $errors->first('name', 'has-error') }}">
+                                            
+                                            <select name="nrc_status" id="nrc_status" class="form-control select2bs4">
+                                                            <option value="N" selected>N</option>
+                                                            <option value="P">P</option>
+                                                            <option value="E">E</option>
+                                                            <option value="A">A</option>
+                                                            <option value="F">F</option>
+                                                            <option value="TH">TH</option>
+                                                            <option value="G">G</option>
+
+                                            </select>
+                                         
+                                        </div>  
+                                        <div class="col-md-2 {{ $errors->first('name', 'has-error') }}">
+                                                
+                                                <input type="text" name="nrc" class="form-control unicode" placeholder="111111" id="nrc">
+                                             
+                                            </div>  
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                       
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt-5">
+                <div class="col-12">
+                    <h5 class="text-dark">Contact Information :</h5>
+                </div>
+
+                <div class="col-12 mt-3">
+                    <div class="custom-form p-4 border rounded">
+                       
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group app-label">
+                                        <label class="text-muted">Phone</label>
+                                        <input id="phone" type="number" class="form-control resume" placeholder="Phone No. :" name="phone">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group app-label">
+                                        <label class="text-muted">Parent Phone</label>
+                                         <input type="number" class="form-control resume" placeholder="Parent Phone No. :" name="pPhone">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group app-label">
+                                        <label class="text-muted">City</label>
+                                        <input type="text" class="form-control resume" placeholder="City :" name="city">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group app-label">
+                                        <label class="text-muted">Township</label>
+                                        <input type="text" class="form-control resume" placeholder="Township :" name="township">
+                                    </div>
+                                </div>
+
+                             
+
+                                <div class="col-lg-12">
+                                    <div class="form-group app-label">
+                                        <label>Address :</label>
+                                        <textarea id="address" rows="4" class="form-control resume" placeholder="" name="address"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                       
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <h5 class="text-dark mt-5">Education Details :</h5>
+                </div>
+
+                <div class="col-12 mt-3">
+                    <div class="custom-form p-4 border rounded">
+                      
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group app-label">
+                                        <label class="text-muted">Graduation</label>
+                                        <input id="graduation" type="text" class="form-control resume" placeholder="" name="graduation">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group app-label">
+                                        <label class="text-muted">University/College</label>
+                                        <input id="university/college" type="text" class="form-control resume" placeholder="" name="education">
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <div class="form-group app-label">
+                                        <label class="text-muted">Degree/Certification</label>
+                                        <input id="degree/certification" type="file" class="form-control resume" placeholder="" name="degree">
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group app-label">
+                                                <label class="text-muted">Level</label>
+                                                <div class="form-button">
+                                                    <select class="nice-select rounded" name="level">
+                                                        <option data-display="Select">Select</option>
+                                                        <option value="1">Level-1</option>
+                                                        <option value="2">Level-2</option>
+                                                        <option value="3">Level-3</option>
+                                                        <option value="4">Level-4</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <div class="form-group app-label">
+                                                <label class="text-muted">Course Title</label>
+                                                <input id="course-title" type="text" class="form-control resume" placeholder="" name="course_title">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                        
+                            </div>
+                      
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12 mt-5">
+                    <h5 class="text-dark">Work Experience :</h5>
+                </div>
+
+                <div class="col-12 mt-3">
+                    <div class="custom-form p-4 border rounded">
+                      
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group app-label">
+                                        <label class="text-muted">Company Name</label>
+                                        <input id="company-name" type="text" class="form-control resume" placeholder="" name="exp_company">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group app-label">
+                                        <label class="text-muted">Job Position</label>
+                                        <input id="job-position" type="text" class="form-control resume" placeholder="" name="exp_position">
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <div class="form-group app-label">
+                                        <label class="text-muted">Location</label>
+                                        <input id="job-position" type="text" class="form-control resume" placeholder="" name="exp_location">
+                                        
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group app-label">
+                                                <label class="text-muted">Date From</label>
+                                                <input id="exp_date_from" type="text" class="form-control resume" placeholder="01-01-2021" name="exp_date_from">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <div class="form-group app-label">
+                                                <label class="text-muted">Date To</label>
+                                                <input id="exp_date_to" type="text" class="form-control resume" placeholder="01-01-2021" name="exp_date_to">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                       
+                    </div>
+                </div>
+            </div>
+
+              <div class="row">
+                <div class="col-12 mt-5">
+                    <h5 class="text-dark">Employement :</h5>
+                </div>
+
+                <div class="col-12 mt-3">
+                    <div class="custom-form p-4 border rounded">
+                       
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group app-label">
+                                        <label class="text-muted">Department</label>
+                                        <input id="company-name" type="text" class="form-control resume" value="{{$jobopenings->viewDepartment->name}}" readonly name="department">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group app-label">
+                                        <label class="text-muted">Position</label>
+                                        <input id="job-position" type="text" class="form-control resume" value="{{$jobopenings->viewPosition->name}}" readonly name="location">
+                                    </div>
+                                </div>
+
+                                   <div class="col-md-6">
+                                    <div class="form-group app-label">
+                                        <label class="text-muted">Applied Date</label>
+                                        <input id="company-name" type="text" class="form-control resume" name="appliedDate" value="{{date('d-m-Y')}}" readonly>
+                                    </div>
+                                </div>
+
+                               <div class="col-md-6">
+                                    <div class="form-group app-label">
+                                        <label class="text-muted">Expected Salary</label>
+                                        <input id="company-name" type="text" class="form-control resume" placeholder="" name="salary">
+                                    </div>
+                                </div>
+
+                              
+
+                                <div class="col-md-6">
+                                    <div class="form-group app-label">
+                                        <label class="text-muted">Hostel</label>
+                                       <div class="row">
+                                            <div class="col-md-1">
+                                                  <input type="radio" name="isHostel" value="နေ" checked> 
+                                                  
+                                              </div> 
+                                              <div class="col-md-3"><label class="unicode">Yes</label></div>  
+                                              <div class="col-md-1">
+                                                  <input type="radio" name="isHostel" value="မနေ" > 
+                                              </div> 
+                                              <div class="col-md-3">
+                                                <label class="unicode">No</label>
+                                              </div>
+                                       </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                      
+                    </div>
+                </div>
+            </div>
+            
+
+            <div class="row">
+                <div class="col-12 mt-5">
+                    <h5 class="text-dark">Skills :</h5>
+                </div>
+                
+                <div class="col-12 mt-3">
+                    <div class="custom-form p-4 border rounded">
+                       
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="form-group app-label">
+                                        <label class="text-muted">Skills</label>
+                                        <input id="skills" type="text" class="form-control resume" placeholder="HTML, CSS, PHP, javascript, ..." name="skills">
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-12">
+                                    <div class="form-group app-label">
+                                        <label class="text-muted">Skill proficiency</label>
+                                        <input id="skill_proficiency" type="text" class="form-control resume" placeholder="75%" name="proficiency">
+                                    </div>
+                                </div>
+                            </div>
+                      
+                    </div>
+                </div>
+              </div>
+
+               <div class="row">
+                <div class="col-12 mt-5">
+                    <h5 class="text-dark">File Attachment :</h5>
+                </div>
+                
+                <div class="col-12 mt-3">
+                    <div class="custom-form p-4 border rounded">
+                       
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group app-label">
+                                        <label class="text-muted">Police station recommendation</label>
+                                        <input id="graduation" type="file" class="form-control resume" placeholder="" name="police_reco">
+                                    </div>
+                                </div>
+
+                                 <div class="col-md-6">
+                                    <div class="form-group app-label">
+                                        <label class="text-muted">Ward recommendation letter</label>
+                                        <input id="university/college" type="file" class="form-control resume" placeholder="" name="ward_reco">
+                                    </div>
+                                </div>
+
+                                 <div class="col-lg-6">
+                                    <div class="form-group app-label">
+                                        <label class="text-muted">CV form attach file</label>
+                                        <input id="degree/certification" type="file" class="form-control resume" placeholder="" name="cvfile">
+                                    </div>
+                                </div>
+
+                                 <div class="col-lg-6">
+                                    <div class="form-group app-label">
+                                        <label class="text-muted">Other file</label>
+                                        <input id="degree/certification" type="file" class="form-control resume" placeholder="" name="otherfile">
+                                    </div>
+                                </div>
+                            </div>
+                      
+                    </div>
+                </div>
+
+
+                
+                <div class="col-12 mt-4">
+                  <button class="btn btn-success" type="submit">Submit Resume</button>
+                </div>
+            </div>
+        </div>
+        </form>
+    </section>
   
-</div>
+    <!-- CREATE RESUME END -->
+
+    <!-- footer start -->
+    <footer class="footer">
+          <div class="container">
+                <div class="row">
+                    <div class="col-md-4 col-sm-4">
+                        <div class="widget clearfix" >
+
+
+                            <div >
+                            <h4 class="widget-title" style="color: white;" class="unicode">Branch</h4>
+                            </div>
+                            <ul class="social list-inline mb-0">
+                                <li><a href="#" style="color: white" class="unicode">Head Office</a></li>
+                                <li><a href="#" style="color: white" class="unicode">Linn 1</a></li>
+                                <li><a href="#" style="color: white" class="unicode">Linn 2</a></li>
+                            </ul>
+                              <ul class="social-icon social list-inline mb-0">
+                            <li class="list-inline-item"><a href="https://www.facebook.com/linncomputerstore/" class="rounded"><i class="mdi mdi-facebook"></i></a></li>
+                            <li class="list-inline-item"><a href="#" class="rounded"><i class="mdi mdi-twitter"></i></a></li>
+                            <li class="list-inline-item"><a href="#" class="rounded"><i class="mdi mdi-instagram"></i></a></li>
+                            <li class="list-inline-item"><a href="#" class="rounded"><i class="mdi mdi-google"></i></a></li>
+                        </ul>
+                        </div><!-- end widget -->
+                    </div><!-- end col -->
+
+                    <div class="col-md-4 col-sm-4">
+                        <div class="widget clearfix">
+                             <div style="margin-left: 20px">
+                            <h4 class="widget-title"  style="color: white;padding-left: 20px;" class="unicode">Phone No</h4>
+                        </div>
+                            <ul style="list-style-type: none;">
+                                <li><a href="#" style="color: white" class="unicode">09 400887799</a></li>
+                                <li><a href="#" style="color: white" class="unicode">067-24488, 26884</a></li>
+                                <li><a href="#" style="color: white" class="unicode">067-414884,414885,432884</a></li>
+                            </ul>
+                        </div><!-- end widget -->
+                    </div><!-- end col -->
+
+                    <div class="col-md-4 col-sm-4">
+                        <div class="widget clearfix">
+                             <div style="margin-left: 20px">
+                            <h4 class="widget-title" style="color: white;padding-left: 20px;" class="unicode">Address</h4>
+                        </div>
+                            <ul style="list-style-type: none;">
+                                <li><a href="#" style="color: white" class="unicode">No. 14/585, 4th Street, Paung Laung Quarter, Pyinmana.</a></li>
+                                <li><a href="#" style="color: white" class="unicode">No.11/7, Bogyoke Road, Pyinmana</a></li>
+                                <li><a href="#" style="color: white" class="unicode">No.117, Thapyagone Quarter, Naypyitaw</a></li>
+                            </ul>
+                        </div><!-- end widget -->
+                    </div><!-- end col -->
+                </div><!-- end row -->
+            </div><!-- end container -->
+    </footer><!--end footer-->
+    <!-- Footer End -->
+
+  
+
+    <!-- javascript -->
+    <script src="{{asset('js/jquerys.min.js')}}"></script>
+    <script src="{{asset('js/bootstraps.bundle.min.js')}}"></script>
+    <script src="{{asset('js/jquery.easing.min.js')}}"></script>
+    <script src="{{asset('js/plugins.js')}}"></script>
+
+    <!-- selectize js -->
+    <script src="{{asset('js/selectize.min.js')}}"></script>
+
+    <script src="{{asset('js/jquery.nice-select.min.js')}}"></script>
+
+    <script src="{{asset('js/apps.js')}}"></script>
+    <script src="blueimp-file-upload/js/jquery.fileupload.js"></script>
+    <script src="http://hayageek.github.io/jQuery-Upload-File/4.0.11/jquery.uploadfile.min.js"></script>
+   
+
+   <script src="https://unpkg.com/bootstrap-datepicker@1.9.0/dist/js/bootstrap-datepicker.min.js"></script>
+   
 </body>
 </html>
+
 <script>
   function PreviewImage() {
         var oFReader = new FileReader();
@@ -487,11 +771,19 @@
       $("#myModal").modal();
     });
     $('.next').click(function(){ $('#imgupload').trigger('click'); });
+
+
+
   });
- var sig = $('#sig').signature({syncField: '#signature64', syncFormat: 'PNG'});
+ 
+
+  var sig = $('#sig').signature({syncField: '#signature64', syncFormat: 'PNG'});
     $('#clear').click(function(e) {
         e.preventDefault();
         sig.signature('clear');
         $("#signature64").val('');
     });
+
+   
+
 </script>

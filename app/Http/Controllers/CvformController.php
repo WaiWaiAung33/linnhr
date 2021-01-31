@@ -23,8 +23,9 @@ class CvformController extends Controller
     public function index()
     {
         $jobopenings = new Jobopening();
+        $departments = Department::all();
         $jobopenings = $jobopenings->get();
-        return view('frontend.home',compact('jobopenings'));
+        return view('frontend.home',compact('jobopenings','departments'));
     }
 
     /**
@@ -45,6 +46,7 @@ class CvformController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request->myPhoto);
         $positions = Position::all();
         $departments = Department::all();
         $nrccode = NRCCode::find($request->nrc_code);
@@ -64,7 +66,51 @@ class CvformController extends Controller
             $var = Str::random(32) . '.' . $extension;
             $file->move($destinationPath, $var);
             $photo = $var;
+            // dd($photo);
         }
+
+        $police_reco_photo = "";
+        if ($file = $request->file('police_reco')) {
+            $extension = $file->getClientOriginalExtension();
+            $var = Str::random(32) . '.' . $extension;
+            $file->move($destinationPath, $var);
+            $police_reco_photo = $var;
+        }
+
+        $ward_reco_photo = "";
+        if ($file = $request->file('ward_reco')) {
+            $extension = $file->getClientOriginalExtension();
+            $var = Str::random(32) . '.' . $extension;
+            $file->move($destinationPath, $var);
+            $ward_reco_photo = $var;
+        }
+
+
+        $cvfile_photo = "";
+        if ($file = $request->file('cvfile')) {
+            $extension = $file->getClientOriginalExtension();
+            $var = Str::random(32) . '.' . $extension;
+            $file->move($destinationPath, $var);
+            $cvfile_photo = $var;
+            // dd($cvfile_photo);
+        }
+
+        $otherfile_photo = "";
+        if ($file = $request->file('otherfile')) {
+            $extension = $file->getClientOriginalExtension();
+            $var = Str::random(32) . '.' . $extension;
+            $file->move($destinationPath, $var);
+            $otherfile_photo = $var;
+        }
+
+        $degree_photo = "";
+        if ($file = $request->file('degree')) {
+            $extension = $file->getClientOriginalExtension();
+            $var = Str::random(32) . '.' . $extension;
+            $file->move($destinationPath, $var);
+            $degree_photo = $var;
+        }
+
         $fullnrc = $nrccode->name.'/'.$nrcstate->name."(".$request->nrc_status.')'.$request->nrc;
       
 
@@ -92,7 +138,24 @@ class CvformController extends Controller
             'address'=>$request->address,
             'phone'=>$request->phone,
             'signature'=>$request->signed,
-            'photo'=>$photo
+            'photo'=>$photo,
+            'city'=>$request->city,
+            'township'=>$request->township,
+            'graduation'=>$request->graduation,
+            'degree'=>$degree_photo,
+            'level'=>$request->level,
+            'course_title'=>$request->course_title,
+            'exp_company'=>$request->exp_company,
+            'exp_position'=>$request->exp_position,
+            'exp_location'=>$request->exp_location,
+            'exp_date_from'=>$request->exp_date_from,
+            'exp_date_to'=>$request->exp_date_to,
+            'skills'=>$request->skills,
+            'proficiency'=>$request->proficiency,
+            'police_reco'=>$police_reco_photo,
+            'ward_reco'=>$ward_reco_photo,
+            'cvfile'=>$cvfile_photo,
+            'otherfile'=> $otherfile_photo
         ]);
     
         return back()->with('success', 'success Full upload signature');

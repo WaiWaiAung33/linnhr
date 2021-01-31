@@ -33,6 +33,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::resource('salary','SalaryController');
 	Route::resource('jobopening','JobopeningController');
 	Route::resource('jobapplication','JobapplicationController');
+
 	Route::post('select-ajax-code','EmployeeController@selectcode')->name('select-ajax-code');
 
 	Route::get('get_department_data','EmployeeController@get_department_data')->name('get_department_data');
@@ -47,6 +48,8 @@ Route::get('/', [App\Http\Controllers\CvformController::class, 'index'])->name('
 Route::get('cvform/show/{id}','CvformController@show')->name('cvform.show');
 Route::post('cvform','CvformController@store')->name('cvform.store');
 Route::post('select-ajax-codes','CvformController@selectcode')->name('select-ajax-codes');
+Route::get('joblist', 'JobapplicationController@jobList')->name('joblist.jobList');
+Route::get('frontend/joblistdetail', 'JobapplicationController@jobListdetail')->name('frontend.jobListdetail');
 
 
 

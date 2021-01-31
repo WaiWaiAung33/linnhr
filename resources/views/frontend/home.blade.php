@@ -109,8 +109,13 @@
                 <ul class="navigation-menu">
                     <li><a href="{{route('frontend.home')}}">Home</a></li>
                     <li class="has-submenu">
-                        <a href="#">Job List</a>
-                      
+                        <a href="javascript:void(0)">Jobs</a><span class="menu-arrow"></span>
+                        <ul class="submenu">
+                            <li><a href="{{route('joblist.jobList')}}">Job List</a></li>
+                           
+                            <li><a href="{{route('frontend.jobListdetail')}}">Job Details</a></li>
+                           
+                        </ul>
                     </li>
     
                     <li class="has-submenu">
@@ -147,6 +152,44 @@
     </section>
     <!-- end home -->
 
+
+     <!-- popular category start -->
+    <section class="section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12">
+                    <div class="section-title text-center mb-4 pb-2">
+                        <h4 class="title title-line pb-5">Popular Department</h4>
+                        <p class="text-muted para-desc mx-auto mb-1">Post a job to tell us about your project. We'll quickly match you with the right freelancers.</p>
+                    </div>
+                </div>
+            </div>
+
+          
+            <div class="row">
+             @foreach($departments as $department)
+                <div class="col-lg-3 col-md-6 mt-4 pt-2">
+                    <a href="javascript:void(0)">
+                        <div class="popu-category-box bg-light rounded text-center p-4">
+                            <div class="popu-category-icon mb-3">
+                                <i class="mdi mdi-account d-inline-block rounded-pill h3 text-primary"></i>
+                            </div>
+                            <div class="popu-category-content">
+                                <h5 class="mb-2 text-dark title">{{$department->name}}</h5>
+                                <p class="text-success mb-0 rounded">780 Jobs</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            @endforeach
+            </div>
+         
+
+            
+        </div>
+    </section>
+    <!-- popular category end -->
+
    
 
     <!-- all jobs start -->
@@ -168,18 +211,20 @@
                     <div class="tab-content mt-2" id="pills-tabContent">
                         <div class="tab-pane fade show active" id="recent-job" role="tabpanel" aria-labelledby="recent-job-tab">
 
-                     
+                            
                             <div class="row" >
                                 <div class="col-lg-12" >
 
-                                    <div class="job-box bg-white overflow-hidden border rounded mt-4 position-relative overflow-hidden">
+                                    <div class="job-box bg-white overflow-hidden border rounded mt-4 position-relative overflow-hidden" >
                                         <div class="lable text-center pt-2 pb-2">
                                             <ul class="list-unstyled best text-white mb-0 text-uppercase">
                                                 <li class="list-inline-item"><i class="mdi mdi-star"></i></li>
                                             </ul>
                                         </div>
-                                        <div class="p-4">
-                                            <div class="row align-items-center">
+                                         
+                                        <div class="p-4" >
+                                           <a href="{{route('frontend.jobListdetail')}}" >
+                                            <div class="row align-items-center" >
                                                 <div class="col-md-2">
                                                     <div class="mo-mb-2">
                                                          @if($jobopening->photo == '')
@@ -192,29 +237,21 @@
                                                       <!-- </div> -->
                                                          @endif
                                                     </div>
+                                                
                                                 </div>
+
                                                 <div class="col-md-3">
                                                     <div>
                                                         <h5 class="f-18"><a href="#" class="text-dark">{{$jobopening->title}}</a></h5>
                                                         <p class="text-muted mb-0">{{$jobopening->viewPosition->name}}</p>
                                                     </div>
                                                 </div>
-                                               <!--  <div class="col-md-3">
-                                                    <div>
-                                                        <p class="text-muted mb-0"><i class="mdi mdi-map-marker text-primary mr-2"></i>Naypyidaw</p>
-                                                    </div>
-                                                </div>
+                                             
                                                 <div class="col-md-2">
-                                                    <div>
-                                                        <p class="text-muted mb-0 mo-mb-2"><span class="text-primary">$</span>‌Negotiation</p>
-                                                    </div>
-                                                </div> -->
-                                                <div class="col-md-2">
-                                                    <!-- <div>
-                                                        <p class="text-muted mb-0">Full Time</p>
-                                                    </div> -->
+                                                 
                                                 </div>
                                             </div>
+                                        </a>
                                         </div>
                                         <div class="p-3 bg-light">
                                             <div class="row">

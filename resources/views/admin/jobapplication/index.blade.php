@@ -47,7 +47,7 @@
                       <th>Branch</th>
                       <th>Education</th>
                       <th>Expected Salary</th>
-                      <th>Experience</th>
+                      <!-- <th>Experience</th> -->
                     </tr>
                   </thead>
                     <tbody>
@@ -72,7 +72,7 @@
                            <td style="{{ $jobapplication->status == 1 ? 'color: #2874A6 ' : '' }}">{{ $jobapplication->job}}</td>
                            <td style="{{ $jobapplication->status == 1 ? 'color: #2874A6 ' : '' }}">{{$jobapplication->edu}}</td>
                            <td style="{{ $jobapplication->status == 1 ? 'color: #2874A6 ' : '' }}">{{$jobapplication->exp_salary}}</td>
-                           <td style="{{ $jobapplication->status == 1 ? 'color: #2874A6 ' : '' }}">{{$jobapplication->experience}}</td>
+                           <!-- <td style="{{ $jobapplication->status == 1 ? 'color: #2874A6 ' : '' }}">{{$jobapplication->experience}}</td> -->
                         </tr>
                         
                  @endforeach

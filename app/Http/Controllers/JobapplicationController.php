@@ -8,6 +8,7 @@ use App\Position;
 use App\NRCCode;
 use App\NRCState;
 use App\Employee;
+use App\Jobopening;
 use Illuminate\Http\Request;
 use File;
 use Illuminate\Support\Str;
@@ -167,5 +168,17 @@ class JobapplicationController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function jobList()
+    {
+        $jobopenings = new Jobopening();
+        $jobopenings = $jobopenings->get();
+      return view('frontend.joblist',compact('jobopenings'));
+    }
+
+    public function jobListdetail()
+    {
+        return view('frontend.joblistdetail');
     }
 }
