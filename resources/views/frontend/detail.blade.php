@@ -96,31 +96,15 @@
     <!-- Loader -->
 
     <!-- Navigation Bar-->
-    <header id="topnav" class="defaultscroll scroll-active">
+    <header id="topnav" class="defaultscroll scroll-active" style="background-color: #3498DB;">
         <!-- Tagline STart -->
         <div class="tagline">
             <div class="container">
                 <div class="float-left">
-                    <div class="phone">
-                        <i class="mdi mdi-phone-classic"></i>  09 400887799
-                    </div>
-                    <div class="email">
-                        <a href="#">
-                            <i class="mdi mdi-email"></i> linncomputer@gmail.com
-                        </a>
-                    </div>
+                   
+                  
                 </div>
-                <div class="float-right">
-                    <ul class="topbar-list list-unstyled d-flex" style="margin: 11px 0px;">
-                       
-                        <li class="list-inline-item">
-                            <select id="select-lang" class="demo-default">
-                                <option value="">Language</option>
-                                <option value="4">English</option>
-                            </select>
-                        </li>
-                    </ul>
-                </div>
+               
                 <div class="clearfix"></div>
             </div>
         </div>
@@ -135,9 +119,9 @@
                     <img src="images/logo-dark.png" alt="" class="logo-dark" height="18" />
                 </a>
             </div>                 
-            <div class="buy-button">
+           <!--  <div class="buy-button">
                  <a href="https://shopping.linncomputer.com/"> <img src="{{ asset('uploads/images/shopping-cart.png') }}" alt="photo" width="20"> Linn OnlineShop </a>
-            </div><!--end login button-->
+            </div> --><!--end login button-->
             <!-- End Logo container-->
             <div class="menu-extras">
                 <div class="menu-item">
@@ -153,11 +137,12 @@
                 </div>
             </div>
     
-            <div id="navigation">
+            <div id="navigation" style="background-color: #3498DB;">
                 <!-- Navigation Menu-->   
                <ul class="navigation-menu">
                     <li><a href="{{route('frontend.home')}}">Home</a></li>
-                    <li class="has-submenu">
+                     <li><a href="{{route('joblist.jobList')}}">Job List</a></li>
+                   <!--  <li class="has-submenu">
                         <a href="javascript:void(0)">Jobs</a><span class="menu-arrow"></span>
                         <ul class="submenu">
                             <li><a href="{{route('joblist.jobList')}}">Job List</a></li>
@@ -165,14 +150,14 @@
                             <li><a href="#">Job Details</a></li>
                            
                         </ul>
-                    </li>
+                    </li> -->
     
                     <li class="has-submenu">
-                        <a href="#">About us</a>
+                        <a href="{{route('frontend.jobabout')}}">About us</a>
                     
                     </li>
                     <li>
-                        <a href="#">contact</a>
+                        <a href="{{route('frontend.jobcontact')}}">contact</a>
                     </li>
                 </ul><!--end navigation menu-->
             </div><!--end navigation-->
@@ -182,8 +167,8 @@
     <!-- Navbar End -->
     
    <!-- Start Home -->
-    <section class="bg-home" style="background-image: url('uploads/images/webbacklogo.jpg')">
-        <div class="bg-overlay"></div>
+    <section>
+        <div></div>
         <div class="home-center">
           
                     <div class="home-form-position">
@@ -668,61 +653,8 @@
     </section>
   
     <!-- CREATE RESUME END -->
-
-    <!-- footer start -->
-    <footer class="footer">
-          <div class="container">
-                <div class="row">
-                    <div class="col-md-4 col-sm-4">
-                        <div class="widget clearfix" >
-
-
-                            <div >
-                            <h4 class="widget-title" style="color: white;" class="unicode">Branch</h4>
-                            </div>
-                            <ul class="social list-inline mb-0">
-                                <li><a href="#" style="color: white" class="unicode">Head Office</a></li>
-                                <li><a href="#" style="color: white" class="unicode">Linn 1</a></li>
-                                <li><a href="#" style="color: white" class="unicode">Linn 2</a></li>
-                            </ul>
-                              <ul class="social-icon social list-inline mb-0">
-                            <li class="list-inline-item"><a href="https://www.facebook.com/linncomputerstore/" class="rounded"><i class="mdi mdi-facebook"></i></a></li>
-                            <li class="list-inline-item"><a href="#" class="rounded"><i class="mdi mdi-twitter"></i></a></li>
-                            <li class="list-inline-item"><a href="#" class="rounded"><i class="mdi mdi-instagram"></i></a></li>
-                            <li class="list-inline-item"><a href="#" class="rounded"><i class="mdi mdi-google"></i></a></li>
-                        </ul>
-                        </div><!-- end widget -->
-                    </div><!-- end col -->
-
-                    <div class="col-md-4 col-sm-4">
-                        <div class="widget clearfix">
-                             <div style="margin-left: 20px">
-                            <h4 class="widget-title"  style="color: white;padding-left: 20px;" class="unicode">Phone No</h4>
-                        </div>
-                            <ul style="list-style-type: none;">
-                                <li><a href="#" style="color: white" class="unicode">09 400887799</a></li>
-                                <li><a href="#" style="color: white" class="unicode">067-24488, 26884</a></li>
-                                <li><a href="#" style="color: white" class="unicode">067-414884,414885,432884</a></li>
-                            </ul>
-                        </div><!-- end widget -->
-                    </div><!-- end col -->
-
-                    <div class="col-md-4 col-sm-4">
-                        <div class="widget clearfix">
-                             <div style="margin-left: 20px">
-                            <h4 class="widget-title" style="color: white;padding-left: 20px;" class="unicode">Address</h4>
-                        </div>
-                            <ul style="list-style-type: none;">
-                                <li><a href="#" style="color: white" class="unicode">No. 14/585, 4th Street, Paung Laung Quarter, Pyinmana.</a></li>
-                                <li><a href="#" style="color: white" class="unicode">No.11/7, Bogyoke Road, Pyinmana</a></li>
-                                <li><a href="#" style="color: white" class="unicode">No.117, Thapyagone Quarter, Naypyitaw</a></li>
-                            </ul>
-                        </div><!-- end widget -->
-                    </div><!-- end col -->
-                </div><!-- end row -->
-            </div><!-- end container -->
-    </footer><!--end footer-->
-    <!-- Footer End -->
+    
+   
 
   
 

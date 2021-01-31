@@ -49,7 +49,9 @@ Route::get('cvform/show/{id}','CvformController@show')->name('cvform.show');
 Route::post('cvform','CvformController@store')->name('cvform.store');
 Route::post('select-ajax-codes','CvformController@selectcode')->name('select-ajax-codes');
 Route::get('joblist', 'JobapplicationController@jobList')->name('joblist.jobList');
-Route::get('frontend/joblistdetail', 'JobapplicationController@jobListdetail')->name('frontend.jobListdetail');
+Route::get('frontend/joblistdetail/{id}', 'JobapplicationController@jobListdetail')->name('frontend.jobListdetail');
+Route::get('frontend/about','JobapplicationController@jobabout')->name('frontend.jobabout');
+Route::get('frontend/contactus','JobapplicationController@jobcontact')->name('frontend.jobcontact');
 
 
 

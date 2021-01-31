@@ -130,7 +130,7 @@ class JobapplicationController extends Controller
     {
         $departments = Department::all();
         $positions = Position::all();
-         $nrccodes = NRCCode::all();
+        $nrccodes = NRCCode::all();
         $nrcstates = NRCState::all(); 
         $jobapplications = Cvform::find($id);
         return view('admin.jobapplication.show',compact('departments','positions','jobapplications','nrccodes','nrcstates'));
@@ -177,8 +177,20 @@ class JobapplicationController extends Controller
       return view('frontend.joblist',compact('jobopenings'));
     }
 
-    public function jobListdetail()
+    public function jobListdetail($id)
     {
-        return view('frontend.joblistdetail');
+        // dd($id);
+        $jobopenings = Jobopening::find($id);
+        return view('frontend.joblistdetail',compact('jobopenings'));
+    }
+
+    public function jobabout()
+    {
+       return view('frontend.about');
+    }
+
+    public function jobcontact()
+    {
+        return view('frontend.contactus');
     }
 }

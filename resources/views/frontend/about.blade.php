@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Job Detail</title>
+    <title>About</title>
     <meta name="description" content="" />
     <meta name="keywords" content="" />
     <meta name="author" content="Themesdesign" />
@@ -12,20 +12,20 @@
     <link rel="shortcut icon" href="images/favicon.ico">
 
     <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="{{ asset('css/bootstraps.min.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{asset('css/bootstraps.min.css')}}" type="text/css">
 
     <!--Material Icon -->
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/materialdesignicons.min.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{asset('css/materialdesignicons.min.css')}}" />
 
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/fontawesome.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{asset('css/fontawesome.css')}}" />
 
     <!-- selectize css -->
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/selectize.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{asset('css/selectize.css')}}" />
 
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/nice-select.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{asset('css/nice-select.css')}}" />
 
     <!-- Custom  Css -->
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/styles.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{asset('css/styles.css')}}" />
 
 </head>
 
@@ -50,7 +50,7 @@
 
                 </div>
                 <div class="float-right">
-                 
+                
                 </div>
                 <div class="clearfix"></div>
             </div>
@@ -67,7 +67,7 @@
                 </a>
             </div>                 
             <div class="buy-button">
-                
+    
             </div>
             <!--end login button-->
             <!-- End Logo container-->
@@ -90,7 +90,7 @@
                 <ul class="navigation-menu">
                     <li><a href="{{route('frontend.home')}}">Home</a></li>
                      <li><a href="{{route('joblist.jobList')}}">Job List</a></li>
-                  <!--   <li class="has-submenu">
+                   <!--  <li class="has-submenu">
                         <a href="javascript:void(0)">Jobs</a><span class="menu-arrow"></span>
                         <ul class="submenu">
                             <li><a href="{{route('joblist.jobList')}}">Job List</a></li>
@@ -120,90 +120,26 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-6">
-                    <div class="text-center text-white">
-                        <h4 class="text-uppercase title mb-4">{{$jobopenings->title}}</h4>
-                    </div>
+                    
                 </div>
             </div>
         </div>
     </section>
     <!-- end home -->
 
-    <!-- JOB DETAILS START -->
+    <!-- ABOUT US START -->
     <section class="section">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h4 class="text-dark mb-3">Job Detail:</h4>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-lg-8 col-md-7">
-                    <div class="job-detail border rounded p-4">
-                        <div class="job-detail-desc mt-4">
-                            <p class="text-muted mb-3">{{$jobopenings->description}}</p>
-                        </div>
-                    </div>
-
-                  <!--   <div class="row">
-                        <div class="col-lg-12">
-                            <h5 class="text-dark mt-4">Primary Responsibilities :</h5>
-                        </div>
-                    </div>
- -->
-                    <div class="row">
-                        <div class="col-lg-12">
-                        
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-5 mt-4 mt-sm-0">
-                    <div class="job-detail border rounded p-4">
-                        <h5 class="text-muted text-center pb-2"><i class="mdi mdi-map-marker mr-2"></i>Location</h5>
-
-                        <div class="job-detail-location pt-4 border-top">
-                            <div class="job-details-desc-item">
-                                <div class="float-left mr-2">
-                                    <i class="mdi mdi-bank text-muted"></i>
-                                </div>
-                                <p class="text-muted mb-2">: Naypyidaw</p>
-                            </div>
-
-                            <div class="job-details-desc-item">
-                                <div class="float-left mr-2">
-                                    <i class="mdi mdi-email text-muted"></i>
-                                </div>
-                                <p class="text-muted mb-2">: shopping@linncomputer.com</p>
-                            </div>
-
-                            <div class="job-details-desc-item">
-                                <div class="float-left mr-2">
-                                    <i class="mdi mdi-cellphone-iphone text-muted"></i>
-                                </div>
-                                <p class="text-muted mb-2">: 09-789799799</p>
-                            </div>
-
-                            <h6 class="text-dark f-17 mt-3 mb-0">Share Job :</h6>
-                            <ul class="social-icon list-inline mt-3 mb-0">
-                                <li class="list-inline-item"><a href="https://www.facebook.com/linncomputerstore/" class="rounded"><i class="mdi mdi-facebook"></i></a></li>
-                                <li class="list-inline-item"><a href="#" class="rounded"><i class="mdi mdi-twitter"></i></a></li>
-                                <li class="list-inline-item"><a href="#" class="rounded"><i class="mdi mdi-google-plus"></i></a></li>
-                                <li class="list-inline-item"><a href="#" class="rounded"><i class="mdi mdi-whatsapp"></i></a></li>
-                                <li class="list-inline-item"><a href="#" class="rounded"><i class="mdi mdi-linkedin"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="job-detail border rounded mt-4">
-                        <a href="{{route('cvform.show',$jobopenings->id)}}" class="btn btn-primary btn-block">Apply For Job</a>
-                    </div>
+            <div class="row align-items-center">
+                <div class="col-lg-12 col-md-12" >
+                  <p>Linn IT & Mobile Store သည် Linn IT Solution Co.,Ltd ၏ အမှတ်တံဆိပ်တစ်ခုဖြစ်ပြီး Mobile , IT & Electronic ပစ္စည်းများကို E-commerce နည်းပညာသုံး၍ ဝယ်ယူသုံးစွဲသူများထံ ရောင်းချနိုင်ရန် ဝန်ဆောင်မှုပေးထားခြင်းကို အဓိက ဆောင်ရွက်နေပါသည်။Linn IT Solution Co.,Ltd ကို ၂၀၀၅ တွင် စတင်တည်ထောင်ခဲ့သည်။ တည်ထောင်ခဲ့သည်ကာလမှ ယနေ့အချိန်ထိ Mobile, IT & Electronic ပစ္စည်းများကို ရောင်းချပေးခြင်း၊ Mobile Service , Computer Service & Printer Service စသည့် ဝန်ဆောင်မှုလုပ်ငန်းများအား ယနေ့ထိတိုင် ဝန်ဆောင်မှုပေးလျှက်ရှိသော Company တစ်ခုဖြစ်သည်။</p><br>
+                  <p>၂၀၁၉ မှစတင် ၍ အင်တာနက်ပေါ်တွင် မြန်မာနိုင်ငံမှ စီးပွားရေးလုပ်ငန်း အမျိုးမျိုးအား မြန်မာနိုင်ငံရှိ နေရာဒေသအသီးသီးမှ လွယ်ကူစွာဝယ်ယူသုံးစွဲနိုင်ရန် ရည်ရွယ်ချက်ဖြင့် အွန်လိုင်းမှ စျေးဝယ် ယူနိုင်ရန် ဆောင်ရွက် သင့်ကြောင်း မြင်တွေ့ပြီး Linn IT & Mobile Store ကို စတင်ဆောင်ရွက်ခဲ့ပါသည်။</p><br>
+                  <p>ယခုတွင် မူ ယခင်ကာလများကထက် အင်တာနက်လိုင်းများ ပိုမိုကောင်းမွန်လာခြင်း၊ အင်တာနက် ကို မိုဘိုင်းပေါ်မှ တွင်ကျယ်စွာအသုံးပြုလာခြင်းတို့ကြောင့် ပိုမိုထိရောက်ကောင်းမွန်မြန်ဆန်သည့် ဝန်ဆောင်မှုကို Linn IT & Mobile Store က တဖန်ပို့ဆောင်ပေးလိုက်ပြီဖြစ်ပါသည်။</p>
                 </div>
             </div>
         </div>
     </section>
-    <!-- JOB DETAILS END -->
+    <!-- ABOUT US END -->
 
    <!-- footer start -->
     <footer class="footer">
@@ -267,12 +203,13 @@
 
     <!-- javascript -->
     <script src="{{asset('js/jquerys.min.js')}}"></script>
-    <script src="{{asset('js/bootstraps.bundle.min.js')}}"></script>
+    <script src="{{asset('js/bootstrap.bundle.min.js')}}"></script>
     <script src="{{asset('js/jquery.easing.min.js')}}"></script>
     <script src="{{asset('js/plugins.js')}}"></script>
 
     <!-- selectize js -->
     <script src="{{asset('js/selectize.min.js')}}"></script>
+    <script src="{{asset('js/counter.int.js')}}"></script>
 
     <script src="{{asset('js/jquery.nice-select.min.js')}}"></script>
 

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Job Detail</title>
+    <title>Contact us</title>
     <meta name="description" content="" />
     <meta name="keywords" content="" />
     <meta name="author" content="Themesdesign" />
@@ -12,20 +12,20 @@
     <link rel="shortcut icon" href="images/favicon.ico">
 
     <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="{{ asset('css/bootstraps.min.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{asset('css/bootstraps.min.css')}}" type="text/css">
 
     <!--Material Icon -->
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/materialdesignicons.min.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{asset('css/materialdesignicons.min.css')}}" />
 
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/fontawesome.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{asset('css/fontawesome.css')}}" />
 
     <!-- selectize css -->
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/selectize.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{asset('css/selectize.css')}}" />
 
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/nice-select.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{asset('css/nice-select.css')}}" />
 
     <!-- Custom  Css -->
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/styles.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{asset('css/styles.css')}}" />
 
 </head>
 
@@ -41,16 +41,16 @@
     </div>
     <!-- Loader -->
 
-     <!-- Navigation Bar-->
+    <!-- Navigation Bar-->
     <header id="topnav" class="defaultscroll scroll-active" style="background-color: #3498DB;">
         <!-- Tagline STart -->
         <div class="tagline">
             <div class="container">
                 <div class="float-left">
-
+                    
                 </div>
                 <div class="float-right">
-                 
+                    
                 </div>
                 <div class="clearfix"></div>
             </div>
@@ -67,9 +67,8 @@
                 </a>
             </div>                 
             <div class="buy-button">
-                
-            </div>
-            <!--end login button-->
+             
+            </div><!--end login button-->
             <!-- End Logo container-->
             <div class="menu-extras">
                 <div class="menu-item">
@@ -85,12 +84,12 @@
                 </div>
             </div>
     
-            <div id="navigation" >
-                <!-- Navigation Menu-->   
-                <ul class="navigation-menu">
+            <div id="navigation">
+               <!-- Navigation Menu-->   
+               <ul class="navigation-menu">
                     <li><a href="{{route('frontend.home')}}">Home</a></li>
                      <li><a href="{{route('joblist.jobList')}}">Job List</a></li>
-                  <!--   <li class="has-submenu">
+                   <!--  <li class="has-submenu">
                         <a href="javascript:void(0)">Jobs</a><span class="menu-arrow"></span>
                         <ul class="submenu">
                             <li><a href="{{route('joblist.jobList')}}">Job List</a></li>
@@ -113,99 +112,70 @@
         <!--end end-->
     </header><!--end header-->
     <!-- Navbar End -->
-    
-    <!-- Start home -->
-    <section> 
-        <div></div>
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-md-6">
-                    <div class="text-center text-white">
-                        <h4 class="text-uppercase title mb-4">{{$jobopenings->title}}</h4>
+
+    <!-- MAP START -->
+    <section class="section pt-0 bg-light">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12 p-0">
+                   
+                </div>
+            </div>
+        </div>
+        
+        <div class="container mt-100 mt-60">
+            <div class="row align-items-center">
+                <div class="col-lg-4">
+                    <div class="contact-item mt-40">
+                        <div class="float-left">
+                            <div class="contact-icon d-inline-block border rounded-pill shadow text-primary mt-1 mr-4">
+                                <i class="mdi mdi-earth"></i>
+                            </div>
+                        </div>
+                        <div class="contact-details">
+                            <h4 class="text-dark mb-1">Website</h4>
+                            <p class="mb-0 text-muted">Brandcode Pvt.Ltd.co.in</p>
+                            <p class="mb-0 text-muted">Themescode Pvt.Ltd.co.in</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="contact-item mt-40">
+                        <div class="float-left">
+                            <div class="contact-icon d-inline-block border rounded-pill shadow text-primary mt-1 mr-4">
+                                <i class="mdi mdi-cellphone-iphone"></i>
+                            </div>
+                        </div>
+                        <div class="contact-details">
+                            <h4 class="text-dark mb-1">Call us</h4>
+                            <p class="mb-0 text-muted">123 456 7890</p>
+                            <p class="mb-0 text-muted">123 456 7890</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="contact-item mt-40">
+                        <div class="float-left">
+                            <div class="contact-icon d-inline-block border rounded-pill shadow text-primary mt-1 mr-4">
+                                <i class="mdi mdi-email"></i>
+                            </div>
+                        </div>
+                        <div class="contact-details">
+                            <h4 class="text-dark mb-1">Email</h4>
+                            <p class="mb-0 text-muted">Themescodeltd@gmail.com</p>
+                            <p class="mb-0 text-muted">Brandcodeltd@gmail.com</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <!-- end home -->
+    <!-- CONTACT END -->
 
-    <!-- JOB DETAILS START -->
-    <section class="section">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h4 class="text-dark mb-3">Job Detail:</h4>
-                </div>
-            </div>
 
-            <div class="row">
-                <div class="col-lg-8 col-md-7">
-                    <div class="job-detail border rounded p-4">
-                        <div class="job-detail-desc mt-4">
-                            <p class="text-muted mb-3">{{$jobopenings->description}}</p>
-                        </div>
-                    </div>
-
-                  <!--   <div class="row">
-                        <div class="col-lg-12">
-                            <h5 class="text-dark mt-4">Primary Responsibilities :</h5>
-                        </div>
-                    </div>
- -->
-                    <div class="row">
-                        <div class="col-lg-12">
-                        
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-5 mt-4 mt-sm-0">
-                    <div class="job-detail border rounded p-4">
-                        <h5 class="text-muted text-center pb-2"><i class="mdi mdi-map-marker mr-2"></i>Location</h5>
-
-                        <div class="job-detail-location pt-4 border-top">
-                            <div class="job-details-desc-item">
-                                <div class="float-left mr-2">
-                                    <i class="mdi mdi-bank text-muted"></i>
-                                </div>
-                                <p class="text-muted mb-2">: Naypyidaw</p>
-                            </div>
-
-                            <div class="job-details-desc-item">
-                                <div class="float-left mr-2">
-                                    <i class="mdi mdi-email text-muted"></i>
-                                </div>
-                                <p class="text-muted mb-2">: shopping@linncomputer.com</p>
-                            </div>
-
-                            <div class="job-details-desc-item">
-                                <div class="float-left mr-2">
-                                    <i class="mdi mdi-cellphone-iphone text-muted"></i>
-                                </div>
-                                <p class="text-muted mb-2">: 09-789799799</p>
-                            </div>
-
-                            <h6 class="text-dark f-17 mt-3 mb-0">Share Job :</h6>
-                            <ul class="social-icon list-inline mt-3 mb-0">
-                                <li class="list-inline-item"><a href="https://www.facebook.com/linncomputerstore/" class="rounded"><i class="mdi mdi-facebook"></i></a></li>
-                                <li class="list-inline-item"><a href="#" class="rounded"><i class="mdi mdi-twitter"></i></a></li>
-                                <li class="list-inline-item"><a href="#" class="rounded"><i class="mdi mdi-google-plus"></i></a></li>
-                                <li class="list-inline-item"><a href="#" class="rounded"><i class="mdi mdi-whatsapp"></i></a></li>
-                                <li class="list-inline-item"><a href="#" class="rounded"><i class="mdi mdi-linkedin"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="job-detail border rounded mt-4">
-                        <a href="{{route('cvform.show',$jobopenings->id)}}" class="btn btn-primary btn-block">Apply For Job</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- JOB DETAILS END -->
-
-   <!-- footer start -->
+  <!-- footer start -->
     <footer class="footer">
         <div class="container">
             <div class="row">
@@ -264,10 +234,9 @@
         <i class="mdi mdi-chevron-up d-block"> </i> 
     </a>
     <!-- Back to top -->
-
     <!-- javascript -->
     <script src="{{asset('js/jquerys.min.js')}}"></script>
-    <script src="{{asset('js/bootstraps.bundle.min.js')}}"></script>
+    <script src="{{asset('js/bootstrap.bundle.min.js')}}"></script>
     <script src="{{asset('js/jquery.easing.min.js')}}"></script>
     <script src="{{asset('js/plugins.js')}}"></script>
 
@@ -275,6 +244,8 @@
     <script src="{{asset('js/selectize.min.js')}}"></script>
 
     <script src="{{asset('js/jquery.nice-select.min.js')}}"></script>
+    <!-- CONTACT -->
+    <script src="{{asset('js/contact.js')}}"></script>
 
     <script src="{{asset('js/apps.js')}}"></script>
 
