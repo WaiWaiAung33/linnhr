@@ -88,7 +88,7 @@
 
                                 <div class="col-md-8 $errors->first('description', 'has-error')">
 
-                                       <input type="text" name="description" class="form-control unicode" id="description" value="{{$jobopenings->description}}"> 
+                                      <textarea  name="description" rows="4" class="form-control unicode" id="description">{{$jobopenings->description}}</textarea>
                                        
                                 </div>
                             </div>

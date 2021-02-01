@@ -139,9 +139,10 @@
             </div>
 
             <div class="row">
-                <div class="col-lg-8 col-md-7">
-                    <div class="job-detail border rounded p-4">
+                <div class="col-lg-8 col-md-7" >
+                    <div class="job-detail border rounded p-2" >
                         <div class="job-detail-desc mt-4">
+                            <h6>{{$jobopenings->title}}</h6>
                             <p class="text-muted mb-3">{{$jobopenings->description}}</p>
                         </div>
                     </div>

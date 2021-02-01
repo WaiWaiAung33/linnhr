@@ -269,7 +269,7 @@
                                                   <input type="radio" name="marrical_status" value="singal" id="singnal"> 
                                               </div> 
                                               <div class="col-md-3">
-                                                <label class="unicode">Unmarried</label>
+                                                <label class="unicode">Singal</label>
                                               </div>
                                         </div>
                                     </div>
@@ -610,24 +610,25 @@
                     <div class="custom-form p-4 border rounded">
                        
                             <div class="row">
+
+                               <div class="col-lg-6">
+                                    <div class="form-group app-label">
+                                        <label class="text-muted">CV form attach file</label>
+                                        <input id="degree/certification" type="file" class="form-control resume" placeholder="" name="cvfile">
+                                    </div>
+                                </div>
+                                
                                 <div class="col-md-6">
                                     <div class="form-group app-label">
-                                        <label class="text-muted">Police station recommendation</label>
+                                        <label class="text-muted">Police station recommendation Photo</label>
                                         <input id="graduation" type="file" class="form-control resume" placeholder="" name="police_reco">
                                     </div>
                                 </div>
 
                                  <div class="col-md-6">
                                     <div class="form-group app-label">
-                                        <label class="text-muted">Ward recommendation letter</label>
+                                        <label class="text-muted">Ward recommendation letter Photo</label>
                                         <input id="university/college" type="file" class="form-control resume" placeholder="" name="ward_reco">
-                                    </div>
-                                </div>
-
-                                 <div class="col-lg-6">
-                                    <div class="form-group app-label">
-                                        <label class="text-muted">CV form attach file</label>
-                                        <input id="degree/certification" type="file" class="form-control resume" placeholder="" name="cvfile">
                                     </div>
                                 </div>
 

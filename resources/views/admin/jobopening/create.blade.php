@@ -106,8 +106,8 @@
                                 </div>
 
                                 <div class="col-md-8 $errors->first('description', 'has-error')">
+                                        <textarea name="description" rows="4" class="form-control unicode" id="description"></textarea>
 
-                                       <input type="text" name="description" class="form-control unicode" id="description" > 
                                          @if($errors->first('description'))
                                             <span class="help-block">
                                                 <small>{{ $errors->first('description') }}</small>
