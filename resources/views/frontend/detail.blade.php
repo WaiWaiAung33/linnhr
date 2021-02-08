@@ -488,14 +488,14 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group app-label">
-                                                <label class="text-muted">Date From</label>
+                                                <label class="text-muted">From Date</label>
                                                 <input id="exp_date_from" type="text" class="form-control resume" placeholder="01-01-2021" name="exp_date_from">
                                             </div>
                                         </div>
 
                                         <div class="col-md-6">
                                             <div class="form-group app-label">
-                                                <label class="text-muted">Date To</label>
+                                                <label class="text-muted">To Date</label>
                                                 <input id="exp_date_to" type="text" class="form-control resume" placeholder="01-01-2021" name="exp_date_to">
                                             </div>
                                         </div>

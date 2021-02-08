@@ -4,27 +4,16 @@
 @section('title', 'Employee')
 
 @section('content_header')
- <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
    
 <link id="bsdp-css" href="https://unpkg.com/bootstrap-datepicker@1.9.0/dist/css/bootstrap-datepicker3.min.css" rel="stylesheet">
-<style type="text/css">
-   
-    .checkbox {
-        width: 30px;
-        height: 20px;
-    }
-</style>
+
+
 @stop
 
 @section('content')
 <div class="container">
-    <div class="row">
-        @if ($message = Session::get('success'))
-        <div class="alert alert-success">
-            <p>{{ $message }}</p>
-        </div>
-        @endif
-    </div>
+   
     <div class="row">
         <div class="col-lg-11">
             <a class="btn btn-success unicode" href="{{route('employee.index')}}"> Back</a>
@@ -45,7 +34,7 @@
                         <div class="col-md-6">
                             <div class="row">
                                 <div class="col-md-2">
-                                    <h6 style="font-weight: bold;;font-size:15px;">Name</h6>
+                                    <h6 style="font-weight:bold;font-size:15px;">Name</h6>
                                 </div>
 
                                 <div class="col-md-8 {{ $errors->first('name', 'has-error') }}">
@@ -58,7 +47,7 @@
                         <div class="col-md-6">
                             <div class="row">
                                 <div class="col-md-3">
-                                    <h6 style="font-weight: bold;;font-size:15px;">Father's Name</h6>
+                                    <h6 style="font-weight:bold;font-size:15px;">Parent's Name</h6>
                                 </div>
 
                                 <div class="col-md-8">
@@ -68,15 +57,17 @@
                         </div>
                     </div>
                     <br>
+
                     <div class="row">
                         <div class="col-md-6">
+                            
                             <div class="row">
                                 <div class="col-md-2">
-                                    <h6 style="font-weight: bold;;font-size:15px;">Gender</h6>
+                                    <h6 style="font-weight:bold;font-size:15px;">Gender</h6>
                                 </div>
 
 
-                                 <div class="col-md-2 {{ $errors->first('gender', 'has-error') }}">
+                                <div class="col-md-2 {{ $errors->first('gender', 'has-error') }}">
                                     <input type="radio" name="gender" value="male" {{ $employees->gender == 'male' ? 'checked' : '' }}> Male
                                     
                                 </div>   
@@ -86,20 +77,20 @@
                             </div><br>
                             <div class="row">
                                 <div class="col-md-2">
-                                    <h6 style="font-weight: bold;;font-size:15px;">Date of Birth</h6>
+                                    <h6 style="font-weight:bold;font-size:15px;">Date of Birth*</h6>
                                 </div>
 
                                 <div class="col-md-8 {{ $errors->first('lat', 'has-error') }}">
-                                     <input type="text" name="date_of_birth" class="form-control unicode" id="date_of_birth" value="{{ old('date_of_birth',$employees->date_of_birth) }}">
+                                    <input type="text" name="date_of_birth" class="form-control unicode" id="date_of_birth" value="{{ old('date_of_birth',$employees->date_of_birth) }}">
 
                                 </div>
                             </div><br>
                             <div class="row">
                                 <div class="col-md-2">
-                                    <h6 style="font-weight: bold;;font-size:15px;">NRC</h6>
+                                    <h6 style="font-weight:bold;font-size:15px;">NRC</h6>
                                 </div>
 
-                                <div class="col-md-2 {{ $errors->first('name', 'has-error') }}">
+                                 <div class="col-md-2 {{ $errors->first('name', 'has-error') }}">
                                 
                                  <select class="form-control select2bs4" name="nrc_code" id="code_id">
                                     <option value="">-</option>
@@ -144,14 +135,13 @@
                             </div>
                         </div>
                         <div class="col-md-6">
-
-                            <div class="row">
+                             <div class="row">
                                 <div class="col-md-3">
                                     <h6 style="font-weight:bold;font-size:15px;"> Religion</h6>
                                 </div>
 
                                 <div class="col-md-8 {{ $errors->first('lat', 'has-error') }}">
-                                     <input type="text" name="religion" class="form-control unicode" value="{{$employees->religion}}">
+                                    <input type="text" name="religion" class="form-control unicode" value="{{$employees->religion}}">
 
                                 </div>
                             </div><br>
@@ -162,7 +152,7 @@
                                 </div>
 
 
-                                 <div class="col-md-2 {{ $errors->first('marrical_status', 'has-error') }}">
+                                <div class="col-md-2 {{ $errors->first('marrical_status', 'has-error') }}">
                                     <input type="radio" name="marrical_status"  id="marrical_status" value="marry" {{ $employees->marrical_status == 'marry' ? 'checked' : '' }}> ရှိ
                                     
                                 </div>   
@@ -171,27 +161,18 @@
                                 </div> 
                             </div><br>
 
+
                             <div class="row">
                                 <div class="col-md-3">
-                                    <h6 style="font-weight: bold;;font-size:15px;">Photo</h6>
+                                    <h6 style="font-weight:bold;font-size:15px;">Photo</h6>
                                 </div>
 
                                 <div class="col-md-8 ">
-                                    <input type="file" name="photo" class="form-control unicode">
+                                    <input type="file" name="photo" class="form-control unicode" value="{{$employees->photo}}">
                                 </div>
-                            </div><br>
-
-                            <div class="row">
-                            <div class="col-md-3"></div>
-                            <div class="col-md-8">
-                                  <img src="{{ asset('uploads/employeePhoto/'.$employees->photo) }}" alt="photo" width="200px" height="200px">
                             </div>
-                            </div>
-
                         </div>
-                        
                     </div>
-
 
                     <!-- <br> -->
 
@@ -201,7 +182,7 @@
                 <div class="col-md-6">
                     <div class="row">
                         <div class="col-md-2">
-                            <h6 style="font-weight: bold;;font-size:15px;">Photo</h6>
+                            <h6 style="font-weight:bold;font-size:15px;">Photo</h6>
                         </div>
                         
                         <div class="col-md-8">
@@ -212,7 +193,23 @@
                     </div>
                 </div>
             </div> -->
-                   
+                    <br>
+                    <div class="row">
+                           <div class="col-md-6">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <h6 style="font-weight:bold;font-size:15px;">Email</h6>
+                                </div>
+
+                                <div class="col-md-8 {{ $errors->first('name', 'has-error') }}">
+
+                                   <input type="email" name="email" class="form-control unicode" value="{{$employees->email}}">
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6"></div>
+                    </div>
                     <div style="width: 100%">
                         <!-- <div class="col-md-6">
                 </div>
@@ -234,17 +231,20 @@
                 </div>
 
 
-</div>
+            </div>
+
+
             <div class="tabby-tab" style="margin-right: 5px;">
                 <input type="radio" id="tab-2" name="tabby-tabs" disabled="true">
                 <label for="tab-2">Contact</label>
                 <div class="tabby-content">
                     <br>
-                      <div class="row">
+
+                     <div class="row">
                          <div class="col-md-6">
                             <div class="row">
                                 <div class="col-md-3">
-                                    <h6 style="font-weight:bold;font-size:15px;">Phone*</h6>
+                                    <h6 style="font-weight:bold;font-size:15px;">Phone</h6>
                                 </div>
 
                                 <div class="col-md-8">
@@ -255,7 +255,7 @@
                         <div class="col-md-6">
                             <div class="row">
                                 <div class="col-md-3">
-                                    <h6 style="font-weight:bold;font-size:15px;">City*</h6>
+                                    <h6 style="font-weight:bold;font-size:15px;">City</h6>
                                 </div>
 
                                 <div class="col-md-8 {{ $errors->first('name', 'has-error') }}">
@@ -272,7 +272,7 @@
                         <div class="col-md-6">
                             <div class="row">
                                 <div class="col-md-3">
-                                    <h6 style="font-weight:bold;font-size:15px;">Parent Phone*</h6>
+                                    <h6 style="font-weight:bold;font-size:15px;">Parent Phone</h6>
                                 </div>
 
                                 <div class="col-md-8">
@@ -283,7 +283,7 @@
                         <div class="col-md-6">
                             <div class="row">
                                 <div class="col-md-3">
-                                    <h6 style="font-weight:bold;font-size:15px;">Township*</h6>
+                                    <h6 style="font-weight:bold;font-size:15px;">Township</h6>
                                 </div>
 
                                 <div class="col-md-8">
@@ -295,7 +295,7 @@
                     <br>
 
                       <div class="row">
-                        <div class="col-md-6">
+                       <!--  <div class="col-md-6">
                             <div class="row">
                                 <div class="col-md-3">
                                     <h6 style="font-weight:bold;font-size:15px;">Email*</h6>
@@ -303,29 +303,30 @@
 
                                 <div class="col-md-8 {{ $errors->first('name', 'has-error') }}">
 
-                                   <input type="email" name="email" class="form-control unicode" value="{{$employees->email}}">
+                                   <input type="email" name="email" class="form-control unicode">
 
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                         <div class="col-md-6">
                             <div class="row">
                                 <div class="col-md-3">
-                                    <h6 style="font-weight:bold;font-size:15px;">Address*</h6>
+                                    <h6 style="font-weight:bold;font-size:15px;">Address</h6>
                                 </div>
 
                                 <div class="col-md-8 {{ $errors->first('name', 'has-error') }}">
 
-                                   <textarea name="address" rows="4" class="form-control unicode" id="address" placeholder="Paung Long 4 street,Pyinmana" >{{$employees->address}}</textarea>
+                                   <textarea name="address" rows="4" class="form-control unicode" id="address" placeholder="Paung Long 4 street,Pyinmana">{{$employees->address}}</textarea>
 
                                 </div>
                             </div>
                         </div>
                     </div>
                     <br>
+
                     <div style="width: 100%">
-                        <a class="btn btn-primary unicode" id="photo_back" style="float: left;">Back</a>
-                        <a class="btn btn-success unicode" id="photo_next" style="float: right;">Next</a>
+                        <a class="btn btn-primary unicode" id="contact_back" style="float: left;">Back</a>
+                        <a class="btn btn-success unicode" id="contact_next" style="float: right;">Next</a>
                         <!-- <div class="col-md-1"></div>
                         <div class="col-md-2">
                             <a class="btn btn-primary unicode" id="photo_back">Back</a>
@@ -339,16 +340,30 @@
 
                     </div>
                 </div>
-            </div>
+            </div> 
 
 
              <div class="tabby-tab" style="margin-right: 5px;">
                 <input type="radio" id="tab-3" name="tabby-tabs" disabled="true">
-                <label for="tab-3">Qualification</label>
+                <label for="tab-3">Education</label>
                 <div class="tabby-content">
                     <br>
+
                      <div class="row">
                         <div class="col-md-6">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <h6 style="font-weight:bold;font-size:15px;">Graduation</h6>
+                                </div>
+
+                                <div class="col-md-8 {{ $errors->first('name', 'has-error') }}">
+
+                                    <input type="text" name="graduation" class="form-control unicode" value="{{$employees->graduation}}" >
+
+                                </div>
+                            </div>
+                        </div>
+                         <div class="col-md-6">
                             <div class="row">
                                 <div class="col-md-3">
                                     <h6 style="font-weight:bold;font-size:15px;">University/School</h6>
@@ -361,24 +376,68 @@
                                 </div>
                             </div>
                         </div>
-                       <!--  <div class="col-md-6">
-                            <div class="row">
-                                <div class="col-md-3">
-                                    <h6 style="font-weight:bold;font-size:15px;">Mobile*</h6>
-                                </div>
-
-                                <div class="col-md-8">
-                                    <input type="number" name="phone_no" class="form-control unicode" id="mobile" placeholder="09 xxx xxx xxx">
-                                </div>
-                            </div>
-                        </div> -->
                     </div>
                     <br>
 
-                  
+
+                       <div class="row">
+                        <div class="col-md-6">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <h6 style="font-weight:bold;font-size:15px;">Course Title</h6>
+                                </div>
+
+                                <div class="col-md-8 {{ $errors->first('name', 'has-error') }}">
+
+                                    <input type="text" name="course_title" class="form-control unicode" value="{{$employees->course_title}}">
+
+                                </div>
+                            </div>
+                        </div>
+                         <div class="col-md-6">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <h6 style="font-weight:bold;font-size:15px;">Level</h6>
+                                </div>
+
+                                <div class="col-md-8 {{ $errors->first('name', 'has-error') }}">
+
+                                   <select class="form-control unicode" name="level">
+                                        <option value="1" @if($employees->level==='1') selected='selected' @endif>Level-1</option>
+                                        
+                                        <option value="2" @if($employees->level==='2') selected='selected' @endif>Level-2</option>
+                                        <option value="3" @if($employees->level==='3') selected='selected' @endif>Level-3</option>
+                                        <option value="4" @if($employees->level==='4') selected='selected' @endif>Level-4</option>
+                                    </select>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+
+                     <div class="row">
+                        <div class="col-md-6">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <h6 style="font-weight:bold;font-size:15px;">Degree/Certification </h6>
+                                </div>
+
+                                <div class="col-md-8 {{ $errors->first('name', 'has-error') }}">
+
+                                    <input type="file" name="degree" class="form-control unicode" value="{{$employees->degree}}">
+
+                                </div>
+                            </div>
+                        </div>
+                       
+                    </div>
+                    <br>
+
+
                     <div style="width: 100%">
-                        <a class="btn btn-primary unicode" id="assign_back" style="float: left;">Back</a>
-                        <a class="btn btn-success unicode" id="assign_next" style="float: right;">Next</a>
+                        <a class="btn btn-primary unicode" id="qualification_back" style="float: left;">Back</a>
+                        <a class="btn btn-success unicode" id="qualification_next" style="float: right;">Next</a>
                         <!-- <div class="col-md-1"></div>
                         <div class="col-md-2">
                             <a class="btn btn-primary unicode" id="photo_back">Back</a>
@@ -394,32 +453,35 @@
                 </div>
             </div>
 
-            <div class="tabby-tab" >
+            <div class="tabby-tab" style="margin-right: 5px;">
                 <input type="radio" id="tab-4" name="tabby-tabs" disabled="true">
-                <label for="tab-4">Employment</label>
+                <label for="tab-4">Work Exp</label>
                 <div class="tabby-content">
                     <br>
-                    <div class="row">
-                        <div class="col-md-6">
+
+                     <div class="row">
+                         <div class="col-md-6">
                             <div class="row">
-                                <!-- <label class="col-md-3 unicode" style="text-align: right;">Assign</label> -->
-                                <div class="col-md-2">
-                                    <h6 style="font-weight: bold;font-size:15px;">Employee Id</h6>
+                                <div class="col-md-3">
+                                    <h6 style="font-weight:bold;font-size:15px;">Company Name</h6>
                                 </div>
-                                <div class="col-md-8">
-                                    <input type="text" name="emp_id" class="form-control unicode" value="{{ old('emp_id',$employees->emp_id) }}">
+
+                                <div class="col-md-8 {{ $errors->first('name', 'has-error') }}">
+
+                                    <input type="text" name="exp_company" class="form-control unicode" value="{{$employees->exp_company}}">
 
                                 </div>
                             </div>
                         </div>
-                         <div class="col-md-6">
+                          <div class="col-md-6">
                             <div class="row">
-                                <!-- <label class="col-md-3 unicode" style="text-align: right;">Assign</label> -->
-                                <div class="col-md-2">
-                                    <h6 style="font-weight: bold;;font-size:15px;">Join Date</h6>
+                                <div class="col-md-3">
+                                    <h6 style="font-weight:bold;font-size:15px;">Job Position</h6>
                                 </div>
-                                <div class="col-md-8">
-                                    <input type="text" name="join_date" class="form-control unicode" id="join_date" value="{{ old('join_date',$employees->join_date) }}">
+
+                                <div class="col-md-8 {{ $errors->first('name', 'has-error') }}">
+
+                                    <input type="text" name="exp_position" class="form-control unicode" value="{{$employees->exp_position}}">
 
                                 </div>
                             </div>
@@ -427,15 +489,119 @@
                     </div>
                     <br>
 
+                     <div class="row">
+                         <div class="col-md-6">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <h6 style="font-weight:bold;font-size:15px;">From Date</h6>
+                                </div>
+
+                                <div class="col-md-8 {{ $errors->first('name', 'has-error') }}">
+
+                                    <input type="text" name="exp_date_from" class="form-control unicode" id="from_date"  value="{{ old('date_of_birth',$employees->exp_date_from) }}">
+
+                                </div>
+                            </div>
+                        </div>
+                          <div class="col-md-6">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <h6 >To Date</h6>
+                                </div>
+                                 <div class="col-md-8 {{ $errors->first('name', 'has-error') }}">
+
+                                    <input type="text" name="exp_date_to" class="form-control unicode" id="to_date" value="{{ old('date_of_birth',$employees->exp_date_to) }}">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+
+
+                       <div class="row">
+                         <div class="col-md-6">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <h6 style="font-weight:bold;font-size:15px;">Location</h6>
+                                </div>
+
+                                <div class="col-md-8 {{ $errors->first('name', 'has-error') }}">
+
+                                    <input type="text" name="exp_location" class="form-control unicode" value="{{$employees->exp_location}}">
+
+                                </div>
+                            </div>
+                        </div>
+                          <div class="col-md-6">
+                          
+                        </div>
+                    </div>
+                    <br>
+
+                    <div style="width: 100%">
+                        <a class="btn btn-primary unicode" id="workexp_back" style="float: left;">Back</a>
+                        <a class="btn btn-success unicode" id="workexp_next" style="float: right;">Next</a>
+                        <!-- <div class="col-md-1"></div>
+                        <div class="col-md-2">
+                            <a class="btn btn-primary unicode" id="photo_back">Back</a>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="row">
+                                <a class="btn btn-success unicode" id="photo_next">Next</a> 
+                            </div>
+                            
+                        </div> -->
+
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="tabby-tab" style="margin-right: 5px;">
+                <input type="radio" id="tab-5" name="tabby-tabs" disabled="true">
+                <label for="tab-5">Employment</label>
+                <div class="tabby-content">
+                    <br>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="row">
+                                <!-- <label class="col-md-3 unicode" style="text-align: right;">Assign</label> -->
+                                <div class="col-md-2">
+                                    <h6 style="font-weight:bold;font-size:15px;">Employee ID</h6>
+                                </div>
+                                <div class="col-md-8">
+                                    <input type="text" name="emp_id" class="form-control unicode" value="{{$employees->emp_id}}">
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="row">
+                                <!-- <label class="col-md-3 unicode" style="text-align: right;">Assign</label> -->
+                                <div class="col-md-2">
+                                    <h6 style="font-weight:bold;font-size:15px;">Join Date</h6>
+                                </div>
+                                <div class="col-md-8">
+                                    <input type="text" name="join_date" class="form-control unicode" id="join_date" placeholder="1-01-2021"  value="{{ old('date_of_birth',$employees->join_date) }}">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+
+
                     <div class="row">
                         <div class="col-md-6">
                             <div class="row">
                                 <div class="col-md-2">
-                                    <h6 style="font-weight: bold;;font-size:15px;" id="assign_label">Department</h6>
+                                    <h6 style="font-weight:bold;font-size:15px;" id="assign_label">Department</h6>
                                 </div>
                                 <!-- <label class="col-md-3 unicode" id="assign_label" style="text-align: right;">Assign Date</label> -->
                                 <div class="col-md-8">
-                                     <select class="form-control" name="department" id="department">
+                                    <select class="form-control" name="department" id="department">
                                         <option value="">Department</option>
                                         
                                         @foreach($departments as $department)
@@ -448,11 +614,11 @@
                         <div class="col-md-6">
                                  <div class="row">
                                 <div class="col-md-2">
-                                    <h6 style="font-weight: bold;;font-size:15px;" id="assign_label">Branch</h6>
+                                    <h6 style="font-weight:bold;font-size:15px;" id="assign_label">Branch</h6>
                                 </div>
                                 <!-- <label class="col-md-3 unicode" id="assign_label" style="text-align: right;">Assign Date</label> -->
                                 <div class="col-md-8">
-                                      <select class="form-control" name="branch" id="branch">
+                                       <select class="form-control" name="branch" id="branch">
                                         <option value="">Branch</option>
                                         @foreach($branchs as $branch)
                                          <option value="{{$branch->id}}" {{ (old('branch',$employees->branch_id)==$branch->id)?'selected':'' }}>{{$branch->name}}</option>
@@ -465,14 +631,14 @@
                     <br>
 
                     <div class="row">
-                        <div class="col-md-6">
+                         <div class="col-md-6">
                             <div class="row">
                                 <div class="col-md-2">
-                                    <h6 style="font-weight: bold;;font-size:15px;">Rank</h6>
+                                    <h6 style="font-weight:bold;font-size:15px;">Rank</h6>
                                 </div>
                                 <!-- <label class="col-md-3 unicode" id="appointment_label" style="text-align: right;">Appoint Date</label> -->
                                 <div class="col-md-8">
-                                      <select class="form-control" name="position" id="rank">
+                                       <select class="form-control" name="position" id="rank">
                                         <option value="">Rank</option>
                                         @foreach($positions as $position)
                                          <option value="{{$position->id}}" {{ (old('position',$employees->position_id)==$position->id)?'selected':'' }}>{{$position->name}}</option>
@@ -481,13 +647,13 @@
                                 </div>
                             </div>
                         </div>
-                         <div class="col-md-6">
+                          <div class="col-md-6">
                             <div class="row">
                                 <!-- <label class="col-md-3 unicode" style="text-align: right;">Assign</label> -->
                                 <div class="col-md-2">
                                     <h6 style="font-weight:bold;font-size:15px;">Hostel</h6>
                                 </div>
-                                  <div class="col-md-2 ">
+                                 <div class="col-md-2 ">
                                     <input type="radio" name="isHostel" value="နေ" {{ $employees->hostel == 'နေ' ? 'checked' : '' }}> Yes
                                     
                                 </div>   
@@ -498,7 +664,8 @@
                         </div>
                     </div><br>
 
-                       <div class="row">
+
+                     <div class="row">
                          <div class="col-md-6">
                             <div class="row">
                                 <div class="col-md-2">
@@ -511,22 +678,156 @@
                             </div>
                         </div>
                           <div class="col-md-6">
-                            <div class="row">
-                                <!-- <label class="col-md-3 unicode" style="text-align: right;">Assign</label> -->
+                           <!--  <div class="row">
+                               
                                 <div class="col-md-2">
                                     <h6 style="font-weight:bold;font-size:15px;">Experince</h6>
                                 </div>
                                   <div class="col-md-8">
-                                      <input type="text" name="experience" class="form-control unicode" value="{{$employees->experience}}"> 
+                                      <input type="text" name="experience" class="form-control unicode"> 
                                 </div>
 
-                            </div>
+                            </div> -->
                         </div>
                     </div>
 
+
                     <div style="width: 100%">
-                        <a class="btn btn-primary unicode" id="install_back" style="float: left;">Back</a>
-                        <button type="submit" class="btn btn-success unicode" style="float: right;">Save</button>
+                        <a class="btn btn-primary unicode" id="employee_back" style="float: left;">Back</a>
+                        <a class="btn btn-success unicode" id="employee_next" style="float: right;">Next</a>
+                       <!--  <button type="submit" class="btn btn-success unicode" style="float: right;">Save</button> -->
+                        <!-- <div class="col-md-4"></div>
+                        <div class="col-md-2">
+                            <a class="btn btn-primary unicode" id="assign_back">Back</a>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="row">
+                                <a class="btn btn-success unicode" id="assign_next">Next</a> 
+                            </div>
+                            
+                        </div> -->
+
+                    </div>
+                </div>
+            </div>
+
+
+             <div class="tabby-tab" style="margin-right: 5px;">
+                <input type="radio" id="tab-6" name="tabby-tabs" disabled="true">
+                <label for="tab-6">Skill</label>
+                <div class="tabby-content">
+                    <br>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="row">
+                                <!-- <label class="col-md-3 unicode" style="text-align: right;">Assign</label> -->
+                                <div class="col-md-2">
+                                    <h6 style="font-weight:bold;font-size:15px;">Skills</h6>
+                                </div>
+                                <div class="col-md-8">
+                                    <input type="text" name="skills" class="form-control unicode" value="{{$employees->skills}}">
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="row">
+                                <!-- <label class="col-md-3 unicode" style="text-align: right;">Assign</label> -->
+                                <div class="col-md-3">
+                                    <h6 style="font-weight:bold;font-size:15px;">Skill proficiency</h6>
+                                </div>
+                                <div class="col-md-8">
+                                    <input type="text" name="proficiency" class="form-control unicode" value="{{$employees->proficiency}}">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+
+                    <div style="width: 100%">
+                        <a class="btn btn-primary unicode" id="skill_back" style="float: left;">Back</a>
+                        <a class="btn btn-success unicode" id="skill_next" style="float: right;">Next</a>
+                       <!--  <button type="submit" class="btn btn-success unicode" style="float: right;">Save</button> -->
+                        <!-- <div class="col-md-4"></div>
+                        <div class="col-md-2">
+                            <a class="btn btn-primary unicode" id="assign_back">Back</a>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="row">
+                                <a class="btn btn-success unicode" id="assign_next">Next</a> 
+                            </div>
+                            
+                        </div> -->
+
+                    </div>
+                </div>
+            </div>
+            
+
+             <div class="tabby-tab" >
+                <input type="radio" id="tab-7" name="tabby-tabs" disabled="true">
+                <label for="tab-7">Attach File</label>
+                <div class="tabby-content">
+                    <br>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="row">
+                                <!-- <label class="col-md-3 unicode" style="text-align: right;">Assign</label> -->
+                                <div class="col-md-3">
+                                    <h6 style="font-weight:bold;font-size:15px;">CV form attach file</h6>
+                                </div>
+                                <div class="col-md-8">
+                                   <input id="degree/certification" type="file" class="form-control resume" placeholder="" name="cvfile" value="{{$employees->cvfile}}">
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="row">
+                                <!-- <label class="col-md-3 unicode" style="text-align: right;">Assign</label> -->
+                                <div class="col-md-3">
+                                    <h6 style="font-weight:bold;font-size:15px;">Police reco Photo</h6>
+                                </div>
+                                <div class="col-md-8">
+                                  <input id="graduation" type="file" class="form-control resume" placeholder="" name="police_reco" value="{{$employees->police_reco}}">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <h6 style="font-weight:bold;font-size:15px;" id="assign_label">Ward reco Photo</h6>
+                                </div>
+                                <!-- <label class="col-md-3 unicode" id="assign_label" style="text-align: right;">Assign Date</label> -->
+                                <div class="col-md-8">
+                                    <input id="university/college" type="file" class="form-control resume" placeholder="" name="ward_reco" value="{{$employees->ward_reco}}">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                                 <div class="row">
+                                <div class="col-md-3">
+                                    <h6 style="font-weight:bold;font-size:15px;" id="assign_label">Other file</h6>
+                                </div>
+                                <!-- <label class="col-md-3 unicode" id="assign_label" style="text-align: right;">Assign Date</label> -->
+                                <div class="col-md-8">
+                                      <input id="degree/certification" type="file" class="form-control resume" placeholder="" name="otherfile" value="{{$employees->otherfile}}">
+                                </div>
+                            </div>
+                        </div>
+                    </div><br>
+
+                    <div style="width: 100%">
+                        <a class="btn btn-primary unicode" id="file_back" style="float: left;">Back</a>
+                         <button type="submit" class="btn btn-success unicode" style="float: right;">Save</button>
+                       <!--  <button type="submit" class="btn btn-success unicode" style="float: right;">Save</button> -->
                         <!-- <div class="col-md-4"></div>
                         <div class="col-md-2">
                             <a class="btn btn-primary unicode" id="assign_back">Back</a>
@@ -873,11 +1174,12 @@
 
     @section('js')
     <script src="{{ asset('jquery.js') }}"></script>
+
     <script src="https://unpkg.com/bootstrap-datepicker@1.9.0/dist/js/bootstrap-datepicker.min.js"></script>
     <script type="text/javascript" src="{{ asset('select2/js/select2.min.js') }}"></script>
     <script type="text/javascript">
         $(document).ready(function(){
-                $("#cust_next").click(function(){
+               $("#cust_next").click(function(){
                     
                         // alert("HI");
                         $("#tab-2").prop("checked", true);
@@ -886,28 +1188,67 @@
                    
             });
         });
-        $("#assign_next").click(function(){
-          
+        $("#qualification_next").click(function(){
+            // var join_date = $("#join_date").val();
+            // var rank = $("#rank option:selected").text();
+            // var department = $("#department").val();
+            // var branch = $("branch").val();
+            // if (join_date && rank != "Rank" && department != "Department" && branch != "Branch") {
                 $("#tab-4").prop("checked", true);
                 $("#tab-3").prop("disabled", false);
                 $("#tab-4").prop("disabled", false);
-           
+            // }else if(!join_date){
+            //     alert("Join date is ampty");
+            // }else if(rank == "Rank"){
+            //     alert("Rank is empty");
+            // }else if(department == "Department"){
+            //     alert("Department is empty");
+            // }else if(branch == "Branch"){
+            //     alert("Branch is empty");
+            // }
             
         });
-        $("#assign_back").click(function(){
+        $("#qualification_back").click(function(){
             $("#tab-2").prop("checked", true); 
 
         });
-        $("#install_back").click(function(){
-            $("#tab-3").prop("checked", true);
+        $("#skill_back").click(function(){
+            $("#tab-5").prop("checked", true); 
+
+        });
+         $("#file_back").click(function(){
+            $("#tab-6").prop("checked", true); 
+
+        });
+         $("#workexp_back").click(function(){
+            $("#tab-3").prop("checked", true); 
+
+        });
+        $("#employee_back").click(function(){
+            $("#tab-4").prop("checked", true);
         });
 
-        $("#photo_back").click(function(){
+        $("#contact_back").click(function(){
             $("#tab-1").prop("checked", true);
             $("#tab-3").prop("disabled", false);
         });
-        $("#photo_next").click(function(){
+        $("#contact_next").click(function(){
             $("#tab-3").prop("checked", true);
+            $("#tab-2").prop("disabled", false);
+            $("#tab-3").prop("disabled", false);
+        });
+         $("#workexp_next").click(function(){
+            $("#tab-5").prop("checked", true);
+            $("#tab-2").prop("disabled", false);
+            $("#tab-3").prop("disabled", false);
+        });
+           $("#employee_next").click(function(){
+            $("#tab-6").prop("checked", true);
+            $("#tab-2").prop("disabled", false);
+            $("#tab-3").prop("disabled", false);
+        });
+        $("#skill_next").click(function(){
+            $("#tab-7").prop("checked", true);
             $("#tab-2").prop("disabled", false);
             $("#tab-3").prop("disabled", false);
         });
@@ -970,8 +1311,11 @@
             }
         });
     });
-     $("#date_of_birth").datepicker({ dateFormat: 'dd-mm-yy' });
-    $("#join_date").datepicker({ dateFormat: 'dd-mm-yy' });
+
+         $("#date_of_birth").datepicker({ dateFormat: 'dd-mm-yy' });
+         $("#join_date").datepicker({ dateFormat: 'dd-mm-yy' });
+         $("#from_date").datepicker({ dateFormat: 'dd-mm-yy' });
+         $("#to_date").datepicker({ dateFormat: 'dd-mm-yy' });
 
          
 });

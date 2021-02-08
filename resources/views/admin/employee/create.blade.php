@@ -47,7 +47,7 @@
                         <div class="col-md-6">
                             <div class="row">
                                 <div class="col-md-3">
-                                    <h6 style="font-weight:bold;font-size:15px;">Father's Name</h6>
+                                    <h6 style="font-weight:bold;font-size:15px;">Parent's Name</h6>
                                 </div>
 
                                 <div class="col-md-8">
@@ -193,6 +193,22 @@
                 </div>
             </div> -->
                     <br>
+                    <div class="row">
+                           <div class="col-md-6">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <h6 style="font-weight:bold;font-size:15px;">Email*</h6>
+                                </div>
+
+                                <div class="col-md-8 {{ $errors->first('name', 'has-error') }}">
+
+                                   <input type="email" name="email" class="form-control unicode">
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6"></div>
+                    </div>
                     <div style="width: 100%">
                         <!-- <div class="col-md-6">
                 </div>
@@ -278,7 +294,7 @@
                     <br>
 
                       <div class="row">
-                        <div class="col-md-6">
+                       <!--  <div class="col-md-6">
                             <div class="row">
                                 <div class="col-md-3">
                                     <h6 style="font-weight:bold;font-size:15px;">Email*</h6>
@@ -290,7 +306,7 @@
 
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                         <div class="col-md-6">
                             <div class="row">
                                 <div class="col-md-3">
@@ -308,8 +324,119 @@
                     <br>
 
                     <div style="width: 100%">
-                        <a class="btn btn-primary unicode" id="photo_back" style="float: left;">Back</a>
-                        <a class="btn btn-success unicode" id="photo_next" style="float: right;">Next</a>
+                        <a class="btn btn-primary unicode" id="contact_back" style="float: left;">Back</a>
+                        <a class="btn btn-success unicode" id="contact_next" style="float: right;">Next</a>
+                        <!-- <div class="col-md-1"></div>
+                        <div class="col-md-2">
+                            <a class="btn btn-primary unicode" id="photo_back">Back</a>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="row">
+                                <a class="btn btn-success unicode" id="photo_next">Next</a> 
+                            </div>
+                            
+                        </div> -->
+
+                    </div>
+                </div>
+            </div> 
+
+
+             <div class="tabby-tab" style="margin-right: 5px;">
+                <input type="radio" id="tab-3" name="tabby-tabs" disabled="true">
+                <label for="tab-3">Education</label>
+                <div class="tabby-content">
+                    <br>
+
+                     <div class="row">
+                        <div class="col-md-6">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <h6 style="font-weight:bold;font-size:15px;">Graduation</h6>
+                                </div>
+
+                                <div class="col-md-8 {{ $errors->first('name', 'has-error') }}">
+
+                                    <input type="text" name="graduation" class="form-control unicode" >
+
+                                </div>
+                            </div>
+                        </div>
+                         <div class="col-md-6">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <h6 style="font-weight:bold;font-size:15px;">University/School</h6>
+                                </div>
+
+                                <div class="col-md-8 {{ $errors->first('name', 'has-error') }}">
+
+                                    <input type="text" name="qualification" class="form-control unicode" placeholder="Grade-10" id="city">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+
+
+                       <div class="row">
+                        <div class="col-md-6">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <h6 style="font-weight:bold;font-size:15px;">Course Title</h6>
+                                </div>
+
+                                <div class="col-md-8 {{ $errors->first('name', 'has-error') }}">
+
+                                    <input type="text" name="course_title" class="form-control unicode" >
+
+                                </div>
+                            </div>
+                        </div>
+                         <div class="col-md-6">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <h6 style="font-weight:bold;font-size:15px;">Level</h6>
+                                </div>
+
+                                <div class="col-md-8 {{ $errors->first('name', 'has-error') }}">
+
+                                   <select class="form-control unicode" name="level">
+                                        <option data-display="Select">Select</option>
+                                        <option value="1">Level-1</option>
+                                        <option value="2">Level-2</option>
+                                        <option value="3">Level-3</option>
+                                        <option value="4">Level-4</option>
+                                    </select>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+
+                     <div class="row">
+                        <div class="col-md-6">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <h6 style="font-weight:bold;font-size:15px;">Degree/Certification </h6>
+                                </div>
+
+                                <div class="col-md-8 {{ $errors->first('name', 'has-error') }}">
+
+                                    <input type="file" name="degree" class="form-control unicode" >
+
+                                </div>
+                            </div>
+                        </div>
+                       
+                    </div>
+                    <br>
+
+
+                    <div style="width: 100%">
+                        <a class="btn btn-primary unicode" id="qualification_back" style="float: left;">Back</a>
+                        <a class="btn btn-success unicode" id="qualification_next" style="float: right;">Next</a>
                         <!-- <div class="col-md-1"></div>
                         <div class="col-md-2">
                             <a class="btn btn-primary unicode" id="photo_back">Back</a>
@@ -326,42 +453,94 @@
             </div>
 
             <div class="tabby-tab" style="margin-right: 5px;">
-                <input type="radio" id="tab-3" name="tabby-tabs" disabled="true">
-                <label for="tab-3">Qualification</label>
+                <input type="radio" id="tab-4" name="tabby-tabs" disabled="true">
+                <label for="tab-4">Work Exp</label>
                 <div class="tabby-content">
                     <br>
+
                      <div class="row">
-                        <div class="col-md-6">
+                         <div class="col-md-6">
                             <div class="row">
                                 <div class="col-md-3">
-                                    <h6 style="font-weight:bold;font-size:15px;">University/School</h6>
+                                    <h6 style="font-weight:bold;font-size:15px;">Company Name</h6>
                                 </div>
 
                                 <div class="col-md-8 {{ $errors->first('name', 'has-error') }}">
 
-                                    <input type="text" name="qualification" class="form-control unicode" placeholder="Grade-10" id="city">
+                                    <input type="text" name="exp_company" class="form-control unicode">
 
                                 </div>
                             </div>
                         </div>
-                       <!--  <div class="col-md-6">
+                          <div class="col-md-6">
                             <div class="row">
                                 <div class="col-md-3">
-                                    <h6 style="font-weight:bold;font-size:15px;">Mobile*</h6>
+                                    <h6 style="font-weight:bold;font-size:15px;">Job Position</h6>
                                 </div>
 
-                                <div class="col-md-8">
-                                    <input type="number" name="phone_no" class="form-control unicode" id="mobile" placeholder="09 xxx xxx xxx">
+                                <div class="col-md-8 {{ $errors->first('name', 'has-error') }}">
+
+                                    <input type="text" name="exp_position" class="form-control unicode">
+
                                 </div>
                             </div>
-                        </div> -->
+                        </div>
                     </div>
                     <br>
 
-                  
+                     <div class="row">
+                         <div class="col-md-6">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <h6 style="font-weight:bold;font-size:15px;">From Date</h6>
+                                </div>
+
+                                <div class="col-md-8 {{ $errors->first('name', 'has-error') }}">
+
+                                    <input type="text" name="exp_date_from" class="form-control unicode" id="from_date">
+
+                                </div>
+                            </div>
+                        </div>
+                          <div class="col-md-6">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <h6 >To Date</h6>
+                                </div>
+                                 <div class="col-md-8 {{ $errors->first('name', 'has-error') }}">
+
+                                    <input type="text" name="exp_date_to" class="form-control unicode" id="to_date">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+
+
+                       <div class="row">
+                         <div class="col-md-6">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <h6 style="font-weight:bold;font-size:15px;">Location</h6>
+                                </div>
+
+                                <div class="col-md-8 {{ $errors->first('name', 'has-error') }}">
+
+                                    <input type="text" name="exp_location" class="form-control unicode">
+
+                                </div>
+                            </div>
+                        </div>
+                          <div class="col-md-6">
+                          
+                        </div>
+                    </div>
+                    <br>
+
                     <div style="width: 100%">
-                        <a class="btn btn-primary unicode" id="assign_back" style="float: left;">Back</a>
-                        <a class="btn btn-success unicode" id="assign_next" style="float: right;">Next</a>
+                        <a class="btn btn-primary unicode" id="workexp_back" style="float: left;">Back</a>
+                        <a class="btn btn-success unicode" id="workexp_next" style="float: right;">Next</a>
                         <!-- <div class="col-md-1"></div>
                         <div class="col-md-2">
                             <a class="btn btn-primary unicode" id="photo_back">Back</a>
@@ -379,9 +558,9 @@
 
 
 
-            <div class="tabby-tab" >
-                <input type="radio" id="tab-4" name="tabby-tabs" disabled="true">
-                <label for="tab-4">Employment</label>
+            <div class="tabby-tab" style="margin-right: 5px;">
+                <input type="radio" id="tab-5" name="tabby-tabs" disabled="true">
+                <label for="tab-5">Employment</label>
                 <div class="tabby-content">
                     <br>
                     <div class="row">
@@ -497,8 +676,8 @@
                             </div>
                         </div>
                           <div class="col-md-6">
-                            <div class="row">
-                                <!-- <label class="col-md-3 unicode" style="text-align: right;">Assign</label> -->
+                           <!--  <div class="row">
+                               
                                 <div class="col-md-2">
                                     <h6 style="font-weight:bold;font-size:15px;">Experince</h6>
                                 </div>
@@ -506,14 +685,147 @@
                                       <input type="text" name="experience" class="form-control unicode"> 
                                 </div>
 
-                            </div>
+                            </div> -->
                         </div>
                     </div>
 
 
                     <div style="width: 100%">
-                        <a class="btn btn-primary unicode" id="install_back" style="float: left;">Back</a>
-                        <button type="submit" class="btn btn-success unicode" style="float: right;">Save</button>
+                        <a class="btn btn-primary unicode" id="employee_back" style="float: left;">Back</a>
+                        <a class="btn btn-success unicode" id="employee_next" style="float: right;">Next</a>
+                       <!--  <button type="submit" class="btn btn-success unicode" style="float: right;">Save</button> -->
+                        <!-- <div class="col-md-4"></div>
+                        <div class="col-md-2">
+                            <a class="btn btn-primary unicode" id="assign_back">Back</a>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="row">
+                                <a class="btn btn-success unicode" id="assign_next">Next</a> 
+                            </div>
+                            
+                        </div> -->
+
+                    </div>
+                </div>
+            </div>
+
+
+             <div class="tabby-tab" style="margin-right: 5px;">
+                <input type="radio" id="tab-6" name="tabby-tabs" disabled="true">
+                <label for="tab-6">Skill</label>
+                <div class="tabby-content">
+                    <br>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="row">
+                                <!-- <label class="col-md-3 unicode" style="text-align: right;">Assign</label> -->
+                                <div class="col-md-2">
+                                    <h6 style="font-weight:bold;font-size:15px;">Skills</h6>
+                                </div>
+                                <div class="col-md-8">
+                                    <input type="text" name="skills" class="form-control unicode">
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="row">
+                                <!-- <label class="col-md-3 unicode" style="text-align: right;">Assign</label> -->
+                                <div class="col-md-3">
+                                    <h6 style="font-weight:bold;font-size:15px;">Skill proficiency</h6>
+                                </div>
+                                <div class="col-md-8">
+                                    <input type="text" name="proficiency" class="form-control unicode">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+
+                    <div style="width: 100%">
+                        <a class="btn btn-primary unicode" id="skill_back" style="float: left;">Back</a>
+                        <a class="btn btn-success unicode" id="skill_next" style="float: right;">Next</a>
+                       <!--  <button type="submit" class="btn btn-success unicode" style="float: right;">Save</button> -->
+                        <!-- <div class="col-md-4"></div>
+                        <div class="col-md-2">
+                            <a class="btn btn-primary unicode" id="assign_back">Back</a>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="row">
+                                <a class="btn btn-success unicode" id="assign_next">Next</a> 
+                            </div>
+                            
+                        </div> -->
+
+                    </div>
+                </div>
+            </div>
+            
+
+             <div class="tabby-tab" >
+                <input type="radio" id="tab-7" name="tabby-tabs" disabled="true">
+                <label for="tab-7">Attach File</label>
+                <div class="tabby-content">
+                    <br>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="row">
+                                <!-- <label class="col-md-3 unicode" style="text-align: right;">Assign</label> -->
+                                <div class="col-md-3">
+                                    <h6 style="font-weight:bold;font-size:15px;">CV form attach file</h6>
+                                </div>
+                                <div class="col-md-8">
+                                   <input id="degree/certification" type="file" class="form-control resume" placeholder="" name="cvfile">
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="row">
+                                <!-- <label class="col-md-3 unicode" style="text-align: right;">Assign</label> -->
+                                <div class="col-md-3">
+                                    <h6 style="font-weight:bold;font-size:15px;">Police reco Photo</h6>
+                                </div>
+                                <div class="col-md-8">
+                                  <input id="graduation" type="file" class="form-control resume" placeholder="" name="police_reco">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <h6 style="font-weight:bold;font-size:15px;" id="assign_label">Ward reco Photo</h6>
+                                </div>
+                                <!-- <label class="col-md-3 unicode" id="assign_label" style="text-align: right;">Assign Date</label> -->
+                                <div class="col-md-8">
+                                    <input id="university/college" type="file" class="form-control resume" placeholder="" name="ward_reco">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                                 <div class="row">
+                                <div class="col-md-3">
+                                    <h6 style="font-weight:bold;font-size:15px;" id="assign_label">Other file</h6>
+                                </div>
+                                <!-- <label class="col-md-3 unicode" id="assign_label" style="text-align: right;">Assign Date</label> -->
+                                <div class="col-md-8">
+                                      <input id="degree/certification" type="file" class="form-control resume" placeholder="" name="otherfile">
+                                </div>
+                            </div>
+                        </div>
+                    </div><br>
+
+                    <div style="width: 100%">
+                        <a class="btn btn-primary unicode" id="file_back" style="float: left;">Back</a>
+                         <button type="submit" class="btn btn-success unicode" style="float: right;">Save</button>
+                       <!--  <button type="submit" class="btn btn-success unicode" style="float: right;">Save</button> -->
                         <!-- <div class="col-md-4"></div>
                         <div class="col-md-2">
                             <a class="btn btn-primary unicode" id="assign_back">Back</a>
@@ -891,7 +1203,7 @@
                     }
             });
         });
-        $("#assign_next").click(function(){
+        $("#qualification_next").click(function(){
             // var join_date = $("#join_date").val();
             // var rank = $("#rank option:selected").text();
             // var department = $("#department").val();
@@ -911,20 +1223,47 @@
             // }
             
         });
-        $("#assign_back").click(function(){
+        $("#qualification_back").click(function(){
             $("#tab-2").prop("checked", true); 
 
         });
-        $("#install_back").click(function(){
-            $("#tab-3").prop("checked", true);
+        $("#skill_back").click(function(){
+            $("#tab-5").prop("checked", true); 
+
+        });
+         $("#file_back").click(function(){
+            $("#tab-6").prop("checked", true); 
+
+        });
+         $("#workexp_back").click(function(){
+            $("#tab-3").prop("checked", true); 
+
+        });
+        $("#employee_back").click(function(){
+            $("#tab-4").prop("checked", true);
         });
 
-        $("#photo_back").click(function(){
+        $("#contact_back").click(function(){
             $("#tab-1").prop("checked", true);
             $("#tab-3").prop("disabled", false);
         });
-        $("#photo_next").click(function(){
+        $("#contact_next").click(function(){
             $("#tab-3").prop("checked", true);
+            $("#tab-2").prop("disabled", false);
+            $("#tab-3").prop("disabled", false);
+        });
+         $("#workexp_next").click(function(){
+            $("#tab-5").prop("checked", true);
+            $("#tab-2").prop("disabled", false);
+            $("#tab-3").prop("disabled", false);
+        });
+           $("#employee_next").click(function(){
+            $("#tab-6").prop("checked", true);
+            $("#tab-2").prop("disabled", false);
+            $("#tab-3").prop("disabled", false);
+        });
+        $("#skill_next").click(function(){
+            $("#tab-7").prop("checked", true);
             $("#tab-2").prop("disabled", false);
             $("#tab-3").prop("disabled", false);
         });
@@ -990,6 +1329,8 @@
 
          $("#date_of_birth").datepicker({ dateFormat: 'dd-mm-yy' });
          $("#join_date").datepicker({ dateFormat: 'dd-mm-yy' });
+         $("#from_date").datepicker({ dateFormat: 'dd-mm-yy' });
+         $("#to_date").datepicker({ dateFormat: 'dd-mm-yy' });
 
          
 });

@@ -61,22 +61,20 @@
             </div>
         </div>
     </div><br>
+     <!--  <h6 style="color: gray;padding-top: 10px" class="unicode">{{$employees->name}}</h6> -->
 
-    <div class="row form-group">
-        <div class="col-md-4">
-            <div class="header">
-                @if($employees->photo == '')
-                <img src="{{ asset('uploads/employeePhoto/default.png') }}" alt="photo" width="200px" height="200px">
-                @else
-                 <img src="{{ asset('uploads/employeePhoto/'.$employees->photo) }}" alt="photo" width="150px" height="150px">
-                 @endif
-            </div>
-            <div class="header">
-                <h6 style="color: gray;padding-top: 10px" class="unicode">{{$employees->name}}</h6>
-            </div>
-          
-        </div>
-        <div class="col-md-7">
+   <!--  <div style="text-align: center;">
+       @if($employees->photo == '')
+      <img src="{{ asset('uploads/employeePhoto/default.png') }}" alt="photo" width="180px" height="180px">
+      @else
+       <img src="{{ asset('uploads/employeePhoto/'.$employees->photo) }}" alt="photo" width="150px" height="150px">
+       @endif
+    
+    </div><br> -->
+
+    <div class="row">
+     
+        <div class="col-md-6">
         <div class="table-responsive">
              <table class="table table-bordered styled-table unicode">
                 <thead>
@@ -91,10 +89,10 @@
                         
                     </tr>
                     <tr>
-                        <td>Father's Name<span style="padding-left: 155px">{{$employees->father_name}}</span></td>
+                        <td>Parent's Name<span style="padding-left: 150px">{{$employees->father_name}}</span></td>
                     </tr>
                     <tr>
-                        <td>Date of birth<span style="padding-left: 165px">{{date('d-m-Y',strtotime($employees->date_of_birth))}}</span> <span>({{$workyearbirth}}) years</span></td>
+                        <td>Date of birth<span style="padding-left: 160px">{{date('d-m-Y',strtotime($employees->date_of_birth))}}</span> <span>({{$workyearbirth}}) years</span></td>
                     </tr>
                     <tr>
                         <td>Full Nrc<span style="padding-left: 190px">{{$employees->fullnrc}}</span></td>
@@ -102,47 +100,204 @@
                     <tr>
                         <td>Gender<span style="padding-left: 195px">{{$employees->gender}}</span></td>
                     </tr>
-                    <tr>
+                      <tr>
+                        <td>Marital Status<span style="padding-left: 155px">{{$employees->marrical_status}}</span></td>
+                    </tr>
+                   <!--  <tr>
                         <td>Phone <span style="padding-left: 195px">{{$employees->phone_no}}</span></td>
-                    </tr>
-                    <tr>
+                    </tr> -->
+                   <!--  <tr>
                         <td>Address<span style="padding-left: 190px">{{$employees->address}}</span></td>
-                    </tr>
+                    </tr> -->
                 </tbody>
              </table>
          
         </div>
+      </div>
 
+        <div class="col-md-6">
          <div class="table-responsive">
              <table class="table table-bordered styled-table">
                 <thead>
                     <tr>
-                        <th style="font-size: 16px"><i class="fa fa-briefcase"> </i> Employee Data</th>
+                        <th style="font-size: 16px"><i class="fa fa-address-card"> </i> Contact Information</th>
                         
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>Employee Id<span style="padding-left: 165px">{{$employees->emp_id}}</span></td>
+                        <td>Phone<span style="padding-left: 165px">{{$employees->phone_no}}</span></td>
                         
                     </tr>
                     <tr>
-                        <td>Department<span style="padding-left: 165px">{{$employees->viewDepartment->name}}</span></td>
+                        <td>Parent's Phone<span style="padding-left: 110px">{{$employees->fPhone}}</span></td>
+                    </tr>
+                     <tr>
+                        <td>Email <span style="padding-left: 165px">{{  $employees->email}} </span></td>
                     </tr>
                     <tr>
-                        <td>Designation<span style="padding-left: 165px">{{$employees->viewPosition->name}}</span></td>
+                        <td>City<span style="padding-left: 180px">{{$employees->city}}</span></td>
                     </tr>
                     <tr>
-                        <td>Branch<span style="padding-left: 195px">{{$employees->viewBranch->name}}</span></td>
+                        <td>Township<span style="padding-left: 145px">{{$employees->township}}</span></td>
                     </tr>
                     <tr>
-                        <td>Join Date <span style="padding-left: 170px">{{date('d-m-Y',strtotime($employees->join_date))}} </span><span>({{$workyear}}) years</span></td>
+                        <td>Address <span style="padding-left: 155px">{{  $employees->address}} </span></td>
                     </tr>
                    
                 </tbody>
              </table>
+             </div>
          
         </div>
-        @stop 
+      
      </div>
+
+     <div class="row">
+       <div class="col-md-6">
+          <div class="table-responsive">
+             <table class="table table-bordered styled-table">
+                <thead>
+                    <tr>
+                        <th style="font-size: 16px"><i class="fa fa-university"> </i> Education Details</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Graduation<span style="padding-left: 165px">{{$employees->graduation}}</span></td>
+                        
+                    </tr>
+                    <tr>
+                        <td>University/College<span style="padding-left: 120px">{{$employees->qualification}}</span></td>
+                    </tr>
+                     <tr>
+                        <td>Course Title <span style="padding-left: 150px">{{  $employees->course_title}} </span></td>
+                    </tr>
+                    <tr>
+                        <td>Level<span style="padding-left: 195px">{{$employees->level}}</span></td>
+                    </tr>
+                   
+                </tbody>
+             </table>
+             </div>
+       </div>
+
+        <div class="col-md-6">
+          <div class="table-responsive">
+             <table class="table table-bordered styled-table">
+                <thead>
+                    <tr>
+                        <th style="font-size: 16px"><i class="fa fa-briefcase"> </i> Employement</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Department/Position<span style="padding-left: 90px">{{$employees->viewDepartment->name}}/{{$employees->viewPosition->name}}</span></td>
+                        
+                    </tr>
+                   <!--  <tr>
+                        <td>Position<span style="padding-left: 165px">{{$employees->viewPosition->name}}</span></td>
+                    </tr> -->
+                     <tr>
+                        <td>Applied Date<span style="padding-left: 140px">{{  $employees->join_date}} </span></td>
+                    </tr>
+                    <tr>
+                        <td>Expected Salary<span style="padding-left: 125px">{{$employees->exp_salary}}</span></td>
+                    </tr>
+                     <tr>
+                        <td>Hostel<span style="padding-left: 180px">{{$employees->hostel}}</span></td>
+                    </tr>
+                   
+                </tbody>
+             </table>
+             </div>
+       </div>
+     </div>
+
+     <div class="row">
+       <div class="col-md-6">
+          <div class="table-responsive">
+             <table class="table table-bordered styled-table">
+                <thead>
+                    <tr>
+                        <th style="font-size: 16px"><i class="fa fa-deaf"> </i> Skill</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Skill<span style="padding-left: 200px">{{$employees->skills}}</span></td>
+                        
+                    </tr>
+                    <tr>
+                        <td>Skill proficiency<span style="padding-left: 130px">{{$employees->proficiency}}</span></td>
+                    </tr>
+                   
+                </tbody>
+             </table>
+             </div>
+               <div class="table-responsive">
+             <table class="table table-bordered styled-table">
+                <thead>
+                    <tr>
+                        <th style="font-size: 16px"><i class="fa fa-briefcase"> </i> Work Experience</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Company Name<span style="padding-left: 130px">{{$employees->exp_company}}</span></td>
+                        
+                    </tr>
+                    <tr>
+                        <td>Job Position<span style="padding-left: 150px">{{$employees->exp_position}}</span></td>
+                    </tr>
+                     <tr>
+                        <td>Location<span style="padding-left: 173px">{{$employees->exp_location}}</span></td>
+                    </tr>
+                     <tr>
+                        <td>Date<span style="padding-left: 195px">{{date('d-m-Y',strtotime($employees->exp_date_from))}} to {{date('d-m-Y',strtotime($employees->exp_date_to))}}</span></td>
+                    </tr>
+                   
+                </tbody>
+             </table>
+       </div>
+      </div>
+
+       <div class="col-md-6">
+          <div class="table-responsive">
+             <table class="table table-bordered styled-table">
+                <thead>
+                    <tr>
+                        <th style="font-size: 16px"><i class="fa fa-file"> </i> Attach File</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><a href="{{ url('uploads/jobapplicationPhoto/'.$employees->cvfile) }}" target="_blank">{{$employees->cvfile}}</a><span style="padding-left: 165px">   
+
+                           <img src="{{asset('uploads/employeePhoto/'.$employees->ward_reco) }}" alt="photo" width="130px" height="130px">
+                         </span></td>
+                         </tr>
+                         <tr>
+                           <td style="width: 100%"> <span ><img src="{{ asset('uploads/employeePhoto/'.$employees->police_reco) }}" alt="photo" width="130px" height="130px"></span> <span style="padding-left: 100px">   
+
+                           <img src="{{ asset('uploads/jobapplicationPhoto/'.$employees->otherfile) }}" alt="photo" width="130px" height="130px">
+                         </span></td>
+                        </tr>
+                   
+                   
+                </tbody>
+             </table>
+             </div>
+            
+      </div>
+
+
+
+        </div>
+     @stop 
 

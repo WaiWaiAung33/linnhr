@@ -89,6 +89,53 @@ class EmployeeController extends Controller
             $photo = $var;
         }
 
+         $police_reco_photo = "";
+        if ($file = $request->file('police_reco')) {
+            $extension = $file->getClientOriginalExtension();
+            $var = Str::random(32) . '.' . $extension;
+            $file->move($destinationPath, $var);
+            $police_reco_photo = $var;
+        }
+
+        $ward_reco_photo = "";
+        if ($file = $request->file('ward_reco')) {
+            $extension = $file->getClientOriginalExtension();
+            $var = Str::random(32) . '.' . $extension;
+            $file->move($destinationPath, $var);
+            $ward_reco_photo = $var;
+        }
+
+
+        $cvfile_photo = "";
+        if ($file = $request->file('cvfile')) {
+            $name = $file->getClientOriginalName();
+            $destinationPath = public_path('/uploads/jobapplicationPhoto/');
+            $file->move($destinationPath, $name);
+            $cvfile_photo=$name;
+            // dd($cvfile_photo);
+            // $extension = $file->getClientOriginalExtension();
+            // $var = Str::random(32) . '.' . $extension;
+            // $file->move($destinationPath, $var);
+            // $cvfile_photo = $var;
+            // dd($cvfile_photo);
+        }
+
+        $otherfile_photo = "";
+        if ($file = $request->file('otherfile')) {
+            $extension = $file->getClientOriginalExtension();
+            $var = Str::random(32) . '.' . $extension;
+            $file->move($destinationPath, $var);
+            $otherfile_photo = $var;
+        }
+
+        $degree_photo = "";
+        if ($file = $request->file('degree')) {
+            $extension = $file->getClientOriginalExtension();
+            $var = Str::random(32) . '.' . $extension;
+            $file->move($destinationPath, $var);
+            $degree_photo = $var;
+        }
+
         $nrccode = NRCCode::find($request->nrc_code);
         $nrcstate = NRCState::find($request->nrc_state);
         $fullnrc = $nrccode->name.'/'.$nrcstate->name."(".$request->nrc_status.')'.$request->nrc;
@@ -127,6 +174,28 @@ class EmployeeController extends Controller
             'experience'=>$request->experience,
             'exp_salary'=>$request->salary,
             'hostel'=>$request->isHostel,
+            'applied_date'=>$request->appliedDate,
+            'address'=>$request->address,
+            'phone'=>$request->phone,
+            'signature'=>$request->signed,
+            'photo'=>$photo,
+            'city'=>$request->city,
+            'township'=>$request->township,
+            'graduation'=>$request->graduation,
+            'degree'=>$degree_photo,
+            'level'=>$request->level,
+            'course_title'=>$request->course_title,
+            'exp_company'=>$request->exp_company,
+            'exp_position'=>$request->exp_position,
+            'exp_location'=>$request->exp_location,
+            'exp_date_from'=>$request->exp_date_from,
+            'exp_date_to'=>$request->exp_date_to,
+            'skills'=>$request->skills,
+            'proficiency'=>$request->proficiency,
+            'police_reco'=>$police_reco_photo,
+            'ward_reco'=>$ward_reco_photo,
+            'cvfile'=>$cvfile_photo,
+            'otherfile'=> $otherfile_photo
         ]
         );
 
@@ -176,9 +245,11 @@ class EmployeeController extends Controller
      */
     public function update(Request $request, $id)
     {
+
         $employees = Employee::find($id);
         $destinationPath = public_path() . '/uploads/employeePhoto/';
         $photo = ($request->photo != '') ? $request->photo : $employees->photo;
+
         //upload image
         if ($file = $request->file('photo')) {
             $extension = $file->getClientOriginalExtension();
@@ -187,6 +258,55 @@ class EmployeeController extends Controller
             $file->move($destinationPath, $var);
             $photo = $var;
         }
+
+          $police_reco_photo = ($request->police_reco != '') ? $request->police_reco : $employees->police_reco;
+         
+        if ($file = $request->file('police_reco')) {
+            $extension = $file->getClientOriginalExtension();
+            $var = Str::random(32) . '.' . $extension;
+            $file->move($destinationPath, $var);
+            $police_reco_photo = $var;
+        }
+
+        $ward_reco_photo =  ($request->ward_reco != '') ? $request->ward_reco : $employees->ward_reco;
+        if ($file = $request->file('ward_reco')) {
+            $extension = $file->getClientOriginalExtension();
+            $var = Str::random(32) . '.' . $extension;
+            $file->move($destinationPath, $var);
+            $ward_reco_photo = $var;
+        }
+
+
+        $cvfile_photo = ($request->cvfile != '') ? $request->cvfile : $employees->cvfile;
+        if ($file = $request->file('cvfile')) {
+            $name = $file->getClientOriginalName();
+            $destinationPath = public_path('/uploads/jobapplicationPhoto/');
+            $file->move($destinationPath, $name);
+            $cvfile_photo=$name;
+            // dd($cvfile_photo);
+            // $extension = $file->getClientOriginalExtension();
+            // $var = Str::random(32) . '.' . $extension;
+            // $file->move($destinationPath, $var);
+            // $cvfile_photo = $var;
+            // dd($cvfile_photo);
+        }
+
+        $otherfile_photo = ($request->otherfile != '') ? $request->otherfile : $employees->otherfile;
+        if ($file = $request->file('otherfile')) {
+            $extension = $file->getClientOriginalExtension();
+            $var = Str::random(32) . '.' . $extension;
+            $file->move($destinationPath, $var);
+            $otherfile_photo = $var;
+        }
+
+        $degree_photo = "";
+        if ($file = $request->file('degree')) {
+            $extension = $file->getClientOriginalExtension();
+            $var = Str::random(32) . '.' . $extension;
+            $file->move($destinationPath, $var);
+            $degree_photo = $var;
+        }
+
         $nrccode = NRCCode::find($request->nrc_code);
         $nrcstate = NRCState::find($request->nrc_state);
         $fullnrc = $nrccode->name.'/'.$nrcstate->name."(".$request->nrc_status.')'.$request->nrc;
@@ -224,6 +344,27 @@ class EmployeeController extends Controller
             'experience'=>$request->experience,
             'exp_salary'=>$request->salary,
             'hostel'=>$request->isHostel,
+            'address'=>$request->address,
+            'phone'=>$request->phone,
+            'signature'=>$request->signed,
+            'photo'=>$photo,
+            'city'=>$request->city,
+            'township'=>$request->township,
+            'graduation'=>$request->graduation,
+            'degree'=>$degree_photo,
+            'level'=>$request->level,
+            'course_title'=>$request->course_title,
+            'exp_company'=>$request->exp_company,
+            'exp_position'=>$request->exp_position,
+            'exp_location'=>$request->exp_location,
+            'exp_date_from'=>$request->exp_date_from,
+            'exp_date_to'=>$request->exp_date_to,
+            'skills'=>$request->skills,
+            'proficiency'=>$request->proficiency,
+            'police_reco'=>$police_reco_photo,
+            'ward_reco'=>$ward_reco_photo,
+            'cvfile'=>$cvfile_photo,
+            'otherfile'=> $otherfile_photo
             
 
         ]);
