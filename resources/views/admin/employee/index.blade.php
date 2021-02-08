@@ -27,7 +27,7 @@
 <div class="row form-group">
   <div class="col-md-12">
                          
-              <a class="btn btn-success unicode" href="{{route('employee.create')}}" style="float: right;"><i class="fas fa-plus"> Employee</i></a>
+              <a class="btn btn-success unicode" href="{{route('employee.create')}}" style="float: right;"><i class="fas fa-plus"></i> Employee</a>
          </div>
 </div>
           

@@ -12,7 +12,7 @@
 @section('content')
 
  <div>
- 	 <a class="btn btn-success unicode" href="{{route('jobopening.create')}}" style="float: right;"><i class="fas fa-plus"> Jobopening</i></a>
+ 	 <a class="btn btn-success unicode" href="{{route('jobopening.create')}}" style="float: right;"><i class="fas fa-plus"></i> Jobopening</a>
  </div>
 
  <?php
