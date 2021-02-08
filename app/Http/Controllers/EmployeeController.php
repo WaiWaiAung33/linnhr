@@ -80,38 +80,55 @@ class EmployeeController extends Controller
     public function store(Request $request)
     {
         $destinationPath = public_path() . '/uploads/employeePhoto/';
+        $policePath = public_path() . '/uploads/policestationrecomPhoto/';
+        $wardPath = public_path() . '/uploads/wardrecoPhoto/';
+        $attachPath = public_path() . '/uploads/attachfile';
+
         $photo = "";
         //upload image
         if ($file = $request->file('photo')) {
-            $extension = $file->getClientOriginalExtension();
-            $var = Str::random(32) . '.' . $extension;
-            $file->move($destinationPath, $var);
-            $photo = $var;
+    
+            $photo = $request->file('photo');
+            $ext = '.'.$request->photo->getClientOriginalExtension();
+            $fileName = str_replace($ext, date('d-m-Y-H-i') . $ext, $request->photo->getClientOriginalName());
+            $file->move($destinationPath, $fileName);
+            $photo = $fileName;
+          
+
         }
 
          $police_reco_photo = "";
         if ($file = $request->file('police_reco')) {
-            $extension = $file->getClientOriginalExtension();
-            $var = Str::random(32) . '.' . $extension;
-            $file->move($destinationPath, $var);
-            $police_reco_photo = $var;
+           
+            $police_reco = $request->file('police_reco');
+            $ext = '.'.$request->police_reco->getClientOriginalExtension();
+            $fileName = str_replace($ext, date('d-m-Y-H-i') . $ext, $request->police_reco->getClientOriginalName());
+            $file->move($policePath, $fileName);
+            $police_reco_photo = $fileName;
         }
 
         $ward_reco_photo = "";
         if ($file = $request->file('ward_reco')) {
-            $extension = $file->getClientOriginalExtension();
-            $var = Str::random(32) . '.' . $extension;
-            $file->move($destinationPath, $var);
-            $ward_reco_photo = $var;
+
+            $ward_reco = $request->file('ward_reco');
+            $ext = '.'.$request->ward_reco->getClientOriginalExtension();
+            $fileName = str_replace($ext, date('d-m-Y-H-i') . $ext, $request->ward_reco->getClientOriginalName());
+            $file->move($wardPath, $fileName);
+            $ward_reco_photo = $fileName;
         }
 
 
         $cvfile_photo = "";
         if ($file = $request->file('cvfile')) {
-            $name = $file->getClientOriginalName();
-            $destinationPath = public_path('/uploads/jobapplicationPhoto/');
-            $file->move($destinationPath, $name);
-            $cvfile_photo=$name;
+            $cvfile = $request->file('cvfile');
+            $ext = '.'.$request->cvfile->getClientOriginalExtension();
+            $fileName = str_replace($ext, date('d-m-Y-H-i') . $ext, $request->cvfile->getClientOriginalName());
+            $file->move($attachPath, $fileName);
+            $cvfile_photo = $fileName;
+            // $name = $file->getClientOriginalName();
+            // $destinationPath = public_path('/uploads/jobapplicationPhoto/');
+            // $file->move($destinationPath, $name);
+            // $cvfile_photo=$name;
             // dd($cvfile_photo);
             // $extension = $file->getClientOriginalExtension();
             // $var = Str::random(32) . '.' . $extension;
@@ -122,18 +139,29 @@ class EmployeeController extends Controller
 
         $otherfile_photo = "";
         if ($file = $request->file('otherfile')) {
-            $extension = $file->getClientOriginalExtension();
-            $var = Str::random(32) . '.' . $extension;
-            $file->move($destinationPath, $var);
-            $otherfile_photo = $var;
+            $otherfile = $request->file('otherfile');
+            $ext = '.'.$request->otherfile->getClientOriginalExtension();
+            $fileName = str_replace($ext, date('d-m-Y-H-i') . $ext, $request->otherfile->getClientOriginalName());
+            $file->move($attachPath, $fileName);
+            $otherfile_photo = $fileName;
+            // $extension = $file->getClientOriginalExtension();
+            // $var = Str::random(32) . '.' . $extension;
+            // $file->move($destinationPath, $var);
+            // $otherfile_photo = $var;
+
         }
 
         $degree_photo = "";
         if ($file = $request->file('degree')) {
-            $extension = $file->getClientOriginalExtension();
-            $var = Str::random(32) . '.' . $extension;
-            $file->move($destinationPath, $var);
-            $degree_photo = $var;
+            $degree = $request->file('degree');
+            $ext = '.'.$request->degree->getClientOriginalExtension();
+            $fileName = str_replace($ext, date('d-m-Y-H-i') . $ext, $request->degree->getClientOriginalName());
+            $file->move($attachPath, $fileName);
+            $degree_photo = $fileName;
+            // $extension = $file->getClientOriginalExtension();
+            // $var = Str::random(32) . '.' . $extension;
+            // $file->move($destinationPath, $var);
+            // $degree_photo = $var;
         }
 
         $nrccode = NRCCode::find($request->nrc_code);
@@ -248,41 +276,48 @@ class EmployeeController extends Controller
 
         $employees = Employee::find($id);
         $destinationPath = public_path() . '/uploads/employeePhoto/';
+        $policePath = public_path() . '/uploads/policestationrecomPhoto/';
+        $wardPath = public_path() . '/uploads/wardrecoPhoto/';
+        $attachPath = public_path() . '/uploads/attachfile';
+
         $photo = ($request->photo != '') ? $request->photo : $employees->photo;
 
         //upload image
         if ($file = $request->file('photo')) {
-            $extension = $file->getClientOriginalExtension();
-            $var = Str::random(32) . '.' . $extension;
-            
-            $file->move($destinationPath, $var);
-            $photo = $var;
+           $photo = $request->file('photo');
+            $ext = '.'.$request->photo->getClientOriginalExtension();
+            $fileName = str_replace($ext, date('d-m-Y-H-i') . $ext, $request->photo->getClientOriginalName());
+            $file->move($destinationPath, $fileName);
+            $photo = $fileName;
         }
 
           $police_reco_photo = ($request->police_reco != '') ? $request->police_reco : $employees->police_reco;
          
         if ($file = $request->file('police_reco')) {
-            $extension = $file->getClientOriginalExtension();
-            $var = Str::random(32) . '.' . $extension;
-            $file->move($destinationPath, $var);
-            $police_reco_photo = $var;
+            $police_reco = $request->file('police_reco');
+            $ext = '.'.$request->police_reco->getClientOriginalExtension();
+            $fileName = str_replace($ext, date('d-m-Y-H-i') . $ext, $request->police_reco->getClientOriginalName());
+            $file->move($policePath, $fileName);
+            $police_reco_photo = $fileName;
         }
 
         $ward_reco_photo =  ($request->ward_reco != '') ? $request->ward_reco : $employees->ward_reco;
         if ($file = $request->file('ward_reco')) {
-            $extension = $file->getClientOriginalExtension();
-            $var = Str::random(32) . '.' . $extension;
-            $file->move($destinationPath, $var);
-            $ward_reco_photo = $var;
+           $ward_reco = $request->file('ward_reco');
+            $ext = '.'.$request->ward_reco->getClientOriginalExtension();
+            $fileName = str_replace($ext, date('d-m-Y-H-i') . $ext, $request->ward_reco->getClientOriginalName());
+            $file->move($wardPath, $fileName);
+            $ward_reco_photo = $fileName;
         }
 
 
         $cvfile_photo = ($request->cvfile != '') ? $request->cvfile : $employees->cvfile;
         if ($file = $request->file('cvfile')) {
-            $name = $file->getClientOriginalName();
-            $destinationPath = public_path('/uploads/jobapplicationPhoto/');
-            $file->move($destinationPath, $name);
-            $cvfile_photo=$name;
+            $cvfile = $request->file('cvfile');
+            $ext = '.'.$request->cvfile->getClientOriginalExtension();
+            $fileName = str_replace($ext, date('d-m-Y-H-i') . $ext, $request->cvfile->getClientOriginalName());
+            $file->move($attachPath, $fileName);
+            $cvfile_photo = $fileName;
             // dd($cvfile_photo);
             // $extension = $file->getClientOriginalExtension();
             // $var = Str::random(32) . '.' . $extension;
@@ -293,18 +328,20 @@ class EmployeeController extends Controller
 
         $otherfile_photo = ($request->otherfile != '') ? $request->otherfile : $employees->otherfile;
         if ($file = $request->file('otherfile')) {
-            $extension = $file->getClientOriginalExtension();
-            $var = Str::random(32) . '.' . $extension;
-            $file->move($destinationPath, $var);
-            $otherfile_photo = $var;
+           $otherfile = $request->file('otherfile');
+            $ext = '.'.$request->otherfile->getClientOriginalExtension();
+            $fileName = str_replace($ext, date('d-m-Y-H-i') . $ext, $request->otherfile->getClientOriginalName());
+            $file->move($attachPath, $fileName);
+            $otherfile_photo = $fileName;
         }
 
         $degree_photo = "";
         if ($file = $request->file('degree')) {
-            $extension = $file->getClientOriginalExtension();
-            $var = Str::random(32) . '.' . $extension;
-            $file->move($destinationPath, $var);
-            $degree_photo = $var;
+            $degree = $request->file('degree');
+            $ext = '.'.$request->degree->getClientOriginalExtension();
+            $fileName = str_replace($ext, date('d-m-Y-H-i') . $ext, $request->degree->getClientOriginalName());
+            $file->move($attachPath, $fileName);
+            $degree_photo = $fileName;
         }
 
         $nrccode = NRCCode::find($request->nrc_code);
@@ -448,5 +485,7 @@ class EmployeeController extends Controller
 
         
     }
+
+  
 
 }

@@ -277,15 +277,15 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td><a href="{{ url('uploads/jobapplicationPhoto/'.$employees->cvfile) }}" target="_blank">{{$employees->cvfile}}</a><span style="padding-left: 165px">   
+                        <td><a href="{{ url('uploads/attachfile/'.$employees->cvfile) }}" target="_blank">{{$employees->cvfile}}</a><span style="padding-left: 165px">   
 
-                           <img src="{{asset('uploads/employeePhoto/'.$employees->ward_reco) }}" alt="photo" width="130px" height="130px">
+                           <img src="{{asset('uploads/wardrecoPhoto/'.$employees->ward_reco) }}" alt="photo" width="130px" height="130px">
                          </span></td>
                          </tr>
                          <tr>
-                           <td style="width: 100%"> <span ><img src="{{ asset('uploads/employeePhoto/'.$employees->police_reco) }}" alt="photo" width="130px" height="130px"></span> <span style="padding-left: 100px">   
+                           <td style="width: 100%"> <span ><img src="{{ asset('uploads/policestationrecomPhoto/'.$employees->police_reco) }}" alt="photo" width="130px" height="130px"></span> <span style="padding-left: 100px">   
 
-                           <img src="{{ asset('uploads/jobapplicationPhoto/'.$employees->otherfile) }}" alt="photo" width="130px" height="130px">
+                           <img src="{{ asset('uploads/attachfile/'.$employees->otherfile) }}" alt="photo" width="130px" height="130px">
                          </span></td>
                         </tr>
                    

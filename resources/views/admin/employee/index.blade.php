@@ -27,12 +27,44 @@
 <div class="row form-group">
   <div class="col-md-12">
                          
-              <a class="btn btn-success unicode" href="{{route('employee.create')}}" style="float: right;"><i class="fas fa-plus"></i> Employee</a>
+           
          </div>
 </div>
           
+      
+
+        <div class="row">
+        <form class="form-horizontal unicode" action="{{route('import')}}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    <div class="row form-group">
+                        <div class="col-md-4">
+                            <input type="file" name="file" class="form-control">
+                            @if ($errors->has('file'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('file') }}</strong>
+                                </span>
+                            @endif
+                        </div>
+                        
+                        <button class="btn btn-success btn-sm"><i class="fas fa-file-csv" style="margin-left: 10px "></i> Import CSV</button>
+                       
+                        <a class="btn btn-primary btn-sm"  href="{{ route('employees.download.csv') }}" style="margin-left: 10px "><i class="fa fa-fw fa-download" style="padding-top: 8px" ></i>Demo CSV File</a>
+                       
+                      
+                        <a class="btn btn-warning btn-sm" id="export_btn" style="margin-left: 10px " ><i class="fa fa-fw fa-file-excel" style="padding-top: 8px"></i>Export</a>
+
+                         <button type="button" class="btn btn-warning " id="morefilter" style="margin-left: 20px"><i class="fa fa-filter" aria-hidden="true"></i></button>
+                       
+                        <a class="btn btn-success unicode" href="{{route('employee.create')}}" style="margin-left: 50px"><i class="fas fa-plus"></i> Employee</a>
+                     
+                    
+                    </div>
+        </form>
+      </div>
+
+
          <form action="{{route('employee.index')}}" method="get" accept-charset="utf-8" class="form-horizontal unicode" >
-            <div class="row form-group">
+            <div class="row form-group" id="adv_filter">
                 <div class="col-md-12">
                     <div class="row">
                         <div class="col-md-2">
@@ -85,31 +117,6 @@
                
             </div>
         </form>
-
-        <div class="row">
-        <form class="form-horizontal unicode" action="{{route('import')}}" method="POST" enctype="multipart/form-data">
-                    @csrf
-                    <div class="row form-group">
-                        <div class="col-md-4">
-                            <input type="file" name="file" class="form-control">
-                            @if ($errors->has('file'))
-                                <span class="help-block">
-                                    <strong>{{ $errors->first('file') }}</strong>
-                                </span>
-                            @endif
-                        </div>
-                        
-                        <button class="btn btn-success btn-sm"><i class="fas fa-file-csv" style="margin-left: 10px "></i> Import CSV</button>
-                       
-                        <a class="btn btn-primary btn-sm"  href="{{ route('employees.download.csv') }}" style="margin-left: 10px "><i class="fa fa-fw fa-download" style="padding-top: 8px" ></i>Demo CSV File</a>
-                       
-                      
-                        <a class="btn btn-warning btn-sm" id="export_btn" style="margin-left: 10px " ><i class="fa fa-fw fa-file-excel" style="padding-top: 8px"></i>Export</a>
-                     
-                    
-                    </div>
-        </form>
-      </div>
 
          <form id="excel_form" action="{{ route('export') }}"  method="POST" class="unicode">
                 @csrf
@@ -193,11 +200,12 @@
 
 @stop 
 @section('css')
-  
+    <link rel="stylesheet" href="/css/admin_custom.css">
 @stop
 
 @section('js')
  <script src="{{ asset('jquery.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('jquery-ui.js') }}"></script>
 
    <script src="https://unpkg.com/bootstrap-datepicker@1.9.0/dist/js/bootstrap-datepicker.min.js"></script>
     <script type="text/javascript" src="{{ asset('select2/js/select2.min.js') }}"></script>
@@ -215,6 +223,7 @@
             setTimeout(function(){
             $("div.alert").remove();
             }, 1000 ); 
+
             $(function() {
                 $('#name').on('change',function(e) {
                 this.form.submit();
@@ -236,6 +245,14 @@
                 this.form.submit();
                // $( "#form_id" )[0].submit();   
             });
+
+               $( "#morefilter" ).click(function(e) {
+              e.preventDefault();
+              if($('#adv_filter:visible').length)
+                  $('#adv_filter').hide("slide", { direction: "right" }, 1000);
+              else
+              $('#adv_filter').show("slide", { direction: "right" }, 1000);
+          });
 
 
    

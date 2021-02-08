@@ -30,8 +30,36 @@
             </div>
         @endif --}}
 
-   <form action="{{route('salary.index')}}" method="get" accept-charset="utf-8" class="form-horizontal">
-            <div class="row form-group">
+
+
+          <div class="row">
+          <form class="form-horizontal" action="{{route('salaryimport')}}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    <div class="row form-group">
+                        <div class="col-md-5">
+                            <input type="file" name="file" class="form-control">
+                            @if ($errors->has('file'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('file') }}</strong>
+                                </span>
+                            @endif
+                        </div>
+                       
+                        <button class="btn btn-success btn-sm"><i class="fas fa-file-csv" style="margin-left: 10px "></i> Import CSV</button>
+                        
+                       <a class="btn btn-primary btn-sm"  href="{{route('salarys.download.csv')}}" style="margin-left: 10px "><i class="fa fa-fw fa-download" style="padding-top: 8px" ></i>Demo CSV File</a>
+
+                       <button type="button" class="btn btn-warning " id="morefilter" style="margin-left: 20px"><i class="fa fa-filter" aria-hidden="true"></i></button>
+
+                         <a class="btn btn-success unicode" href="{{route('salary.create')}}" style="margin-left: 20px"><i class="fas fa-plus"></i> Salary</a>
+                       
+                    
+                    </div>
+        </form>
+      </div>
+
+         <form action="{{route('salary.index')}}" method="get" accept-charset="utf-8" class="form-horizontal" >
+            <div class="row form-group" id="adv_filter">
                <div class="col-md-12">
                     <div class="row">
                         <div class="col-md-3">
@@ -54,36 +82,14 @@
                             <label for="">Payment year</label>
                              <input type="text" name="year" id="year"class="form-control unicode" placeholder="2021" value="{{ old('year',$year) }}">
                         </div>
-                        <div class="col-md-3">
+                      <!--   <div class="col-md-3">
                              <a class="btn btn-success unicode" href="{{route('salary.create')}}" style="float: right;"><i class="fas fa-plus"></i> Salary</a>
-                        </div>
+                        </div> -->
                
             </div>
           </div>
         </div>
         </form>
-
-          <div class="row">
-          <form class="form-horizontal" action="{{route('salaryimport')}}" method="POST" enctype="multipart/form-data">
-                    @csrf
-                    <div class="row form-group">
-                        <div class="col-md-5">
-                            <input type="file" name="file" class="form-control">
-                            @if ($errors->has('file'))
-                                <span class="help-block">
-                                    <strong>{{ $errors->first('file') }}</strong>
-                                </span>
-                            @endif
-                        </div>
-                       
-                        <button class="btn btn-success btn-sm"><i class="fas fa-file-csv" style="margin-left: 10px "></i> Import CSV</button>
-                        
-                       <a class="btn btn-primary btn-sm"  href="{{route('salarys.download.csv')}}" style="margin-left: 10px "><i class="fa fa-fw fa-download" style="padding-top: 8px" ></i>Demo CSV File</a>
-                       
-                    
-                    </div>
-        </form>
-      </div>
            
  <p style="padding-top: 20px">Total record: {{$count}}</p>
 <div class="table-responsive" style="font-size:15px;overflow-x:auto;">
@@ -569,6 +575,8 @@
 
 @section('js')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js"></script>
+<script src="{{ asset('jquery.js') }}"></script>
+ <script type="text/javascript" src="{{ asset('jquery-ui.js') }}"></script>
 <script type="text/javascript">
 	  @if(Session::has('success'))
             toastr.options =
@@ -601,6 +609,14 @@
                       this.form.submit();
                              // $( "#form_id" )[0].submit();   
                     });
+
+                     $( "#morefilter" ).click(function(e) {
+                      e.preventDefault();
+                      if($('#adv_filter:visible').length)
+                          $('#adv_filter').hide("slide", { direction: "right" }, 1000);
+                      else
+                      $('#adv_filter').show("slide", { direction: "right" }, 1000);
+                  });
               //    $('#brand_id').on('change',function(e){
               //   this.form.submit();
               // });
