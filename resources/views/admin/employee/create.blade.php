@@ -131,16 +131,53 @@
                                     <input type="text" name="nrc" class="form-control unicode" placeholder="111111" id="nrc">
                                  
                                 </div>  
+                            </div><br>
+
+                             <div class="row">
+                                <div class="col-md-2">
+                                    <h6 style="font-weight:bold;font-size:15px;">Email*</h6>
+                                </div>
+
+                                <div class="col-md-8 {{ $errors->first('name', 'has-error') }}">
+
+                                   <input type="email" name="email" class="form-control unicode">
+
+                                </div>
                             </div>
+
                         </div>
                         <div class="col-md-6">
+
+                             <div class="row">
+                                <div class="col-md-3">
+                                    <h6 style="font-weight:bold;font-size:15px;"> Race</h6>
+                                </div>
+
+                                <div class="col-md-8 {{ $errors->first('lat', 'has-error') }}">
+
+                                      <input type="text" name="race" class="form-control unicode">
+
+                                   <!--   <input type="text" name="religion" class="form-control unicode"> -->
+
+                                </div>
+                            </div><br>
+
                              <div class="row">
                                 <div class="col-md-3">
                                     <h6 style="font-weight:bold;font-size:15px;"> Religion</h6>
                                 </div>
 
                                 <div class="col-md-8 {{ $errors->first('lat', 'has-error') }}">
-                                     <input type="text" name="religion" class="form-control unicode">
+
+                                      <select class="form-control unicode" name="religion">
+                                       
+                                        <option value="Buddhism">Buddhism</option>
+                                        <option value="Christianity">Christianity</option>
+                                        <option value="Islam">Islam</option>
+                                        <option value="Hinduism">Hinduism</option>
+                                    </select>
+
+                                   <!--   <input type="text" name="religion" class="form-control unicode"> -->
 
                                 </div>
                             </div><br>
@@ -193,7 +230,7 @@
                 </div>
             </div> -->
                     <br>
-                    <div class="row">
+                  <!--   <div class="row">
                            <div class="col-md-6">
                             <div class="row">
                                 <div class="col-md-2">
@@ -208,7 +245,7 @@
                             </div>
                         </div>
                         <div class="col-md-6"></div>
-                    </div>
+                    </div> -->
                     <div style="width: 100%">
                         <!-- <div class="col-md-6">
                 </div>

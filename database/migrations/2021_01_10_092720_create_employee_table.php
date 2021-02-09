@@ -37,6 +37,7 @@ class CreateEmployeeTable extends Migration
             $table->string('qualification');
             $table->string('salary')->nullable();
             $table->string('photo');
+            $table->string('race');
             $table->string('religion');
             $table->string('email');
             $table->string('fPhone');

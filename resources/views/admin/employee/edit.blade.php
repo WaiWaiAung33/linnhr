@@ -135,16 +135,42 @@
                             </div>
                         </div>
                         <div class="col-md-6">
+
+                             <div class="row">
+                                <div class="col-md-3">
+                                    <h6 style="font-weight:bold;font-size:15px;"> Race</h6>
+                                </div>
+
+                                <div class="col-md-8 {{ $errors->first('lat', 'has-error') }}">
+
+                                      <input type="text" name="race" class="form-control unicode" value="{{$employees->race}}">
+
+                                   <!--   <input type="text" name="religion" class="form-control unicode"> -->
+
+                                </div>
+                            </div><br>
+
                              <div class="row">
                                 <div class="col-md-3">
                                     <h6 style="font-weight:bold;font-size:15px;"> Religion</h6>
                                 </div>
 
                                 <div class="col-md-8 {{ $errors->first('lat', 'has-error') }}">
-                                    <input type="text" name="religion" class="form-control unicode" value="{{$employees->religion}}">
+
+                                      <select class="form-control unicode" name="religion">
+                                       
+                                        <option value="Buddhism" @if($employees->religion=='Buddhism') selected='selected' @endif>Buddhism</option>
+                                        <option value="Christianity"  @if($employees->religion=='Christianity') selected='selected' @endif>Christianity</option>
+                                        <option value="Islam" @if($employees->religion=='Islam') selected='selected' @endif>Islam</option>
+                                        <option value="Hinduism" @if($employees->religion=='Hinduism') selected='selected' @endif>Hinduism</option>
+                                    </select>
+
+                                   <!--   <input type="text" name="religion" class="form-control unicode"> -->
 
                                 </div>
                             </div><br>
+
+                          
 
                                <div class="row">
                                 <div class="col-md-3">

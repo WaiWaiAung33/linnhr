@@ -79,6 +79,7 @@ class EmployeeController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request->exp_date_from);
         $destinationPath = public_path() . '/uploads/employeePhoto/';
         $policePath = public_path() . '/uploads/policestationrecomPhoto/';
         $wardPath = public_path() . '/uploads/wardrecoPhoto/';
@@ -196,6 +197,7 @@ class EmployeeController extends Controller
             'qualification'=>$request->qualification,
             'salary'=>$request->salary,
             'photo'=>$photo,
+            'race'=>$request->race,
             'religion'=>$request->religion,
             'email'=>$request->email,
             'fPhone'=>$request->pPhone,
@@ -375,6 +377,7 @@ class EmployeeController extends Controller
             'qualification'=>$request->qualification,
             'salary'=>$request->salary,
             'photo'=>$photo,
+            'race'=>$request->race,
             'religion'=>$request->religion,
             'email'=>$request->email,
             'fPhone'=>$request->pPhone,
