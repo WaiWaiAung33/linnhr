@@ -36,8 +36,8 @@
           <form class="form-horizontal" action="{{route('salaryimport')}}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="row form-group">
-                        <div class="col-md-5">
-                            <input type="file" name="file" class="form-control">
+                        <div class="col-md-3">
+                            <input type="file" name="file" class="form-control" style="font-size: 13px">
                             @if ($errors->has('file'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('file') }}</strong>
@@ -45,13 +45,13 @@
                             @endif
                         </div>
                        
-                        <button class="btn btn-success btn-sm"><i class="fas fa-file-csv" style="margin-left: 10px "></i> Import CSV</button>
+                        <button class="btn btn-success btn-sm"><i class="fas fa-file-csv" style="margin-left: 10px;font-size: 13px "></i> Import CSV</button>
                         
-                       <a class="btn btn-primary btn-sm"  href="{{route('salarys.download.csv')}}" style="margin-left: 10px "><i class="fa fa-fw fa-download" style="padding-top: 8px" ></i>Demo CSV File</a>
+                       <a class="btn btn-primary btn-sm"  href="{{route('salarys.download.csv')}}" style="margin-left: 10px;font-size: 13px "><i class="fa fa-fw fa-download" style="padding-top: 8px" ></i>Demo CSV File</a>
 
-                       <button type="button" class="btn btn-warning " id="morefilter" style="margin-left: 20px"><i class="fa fa-filter" aria-hidden="true"></i></button>
+                       <button type="button" class="btn btn-warning " id="morefilter" style="margin-left: 20px;font-size: 13px"><i class="fa fa-filter" aria-hidden="true"></i></button>
 
-                         <a class="btn btn-success unicode" href="{{route('salary.create')}}" style="margin-left: 20px"><i class="fas fa-plus"></i> Salary</a>
+                         <a class="btn btn-success unicode" href="{{route('salary.create')}}" style="margin-left: 20px;font-size: 13px"><i class="fas fa-plus"></i> Salary</a>
                        
                     
                     </div>
@@ -64,12 +64,12 @@
                     <div class="row">
                         <div class="col-md-3">
                            <label for="">Search by Keyword</label>
-                            <input type="text" name="name" id="name" class="form-control" placeholder="Search..." value="{{ old('name',$name) }}">
+                            <input type="text" name="name" id="name" class="form-control" placeholder="Search..." value="{{ old('name',$name) }}" style="font-size: 13px">
                         </div>
                         <div class="col-md-3">
                             
                             <label for="">Select Department</label>
-                            <select class="form-control" id="dep_id" name="dep_id">
+                            <select class="form-control" id="dep_id" name="dep_id" style="font-size: 13px">
                                 <option value="">All</option>
                                 @foreach($departments as $department)
                                 <option value="{{$department->id}}" {{ (old('dep_id',$dep_id)==$department->id)?'selected':'' }}>{{$department->name}}</option>
@@ -80,7 +80,7 @@
                         <div class="col-md-3">
                           
                             <label for="">Payment year</label>
-                             <input type="text" name="year" id="year"class="form-control unicode" placeholder="2021" value="{{ old('year',$year) }}">
+                             <input type="text" name="year" id="year"class="form-control unicode" placeholder="2021" value="{{ old('year',$year) }}" style="font-size: 13px">
                         </div>
                       <!--   <div class="col-md-3">
                              <a class="btn btn-success unicode" href="{{route('salary.create')}}" style="float: right;"><i class="fas fa-plus"></i> Salary</a>
@@ -92,7 +92,7 @@
         </form>
            
  <p style="padding-top: 20px">Total record: {{$count}}</p>
-<div class="table-responsive" style="font-size:15px;overflow-x:auto;">
+<div class="table-responsive" style="font-size:13px;overflow-x:auto;">
 	<table class="table table-bordered styled-table ">
 		<thead>
 			<tr>

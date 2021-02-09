@@ -12,7 +12,7 @@
 @section('content')
 
  <div>
- 	 <a class="btn btn-success unicode" href="{{route('jobopening.create')}}" style="float: right;"><i class="fas fa-plus"></i> Jobopening</a>
+ 	 <a class="btn btn-success unicode" href="{{route('jobopening.create')}}" style="float: right;font-size: 13px"><i class="fas fa-plus"></i> Jobopening</a>
  </div>
 
  <?php
@@ -31,9 +31,10 @@
     <form action="{{route('jobopening.index')}}" method="get" accept-charset="utf-8" class="form-horizontal">
      <div class="row form-group">
       
-       <div class="col-md-3">                 
-           <select class="form-control" id="dep_id" name="dep_id">
-                              <option value="">Select Department</option>
+       <div class="col-md-3">   
+       <label>Select Department</label>              
+           <select class="form-control" id="dep_id" name="dep_id" style="font-size: 13px">
+                              <option value="">All</option>
                                     @foreach($departments as $department)
                                               <option value="{{$department->id}}" {{ (old('dep_id',$dep_id)==$department->id)?'selected':'' }}>{{$department->name}}</option>
                                     @endforeach
@@ -43,7 +44,7 @@
     </form>
 
      <p style="padding-left: 10px">Total record: {{$count}}</p>
-    <div class="table-responsive" style="font-size:15px">
+    <div class="table-responsive" style="font-size:13px">
                 <table class="table table-bordered styled-table">
                   <thead>
                     <tr> 

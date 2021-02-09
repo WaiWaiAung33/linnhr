@@ -22,10 +22,10 @@
         <div class="row form-group">
           
             <div class="col-md-3">
-               <input type="text" name="name" placeholder="Enter rank name" class="form-control" value="{{old('name',$name)}}"> 
+               <input type="text" name="name" placeholder="Enter rank name" class="form-control" value="{{old('name',$name)}}" style="font-size: 13px"> 
             </div>
             <div class="col-md-2">
-              <button class="btn btn-success unicode" type="submit">
+              <button class="btn btn-success unicode" type="submit" style="font-size: 13px">
                     Save
           </button>
             </div>
@@ -42,12 +42,12 @@
      <div class="row form-group">
      
        <div class="col-md-3">                 
-          <input type="text" name="name" id="name" value="{{ old('name',$name) }}" class="form-control" placeholder="Search...">
+          <input type="text" name="name" id="name" value="{{ old('name',$name) }}" class="form-control" placeholder="Search..." style="font-size: 13px">
         </div>
      </div>
     </form>
   <p>Total record: {{$count}}</p>
-    <div class="table-responsive" style="font-size:15px">
+    <div class="table-responsive" style="font-size:13px">
                 <table class="table table-bordered styled-table">
                   <thead>
                     <tr> 

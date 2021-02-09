@@ -86,6 +86,9 @@
             font-family:Pyidaungsu,Yunghkio,'Masterpiece Uni Sans' !important;
             font-size: 12px;
         }
+        label{
+            font-size: 13px;
+        }
         p,h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 , table, .table {
             font-family:Pyidaungsu,Yunghkio,'Masterpiece Uni Sans' !important;
         }

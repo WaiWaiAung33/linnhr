@@ -24,43 +24,34 @@
   $join_month = isset($_GET['join_month'])?$_GET['join_month']:'';
   ?>
 
-<div class="row form-group">
-  <div class="col-md-12">
-                         
-           
-         </div>
-</div>
-          
-      
-
-        <div class="row">
         <form class="form-horizontal unicode" action="{{route('import')}}" method="POST" enctype="multipart/form-data">
                     @csrf
-                    <div class="row form-group">
-                        <div class="col-md-4">
-                            <input type="file" name="file" class="form-control">
-                            @if ($errors->has('file'))
-                                <span class="help-block">
+                    <div class="row">
+                        <div class="col-md-2">
+                            <input type="file" name="file" class="form-control" style="font-size: 13px">
+                           <!--  @if ($errors->has('file'))
+                                <span style="border-color: red">
                                     <strong>{{ $errors->first('file') }}</strong>
                                 </span>
-                            @endif
+                            @endif -->
                         </div>
                         
-                        <button class="btn btn-success btn-sm"><i class="fas fa-file-csv" style="margin-left: 10px "></i> Import CSV</button>
+                        <button class="btn btn-success btn-sm" style="margin-right: 10px;font-size: 13px"><i class="fas fa-file-csv" ></i> Import CSV</button>
                        
-                        <a class="btn btn-primary btn-sm"  href="{{ route('employees.download.csv') }}" style="margin-left: 10px "><i class="fa fa-fw fa-download" style="padding-top: 8px" ></i>Demo CSV File</a>
+                        <a class="btn btn-primary btn-sm"  href="{{ route('employees.download.csv') }}" style="margin-right: 10px;font-size: 13px"><i class="fa fa-fw fa-download" style="padding-top: 8px" ></i>Demo CSV File</a>
                        
                       
-                        <a class="btn btn-warning btn-sm" id="export_btn" style="margin-left: 10px " ><i class="fa fa-fw fa-file-excel" style="padding-top: 8px"></i>Export</a>
+                        <a class="btn btn-warning btn-sm" id="export_btn" style="margin-right: 10px;font-size: 13px"><i class="fa fa-fw fa-file-excel" style="padding-top: 8px"></i>Export</a>
 
-                         <button type="button" class="btn btn-warning " id="morefilter" style="margin-left: 20px"><i class="fa fa-filter" aria-hidden="true"></i></button>
-                       
-                        <a class="btn btn-success unicode" href="{{route('employee.create')}}" style="margin-left: 50px"><i class="fas fa-plus"></i> Employee</a>
+                         <button type="button" class="btn btn-warning " id="morefilter" style="font-size: 13px"><i class="fa fa-filter" aria-hidden="true"></i></button>
+                       <div class="col-md-6">
+                        <a class="btn btn-success unicode" href="{{route('employee.create')}}" style="float: right;font-size: 13px"><i class="fas fa-plus"></i> Employee</a>
+                        </div>
                      
                     
                     </div>
-        </form>
-      </div>
+        </form><br>
+   
 
 
          <form action="{{route('employee.index')}}" method="get" accept-charset="utf-8" class="form-horizontal unicode" >
@@ -69,11 +60,11 @@
                     <div class="row">
                         <div class="col-md-2">
                             <label for="" class="unicode">Search by Keyword</label>
-                            <input type="text" name="name" id="name" class="form-control" placeholder="Search..." value="{{ old('name',$name) }}">
+                            <input type="text" name="name" id="name" class="form-control" placeholder="Search..." value="{{ old('name',$name) }}" style="font-size: 13px">
                         </div> 
                         <div class="col-md-2">
                             <label for="">Select Branch</label>
-                          <select class="form-control" id="branch_id" name="branch_id">
+                          <select class="form-control" id="branch_id" name="branch_id" style="font-size: 13px">
                                 <option value="">All</option>
                                 @foreach($branchs as $branch)
                                 <option value="{{$branch->id}}" {{ (old('branch_id',$branch_id)==$branch->id)?'selected':'' }}>{{$branch->name}}</option>
@@ -82,7 +73,7 @@
                         </div>
                         <div class="col-md-2">
                            <label for="">Select Department</label>
-                            <select class="form-control" id="dep_id" name="dep_id">
+                            <select class="form-control" id="dep_id" name="dep_id" style="font-size: 13px">
                               <option value="">All</option>
                                     @foreach($departments as $department)
                                               <option value="{{$department->id}}" {{ (old('dep_id',$dep_id)==$department->id)?'selected':'' }}>{{$department->name}}</option>
@@ -91,7 +82,7 @@
                         </div>
                         <div class="col-md-2">
                              <label for="">Select Rank</label>
-                            <select class="form-control" id="position_id" name="position_id">
+                            <select class="form-control" id="position_id" name="position_id" style="font-size: 13px">
                             <option value="">All</option>
                                @foreach($positions as $position)
                                                 <option value="{{$position->id}}" {{ (old('position_id',$position_id)==$position->id)?'selected':'' }}>{{$position->name}}</option>
@@ -101,12 +92,12 @@
                         </div>
                         <div class="col-md-2">
                             <label>Join Date</label>
-                             <input type="text" name="join_date" id="join_date"class="form-control unicode" placeholder="01-08-2020" value="{{ old('join_date',$join_date) }}">
+                             <input type="text" name="join_date" id="join_date"class="form-control unicode" placeholder="01-08-2020" value="{{ old('join_date',$join_date) }}" style="font-size: 13px">
                         </div>
 
                          <div class="col-md-2">
                             <label>Join Month</label>
-                             <input type="text" name="join_month" id="join_month"class="form-control unicode" placeholder="January" value="{{ old('join_month',$join_month) }}">
+                             <input type="text" name="join_month" id="join_month"class="form-control unicode" placeholder="January" value="{{ old('join_month',$join_month) }}" style="font-size: 13px">
                         </div>
                        <!--  <div class="col-md-2">
                          
@@ -127,7 +118,7 @@
          </form>
 
   <p style="padding-top: 20px" class="unicode">Total record: {{$count}}</p>
-    <div class="table-responsive unicode" style="font-size:15px;">
+    <div class="table-responsive unicode" style="font-size:13px;">
                 <table class="table table-bordered styled-table unicode">
                   <thead>
                     <tr> 

@@ -22,19 +22,19 @@
         <div class="row form-group">
           
             <div class="col-md-3">
-               <input type="text" name="name" placeholder="Enter branch name" class="form-control"> 
+               <input type="text" name="name" placeholder="Enter branch name" class="form-control" style="font-size: 13px"> 
             </div>
             
           <div class="col-md-3">
-            <input type="text" name="latitude" placeholder="Enter latitude name" class="form-control">
+            <input type="text" name="latitude" placeholder="Enter latitude name" class="form-control" style="font-size: 13px">
               
             </div>
             
             <div class="col-md-3">
-                <input type="text" name="longitude" placeholder="Enter longitude name" class="form-control">
+                <input type="text" name="longitude" placeholder="Enter longitude name" class="form-control" style="font-size: 13px">
             </div>
             <div class="col-md-1">
-              <button class="btn btn-success" type="submit">
+              <button class="btn btn-success" type="submit" style="font-size: 13px">
                     Save
             </button>
             </div>
@@ -61,13 +61,13 @@
      <div class="row form-group">
      
        <div class="col-md-3">                 
-          <input type="text" name="name" id="name" value="{{ old('name',$name) }}" class="form-control" placeholder="Search...">
+          <input type="text" name="name" id="name" value="{{ old('name',$name) }}" class="form-control" placeholder="Search..." style="font-size: 13px">
         </div>
      </div>
       </form>
 
       <p style="padding-left: 10px">Total record:{{$count}}</p>
-    <div class="table-responsive" style="font-size:15px">
+    <div class="table-responsive" style="font-size:13px">
                 <table class="table table-bordered styled-table">
                   <thead>
                     <tr> 

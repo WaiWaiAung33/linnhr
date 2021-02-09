@@ -22,7 +22,7 @@
         <div class="row form-group">
          
             <div class="col-md-3">
-               <select class="form-control" name="code_id">
+               <select class="form-control" name="code_id" style="font-size: 13px">
                 <option value="">select nrccode</option>
                 @foreach ($codes as $code )
                   <option  value="{{$code->id}}">{{$code->name}}</option>
@@ -30,10 +30,10 @@
             </select>   
             </div>
             <div class="col-md-3">
-               <input type="text" name="name" placeholder="Enter nrcstate name" class="form-control"> 
+               <input type="text" name="name" placeholder="Enter nrcstate name" class="form-control" style="font-size: 13px"> 
             </div>
             <div class="col-md-2">
-              <button class="btn btn-success unicode" type="submit">
+              <button class="btn btn-success unicode" type="submit" style="font-size: 13px">
                     Save
           </button>
             </div>
@@ -50,12 +50,12 @@
      <div class="row form-group">
       
        <div class="col-md-3">                 
-          <input type="text" name="name" id="name" class="form-control" placeholder="Search..." value="{{ old('name',$name) }}"> 
+          <input type="text" name="name" id="name" class="form-control" placeholder="Search..." value="{{ old('name',$name) }}" style="font-size: 13px"> 
         </div>
      </div>
     </form>
     <p>Total record: {{$count}}</p>
-    <div class="table-responsive" style="font-size:15px">
+    <div class="table-responsive" style="font-size:13px">
                 <table class="table table-bordered styled-table">
                   <thead>
                     <tr> 

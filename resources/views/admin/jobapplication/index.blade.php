@@ -30,13 +30,13 @@
      <div class="row form-group">
       
        <div class="col-md-3">                 
-          <input type="text" name="name" id="name" value="{{ old('name',$name) }}" class="form-control" placeholder="Search...">
+          <input type="text" name="name" id="name" value="{{ old('name',$name) }}" class="form-control" placeholder="Search..." style="font-size: 13px">
         </div>
      </div>
     </form>
 
      <p style="padding-top: 15px">Total record: {{$count}}</p>
-    <div class="table-responsive" style="font-size:15px">
+    <div class="table-responsive" style="font-size:13px">
             <table class="table table-bordered styled-table">
                   <thead>
                     <tr> 
