@@ -179,11 +179,16 @@
 
 
                                 <div class="col-md-2 {{ $errors->first('marrical_status', 'has-error') }}">
-                                    <input type="radio" name="marrical_status"  id="marrical_status" value="marry" {{ $employees->marrical_status == 'marry' ? 'checked' : '' }}> ရှိ
+                                    <input type="radio" name="marrical_status"  id="marrical_status" value="Married
+" {{ $employees->marrical_status == 'Married' ? 'checked' : '' }}> Married
+
                                     
                                 </div>   
                                 <div class="col-md-2">
-                                    <input type="radio" name="marrical_status" id="marrical_status" value="singal" {{ $employees->marrical_status == 'singal' ? 'checked' : '' }}> မရှိ
+                                    <input type="radio" name="marrical_status" id="marrical_status" value="Single
+" {{ $employees->marrical_status == 'Single
+' ? 'checked' : '' }}> Single
+
                                 </div> 
                             </div><br>
 

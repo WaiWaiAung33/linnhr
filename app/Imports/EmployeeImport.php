@@ -92,6 +92,7 @@ class EmployeeImport implements ToCollection,WithHeadingRow
                         'position_id'=>$positionid,
                         'name'=> $row['name'],
                         'gender'=>$row['gender'],
+                        'marrical_status'=>$row['marrical_status'],
                         'father_name'=>$row['father_name'],
                         'phone_no'=>$row['phone'],
                         'nrc_code'=>$nrcodeid,
@@ -104,12 +105,12 @@ class EmployeeImport implements ToCollection,WithHeadingRow
                         'address'=>$row['address'],
                         'city'=>$row['city'],
                         'township'=>$row['township'],
-                        'qualification'=>$row['qualification'],
+                        'degree'=>$row['degree'],
+                        'race'=>$row['race'],
                         'religion'=>$row['religion'],
-                        'email'=>$row['email'],
+                       
                         'fPhone'=>$row['father_phone'],
-                        'experience'=>$row['experience'],
-                        'exp_salary'=>$row['exp_salary'],
+                      
                         'hostel'=>$row['hostel'],
                         ];
                        

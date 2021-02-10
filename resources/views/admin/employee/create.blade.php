@@ -189,11 +189,15 @@
 
 
                                  <div class="col-md-2 {{ $errors->first('marrical_status', 'has-error') }}">
-                                    <input type="radio" name="marrical_status" value="marry" id="marrical_status" checked> ရှိ
+                                    <input type="radio" name="marrical_status" value="Married
+" id="marrical_status" checked> Married
+
                                     
                                 </div>   
                                 <div class="col-md-2">
-                                    <input type="radio" name="marrical_status" value="singal" id="marrical_status"> မရှိ
+                                    <input type="radio" name="marrical_status" value="Single
+" id="marrical_status"> Single
+
                                 </div> 
                             </div><br>
 
