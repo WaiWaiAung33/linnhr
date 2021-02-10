@@ -68,11 +68,11 @@
 
 
                                 <div class="col-md-2 {{ $errors->first('gender', 'has-error') }}">
-                                    <input type="radio" name="gender" value="male" {{ $employees->gender == 'male' ? 'checked' : '' }}> Male
+                                    <input type="radio" name="gender" value="Male" {{ $employees->gender == 'Male' ? 'checked' : '' }}> Male
                                     
                                 </div>   
                                 <div class="col-md-2">
-                                    <input type="radio" name="gender" value="female" {{ $employees->gender == 'female' ? 'checked' : '' }}> Female
+                                    <input type="radio" name="gender" value="Female" {{ $employees->gender == 'Female' ? 'checked' : '' }}> Female
                                 </div> 
                             </div><br>
                             <div class="row">
