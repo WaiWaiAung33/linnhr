@@ -51,7 +51,7 @@ class EmployeeController extends Controller
             // dd($customers);
         }
         $count = $employees->get()->count();
-        $employees = $employees->orderBy('created_at','desc')->paginate(10);
+        $employees = $employees->orderBy('emp_id','asc')->paginate(10);
     
         return view('admin.employee.index',compact('branchs','departments','positions','employees','count'))->with('i', (request()->input('page', 1) - 1) * 10);
     }
