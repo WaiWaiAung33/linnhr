@@ -86,8 +86,11 @@ class HomeController extends Controller
         }
 
 
-        $hostelNotStay = Employee::whereNull('hostel')->count();
-        $hostelStay = Employee::whereNotNull('hostel')->count();
+        // $hostelNotStay = Employee::whereNull('hostel')->count();
+        // $hostelStay = Employee::whereNotNull('hostel')->count();
+
+        $hostelNotStay = Employee::where('hostel','No')->count();
+        $hostelStay = Employee::where('hostel','!=','No')->count();
 
 
         return view('dashboard',compact('total_employees','total_departments','total_branches','new_empoyee','deptArr','deptEmpArr','maleTotal','femaleTotal','branchArr','branchEmpArr','hostelStay','hostelNotStay'));
