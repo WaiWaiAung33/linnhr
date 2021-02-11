@@ -690,14 +690,14 @@
                             <div class="row">
                                 <!-- <label class="col-md-3 unicode" style="text-align: right;">Assign</label> -->
                                 <div class="col-md-2">
-                                    <h6 style="font-weight:bold;font-size:15px;">Hostel*</h6>
+                                    <h6 style="font-weight:bold;font-size:15px;">isHostel*</h6>
                                 </div>
                                   <div class="col-md-2 {{ $errors->first('gender', 'has-error') }}">
-                                    <input type="radio" name="isHostel" value="နေ" checked> Yes
+                                    <input type="radio" name="isHostel" value="Yes" > Yes
                                     
                                 </div>   
                                 <div class="col-md-2">
-                                    <input type="radio" name="isHostel" value="မနေ"> No
+                                    <input type="radio" name="isHostel" value="No" checked> No
                                 </div> 
                             </div>
                         </div>
