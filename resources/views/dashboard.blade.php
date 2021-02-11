@@ -14,7 +14,7 @@
             <div class="inner">
               <h3>{{ $total_employees}}</h3>
 
-              <p>Empoyees</p>
+              <p>ဝန်ထမ်းစုစုပေါင်း</p>
             </div>
             <div class="icon">
              <i class="fa fa-users "></i>
@@ -29,7 +29,7 @@
             <div class="inner">
               <h3>{{$total_departments}}</h3>
 
-              <p>Departments</p>
+              <p>ဌာန</p>
             </div>
             <div class="icon">
               <i class="ion ion-stats-bars"></i>
@@ -44,7 +44,7 @@
             <div class="inner">
               <h3>{{$total_branches}}</h3>
 
-              <p>Branch</p>
+              <p>ဆိုင်ခွဲ</p>
             </div>
             <div class="icon">
               <i class="ion ion-person-add"></i>
@@ -59,7 +59,7 @@
             <div class="inner">
               <h3>{{$new_empoyee}}</h3>
 
-              <p>New Employee</p>
+              <p>ဝန်ထမ်းအသစ်</p>
             </div>
             <div class="icon">
                <i class="fa fa-users "></i>
@@ -72,11 +72,9 @@
 
  	<div class="row justify-content-center">
  		<div class="col-md-6" align="center">
- 			<h6 class="unicode">ဌာနအလိုက်ပြသခြင်း</h6>
  			<div id="chart1" style="height: 300px;"></div>
  		</div>
  		<div class="col-md-6"  align="center">
- 			 <h6 class="unicode">ကျား/မ အလိုက် ခွဲခြားပြသခြင်း</h6>
  			{{-- <div id="piechart" style="height: 300px;"></div> --}}
  			<div id="fmpie" style="height: 300px;"></div>
  		</div>
@@ -85,12 +83,10 @@
  	<hr>
  	<div class="row">
         <div class="col-md-6"  align="center">
-        	<h6 class="unicode">Branches</h6>
 	        <div id="pconchart" style="height: 300px;"></div>
         </div>
         	
  		<div class="col-md-6"  align="center">
- 			<h6 class="unicode">အဆောင်နေ/မနေ</h6>
 	 		<div id="pconpie" style="height: 300px;"></div>
  		</div>
 
@@ -139,7 +135,8 @@
 			},
 		  hooks: new ChartisanHooks()
 		    .beginAtZero()
-		    .colors(),
+		    .colors()
+		    .title('ဌာနအလိုက်ပြသခြင်း')
 		})
 
 		// const piechart = new Chartisan({
@@ -167,7 +164,8 @@
 			},
 		  hooks: new ChartisanHooks()
 		    .datasets('doughnut')
-		    .pieColors(),
+		    .pieColors()
+		    .title('ကျား/မ အလိုက် ခွဲခြားပြသခြင်း')
 		})
 
 		var recovered_count = 4; 
@@ -185,8 +183,12 @@
 			  ]
 			},
 		  hooks: new ChartisanHooks()
+		    // .colors(['#20FFFF', '#FD8008','#1F85DE','#DE781F'])
+		    .colors()
+		    .responsive()
 		    .beginAtZero()
-		    .colors(),
+		    .legend({ position: 'bottom' })
+		    .title('Employes at each Branches')
 		})
 
 		const pconpie = new Chartisan({
@@ -199,7 +201,9 @@
 			},
 		  hooks: new ChartisanHooks()
 		    .datasets('doughnut')
-		    .pieColors(),
+		    .pieColors()
+		    .title('အဆောင်နေ/မနေ')
+		   
 		})
 
     </script>
