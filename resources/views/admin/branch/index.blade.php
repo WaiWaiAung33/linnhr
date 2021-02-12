@@ -16,40 +16,9 @@
         $name = isset($_GET['name'])?$_GET['name']:'';
 ?>
 <div>
-  
- <form action="{{route('branch.store')}}" method="post" enctype="multipart/form-data" style="padding-top: 10px">
-        @csrf
-        <div class="row form-group">
-          
-            <div class="col-md-3">
-               <input type="text" name="name" placeholder="Enter branch name" class="form-control" style="font-size: 13px"> 
-            </div>
-            
-          <div class="col-md-3">
-            <input type="text" name="latitude" placeholder="Enter latitude name" class="form-control" style="font-size: 13px">
-              
-            </div>
-            
-            <div class="col-md-3">
-                <input type="text" name="longitude" placeholder="Enter longitude name" class="form-control" style="font-size: 13px">
-            </div>
-            <div class="col-md-1">
-              <button class="btn btn-success" type="submit" style="font-size: 13px">
-                    Save
-            </button>
-            </div>
-        </div>
-      <!--   <div class="row form-group">
-          
-        </div> -->
-        
-       <!--  <div class="row">
-          <div class="col-md-2"></div>
-          <button class="btn btn-success" type="submit">
-                    Save
-          </button>
-        </div> -->
-    </form>
+
+   <a class="btn btn-success unicode" href="{{route('branch.create')}}" style="float: right;font-size: 13px"><i class="fas fa-plus"></i> Branch</a>
+
 
      {{-- @if ($message = Session::get('success'))
             <div class="alert alert-success">

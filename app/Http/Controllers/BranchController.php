@@ -31,7 +31,7 @@ class BranchController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.branch.create');
     }
 
     /**
