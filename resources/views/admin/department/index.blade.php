@@ -19,40 +19,9 @@
 ?>
 
 <div >
- <form action="{{route('department.store')}}" method="post" enctype="multipart/form-data" style="padding-top: 10px">
-       @csrf
 
-       <div class="row form-group">
-         
-            <div class="col-md-3">
-               <input type="text" name="name" placeholder="Enter department name" class="form-control unicode" style="font-size: 13px"> 
-            </div>
-            <div class="col-md-2">
-              <button class="btn btn-success unicode" type="submit" style="font-size: 13px">
-                    Save
-              </button>
-            </div>
-        </div>
-       <!--  <div class="row form-group">
-          <div class="col-md-2">
-            <label class="unicode">Time In</label>
-          </div>
-          <div class="col-md-4 ">
-           <input type="date" class="form-control unicode" placeholder="01-01-2021" name="in_time" id="in_time">
-              
-            </div>
-        </div>
-        <div class="row form-group">
-          <div class="col-md-2">
-            <label class="unicode">Time Out</label>
-          </div>
-            <div class="col-md-4">
-                 <input type="date" class="form-control unicode" placeholder="01-01-2021" name="out_time" id="out_time">
-            </div>
-        </div> -->
-        
-      
-    </form>
+   <a class="btn btn-success unicode" href="{{route('department.create')}}" style="float: right;font-size: 13px"><i class="fas fa-plus"></i> Department</a>
+
       {{-- @if ($message = Session::get('success'))
             <div class="alert alert-success">
                 <p>{{ $message }}</p>
