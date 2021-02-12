@@ -234,7 +234,11 @@ class EmployeeController extends Controller
             'police_reco'=>$police_reco_photo,
             'ward_reco'=>$ward_reco_photo,
             'cvfile'=>$cvfile_photo,
-            'otherfile'=> $otherfile_photo
+            'otherfile'=> $otherfile_photo,
+            'hostel_location'=>$request->hostel_location,
+            'room_no'=>$request->room_no,
+            'home_no'=>$request->home_no,
+            'hostel_sdate'=>$request->hostel_sdate
         ]
         );
 
@@ -413,7 +417,11 @@ class EmployeeController extends Controller
             'police_reco'=>$police_reco_photo,
             'ward_reco'=>$ward_reco_photo,
             'cvfile'=>$cvfile_photo,
-            'otherfile'=> $otherfile_photo
+            'otherfile'=> $otherfile_photo,
+            'hostel_location'=>$request->hostel_location,
+            'room_no'=>$request->room_no,
+            'home_no'=>$request->home_no,
+            'hostel_sdate'=>$request->hostel_sdate
             
 
         ]);

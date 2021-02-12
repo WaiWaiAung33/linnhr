@@ -443,7 +443,7 @@
                                 <div class="col-md-8 {{ $errors->first('name', 'has-error') }}">
 
                                    <select class="form-control unicode" name="level">
-                                        <option data-display="Select">Select</option>
+                                        <option value="">Select</option>
                                         <option value="1">Level-1</option>
                                         <option value="2">Level-2</option>
                                         <option value="3">Level-3</option>
@@ -702,6 +702,62 @@
                             </div>
                         </div>
                     </div><br>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="row">
+                                <!-- <label class="col-md-3 unicode" style="text-align: right;">Assign</label> -->
+                                <div class="col-md-2">
+                                    <h6 style="font-weight:bold;font-size:15px;">Start Date</h6>
+                                </div>
+                                <div class="col-md-8">
+                                    <input type="text" name="hostel_sdate" class="form-control unicode" id="hostel_sdate" placeholder="01-01-2021">
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="row">
+                                <!-- <label class="col-md-3 unicode" style="text-align: right;">Assign</label> -->
+                                <div class="col-md-2">
+                                    <h6 style="font-weight:bold;font-size:15px;">Location</h6>
+                                </div>
+                                <div class="col-md-8">
+                                    <input type="text" name="hostel_location" class="form-control unicode">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+
+                     <div class="row">
+                        <div class="col-md-6">
+                            <div class="row">
+                                <!-- <label class="col-md-3 unicode" style="text-align: right;">Assign</label> -->
+                                <div class="col-md-2">
+                                    <h6 style="font-weight:bold;font-size:15px;">Home No</h6>
+                                </div>
+                                <div class="col-md-8">
+                                    <input type="text" name="home_no" class="form-control unicode">
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="row">
+                                <!-- <label class="col-md-3 unicode" style="text-align: right;">Assign</label> -->
+                                <div class="col-md-2">
+                                    <h6 style="font-weight:bold;font-size:15px;">Room No</h6>
+                                </div>
+                                <div class="col-md-8">
+                                    <input type="text" name="room_no" class="form-control unicode">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
 
 
                      <div class="row">
@@ -1372,6 +1428,7 @@
          $("#join_date").datepicker({ dateFormat: 'dd-mm-yy' });
          $("#from_date").datepicker({ dateFormat: 'dd-mm-yy' });
          $("#to_date").datepicker({ dateFormat: 'dd-mm-yy' });
+         $("#hostel_sdate").datepicker({ dateFormat: 'dd-mm-yy' });
 
          
 });
