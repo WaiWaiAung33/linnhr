@@ -95,12 +95,12 @@
                   <tr>
                       @if($employees->photo == '')
                       <td style="text-align: center;" colspan ="2">
-                         <img src="{{ asset('uploads/employeePhoto/default.png') }}" alt="photo" width="70px" height="70px">
+                         <img src="{{ asset('uploads/employeePhoto/default.png') }}" alt="photo" width="100px" height="120px">
                       </td>
                        
                         @else
                         <td style="text-align: center;" colspan ="2">
-                           <img src="{{ asset('uploads/employeePhoto/'.$employees->photo) }}" alt="photo" width="70px" height="70px">
+                           <img src="{{ asset('uploads/employeePhoto/'.$employees->photo) }}" alt="photo" width="100px" height="120px">
                         </td>
                       
                        @endif
