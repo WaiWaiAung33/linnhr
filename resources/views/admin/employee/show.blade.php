@@ -107,29 +107,29 @@
                   </tr>
                    
                     <tr>
-                        <td>Name<span style="padding-left: 165px">{{$employees->name}}</span></td>
+                        <td>Name<span style="padding-left: 165px">{{$employees->name ? $employees->name : "-" }}</span></td>
                         
                     </tr>
                     <tr>
-                        <td>Parent's Name<span style="padding-left: 115px">{{$employees->father_name}}</span></td>
+                        <td>Parent's Name<span style="padding-left: 115px">{{$employees->father_name ? $employees->father_nam : "-"}}</span></td>
                     </tr>
                     <tr>
                         <td>Date of birth<span style="padding-left: 125px">{{date('d-m-Y',strtotime($employees->date_of_birth))}}</span> <span>({{$workyearbirth}}) years</span></td>
                     </tr>
                     <tr>
-                        <td>Full Nrc<span style="padding-left: 155px">{{$employees->fullnrc}}</span></td>
+                        <td>Full Nrc<span style="padding-left: 155px">{{$employees->fullnrc ? $employees->fullnrc : "-"}}</span></td>
                     </tr>
                     <tr>
-                        <td>Gender<span style="padding-left: 160px">{{$employees->gender}}</span></td>
+                        <td>Gender<span style="padding-left: 160px">{{$employees->gender ? $employees->gender : "-"}}</span></td>
                     </tr>
                       <tr>
-                        <td>Marital Status<span style="padding-left: 120px">{{$employees->marrical_status}}</span></td>
+                        <td>Marital Status<span style="padding-left: 120px">{{$employees->marrical_status ? $employees->marrical_status : "-"}}</span></td>
                     </tr>
                      <tr>
-                        <td>Race<span style="padding-left: 175px">{{$employees->race}}</span></td>
+                        <td>Race<span style="padding-left: 175px">{{$employees->race ? $employees->race : "-"}}</span></td>
                     </tr>
                      <tr>
-                        <td>Religion<span style="padding-left: 155px">{{$employees->religion}}</span></td>
+                        <td>Religion<span style="padding-left: 155px">{{$employees->religion ? $employees->religion : "-"}}</span></td>
                     </tr>
                    <!--  <tr>
                         <td>Phone <span style="padding-left: 195px">{{$employees->phone_no}}</span></td>
@@ -151,23 +151,23 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td>Phone<span style="padding-left: 165px">{{$employees->phone_no}}</span></td>
+                        <td>Phone<span style="padding-left: 165px">{{$employees->phone_no ? $employees->phone_no : "-"}}</span></td>
                         
                     </tr>
                     <tr>
-                        <td>Parent's Phone<span style="padding-left: 110px">{{$employees->fPhone}}</span></td>
+                        <td>Parent's Phone<span style="padding-left: 110px">{{$employees->fPhone ? $employees->fPhone : "-"}}</span></td>
                     </tr>
                      <tr>
-                        <td>Email <span style="padding-left: 165px">{{  $employees->email}} </span></td>
+                        <td>Email <span style="padding-left: 165px">{{  $employees->email ? $employees->email : "-"}} </span></td>
                     </tr>
                     <tr>
-                        <td>City<span style="padding-left: 180px">{{$employees->city}}</span></td>
+                        <td>City<span style="padding-left: 180px">{{$employees->city ? $employees->city : "-"}}</span></td>
                     </tr>
                     <tr>
-                        <td>Township<span style="padding-left: 145px">{{$employees->township}}</span></td>
+                        <td>Township<span style="padding-left: 145px">{{$employees->township ? $employees->township : "-"}}</span></td>
                     </tr>
                     <tr>
-                        <td>Address <span style="padding-left: 155px">{{  $employees->address}} </span></td>
+                        <td>Address <span style="padding-left: 155px">{{  $employees->address ? $employees->address : "-"}} </span></td>
                     </tr>
                    
                 </tbody>
@@ -204,17 +204,17 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td>Company Name<span style="padding-left: 110px">{{$employees->exp_company}}</span></td>
+                        <td>Company Name<span style="padding-left: 110px">{{$employees->exp_company ? $employees->exp_company : "-"}}</span></td>
                         
                     </tr>
                     <tr>
-                        <td>Job Position<span style="padding-left: 130px">{{$employees->exp_position}}</span></td>
+                        <td>Job Position<span style="padding-left: 130px">{{$employees->exp_position ? $employees->exp_position : "-"}}</span></td>
                     </tr>
                      <tr>
-                        <td>Location<span style="padding-left: 155px">{{$employees->exp_location}}</span></td>
+                        <td>Location<span style="padding-left: 155px">{{$employees->exp_location ? $employees->exp_location : "-"}}</span></td>
                     </tr>
                      <tr>
-                        <td>Date<span style="padding-left: 178px">{{date('d-m-Y',strtotime($employees->exp_date_from))}} to {{date('d-m-Y',strtotime($employees->exp_date_to))}}</span></td>
+                        <td>Date<span style="padding-left: 178px">{{$employees->exp_date_from ? date('d-m-Y',strtotime($employees->exp_date_from)) : "-"}} to {{$employees->exp_date_to ? date('d-m-Y',strtotime($employees->exp_date_to)) : ""}}</span></td>
                     </tr>
                    
                 </tbody>
@@ -234,36 +234,36 @@
                 </thead>
                 <tbody>
                    <tr>
-                        <td>Employee Id<span style="padding-left: 130px">{{$employees->emp_id}}</span></td>
+                        <td>Employee Id<span style="padding-left: 130px">{{$employees->emp_id ? $employees->emp_id : "-"}}</span></td>
                         
                     </tr>
                     <tr>
-                        <td>Rank<span style="padding-left: 175px">{{$employees->viewPosition->name}}</span></td>
+                        <td>Rank<span style="padding-left: 175px">{{$employees->viewPosition->name ? $employees->viewPosition->name : "-"}}</span></td>
                         
                     </tr>
                     <tr>
-                        <td>Department<span style="padding-left: 135px">{{$employees->viewDepartment->name}}</span></td>
+                        <td>Department<span style="padding-left: 135px">{{$employees->viewDepartment->name ? $employees->viewDepartment->name : "-"}}</span></td>
                     </tr>
                      <tr>
-                        <td>Branch<span style="padding-left: 165px">{{$employees->ViewBranch->name}}</span></td>
+                        <td>Branch<span style="padding-left: 165px">{{$employees->ViewBranch->name ? $employees->ViewBranch->name : "-"}}</span></td>
                     </tr>
                      <tr>
                         <td>Join Date<span style="padding-left: 150px">{{  $employees->join_date}} ({{$workyear}})years </span></td>
                     </tr>
                       <tr>
-                        <td>isHostel<span style="padding-left: 160px">{{$employees->hostel}}</span></td>
+                        <td>isHostel<span style="padding-left: 160px">{{$employees->hostel ? $employees->hostel : "-"}}</span></td>
                     </tr>
                     <tr>
-                        <td>Location<span style="padding-left: 155px">{{  $employees->hostel_location}} </span></td>
+                        <td>Location<span style="padding-left: 155px">{{  $employees->hostel_location ? $employees->hostel_location : "-"}} </span></td>
                     </tr>
                      <tr>
-                        <td>Room No<span style="padding-left: 150px">{{  $employees->room_no}}</span></td>
+                        <td>Room No<span style="padding-left: 150px">{{  $employees->room_no ? $employees->room_no : "-"}}</span></td>
                     </tr>
                      <tr>
-                        <td>Home No<span style="padding-left: 150px">{{  $employees->home_no}} </span></td>
+                        <td>Home No<span style="padding-left: 150px">{{  $employees->home_no ? $employees->home_no : "-"}} </span></td>
                     </tr>
                      <tr>
-                        <td>Start Date<span style="padding-left: 145px">{{  $employees->hostel_sdate}} </span></td>
+                        <td>Start Date<span style="padding-left: 145px">{{  $employees->hostel_sdate ? $employees->hostel_sdate : "-"}} </span></td>
                     </tr>
                     
                  <!--    <tr>
@@ -285,24 +285,24 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td>Graduation<span style="padding-left: 145px">{{$employees->graduation}}</span></td>
+                        <td>Graduation<span style="padding-left: 145px">{{$employees->graduation ? $employees->graduation : "-"}}</span></td>
                         
                     </tr>
                     <tr>
-                        <td>University/College<span style="padding-left: 100px">{{$employees->qualification}}</span></td>
+                        <td>University/College<span style="padding-left: 100px">{{$employees->qualification ? $employees->qualification : "-"}}</span></td>
                     </tr>
                      <tr>
-                        <td>Course Title <span style="padding-left: 135px">{{  $employees->course_title}} </span></td>
+                        <td>Course Title <span style="padding-left: 135px">{{  $employees->course_title ? $employees->course_title : "-"}} </span></td>
                     </tr>
                     <tr>
-                        <td>Level<span style="padding-left: 180px">{{$employees->level}}</span></td>
+                        <td>Level<span style="padding-left: 180px">{{$employees->level ? $employees->level : "-"}}</span></td>
                     </tr>
                      <tr>
-                        <td>Skill<span style="padding-left: 190px">{{$employees->skills}}</span></td>
+                        <td>Skill<span style="padding-left: 190px">{{$employees->skills ? $employees->skills : "-"}}</span></td>
                         
                     </tr>
                     <tr>
-                        <td>Skill proficiency<span style="padding-left: 120px">{{$employees->proficiency}}</span></td>
+                        <td>Skill proficiency<span style="padding-left: 120px">{{$employees->proficiency ? $employees->proficiency : "-"}}</span></td>
                     </tr>
                    
                 </tbody>
