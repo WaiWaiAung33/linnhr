@@ -124,10 +124,16 @@
          <td><p style="width: 100px;font-weight: bold;"> {{$employee->emp_id}} </p>
           <p style="width: 100px;font-weight: bold;"> {{$employee->name}}</p>
         </td>  
-        
+
+        @if($employee->photo == '')
         <td>
-          <img src="{{ asset('uploads/employeePhoto/default.png') }}" alt="photo" width="80px" height="80px">
+        <img src="{{ asset('uploads/employeePhoto/default.png') }}" alt="photo" width="80px" height="80px">
         </td>
+        @else
+        <td>
+         <img src="{{ asset('uploads/employeePhoto/'.$employee->photo) }}" alt="photo" width="80px" height="80px">
+         </td>
+         @endif
 
         <td> <p style="font-weight: bold">Salary</p>  
            @foreach($employee->viewSalary as $salary)
