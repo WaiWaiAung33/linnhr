@@ -23,6 +23,11 @@ Route::get('/home', function () {
     return redirect()->route('dashboard');
 })->middleware('auth');
 Route::group(['middleware' => 'auth'], function () {
+
+	Route::resource('roles','RoleController');
+    Route::resource('users','UserController');
+
+
 	Route::get('dashboard','HomeController@index')->name('dashboard');
 	Route::resource('branch','BranchController');
 	Route::resource('department','DepartmentController');

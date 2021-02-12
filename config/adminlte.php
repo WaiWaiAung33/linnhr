@@ -224,29 +224,44 @@ return [
     */
 
     'menu' => [
-        // [
-        //     'text' => 'search',
-        //     'search' => true,
-        //     'topnav' => true,
-        // ],
         [
-            'text' => 'blog',
-            'url'  => 'admin/blog',
-            'can'  => 'manage-blog',
+            'text' => 'search',
+            'search' => true,
+            'topnav' => true,
         ],
         [
             'text'        => 'Dashboard',
             'url'         => 'dashboard',
             'icon'        => 'fas fa-tachometer-alt',
+            'can'          => 'dashboard'
             // 'label'       => 4,
             // 'label_color' => 'success',
         ],
-        // ['header' => 'EMPLOYEE DATA'],
+        ['header' => 'HR Management'],
         [
             'text' => 'Employee',
             'url'  => 'employee',
             'icon' => 'fas fa-fw fa-user',
+            'can'  => 'employee-list'
+        ],        
+        [
+                    'text' => 'Branch',
+                    'url'  => 'branch',
+                    'icon' => 'fa fa-location-arrow',
+                    'can'  => 'branch-list'
         ],
+        [
+                    'text' => 'Department',
+                    'url'  => 'department',
+                    'icon' => 'fa fa-cubes',
+                    'can'  => 'department-list'
+        ],
+        [
+                    'text' => 'Position',
+                    'url'  => 'position',
+                    'icon' => 'fa fa-star',
+                    'can'  => 'rank-list'
+         ],
         // [
         //     'text' => 'change_password',
         //     'url'  => 'admin/settings',
@@ -273,57 +288,52 @@ return [
         //         ],
         //     ],
         // ],
-        ['header' => 'Payroll'],
+        ['header' => 'Payroll Management'],
         [
                     'text' => 'Salary',
                     'url' => 'salary',
                     'icon' => 'fa fa-credit-card',
+                    'can'  => 'salary-list'
         ],
         ['header' => 'Recruitment'],
         [
                     'text' => 'Job Openings',
                     'url' => 'jobopening',
                     'icon' => 'fa fa-globe',
+                    'can'  => 'job-list'
         ],
         [
                     'text' => 'Job Applications',
                     'url' => 'jobapplication',
                     'icon' => 'fa fa-certificate',
+                    'can'  => 'job-list'
         ],
 
         ['header' => 'MASTER DATA'],
-        
         [
-                    'text' => 'Branch',
-                    'url'  => 'branch',
-                    'icon' => 'fa fa-location-arrow',
-        ],
-        [
-                    'text' => 'Department',
-                    'url'  => 'department',
-                    'icon' => 'fa fa-cubes',
-        ],
-        [
-                    'text' => 'Rank',
-                    'url'  => 'position',
-                    'icon' => 'fa fa-star',
-         ],
-
-          [
                     'text' => 'NRC Code',
                     'url'  => 'nrccode',
                     'icon' => 'fa fa-asterisk',
+                    'can'  => 'nrc-code-list'
          ],
          [
                     'text' => 'NRC State',
                     'url'  => 'nrcstate',
                     'icon' => 'fa fa-bullseye',
+                    'can'  => 'nrc-state-list'
          ],
          ['header' => 'Account Setting'],
           [
             'text' => 'Login User',
-            'url'  => '#',
+            'url'  => 'users',
             'icon' => 'fas fa-user-plus',
+            'can'  => 'user-list'
+        ],
+        [
+            'text' => 'User Roles',
+            'url'  => 'roles',
+            'icon' => 'fas fa-user-cog',
+            'can'  => 'role-list'
         ],
     ],
 
