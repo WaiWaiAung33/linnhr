@@ -74,9 +74,9 @@
     
     <div>
       @if($employees->photo == '')
-      <img src="{{ asset('uploads/employeePhoto/default.png') }}" alt="photo" width="80px" height="80px">
+      <img src="{{ asset('uploads/employeePhoto/default.png') }}" alt="photo" width="100px" height="100px">
       @else
-     <img src="{{ asset('uploads/employeePhoto/'.$employees->photo) }}" alt="photo" width="80px" height="80px">
+     <img src="{{ asset('uploads/employeePhoto/'.$employees->photo) }}" alt="photo" width="100px" height="100px">
      @endif
    </div><br>
   
