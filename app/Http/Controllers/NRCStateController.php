@@ -33,7 +33,8 @@ class NRCStateController extends Controller
      */
     public function create()
     {
-        //
+        $codes = NRCCode::all();
+        return view('admin.nrcstate.create',compact('codes'));
     }
 
     /**

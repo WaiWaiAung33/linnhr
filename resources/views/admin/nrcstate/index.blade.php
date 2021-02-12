@@ -15,31 +15,9 @@
         $name = isset($_GET['name'])?$_GET['name']:'';
 ?>
 <div>
+
+  <a class="btn btn-success unicode" href="{{route('nrcstate.create')}}" style="float: right;font-size: 13px"><i class="fas fa-plus"></i> NRCState</a>
   
- <form action="{{route('nrcstate.store')}}" method="post" enctype="multipart/form-data">
-        @csrf
-
-        <div class="row form-group">
-         
-            <div class="col-md-3">
-               <select class="form-control" name="code_id" style="font-size: 13px">
-                <option value="">select nrccode</option>
-                @foreach ($codes as $code )
-                  <option  value="{{$code->id}}">{{$code->name}}</option>
-                @endforeach
-            </select>   
-            </div>
-            <div class="col-md-3">
-               <input type="text" name="name" placeholder="Enter nrcstate name" class="form-control" style="font-size: 13px"> 
-            </div>
-            <div class="col-md-2">
-              <button class="btn btn-success unicode" type="submit" style="font-size: 13px">
-                    Save
-          </button>
-            </div>
-        </div>
-
-</form>
       {{-- @if ($message = Session::get('success'))
             <div class="alert alert-success">
                 <p>{{ $message }}</p>
