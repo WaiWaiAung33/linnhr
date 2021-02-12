@@ -86,20 +86,25 @@
             font-family:Pyidaungsu,Yunghkio,'Masterpiece Uni Sans' !important;
             font-size: 12px;
         }
+
         label{
-            font-size: 13px;
+            font-size: 14px;
         }
-        p,h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 , table, .table {
+        p,h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 , table, .table, input, select {
             font-family:Pyidaungsu,Yunghkio,'Masterpiece Uni Sans' !important;
         }
 
-        p {
+        p, .btn {
             font-size: 13px !important;
         }
 
         .size {
             font-family:Pyidaungsu,Yunghkio,'Masterpiece Uni Sans' !important;
             font-size: 13px;
+        }
+
+        input, select {
+            font-size: 14px !important;
         }
     </style>
     <link rel="stylesheet" type="text/css" href="{{ asset('css/custom.css') }}">
