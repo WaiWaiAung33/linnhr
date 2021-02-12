@@ -53,6 +53,9 @@ Route::get('frontend/joblistdetail/{id}', 'JobapplicationController@jobListdetai
 Route::get('frontend/about','JobapplicationController@jobabout')->name('frontend.jobabout');
 Route::get('frontend/contactus','JobapplicationController@jobcontact')->name('frontend.jobcontact');
 
+Route::get('ajax-autocomplete-search', 'SalaryController@selectSearch')->name('ajax-autocomplete-search');
+
+
 
 
 

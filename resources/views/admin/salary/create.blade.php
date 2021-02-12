@@ -4,6 +4,7 @@
 
 @section('content_header')
 <link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.1/themes/base/jquery-ui.css" rel="stylesheet" />
+    <style type="text/css">
 <style type="text/css">
     .select2-container .select2-selection--single {
     box-sizing: border-box;
@@ -16,8 +17,9 @@
     height: 30px;
     position: absolute;
     top: 2px;
-    right: 1px;
-    width: 20px; }
+    right: 0px;
+    left: 270px;
+    width: 100px; }
 </style>
 @stop
 
@@ -40,15 +42,9 @@
                                 </div>
 
                                 <div class="col-md-8">
+                                     <select class="livesearch form-control" name="emp_id"></select>
 
-                                      <select class="form-control ctr_item_option" name="emp_id" id="select_1" >
-                                        <option value="">Select Emplyee</option>
-                                        @foreach ($employees as $employee )
-                                      
-                                          <option  value="{{$employee->id}}" data_branch_id="{{ $employee->branch_id }}" id="catoption" data_is_employee={{$employee->id}}>{{$employee->name}}</option>
-                                       
-                                        @endforeach
-                                    </select> 
+                                    
 
 
                                 </div>
@@ -56,8 +52,8 @@
               </div>
         </div>
 
-         <input type="hidden" name="name" class="form-control unicode" id="name" value="{{$employee->viewDepartment->name}}">
-         <input type="hidden" name="month_total" class="form-control unicode" id="month_total" value="">
+        
+         
 
         <div class="row form-group">
             <div class="col-md-6">
@@ -161,13 +157,57 @@
 
 
 @section('js')
-<script type="text/javascript" src="{{ asset('jquery-ui.js') }}"></script>
 <script type="text/javascript" src="{{ asset('select2/js/select2.min.js') }}"></script>
+<script src="{{ asset('jquery-ui.js') }}"></script>
 <script type="text/javascript">
+
     $(document).ready(function(){
           $("#pay_date").datepicker({ dateFormat: 'dd-mm-yy' });
+
+
+           
         
 
+    });
+    $(function() {
+            $('.livesearch').select2({
+            placeholder: 'Employee Name',
+            ajax: {
+                url: "<?php echo(route("ajax-autocomplete-search")) ?>",
+                dataType: 'json',
+                delay: 250,
+                processResults: function (data) {
+                    return {
+                        results: $.map(data, function (item) {
+                            return {
+                                text: item.name,
+                                id: item.id
+                            }
+                        })
+                    };
+                },
+                cache: true
+            }
+        });
+        });
+    $(function(){
+        $('.livesearch').change(function(){
+          var is_employee = $(this).find(':selected').val();
+          // alert(is_employee);
+            // alert(is_employee);$('#first').find(':selected').val();
+             $.ajax({
+                    type: "GET",
+                    dataType: "json",
+                    url: "<?php echo route('get_department_data') ?>",
+                    data: {'emp_id': is_employee},
+                    success: function(data){
+                        $("#department").val(data.name);
+                        $("#branch").val(data.branch_name);
+                        $("#name").val(data.employee_name);
+                        // console.log(data.name);
+                    }
+                });
+        });
     });
 
     $(document).on("change",".salary", function (e) {
@@ -195,5 +235,7 @@
             });
     
     });
+
+
 </script>
 @stop

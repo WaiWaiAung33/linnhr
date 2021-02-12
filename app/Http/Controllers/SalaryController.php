@@ -68,6 +68,7 @@ class SalaryController extends Controller
      */
     public function store(Request $request)
     {
+        $employees = Employee::all();
         $date = date('m',strtotime($request->pay_date));
         // dd($date);
         if($date == '01'){
@@ -95,11 +96,23 @@ class SalaryController extends Controller
         }elseif ($date == '12') {
             $dates = "December";
         }
+
+        $empid = $request->emp_id;
+
+        foreach ($employees as $key => $value) {
+            if ($value->id == $empid) {
+                $empname = $value->name;
+            }
+        }
+
+
+
+       
         // dd($request->month_total);
 
         $salary=Salary::create([
-            'emp_id'=>$request->emp_id,
-            'name'=>$request->name,
+            'emp_id'=>$empid,
+            'name'=>$empname,
             'department'=>$request->department,
             'branch'=>$request->branch,
             'pay_date'=>$dates,
@@ -213,6 +226,26 @@ class SalaryController extends Controller
         return response()->download($csvFile, $fileName, $headers);
 
         
+    }
+
+    public function selectSearch(Request $request)
+    {
+        $data = new Employee();
+        // $data = $data->leftjoin('inquiries','inquiries.id','=','customers.cust_id')
+        //                ->select(
+        //                 'customers.id',
+        //                 'inquiries.name',
+        //                 'inquiries.ph_no'
+        //                );
+        if($request->has('q')){
+            $search = $request->q;
+            $data = $data->where('name','like','%'.$search.'%');
+        }
+       
+        $data = $data->get();
+        // dd($data);
+        // $data =$data->select('name',DB::raw("CONCAT(nrc_code,'/',nrc_state,'(နိုင်)',nrc_no) as full_nrc"));
+        return response()->json($data);
     }
 
 }
