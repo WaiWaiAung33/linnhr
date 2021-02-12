@@ -71,7 +71,15 @@
        @endif
     
     </div><br> -->
-
+    
+    <div>
+      @if($employees->photo == '')
+      <img src="{{ asset('uploads/employeePhoto/default.png') }}" alt="photo" width="80px" height="80px">
+      @else
+     <img src="{{ asset('uploads/employeePhoto/'.$employees->photo) }}" alt="photo" width="80px" height="80px">
+     @endif
+   </div><br>
+  
     <div class="row">
      
         <div class="col-md-6">
