@@ -59,6 +59,10 @@ class CreateEmployeeTable extends Migration
             $table->string('ward_reco');
             $table->string('cvfile');
             $table->string('otherfile');
+            $table->string('hostel_location');
+            $table->string('room_no');
+            $table->string('home_no');
+            $table->string('hostel_sdate');
             $table->timestamps();
         });
     }

@@ -431,6 +431,7 @@
                                 <div class="col-md-8 {{ $errors->first('name', 'has-error') }}">
 
                                    <select class="form-control unicode" name="level">
+                                    <option value="">Select</option>
                                         <option value="1" @if($employees->level==='1') selected='selected' @endif>Level-1</option>
                                         
                                         <option value="2" @if($employees->level==='2') selected='selected' @endif>Level-2</option>
@@ -691,6 +692,63 @@
                             </div>
                         </div>
                     </div><br>
+
+
+                       <div class="row">
+                        <div class="col-md-6">
+                            <div class="row">
+                                <!-- <label class="col-md-3 unicode" style="text-align: right;">Assign</label> -->
+                                <div class="col-md-2">
+                                    <h6 style="font-weight:bold;font-size:15px;">Start Date</h6>
+                                </div>
+                                <div class="col-md-8">
+                                    <input type="text" name="hostel_sdate" class="form-control unicode" id="hostel_sdate" placeholder="01-01-2021" value="{{$employees->hostel_sdate}}">
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="row">
+                                <!-- <label class="col-md-3 unicode" style="text-align: right;">Assign</label> -->
+                                <div class="col-md-2">
+                                    <h6 style="font-weight:bold;font-size:15px;">Location</h6>
+                                </div>
+                                <div class="col-md-8">
+                                    <input type="text" name="hostel_location" class="form-control unicode" value="{{$employees->hostel_location}}">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+
+                     <div class="row">
+                        <div class="col-md-6">
+                            <div class="row">
+                                <!-- <label class="col-md-3 unicode" style="text-align: right;">Assign</label> -->
+                                <div class="col-md-2">
+                                    <h6 style="font-weight:bold;font-size:15px;">Home No</h6>
+                                </div>
+                                <div class="col-md-8">
+                                    <input type="text" name="home_no" class="form-control unicode" value="{{$employees->home_no}}">
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="row">
+                                <!-- <label class="col-md-3 unicode" style="text-align: right;">Assign</label> -->
+                                <div class="col-md-2">
+                                    <h6 style="font-weight:bold;font-size:15px;">Room No</h6>
+                                </div>
+                                <div class="col-md-8">
+                                    <input type="text" name="room_no" class="form-control unicode" value="{{$employees->room_no}}">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
 
 
                      <div class="row">
@@ -1344,6 +1402,7 @@
          $("#join_date").datepicker({ dateFormat: 'dd-mm-yy' });
          $("#from_date").datepicker({ dateFormat: 'dd-mm-yy' });
          $("#to_date").datepicker({ dateFormat: 'dd-mm-yy' });
+         $("#hostel_sdate").datepicker({ dateFormat: 'dd-mm-yy' });
 
          
 });
