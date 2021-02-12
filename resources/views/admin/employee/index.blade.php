@@ -19,7 +19,9 @@
   $name = isset($_GET['name'])?$_GET['name']:''; 
   $branch_id = isset($_GET['branch_id'])?$_GET['branch_id']:''; 
   $dep_id = isset($_GET['dep_id'])?$_GET['dep_id']:''; 
-  $position_id = isset($_GET['position_id'])?$_GET['position_id']:''; 
+  $position_id = isset($_GET['position_id'])?$_GET['position_id']:'';
+  $gender = isset($_GET['gender'])?$_GET['gender']:''; 
+  $hostel = isset($_GET['hostel'])?$_GET['hostel']:''; 
   $join_date = isset($_GET['join_date'])?$_GET['join_date']:'';
   $join_month = isset($_GET['join_month'])?$_GET['join_month']:'';
   ?>
@@ -90,7 +92,27 @@
                        
                              </select>
                         </div>
+
                         <div class="col-md-2">
+                             <label for="">Select Gender</label>
+                            <select class="form-control" id="gender" name="gender" style="font-size: 13px">
+                              <option value="">All</option>  
+                              <option value="Male" {{ (old('gender',$gender)=="Male")?'selected':'' }}>Male</option>
+                              <option value="Female" {{ (old('gender',$gender)=="Female")?'selected':'' }}>Female</option>
+                             </select>
+                        </div>
+
+                        <div class="col-md-2">
+                             <label for="">Hostel/No Hostel</label>
+                            <select class="form-control" id="hostel" name="hostel" style="font-size: 13px">
+                              <option value="">All</option>  
+                              <option value="No" {{ (old('hostel',$hostel)=="No")?'selected':'' }}>No Hostel</option>
+                              <option value="Yes" {{ (old('hostel',$hostel)=="Yes")?'selected':'' }}>Hostel</option>
+                             </select>
+                        </div>
+                        
+
+                       {{--  <div class="col-md-2">
                             <label>Join Date</label>
                              <input type="text" name="join_date" id="join_date"class="form-control unicode" placeholder="01-08-2020" value="{{ old('join_date',$join_date) }}" style="font-size: 13px">
                         </div>
@@ -98,16 +120,14 @@
                          <div class="col-md-2">
                             <label>Join Month</label>
                              <input type="text" name="join_month" id="join_month"class="form-control unicode" placeholder="January" value="{{ old('join_month',$join_month) }}" style="font-size: 13px">
-                        </div>
-                       <!--  <div class="col-md-2">
-                         
-                             <a class="btn btn-success unicode" href="{{route('employee.create')}}" style="float: right;"><i class="fas fa-plus"> Employee</i></a>
-                        </div> -->
+                        </div> --}}
+                      
                     </div>
                 </div>
                
             </div>
         </form>
+        <br>
 
          <form id="excel_form" action="{{ route('export') }}"  method="POST" class="unicode">
                 @csrf
@@ -225,13 +245,25 @@
               $('#dep_id').on('change',function(e){
                 this.form.submit();
               });
-               $('#position_id').on('change',function(e){
+              
+              $('#position_id').on('change',function(e){
                 this.form.submit();
               });
-                $('#join_date').on('change',function(e) {
+
+              $('#gender').on('change',function(e){
                 this.form.submit();
-               // $( "#form_id" )[0].submit();   
-            });
+              });
+
+              $('#hostel').on('change',function(e){
+                this.form.submit();
+              });
+
+              
+
+              $('#join_date').on('change',function(e) {
+                  this.form.submit();
+                 // $( "#form_id" )[0].submit();   
+              });
              $('#join_month').on('change',function(e) {
                 this.form.submit();
                // $( "#form_id" )[0].submit();   

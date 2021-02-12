@@ -30,7 +30,8 @@ class EmployeeController extends Controller
         $positions = Position::all();
         $employees = new Employee();
         if($request->name != '') {
-        $employees = $employees->Where('name','like','%'.$request->name.'%');
+            $employees = $employees->where('name','like','%'.$request->name.'%')
+                                    ->orwhere('phone_no','like','%'.$request->name.'%');
         }
         if ($request->branch_id != '') {
             $employees = $employees->where('branch_id',$request->branch_id);
@@ -40,6 +41,14 @@ class EmployeeController extends Controller
         }
         if ($request->position_id != '') {
             $employees = $employees->where('position_id',$request->position_id);
+        }
+
+        if ($request->gender != '') {
+            $employees = $employees->where('gender',$request->gender);
+        }
+
+        if ($request->hostel != '') {
+            $employees = $employees->where('hostel',$request->hostel);
         }
 
         if ($request->join_month != '') {
