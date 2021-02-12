@@ -3,8 +3,7 @@
 @section('title', 'Employee')
 
 @section('content_header')
-<link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.1/themes/base/jquery-ui.css" rel="stylesheet" />
-    <style type="text/css">
+
 <style type="text/css">
     .select2-container .select2-selection--single {
     box-sizing: border-box;
