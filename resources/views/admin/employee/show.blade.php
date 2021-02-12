@@ -111,7 +111,7 @@
                         
                     </tr>
                     <tr>
-                        <td>Parent's Name<span style="padding-left: 115px">{{$employees->father_name ? $employees->father_nam : "-"}}</span></td>
+                        <td>Parent's Name<span style="padding-left: 115px">{{$employees->father_name ? $employees->father_name : "-"}}</span></td>
                     </tr>
                     <tr>
                         <td>Date of birth<span style="padding-left: 125px">{{date('d-m-Y',strtotime($employees->date_of_birth))}}</span> <span>({{$workyearbirth}}) years</span></td>
