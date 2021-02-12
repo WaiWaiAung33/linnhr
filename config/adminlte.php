@@ -237,7 +237,7 @@ return [
             // 'label'       => 4,
             // 'label_color' => 'success',
         ],
-        ['header' => 'HR Management'],
+        ['header' => 'HR Management', 'can' => 'employee-list'],
         [
             'text' => 'Employee',
             'url'  => 'employee',
@@ -288,14 +288,14 @@ return [
         //         ],
         //     ],
         // ],
-        ['header' => 'Payroll Management'],
+        ['header' => 'Payroll Management','can' => 'salary-list'],
         [
                     'text' => 'Salary',
                     'url' => 'salary',
                     'icon' => 'fa fa-credit-card',
                     'can'  => 'salary-list'
         ],
-        ['header' => 'Recruitment'],
+        ['header' => 'Recruitment','can' => 'job-list'],
         [
                     'text' => 'Job Openings',
                     'url' => 'jobopening',
@@ -309,7 +309,7 @@ return [
                     'can'  => 'job-list'
         ],
 
-        ['header' => 'MASTER DATA'],
+        ['header' => 'MASTER DATA','can' => 'nrc-code-list'],
         [
                     'text' => 'NRC Code',
                     'url'  => 'nrccode',
