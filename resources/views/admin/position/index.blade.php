@@ -15,23 +15,9 @@
         $name = isset($_GET['name'])?$_GET['name']:'';
 ?>
 <div>
+
+     <a class="btn btn-success unicode" href="{{route('position.create')}}" style="float: right;font-size: 13px"><i class="fas fa-plus"></i> Position</a>
   
- <form action="{{route('position.store')}}" method="post" enctype="multipart/form-data">
-        @csrf
-
-        <div class="row form-group">
-          
-            <div class="col-md-3">
-               <input type="text" name="name" placeholder="Enter rank name" class="form-control" value="{{old('name',$name)}}" style="font-size: 13px"> 
-            </div>
-            <div class="col-md-2">
-              <button class="btn btn-success unicode" type="submit" style="font-size: 13px">
-                    Save
-          </button>
-            </div>
-        </div>
-
-</form>
       {{-- @if ($message = Session::get('success'))
             <div class="alert alert-success">
                 <p>{{ $message }}</p>

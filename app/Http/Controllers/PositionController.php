@@ -31,7 +31,7 @@ class PositionController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.position.create');
     }
 
     /**
