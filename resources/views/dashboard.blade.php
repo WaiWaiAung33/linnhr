@@ -143,6 +143,9 @@ $date = date('Ymd')."";
         font-family:Pyidaungsu,Yunghkio,'Masterpiece Uni Sans' !important;
         font-size: 13px;
     }
+    .fc-content{
+      color: white;
+    }
   </style>
 @stop
 
