@@ -51,6 +51,7 @@ class DepartmentController extends Controller
             'name'=> $request->name,
             'in_time'=>$request->in_time,
             'out_time'=>$request->out_time,
+            'dept_color'=>$request->color_code
         ]
         );
         return redirect()->route('department.index')->with('success','Department created successfully');;;
@@ -93,6 +94,7 @@ class DepartmentController extends Controller
             'name'=> $request->name,
             'in_time'=>$request->in_time,
             'out_time'=>$request->out_time,
+            'dept_color'=>$request->color_code
         ]
         );
         return redirect()->route('department.index')->with('success','Department updated successfully');;;
@@ -110,5 +112,14 @@ class DepartmentController extends Controller
   
         return redirect()->route('department.index')
                         ->with('success','Department deleted successfully');
+    }
+
+    public function changestatusdept(Request $request)
+    {
+        $department = Department::find($request->dept_id);
+        $department->status = $request->status;
+
+        $department->save();
+        return response()->json(['success'=>'Status change successfully.']);
     }
 }

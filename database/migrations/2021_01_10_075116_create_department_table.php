@@ -18,6 +18,8 @@ class CreateDepartmentTable extends Migration
             $table->string('name');
             $table->string('in_time');
             $table->string('out_time');
+            $table->boolean('status')->default(1);
+            $table->string('dept_color')->nullable();
             $table->timestamps();
         });
     }

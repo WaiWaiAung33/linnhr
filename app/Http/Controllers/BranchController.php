@@ -42,6 +42,7 @@ class BranchController extends Controller
      */
     public function store(Request $request)
     {
+       
          $rules = [
             'name'=>'required',
         ];
@@ -51,6 +52,7 @@ class BranchController extends Controller
             'name'=> $request->name,
             'latitude'=>$request->latitude,
             'longitude'=>$request->longitude,
+            'branch_color'=>$request->color_code
         ]
         );
         return redirect()->route('branch.index')->with('success','Branch created successfully');;;
@@ -88,8 +90,19 @@ class BranchController extends Controller
      */
     public function update(Request $request,$id)
     {
+        $rules = [
+            'name'=>'required',
+        ];
+
+         $this->validate($request,$rules);
+
        $branchs=Branch::find($id);
-        $branchs=$branchs->update($request->all());
+        $branchs=$branchs->update([
+            'name'=> $request->name,
+            'latitude'=>$request->latitude,
+            'longitude'=>$request->longitude,
+            'branch_color'=>$request->color_code
+        ]);
          return redirect()->route('branch.index')->with('success','Branch updated successfully');;
     }
 
@@ -105,5 +118,14 @@ class BranchController extends Controller
   
         return redirect()->route('branch.index')
                         ->with('success','Branch deleted successfully');
+    }
+
+    public function changestatusactive(Request $request)
+    {
+        $branch = Branch::find($request->branch_id);
+        $branch->status = $request->status;
+
+        $branch->save();
+        return response()->json(['success'=>'Status change successfully.']);
     }
 }
