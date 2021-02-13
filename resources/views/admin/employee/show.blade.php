@@ -95,12 +95,12 @@
                   <tr>
                       @if($employees->photo == '')
                       <td style="text-align: center;" colspan ="2">
-                         <img src="{{ asset('uploads/employeePhoto/default.png') }}" alt="photo" width="100px" height="120px">
+                         <img src="{{ asset('uploads/employeePhoto/default.png') }}" alt="photo" width="115px" height="115px">
                       </td>
                        
                         @else
                         <td style="text-align: center;" colspan ="2">
-                           <img src="{{ asset('uploads/employeePhoto/'.$employees->photo) }}" alt="photo" width="100px" height="120px">
+                           <img src="{{ asset('uploads/employeePhoto/'.$employees->photo) }}" alt="photo" width="115px" height="115px">
                         </td>
                       
                        @endif
@@ -266,9 +266,9 @@
                         <td>Start Date<span style="padding-left: 145px">{{  $employees->hostel_sdate ? $employees->hostel_sdate : "-"}} </span></td>
                     </tr>
                     
-                 <!--    <tr>
-                        <td>Expected Salary<span style="padding-left: 125px">{{$employees->exp_salary}}</span></td>
-                    </tr> -->
+                    <tr>
+                        <td>Expected Salary<span style="padding-left: 110px">{{$employees->exp_salary ? $employees->exp_salary : "-"}}</span></td>
+                    </tr>
                    
                    
                 </tbody>
