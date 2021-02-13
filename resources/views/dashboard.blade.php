@@ -19,7 +19,7 @@
             <div class="icon">
              <i class="fa fa-users "></i>
             </div>
-            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="{{ url("/employee") }}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->
@@ -32,24 +32,24 @@
               <p>ဌာန</p>
             </div>
             <div class="icon">
-              <i class="ion ion-stats-bars"></i>
+               <i class="fa fa-users "></i>
             </div>
-            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="{{ url('department') }}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->
         <div class="col-lg-3 col-xs-6">
           <!-- small box -->
-          <div class="small-box bg-yellow">
+          <div class="small-box bg-yellow" style="color: white !important">
             <div class="inner">
               <h3>{{$total_branches}}</h3>
 
               <p>ဆိုင်ခွဲ</p>
             </div>
             <div class="icon">
-              <i class="ion ion-person-add"></i>
+               <i class="fa fa-users "></i>
             </div>
-            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="{{ url('branch') }}" class="small-box-footer"  style="color: white !important">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->

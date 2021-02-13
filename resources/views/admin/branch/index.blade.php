@@ -42,6 +42,7 @@
                     <tr> 
                       <th>No</th>
                         <th>Branch Name</th>
+                        <th>Employees</th>
                         <th>Action</th>
                     </tr>
                   </thead>
@@ -52,6 +53,7 @@
                         <tr>
                             <td>{{++$i}}</td>
                             <td>{{$branch->name}}</td>
+                            <td>{{ $branch->employees()->count() }}</td>
                             <td>
                                 <form action="{{route('branch.destroy',$branch->id)}}" method="post"
                                     onsubmit="return confirm('Do you want to delete?');">

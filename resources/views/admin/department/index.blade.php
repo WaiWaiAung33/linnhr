@@ -44,6 +44,7 @@
                     <tr> 
                       <th>No</th>
                         <th>Department Name</th>
+                        <th>Employees</th>
                         <!-- <th>In Time</th>
                         <th>Out Time</th> -->
                         <th>Action</th>
@@ -55,6 +56,7 @@
                         <tr>
                             <td>{{++$i}}</td>
                             <td>{{$department->name}}</td>
+                            <td>{{ $department->employees()->count() }}</td>
                            <!--  <td>{{date('d/m/Y',strtotime($department->in_time))}}</td>
                             <td>{{date('d/m/Y',strtotime($department->out_time))}}</td> -->
                             <td>

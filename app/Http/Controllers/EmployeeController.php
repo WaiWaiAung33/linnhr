@@ -31,7 +31,8 @@ class EmployeeController extends Controller
         $employees = new Employee();
         if($request->name != '') {
             $employees = $employees->where('name','like','%'.$request->name.'%')
-                                    ->orwhere('phone_no','like','%'.$request->name.'%');
+                                    ->orwhere('phone_no','like','%'.$request->name.'%')
+                                    ->orwhere('emp_id','like','%'.$request->name.'%');
         }
         if ($request->branch_id != '') {
             $employees = $employees->where('branch_id',$request->branch_id);
