@@ -72,18 +72,28 @@
 
  	<div class="row justify-content-center">
  		<div class="col-md-6" align="center">
- 			<div id="chart1" style="height: 300px;"></div>
+ 			
+      <div id="pconchart" style="height: 300px;"></div>
  		</div>
  		<div class="col-md-6"  align="center">
- 			{{-- <div id="piechart" style="height: 300px;"></div> --}}
  			<div id="fmpie" style="height: 300px;"></div>
  		</div>
  	</div>
  	<br>
  	<hr>
+  <div class="row">
+    <div class="col-md-6">
+      <div id="chart1" style="height: 300px;"></div>
+    </div>
+    <div class="col-md-6">
+            <div id="piechart" style="height: 300px;"></div>
+    </div>
+  </div>
+  <br>
+  <hr>
  	<div class="row">
         <div class="col-md-6"  align="center">
-	        <div id="pconchart" style="height: 300px;"></div>
+	           <div id="hostelchart" style="height: 300px;"></div>
         </div>
         	
  		<div class="col-md-6"  align="center">
@@ -139,18 +149,18 @@
 		    .title('ဌာနအလိုက်ပြသခြင်း')
 		})
 
-		// const piechart = new Chartisan({
-		//   el: '#piechart',
-		//   data: {
-		// 	  "chart": { "labels": deptsArr },
-		// 	  "datasets": [
-		// 	    { "name": "Total", "values": deptEmpArr }
-		// 	  ]
-		// 	},
-		//   hooks: new ChartisanHooks()
-		//     .datasets('doughnut')
-		//     .pieColors(),
-		// })
+		const piechart = new Chartisan({
+		  el: '#piechart',
+		  data: {
+			  "chart": { "labels": deptsArr },
+			  "datasets": [
+			    { "name": "Total", "values": deptEmpArr }
+			  ]
+			},
+		  hooks: new ChartisanHooks()
+		    .datasets('doughnut')
+		    .pieColors(),
+		})
 
 
 
@@ -173,7 +183,7 @@
     	var dead_count = 5; 
 
 
-    	const pconchart = new Chartisan({
+    const pconchart = new Chartisan({
 		  el: '#pconchart',
 		  // url: 'https://chartisan.dev/chart/example.json',
 		  data: {
@@ -190,6 +200,29 @@
 		    .legend({ position: 'bottom' })
 		    .title('Employes at each Branches')
 		})
+
+
+    const hostelchart = new Chartisan({
+      el: '#hostelchart',
+      // url: 'https://chartisan.dev/chart/example.json',
+      data: {
+        "chart": { "labels": ['Linn1',"Linn2","Myoma Zay","HO (Lawyer)","HO (MPT)","HO Hostel","Hostel(East)","Hostel(West)","Hostel(New)"] },
+        "datasets": [
+          { "name": "ကျား", "values": ['1','2','3','4','5','6','7','8','9'] },
+          { "name": "မ", "values": ['0','1','2','3','5','8','9','12','7'] }
+        ]
+      },
+      hooks: new ChartisanHooks()
+        // .colors(['#20FFFF', '#FD8008','#1F85DE','#DE781F'])
+        .colors()
+        .responsive()
+        .beginAtZero()
+        .legend({ position: 'bottom' })
+        .title('အဆောင်နေသူများ [demo]')
+    })
+
+
+      
 
 		const pconpie = new Chartisan({
 		  el: '#pconpie',
