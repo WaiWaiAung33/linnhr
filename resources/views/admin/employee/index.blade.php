@@ -131,7 +131,7 @@
          </form>
 
   <p style="padding-top: 20px" class="unicode">Total record: {{$count}}</p>
-    <div class="table-responsive unicode" style="font-size:13px;">
+    <div class="table-responsive unicode" style="font-size:14px;">
                 <table class="table table-bordered styled-table unicode">
                   <thead>
                     <tr> 

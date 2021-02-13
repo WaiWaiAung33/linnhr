@@ -2,7 +2,7 @@
 
 @extends('adminlte::page')
 
-@section('title', 'jobapplication')
+@section('title', 'Job Application')
 
 @section('content_header')
 
@@ -36,7 +36,7 @@
     </form>
 
      <p style="padding-top: 15px">Total record: {{$count}}</p>
-    <div class="table-responsive" style="font-size:13px">
+    <div class="table-responsive" style="font-size:14px">
             <table class="table table-bordered styled-table">
                   <thead>
                     <tr> 

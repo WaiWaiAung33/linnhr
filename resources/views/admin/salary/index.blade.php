@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Employee')
+@section('title', 'Payment')
 
 @section('content_header')
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css" rel="stylesheet"/>
@@ -92,7 +92,7 @@
         </form>
            
  <p style="padding-top: 20px">Total record: {{$count}}</p>
-<div class="table-responsive" style="font-size:13px;overflow-x:auto;">
+<div class="table-responsive" style="font-size:14px;overflow-x:auto;">
 	<table class="table table-bordered styled-table ">
 		<thead>
 			<tr>

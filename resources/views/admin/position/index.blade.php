@@ -1,7 +1,7 @@
 
 @extends('adminlte::page')
 
-@section('title', 'Rank')
+@section('title', 'Position')
 
 @section('content_header')
 <h5 style="color: blue;">Rank Management</h5>
@@ -33,7 +33,7 @@
      </div>
     </form>
   <p>Total record: {{$count}}</p>
-    <div class="table-responsive" style="font-size:13px">
+    <div class="table-responsive" style="font-size:14px">
                 <table class="table table-bordered styled-table">
                   <thead>
                     <tr> 
