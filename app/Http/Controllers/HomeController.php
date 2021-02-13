@@ -93,6 +93,38 @@ class HomeController extends Controller
         $hostelStay = Employee::where('hostel','!=','No')->count();
 
 
-        return view('dashboard',compact('total_employees','total_departments','total_branches','new_empoyee','deptArr','deptEmpArr','maleTotal','femaleTotal','branchArr','branchEmpArr','hostelStay','hostelNotStay'));
+        $date = now();
+        $bd_employess = Employee::select('name','date_of_birth')->whereMonth('date_of_birth', '=', $date->month)
+                             ->whereDay('date_of_birth', '>=', $date->day)
+                            ->orWhere(function ($query) use ($date) {
+                               $query->whereMonth('date_of_birth', '=', $date->month)
+                                   ->whereDay('date_of_birth', '>=', $date->day);
+
+                           })
+           // ->orderByRaw("DAYOFMONTH('date_of_birth')",'desc')
+           ->orderByRaw('DATE_FORMAT(date_of_birth, "%m-%d")')
+           ->get()->toArray();
+
+       
+        return view('dashboard',compact('total_employees','total_departments','total_branches','new_empoyee','deptArr','deptEmpArr','maleTotal','femaleTotal','branchArr','branchEmpArr','hostelStay','hostelNotStay','bd_employess'));
+    }
+
+
+    public function hrDashboard(){
+
+        $date = now();
+        $bd_employess = Employee::select('name','date_of_birth')->whereMonth('date_of_birth', '=', $date->month)
+                             ->whereDay('date_of_birth', '>=', $date->day)
+                            ->orWhere(function ($query) use ($date) {
+                               $query->whereMonth('date_of_birth', '=', $date->month)
+                                   ->whereDay('date_of_birth', '>=', $date->day);
+
+                           })
+           // ->orderByRaw("DAYOFMONTH('date_of_birth')",'desc')
+           ->orderByRaw('DATE_FORMAT(date_of_birth, "%m-%d")')
+           ->get()->toArray();
+
+
+        return view('admin.dashboard.hr_dashboard',compact('bd_employess'));
     }
 }
