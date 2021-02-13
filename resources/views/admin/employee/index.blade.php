@@ -160,7 +160,7 @@
               		 @foreach($employees as $employee)
                         <tr class="table-tr" data-url="{{route('employee.show',$employee->id)}}">
                             <td>{{++$i}}</td>
-                            <td>{{$employee->emp_id}}</td>
+                            <td>{{$employee->emp_id}}{{$employee->hostel}}</td>
                             @if($employee->photo == '')
                             <td>
                             <img src="{{ asset('uploads/employeePhoto/default.png') }}" alt="photo" width="80px" height="80px">
