@@ -10,20 +10,32 @@
 @section('content')
 
 <?php 
-  $currentyear = date('Y');
-  $currentday = date('m');
-  $creentmonth = date('d');
+  $current_year = date('Y');
+  $current_month = date('m');
+  $current_day = date('d');
   // dd($creentmonth);
-  $joinday = date('m',strtotime($employees->join_date));
+  $joinday = date('d',strtotime($employees->join_date));
+  $joinmonth = date('m',strtotime($employees->join_date));
   $joinyear = date('Y',strtotime($employees->join_date));
-  $joinmonth = date('d',strtotime($employees->join_date));
-  // dd($joinmonth);
-  if($currentday < $joinday || $creentmonth < $joinmonth) {
-    $work = $currentyear - $joinyear;
-    $workyear = $work - 1;
+
+  if($current_day < $joinday || $current_month < $joinmonth) {
+    $work = $current_year - $joinyear;
+    $workyear = $work;
   }else {
-    $workyear = $currentyear - $joinyear;
+    $workyear = $current_year - $joinyear;
   }
+
+  $date1 =date('Y-d-m',strtotime($employees->join_date));
+
+  $date2 = date('Y-m-d');
+
+  $diff = abs(strtotime($date2) - strtotime($date1));
+
+  $years = floor($diff / (365*60*60*24));
+  $months = floor(($diff - $years * 365*60*60*24) / (30*60*60*24));
+  $days = floor(($diff - $years * 365*60*60*24 - $months*30*60*60*24)/ (60*60*24));
+
+
 ?>
 
 <?php 
@@ -35,7 +47,7 @@
   $joinmonthbirth = date('d',strtotime($employees->date_of_birth));
   if($currentdaybitrh < $joindaybirth || $currentmonthbirth < $joinmonthbirth) {
     $workbirth = $currentyearbirth - $joinyearbirth;
-    $workyearbirth = $workbirth - 1;
+    $workyearbirth = $workbirth ;
   }else {
     $workyearbirth = $currentyearbirth - $joinyearbirth;
   }
@@ -92,12 +104,12 @@
               <tr>
                   @if($employees->photo == '')
                   <td style="text-align: center;" colspan ="2">
-                     <img src="{{ asset('uploads/employeePhoto/default.png') }}" alt="photo" width="115px" height="115px">
+                     <img src="{{ asset('uploads/employeePhoto/default.png') }}" alt="photo" style="width: 20% !important">
                   </td>
                    
                     @else
                     <td style="text-align: center;" colspan ="2">
-                       <img src="{{ asset('uploads/employeePhoto/'.$employees->photo) }}" alt="photo" width="115px" height="115px">
+                       <img src="{{ asset('uploads/employeePhoto/'.$employees->photo) }}" alt="photo" style="width: 20% !important">
                     </td>
                   
                    @endif
@@ -245,7 +257,7 @@
                     <td>Branch<span style="padding-left: 165px">{{$employees->ViewBranch->name ? $employees->ViewBranch->name : "-"}}</span></td>
                 </tr>
                  <tr>
-                    <td>Join Date<span style="padding-left: 150px">{{  $employees->join_date}} ({{$workyear}})years </span></td>
+                    <td>Join Date<span style="padding-left: 150px">{{ date("d-m-Y",strtotime($employees->join_date)) }} ({{$years}} Years ,{{ $months }} Months ,{{ $days }} Days )</span></td>
                 </tr>
                   <tr>
                     <td>isHostel<span style="padding-left: 160px">{{$employees->hostel ? $employees->hostel : "-"}}</span></td>
