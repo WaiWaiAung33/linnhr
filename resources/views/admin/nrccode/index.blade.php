@@ -4,11 +4,7 @@
 @section('title', 'NRC Code')
 
 @section('content_header')
-<h5 style="color: blue;">NRC Code Management</h5>
-    <script src=" {{ asset('toasterjquery.js') }}" ></script>
-    <link rel="stylesheet" type="text/css" href="{{asset('toasterbootstrap.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('toastermin.css')}}">
-    <script type="text/javascript" src="{{asset('toastermin.js')}}"></script>
+  <h5 style="color: blue;">NRC Code Management</h5>
 @stop
 @section('content')
 <?php
@@ -33,7 +29,7 @@
      </div>
     </form>
     <p>Total record: {{$count}}</p>
-    <div class="table-responsive" style="font-size:13px">
+    <div class="table-responsive" style="font-size:14px">
                 <table class="table table-bordered styled-table">
                   <thead>
                     <tr> 
@@ -73,7 +69,7 @@
        </div>   
 @stop 
 @section('css')
-    <link rel="stylesheet" href="/css/admin_custom.css">
+
 @stop
 
 @section('js')

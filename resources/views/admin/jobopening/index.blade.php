@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Department')
+@section('title', 'Job Opening')
 
 @section('content_header')
 <h5 style="color: blue;">Jobopening Management</h5>
@@ -44,7 +44,7 @@
     </form>
 
      <p style="padding-left: 10px">Total record: {{$count}}</p>
-    <div class="table-responsive" style="font-size:13px">
+    <div class="table-responsive" style="font-size:14px">
                 <table class="table table-bordered styled-table">
                   <thead>
                     <tr> 

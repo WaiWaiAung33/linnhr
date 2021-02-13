@@ -117,7 +117,7 @@ input:checked + .slider:before {
     </form>
 
      <p style="padding-left: 10px">Total record:{{$count}}</p>
-    <div class="table-responsive" style="font-size:13px">
+    <div class="table-responsive" style="font-size:14px">
                 <table class="table table-bordered styled-table">
                   <thead>
                     <tr> 
