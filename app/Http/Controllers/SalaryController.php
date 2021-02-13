@@ -43,7 +43,7 @@ class SalaryController extends Controller
         // dd($salarys);
        
         $count = $employees->count();
-        $employees = $employees->paginate(5);
+        $employees = $employees->paginate(10);
 
         // dd(DB::table('salarys')->latest()->get()->first());
         return view('admin.salary.index',compact('employees','salarys','departments','count'));
