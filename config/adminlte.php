@@ -241,25 +241,25 @@ return [
         [
             'text' => 'Employee',
             'url'  => 'employee',
-            'icon' => 'fas fa-fw fa-user',
+            'icon' => 'fas fa-fw fa-users',
             'can'  => 'employee-list'
         ],        
         [
                     'text' => 'Branch',
                     'url'  => 'branch',
-                    'icon' => 'fa fa-location-arrow',
+                    'icon' => 'fa fa-university',
                     'can'  => 'branch-list'
         ],
         [
                     'text' => 'Department',
                     'url'  => 'department',
-                    'icon' => 'fa fa-cubes',
+                    'icon' => 'fa fa-building',
                     'can'  => 'department-list'
         ],
         [
                     'text' => 'Position',
                     'url'  => 'position',
-                    'icon' => 'fa fa-star',
+                    'icon' => 'fa fa-sitemap',
                     'can'  => 'rank-list'
          ],
         // [
@@ -299,13 +299,13 @@ return [
         [
                     'text' => 'Job Openings',
                     'url' => 'jobopening',
-                    'icon' => 'fa fa-globe',
+                    'icon' => 'fa fa-briefcase',
                     'can'  => 'job-list'
         ],
         [
                     'text' => 'Job Applications',
                     'url' => 'jobapplication',
-                    'icon' => 'fa fa-certificate',
+                    'icon' => 'fa fa-list-alt',
                     'can'  => 'job-list'
         ],
 
@@ -313,13 +313,13 @@ return [
         [
                     'text' => 'NRC Code',
                     'url'  => 'nrccode',
-                    'icon' => 'fa fa-asterisk',
+                    'icon' => 'fa fa-id-card',
                     'can'  => 'nrc-code-list'
          ],
          [
                     'text' => 'NRC State',
                     'url'  => 'nrcstate',
-                    'icon' => 'fa fa-bullseye',
+                    'icon' => 'fa fa-id-card',
                     'can'  => 'nrc-state-list'
          ],
          ['header' => 'Account Setting'],
