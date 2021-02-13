@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Department extends Model
 {
     protected $table='department';
-    protected $fillable =['name','in_time','out_time'];
+    protected $fillable =['name','in_time','out_time','dept_color','status'];
 
 
     public function employees(){

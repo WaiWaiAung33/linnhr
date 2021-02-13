@@ -18,6 +18,8 @@ class CreateBranchTable extends Migration
             $table->string('name');
             $table->string('latitude');
             $table->string('longitude');
+            $table->boolean('status')->default(1);
+            $table->string('branch_color')->nullable();
             $table->timestamps();
         });
     }
