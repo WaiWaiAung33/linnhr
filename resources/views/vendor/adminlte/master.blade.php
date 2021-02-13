@@ -85,7 +85,7 @@
     @yield('adminlte_css')
 
     {{-- Favicon --}}
-    <link rel="icon" type="image/jpg" href="{{ asset('vendor/adminlte/dist/img/icon.png') }}">
+    <link rel="icon" type="image/png" href="{{ asset('vendor/adminlte/dist/img/linn.png') }}">
     @if(config('adminlte.use_ico_only'))
         <link rel="shortcut icon" href="{{ asset('favicons/favicon.ico') }}" />
     @elseif(config('adminlte.use_full_favicon'))
