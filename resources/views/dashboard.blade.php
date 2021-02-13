@@ -3,7 +3,7 @@
 @section('title', 'Dashboard')
 
 @section('content_header')
-    <h1>Dashboard</h1>
+    <h5 style="color: blue;" class="unicode">Dashboard</h5>
 @stop
 
 @section('content')
@@ -32,7 +32,7 @@
               <p>ဌာန</p>
             </div>
             <div class="icon">
-               <i class="fa fa-users "></i>
+               <i class="fa fa-building"></i>
             </div>
             <a href="{{ url('department') }}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
@@ -47,7 +47,7 @@
               <p>ဆိုင်ခွဲ</p>
             </div>
             <div class="icon">
-               <i class="fa fa-users "></i>
+               <i class="fa fa-university "></i>
             </div>
             <a href="{{ url('branch') }}" class="small-box-footer"  style="color: white !important">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>

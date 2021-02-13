@@ -4,9 +4,6 @@
 @section('title', 'Employee')
 
 @section('content_header')
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
-   
-<link id="bsdp-css" href="https://unpkg.com/bootstrap-datepicker@1.9.0/dist/css/bootstrap-datepicker3.min.css" rel="stylesheet">
 
 
 @stop
@@ -34,7 +31,7 @@
                         <div class="col-md-6">
                             <div class="row">
                                 <div class="col-md-2">
-                                    <h6 style="font-weight:bold;font-size:15px;">Name*</h6>
+                                    <h6 style="font-weight:bold;font-size:13px;">Name*</h6>
                                 </div>
 
                                 <div class="col-md-8 {{ $errors->first('name', 'has-error') }}">
@@ -47,7 +44,7 @@
                         <div class="col-md-6">
                             <div class="row">
                                 <div class="col-md-3">
-                                    <h6 style="font-weight:bold;font-size:15px;">Parent's Name</h6>
+                                    <h6 style="font-weight:bold;font-size:13px;">Parent's Name</h6>
                                 </div>
 
                                 <div class="col-md-8">
@@ -63,21 +60,21 @@
                             
                             <div class="row">
                                 <div class="col-md-2">
-                                    <h6 style="font-weight:bold;font-size:15px;">Gender*</h6>
+                                    <h6 style="font-weight:bold;font-size:13px;">Gender*</h6>
                                 </div>
 
 
                                  <div class="col-md-2 {{ $errors->first('gender', 'has-error') }}">
-                                    <input type="radio" name="gender" value="Male" id="gender" checked> Male
+                                    <input type="radio" name="gender" value="Male" id="gender" checked> <small>Male</small>
                                     
                                 </div>   
                                 <div class="col-md-2">
-                                    <input type="radio" name="gender" value="Female" id="gender"> Female
+                                    <input type="radio" name="gender" value="Female" id="gender"> <small>Female</small>
                                 </div> 
                             </div><br>
                             <div class="row">
                                 <div class="col-md-2">
-                                    <h6 style="font-weight:bold;font-size:15px;">Date of Birth*</h6>
+                                    <h6 style="font-weight:bold;font-size:13px;">Date of Birth*</h6>
                                 </div>
 
                                 <div class="col-md-8 {{ $errors->first('lat', 'has-error') }}">
@@ -87,7 +84,7 @@
                             </div><br>
                             <div class="row">
                                 <div class="col-md-2">
-                                    <h6 style="font-weight:bold;font-size:15px;">NRC*</h6>
+                                    <h6 style="font-weight:bold;font-size:13px;">NRC*</h6>
                                 </div>
 
                                 <div class="col-md-2 {{ $errors->first('name', 'has-error') }}">
@@ -135,7 +132,7 @@
 
                              <div class="row">
                                 <div class="col-md-2">
-                                    <h6 style="font-weight:bold;font-size:15px;">Email*</h6>
+                                    <h6 style="font-weight:bold;font-size:13px;">Email*</h6>
                                 </div>
 
                                 <div class="col-md-8 {{ $errors->first('name', 'has-error') }}">
@@ -150,7 +147,7 @@
 
                              <div class="row">
                                 <div class="col-md-3">
-                                    <h6 style="font-weight:bold;font-size:15px;"> Race</h6>
+                                    <h6 style="font-weight:bold;font-size:13px;"> Race</h6>
                                 </div>
 
                                 <div class="col-md-8 {{ $errors->first('lat', 'has-error') }}">
@@ -164,7 +161,7 @@
 
                              <div class="row">
                                 <div class="col-md-3">
-                                    <h6 style="font-weight:bold;font-size:15px;"> Religion</h6>
+                                    <h6 style="font-weight:bold;font-size:13px;"> Religion</h6>
                                 </div>
 
                                 <div class="col-md-8 {{ $errors->first('lat', 'has-error') }}">
@@ -184,19 +181,19 @@
 
                                <div class="row">
                                 <div class="col-md-3">
-                                    <h6 style="font-weight:bold;font-size:15px;">Marrical Stauts*</h6>
+                                    <h6 style="font-weight:bold;font-size:13px;">Marrical Stauts*</h6>
                                 </div>
 
 
                                  <div class="col-md-2 {{ $errors->first('marrical_status', 'has-error') }}">
                                     <input type="radio" name="marrical_status" value="Married
-" id="marrical_status" checked> Married
+" id="marrical_status" checked> <small>Married</small>
 
                                     
                                 </div>   
                                 <div class="col-md-2">
                                     <input type="radio" name="marrical_status" value="Single
-" id="marrical_status"> Single
+" id="marrical_status"> <small>Single</small>
 
                                 </div> 
                             </div><br>
@@ -204,7 +201,7 @@
 
                             <div class="row">
                                 <div class="col-md-3">
-                                    <h6 style="font-weight:bold;font-size:15px;">Photo*</h6>
+                                    <h6 style="font-weight:bold;font-size:13px;">Photo*</h6>
                                 </div>
 
                                 <div class="col-md-8 ">
@@ -222,7 +219,7 @@
                 <div class="col-md-6">
                     <div class="row">
                         <div class="col-md-2">
-                            <h6 style="font-weight:bold;font-size:15px;">Photo</h6>
+                            <h6 style="font-weight:bold;font-size:13px;">Photo</h6>
                         </div>
                         
                         <div class="col-md-8">
@@ -238,7 +235,7 @@
                            <div class="col-md-6">
                             <div class="row">
                                 <div class="col-md-2">
-                                    <h6 style="font-weight:bold;font-size:15px;">Email*</h6>
+                                    <h6 style="font-weight:bold;font-size:13px;">Email*</h6>
                                 </div>
 
                                 <div class="col-md-8 {{ $errors->first('name', 'has-error') }}">
@@ -284,7 +281,7 @@
                          <div class="col-md-6">
                             <div class="row">
                                 <div class="col-md-3">
-                                    <h6 style="font-weight:bold;font-size:15px;">Phone*</h6>
+                                    <h6 style="font-weight:bold;font-size:13px;">Phone*</h6>
                                 </div>
 
                                 <div class="col-md-8">
@@ -295,7 +292,7 @@
                         <div class="col-md-6">
                             <div class="row">
                                 <div class="col-md-3">
-                                    <h6 style="font-weight:bold;font-size:15px;">City*</h6>
+                                    <h6 style="font-weight:bold;font-size:13px;">City*</h6>
                                 </div>
 
                                 <div class="col-md-8 {{ $errors->first('name', 'has-error') }}">
@@ -312,7 +309,7 @@
                         <div class="col-md-6">
                             <div class="row">
                                 <div class="col-md-3">
-                                    <h6 style="font-weight:bold;font-size:15px;">Parent Phone*</h6>
+                                    <h6 style="font-weight:bold;font-size:13px;">Parent Phone*</h6>
                                 </div>
 
                                 <div class="col-md-8">
@@ -323,7 +320,7 @@
                         <div class="col-md-6">
                             <div class="row">
                                 <div class="col-md-3">
-                                    <h6 style="font-weight:bold;font-size:15px;">Township*</h6>
+                                    <h6 style="font-weight:bold;font-size:13px;">Township*</h6>
                                 </div>
 
                                 <div class="col-md-8">
@@ -338,7 +335,7 @@
                        <!--  <div class="col-md-6">
                             <div class="row">
                                 <div class="col-md-3">
-                                    <h6 style="font-weight:bold;font-size:15px;">Email*</h6>
+                                    <h6 style="font-weight:bold;font-size:13px;">Email*</h6>
                                 </div>
 
                                 <div class="col-md-8 {{ $errors->first('name', 'has-error') }}">
@@ -351,7 +348,7 @@
                         <div class="col-md-6">
                             <div class="row">
                                 <div class="col-md-3">
-                                    <h6 style="font-weight:bold;font-size:15px;">Address*</h6>
+                                    <h6 style="font-weight:bold;font-size:13px;">Address*</h6>
                                 </div>
 
                                 <div class="col-md-8 {{ $errors->first('name', 'has-error') }}">
@@ -393,7 +390,7 @@
                         <div class="col-md-6">
                             <div class="row">
                                 <div class="col-md-3">
-                                    <h6 style="font-weight:bold;font-size:15px;">Graduation</h6>
+                                    <h6 style="font-weight:bold;font-size:13px;">Graduation</h6>
                                 </div>
 
                                 <div class="col-md-8 {{ $errors->first('name', 'has-error') }}">
@@ -406,7 +403,7 @@
                          <div class="col-md-6">
                             <div class="row">
                                 <div class="col-md-3">
-                                    <h6 style="font-weight:bold;font-size:15px;">University/School</h6>
+                                    <h6 style="font-weight:bold;font-size:13px;">University/School</h6>
                                 </div>
 
                                 <div class="col-md-8 {{ $errors->first('name', 'has-error') }}">
@@ -424,7 +421,7 @@
                         <div class="col-md-6">
                             <div class="row">
                                 <div class="col-md-3">
-                                    <h6 style="font-weight:bold;font-size:15px;">Course Title</h6>
+                                    <h6 style="font-weight:bold;font-size:13px;">Course Title</h6>
                                 </div>
 
                                 <div class="col-md-8 {{ $errors->first('name', 'has-error') }}">
@@ -437,7 +434,7 @@
                          <div class="col-md-6">
                             <div class="row">
                                 <div class="col-md-3">
-                                    <h6 style="font-weight:bold;font-size:15px;">Level</h6>
+                                    <h6 style="font-weight:bold;font-size:13px;">Level</h6>
                                 </div>
 
                                 <div class="col-md-8 {{ $errors->first('name', 'has-error') }}">
@@ -460,7 +457,7 @@
                         <div class="col-md-6">
                             <div class="row">
                                 <div class="col-md-3">
-                                    <h6 style="font-weight:bold;font-size:15px;">Degree/Certification </h6>
+                                    <h6 style="font-weight:bold;font-size:13px;">Degree/Certification </h6>
                                 </div>
 
                                 <div class="col-md-8 {{ $errors->first('name', 'has-error') }}">
@@ -503,7 +500,7 @@
                          <div class="col-md-6">
                             <div class="row">
                                 <div class="col-md-3">
-                                    <h6 style="font-weight:bold;font-size:15px;">Company Name</h6>
+                                    <h6 style="font-weight:bold;font-size:13px;">Company Name</h6>
                                 </div>
 
                                 <div class="col-md-8 {{ $errors->first('name', 'has-error') }}">
@@ -516,7 +513,7 @@
                           <div class="col-md-6">
                             <div class="row">
                                 <div class="col-md-3">
-                                    <h6 style="font-weight:bold;font-size:15px;">Job Position</h6>
+                                    <h6 style="font-weight:bold;font-size:13px;">Job Position</h6>
                                 </div>
 
                                 <div class="col-md-8 {{ $errors->first('name', 'has-error') }}">
@@ -533,7 +530,7 @@
                          <div class="col-md-6">
                             <div class="row">
                                 <div class="col-md-3">
-                                    <h6 style="font-weight:bold;font-size:15px;">From Date</h6>
+                                    <h6 style="font-weight:bold;font-size:13px;">From Date</h6>
                                 </div>
 
                                 <div class="col-md-8 {{ $errors->first('name', 'has-error') }}">
@@ -546,7 +543,7 @@
                           <div class="col-md-6">
                             <div class="row">
                                 <div class="col-md-3">
-                                    <h6 >To Date</h6>
+                                    <h6 style="font-weight:bold;font-size:13px;">To Date</h6>
                                 </div>
                                  <div class="col-md-8 {{ $errors->first('name', 'has-error') }}">
 
@@ -563,7 +560,7 @@
                          <div class="col-md-6">
                             <div class="row">
                                 <div class="col-md-3">
-                                    <h6 style="font-weight:bold;font-size:15px;">Location</h6>
+                                    <h6 style="font-weight:bold;font-size:13px;">Location</h6>
                                 </div>
 
                                 <div class="col-md-8 {{ $errors->first('name', 'has-error') }}">
@@ -609,7 +606,7 @@
                             <div class="row">
                                 <!-- <label class="col-md-3 unicode" style="text-align: right;">Assign</label> -->
                                 <div class="col-md-2">
-                                    <h6 style="font-weight:bold;font-size:15px;">Employee ID</h6>
+                                    <h6 style="font-weight:bold;font-size:13px;">Employee ID</h6>
                                 </div>
                                 <div class="col-md-8">
                                     <input type="text" name="emp_id" class="form-control unicode">
@@ -621,7 +618,7 @@
                             <div class="row">
                                 <!-- <label class="col-md-3 unicode" style="text-align: right;">Assign</label> -->
                                 <div class="col-md-2">
-                                    <h6 style="font-weight:bold;font-size:15px;">Join Date*</h6>
+                                    <h6 style="font-weight:bold;font-size:13px;">Join Date*</h6>
                                 </div>
                                 <div class="col-md-8">
                                     <input type="text" name="join_date" class="form-control unicode" id="join_date" placeholder="1-01-2021">
@@ -637,7 +634,7 @@
                         <div class="col-md-6">
                             <div class="row">
                                 <div class="col-md-2">
-                                    <h6 style="font-weight:bold;font-size:15px;" id="assign_label">Department*</h6>
+                                    <h6 style="font-weight:bold;font-size:13px;" id="assign_label">Department*</h6>
                                 </div>
                                 <!-- <label class="col-md-3 unicode" id="assign_label" style="text-align: right;">Assign Date</label> -->
                                 <div class="col-md-8">
@@ -653,7 +650,7 @@
                         <div class="col-md-6">
                                  <div class="row">
                                 <div class="col-md-2">
-                                    <h6 style="font-weight:bold;font-size:15px;" id="assign_label">Branch*</h6>
+                                    <h6 style="font-weight:bold;font-size:13px;" id="assign_label">Branch*</h6>
                                 </div>
                                 <!-- <label class="col-md-3 unicode" id="assign_label" style="text-align: right;">Assign Date</label> -->
                                 <div class="col-md-8">
@@ -673,7 +670,7 @@
                          <div class="col-md-6">
                             <div class="row">
                                 <div class="col-md-2">
-                                    <h6 style="font-weight:bold;font-size:15px;">Rank*</h6>
+                                    <h6 style="font-weight:bold;font-size:13px;">Rank*</h6>
                                 </div>
                                 <!-- <label class="col-md-3 unicode" id="appointment_label" style="text-align: right;">Appoint Date</label> -->
                                 <div class="col-md-8">
@@ -690,14 +687,14 @@
                             <div class="row">
                                 <!-- <label class="col-md-3 unicode" style="text-align: right;">Assign</label> -->
                                 <div class="col-md-2">
-                                    <h6 style="font-weight:bold;font-size:15px;">isHostel*</h6>
+                                    <h6 style="font-weight:bold;font-size:13px;">isHostel*</h6>
                                 </div>
                                   <div class="col-md-2 {{ $errors->first('gender', 'has-error') }}">
-                                    <input type="radio" name="isHostel" value="Yes" > Yes
+                                    <input type="radio" name="isHostel" value="Yes" > <small>Yes</small>
                                     
                                 </div>   
                                 <div class="col-md-2">
-                                    <input type="radio" name="isHostel" value="No" checked> No
+                                    <input type="radio" name="isHostel" value="No" checked> <small>No</small>
                                 </div> 
                             </div>
                         </div>
@@ -708,7 +705,7 @@
                             <div class="row">
                                 <!-- <label class="col-md-3 unicode" style="text-align: right;">Assign</label> -->
                                 <div class="col-md-2">
-                                    <h6 style="font-weight:bold;font-size:15px;">Start Date</h6>
+                                    <h6 style="font-weight:bold;font-size:13px;">Start Date</h6>
                                 </div>
                                 <div class="col-md-8">
                                     <input type="text" name="hostel_sdate" class="form-control unicode" id="hostel_sdate" placeholder="01-01-2021">
@@ -720,7 +717,7 @@
                             <div class="row">
                                 <!-- <label class="col-md-3 unicode" style="text-align: right;">Assign</label> -->
                                 <div class="col-md-2">
-                                    <h6 style="font-weight:bold;font-size:15px;">Location</h6>
+                                    <h6 style="font-weight:bold;font-size:13px;">Location</h6>
                                 </div>
                                 <div class="col-md-8">
                                     <input type="text" name="hostel_location" class="form-control unicode">
@@ -736,7 +733,7 @@
                             <div class="row">
                                 <!-- <label class="col-md-3 unicode" style="text-align: right;">Assign</label> -->
                                 <div class="col-md-2">
-                                    <h6 style="font-weight:bold;font-size:15px;">Home No</h6>
+                                    <h6 style="font-weight:bold;font-size:13px;">Home No</h6>
                                 </div>
                                 <div class="col-md-8">
                                     <input type="text" name="home_no" class="form-control unicode">
@@ -748,7 +745,7 @@
                             <div class="row">
                                 <!-- <label class="col-md-3 unicode" style="text-align: right;">Assign</label> -->
                                 <div class="col-md-2">
-                                    <h6 style="font-weight:bold;font-size:15px;">Room No</h6>
+                                    <h6 style="font-weight:bold;font-size:13px;">Room No</h6>
                                 </div>
                                 <div class="col-md-8">
                                     <input type="text" name="room_no" class="form-control unicode">
@@ -764,7 +761,7 @@
                          <div class="col-md-6">
                             <div class="row">
                                 <div class="col-md-2">
-                                    <h6 style="font-weight:bold;font-size:15px;">Expected Salary</h6>
+                                    <h6 style="font-weight:bold;font-size:13px;">Expected Salary</h6>
                                 </div>
                                 <!-- <label class="col-md-3 unicode" id="appointment_label" style="text-align: right;">Appoint Date</label> -->
                                 <div class="col-md-8">
@@ -776,7 +773,7 @@
                            <!--  <div class="row">
                                
                                 <div class="col-md-2">
-                                    <h6 style="font-weight:bold;font-size:15px;">Experince</h6>
+                                    <h6 style="font-weight:bold;font-size:13px;">Experince</h6>
                                 </div>
                                   <div class="col-md-8">
                                       <input type="text" name="experience" class="form-control unicode"> 
@@ -817,7 +814,7 @@
                             <div class="row">
                                 <!-- <label class="col-md-3 unicode" style="text-align: right;">Assign</label> -->
                                 <div class="col-md-2">
-                                    <h6 style="font-weight:bold;font-size:15px;">Skills</h6>
+                                    <h6 style="font-weight:bold;font-size:13px;">Skills</h6>
                                 </div>
                                 <div class="col-md-8">
                                     <input type="text" name="skills" class="form-control unicode">
@@ -829,7 +826,7 @@
                             <div class="row">
                                 <!-- <label class="col-md-3 unicode" style="text-align: right;">Assign</label> -->
                                 <div class="col-md-3">
-                                    <h6 style="font-weight:bold;font-size:15px;">Skill proficiency</h6>
+                                    <h6 style="font-weight:bold;font-size:13px;">Skill proficiency</h6>
                                 </div>
                                 <div class="col-md-8">
                                     <input type="text" name="proficiency" class="form-control unicode">
@@ -870,7 +867,7 @@
                             <div class="row">
                                 <!-- <label class="col-md-3 unicode" style="text-align: right;">Assign</label> -->
                                 <div class="col-md-3">
-                                    <h6 style="font-weight:bold;font-size:15px;">CV form attach file</h6>
+                                    <h6 style="font-weight:bold;font-size:13px;">CV form attach file</h6>
                                 </div>
                                 <div class="col-md-8">
                                    <input id="degree/certification" type="file" class="form-control resume" placeholder="" name="cvfile">
@@ -882,7 +879,7 @@
                             <div class="row">
                                 <!-- <label class="col-md-3 unicode" style="text-align: right;">Assign</label> -->
                                 <div class="col-md-3">
-                                    <h6 style="font-weight:bold;font-size:15px;">Police reco Photo</h6>
+                                    <h6 style="font-weight:bold;font-size:13px;">Police reco Photo</h6>
                                 </div>
                                 <div class="col-md-8">
                                   <input id="graduation" type="file" class="form-control resume" placeholder="" name="police_reco">
@@ -898,7 +895,7 @@
                         <div class="col-md-6">
                             <div class="row">
                                 <div class="col-md-3">
-                                    <h6 style="font-weight:bold;font-size:15px;" id="assign_label">Ward reco Photo</h6>
+                                    <h6 style="font-weight:bold;font-size:13px;" id="assign_label">Ward reco Photo</h6>
                                 </div>
                                 <!-- <label class="col-md-3 unicode" id="assign_label" style="text-align: right;">Assign Date</label> -->
                                 <div class="col-md-8">
@@ -909,7 +906,7 @@
                         <div class="col-md-6">
                                  <div class="row">
                                 <div class="col-md-3">
-                                    <h6 style="font-weight:bold;font-size:15px;" id="assign_label">Other file</h6>
+                                    <h6 style="font-weight:bold;font-size:13px;" id="assign_label">Other file</h6>
                                 </div>
                                 <!-- <label class="col-md-3 unicode" id="assign_label" style="text-align: right;">Assign Date</label> -->
                                 <div class="col-md-8">
@@ -952,6 +949,8 @@
 
 
     @section('css')
+    <link id="bsdp-css" href="{{ asset('css/bootstrap-datepicker3.min.css') }}" rel="stylesheet">
+
     <link rel="stylesheet" href="{{ asset('select2/css/select2.min.css') }}" />
     <style>
         /* ------------------- */
@@ -1268,9 +1267,9 @@
 
 
     @section('js')
-    <script src="{{ asset('jquery.js') }}"></script>
-
-    <script src="https://unpkg.com/bootstrap-datepicker@1.9.0/dist/js/bootstrap-datepicker.min.js"></script>
+    <script src="{{ asset('js/jquery.min.js') }}"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+    <script src="{{ asset('js/bootstrap-datepicker.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('select2/js/select2.min.js') }}"></script>
     <script type="text/javascript">
         $(document).ready(function(){
