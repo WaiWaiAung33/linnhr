@@ -19,3 +19,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 Route::post('/login', 'Api\AuthApiController@login');
 Route::get('/dashboard', 'Api\DashboardApiController@dashboard');
+Route::get('/department', 'Api\DepartmentApiController@department');
+Route::get('/branch', 'Api\BranchApiController@branch');
+Route::get('/employee', 'Api\EmployeeApiController@employee');
