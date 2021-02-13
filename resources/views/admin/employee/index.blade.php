@@ -5,14 +5,7 @@
 @section('title', 'Employee')
 
 @section('content_header')
-
-<link id="bsdp-css" href="https://unpkg.com/bootstrap-datepicker@1.9.0/dist/css/bootstrap-datepicker3.min.css" rel="stylesheet">
-
  <h5 style="color: blue;" class="unicode">Employee Management</h5>
-    <script src=" {{ asset('toasterjquery.js') }}" ></script>
-    <link rel="stylesheet" type="text/css" href="{{asset('toasterbootstrap.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('toastermin.css')}}">
-    <script type="text/javascript" src="{{asset('toastermin.js')}}"></script>
 @stop
 @section('content')
  <?php
@@ -211,16 +204,22 @@
 
 @stop 
 @section('css')
-    <link rel="stylesheet" href="/css/admin_custom.css">
+    <link id="bsdp-css" href="{{ asset('/css/bootstrap-datepicker3.min.css') }}" rel="stylesheet">
+{{--     <link rel="stylesheet" type="text/css" href="{{ asset('toasterbootstrap.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('toastermin.css')}}"> --}}
+
 @stop
 
 @section('js')
- <script src="{{ asset('jquery.js') }}"></script>
+  <script src="{{ asset('js/jquery.min.js') }}"></script>
   <script type="text/javascript" src="{{ asset('jquery-ui.js') }}"></script>
 
-   <script src="https://unpkg.com/bootstrap-datepicker@1.9.0/dist/js/bootstrap-datepicker.min.js"></script>
+{{--   <script type="text/javascript" src="{{ asset('toastermin.js')}}"></script>
+  <script src=" {{ asset('toasterjquery.js') }}" ></script> --}}
+
+   <script src="{{ asset('js/bootstrap-datepicker.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('select2/js/select2.min.js') }}"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js"></script>
+    <script src="{{ asset('js/bootstrap-datepicker.js') }}"></script>
  <script type="text/javascript"> 
         @if(Session::has('success'))
             toastr.options =

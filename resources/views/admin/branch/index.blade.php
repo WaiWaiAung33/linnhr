@@ -90,10 +90,6 @@ input:checked + .slider:before {
 }
 </style>
 <h5 style="color: blue;">Branch Management</h5>
-    <script src=" {{ asset('toasterjquery.js') }}" ></script>
-    <link rel="stylesheet" type="text/css" href="{{asset('toasterbootstrap.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('toastermin.css')}}">
-    <script type="text/javascript" src="{{asset('toastermin.js')}}"></script>
 @stop
 @section('content')
 <?php
@@ -170,7 +166,7 @@ input:checked + .slider:before {
        </div>   
 @stop 
 @section('css')
-    <link rel="stylesheet" href="/css/admin_custom.css">
+
 @stop
 
 @section('js')

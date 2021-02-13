@@ -31,7 +31,43 @@
         @include('adminlte::plugins', ['type' => 'css'])
 
         <link rel="stylesheet" href="{{ asset('vendor/adminlte/dist/css/adminlte.min.css') }}">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+        {{-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic"> --}}
+
+        <link rel="stylesheet" href='https://mmwebfonts.comquas.com/fonts/?font=pyidaungsu' />
+        <style type="text/css" media="screen">
+            body{
+                font-family:Pyidaungsu,Yunghkio,'Masterpiece Uni Sans' !important;
+            }
+            .unicode{
+                font-family:Pyidaungsu,Yunghkio,'Masterpiece Uni Sans' !important;
+            }
+            
+            .help-block{
+                color: red;
+                font-family:Pyidaungsu,Yunghkio,'Masterpiece Uni Sans' !important;
+                font-size: 12px;
+            }
+
+            label{
+                font-size: 14px;
+            }
+            p,h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 , table, .table, input, select {
+                font-family:Pyidaungsu,Yunghkio,'Masterpiece Uni Sans' !important;
+            }
+
+            p, .btn {
+                font-size: 13px !important;
+            }
+
+            .size {
+                font-family:Pyidaungsu,Yunghkio,'Masterpiece Uni Sans' !important;
+                font-size: 13px;
+            }
+
+            input, select, textarea {
+                font-size: 14px !important;
+            }
+        </style>
     @else
         <link rel="stylesheet" href="{{ mix(config('adminlte.laravel_mix_css_path', 'css/app.css')) }}">
     @endif
@@ -49,7 +85,7 @@
     @yield('adminlte_css')
 
     {{-- Favicon --}}
-    <link rel="icon" type="image/jpg" href="{{ asset('vendor/adminlte/dist/img/icon.png') }}">
+    <link rel="icon" type="image/png" href="{{ asset('vendor/adminlte/dist/img/linn.png') }}">
     @if(config('adminlte.use_ico_only'))
         <link rel="shortcut icon" href="{{ asset('favicons/favicon.ico') }}" />
     @elseif(config('adminlte.use_full_favicon'))
@@ -72,43 +108,9 @@
         <meta name="msapplication-TileImage" content="{{ asset('favicon/ms-icon-144x144.png') }}">
     @endif
 
-    <link rel="stylesheet" href='https://mmwebfonts.comquas.com/fonts/?font=pyidaungsu' />
-    <style type="text/css" media="screen">
-        body{
-            font-family:Pyidaungsu,Yunghkio,'Masterpiece Uni Sans' !important;
-        }
-        .unicode{
-            font-family:Pyidaungsu,Yunghkio,'Masterpiece Uni Sans' !important;
-        }
-        
-        .help-block{
-            color: red;
-            font-family:Pyidaungsu,Yunghkio,'Masterpiece Uni Sans' !important;
-            font-size: 12px;
-        }
-
-        label{
-            font-size: 14px;
-        }
-        p,h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 , table, .table, input, select {
-            font-family:Pyidaungsu,Yunghkio,'Masterpiece Uni Sans' !important;
-        }
-
-        p, .btn {
-            font-size: 13px !important;
-        }
-
-        .size {
-            font-family:Pyidaungsu,Yunghkio,'Masterpiece Uni Sans' !important;
-            font-size: 13px;
-        }
-
-        input, select {
-            font-size: 14px !important;
-        }
-    </style>
+  
     <link rel="stylesheet" type="text/css" href="{{ asset('css/custom.css') }}">
-     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('toastr/toastr.min.css') }}">
 
 </head>
 
@@ -122,7 +124,7 @@
         <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
         <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
         <script src="{{ asset('vendor/overlayScrollbars/js/jquery.overlayScrollbars.min.js') }}"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+        <script src="{{ asset('toastr/toastr.min.js') }}" ></script>
 
 
         {{-- Configured Scripts --}}
