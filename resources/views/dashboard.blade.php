@@ -293,35 +293,35 @@ $date = date('Ymd')."";
             if(bdEmployees.indexOf($(this).attr('data-date'))=="-1"){
                 pointerdate = $(this).attr('data-date');
                 curdate = <?php echo $date; ?>;
-                console.log(curdate);
+                // console.log(curdate);
                 arr=pointerdate.split('-');
                 pointerdate = arr[0]+arr[1]+arr[2];
-                console.log(" > "+pointerdate);
+                // console.log(" > "+pointerdate);
                 if(pointerdate<=curdate){
                     return false;
                 }
-                $(this).html('<center><a href="{{ route("employee.index") }}" style="text-decoration:none"><h2 style="margin-top:40px; width:150px"></h2></a></center>');
-                $(this).css('background', '#fdf');
-                $(this).css('cursor', 'pointer');
+                // $(this).html('<center><a href="{{ route("employee.index") }}" style="text-decoration:none"><h2 style="margin-top:40px; width:150px"></h2></a></center>');
+                // $(this).css('background', '#fdf');
+                // $(this).css('cursor', 'pointer');
             }
         });
 
-        // $('#calendar').delegate('.fc-day a', 'mouseover', function(){
-        //  //alert("a mouseover");
-        // });
+        $('#calendar').delegate('.fc-day a', 'mouseover', function(){
+         // alert("a mouseover");
+        });
 
         $('#calendar').delegate('.fc-day', 'mouseout', function(){
             $(this).html('');
             $(this).css('background', '#ffffff');
         });
 
-        $('#calendar').delegate('.fc-day', 'click', function(){
-            href = $(this).find('a').attr('href');
-            if(href==undefined){
-                return false;
-            }
-            window.location.href=$(this).find('a').attr('href');
-        });
+        // $('#calendar').delegate('.fc-day', 'click', function(){
+        //     href = $(this).find('a').attr('href');
+        //     if(href==undefined){
+        //         return false;
+        //     }
+        //     window.location.href=$(this).find('a').attr('href');
+        // });
     });
 
     </script>
