@@ -63,6 +63,7 @@ class CreateEmployeeTable extends Migration
             $table->string('room_no');
             $table->string('home_no');
             $table->string('hostel_sdate');
+            $table->string('active')->default('0');
             $table->timestamps();
         });
     }

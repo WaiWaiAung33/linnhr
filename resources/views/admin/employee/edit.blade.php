@@ -1258,7 +1258,8 @@
 
     @section('js')
     <script src="{{ asset('js/jquery.min.js') }}"></script>
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+<script src="{{ asset('frontend/vendors/jquery/jquery-3.2.1.min.js')}}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
     <script src="{{ asset('js/bootstrap-datepicker.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('select2/js/select2.min.js') }}"></script>
     <script type="text/javascript">
