@@ -288,6 +288,28 @@ return [
         //         ],
         //     ],
         // ],
+
+         ['header' => 'Hostel Management', 'can' => 'hostel-list'],
+        [
+                    'text' => 'Hostel',
+                    'url' => 'hostel',
+                    'icon' => 'fa fa-credit-card',
+                    'can'  => 'hostel-list'
+        ],
+
+         [
+                    'text' => 'Room',
+                    'url' => 'room',
+                    'icon' => 'fa fa-credit-card',
+                    'can'  => 'room-list'
+        ],
+          [
+                    'text' => 'Hostel Employee',
+                    'url' => 'hostelemployee',
+                    'icon' => 'fa fa-credit-card',
+                    'can'  => 'hostel-employee-list'
+        ],
+
         ['header' => 'Payroll Management','can' => 'salary-list'],
         [
                     'text' => 'Salary',

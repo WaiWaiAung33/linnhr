@@ -38,6 +38,9 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::resource('salary','SalaryController');
 	Route::resource('jobopening','JobopeningController');
 	Route::resource('jobapplication','JobapplicationController');
+	Route::resource('hostel','HostelController');
+	Route::resource('room','RoomController');
+	Route::resource('hostelemployee','HostelEmployeeController');
 
 	Route::post('select-ajax-code','EmployeeController@selectcode')->name('select-ajax-code');
 
@@ -62,6 +65,11 @@ Route::get('frontend/about','JobapplicationController@jobabout')->name('frontend
 Route::get('frontend/contactus','JobapplicationController@jobcontact')->name('frontend.jobcontact');
 
 Route::get('ajax-autocomplete-search', 'SalaryController@selectSearch')->name('ajax-autocomplete-search');
+
+
+Route::post('select-ajax-hostel','HostelEmployeeController@selecthostel')->name('select-ajax-hostel');
+Route::get('get_department_address','HostelEmployeeController@get_department_address')->name('get_department_address');
+Route::get('ajax-autocomplete-search', 'HostelEmployeeController@selectSearch')->name('ajax-autocomplete-search');
 
 
 
