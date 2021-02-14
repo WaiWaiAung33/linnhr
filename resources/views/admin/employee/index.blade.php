@@ -6,6 +6,7 @@
 
 @section('content_header')
  <h5 style="color: blue;" class="unicode">Employee Management</h5>
+
 @stop
 @section('content')
  <?php
@@ -68,6 +69,7 @@
                         </div>
                         <div class="col-md-2">
                            <label for="">Select Department</label>
+                           
                             <select class="form-control" id="dep_id" name="dep_id" style="font-size: 13px">
                               <option value="">All</option>
                                     @foreach($departments as $department)
@@ -143,6 +145,7 @@
                         <th>Department</th>
                         <th>Branch</th>
                         <th>Joined Date</th>
+                        <th>Active/Inactive</th>
                        <!--  <th>NRC</th>
                         <th>DOB</th> -->
                         <!-- <th>Action</th> -->
@@ -186,6 +189,13 @@
                              
                             <td>{{date('d-m-Y',strtotime($employee->join_date))}} ({{$workyear}}) years
                             </td>
+
+                            <td>
+                              <label class="switch">
+                              <input data-id="{{$employee->id}}" data-size ="small" class="toggle-class" type="checkbox" data-onstyle="success" data-offstyle="danger" data-toggle="toggle" data-on="Active" data-off="InActive" {{ $employee->active? 'checked' : '' }}>
+                               <span class="slider round"></span>
+                           </label>
+                            </td>
                            
                            
                         </tr>
@@ -204,9 +214,79 @@
 
 @stop 
 @section('css')
-    <link id="bsdp-css" href="{{ asset('/css/bootstrap-datepicker3.min.css') }}" rel="stylesheet">
-{{--     <link rel="stylesheet" type="text/css" href="{{ asset('toasterbootstrap.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('toastermin.css')}}"> --}}
+<link rel="stylesheet" href="{{ asset('select2/css/select2.min.css') }}"/>
+<link id="bsdp-css" href="{{ asset('/css/bootstrap-datepicker3.min.css') }}" rel="stylesheet">
+ <link rel="stylesheet" type="text/css" href="{{ asset('toasterbootstrap.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('toastermin.css')}}"> 
+  <style type="text/css">
+     th{
+        background-color: rgba(0,0,0,.03);
+    }
+    .page_body{
+        margin: 10px;
+    }
+      .switch {
+        position: relative;
+        display: inline-block;
+        width: 45px;
+        height: 22px;
+    }
+
+    .switch input { 
+        opacity: 0;
+        width: 0;
+        height: 0;
+    }
+
+    .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #ccc;
+        -webkit-transition: .4s;
+        transition: .4s;
+    }
+
+    .slider:before {
+        position: absolute;
+        content: "";
+        height: 15px;
+        width: 15px;
+        left: 2px;
+        bottom: 0px;
+        top:3px;
+        background-color: white;
+        -webkit-transition: .4s;
+        transition: .4s;
+    }
+
+    input:checked + .slider {
+        background-color: #2196F3;
+    }
+
+    input:focus + .slider {
+        box-shadow: 0 0 1px #2196F3;
+    }
+
+    input:checked + .slider:before {
+        -webkit-transform: translateX(26px);
+        -ms-transform: translateX(26px);
+        transform: translateX(26px);
+    }
+
+/* Rounded sliders */
+    .slider.round {
+        border-radius: 36px;
+    }
+
+    .slider.round:before {
+        border-radius: 50%;
+    }
+  </style>
+
 
 @stop
 
@@ -230,6 +310,29 @@
             toastr.success("{{ session('success') }}");
         @endif
         $(document).ready(function(){
+
+           $(function() {
+            $('.livesearch').select2({
+            
+            placeholder: 'All',
+            ajax: {
+                url: "<?php echo(route("ajax-autocomplete-department")) ?>",
+                dataType: 'json',
+                delay: 250,
+                processResults: function (data) {
+                    return {
+                        results: $.map(data, function (item) {
+                            return {
+                                text: item.name,
+                                id: item.id
+                            }
+                        })
+                    };
+                },
+                cache: true
+            }
+        });
+        });
             setTimeout(function(){
             $("div.alert").remove();
             }, 1000 ); 
@@ -296,5 +399,23 @@
             });
          
         });
+
+
+        $(function() {
+                $('.toggle-class').change(function() {
+                    var status = $(this).prop('checked') == true ? 1 : 0;
+                    var file_id = $(this).data('id');
+                    $.ajax({
+                        type: "GET",
+                        dataType: "json",
+                        url: "<?php echo route('change-status-employee') ?>",
+                        data: {'active': status, 'file_id': file_id},
+                        success: function(data){
+                         console.log(data.success);
+                        }
+                    });
+                })
+              })
+
      </script>
 @stop
