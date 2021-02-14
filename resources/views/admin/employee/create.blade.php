@@ -700,7 +700,7 @@
                         </div>
                     </div><br>
 
-                    <div class="row">
+                    <div class="row" id="firstradio">
                         <div class="col-md-6">
                             <div class="row">
                                 <!-- <label class="col-md-3 unicode" style="text-align: right;">Assign</label> -->
@@ -713,7 +713,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-6" >
                             <div class="row">
                                 <!-- <label class="col-md-3 unicode" style="text-align: right;">Assign</label> -->
                                 <div class="col-md-2">
@@ -728,7 +728,7 @@
                     </div>
                     <br>
 
-                     <div class="row">
+                     <div class="row" id="secondradio">
                         <div class="col-md-6">
                             <div class="row">
                                 <!-- <label class="col-md-3 unicode" style="text-align: right;">Assign</label> -->
@@ -1273,6 +1273,15 @@
     <script type="text/javascript" src="{{ asset('select2/js/select2.min.js') }}"></script>
     <script type="text/javascript">
         $(document).ready(function(){
+
+            var ss = $('input[name="isHostel"]:checked').val();
+                if (ss == "No") {
+                   $("#firstradio").hide();
+                   $("#secondradio").hide();
+                }else if (ss == "Yes") {
+                    $("#firstradio").show();
+                   $("#secondradio").show();
+                }
                 $("#cust_next").click(function(){
                     var name = $("#name").val();
                     var gender = $("#gender").val();
