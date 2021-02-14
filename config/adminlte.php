@@ -293,7 +293,7 @@ return [
         [
                     'text' => 'Hostel',
                     'url' => 'hostel',
-                    'icon' => 'fa fa-credit-card',
+                    'icon' => 'fa fa-home',
                     'can'  => 'hostel-list'
         ],
 
