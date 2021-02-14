@@ -300,13 +300,13 @@ return [
          [
                     'text' => 'Room',
                     'url' => 'room',
-                    'icon' => 'fa fa-credit-card',
+                    'icon' => 'fa fa-th-large',
                     'can'  => 'room-list'
         ],
           [
                     'text' => 'Hostel Employee',
                     'url' => 'hostelemployee',
-                    'icon' => 'fa fa-credit-card',
+                    'icon' => 'fas fa-house-user',
                     'can'  => 'hostel-employee-list'
         ],
 
