@@ -507,6 +507,16 @@ class EmployeeController extends Controller
         
     }
 
+    public function changestatus(Request $request)
+    {
+        // dd($request->all());
+        $employee = Employee::find($request->file_id);
+        $employee->active = $request->active;
+
+        $employee->save();
+        return response()->json(['success'=>'Status change successfully.']);
+    }
+ 
   
 
 }

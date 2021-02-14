@@ -690,7 +690,7 @@
                     </div><br>
 
 
-                       <div class="row">
+                       <div class="row" id="firstradio">
                         <div class="col-md-6">
                             <div class="row">
                                 <!-- <label class="col-md-3 unicode" style="text-align: right;">Assign</label> -->
@@ -718,7 +718,7 @@
                     </div>
                     <br>
 
-                     <div class="row">
+                     <div class="row" id="secondradio">
                         <div class="col-md-6">
                             <div class="row">
                                 <!-- <label class="col-md-3 unicode" style="text-align: right;">Assign</label> -->
@@ -1258,11 +1258,20 @@
 
     @section('js')
     <script src="{{ asset('js/jquery.min.js') }}"></script>
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+<script src="{{ asset('frontend/vendors/jquery/jquery-3.2.1.min.js')}}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
     <script src="{{ asset('js/bootstrap-datepicker.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('select2/js/select2.min.js') }}"></script>
     <script type="text/javascript">
         $(document).ready(function(){
+            var ss = $('input[name="isHostel"]:checked').val();
+                if (ss == "No") {
+                   $("#firstradio").hide();
+                   $("#secondradio").hide();
+                }else if (ss == "Yes") {
+                    $("#firstradio").show();
+                   $("#secondradio").show();
+                }
                $("#cust_next").click(function(){
                     
                         // alert("HI");

@@ -700,7 +700,7 @@
                         </div>
                     </div><br>
 
-                    <div class="row">
+                    <div class="row" id="firstradio">
                         <div class="col-md-6">
                             <div class="row">
                                 <!-- <label class="col-md-3 unicode" style="text-align: right;">Assign</label> -->
@@ -713,7 +713,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-6" >
                             <div class="row">
                                 <!-- <label class="col-md-3 unicode" style="text-align: right;">Assign</label> -->
                                 <div class="col-md-2">
@@ -728,7 +728,7 @@
                     </div>
                     <br>
 
-                     <div class="row">
+                     <div class="row" id="secondradio">
                         <div class="col-md-6">
                             <div class="row">
                                 <!-- <label class="col-md-3 unicode" style="text-align: right;">Assign</label> -->
@@ -1267,12 +1267,21 @@
 
 
     @section('js')
-    <script src="{{ asset('js/jquery.min.js') }}"></script>
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+ <script src="{{ asset('frontend/vendors/jquery/jquery-3.2.1.min.js')}}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
     <script src="{{ asset('js/bootstrap-datepicker.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('select2/js/select2.min.js') }}"></script>
     <script type="text/javascript">
         $(document).ready(function(){
+
+            var ss = $('input[name="isHostel"]:checked').val();
+                if (ss == "No") {
+                   $("#firstradio").hide();
+                   $("#secondradio").hide();
+                }else if (ss == "Yes") {
+                    $("#firstradio").show();
+                   $("#secondradio").show();
+                }
                 $("#cust_next").click(function(){
                     var name = $("#name").val();
                     var gender = $("#gender").val();
@@ -1404,24 +1413,23 @@
         });
 
         $(document).ready(function(){
-
-         $("select[name='nrc_code']").change(function() {
-        // alert("Hello");
-        var code_id = $(this).val();
-        var token = $("input[name='_token']").val();
-        $.ajax({
-            url: "<?php echo route('select-ajax-code') ?>",
-            method: 'POST',
-            dataType: 'html',
-            data: {
-                nrc_code: code_id,
-                _token: token
-            },
-            success: function(data) {
-                $("select[name='nrc_state']").html(data);
-            }
+        $("select[name='nrc_code']").change(function() {
+            // alert("Hello");
+            var code_id = $(this).val();
+            var token = $("input[name='_token']").val();
+            $.ajax({
+                url: "<?php echo route('select-ajax-code') ?>",
+                method: 'POST',
+                dataType: 'html',
+                data: {
+                    nrc_code: code_id,
+                    _token: token
+                },
+                success: function(data) {
+                    $("select[name='nrc_state']").html(data);
+                }
+            });
         });
-    });
 
          $("#date_of_birth").datepicker({ dateFormat: 'dd-mm-yy' });
          $("#join_date").datepicker({ dateFormat: 'dd-mm-yy' });

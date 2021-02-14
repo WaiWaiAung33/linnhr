@@ -71,6 +71,12 @@ Route::post('select-ajax-hostel','HostelEmployeeController@selecthostel')->name(
 Route::get('get_department_address','HostelEmployeeController@get_department_address')->name('get_department_address');
 Route::get('ajax-autocomplete-search', 'HostelEmployeeController@selectSearch')->name('ajax-autocomplete-search');
 
+Route::get('ajax-autocomplete-department', 'EmployeeController@selectSearch')->name('ajax-autocomplete-department');
+
+// Route::get('change-status-trainings', 'EmployeeController@changestatustrainings')->name('change-status-trainings');
+// change-status-employee
+Route::get('change-status-employee', 'EmployeeController@changestatus')->name('change-status-employee');
+
 
 
 
