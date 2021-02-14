@@ -202,9 +202,20 @@ class HostelEmployeeController extends Controller
      * @param  \App\HoselEmployee  $hoselEmployee
      * @return \Illuminate\Http\Response
      */
-    public function destroy(HoselEmployee $hoselEmployee)
+    public function destroy($id)
     {
-        //
+
+        $hostelemployee = HoselEmployee::findorfail($id);
+        $hostelemployee->delete();
+        $updatedata = Employee::find($hostelemployee->emp_id);
+                     $updatedatas = $updatedata->update([
+                        'hostel'=>'No',
+                        'hostel_location'=>'',
+                        'room_no'=>'',
+                        'home_no'=>'',
+                        'hostel_sdate'=>''
+                     ]);
+        return redirect()->route('hostelemployee.index')->with('success','Successfully');
     }
 
     public function selecthostel(Request $request)

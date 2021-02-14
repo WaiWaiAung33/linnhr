@@ -14,7 +14,7 @@
 
 <div>
 
- <a class="btn btn-success unicode" href="{{route('hostelemployee.create')}}" style="float: right;font-size: 13px"><i class="fas fa-plus"></i> Hostel Employee</a>
+ <a class="btn btn-success unicode" href="{{route('hostelemployee.create')}}" style="float: right;font-size: 13px"><i class="fas fa-plus"></i> Hostel Employee</a><br>
  
      {{-- @if ($message = Session::get('success'))
             <div class="alert alert-success">
@@ -48,7 +48,7 @@
                             <td>{{date('d-m-Y',strtotime($hostelemployee->start_date))}}</td>
                             <td>{{$hostelemployee->full_address}}</td>
                             <td>
-                                <form action="#" method="post"
+                                <form action="{{route('hostelemployee.destroy',$hostelemployee->id)}}" method="post"
                                     onsubmit="return confirm('Do you want to delete?');">
                                    @csrf
                                    @method('DELETE')
