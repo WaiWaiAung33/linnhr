@@ -290,7 +290,9 @@ class EmployeeController extends Controller
         $nrccodes = NRCCode::all();
         $nrcstates = NRCState::all();    
         $employees = Employee::find($id); 
-         return view('admin.employee.edit',compact('branchs','departments','positions','employees','nrcstates','nrccodes'));
+        $hostels = Hostel::all();
+       $rooms = Room::all();
+         return view('admin.employee.edit',compact('branchs','departments','positions','employees','nrcstates','nrccodes','hostels','rooms'));
     }
 
     /**
