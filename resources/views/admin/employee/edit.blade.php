@@ -673,7 +673,7 @@
                             </div>
                         </div>
                           <div class="col-md-6">
-                            <div class="row">
+                            <div class="row" id="isHostel">
                                 <!-- <label class="col-md-3 unicode" style="text-align: right;">Assign</label> -->
                                 <div class="col-md-2">
                                     <h6 style="font-weight:bold;font-size:13px;">isHostel</h6>
@@ -710,7 +710,7 @@
                                     <h6 style="font-weight:bold;font-size:13px;">Location</h6>
                                 </div>
                                 <div class="col-md-8">
-                                    <input type="text" name="hostel_location" class="form-control unicode" value="{{$employees->hostel_location}}">
+                                    <input type="text" name="hostel_location" class="form-control unicode" value="{{$employees->hostel_location}}" id="location">
 
                                 </div>
                             </div>
@@ -726,7 +726,7 @@
                                     <h6 style="font-weight:bold;font-size:13px;">Home No</h6>
                                 </div>
                                 <div class="col-md-8">
-                                    <input type="text" name="home_no" class="form-control unicode" value="{{$employees->home_no}}">
+                                    <input type="text" name="home_no" class="form-control unicode" value="{{$employees->home_no}}" id="home_no">
 
                                 </div>
                             </div>
@@ -738,7 +738,7 @@
                                     <h6 style="font-weight:bold;font-size:13px;">Room No</h6>
                                 </div>
                                 <div class="col-md-8">
-                                    <input type="text" name="room_no" class="form-control unicode" value="{{$employees->room_no}}">
+                                    <input type="text" name="room_no" class="form-control unicode" value="{{$employees->room_no}}" id="room_no">
 
                                 </div>
                             </div>
@@ -1264,6 +1264,7 @@
     <script type="text/javascript" src="{{ asset('select2/js/select2.min.js') }}"></script>
     <script type="text/javascript">
         $(document).ready(function(){
+
             var ss = $('input[name="isHostel"]:checked').val();
                 if (ss == "No") {
                    $("#firstradio").hide();
@@ -1272,6 +1273,24 @@
                     $("#firstradio").show();
                    $("#secondradio").show();
                 }
+
+                 $('#isHostel').on('click', function () {
+                    var value = $("[name=isHostel]:checked").val();
+
+                     if (value == "No") {
+                           $("#firstradio").hide();
+                           $("#secondradio").hide();
+                           $('#hostel_sdate').val("");
+                           $('#location').val("");
+                           $('#home_no').val("");
+                            $('#room_no').val("");
+                        }else if (value == "Yes") {
+                            $("#firstradio").show();
+                           $("#secondradio").show();
+                        }
+                })
+
+
                $("#cust_next").click(function(){
                     
                         // alert("HI");

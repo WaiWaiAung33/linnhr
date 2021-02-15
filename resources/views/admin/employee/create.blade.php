@@ -684,17 +684,17 @@
                             </div>
                         </div>
                           <div class="col-md-6">
-                            <div class="row">
+                            <div class="row" id="isHostel">
                                 <!-- <label class="col-md-3 unicode" style="text-align: right;">Assign</label> -->
                                 <div class="col-md-2">
                                     <h6 style="font-weight:bold;font-size:13px;">isHostel*</h6>
                                 </div>
                                   <div class="col-md-2 {{ $errors->first('gender', 'has-error') }}">
-                                    <input type="radio" name="isHostel" value="Yes" > <small>Yes</small>
+                                    <input type="radio" name="isHostel" value="Yes" id="isHostel"> <small>Yes</small>
                                     
                                 </div>   
                                 <div class="col-md-2">
-                                    <input type="radio" name="isHostel" value="No" checked> <small>No</small>
+                                    <input type="radio" name="isHostel" value="No" checked id="isHostel"> <small>No</small>
                                 </div> 
                             </div>
                         </div>
@@ -1282,6 +1282,18 @@
                     $("#firstradio").show();
                    $("#secondradio").show();
                 }
+
+                 $('#isHostel').on('click', function () {
+                    var value = $("[name=isHostel]:checked").val();
+
+                     if (value == "No") {
+                           $("#firstradio").hide();
+                           $("#secondradio").hide();
+                        }else if (value == "Yes") {
+                            $("#firstradio").show();
+                           $("#secondradio").show();
+                        }
+                })
                 $("#cust_next").click(function(){
                     var name = $("#name").val();
                     var gender = $("#gender").val();
