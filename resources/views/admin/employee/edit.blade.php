@@ -719,10 +719,15 @@
                             <div class="row">
                                 <!-- <label class="col-md-3 unicode" style="text-align: right;">Assign</label> -->
                                 <div class="col-md-3">
-                                    <h6 style="font-weight:bold;font-size:13px;">Location</h6>
+                                    <h6 style="font-weight:bold;font-size:13px;">Hostel Name</h6>
                                 </div>
                                 <div class="col-md-9">
-                                    <input type="text" name="hostel_location" class="form-control unicode" value="{{$employees->hostel_location}}" id="location">
+                                    <select class="form-control" name="home_no" style="font-size: 13px">
+                                        <option value="">select hostel</option>
+                                        @foreach ($hostels as $hostel )
+                                          <option  value="{{$hostel->id}}" {{ (old('home_no',$employees->home_no)==$hostel->id)?'selected':'' }}>{{$hostel->name}}</option>
+                                        @endforeach
+                                    </select>  
 
                                 </div>
                             </div>
@@ -734,11 +739,12 @@
                         <div class="col-md-6">
                             <div class="row">
                                 <!-- <label class="col-md-3 unicode" style="text-align: right;">Assign</label> -->
-                                <div class="col-md-3">
-                                    <h6 style="font-weight:bold;font-size:13px;">Home No</h6>
+                                <div class="col-md-2">
+                                    <h6 style="font-weight:bold;font-size:13px;">Full Address</h6>
                                 </div>
-                                <div class="col-md-9">
-                                    <input type="text" name="home_no" class="form-control unicode" value="{{$employees->home_no}}" id="home_no">
+                                <div class="col-md-8">
+                                     <input type="text" name="hostel_location" class="form-control unicode" id="full_address" value="{{$employees->hostel_location}}">
+                                   
 
                                 </div>
                             </div>
@@ -746,11 +752,16 @@
                         <div class="col-md-6">
                             <div class="row">
                                 <!-- <label class="col-md-3 unicode" style="text-align: right;">Assign</label> -->
-                                <div class="col-md-2">
+                                <div class="col-md-3">
                                     <h6 style="font-weight:bold;font-size:13px;">Room No</h6>
                                 </div>
-                                <div class="col-md-8">
-                                    <input type="text" name="room_no" class="form-control unicode" value="{{$employees->room_no}}" id="room_no">
+                                <div class="col-md-9">
+                                   <select class="form-control" name="room_no" style="font-size: 13px">
+                                        <option value="">-</option>
+                                         @foreach($rooms as $room)
+                                         <option value="{{$room->id}}" {{ (old('room_no',$employees->room_no)==$room->id)?'selected':'' }}>{{$room->room_no}}</option>
+                                       @endforeach
+                                    </select>  
 
                                 </div>
                             </div>
@@ -1283,6 +1294,40 @@
     <script type="text/javascript" src="{{ asset('select2/js/select2.min.js') }}"></script>
     <script type="text/javascript">
         $(document).ready(function(){
+
+              $("select[name='home_no']").change(function() {
+                var room_id = $(this).val();
+                var token = $("input[name='_token']").val();
+                $.ajax({
+                    url: "<?php echo route('select-ajax-hostel') ?>",
+                    method: 'POST',
+                    dataType: 'html',
+                    data: {
+                        room_id: room_id,
+                        _token: token
+                    },
+                    success: function(data) {
+                        $("select[name='room_no']").html(data);
+                    }
+                });
+            });
+
+                 $(function(){
+               $("select[name='home_no']").change(function(){
+                  var is_employee = $(this).find(':selected').val();
+                  
+                     $.ajax({
+                            type: "GET",
+                            dataType: "json",
+                            url: "<?php echo route('get_department_address') ?>",
+                            data: {'emp_id': is_employee},
+                            success: function(data){
+                                $("#full_address").val(data.full_address);
+                                console.log(data.full_address);
+                            }
+                        });
+                });
+            });
 
             var ss = $('input[name="isHostel"]:checked').val();
                 if (ss == "No") {

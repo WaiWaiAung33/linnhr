@@ -262,14 +262,15 @@
                   <tr>
                     <td>isHostel<span style="padding-left: 160px">{{$employees->hostel ? $employees->hostel : "-"}}</span></td>
                 </tr>
+                
+                 <tr>
+                    <td>Hostel Home<span style="padding-left: 130px">{{$employees->viewHostel ? $employees->viewHostel->name : '-' }} </span></td>
+                </tr>
                 <tr>
-                    <td>Location<span style="padding-left: 155px">{{  $employees->hostel_location ? $employees->hostel_location : "-"}} </span></td>
+                    <td>Full Address<span style="padding-left: 135px">{{  $employees->hostel_location ? $employees->hostel_location : "-"}} </span></td>
                 </tr>
                  <tr>
-                    <td>Room No<span style="padding-left: 150px">{{  $employees->room_no ? $employees->room_no : "-"}}</span></td>
-                </tr>
-                 <tr>
-                    <td>Home No<span style="padding-left: 150px">{{  $employees->home_no ? $employees->home_no : "-"}} </span></td>
+                    <td>Room No<span style="padding-left: 150px">{{  $employees->viewRoom ? $employees->viewRoom->room_no : "-"}}</span></td>
                 </tr>
                  <tr>
                     <td>Start Date<span style="padding-left: 145px">{{  $employees->hostel_sdate ? $employees->hostel_sdate : "-"}} </span></td>

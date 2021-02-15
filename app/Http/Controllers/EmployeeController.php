@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Employee;
+use App\HoselEmployee;
 use Illuminate\Http\Request;
 use App\Imports\EmployeeImport;
 use App\Exports\EmployeeExport;
@@ -12,8 +13,12 @@ use App\Department;
 use App\Position;
 use App\NRCCode;
 use App\NRCState;
+use App\Room;
+use App\Hostel;
 use File;
 use Illuminate\Support\Str;
+use DB;
+use Validator;
 
 class EmployeeController extends Controller
 {
@@ -78,7 +83,9 @@ class EmployeeController extends Controller
         $nrccodes = NRCCode::all();
         $nrcstates = NRCState::all();
         $positions= Position::all();
-        return view('admin.employee.create',compact('branchs','departments','positions','nrccodes','nrcstates'));
+        $hostels = Hostel::all();
+       $rooms = Room::all();
+        return view('admin.employee.create',compact('branchs','departments','positions','nrccodes','nrcstates','hostels','rooms'));
     }
 
     /**
@@ -183,68 +190,73 @@ class EmployeeController extends Controller
         $month = date('m',strtotime($request->join_date));
         // dd($date);
 
-         $employee=Employee::create([
-            'emp_id'=>$request->emp_id,
-            'branch_id'=>$request->branch,
-            'dep_id'=>$request->department,
-            'position_id'=>$request->position,
-            'name'=> $request->name,
-            'gender'=>$request->gender,
-            'marrical_status'=>$request->marrical_status,
-            'father_name'=>$request->father_name,
-            'phone_no'=>$request->phone_no,
-            'nrc_code'=>$request->nrc_code,
-            'nrc_state'=>$request->nrc_state,
-            'nrc_status'=>$request->nrc_status,
-            'nrc'=>$request->nrc,
-            'fullnrc'=>$fullnrc,
-            'date_of_birth'=>$request->date_of_birth,
-            'join_date'=>$request->join_date,
-            'join_month'=>$month,
-            'address'=>$request->address,
-            'city'=>$request->city,
-            'township'=>$request->township,
-            'qualification'=>$request->qualification,
-            'salary'=>$request->salary,
-            'photo'=>$photo,
-            'race'=>$request->race,
-            'religion'=>$request->religion,
-            'email'=>$request->email,
-            'fPhone'=>$request->pPhone,
-            'experience'=>$request->experience,
-            'exp_salary'=>$request->salary,
-            'hostel'=>$request->isHostel,
-            'applied_date'=>$request->appliedDate,
-            'address'=>$request->address,
-            'phone'=>$request->phone,
-            'signature'=>$request->signed,
-            'photo'=>$photo,
-            'city'=>$request->city,
-            'township'=>$request->township,
-            'graduation'=>$request->graduation,
-            'degree'=>$degree_photo,
-            'level'=>$request->level,
-            'course_title'=>$request->course_title,
-            'exp_company'=>$request->exp_company,
-            'exp_position'=>$request->exp_position,
-            'exp_location'=>$request->exp_location,
-            'exp_date_from'=>$request->exp_date_from,
-            'exp_date_to'=>$request->exp_date_to,
-            'skills'=>$request->skills,
-            'proficiency'=>$request->proficiency,
-            'police_reco'=>$police_reco_photo,
-            'ward_reco'=>$ward_reco_photo,
-            'cvfile'=>$cvfile_photo,
-            'otherfile'=> $otherfile_photo,
-            'hostel_location'=>$request->hostel_location,
-            'room_no'=>$request->room_no,
-            'home_no'=>$request->home_no,
-            'hostel_sdate'=>$request->hostel_sdate,
-            'employment_type'=>$request->employment_type,
-        ]
-        );
 
-          return redirect()->route('employee.index')->with('success','Employee created successfully');;
+                    $employee=Employee::create([
+                    'emp_id'=>$request->emp_id,
+                    'branch_id'=>$request->branch,
+                    'dep_id'=>$request->department,
+                    'position_id'=>$request->position,
+                    'name'=> $request->name,
+                    'gender'=>$request->gender,
+                    'marrical_status'=>$request->marrical_status,
+                    'father_name'=>$request->father_name,
+                    'phone_no'=>$request->phone_no,
+                    'nrc_code'=>$request->nrc_code,
+                    'nrc_state'=>$request->nrc_state,
+                    'nrc_status'=>$request->nrc_status,
+                    'nrc'=>$request->nrc,
+                    'fullnrc'=>$fullnrc,
+                    'date_of_birth'=>$request->date_of_birth,
+                    'join_date'=>$request->join_date,
+                    'join_month'=>$month,
+                    'address'=>$request->address,
+                    'city'=>$request->city,
+                    'township'=>$request->township,
+                    'qualification'=>$request->qualification,
+                    'salary'=>$request->salary,
+                    'photo'=>$photo,
+                    'race'=>$request->race,
+                    'religion'=>$request->religion,
+                    'email'=>$request->email,
+                    'fPhone'=>$request->pPhone,
+                    'experience'=>$request->experience,
+                    'exp_salary'=>$request->salary,
+                    'hostel'=>$request->isHostel,
+                    'applied_date'=>$request->appliedDate,
+                    'address'=>$request->address,
+                    'phone'=>$request->phone,
+                    'signature'=>$request->signed,
+                    'photo'=>$photo,
+                    'city'=>$request->city,
+                    'township'=>$request->township,
+                    'graduation'=>$request->graduation,
+                    'degree'=>$degree_photo,
+                    'level'=>$request->level,
+                    'course_title'=>$request->course_title,
+                    'exp_company'=>$request->exp_company,
+                    'exp_position'=>$request->exp_position,
+                    'exp_location'=>$request->exp_location,
+                    'exp_date_from'=>$request->exp_date_from,
+                    'exp_date_to'=>$request->exp_date_to,
+                    'skills'=>$request->skills,
+                    'proficiency'=>$request->proficiency,
+                    'police_reco'=>$police_reco_photo,
+                    'ward_reco'=>$ward_reco_photo,
+                    'cvfile'=>$cvfile_photo,
+                    'otherfile'=> $otherfile_photo,
+                    'hostel_location'=>$request->hostel_location,
+                    'room_no'=>$request->room_no,
+                    'home_no'=>$request->home_no,
+                    'hostel_sdate'=>$request->hostel_sdate,
+                    'employment_type'=>$request->employment_type,
+                ]
+                );
+
+                    
+                 return redirect()->route('employee.index')->with('success','Successfully');
+       
+
+    
     }
 
     /**
@@ -278,7 +290,9 @@ class EmployeeController extends Controller
         $nrccodes = NRCCode::all();
         $nrcstates = NRCState::all();    
         $employees = Employee::find($id); 
-         return view('admin.employee.edit',compact('branchs','departments','positions','employees','nrcstates','nrccodes'));
+        $hostels = Hostel::all();
+       $rooms = Room::all();
+         return view('admin.employee.edit',compact('branchs','departments','positions','employees','nrcstates','nrccodes','hostels','rooms'));
     }
 
     /**
