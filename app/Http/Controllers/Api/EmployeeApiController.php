@@ -98,7 +98,7 @@ class EmployeeApiController extends Controller
                                 
                                 $employee = $employee->where('employee.dep_id',$request->dept_id);
                             }
-                            $employee = $employee->orderBy('employee.id','desc')->limit(10)->paginate(10);
+                            $employee = $employee->orderBy('employee.emp_id','asc')->limit(10)->paginate(10);
                             return response(['employees' => $employee,'message'=>"Successfully login",'status'=>1]); 
                         }else{
                            $employee = new Employee();
@@ -169,7 +169,7 @@ class EmployeeApiController extends Controller
                             if ($request->dept_id != '') {
                                 $employee = $employee->where('employee.dep_id',$request->dept_id);
                             }
-                            $employee = $employee->orderBy('employee.id','desc')->get();
+                            $employee = $employee->orderBy('employee.emp_id','asc')->get();
                             return response(['employees' => $employee,'message'=>"Successfully login",'status'=>1]); 
                 }
             }
