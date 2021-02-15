@@ -264,13 +264,13 @@
                 </tr>
                 
                  <tr>
-                    <td>Hostel Home<span style="padding-left: 130px">{{$employees->viewHostel->name ? $employees->viewHostel->name : '-' }} </span></td>
+                    <td>Hostel Home<span style="padding-left: 130px">{{$employees->viewHostel ? $employees->viewHostel->name : '-' }} </span></td>
                 </tr>
                 <tr>
                     <td>Full Address<span style="padding-left: 135px">{{  $employees->hostel_location ? $employees->hostel_location : "-"}} </span></td>
                 </tr>
                  <tr>
-                    <td>Room No<span style="padding-left: 150px">{{  $employees->viewRoom->room_no ? $employees->viewRoom->room_no : "-"}}</span></td>
+                    <td>Room No<span style="padding-left: 150px">{{  $employees->viewRoom ? $employees->viewRoom->room_no : "-"}}</span></td>
                 </tr>
                  <tr>
                     <td>Start Date<span style="padding-left: 145px">{{  $employees->hostel_sdate ? $employees->hostel_sdate : "-"}} </span></td>
