@@ -19,7 +19,7 @@ class DashboardApiController extends Controller
 
         $branches = Branch::with('employees')->get();
         $branches = DB::table('branch')
-                     ->select('branch.name','branch.branch_color',DB::raw('count(employee.id) as total'))
+                     ->select('branch.name','branch.id','branch.branch_color',DB::raw('count(employee.id) as total'))
                      ->leftjoin('employee','employee.branch_id','branch.id')
                      ->where('employee.name','!=','')
                      ->groupBy('branch_id')
@@ -27,7 +27,7 @@ class DashboardApiController extends Controller
 
         $department = Department::with('employees')->get();
         $department = DB::table('department')
-                     ->select('department.name', 'department.dept_color',DB::raw('count(employee.id) as total'))
+                     ->select('department.name','department.id','department.dept_color',DB::raw('count(employee.id) as total'))
                      ->leftjoin('employee','employee.dep_id','department.id')
                      ->where('employee.name','!=','')
                      ->groupBy('dep_id')
