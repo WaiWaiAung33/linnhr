@@ -162,11 +162,6 @@
 
     $(document).ready(function(){
           $("#pay_date").datepicker({ dateFormat: 'dd-mm-yy' });
-
-
-           
-        
-
     });
     $(function() {
             $('.livesearch').select2({

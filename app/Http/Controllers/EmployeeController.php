@@ -239,7 +239,8 @@ class EmployeeController extends Controller
             'hostel_location'=>$request->hostel_location,
             'room_no'=>$request->room_no,
             'home_no'=>$request->home_no,
-            'hostel_sdate'=>$request->hostel_sdate
+            'hostel_sdate'=>$request->hostel_sdate,
+            'employment_type'=>$request->employment_type,
         ]
         );
 
@@ -422,7 +423,8 @@ class EmployeeController extends Controller
             'hostel_location'=>$request->hostel_location,
             'room_no'=>$request->room_no,
             'home_no'=>$request->home_no,
-            'hostel_sdate'=>$request->hostel_sdate
+            'hostel_sdate'=>$request->hostel_sdate,
+            'employment_type'=>$request->employment_type,
             
 
         ]);
@@ -516,6 +518,47 @@ class EmployeeController extends Controller
         $employee->save();
         return response()->json(['success'=>'Status change successfully.']);
     }
+
+     public function selectdepartment(Request $request)
+    {
+        $data = new Department();
+        // $data = $data->leftjoin('inquiries','inquiries.id','=','customers.cust_id')
+        //                ->select(
+        //                 'customers.id',
+        //                 'inquiries.name',
+        //                 'inquiries.ph_no'
+        //                );
+        if($request->has('q')){
+            $search = $request->q;
+            $data = $data->where('name','like','%'.$search.'%');
+        }
+       
+        $data = $data->get();
+        // dd($data);
+        // $data =$data->select('name',DB::raw("CONCAT(nrc_code,'/',nrc_state,'(နိုင်)',nrc_no) as full_nrc"));
+        return response()->json($data);
+    }
+
+      public function selectrank(Request $request)
+    {
+        $data = new Position();
+        // $data = $data->leftjoin('inquiries','inquiries.id','=','customers.cust_id')
+        //                ->select(
+        //                 'customers.id',
+        //                 'inquiries.name',
+        //                 'inquiries.ph_no'
+        //                );
+        if($request->has('q')){
+            $search = $request->q;
+            $data = $data->where('name','like','%'.$search.'%');
+        }
+       
+        $data = $data->get();
+        // dd($data);
+        // $data =$data->select('name',DB::raw("CONCAT(nrc_code,'/',nrc_state,'(နိုင်)',nrc_no) as full_nrc"));
+        return response()->json($data);
+    }
+
  
   
 

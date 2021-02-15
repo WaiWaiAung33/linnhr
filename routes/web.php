@@ -77,6 +77,10 @@ Route::get('ajax-autocomplete-department', 'EmployeeController@selectSearch')->n
 // change-status-employee
 Route::get('change-status-employee', 'EmployeeController@changestatus')->name('change-status-employee');
 
+Route::get('ajax-autocomplete-department', 'EmployeeController@selectdepartment')->name('ajax-autocomplete-department');
+
+Route::get('ajax-autocomplete-rank', 'EmployeeController@selectrank')->name('ajax-autocomplete-rank');
+
 
 
 

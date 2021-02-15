@@ -128,6 +128,18 @@
                                     <input type="text" name="nrc" class="form-control unicode" placeholder="111111" id="nrc" value="{{$employees->nrc}}">
                                  
                                 </div>  
+                            </div><br>
+
+                             <div class="row">
+                                <div class="col-md-2">
+                                    <h6 style="font-weight:bold;font-size:13px;">Email</h6>
+                                </div>
+
+                                <div class="col-md-8 {{ $errors->first('name', 'has-error') }}">
+
+                                   <input type="email" name="email" class="form-control unicode" value="{{$employees->email}}">
+
+                                </div>
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -220,7 +232,7 @@
                     <br>
                     <div class="row">
                            <div class="col-md-6">
-                            <div class="row">
+                           <!--  <div class="row">
                                 <div class="col-md-2">
                                     <h6 style="font-weight:bold;font-size:13px;">Email</h6>
                                 </div>
@@ -230,7 +242,7 @@
                                    <input type="email" name="email" class="form-control unicode" value="{{$employees->email}}">
 
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                         <div class="col-md-6"></div>
                     </div>
@@ -605,10 +617,10 @@
                         <div class="col-md-6">
                             <div class="row">
                                 <!-- <label class="col-md-3 unicode" style="text-align: right;">Assign</label> -->
-                                <div class="col-md-2">
+                                <div class="col-md-3">
                                     <h6 style="font-weight:bold;font-size:13px;">Join Date</h6>
                                 </div>
-                                <div class="col-md-8">
+                                <div class="col-md-9">
                                     <input type="text" name="join_date" class="form-control unicode" id="join_date" placeholder="1-01-2021"  value="{{ old('date_of_birth',$employees->join_date) }}">
 
                                 </div>
@@ -638,11 +650,11 @@
                         </div>
                         <div class="col-md-6">
                                  <div class="row">
-                                <div class="col-md-2">
+                                <div class="col-md-3">
                                     <h6 style="font-weight:bold;font-size:13px;" id="assign_label">Branch</h6>
                                 </div>
                                 <!-- <label class="col-md-3 unicode" id="assign_label" style="text-align: right;">Assign Date</label> -->
-                                <div class="col-md-8">
+                                <div class="col-md-9">
                                        <select class="form-control" name="branch" id="branch">
                                         <option value="">Branch</option>
                                         @foreach($branchs as $branch)
@@ -673,9 +685,9 @@
                             </div>
                         </div>
                           <div class="col-md-6">
-                            <div class="row">
+                            <div class="row" id="isHostel">
                                 <!-- <label class="col-md-3 unicode" style="text-align: right;">Assign</label> -->
-                                <div class="col-md-2">
+                                <div class="col-md-3">
                                     <h6 style="font-weight:bold;font-size:13px;">isHostel</h6>
                                 </div>
                                  <div class="col-md-2 ">
@@ -706,11 +718,11 @@
                         <div class="col-md-6">
                             <div class="row">
                                 <!-- <label class="col-md-3 unicode" style="text-align: right;">Assign</label> -->
-                                <div class="col-md-2">
+                                <div class="col-md-3">
                                     <h6 style="font-weight:bold;font-size:13px;">Location</h6>
                                 </div>
-                                <div class="col-md-8">
-                                    <input type="text" name="hostel_location" class="form-control unicode" value="{{$employees->hostel_location}}">
+                                <div class="col-md-9">
+                                    <input type="text" name="hostel_location" class="form-control unicode" value="{{$employees->hostel_location}}" id="location">
 
                                 </div>
                             </div>
@@ -722,11 +734,11 @@
                         <div class="col-md-6">
                             <div class="row">
                                 <!-- <label class="col-md-3 unicode" style="text-align: right;">Assign</label> -->
-                                <div class="col-md-2">
+                                <div class="col-md-3">
                                     <h6 style="font-weight:bold;font-size:13px;">Home No</h6>
                                 </div>
-                                <div class="col-md-8">
-                                    <input type="text" name="home_no" class="form-control unicode" value="{{$employees->home_no}}">
+                                <div class="col-md-9">
+                                    <input type="text" name="home_no" class="form-control unicode" value="{{$employees->home_no}}" id="home_no">
 
                                 </div>
                             </div>
@@ -738,7 +750,7 @@
                                     <h6 style="font-weight:bold;font-size:13px;">Room No</h6>
                                 </div>
                                 <div class="col-md-8">
-                                    <input type="text" name="room_no" class="form-control unicode" value="{{$employees->room_no}}">
+                                    <input type="text" name="room_no" class="form-control unicode" value="{{$employees->room_no}}" id="room_no">
 
                                 </div>
                             </div>
@@ -760,18 +772,25 @@
                             </div>
                         </div>
                           <div class="col-md-6">
-                           <!--  <div class="row">
+                          <div class="row">
                                
-                                <div class="col-md-2">
-                                    <h6 style="font-weight:bold;font-size:13px;">Experince</h6>
+                                <div class="col-md-3">
+                                    <h6 style="font-weight:bold;font-size:13px;">Employment Type</h6>
                                 </div>
-                                  <div class="col-md-8">
-                                      <input type="text" name="experience" class="form-control unicode"> 
+                                  <div class="col-md-9">
+                                       <select class="form-control unicode" name="employment_type">
+                                        <option value="">Select</option>
+                                        <option value="1" @if($employees->employment_type==='1') selected='selected' @endif>New</option>
+                                        <option value="2"  @if($employees->employment_type==='2') selected='selected' @endif>Rejoin</option>
+                                        <option value="3"  @if($employees->employment_type==='3') selected='selected' @endif>On Job Training</option>
+                                        <option value="4"  @if($employees->employment_type==='4') selected='selected' @endif>Probation</option>
+                                        <option value="5"  @if($employees->employment_type==='5') selected='selected' @endif>Permanent</option>
+                                    </select> 
                                 </div>
 
-                            </div> -->
+                            </div>
                         </div>
-                    </div>
+                    </div><br>
 
 
                     <div style="width: 100%">
@@ -1264,6 +1283,7 @@
     <script type="text/javascript" src="{{ asset('select2/js/select2.min.js') }}"></script>
     <script type="text/javascript">
         $(document).ready(function(){
+
             var ss = $('input[name="isHostel"]:checked').val();
                 if (ss == "No") {
                    $("#firstradio").hide();
@@ -1272,6 +1292,24 @@
                     $("#firstradio").show();
                    $("#secondradio").show();
                 }
+
+                 $('#isHostel').on('click', function () {
+                    var value = $("[name=isHostel]:checked").val();
+
+                     if (value == "No") {
+                           $("#firstradio").hide();
+                           $("#secondradio").hide();
+                           $('#hostel_sdate').val("");
+                           $('#location').val("");
+                           $('#home_no').val("");
+                            $('#room_no').val("");
+                        }else if (value == "Yes") {
+                            $("#firstradio").show();
+                           $("#secondradio").show();
+                        }
+                })
+
+
                $("#cust_next").click(function(){
                     
                         // alert("HI");

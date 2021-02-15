@@ -4,7 +4,22 @@
 @section('title', 'Employee')
 
 @section('content_header')
-
+<style type="text/css">
+     .select2-container .select2-selection--single {
+    box-sizing: border-box;
+    cursor: pointer;
+    display: block;
+    height: 35px;
+    user-select: none;
+    -webkit-user-select: none; }
+    .select2-container--default .select2-selection--single .select2-selection__arrow {
+    height: 30px;
+    position: absolute;
+    top: 2px;
+    right: 0px;
+    left: 270px;
+    width: 100px; }
+</style>
 
 @stop
 
@@ -617,10 +632,10 @@
                         <div class="col-md-6">
                             <div class="row">
                                 <!-- <label class="col-md-3 unicode" style="text-align: right;">Assign</label> -->
-                                <div class="col-md-2">
+                                <div class="col-md-3">
                                     <h6 style="font-weight:bold;font-size:13px;">Join Date*</h6>
                                 </div>
-                                <div class="col-md-8">
+                                <div class="col-md-9">
                                     <input type="text" name="join_date" class="form-control unicode" id="join_date" placeholder="1-01-2021">
 
                                 </div>
@@ -638,22 +653,24 @@
                                 </div>
                                 <!-- <label class="col-md-3 unicode" id="assign_label" style="text-align: right;">Assign Date</label> -->
                                 <div class="col-md-8">
-                                     <select class="form-control" name="department" id="department">
-                                        <option value="">Department</option>
+                                     <select class="livesearch form-control" name="department"></select>
+
+                                    <!--  <select class="form-control" name="department" id="department"> -->
+                                       <!--  <option value="">Department</option>
                                         @foreach ($departments as $department )
                                           <option  value="{{$department->id}}">{{$department->name}}</option>
                                         @endforeach
-                                    </select>   
+                                    </select>    -->
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-6">
                                  <div class="row">
-                                <div class="col-md-2">
+                                <div class="col-md-3">
                                     <h6 style="font-weight:bold;font-size:13px;" id="assign_label">Branch*</h6>
                                 </div>
                                 <!-- <label class="col-md-3 unicode" id="assign_label" style="text-align: right;">Assign Date</label> -->
-                                <div class="col-md-8">
+                                <div class="col-md-9">
                                       <select class="form-control" name="branch" id="branch">
                                         <option value="">Branch</option>
                                         @foreach ($branchs as $branch )
@@ -674,27 +691,28 @@
                                 </div>
                                 <!-- <label class="col-md-3 unicode" id="appointment_label" style="text-align: right;">Appoint Date</label> -->
                                 <div class="col-md-8">
-                                      <select class="form-control" name="position" id="rank">
+                                    <select class="livesearchrank form-control" name="position"></select>
+                                     <!--  <select class="form-control" name="position" id="rank">
                                         <option value="">Rank</option>
                                         @foreach ($positions as $position )
                                           <option  value="{{$position->id}}">{{$position->name}}</option>
                                         @endforeach
-                                    </select>   
+                                    </select>   --> 
                                 </div>
                             </div>
                         </div>
                           <div class="col-md-6">
-                            <div class="row">
+                            <div class="row" id="isHostel">
                                 <!-- <label class="col-md-3 unicode" style="text-align: right;">Assign</label> -->
-                                <div class="col-md-2">
+                                <div class="col-md-3">
                                     <h6 style="font-weight:bold;font-size:13px;">isHostel*</h6>
                                 </div>
                                   <div class="col-md-2 {{ $errors->first('gender', 'has-error') }}">
-                                    <input type="radio" name="isHostel" value="Yes" > <small>Yes</small>
+                                    <input type="radio" name="isHostel" value="Yes" id="isHostel"> <small>Yes</small>
                                     
                                 </div>   
                                 <div class="col-md-2">
-                                    <input type="radio" name="isHostel" value="No" checked> <small>No</small>
+                                    <input type="radio" name="isHostel" value="No" checked id="isHostel"> <small>No</small>
                                 </div> 
                             </div>
                         </div>
@@ -716,10 +734,10 @@
                         <div class="col-md-6" >
                             <div class="row">
                                 <!-- <label class="col-md-3 unicode" style="text-align: right;">Assign</label> -->
-                                <div class="col-md-2">
+                                <div class="col-md-3">
                                     <h6 style="font-weight:bold;font-size:13px;">Location</h6>
                                 </div>
-                                <div class="col-md-8">
+                                <div class="col-md-9">
                                     <input type="text" name="hostel_location" class="form-control unicode">
 
                                 </div>
@@ -744,10 +762,10 @@
                         <div class="col-md-6">
                             <div class="row">
                                 <!-- <label class="col-md-3 unicode" style="text-align: right;">Assign</label> -->
-                                <div class="col-md-2">
+                                <div class="col-md-3">
                                     <h6 style="font-weight:bold;font-size:13px;">Room No</h6>
                                 </div>
-                                <div class="col-md-8">
+                                <div class="col-md-9">
                                     <input type="text" name="room_no" class="form-control unicode">
 
                                 </div>
@@ -770,18 +788,25 @@
                             </div>
                         </div>
                           <div class="col-md-6">
-                           <!--  <div class="row">
+                            <div class="row">
                                
-                                <div class="col-md-2">
-                                    <h6 style="font-weight:bold;font-size:13px;">Experince</h6>
+                                <div class="col-md-3">
+                                    <h6 style="font-weight:bold;font-size:13px;">Employment Type</h6>
                                 </div>
-                                  <div class="col-md-8">
-                                      <input type="text" name="experience" class="form-control unicode"> 
+                                  <div class="col-md-9">
+                                       <select class="form-control unicode" name="employment_type">
+                                        <option value="">Select</option>
+                                        <option value="1">New</option>
+                                        <option value="2">Rejoin</option>
+                                        <option value="3">On Job Training</option>
+                                        <option value="4">Probation</option>
+                                        <option value="5">Permanent</option>
+                                    </select> 
                                 </div>
 
-                            </div> -->
+                            </div>
                         </div>
-                    </div>
+                    </div><br>
 
 
                     <div style="width: 100%">
@@ -951,7 +976,7 @@
     @section('css')
     <link id="bsdp-css" href="{{ asset('css/bootstrap-datepicker3.min.css') }}" rel="stylesheet">
 
-    <link rel="stylesheet" href="{{ asset('select2/css/select2.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('select2/css/select2.min.css') }}"/>
     <style>
         /* ------------------- */
         /* TEMPLATE        -- */
@@ -1267,10 +1292,11 @@
 
 
     @section('js')
- <script src="{{ asset('frontend/vendors/jquery/jquery-3.2.1.min.js')}}"></script>
+<script src="{{ asset('frontend/vendors/jquery/jquery-3.2.1.min.js')}}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
-    <script src="{{ asset('js/bootstrap-datepicker.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('select2/js/select2.min.js') }}"></script>
+<script src="{{ asset('js/bootstrap-datepicker.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('select2/js/select2.min.js') }}"></script>
+
     <script type="text/javascript">
         $(document).ready(function(){
 
@@ -1282,6 +1308,18 @@
                     $("#firstradio").show();
                    $("#secondradio").show();
                 }
+
+                 $('#isHostel').on('click', function () {
+                    var value = $("[name=isHostel]:checked").val();
+
+                     if (value == "No") {
+                           $("#firstradio").hide();
+                           $("#secondradio").hide();
+                        }else if (value == "Yes") {
+                            $("#firstradio").show();
+                           $("#secondradio").show();
+                        }
+                })
                 $("#cust_next").click(function(){
                     var name = $("#name").val();
                     var gender = $("#gender").val();
@@ -1439,6 +1477,51 @@
 
          
 });
+
+
+         $(function() {
+            $('.livesearch').select2({
+            placeholder: 'Select Department',
+            ajax: {
+                url: "<?php echo(route("ajax-autocomplete-department")) ?>",
+                dataType: 'json',
+                delay: 250,
+                processResults: function (data) {
+                    return {
+                        results: $.map(data, function (item) {
+                            return {
+                                text: item.name,
+                                id: item.id
+                            }
+                        })
+                    };
+                },
+                cache: true
+            }
+        });
+        });
+
+          $(function() {
+            $('.livesearchrank').select2({
+            placeholder: 'Select Rank',
+            ajax: {
+                url: "<?php echo(route("ajax-autocomplete-rank")) ?>",
+                dataType: 'json',
+                delay: 250,
+                processResults: function (data) {
+                    return {
+                        results: $.map(data, function (item) {
+                            return {
+                                text: item.name,
+                                id: item.id
+                            }
+                        })
+                    };
+                },
+                cache: true
+            }
+        });
+        });
 
 
     </script>
