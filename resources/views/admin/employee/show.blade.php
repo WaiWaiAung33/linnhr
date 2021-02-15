@@ -265,11 +265,12 @@
                 <tr>
                     <td>Location<span style="padding-left: 155px">{{  $employees->hostel_location ? $employees->hostel_location : "-"}} </span></td>
                 </tr>
+                
                  <tr>
-                    <td>Room No<span style="padding-left: 150px">{{  $employees->room_no ? $employees->room_no : "-"}}</span></td>
+                    <td>Hostel Home<span style="padding-left: 125px">{{$employees->viewHostel->name ? $employees->viewHostel->name : '-' }} </span></td>
                 </tr>
                  <tr>
-                    <td>Home No<span style="padding-left: 150px">{{  $employees->home_no ? $employees->home_no : "-"}} </span></td>
+                    <td>Room No<span style="padding-left: 150px">{{  $employees->viewRoom->room_no ? $employees->viewRoom->room_no : "-"}}</span></td>
                 </tr>
                  <tr>
                     <td>Start Date<span style="padding-left: 145px">{{  $employees->hostel_sdate ? $employees->hostel_sdate : "-"}} </span></td>

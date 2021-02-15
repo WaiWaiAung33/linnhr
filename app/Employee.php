@@ -38,5 +38,15 @@ class Employee extends Model
     {
         return $this->hasMany('App\Salary','emp_id');
     }
+
+     public function viewHostel()
+    {
+        return $this->hasOne('App\Hostel','id','home_no');
+    }
+
+     public function viewRoom()
+    {
+        return $this->hasOne('App\Room','id','room_no');
+    }
     
 }

@@ -55,7 +55,7 @@
                
         <label class="col-md-2 unicode">Full Address</label>
         <div class="col-md-5 {{ $errors->first('name', 'has-error') }}">
-           <textarea name="full_address" rows="4" class="form-control unicode" id="full_address" placeholder="Paung Long 4 street,Pyinmana"></textarea>
+           <textarea name="full_address" rows="4" class="form-control unicode" id="full_address" placeholder="Paung Long 4 street,Pyinmana" readonly></textarea>
          
         </div>    
     </div><br>
