@@ -632,10 +632,10 @@
                         <div class="col-md-6">
                             <div class="row">
                                 <!-- <label class="col-md-3 unicode" style="text-align: right;">Assign</label> -->
-                                <div class="col-md-2">
+                                <div class="col-md-3">
                                     <h6 style="font-weight:bold;font-size:13px;">Join Date*</h6>
                                 </div>
-                                <div class="col-md-8">
+                                <div class="col-md-9">
                                     <input type="text" name="join_date" class="form-control unicode" id="join_date" placeholder="1-01-2021">
 
                                 </div>
@@ -666,11 +666,11 @@
                         </div>
                         <div class="col-md-6">
                                  <div class="row">
-                                <div class="col-md-2">
+                                <div class="col-md-3">
                                     <h6 style="font-weight:bold;font-size:13px;" id="assign_label">Branch*</h6>
                                 </div>
                                 <!-- <label class="col-md-3 unicode" id="assign_label" style="text-align: right;">Assign Date</label> -->
-                                <div class="col-md-8">
+                                <div class="col-md-9">
                                       <select class="form-control" name="branch" id="branch">
                                         <option value="">Branch</option>
                                         @foreach ($branchs as $branch )
@@ -704,7 +704,7 @@
                           <div class="col-md-6">
                             <div class="row" id="isHostel">
                                 <!-- <label class="col-md-3 unicode" style="text-align: right;">Assign</label> -->
-                                <div class="col-md-2">
+                                <div class="col-md-3">
                                     <h6 style="font-weight:bold;font-size:13px;">isHostel*</h6>
                                 </div>
                                   <div class="col-md-2 {{ $errors->first('gender', 'has-error') }}">
@@ -734,10 +734,10 @@
                         <div class="col-md-6" >
                             <div class="row">
                                 <!-- <label class="col-md-3 unicode" style="text-align: right;">Assign</label> -->
-                                <div class="col-md-2">
+                                <div class="col-md-3">
                                     <h6 style="font-weight:bold;font-size:13px;">Location</h6>
                                 </div>
-                                <div class="col-md-8">
+                                <div class="col-md-9">
                                     <input type="text" name="hostel_location" class="form-control unicode">
 
                                 </div>
@@ -762,10 +762,10 @@
                         <div class="col-md-6">
                             <div class="row">
                                 <!-- <label class="col-md-3 unicode" style="text-align: right;">Assign</label> -->
-                                <div class="col-md-2">
+                                <div class="col-md-3">
                                     <h6 style="font-weight:bold;font-size:13px;">Room No</h6>
                                 </div>
-                                <div class="col-md-8">
+                                <div class="col-md-9">
                                     <input type="text" name="room_no" class="form-control unicode">
 
                                 </div>
@@ -788,18 +788,25 @@
                             </div>
                         </div>
                           <div class="col-md-6">
-                           <!--  <div class="row">
+                            <div class="row">
                                
-                                <div class="col-md-2">
-                                    <h6 style="font-weight:bold;font-size:13px;">Experince</h6>
+                                <div class="col-md-3">
+                                    <h6 style="font-weight:bold;font-size:13px;">Employment Type</h6>
                                 </div>
-                                  <div class="col-md-8">
-                                      <input type="text" name="experience" class="form-control unicode"> 
+                                  <div class="col-md-9">
+                                       <select class="form-control unicode" name="employment_type">
+                                        <option value="">Select</option>
+                                        <option value="1">New</option>
+                                        <option value="2">Rejoin</option>
+                                        <option value="3">On Job Training</option>
+                                        <option value="4">Probation</option>
+                                        <option value="5">Permanent</option>
+                                    </select> 
                                 </div>
 
-                            </div> -->
+                            </div>
                         </div>
-                    </div>
+                    </div><br>
 
 
                     <div style="width: 100%">

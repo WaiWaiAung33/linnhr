@@ -278,6 +278,22 @@
                 <tr>
                     <td>Expected Salary<span style="padding-left: 110px">{{$employees->exp_salary ? $employees->exp_salary : "-"}}</span></td>
                 </tr>
+
+                 <tr>
+                    <td>Employment Type<span style="padding-left: 90px">
+                      @if($employees->employment_type == '1')
+                      New
+                      @elseif($employees->employment_type == '2')
+                      Rejoin
+                      @elseif($employees->employment_type == '3')
+                      On Join Training
+                      @elseif($employees->employment_type == '4')
+                      Probation
+                      @elseif($employees->employment_type == '5')
+                      Permanent
+                      @endif
+                    </span></td>
+                </tr>
                
                
             </tbody>

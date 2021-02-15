@@ -239,7 +239,8 @@ class EmployeeController extends Controller
             'hostel_location'=>$request->hostel_location,
             'room_no'=>$request->room_no,
             'home_no'=>$request->home_no,
-            'hostel_sdate'=>$request->hostel_sdate
+            'hostel_sdate'=>$request->hostel_sdate,
+            'employment_type'=>$request->employment_type,
         ]
         );
 
@@ -422,7 +423,8 @@ class EmployeeController extends Controller
             'hostel_location'=>$request->hostel_location,
             'room_no'=>$request->room_no,
             'home_no'=>$request->home_no,
-            'hostel_sdate'=>$request->hostel_sdate
+            'hostel_sdate'=>$request->hostel_sdate,
+            'employment_type'=>$request->employment_type,
             
 
         ]);
