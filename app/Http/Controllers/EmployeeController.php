@@ -1,7 +1,5 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use App\Employee;
 use App\HoselEmployee;
 use Illuminate\Http\Request;
@@ -123,7 +121,8 @@ class EmployeeController extends Controller
 
         }
 
-         $police_reco_photo = "";
+
+$police_reco_photo = "";
         if ($file = $request->file('police_reco')) {
            
             $police_reco = $request->file('police_reco');
@@ -302,7 +301,10 @@ class EmployeeController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Dis
+
+
+play the specified resource.
      *
      * @param  \App\Employee  $employee
      * @return \Illuminate\Http\Response
@@ -401,7 +403,10 @@ class EmployeeController extends Controller
             $cvfile_photo = $fileName;
             // dd($cvfile_photo);
             // $extension = $file->getClientOriginalExtension();
-            // $var = Str::random(32) . '.' . $extension;
+            // $var = Str::random(32) . '.' .
+
+
+$extension;
             // $file->move($destinationPath, $var);
             // $cvfile_photo = $var;
             // dd($cvfile_photo);
@@ -457,6 +462,39 @@ class EmployeeController extends Controller
               $user->assignRole("Employee");
           }
 
+          if ($request->isHostel == 'Yes') {
+            $hostelemployee = HoselEmployee::where('emp_id',$employees->id)->get();
+            // dd($hostelemployee);
+            if ($hostelemployee->count()>0) {
+                 $hostelemployee = User::find($hostelemployee[0]->id);
+                  $arr=[
+                         'hostel_id' => $request->home_no,
+                         'room_id' => $request->room_no,
+                        'start_date' => $request->hostel_sdate,
+                        'full_address' => $request->hostel_location,
+                        'name'=>$request->name,                           
+                        'branch_id'=>$request->branch,
+                        'dep_id'=>$request->department,
+                        'position_id'=>$request->position
+                      ];
+
+                  $hostelemployee->fill($arr)->save();
+            }else{
+                $hostelemployee = HoselEmployee::create(
+                [
+                  'emp_id'=>  $id,
+                        'hostel_id' => $request->home_no,
+                        'room_id' => $request->room_no,
+                        'start_date' => $request->hostel_sdate,
+                        'full_address' => $request->hostel_location,
+                        'name'=>$request->name,                           
+                        'branch_id'=>$request->branch,
+                        'dep_id'=>$request->department,
+                        'position_id'=>$request->position
+                ]
+              );
+            }
+
          $employees = $employees->update([
             'user_id'=>$user_id,
             'emp_id'=>$request->emp_id,
@@ -502,7 +540,9 @@ class EmployeeController extends Controller
             'exp_company'=>$request->exp_company,
             'exp_position'=>$request->exp_position,
             'exp_location'=>$request->exp_location,
-            'exp_date_from'=>$request->exp_date_from,
+
+
+'exp_date_from'=>$request->exp_date_from,
             'exp_date_to'=>$request->exp_date_to,
             'skills'=>$request->skills,
             'proficiency'=>$request->proficiency,
@@ -520,40 +560,7 @@ class EmployeeController extends Controller
         ]);
 
            
-           if ($request->isHostel == 'Yes') {
-            $hostelemployee = HoselEmployee::all();
-            foreach ($hostelemployee as $key => $value) {
-                if ($value->emp_id == $id) {
-                    $hostelid = $value->id; 
-                    $hostelempid = $value->emp_id;   
-                    $hostelemployee = HoselEmployee::find($hostelid);
-                            // dd($hostelemployee);
-                            $hostelemployee=$hostelemployee->update([
-                                'emp_id'=>$hostelempid,
-                                'hostel_id' => $request->home_no,
-                                'room_id' => $request->room_no,
-                                'start_date' => $request->hostel_sdate,
-                                'full_address' => $request->hostel_location,
-                                'name'=>$request->name,                           
-                                'branch_id'=>$request->branch,
-                                'dep_id'=>$request->department,
-                                'position_id'=>$request->position
-                            ]);
-                     }else{
-                        $hostelemployee=HoselEmployee::create([
-                            'emp_id'=>  $id,
-                            'hostel_id' => $request->home_no,
-                            'room_id' => $request->room_no,
-                            'start_date' => $request->hostel_sdate,
-                            'full_address' => $request->hostel_location,
-                            'name'=>$request->name,                           
-                            'branch_id'=>$request->branch,
-                            'dep_id'=>$request->department,
-                            'position_id'=>$request->position
-                        ]);
-                     }
-                }
-                  
+       
           
                         // dd($hostelemployee);
          }
@@ -602,7 +609,10 @@ class EmployeeController extends Controller
       
       $employee = new Employee();
 
-       $employee = $employee->leftjoin('department','department.id','=','employee.dep_id')
+       $employee = $employee->leftjoin('department','department.id','=','emp
+
+
+loyee.dep_id')
                             ->leftjoin('branch','branch.id','=','employee.branch_id')
                        ->select(
                         'department.name',
@@ -730,7 +740,9 @@ class EmployeeController extends Controller
           }
           $employees = $employees->update([
             'user_id'=>$user_id
-          ]);
+
+
+]);
           return redirect()->route('employee.index')->with('success','Employee updated successfully');;
     }
 
