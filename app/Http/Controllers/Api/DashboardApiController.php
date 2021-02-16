@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Employee;
 use App\Department;
 use App\Branch;
+use App\Position;
 use Carbon\Carbon;
 use DB;
 
@@ -34,7 +35,7 @@ class DashboardApiController extends Controller
                      ->get();
         $maleTotal = Employee::where('gender','Male')->count();
         $femaleTotal = Employee::where('gender','Female')->count();
-
-        return response(['employee' => ['male'=>$maleTotal,'female'=>$femaleTotal],'branch'=>$branches,'department'=>$department,'message'=>"Successfully login",'status'=>1]);
+        $positions = Position::all();
+        return response(['employee' => ['male'=>$maleTotal,'female'=>$femaleTotal],'branch'=>$branches,'department'=>$department,'positions'=>$positions,'message'=>"Successfully login",'status'=>1]);
     }
 }
