@@ -29,7 +29,7 @@ Route::group(['middleware' => 'auth'], function () {
 
 
 	Route::get('dashboard','HomeController@index')->name('dashboard');
-	Route::resource('branch','SettingController');
+	Route::resource('branch','BranchController');
 	Route::resource('department','DepartmentController');
 	Route::resource('position','PositionController');
 	Route::resource('employee','EmployeeController');
