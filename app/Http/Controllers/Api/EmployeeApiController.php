@@ -89,7 +89,7 @@ class EmployeeApiController extends Controller
                                                     'employee.otherfile',
                                                  );
                             if ($request->keyword != '') {
-                                $employee = $employee->where('employee.name','like','%'.$request->keyword.'%');
+                                $employee = $employee->where('employee.name','like','%'.$request->keyword.'%')->orwhere('employee.phone_no','like','%'.$request->keyword.'%')->orwhere('emp_id','like','%'.$request->keyword.'%');
                             }
                             if ($request->branch_id != '') {
                                 $employee = $employee->where('employee.branch_id',$request->branch_id);
@@ -98,6 +98,18 @@ class EmployeeApiController extends Controller
                                 
                                 $employee = $employee->where('employee.dep_id',$request->dept_id);
                             }
+                            if ($request->position_id != '') {
+                                $employee = $employee->where('position_id',$request->position_id);
+                            }
+
+                            if ($request->gender != '') {
+                                $employee = $employee->where('gender',$request->gender);
+                            }
+
+                            if ($request->ishostel != '') {
+                                $employee = $employee->where('hostel',$request->ishostel);
+                            }
+
                             $employee = $employee->orderBy('employee.emp_id','asc')->limit(10)->paginate(10);
                             return response(['employees' => $employee,'message'=>"Successfully login",'status'=>1]); 
                         }else{
@@ -161,13 +173,24 @@ class EmployeeApiController extends Controller
                                                     'employee.otherfile',
                                                  );
                             if ($request->keyword != '') {
-                                $employee = $employee->where('employee.name','like','%'.$request->keyword.'%');
+                                $employee = $employee->where('employee.name','like','%'.$request->keyword.'%')->orwhere('employee.phone_no','like','%'.$request->keyword.'%')->orwhere('emp_id','like','%'.$request->keyword.'%');
                             }
                             if ($request->branch_id != '') {
                                 $employee = $employee->where('employee.branch_id',$request->branch_id);
                             }
                             if ($request->dept_id != '') {
                                 $employee = $employee->where('employee.dep_id',$request->dept_id);
+                            }
+                            if ($request->position_id != '') {
+                                $employee = $employee->where('position_id',$request->position_id);
+                            }
+
+                            if ($request->gender != '') {
+                                $employee = $employee->where('gender',$request->gender);
+                            }
+
+                            if ($request->ishostel != '') {
+                                $employee = $employee->where('hostel',$request->ishostel);
                             }
                             $employee = $employee->orderBy('employee.emp_id','asc')->get();
                             return response(['employees' => $employee,'message'=>"Successfully login",'status'=>1]); 
