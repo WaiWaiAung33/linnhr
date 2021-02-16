@@ -486,7 +486,8 @@ class EmployeeController extends Controller
                     // dd($hostelempid);
                      }
                     }
-             if ($hostelid) {
+                    dd($hostelid);
+                 if ($hostelid) {
                           $hostelemployee = HoselEmployee::find($hostelid);
                             // dd($hostelemployee);
                             $hostelemployee=$hostelemployee->update([
