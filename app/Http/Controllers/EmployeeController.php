@@ -15,10 +15,12 @@ use App\NRCCode;
 use App\NRCState;
 use App\Room;
 use App\Hostel;
+use App\User;
 use File;
 use Illuminate\Support\Str;
 use DB;
 use Validator;
+use Illuminate\Support\Facades\Hash;
 
 class EmployeeController extends Controller
 {
@@ -96,8 +98,9 @@ class EmployeeController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->exp_date_from);
-        $destinationPath = public_path() . '/uploads/employeePhoto/';
+       DB::beginTransaction();
+       try {
+           $destinationPath = public_path() . '/uploads/employeePhoto/';
         $policePath = public_path() . '/uploads/policestationrecomPhoto/';
         $wardPath = public_path() . '/uploads/wardrecoPhoto/';
         $attachPath = public_path() . '/uploads/attachfile';
@@ -189,9 +192,20 @@ class EmployeeController extends Controller
 
         $month = date('m',strtotime($request->join_date));
         // dd($date);
+                $user = new User();
+                if($request->phone_no!=''){
+                   $user = $user->create(
+                    [
+                      'loginId'=>$request->phone_no,
+                      'name'=>$request->name,
+                      'password'=>Hash::make('linn'),
+                    ]
+                  );
 
-
+                  $user->assignRole("Employee");
+                }
                     $employee=Employee::create([
+                    'user_id'=>$user->id,
                     'emp_id'=>$request->emp_id,
                     'branch_id'=>$request->branch,
                     'dep_id'=>$request->department,
@@ -251,12 +265,14 @@ class EmployeeController extends Controller
                     'employment_type'=>$request->employment_type,
                 ]
                 );
-
-                    
-                 return redirect()->route('employee.index')->with('success','Successfully');
-       
-
-    
+        
+        DB::commit();
+       } catch (Exception $e) {
+           dd($e);
+          DB::rollback();
+          return redirect()->route('employee.index')->with('success','Successfully');
+       }
+        return redirect()->route('employee.index')->with('success','Successfully');
     }
 
     /**

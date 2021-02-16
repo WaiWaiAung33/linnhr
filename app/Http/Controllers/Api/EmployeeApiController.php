@@ -12,6 +12,7 @@ use App\NRCState;
 use App\Salary;
 use Validator;
 
+
 class EmployeeApiController extends Controller
 {
     public function employee(Request $request)

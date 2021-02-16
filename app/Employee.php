@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Employee extends Model
 {
     protected $table ='employee';
-    protected $fillable =['emp_id','branch_id','dep_id','position_id','name','gender','marrical_status','father_name','phone_no','nrc_code','nrc_state','nrc_status','nrc','fullnrc','date_of_birth','join_date','join_month','address','city','township','qualification','salary','photo','race','religion','email','fPhone','experience','exp_salary','hostel','graduation','degree','level','course_title','exp_company','exp_position','exp_location','exp_date_from','exp_date_to','skills','proficiency','police_reco','ward_reco','cvfile','otherfile','hostel_location','room_no','home_no','hostel_sdate','active','employment_type'];
+    protected $fillable =['user_id','emp_id','branch_id','dep_id','position_id','name','gender','marrical_status','father_name','phone_no','nrc_code','nrc_state','nrc_status','nrc','fullnrc','date_of_birth','join_date','join_month','address','city','township','qualification','salary','photo','race','religion','email','fPhone','experience','exp_salary','hostel','graduation','degree','level','course_title','exp_company','exp_position','exp_location','exp_date_from','exp_date_to','skills','proficiency','police_reco','ward_reco','cvfile','otherfile','hostel_location','room_no','home_no','hostel_sdate','active','employment_type'];
 
     public function viewBranch()
     {
