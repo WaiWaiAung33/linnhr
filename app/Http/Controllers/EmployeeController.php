@@ -96,7 +96,13 @@ class EmployeeController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->exp_date_from);
+        $rules = [
+                    'emp_id'=>'required',
+        ];
+        $validator = Validator::make($request->all(), $rules);
+         if ($validator->passes()){
+             DB::beginTransaction();
+             try{
         $destinationPath = public_path() . '/uploads/employeePhoto/';
         $policePath = public_path() . '/uploads/policestationrecomPhoto/';
         $wardPath = public_path() . '/uploads/wardrecoPhoto/';
@@ -251,11 +257,30 @@ class EmployeeController extends Controller
                     'employment_type'=>$request->employment_type,
                 ]
                 );
+                   // dd($employee);
 
-                    
-                 return redirect()->route('employee.index')->with('success','Successfully');
-       
+                    if ($employee->hostel == 'Yes') {
+                        $hostelemployee=HoselEmployee::create([
+                            'emp_id'=> $employee->id,
+                            'hostel_id' => $employee->home_no,
+                            'room_id' => $employee->room_no,
+                            'start_date' => $employee->hostel_sdate,
+                            'full_address' => $employee->hostel_location,
+                        ]);
+                        // dd($hostelemployee);
+                    }
+                   
+                    // dd($hostelemployee->emp_id);
+                DB::commit();
 
+             }catch (Exception $e) {
+                  DB::rollback();
+                    return redirect()->route('employee.index')->with('success','Successfully');
+             }
+              return redirect()->route('employee.index')->with('success','Successfully');
+         }else{
+            return redirect()->route('employee.create');
+         }
     
     }
 
@@ -304,8 +329,16 @@ class EmployeeController extends Controller
      */
     public function update(Request $request, $id)
     {
+         $rules = [
+                    'emp_id'=>'required',
+        ];
+        $validator = Validator::make($request->all(), $rules);
+         if ($validator->passes()){
+             DB::beginTransaction();
+             try{
 
         $employees = Employee::find($id);
+        // dd($employees);
         $destinationPath = public_path() . '/uploads/employeePhoto/';
         $policePath = public_path() . '/uploads/policestationrecomPhoto/';
         $wardPath = public_path() . '/uploads/wardrecoPhoto/';
@@ -442,7 +475,41 @@ class EmployeeController extends Controller
             
 
         ]);
-         return redirect()->route('employee.index')->with('success','Employee updated successfully');;
+
+           
+           if ($request->isHostel == 'Yes') {
+            $hostelemployee = HoselEmployee::all();
+            foreach ($hostelemployee as $key => $value) {
+                if ($value->emp_id == $id) {
+                    $hostelid = $value->id; 
+                    $hostelempid = $value->emp_id;
+                    // dd($hostelempid);
+                }
+            }
+            $hostelemployee = HoselEmployee::find($hostelid);
+             // dd($hostelemployee);
+                        $hostelemployee=$hostelemployee->update([
+                            'emp_id'=>$hostelempid,
+                            'hostel_id' => $request->home_no,
+                            'room_id' => $request->room_no,
+                            'start_date' => $request->hostel_sdate,
+                            'full_address' => $request->hostel_location,
+                        ]);
+                        // dd($hostelemployee);
+                    }
+                   
+                    // dd($hostelemployee->emp_id);
+                DB::commit();
+
+             }catch (Exception $e) {
+                  DB::rollback();
+                    return redirect()->route('employee.index')->with('success','Employee updated successfully');;
+             }
+               return redirect()->route('employee.index')->with('success','Employee updated successfully');;
+         }else{
+            return redirect()->route('employee.edit');
+         }
+        
     }
 
     /**
