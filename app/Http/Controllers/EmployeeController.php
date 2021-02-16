@@ -436,8 +436,8 @@ class EmployeeController extends Controller
             if($user->count()>0){
               $user = User::find($user[0]->id);
               $arr=[
-                    'loginId'=>$request->phone_no,
-                    'name'=>$request->name,
+                    'loginId'=>$employees->phone_no,
+                    'name'=>$employees->name,
                     'password'=>Hash::make('linn')
                   ];
 
@@ -448,8 +448,8 @@ class EmployeeController extends Controller
 
                $user = User::create(
                 [
-                  'loginId'=>$request->phone_no,
-                  'name'=>$request->name,
+                  'loginId'=>$employees->phone_no,
+                  'name'=>$employees->name,
                   'password'=>Hash::make('linn')
                 ]
               );
