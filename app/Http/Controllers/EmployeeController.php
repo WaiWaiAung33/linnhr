@@ -483,12 +483,7 @@ class EmployeeController extends Controller
                 if ($value->emp_id == $id) {
                     $hostelid = $value->id; 
                     $hostelempid = $value->emp_id;   
-                    // dd($hostelempid);
-                     }
-                    }
-                    dd($hostelid);
-                 if ($hostelid) {
-                          $hostelemployee = HoselEmployee::find($hostelid);
+                    $hostelemployee = HoselEmployee::find($hostelid);
                             // dd($hostelemployee);
                             $hostelemployee=$hostelemployee->update([
                                 'emp_id'=>$hostelempid,
@@ -497,7 +492,7 @@ class EmployeeController extends Controller
                                 'start_date' => $request->hostel_sdate,
                                 'full_address' => $request->hostel_location,
                             ]);
-                    }else {
+                     }else{
                         $hostelemployee=HoselEmployee::create([
                             'emp_id'=>  $hostelempid,
                             'hostel_id' => $request->home_no,
@@ -505,7 +500,9 @@ class EmployeeController extends Controller
                             'start_date' => $request->hostel_sdate,
                             'full_address' => $request->hostel_location,
                         ]);
-                    }
+                     }
+                }
+                  
           
                         // dd($hostelemployee);
          }
