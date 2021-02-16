@@ -482,21 +482,32 @@ class EmployeeController extends Controller
             foreach ($hostelemployee as $key => $value) {
                 if ($value->emp_id == $id) {
                     $hostelid = $value->id; 
-                    $hostelempid = $value->emp_id;
+                    $hostelempid = $value->emp_id;   
                     // dd($hostelempid);
-                }
-            }
-            $hostelemployee = HoselEmployee::find($hostelid);
-             // dd($hostelemployee);
-                        $hostelemployee=$hostelemployee->update([
-                            'emp_id'=>$hostelempid,
+                     }
+                    }
+             if ($hostelid) {
+                          $hostelemployee = HoselEmployee::find($hostelid);
+                            // dd($hostelemployee);
+                            $hostelemployee=$hostelemployee->update([
+                                'emp_id'=>$hostelempid,
+                                'hostel_id' => $request->home_no,
+                                'room_id' => $request->room_no,
+                                'start_date' => $request->hostel_sdate,
+                                'full_address' => $request->hostel_location,
+                            ]);
+                    }else {
+                        $hostelemployee=HoselEmployee::create([
+                            'emp_id'=>  $hostelempid,
                             'hostel_id' => $request->home_no,
                             'room_id' => $request->room_no,
                             'start_date' => $request->hostel_sdate,
                             'full_address' => $request->hostel_location,
                         ]);
-                        // dd($hostelemployee);
                     }
+          
+                        // dd($hostelemployee);
+         }
                    
                     // dd($hostelemployee->emp_id);
                 DB::commit();
