@@ -37,6 +37,7 @@ class EmployeeApiController extends Controller
                                                  ->leftJoin('position','position.id','=','employee.position_id')
                                                  ->leftJoin('nrccode','nrccode.id','=','employee.nrc_code')
                                                  ->leftJoin('nrcstate','nrcstate.id','=','employee.nrc_state')
+                                                 ->leftJoin('hostel','hostel.id','=','employee.home_no')
                                                  ->select(
                                                     'employee.id',
                                                     'employee.name',
@@ -88,6 +89,8 @@ class EmployeeApiController extends Controller
                                                     'employee.ward_reco',
                                                     'employee.police_reco',
                                                     'employee.otherfile',
+                                                    'hostel.name AS hostel_name',
+                                                    'employee.join_date'
                                                  );
                             if ($request->keyword != '') {
                                 $employee = $employee->where('employee.name','like','%'.$request->keyword.'%')->orwhere('employee.phone_no','like','%'.$request->keyword.'%')->orwhere('emp_id','like','%'.$request->keyword.'%');
