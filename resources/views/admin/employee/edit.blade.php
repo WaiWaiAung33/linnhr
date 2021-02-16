@@ -12,13 +12,7 @@
     height: 35px;
     user-select: none;
     -webkit-user-select: none; }
-    .select2-container--default .select2-selection--single .select2-selection__arrow {
-    height: 30px;
-    position: absolute;
-    top: 2px;
-    right: 0px;
-    left: 270px;
-    width: 100px; }
+   
 </style>
 @stop
 
