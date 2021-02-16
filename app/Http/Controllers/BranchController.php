@@ -55,7 +55,7 @@ class BranchController extends Controller
             'branch_color'=>$request->color_code
         ]
         );
-        return redirect()->route('branch.index')->with('success','Branch created successfully');;;
+        return redirect()->route('branch.index')->with('success','Branch created successfully');
     }
 
     /**

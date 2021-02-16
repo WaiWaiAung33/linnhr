@@ -344,6 +344,12 @@ return [
                     'icon' => 'fa fa-id-card',
                     'can'  => 'nrc-state-list'
          ],
+         [
+                    'text' => 'Setting',
+                    'url'  => 'setting',
+                    'icon' => 'fa fa-cogs',
+                    'can'  => 'setting'
+         ],
          ['header' => 'Account Setting'],
           [
             'text' => 'Login User',
