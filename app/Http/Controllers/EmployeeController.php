@@ -494,7 +494,7 @@ class EmployeeController extends Controller
                             ]);
                      }else{
                         $hostelemployee=HoselEmployee::create([
-                            'emp_id'=>  $hostelempid,
+                            'emp_id'=>  $id,
                             'hostel_id' => $request->home_no,
                             'room_id' => $request->room_no,
                             'start_date' => $request->hostel_sdate,
