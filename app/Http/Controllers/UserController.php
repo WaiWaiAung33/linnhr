@@ -18,9 +18,13 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
-        $data = User::orderBy('id','DESC')->paginate(5);
+        $data = new User();
+        if ($request->keyword != '') {
+            $data = $data->where('name','like','%'.$request->keyword.'%')->orwhere('email','like','%'.$request->keyword.'%')->orwhere('loginId','like','%'.$request->keyword.'%');
+        }
+        $data = $data->orderBy('id','asc')->paginate(10);
         return view('admin.users.index',compact('data'))
-            ->with('i', ($request->input('page', 1) - 1) * 5);
+            ->with('i', ($request->input('page', 1) - 1) * 10);
     }
     
     /**

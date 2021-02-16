@@ -9,16 +9,19 @@
 @stop
 
 @section('content')
-<div class="row">
-    <div class="col-lg-12 margin-tb">
-        <div class="pull-left">
-            {{-- <h2>Users Management</h2> --}}
+<?php
+        $keyword = isset($_GET['keyword'])?$_GET['keyword']:'';
+?>
+
+<a class="btn btn-success unicode" href="{{ route('users.create')}}" style="float: right;font-size: 13px"><i class="fas fa-plus"></i> Create New User</a>
+
+<form action="{{route('users.index')}}" method="get" accept-charset="utf-8" class="form-horizontal">
+     <div class="row">
+       <div class="col-md-3">                 
+          <input type="text" name="keyword" id="keyword" value="{{ old('keyword',$keyword) }}" class="form-control" placeholder="Search..." style="font-size: 13px">
         </div>
-        <div class="pull-right">
-            <a class="btn btn-success" href="{{ route('users.create') }}"> Create New User</a>
-        </div>
-    </div>
-</div>
+     </div>
+    </form>
 <br>
 
 @if ($message = Session::get('success'))
@@ -58,7 +61,7 @@
                 {!! Form::open(['method' => 'DELETE','route' => ['users.destroy', $user->id],'style'=>'display:inline']) !!}
                     {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
                 {!! Form::close() !!}
-            </td>
+            </td> 
           </tr>
          @endforeach
       </tbody>  
