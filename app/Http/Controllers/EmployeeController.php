@@ -427,8 +427,34 @@ class EmployeeController extends Controller
 
         $month = date('m',strtotime($request->join_date));
         // dd($date);
-      
+        $user = User::where("loginId",$employees->phone_no)->get();
+            // dd();
+            if($user->count()>0){
+              $user = User::find($user[0]->id);
+              $arr=[
+                    'loginId'=>$request->phone_no,
+                    'name'=>$request->name,
+                    'password'=>Hash::make('linn')
+                  ];
+
+              $user->fill($arr)->save();
+              $user_id=$user->id;
+              $user->assignRole("Employee");
+            }else{
+
+               $user = User::create(
+                [
+                  'loginId'=>$request->phone_no,
+                  'name'=>$request->name,
+                  'password'=>Hash::make('linn')
+                ]
+              );
+              $user_id=$user->id;
+              $user->assignRole("Employee");
+          }
+
          $employees = $employees->update([
+            'user_id'=>$user_id,
             'emp_id'=>$request->emp_id,
             'branch_id'=>$request->branch,
             'dep_id'=>$request->department,
@@ -525,9 +551,9 @@ class EmployeeController extends Controller
 
              }catch (Exception $e) {
                   DB::rollback();
-                    return redirect()->route('employee.index')->with('success','Employee updated successfully');;
+                    return redirect()->route('employee.index')->with('success','Employee updated successfully');
              }
-               return redirect()->route('employee.index')->with('success','Employee updated successfully');;
+               return redirect()->route('employee.index')->with('success','Employee updated successfully');
          }else{
             return redirect()->route('employee.edit');
          }
@@ -660,6 +686,40 @@ class EmployeeController extends Controller
         // dd($data);
         // $data =$data->select('name',DB::raw("CONCAT(nrc_code,'/',nrc_state,'(နိုင်)',nrc_no) as full_nrc"));
         return response()->json($data);
+    }
+
+    public function updateuser($id)
+    {
+        $employees = Employee::find($id);
+        $user = User::where("loginId",$employees->phone_no)->get();
+            // dd();
+            if($user->count()>0){
+              $user = User::find($user[0]->id);
+              $arr=[
+                    'loginId'=>$employees->phone_no,
+                    'name'=>$employees->name,
+                    'password'=>Hash::make('linn')
+                  ];
+
+              $user->fill($arr)->save();
+              $user_id=$user->id;
+              $user->assignRole("Employee");
+            }else{
+
+               $user = User::create(
+                [
+                  'loginId'=>$employees->phone_no,
+                  'name'=>$employees->name,
+                  'password'=>Hash::make('linn')
+                ]
+              );
+              $user_id=$user->id;
+              $user->assignRole("Employee");
+          }
+          $employees = $employees->update([
+            'user_id'=>$user_id
+          ]);
+          return redirect()->route('employee.index')->with('success','Employee updated successfully');;
     }
 
  

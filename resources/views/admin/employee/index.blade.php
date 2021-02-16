@@ -154,6 +154,8 @@
          </form>
 
   <p style="padding-top: 20px" class="unicode">Total record: {{$count}}</p>
+ 
+
     <div class="table-responsive unicode" style="font-size:14px;">
                 <table class="table table-bordered styled-table unicode">
                   <thead>
@@ -168,6 +170,7 @@
                         <th>Joined Date</th>
                         <th>Phone No</th>
                         <th>Status</th>
+                        <th></th>
                        <!--  <th>NRC</th>
                         <th>DOB</th> -->
                         <!-- <th>Action</th> -->
@@ -220,7 +223,9 @@
                                <span class="slider round"></span>
                            </label>
                             </td>
-                           
+                           <td>
+                              <a class="btn btn-warning btn-sm" style="margin-right: 10px;font-size: 13px" href="{{route('user.update',$employee->id)}}"></i>Update</a><br>
+                           </td>
                            
                         </tr>
                         
