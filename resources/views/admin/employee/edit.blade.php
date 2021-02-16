@@ -4,7 +4,22 @@
 @section('title', 'Employee')
 
 @section('content_header')
-
+<style type="text/css">
+     .select2-container .select2-selection--single {
+    box-sizing: border-box;
+    cursor: pointer;
+    display: block;
+    height: 35px;
+    user-select: none;
+    -webkit-user-select: none; }
+    .select2-container--default .select2-selection--single .select2-selection__arrow {
+    height: 30px;
+    position: absolute;
+    top: 2px;
+    right: 0px;
+    left: 270px;
+    width: 100px; }
+</style>
 @stop
 
 @section('content')
@@ -638,8 +653,7 @@
                                 </div>
                                 <!-- <label class="col-md-3 unicode" id="assign_label" style="text-align: right;">Assign Date</label> -->
                                 <div class="col-md-8">
-                                    <select class="form-control" name="department" id="department">
-                                        <option value="">Department</option>
+                                   <select class="livesearch form-control" name="department">
                                         
                                         @foreach($departments as $department)
                                          <option value="{{$department->id}}" {{ (old('department',$employees->dep_id)==$department->id)?'selected':'' }}>{{$department->name}}</option>
@@ -675,7 +689,7 @@
                                 </div>
                                 <!-- <label class="col-md-3 unicode" id="appointment_label" style="text-align: right;">Appoint Date</label> -->
                                 <div class="col-md-8">
-                                       <select class="form-control" name="position" id="rank">
+                                        <select class="livesearchrank form-control" name="position">
                                         <option value="">Rank</option>
                                         @foreach($positions as $position)
                                          <option value="{{$position->id}}" {{ (old('position',$employees->position_id)==$position->id)?'selected':'' }}>{{$position->name}}</option>
@@ -971,7 +985,7 @@
     @section('css')
      <link id="bsdp-css" href="{{ asset('css/bootstrap-datepicker3.min.css') }}" rel="stylesheet">
 
-    <link rel="stylesheet" href="{{ asset('select2/css/select2.min.css') }}" />
+      <link rel="stylesheet" href="{{ asset('select2/css/select2.min.css') }}"/>
     <style>
         /* ------------------- */
         /* TEMPLATE        -- */
@@ -1496,6 +1510,51 @@
 
          
 });
+
+
+         $(function() {
+            $('.livesearch').select2({
+            placeholder: 'Select Department',
+            ajax: {
+                url: "<?php echo(route("ajax-autocomplete-department")) ?>",
+                dataType: 'json',
+                delay: 250,
+                processResults: function (data) {
+                    return {
+                        results: $.map(data, function (item) {
+                            return {
+                                text: item.name,
+                                id: item.id
+                            }
+                        })
+                    };
+                },
+                cache: true
+            }
+        });
+        });
+
+          $(function() {
+            $('.livesearchrank').select2({
+            placeholder: 'Select Rank',
+            ajax: {
+                url: "<?php echo(route("ajax-autocomplete-rank")) ?>",
+                dataType: 'json',
+                delay: 250,
+                processResults: function (data) {
+                    return {
+                        results: $.map(data, function (item) {
+                            return {
+                                text: item.name,
+                                id: item.id
+                            }
+                        })
+                    };
+                },
+                cache: true
+            }
+        });
+        });
 
 
     </script>
