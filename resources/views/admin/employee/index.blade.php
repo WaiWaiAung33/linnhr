@@ -6,6 +6,22 @@
 
 @section('content_header')
  <h5 style="color: blue;" class="unicode">Employee Management</h5>
+ <style type="text/css">
+     .select2-container .select2-selection--single {
+    box-sizing: border-box;
+    cursor: pointer;
+    display: block;
+    height: 35px;
+    user-select: none;
+    -webkit-user-select: none; }
+    .select2-container--default .select2-selection--single .select2-selection__arrow {
+    height: 30px;
+    position: absolute;
+    top: 2px;
+    right: 0px;
+    left: 270px;
+    width: 100px; }
+</style>
 
 @stop
 @section('content')
@@ -70,6 +86,11 @@
                         <div class="col-md-2">
                            <label for="">Select Department</label>
                            
+                          <!--   <select class="livesearch form-control" name="dep_id"  id="dep_id">
+                              @foreach($departments as $department)
+                                  <option value="{{$department->id}}">{{$department->name}}</option>
+                              @endforeach
+                            </select> -->
                             <select class="form-control" id="dep_id" name="dep_id" style="font-size: 13px">
                               <option value="">All</option>
                                     @foreach($departments as $department)
@@ -145,7 +166,8 @@
                         <th>Department</th>
                         <th>Branch</th>
                         <th>Joined Date</th>
-                        <th>Active/Inactive</th>
+                        <th>Phone No</th>
+                        <th>Status</th>
                        <!--  <th>NRC</th>
                         <th>DOB</th> -->
                         <!-- <th>Action</th> -->
@@ -187,8 +209,10 @@
                                   }
                               ?>
                              
-                            <td>{{date('d-m-Y',strtotime($employee->join_date))}} ({{$workyear}}) years
+                            <td>{{date('d-m-Y',strtotime($employee->join_date))}} <br>
+                              ({{$workyear}}) years
                             </td>
+                            <td>{{$employee->phone_no}}</td>
 
                             <td>
                               <label class="switch">
@@ -315,6 +339,7 @@
             $('.livesearch').select2({
             
             placeholder: 'All',
+            allowClear: true,
             ajax: {
                 url: "<?php echo(route("ajax-autocomplete-department")) ?>",
                 dataType: 'json',
@@ -415,7 +440,29 @@
                         }
                     });
                 })
-              })
+              });
+
+         $(function() {
+            $('.livesearch').select2({
+            placeholder: 'Select Department',
+            ajax: {
+                url: "<?php echo(route("ajax-autocomplete-department")) ?>",
+                dataType: 'json',
+                delay: 250,
+                processResults: function (data) {
+                    return {
+                        results: $.map(data, function (item) {
+                            return {
+                                text: item.name,
+                                id: item.id
+                            }
+                        })
+                    };
+                },
+                cache: true
+            }
+        });
+        });
 
      </script>
 @stop
