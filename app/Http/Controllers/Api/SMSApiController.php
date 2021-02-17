@@ -55,9 +55,10 @@ class SMSApiController extends Controller
                     $response['role_id']=$checkuser[0]->role_id;
                 }
                 } else {
+                    // dd(auth()->user());
                     $response['error'] = 0;
                     $response['message'] = "Successfully login";
-                    $response['role_id'] = $checkuser[0]->role_id;
+                    $response['role_id'] = auth()->user() == null ? auth()->user() : auth()->user()->roles[0]->id;
                     // echo json_encode($response);
                 }
                 echo json_encode($response);
