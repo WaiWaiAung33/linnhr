@@ -279,6 +279,10 @@ class EmployeeController extends Controller
                             'room_id' => $employee->room_no,
                             'start_date' => $employee->hostel_sdate,
                             'full_address' => $employee->hostel_location,
+                            'name'=>$employee->name,                            
+                            'branch_id'=>$employee->branch_id,
+                            'dep_id'=>$employee->dep_id,
+                            'position_id'=>$employee->position_id
                         ]);
                         // dd($hostelemployee);
                     }
@@ -530,6 +534,10 @@ class EmployeeController extends Controller
                                 'room_id' => $request->room_no,
                                 'start_date' => $request->hostel_sdate,
                                 'full_address' => $request->hostel_location,
+                                'name'=>$request->name,                           
+                                'branch_id'=>$request->branch,
+                                'dep_id'=>$request->department,
+                                'position_id'=>$request->position
                             ]);
                      }else{
                         $hostelemployee=HoselEmployee::create([
@@ -538,6 +546,10 @@ class EmployeeController extends Controller
                             'room_id' => $request->room_no,
                             'start_date' => $request->hostel_sdate,
                             'full_address' => $request->hostel_location,
+                            'name'=>$request->name,                           
+                            'branch_id'=>$request->branch,
+                            'dep_id'=>$request->department,
+                            'position_id'=>$request->position
                         ]);
                      }
                 }
