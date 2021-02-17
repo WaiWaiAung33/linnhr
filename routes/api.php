@@ -17,8 +17,15 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::post('/login', 'Api\AuthApiController@login');
+Route::post('login', 'Api\AuthApiController@login'); 
+
+Route::post('/sendOtp','Api\SMSApiController@sendOtp');
+
+Route::post('/verifyOtp','Api\SMSApiController@verifyOtp');
+
+Route::post('/adminlogin','Api\AuthApiController@adminlogin');
+
 Route::get('/dashboard', 'Api\DashboardApiController@dashboard');
 Route::get('/department', 'Api\DepartmentApiController@department');
 Route::get('/branch', 'Api\BranchApiController@branch');
-Route::post('/employee', 'Api\EmployeeApiController@employee');
+Route::post('/employee', 'Api\EmployeeApiController@employee'); 
