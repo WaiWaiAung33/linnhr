@@ -133,11 +133,15 @@ foreach($bd_employess as $bdemp){
 $date = date('Ymd')."";
 
 
-  foreach ($hostelArr as $key => $hstarr) {
-    array_push($hostel, $hstarr->name);
-    array_push($fmcount, $hstarr->fmcont);
-    array_push($mcount, $hstarr->mcont);
-  }
+$hostel = [];
+$fmcount = [];
+$mcount = [];
+
+foreach ($hostelArr as $key => $hstarr) {
+  array_push($hostel, $hstarr->name);
+  array_push($fmcount, $hstarr->fmcont);
+  array_push($mcount, $hstarr->mcont);
+}
 
 
 ?>
@@ -254,18 +258,18 @@ $date = date('Ymd')."";
 
 
 
-    // var hostel = <?php echo json_encode($hostel) ?> ;
-    // var fmcount =<?php echo json_encode($fmcount) ?> ;
-    // var mcount =<?php echo json_encode($mcount) ?> ;
+    var hostel = <?php echo json_encode($hostel) ?> ;
+    var fmcount =<?php echo json_encode($fmcount) ?> ;
+    var mcount =<?php echo json_encode($mcount) ?> ;
 
     const hostelchart = new Chartisan({
       el: '#hostelchart',
       // url: 'https://chartisan.dev/chart/example.json',
       data: {
-        "chart": { "labels": ['Linn1',"Linn2","Myoma Zay","HO (Lawyer)","HO (MPT)","HO Hostel","Hostel(East)","Hostel(West)","Hostel(New)"] },
+        "chart": { "labels": hostel },
         "datasets": [
-          { "name": "ကျား", "values": ['1','2','3','4','5','6','7','8','9'] },
-          { "name": "မ", "values": ['0','1','2','3','5','8','9','12','7'] }
+          { "name": "ကျား", "values": mcount },
+          { "name": "မ", "values": fmcount }
         ]
       },
       hooks: new ChartisanHooks()

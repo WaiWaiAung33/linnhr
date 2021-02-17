@@ -10,15 +10,25 @@
          <form action="{{route('branch.store')}}" method="post" enctype="multipart/form-data" style="padding-top: 10px">
         @csrf
 
-       <div class="row">
-               
-        <label class="col-md-2 unicode">Branch Name</label>
-        <div class="col-md-5 {{ $errors->first('name', 'has-error') }}">
-            
-             <input type="text" name="name" placeholder="Enter branch name" class="form-control" style="font-size: 13px"> 
-         
-        </div>    
-    </div><br>
+         <div class="row">
+                 
+          <label class="col-md-2 unicode">Branch Name</label>
+          <div class="col-md-5 {{ $errors->first('name', 'has-error') }}">
+              
+               <input type="text" name="name" placeholder="Enter branch name" class="form-control" style="font-size: 13px"> 
+           
+          </div>    
+      </div><br>
+
+        <div class="row">
+                   
+            <label class="col-md-2 unicode">Phone</label>
+            <div class="col-md-5 {{ $errors->first('name', 'has-error') }}">
+                
+                 <input type="text" name="phone" placeholder="09 xxx xxx xxx" class="form-control" style="font-size: 13px"> 
+             
+            </div>    
+        </div><br>
 
          <div class="row">
                

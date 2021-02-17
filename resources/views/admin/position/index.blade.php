@@ -39,15 +39,17 @@
                     <tr> 
                       <th>No</th>
                         <th>Rank Name</th>
+                        <th>Employees</th>
                         <th>Action</th>
                     </tr>
                   </thead>
                     <tbody>
                     @if($positions->count()>0)
               		 @foreach($positions as $position)
-                        <tr>
+                        <tr class="table-tr" data-url="{{  url('employee?position_id='.$position->id) }}">
                             <td>{{++$i}}</td>
                             <td>{{$position->name}}</td>
+                            <td>{{ $position->employees()->count() }}</td>
                             <td>
                                 <form action="{{route('position.destroy',$position->id)}}" method="post"
                                     onsubmit="return confirm('Do you want to delete?');">
