@@ -20,6 +20,10 @@ class CreateHostelEmployeeTable extends Migration
             $table->integer('room_id');
             $table->string('start_date');
             $table->string('full_address');
+            $table->string('name');
+            $table->string('branch_id');
+            $table->string('dep_id');
+            $table->string('position_id');
             $table->timestamps();
         });
     }

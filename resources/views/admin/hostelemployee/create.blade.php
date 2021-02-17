@@ -37,6 +37,11 @@
          
         </div>    
     </div><br>
+
+ <input type="hidden" name="name" class="form-control unicode" id="name" > 
+ <input type="hidden" name="branch_id" class="form-control unicode" id="branch" > 
+ <input type="hidden" name="dep_id" class="form-control unicode" id="department" > 
+ <input type="hidden" name="position_id" class="form-control unicode" id="position" > 
     <div class="row">
                
         <label class="col-md-2 unicode">Hostel Name</label>
@@ -145,6 +150,28 @@
             }
         });
         });
+
+         $(function(){
+        $('.livesearch').change(function(){
+          var is_employee = $(this).find(':selected').val();
+          // alert(is_employee);
+            // alert(is_employee);$('#first').find(':selected').val();
+             $.ajax({
+                    type: "GET",
+                    dataType: "json",
+                    url: "<?php echo route('get_hostelemployee_data') ?>",
+                    data: {'emp_id': is_employee},
+                    success: function(data){
+                        $("#department").val(data.department_id);
+                        $("#branch").val(data.branch_id);
+                        $("#name").val(data.employee_name);
+                        $("#position").val(data.position_id);
+
+                        console.log(data.name);
+                    }
+                });
+        });
+    });
 
 
          $(function(){

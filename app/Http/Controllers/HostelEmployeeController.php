@@ -6,6 +6,9 @@ use App\HoselEmployee;
 use App\Room;
 use App\Hostel;
 use App\Employee;
+use App\Department;
+use App\Branch;
+use App\Position;
 use Illuminate\Http\Request;
 use DB;
 use Validator;
@@ -19,12 +22,32 @@ class HostelEmployeeController extends Controller
      */
     public function index(Request $request)
     {
+        // dd($request->name);
+        $branchs = Branch::all();
+        $departments = Department::all();
+        $positions = Position::all();
+        $hostels = Hostel::all();
         $hostelemployees = new HoselEmployee();
+        if ($request->name != '') {
+            $hostelemployees = $hostelemployees->where('name',$request->name);
+        }
+        if ($request->hostel_id != '') {
+            $hostelemployees = $hostelemployees->where('hostel_id',$request->hostel_id);
+        }
+         if ($request->branch_id != '') {
+            $hostelemployees = $hostelemployees->where('branch_id',$request->branch_id);
+        }
+         if ($request->dep_id != '') {
+            $hostelemployees = $hostelemployees->where('dep_id',$request->dep_id);
+        }
+         if ($request->position_id != '') {
+            $hostelemployees = $hostelemployees->where('position_id',$request->position_id);
+        }
         $count=$hostelemployees->get()->count();
        
         $hostelemployees = $hostelemployees->orderBy('created_at','desc')->paginate(10);
         
-        return view('admin.hostelemployee.index',compact('count','hostelemployees'))->with('i', (request()->input('page', 1) - 1) * 10);;
+        return view('admin.hostelemployee.index',compact('branchs','departments','positions','count','hostelemployees','hostels'))->with('i', (request()->input('page', 1) - 1) * 10);;
     }
 
     /**
@@ -80,6 +103,10 @@ class HostelEmployeeController extends Controller
                             'room_id' => $request->room_id,
                             'start_date' => $request->start_date,
                             'full_address' => $request->full_address,
+                            'name'=>$request->name,                            
+                            'branch_id'=>$request->branch_id,
+                            'dep_id'=>$request->dep_id,
+                            'position_id'=>$request->position_id
                         ]);
 
                      $updatedata = Employee::find($request->emp_id);
@@ -172,6 +199,10 @@ class HostelEmployeeController extends Controller
                             'room_id' => $request->room_id,
                             'start_date' => $request->start_date,
                             'full_address' => $request->full_address,
+                            'name'=>$request->name,                            
+                            'branch_id'=>$request->branch_id,
+                            'dep_id'=>$request->dep_id,
+                            'position_id'=>$request->position_id
                         ]);
 
                      $updatedata = Employee::find($request->emp_id);
@@ -261,5 +292,25 @@ class HostelEmployeeController extends Controller
       
       return response()->json($search_hostel);
     }
+
+      public function get_hostelemployee_data(Request $request){
+      // dd($request->all());
+      
+      $employee = new Employee();
+
+       $employee = $employee->leftjoin('department','department.id','=','employee.dep_id')
+                            ->leftjoin('branch','branch.id','=','employee.branch_id')
+                            ->leftjoin('position','position.id','=','employee.position_id')
+                       ->select(
+                        'department.id AS department_id',
+                        'position.id AS position_id',
+                        'branch.id AS branch_id',
+                        'employee.name AS employee_name'
+                       );
+        $search_employee = $employee->find($request->emp_id);
+      // dd($search_employee);
+      return response()->json($search_employee);
+    }
+
 
 }

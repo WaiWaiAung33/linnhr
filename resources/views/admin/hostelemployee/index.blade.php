@@ -11,10 +11,78 @@
     <script type="text/javascript" src="{{asset('toastermin.js')}}"></script>
 @stop
 @section('content')
+ <?php
+  $name = isset($_GET['name'])?$_GET['name']:''; 
+  $branch_id = isset($_GET['branch_id'])?$_GET['branch_id']:''; 
+  $dep_id = isset($_GET['dep_id'])?$_GET['dep_id']:''; 
+  $position_id = isset($_GET['position_id'])?$_GET['position_id']:'';
+  $hostel_id = isset($_GET['hostel_id'])?$_GET['hostel_id']:'';
+
+  ?>
 
 <div>
 
  <a class="btn btn-success unicode" href="{{route('hostelemployee.create')}}" style="float: right;font-size: 13px"><i class="fas fa-plus"></i> Hostel Employee</a><br>
+
+  <form action="{{route('hostelemployee.index')}}" method="get" accept-charset="utf-8" class="form-horizontal unicode" >
+            <div class="row form-group" id="adv_filter">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-2">
+                            <label for="" class="unicode">Search by Keyword</label>
+                            <input type="text" name="name" id="name" class="form-control" placeholder="Search..." value="{{ old('name',$name) }}" style="font-size: 13px">
+                        </div> 
+                         <div class="col-md-2">
+                            <label for="">Select Hostel</label>
+                           <select class="form-control" id="hostel_id" name="hostel_id" style="font-size: 13px">
+                                <option value="">All</option>
+                                @foreach($hostels as $hostel)
+                                <option value="{{$hostel->id}}" {{ (old('hostel_id',$hostel_id)==$hostel->id)?'selected':'' }}>{{$hostel->name}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="col-md-2">
+                            <label for="">Select Branch</label>
+                           <select class="form-control" id="branch_id" name="branch_id" style="font-size: 13px">
+                                <option value="">All</option>
+                                @foreach($branchs as $branch)
+                                <option value="{{$branch->id}}" {{ (old('branch_id',$branch_id)==$branch->id)?'selected':'' }}>{{$branch->name}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="col-md-2">
+                           <label for="">Select Department</label>
+                           
+                         <select class="form-control" id="dep_id" name="dep_id" style="font-size: 13px">
+                              <option value="">All</option>
+                                    @foreach($departments as $department)
+                                              <option value="{{$department->id}}" {{ (old('dep_id',$dep_id)==$department->id)?'selected':'' }}>{{$department->name}}</option>
+                                    @endforeach
+                          </select>
+                                  
+                          </select>
+                        </div>
+                        <div class="col-md-2">
+                             <label for="">Select Rank</label>
+                             <select class="form-control" id="position_id" name="position_id" style="font-size: 13px">
+                            <option value="">All</option>
+                               @foreach($positions as $position)
+                                                <option value="{{$position->id}}" {{ (old('position_id',$position_id)==$position->id)?'selected':'' }}>{{$position->name}}</option>
+                                @endforeach
+                       
+                             </select>
+                       
+                             </select>
+                        </div>
+
+                    
+                      
+                    </div>
+                </div>
+               
+            </div>
+        </form>
+
  
      {{-- @if ($message = Session::get('success'))
             <div class="alert alert-success">
@@ -41,6 +109,7 @@
                     @if($hostelemployees->count()>0)
                      @foreach($hostelemployees as $hostelemployee)
                         <tr>
+
                             <td>{{++$i}}</td>
                             <td>{{$hostelemployee->viewEmployee->name}}</td>
                             <td>{{$hostelemployee->viewHostel->name}}</td>
@@ -99,6 +168,23 @@
           $('table').on("click", "tr.table-tr", function() {
             window.location = $(this).data("url");
           });
+            $('#name').on('change',function(e) {
+                this.form.submit();
+            }); 
+              $('#branch_id').on('change',function(e){
+                this.form.submit();
+              });
+              $('#dep_id').on('change',function(e){
+                this.form.submit();
+              });
+              
+              $('#position_id').on('change',function(e){
+                this.form.submit();
+              });
+
+               $('#hostel_id').on('change',function(e){
+                this.form.submit();
+              });
         });
          
         });
