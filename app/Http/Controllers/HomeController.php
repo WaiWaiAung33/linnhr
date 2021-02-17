@@ -106,6 +106,19 @@ class HomeController extends Controller
            ->get()->toArray();
 
 
+        
+
+        $branchHostelArr = DB::table('branch')
+                             ->selectRaw('branch.name')
+                             ->selectRaw("count(case when gender = 'Male' then 1 end) as hmcont")
+                             ->selectRaw("count(case when gender = 'Female' then 1 end) as hfmcont")
+                             // ->leftjoin('hostel_employee','hostel.id','hostel_employee.hostel_id')
+                             ->leftjoin('employee','employee.branch_id','branch.id')
+                             ->groupBy('branch.name')
+                             ->where('employee.hostel','Yes')
+                             ->get()->toArray();
+
+
         $hostelArr = DB::table('hostel')
                              ->selectRaw('hostel.name')
                              ->selectRaw("count(case when gender = 'Male' then 1 end) as mcont")
@@ -116,7 +129,7 @@ class HomeController extends Controller
                              ->get()->toArray();
 
        
-        return view('dashboard',compact('total_employees','total_departments','total_branches','new_empoyee','deptArr','deptEmpArr','maleTotal','femaleTotal','branchArr','branchEmpArr','hostelStay','hostelNotStay','bd_employess','hostelArr'));
+        return view('dashboard',compact('total_employees','total_departments','total_branches','new_empoyee','deptArr','deptEmpArr','maleTotal','femaleTotal','branchArr','branchEmpArr','hostelStay','hostelNotStay','bd_employess','hostelArr','branchHostelArr'));
     }
 
 
