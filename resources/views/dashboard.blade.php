@@ -86,18 +86,19 @@
       <div id="chart1" style="height: 300px;"></div>
     </div>
     <div class="col-md-6">
-            <div id="piechart" style="height: 300px;"></div>
+            {{-- <div id="piechart" style="height: 300px;"></div> --}}
+            <div id="pconpie" style="height: 300px;"></div>
     </div>
   </div>
   <br>
   <hr>
  	<div class="row">
         <div class="col-md-6"  align="center">
-	           <div id="hostelchart" style="height: 300px;"></div>
+          <div id="bhchart" style="height: 300px;"></div>
         </div>
         	
  		<div class="col-md-6"  align="center">
-	 		<div id="pconpie" style="height: 300px;"></div>
+	 		   <div id="bhPie" style="height: 300px;"></div>
  		</div>
 
  	</div>
@@ -105,9 +106,22 @@
  	<br><hr>
 
   <div class="row">
+        <div class="col-md-6"  align="center">
+              <div id="hostelchart" style="height: 300px;"></div>
+        </div>
+          
+    <div class="col-md-6"  align="center">
+        <h6>Upcoming Employee's Birthday</h6>
+        <div id='calendar'></div>
+    </div>
+
+  </div>
+
+  <br><hr>
+
+  <div class="row">
     <div class="col-md-6" align="center">
-      <h6>Upcoming Employee's Birthday</h6>
-      <div id='calendar'></div>
+      
     </div>
     <div class="col-md-6"></div>
   </div>
@@ -141,6 +155,25 @@ foreach ($hostelArr as $key => $hstarr) {
   array_push($hostel, $hstarr->name);
   array_push($fmcount, $hstarr->fmcont);
   array_push($mcount, $hstarr->mcont);
+}
+
+
+$branchArr = [];
+$bhMale = [];
+$bhFemale = [];
+
+$brhTotalArr = [];
+$tcount = 0;
+
+foreach ($branchHostelArr as $key => $brh) {
+  array_push($branchArr, $brh->name);
+  array_push($bhMale, $brh->hmcont);
+  array_push($bhFemale, $brh->hfmcont);
+
+  $tcount =  $brh->hmcont +  $brh->hfmcont; 
+
+  array_push($brhTotalArr, $tcount);
+
 }
 
 
@@ -204,18 +237,18 @@ foreach ($hostelArr as $key => $hstarr) {
 		    .title('ဌာနအလိုက်ပြသခြင်း')
 		})
 
-		const piechart = new Chartisan({
-		  el: '#piechart',
-		  data: {
-			  "chart": { "labels": deptsArr },
-			  "datasets": [
-			    { "name": "Total", "values": deptEmpArr }
-			  ]
-			},
-		  hooks: new ChartisanHooks()
-		    .datasets('doughnut')
-		    .pieColors(),
-		})
+		// const piechart = new Chartisan({
+		//   el: '#piechart',
+		//   data: {
+		// 	  "chart": { "labels": deptsArr },
+		// 	  "datasets": [
+		// 	    { "name": "Total", "values": deptEmpArr }
+		// 	  ]
+		// 	},
+		//   hooks: new ChartisanHooks()
+		//     .datasets('doughnut')
+		//     .pieColors(),
+		// })
 
 
 
@@ -262,6 +295,7 @@ foreach ($hostelArr as $key => $hstarr) {
     var fmcount =<?php echo json_encode($fmcount) ?> ;
     var mcount =<?php echo json_encode($mcount) ?> ;
 
+
     const hostelchart = new Chartisan({
       el: '#hostelchart',
       // url: 'https://chartisan.dev/chart/example.json',
@@ -278,11 +312,53 @@ foreach ($hostelArr as $key => $hstarr) {
         .responsive()
         .beginAtZero()
         .legend({ position: 'bottom' })
-        .title('အဆောင်နေသူများ [demo]')
+        .title('အဆောင်အလိုက် ကျား/မ ပြသမှု')
     })
 
 
-      
+
+    var bhostel = <?php echo json_encode($branchArr) ?> ;
+    var bfmcount =<?php echo json_encode($bhMale) ?> ;
+    var bmcount =<?php echo json_encode($bhFemale) ?> ;
+
+     const bhchart = new Chartisan({
+      el: '#bhchart',
+      // url: 'https://chartisan.dev/chart/example.json',
+      data: {
+        "chart": { "labels": bhostel },
+        "datasets": [
+          { "name": "ကျား", "values": bmcount },
+          { "name": "မ", "values": bfmcount }
+        ]
+      },
+      hooks: new ChartisanHooks()
+        // .colors(['#20FFFF', '#FD8008','#1F85DE','#DE781F'])
+        .colors()
+        .responsive()
+        .beginAtZero()
+        .legend({ position: 'bottom' })
+        .title('ဆိုင်ခွဲအလိုက် အဆောင်နေသူ ကျား/မ')
+    })
+
+
+     
+    var brhTotalArr = <?php echo json_encode($brhTotalArr) ?> ;
+
+    const bhPie = new Chartisan({
+      el: '#bhPie',
+      data: {
+         "chart": { "labels": bhostel},
+         "datasets": [
+          { "name": "", "values": brhTotalArr }
+         ]
+      },
+      hooks: new ChartisanHooks()
+        .datasets('doughnut')
+        .pieColors()
+        .title('ဆိုင်ခွဲအလိုက် အဆောင်နေသူများ')
+       
+    })
+
 
 		const pconpie = new Chartisan({
 		  el: '#pconpie',
