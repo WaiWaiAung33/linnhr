@@ -35,7 +35,11 @@ class DashboardApiController extends Controller
                      ->get();
         $maleTotal = Employee::where('gender','Male')->count();
         $femaleTotal = Employee::where('gender','Female')->count();
+
+        $hostelTotal = Employee::where('hostel','Yes')->count();
+        $nothostelTotal = Employee::where('hostel','No')->count();
+
         $positions = Position::all();
-        return response(['employee' => ['male'=>$maleTotal,'female'=>$femaleTotal],'branch'=>$branches,'department'=>$department,'positions'=>$positions,'message'=>"Successfully login",'status'=>1]);
+        return response(['employee' => ['male'=>$maleTotal,'female'=>$femaleTotal],'isHostel'=>['ishostel'=>$hostelTotal,'isnothostel'=>$nothostelTotal],'branch'=>$branches,'department'=>$department,'positions'=>$positions,'message'=>"Successfully login",'status'=>1]);
     }
 }
