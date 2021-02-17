@@ -588,6 +588,7 @@ $extension;
     public function destroy($id)
     {
         $employee = Employee::findorfail($id);
+        $user = User::find($employee->user_id)->delete();
         $employee->delete();
         return redirect()->route('employee.index')
                         ->with('success','Employee deleted successfully');

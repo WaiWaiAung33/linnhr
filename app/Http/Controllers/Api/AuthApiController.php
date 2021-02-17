@@ -59,6 +59,7 @@ class AuthApiController extends Controller
                         'employeeId'=>$employee[0]->id,
                         'ename'=>$employee[0]->name,
                         'phone'=>$employee[0]->phone_no,
+                        'user_role'=>auth()->user()->roles[0]->name
                      ];
                 }
                 
@@ -72,6 +73,7 @@ class AuthApiController extends Controller
                 'employeeId'=>auth()->user()->id,
                 'ename'=>auth()->user()->name,
                 'phone'=>auth()->user()->loginId,
+                'user_role'=>auth()->user()->roles[0]->name
              ];
              }
              
