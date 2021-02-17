@@ -55,7 +55,7 @@
                       
                         <a class="btn btn-warning btn-sm" id="export_btn" style="margin-right: 10px;font-size: 13px"><i class="fa fa-fw fa-file-excel" style="padding-top: 8px"></i>Export</a>
 
-                         <button type="button" class="btn btn-warning " id="morefilter" style="font-size: 13px"><i class="fa fa-filter" aria-hidden="true"></i></button>
+                        {{--  <button type="button" class="btn btn-warning " id="morefilter" style="font-size: 13px"><i class="fa fa-filter" aria-hidden="true"></i></button> --}}
                        <div class="col-md-6">
                         <a class="btn btn-success unicode" href="{{route('employee.create')}}" style="float: right;font-size: 13px"><i class="fas fa-plus"></i> Employee</a>
                         </div>
@@ -66,15 +66,37 @@
    
 
 
+        
+        <br>
+
+         <form id="excel_form" action="{{ route('export') }}"  method="POST" class="unicode">
+                @csrf
+                @method('post')
+                <input type="hidden" id="branch_id" name="branch_id" value="{{ $branch_id }}">
+                <input type="hidden" id="dep_id" name="dep_id" value="{{ $dep_id }}">
+                <input type="hidden" id="position_id" name="position_id" value="{{ $position_id }}">
+         </form>
+
+
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-lg">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+         <h4 class="modal-title">More Filter</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+       
+      </div>
+      <div class="modal-body">
          <form action="{{route('employee.index')}}" method="get" accept-charset="utf-8" class="form-horizontal unicode" >
             <div class="row form-group" id="adv_filter">
                 <div class="col-md-12">
                     <div class="row">
-                        <div class="col-md-2">
-                            <label for="" class="unicode">Search by Keyword</label>
-                            <input type="text" name="name" id="name" class="form-control" placeholder="Search..." value="{{ old('name',$name) }}" style="font-size: 13px">
-                        </div> 
-                        <div class="col-md-2">
+                        
+                        <div class="col-md-3">
                             <label for="">Select Branch</label>
                           <select class="form-control" id="branch_id" name="branch_id" style="font-size: 13px">
                                 <option value="">All</option>
@@ -83,7 +105,7 @@
                                 @endforeach
                             </select>
                         </div>
-                        <div class="col-md-2">
+                        <div class="col-md-3">
                            <label for="">Select Department</label>
                            
                           <!--   <select class="livesearch form-control" name="dep_id"  id="dep_id">
@@ -98,7 +120,7 @@
                                     @endforeach
                           </select>
                         </div>
-                        <div class="col-md-2">
+                        <div class="col-md-3">
                              <label for="">Select Rank</label>
                             <select class="form-control" id="position_id" name="position_id" style="font-size: 13px">
                             <option value="">All</option>
@@ -109,7 +131,7 @@
                              </select>
                         </div>
 
-                        <div class="col-md-2">
+                        <div class="col-md-3">
                              <label for="">Select Gender</label>
                             <select class="form-control" id="gender" name="gender" style="font-size: 13px">
                               <option value="">All</option>  
@@ -118,7 +140,7 @@
                              </select>
                         </div>
 
-                        <div class="col-md-2">
+                        <div class="col-md-3">
                              <label for="">Hostel/No Hostel</label>
                             <select class="form-control" id="hostel" name="hostel" style="font-size: 13px">
                               <option value="">All</option>  
@@ -128,30 +150,64 @@
                         </div>
                         
 
-                       {{--  <div class="col-md-2">
+                        <div class="col-md-3">
                             <label>Join Date</label>
                              <input type="text" name="join_date" id="join_date"class="form-control unicode" placeholder="01-08-2020" value="{{ old('join_date',$join_date) }}" style="font-size: 13px">
                         </div>
 
-                         <div class="col-md-2">
+                         <div class="col-md-3">
                             <label>Join Month</label>
                              <input type="text" name="join_month" id="join_month"class="form-control unicode" placeholder="January" value="{{ old('join_month',$join_month) }}" style="font-size: 13px">
+                        </div>
+
+
+
+                      {{--   <div class="col-md-3">
+                             <label for="">Hostel/No Hostel</label>
+                            <select class="form-control" id="hostel" name="hostel" style="font-size: 13px">
+                              <option value="">All</option>  
+                              <option value="No" {{ (old('hostel',$hostel)=="No")?'selected':'' }}>No Hostel</option>
+                              <option value="Yes" {{ (old('hostel',$hostel)=="Yes")?'selected':'' }}>Hostel</option>
+                             </select>
                         </div> --}}
+
+                        
                       
+                    </div>
+                    <br>
+                    <div class="row">
+                       <div class="col-md-2">
+                         <button type="submit" class="btn btn-primary" >Search</button>
+                       </div>
                     </div>
                 </div>
                
             </div>
         </form>
-        <br>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
 
-         <form id="excel_form" action="{{ route('export') }}"  method="POST" class="unicode">
-                @csrf
-                @method('post')
-                <input type="hidden" id="branch_id" name="branch_id" value="{{ $branch_id }}">
-                <input type="hidden" id="dep_id" name="dep_id" value="{{ $dep_id }}">
-                <input type="hidden" id="position_id" name="position_id" value="{{ $position_id }}">
-         </form>
+  </div>
+</div>
+
+
+<form action="{{route('employee.index')}}" method="get" accept-charset="utf-8" class="form-horizontal unicode" >
+    <div class="row">  
+            <div class="col-md-2">
+                <input type="text" name="name" id="name" class="form-control" placeholder="Search..." value="{{ old('name',$name) }}" style="font-size: 13px">
+            </div> 
+            <div class="col-md-2">
+                 <!-- Trigger the modal with a button -->
+                  <button type="button" class="btn btn-warning "  data-toggle="modal" data-target="#myModal" style="font-size: 13px"><i class="fa fa-filter" aria-hidden="true"></i></button>
+            </div>
+            
+  </div>        
+
+</form> 
+
 
   <p style="padding-top: 20px" class="unicode">Total record: {{$count}}</p>
  
@@ -370,44 +426,45 @@
             $(function() {
                 $('#name').on('change',function(e) {
                 this.form.submit();
-            }); 
-              $('#branch_id').on('change',function(e){
-                this.form.submit();
-              });
-              $('#dep_id').on('change',function(e){
-                this.form.submit();
-              });
-              
-              $('#position_id').on('change',function(e){
-                this.form.submit();
-              });
-
-              $('#gender').on('change',function(e){
-                this.form.submit();
-              });
-
-              $('#hostel').on('change',function(e){
-                this.form.submit();
-              });
-
-              
-
-              $('#join_date').on('change',function(e) {
-                  this.form.submit();
-                 // $( "#form_id" )[0].submit();   
-              });
-             $('#join_month').on('change',function(e) {
-                this.form.submit();
-               // $( "#form_id" )[0].submit();   
             });
 
-               $( "#morefilter" ).click(function(e) {
-              e.preventDefault();
-              if($('#adv_filter:visible').length)
-                  $('#adv_filter').hide("slide", { direction: "right" }, 1000);
-              else
-              $('#adv_filter').show("slide", { direction: "right" }, 1000);
-          });
+            //   $('#branch_id').on('change',function(e){
+            //     this.form.submit();
+            //   });
+            //   $('#dep_id').on('change',function(e){
+            //     this.form.submit();
+            //   });
+              
+            //   $('#position_id').on('change',function(e){
+            //     this.form.submit();
+            //   });
+
+            //   $('#gender').on('change',function(e){
+            //     this.form.submit();
+            //   });
+
+            //   $('#hostel').on('change',function(e){
+            //     this.form.submit();
+            //   });
+
+              
+
+            //   $('#join_date').on('change',function(e) {
+            //       this.form.submit();
+            //      // $( "#form_id" )[0].submit();   
+            //   });
+            //  $('#join_month').on('change',function(e) {
+            //     this.form.submit();
+            //    // $( "#form_id" )[0].submit();   
+            // });
+
+          //      $( "#morefilter" ).click(function(e) {
+          //     e.preventDefault();
+          //     if($('#adv_filter:visible').length)
+          //         $('#adv_filter').hide("slide", { direction: "right" }, 1000);
+          //     else
+          //     $('#adv_filter').show("slide", { direction: "right" }, 1000);
+          // });
 
 
    
