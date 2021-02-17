@@ -3,7 +3,10 @@
 @section('title', 'Users')
 
 @section('content_header')
-
+<script src=" {{ asset('toasterjquery.js') }}" ></script>
+    <link rel="stylesheet" type="text/css" href="{{asset('toasterbootstrap.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('toastermin.css')}}">
+    <script type="text/javascript" src="{{asset('toastermin.js')}}"></script>
 <h5 style="color: blue;">User Management</h5>
     
 @stop
@@ -24,11 +27,7 @@
     </form>
 <br>
 
-@if ($message = Session::get('success'))
-<div class="alert alert-success">
-  <p>{{ $message }}</p>
-</div>
-@endif
+
 
 
 <div class="table-responsive" style="font-size:14px">
@@ -81,4 +80,14 @@
 @section('js')
 <script src=" {{ asset('toasterjquery.js') }}" ></script>
 <script type="text/javascript" src="{{asset('toastermin.js')}}"></script>
+<script type="text/javascript">
+  @if(Session::has('success'))
+            toastr.options =
+            {
+            "closeButton" : true,
+            "progressBar" : true
+            }
+            toastr.success("{{ session('success') }}");
+        @endif
+</script>
 @stop
