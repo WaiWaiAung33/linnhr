@@ -57,7 +57,7 @@
 
                         {{--  <button type="button" class="btn btn-warning " id="morefilter" style="font-size: 13px"><i class="fa fa-filter" aria-hidden="true"></i></button> --}}
                        <div class="col-md-6">
-                        <a class="btn btn-success unicode" href="{{route('employee.create')}}" style="float: right;font-size: 13px"><i class="fas fa-plus"></i> Employee</a>
+                        {{-- <a class="btn btn-success unicode" href="{{route('employee.create')}}" style="float: right;font-size: 13px"><i class="fas fa-plus"></i> Employee</a> --}}
                         </div>
                      
                     
@@ -202,6 +202,9 @@
             <div class="col-md-2">
                  <!-- Trigger the modal with a button -->
                   <button type="button" class="btn btn-warning "  data-toggle="modal" data-target="#myModal" style="font-size: 13px"><i class="fa fa-filter" aria-hidden="true"></i></button>
+            </div>
+            <div class="col-md-8" align="right">
+              <a class="btn btn-success unicode" href="{{route('employee.create')}}" style="float: right;font-size: 13px"><i class="fas fa-plus"></i> Employee</a>
             </div>
             
   </div>        
