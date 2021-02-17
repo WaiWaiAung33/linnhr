@@ -1,8 +1,5 @@
-
 <?php
-
 namespace App\Http\Controllers;
-
 use App\Employee;
 use App\HoselEmployee;
 use Illuminate\Http\Request;
@@ -217,10 +214,7 @@ $police_reco_photo = "";
                     'branch_id'=>$request->branch,
                     'dep_id'=>$request->department,
                     'position_id'=>$request->position,
-                    'name'=> $
-
-
-request->name,
+                    'name'=> $request->name,
                     'gender'=>$request->gender,
                     'marrical_status'=>$request->marrical_status,
                     'father_name'=>$request->father_name,
