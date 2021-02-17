@@ -50,6 +50,7 @@ class BranchController extends Controller
          $this->validate($request,$rules);
         $branch=Branch::create([
             'name'=> $request->name,
+            'phone'=>$request->phone,
             'latitude'=>$request->latitude,
             'longitude'=>$request->longitude,
             'branch_color'=>$request->color_code
@@ -99,6 +100,7 @@ class BranchController extends Controller
        $branchs=Branch::find($id);
         $branchs=$branchs->update([
             'name'=> $request->name,
+            'phone'=> $request->phone,
             'latitude'=>$request->latitude,
             'longitude'=>$request->longitude,
             'branch_color'=>$request->color_code

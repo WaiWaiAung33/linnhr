@@ -21,6 +21,16 @@
         </div>    
     </div><br>
 
+     <div class="row">
+                   
+            <label class="col-md-2 unicode">Phone</label>
+            <div class="col-md-5 {{ $errors->first('name', 'has-error') }}">
+                
+                 <input type="text" name="phone" placeholder="09 xxx xxx xxx" class="form-control" style="font-size: 13px" value="{{$branchs->phone}}"> 
+             
+            </div>    
+        </div><br>
+
          <div class="row">
                
         <label class="col-md-2 unicode">Latitude</label>

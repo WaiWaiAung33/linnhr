@@ -122,6 +122,7 @@ input:checked + .slider:before {
                     <tr> 
                       <th>No</th>
                         <th>Branch Name</th>
+                        <th>Phone</th>
                         <th>Employees</th>
                         <th>Active/Inactive</th>
                         <th>Action</th>
@@ -134,6 +135,7 @@ input:checked + .slider:before {
                         <tr>
                             <td>{{++$i}}</td>
                             <td>{{$branch->name}}</td>
+                            <td>{{$branch->phone}}</td>
                             <td>{{ $branch->employees()->count() }}</td>
                             <td>
                               <label class="switch">
