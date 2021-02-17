@@ -44,7 +44,7 @@ class AuthApiController extends Controller
              $accessToken = auth()->user()->createToken('authToken')->accessToken;
              $employee = Employee::where('user_id',auth()->user()->id)->get();
              // dd($employee);
-             if (auth()->user()->roles[0]->id == 5) {
+             if (auth()->user()->roles[0]->id == 4) {
                 $employee = Employee::where('user_id',auth()->user()->id)->get();
                 // dd($driver[0]);
                 if ($employee[0]->active == 0) {
