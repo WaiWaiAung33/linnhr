@@ -125,7 +125,7 @@ class HomeController extends Controller
                              ->selectRaw("count(case when gender = 'Female' then 1 end) as fmcont")
                              ->leftjoin('hostel_employee','hostel.id','hostel_employee.hostel_id')
                              ->leftjoin('employee','employee.id','hostel_employee.emp_id')
-                             ->groupBy('hostel.name','employee.gender')
+                             ->groupBy('hostel.name')
                              ->get()->toArray();
 
        
