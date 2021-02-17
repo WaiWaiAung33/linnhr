@@ -105,8 +105,18 @@ class HomeController extends Controller
            ->orderByRaw('DATE_FORMAT(date_of_birth, "%m-%d")')
            ->get()->toArray();
 
+
+        $hostelArr = DB::table('hostel')
+                             ->selectRaw('hostel.name')
+                             ->selectRaw("count(case when gender = 'Male' then 1 end) as mcont")
+                             ->selectRaw("count(case when gender = 'Female' then 1 end) as fmcont")
+                             ->leftjoin('hostel_employee','hostel.id','hostel_employee.hostel_id')
+                             ->leftjoin('employee','employee.id','hostel_employee.emp_id')
+                             ->groupBy('hostel.name','employee.gender')
+                             ->get()->toArray();
+
        
-        return view('dashboard',compact('total_employees','total_departments','total_branches','new_empoyee','deptArr','deptEmpArr','maleTotal','femaleTotal','branchArr','branchEmpArr','hostelStay','hostelNotStay','bd_employess'));
+        return view('dashboard',compact('total_employees','total_departments','total_branches','new_empoyee','deptArr','deptEmpArr','maleTotal','femaleTotal','branchArr','branchEmpArr','hostelStay','hostelNotStay','bd_employess','hostelArr'));
     }
 
 
