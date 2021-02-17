@@ -86,7 +86,7 @@
     <!-- Modal content-->
     <div class="modal-content">
       <div class="modal-header">
-         <h4 class="modal-title">More Filter</h4>
+         <h5 class="modal-title">More Filter</h5>
         <button type="button" class="close" data-dismiss="modal">&times;</button>
        
       </div>
@@ -176,8 +176,10 @@
                     </div>
                     <br>
                     <div class="row">
-                       <div class="col-md-2">
-                         <button type="submit" class="btn btn-primary" >Search</button>
+                       <div class="col-md-12" align="center">
+                         <button type="button" class="btn btn-danger btn-sm" id="clear_search" >Clear</button>
+
+                         <button type="submit" class="btn btn-primary btn-sm" >Search</button>
                        </div>
                     </div>
                 </div>
@@ -186,7 +188,7 @@
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
       </div>
     </div>
 
@@ -304,8 +306,6 @@
 @section('css')
 <link rel="stylesheet" href="{{ asset('select2/css/select2.min.css') }}"/>
 <link id="bsdp-css" href="{{ asset('/css/bootstrap-datepicker3.min.css') }}" rel="stylesheet">
- <link rel="stylesheet" type="text/css" href="{{ asset('toasterbootstrap.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('toastermin.css')}}"> 
   <style type="text/css">
      th{
         background-color: rgba(0,0,0,.03);
@@ -468,6 +468,15 @@
           //     else
           //     $('#adv_filter').show("slide", { direction: "right" }, 1000);
           // });
+          // 
+          // 
+
+
+          $(function() {
+            $(document).find("#clear_search").click(function(){
+                $(document).find("select").val('');
+            });
+          });
 
 
    
