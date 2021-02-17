@@ -19,6 +19,9 @@ use Illuminate\Support\Str;
 use DB;
 use Validator;
 use Illuminate\Support\Facades\Hash;
+use Carbon\Carbon;
+use DateTime;
+
 
 class EmployeeController extends Controller
 {
@@ -65,11 +68,45 @@ class EmployeeController extends Controller
             $employees = $employees->where('join_month',$request->join_month);
         }
         if ($join_date != '1970-01-01') {
-            // dd("here");
              $employees = $employees->where('join_date',$join_date);
-            // dd($employees->get());
         }
-        // dd($employees->get());
+
+
+        if ($request->active != '') {
+            $employees = $employees->where('active',$request->active);
+        }
+
+        
+   
+        if ($request->age_from!= '' || $request->age_to!='') {
+
+            $age_start= $request->age_from;
+            $age_end = $request->age_to;
+            if (is_null($age_end)) {
+                $age_end = $age_start;
+            }
+            $age_start = date('Y-m-d', strtotime('-'.$age_start.' years'));
+            $age_end = date('Y-m-d', strtotime('-'.$age_end.' years'));
+            $employees = $employees->whereBetween('date_of_birth',[$age_end,$age_start]);
+
+        }
+
+
+       
+        if ($request->sy_from != '' && $request->sy_to !='') {
+            // $servic_year = date('Y-m-d', strtotime('-'.$request->servic_year_input.' years'));
+            // $employees = $employees->where('join_date', '<=', $servic_year);
+            $from = $request->sy_from;
+            $to = $request->sy_to;
+
+            if (is_null($to)) {
+                $to = $from;
+            }
+            $from = date('Y-m-d', strtotime('-'.$from.' years'));
+            $to = date('Y-m-d', strtotime('-'.$to.' years'));
+
+            $employees = $employees->whereBetween('join_date',[$to, $from]);
+        }
         $count = $employees->get()->count();
         $employees = $employees->orderBy('emp_id','asc')->paginate(10);
     
