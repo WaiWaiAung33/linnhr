@@ -82,6 +82,8 @@ Route::get('ajax-autocomplete-department', 'EmployeeController@selectdepartment'
 
 Route::get('ajax-autocomplete-rank', 'EmployeeController@selectrank')->name('ajax-autocomplete-rank');
 
+Route::get('get_hostelemployee_data','HostelEmployeeController@get_hostelemployee_data')->name('get_hostelemployee_data');
+
 
 
 
