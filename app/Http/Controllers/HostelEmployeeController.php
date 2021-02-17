@@ -29,7 +29,9 @@ class HostelEmployeeController extends Controller
         $hostels = Hostel::all();
         $hostelemployees = new HoselEmployee();
         if ($request->name != '') {
-            $hostelemployees = $hostelemployees->where('name',$request->name);
+            // dd($request->name);
+            $hostelemployees = $hostelemployees->where('name','like','%'.$request->name.'%');
+            // dd($hostelemployees->get());
         }
         if ($request->hostel_id != '') {
             $hostelemployees = $hostelemployees->where('hostel_id',$request->hostel_id);
