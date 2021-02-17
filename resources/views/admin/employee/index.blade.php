@@ -184,19 +184,19 @@
 
                     <br>
                     <div class="row">
-                      <div class="col-md-2">
+                      <div class="col-md-3">
                            <label for="">Service Year From</label>
                            <input type="number" name="sy_from" id="sy_from" class="form-control" placeholder="1" value="{{ old('sy_from',$sy_from) }}" style="font-size: 13px">
                       </div>
-                      <div class="col-md-2">
+                      <div class="col-md-3">
                          <label for="">Service Year To</label>
                         <input type="number" name="sy_to" id="sy_to" class="form-control" placeholder="1" value="{{ old('sy_to',$sy_to) }}" style="font-size: 13px">
                       </div>
-                      <div class="col-md-2">
+                      <div class="col-md-3">
                            <label for="">Age From</label>
                            <input type="number" name="age_from" id="age_from" class="form-control" placeholder="1" value="{{ old('age_from',$age_from) }}" style="font-size: 13px">
                       </div>
-                      <div class="col-md-2">
+                      <div class="col-md-3">
                          <label for="">Age To</label>
                         <input type="number" name="age_to" id="age_to" class="form-control" placeholder="1" value="{{ old('age_to',$age_to) }}" style="font-size: 13px">
                       </div>
@@ -508,6 +508,7 @@
           $(function() {
             $(document).find("#clear_search").click(function(){
                 $(document).find("select").val('');
+                $(document).find("input").val('');
             });
           });
 
