@@ -131,6 +131,15 @@ foreach($bd_employess as $bdemp){
     }
 }
 $date = date('Ymd')."";
+
+
+  foreach ($hostelArr as $key => $hstarr) {
+    array_push($hostel, $hstarr->name);
+    array_push($fmcount, $hstarr->fmcont);
+    array_push($mcount, $hstarr->mcont);
+  }
+
+
 ?>
 
 @section('css')
@@ -243,6 +252,11 @@ $date = date('Ymd')."";
 		    .title('Employes at each Branches')
 		})
 
+
+
+    // var hostel = <?php echo json_encode($hostel) ?> ;
+    // var fmcount =<?php echo json_encode($fmcount) ?> ;
+    // var mcount =<?php echo json_encode($mcount) ?> ;
 
     const hostelchart = new Chartisan({
       el: '#hostelchart',
