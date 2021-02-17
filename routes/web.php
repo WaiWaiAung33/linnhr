@@ -29,7 +29,7 @@ Route::group(['middleware' => 'auth'], function () {
 
 
 	Route::get('dashboard','HomeController@index')->name('dashboard');
-	Route::resource('branch','BranchController');
+	Route::resource('branch','SettingController');
 	Route::resource('department','DepartmentController');
 	Route::resource('position','PositionController');
 	Route::resource('employee','EmployeeController');
@@ -54,6 +54,9 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/employees/csv/download', 'EmployeeController@downloadEmployeesCSV')->name('employees.download.csv');
 	Route::get('/updateuser/{id}',[App\Http\Controllers\EmployeeController::class, 'updateuser'])->name('user.update');
 	Route::get('/salarys/csv/download','SalaryController@downloadSalarysCSV')->name('salarys.download.csv');
+
+	Route::get('setting','SettingController@setting')->name('setting.index');
+	Route::post('setting/{id}/update/','SettingController@settingUpdate')->name('setting.update');
 });
 
 Route::get('/', [App\Http\Controllers\CvformController::class, 'index'])->name('frontend.home');

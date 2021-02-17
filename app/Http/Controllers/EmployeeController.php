@@ -1,3 +1,4 @@
+
 <?php
 
 namespace App\Http\Controllers;
@@ -123,7 +124,8 @@ class EmployeeController extends Controller
 
         }
 
-         $police_reco_photo = "";
+
+$police_reco_photo = "";
         if ($file = $request->file('police_reco')) {
            
             $police_reco = $request->file('police_reco');
@@ -215,7 +217,10 @@ class EmployeeController extends Controller
                     'branch_id'=>$request->branch,
                     'dep_id'=>$request->department,
                     'position_id'=>$request->position,
-                    'name'=> $request->name,
+                    'name'=> $
+
+
+request->name,
                     'gender'=>$request->gender,
                     'marrical_status'=>$request->marrical_status,
                     'father_name'=>$request->father_name,
@@ -302,7 +307,10 @@ class EmployeeController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Dis
+
+
+play the specified resource.
      *
      * @param  \App\Employee  $employee
      * @return \Illuminate\Http\Response
@@ -353,208 +361,222 @@ class EmployeeController extends Controller
          if ($validator->passes()){
              DB::beginTransaction();
              try{
-                $employees = Employee::find($id);
-                // dd($employees);
-                $destinationPath = public_path() . '/uploads/employeePhoto/';
-                $policePath = public_path() . '/uploads/policestationrecomPhoto/';
-                $wardPath = public_path() . '/uploads/wardrecoPhoto/';
-                $attachPath = public_path() . '/uploads/attachfile';
 
-                $photo = ($request->photo != '') ? $request->photo : $employees->photo;
+        $employees = Employee::find($id);
+        // dd($employees);
+        $destinationPath = public_path() . '/uploads/employeePhoto/';
+        $policePath = public_path() . '/uploads/policestationrecomPhoto/';
+        $wardPath = public_path() . '/uploads/wardrecoPhoto/';
+        $attachPath = public_path() . '/uploads/attachfile';
 
-                //upload image
-                if ($file = $request->file('photo')) {
-                   $photo = $request->file('photo');
-                    $ext = '.'.$request->photo->getClientOriginalExtension();
-                    $fileName = str_replace($ext, date('d-m-Y-H-i') . $ext, $request->photo->getClientOriginalName());
-                    $file->move($destinationPath, $fileName);
-                    $photo = $fileName;
-                }
+        $photo = ($request->photo != '') ? $request->photo : $employees->photo;
 
-                  $police_reco_photo = ($request->police_reco != '') ? $request->police_reco : $employees->police_reco;
-                 
-                if ($file = $request->file('police_reco')) {
-                    $police_reco = $request->file('police_reco');
-                    $ext = '.'.$request->police_reco->getClientOriginalExtension();
-                    $fileName = str_replace($ext, date('d-m-Y-H-i') . $ext, $request->police_reco->getClientOriginalName());
-                    $file->move($policePath, $fileName);
-                    $police_reco_photo = $fileName;
-                }
+        //upload image
+        if ($file = $request->file('photo')) {
+           $photo = $request->file('photo');
+            $ext = '.'.$request->photo->getClientOriginalExtension();
+            $fileName = str_replace($ext, date('d-m-Y-H-i') . $ext, $request->photo->getClientOriginalName());
+            $file->move($destinationPath, $fileName);
+            $photo = $fileName;
+        }
 
-                $ward_reco_photo =  ($request->ward_reco != '') ? $request->ward_reco : $employees->ward_reco;
-                if ($file = $request->file('ward_reco')) {
-                   $ward_reco = $request->file('ward_reco');
-                    $ext = '.'.$request->ward_reco->getClientOriginalExtension();
-                    $fileName = str_replace($ext, date('d-m-Y-H-i') . $ext, $request->ward_reco->getClientOriginalName());
-                    $file->move($wardPath, $fileName);
-                    $ward_reco_photo = $fileName;
-                }
+          $police_reco_photo = ($request->police_reco != '') ? $request->police_reco : $employees->police_reco;
+         
+        if ($file = $request->file('police_reco')) {
+            $police_reco = $request->file('police_reco');
+            $ext = '.'.$request->police_reco->getClientOriginalExtension();
+            $fileName = str_replace($ext, date('d-m-Y-H-i') . $ext, $request->police_reco->getClientOriginalName());
+            $file->move($policePath, $fileName);
+            $police_reco_photo = $fileName;
+        }
+
+        $ward_reco_photo =  ($request->ward_reco != '') ? $request->ward_reco : $employees->ward_reco;
+        if ($file = $request->file('ward_reco')) {
+           $ward_reco = $request->file('ward_reco');
+            $ext = '.'.$request->ward_reco->getClientOriginalExtension();
+            $fileName = str_replace($ext, date('d-m-Y-H-i') . $ext, $request->ward_reco->getClientOriginalName());
+            $file->move($wardPath, $fileName);
+            $ward_reco_photo = $fileName;
+        }
 
 
-                $cvfile_photo = ($request->cvfile != '') ? $request->cvfile : $employees->cvfile;
-                if ($file = $request->file('cvfile')) {
-                    $cvfile = $request->file('cvfile');
-                    $ext = '.'.$request->cvfile->getClientOriginalExtension();
-                    $fileName = str_replace($ext, date('d-m-Y-H-i') . $ext, $request->cvfile->getClientOriginalName());
-                    $file->move($attachPath, $fileName);
-                    $cvfile_photo = $fileName;
-                    // dd($cvfile_photo);
-                    // $extension = $file->getClientOriginalExtension();
-                    // $var = Str::random(32) . '.' . $extension;
-                    // $file->move($destinationPath, $var);
-                    // $cvfile_photo = $var;
-                    // dd($cvfile_photo);
-                }
+        $cvfile_photo = ($request->cvfile != '') ? $request->cvfile : $employees->cvfile;
+        if ($file = $request->file('cvfile')) {
+            $cvfile = $request->file('cvfile');
+            $ext = '.'.$request->cvfile->getClientOriginalExtension();
+            $fileName = str_replace($ext, date('d-m-Y-H-i') . $ext, $request->cvfile->getClientOriginalName());
+            $file->move($attachPath, $fileName);
+            $cvfile_photo = $fileName;
+            // dd($cvfile_photo);
+            // $extension = $file->getClientOriginalExtension();
+            // $var = Str::random(32) . '.' .
 
-                $otherfile_photo = ($request->otherfile != '') ? $request->otherfile : $employees->otherfile;
-                if ($file = $request->file('otherfile')) {
-                   $otherfile = $request->file('otherfile');
-                    $ext = '.'.$request->otherfile->getClientOriginalExtension();
-                    $fileName = str_replace($ext, date('d-m-Y-H-i') . $ext, $request->otherfile->getClientOriginalName());
-                    $file->move($attachPath, $fileName);
-                    $otherfile_photo = $fileName;
-                }
 
-                $degree_photo = "";
-                if ($file = $request->file('degree')) {
-                    $degree = $request->file('degree');
-                    $ext = '.'.$request->degree->getClientOriginalExtension();
-                    $fileName = str_replace($ext, date('d-m-Y-H-i') . $ext, $request->degree->getClientOriginalName());
-                    $file->move($attachPath, $fileName);
-                    $degree_photo = $fileName;
-                }
+$extension;
+            // $file->move($destinationPath, $var);
+            // $cvfile_photo = $var;
+            // dd($cvfile_photo);
+        }
 
-                $nrccode = NRCCode::find($request->nrc_code);
-                $nrcstate = NRCState::find($request->nrc_state);
-                $fullnrc = $nrccode->name.'/'.$nrcstate->name."(".$request->nrc_status.')'.$request->nrc;
+        $otherfile_photo = ($request->otherfile != '') ? $request->otherfile : $employees->otherfile;
+        if ($file = $request->file('otherfile')) {
+           $otherfile = $request->file('otherfile');
+            $ext = '.'.$request->otherfile->getClientOriginalExtension();
+            $fileName = str_replace($ext, date('d-m-Y-H-i') . $ext, $request->otherfile->getClientOriginalName());
+            $file->move($attachPath, $fileName);
+            $otherfile_photo = $fileName;
+        }
 
-                $month = date('m',strtotime($request->join_date));
-                // dd($date);
-                $user = User::where("loginId",$employees->phone_no)->get();
-                    // dd();
-                    if($user->count()>0){
-                      $user = User::find($user[0]->id);
-                      $arr=[
-                            'loginId'=>$request->phone_no,
-                            'name'=>$request->name,
-                            'password'=>Hash::make('linn')
-                          ];
+        $degree_photo = "";
+        if ($file = $request->file('degree')) {
+            $degree = $request->file('degree');
+            $ext = '.'.$request->degree->getClientOriginalExtension();
+            $fileName = str_replace($ext, date('d-m-Y-H-i') . $ext, $request->degree->getClientOriginalName());
+            $file->move($attachPath, $fileName);
+            $degree_photo = $fileName;
+        }
 
-                      $user->fill($arr)->save();
-                      $user_id=$user->id;
-                      $user->assignRole("Employee");
-                    }else{
+        $nrccode = NRCCode::find($request->nrc_code);
+        $nrcstate = NRCState::find($request->nrc_state);
+        $fullnrc = $nrccode->name.'/'.$nrcstate->name."(".$request->nrc_status.')'.$request->nrc;
 
-                       $user = User::create(
-                        [
-                          'loginId'=>$request->phone_no,
-                          'name'=>$request->name,
-                          'password'=>Hash::make('linn')
-                        ]
-                      );
-                      $user_id=$user->id;
-                      $user->assignRole("Employee");
-                  }
+        $month = date('m',strtotime($request->join_date));
+        // dd($date);
+        $user = User::where("loginId",$employees->phone_no)->get();
+            // dd();
+            if($user->count()>0){
+              $user = User::find($user[0]->id);
+              $arr=[
+                    'loginId'=>$employees->phone_no,
+                    'name'=>$employees->name,
+                    'password'=>Hash::make('linn')
+                  ];
 
-                  if ($request->isHostel == 'Yes') {
-                    $hostelemployee = HoselEmployee::where('emp_id',$employees->id)->get();
-                    // dd($hostelemployee);
-                    if ($hostelemployee->count()>0) {
-                         $hostelemployee = User::find($hostelemployee[0]->id);
-                          $arr=[
-                                 'hostel_id' => $request->home_no,
-                                 'room_id' => $request->room_no,
-                                'start_date' => $request->hostel_sdate,
-                                'full_address' => $request->hostel_location,
-                                'name'=>$request->name,                           
-                                'branch_id'=>$request->branch,
-                                'dep_id'=>$request->department,
-                                'position_id'=>$request->position
-                              ];
+              $user->fill($arr)->save();
+              $user_id=$user->id;
+              $user->assignRole("Employee");
+            }else{
 
-                          $hostelemployee->fill($arr)->save();
-                    }else{
-                        $hostelemployee = HoselEmployee::create(
-                        [
-                          'emp_id'=>  $id,
-                                'hostel_id' => $request->home_no,
-                                'room_id' => $request->room_no,
-                                'start_date' => $request->hostel_sdate,
-                                'full_address' => $request->hostel_location,
-                                'name'=>$request->name,                           
-                                'branch_id'=>$request->branch,
-                                'dep_id'=>$request->department,
-                                'position_id'=>$request->position
-                        ]
-                      );
-                    }
-                    
-                    // dd($hostelemployee);
-                 }
-                 $employees = $employees->update([
-                    'user_id'=>$user_id,
-                    'emp_id'=>$request->emp_id,
-                    'branch_id'=>$request->branch,
-                    'dep_id'=>$request->department,
-                    'position_id'=>$request->position,
-                    'name'=> $request->name,
-                    'gender'=>$request->gender,
-                    'marrical_status'=>$request->marrical_status,
-                    'father_name'=>$request->father_name,
-                    'phone_no'=>$request->phone_no,
-                    'nrc_code'=>$request->nrc_code,
-                    'nrc_state'=>$request->nrc_state,
-                    'nrc_status'=>$request->nrc_status,
-                    'nrc'=>$request->nrc,
-                    'fullnrc'=>$fullnrc,
-                    'date_of_birth'=>$request->date_of_birth,
-                    'join_date'=>$request->join_date,
-                    'join_month'=>$month,
-                    'address'=>$request->address,
-                    'city'=>$request->city,
-                    'township'=>$request->township,
-                    'qualification'=>$request->qualification,
-                    'salary'=>$request->salary,
-                    'photo'=>$photo,
-                    'race'=>$request->race,
-                    'religion'=>$request->religion,
-                    'email'=>$request->email,
-                    'fPhone'=>$request->pPhone,
-                    'experience'=>$request->experience,
-                    'exp_salary'=>$request->salary,
-                    'hostel'=>$request->isHostel,
-                    'address'=>$request->address,
-                    'phone'=>$request->phone,
-                    'signature'=>$request->signed,
-                    'photo'=>$photo,
-                    'city'=>$request->city,
-                    'township'=>$request->township,
-                    'graduation'=>$request->graduation,
-                    'degree'=>$degree_photo,
-                    'level'=>$request->level,
-                    'course_title'=>$request->course_title,
-                    'exp_company'=>$request->exp_company,
-                    'exp_position'=>$request->exp_position,
-                    'exp_location'=>$request->exp_location,
-                    'exp_date_from'=>$request->exp_date_from,
-                    'exp_date_to'=>$request->exp_date_to,
-                    'skills'=>$request->skills,
-                    'proficiency'=>$request->proficiency,
-                    'police_reco'=>$police_reco_photo,
-                    'ward_reco'=>$ward_reco_photo,
-                    'cvfile'=>$cvfile_photo,
-                    'otherfile'=> $otherfile_photo,
-                    'hostel_location'=>$request->hostel_location,
-                    'room_no'=>$request->room_no,
-                    'home_no'=>$request->home_no,
-                    'hostel_sdate'=>$request->hostel_sdate,
-                    'employment_type'=>$request->employment_type,
-                ]);
+               $user = User::create(
+                [
+                  'loginId'=>$employees->phone_no,
+                  'name'=>$employees->name,
+                  'password'=>Hash::make('linn')
+                ]
+              );
+              $user_id=$user->id;
+              $user->assignRole("Employee");
+          }
+
+          if ($request->isHostel == 'Yes') {
+            $hostelemployee = HoselEmployee::where('emp_id',$employees->id)->get();
+            // dd($hostelemployee);
+            if ($hostelemployee->count()>0) {
+                 $hostelemployee = User::find($hostelemployee[0]->id);
+                  $arr=[
+                         'hostel_id' => $request->home_no,
+                         'room_id' => $request->room_no,
+                        'start_date' => $request->hostel_sdate,
+                        'full_address' => $request->hostel_location,
+                        'name'=>$request->name,                           
+                        'branch_id'=>$request->branch,
+                        'dep_id'=>$request->department,
+                        'position_id'=>$request->position
+                      ];
+
+                  $hostelemployee->fill($arr)->save();
+            }else{
+                $hostelemployee = HoselEmployee::create(
+                [
+                  'emp_id'=>  $id,
+                        'hostel_id' => $request->home_no,
+                        'room_id' => $request->room_no,
+                        'start_date' => $request->hostel_sdate,
+                        'full_address' => $request->hostel_location,
+                        'name'=>$request->name,                           
+                        'branch_id'=>$request->branch,
+                        'dep_id'=>$request->department,
+                        'position_id'=>$request->position
+                ]
+              );
+            }
+
+         $employees = $employees->update([
+            'user_id'=>$user_id,
+            'emp_id'=>$request->emp_id,
+            'branch_id'=>$request->branch,
+            'dep_id'=>$request->department,
+            'position_id'=>$request->position,
+            'name'=> $request->name,
+            'gender'=>$request->gender,
+            'marrical_status'=>$request->marrical_status,
+            'father_name'=>$request->father_name,
+            'phone_no'=>$request->phone_no,
+            'nrc_code'=>$request->nrc_code,
+            'nrc_state'=>$request->nrc_state,
+            'nrc_status'=>$request->nrc_status,
+            'nrc'=>$request->nrc,
+            'fullnrc'=>$fullnrc,
+            'date_of_birth'=>$request->date_of_birth,
+            'join_date'=>$request->join_date,
+            'join_month'=>$month,
+            'address'=>$request->address,
+            'city'=>$request->city,
+            'township'=>$request->township,
+            'qualification'=>$request->qualification,
+            'salary'=>$request->salary,
+            'photo'=>$photo,
+            'race'=>$request->race,
+            'religion'=>$request->religion,
+            'email'=>$request->email,
+            'fPhone'=>$request->pPhone,
+            'experience'=>$request->experience,
+            'exp_salary'=>$request->salary,
+            'hostel'=>$request->isHostel,
+            'address'=>$request->address,
+            'phone'=>$request->phone,
+            'signature'=>$request->signed,
+            'photo'=>$photo,
+            'city'=>$request->city,
+            'township'=>$request->township,
+            'graduation'=>$request->graduation,
+            'degree'=>$degree_photo,
+            'level'=>$request->level,
+            'course_title'=>$request->course_title,
+            'exp_company'=>$request->exp_company,
+            'exp_position'=>$request->exp_position,
+            'exp_location'=>$request->exp_location,
+
+
+'exp_date_from'=>$request->exp_date_from,
+            'exp_date_to'=>$request->exp_date_to,
+            'skills'=>$request->skills,
+            'proficiency'=>$request->proficiency,
+            'police_reco'=>$police_reco_photo,
+            'ward_reco'=>$ward_reco_photo,
+            'cvfile'=>$cvfile_photo,
+            'otherfile'=> $otherfile_photo,
+            'hostel_location'=>$request->hostel_location,
+            'room_no'=>$request->room_no,
+            'home_no'=>$request->home_no,
+            'hostel_sdate'=>$request->hostel_sdate,
+            'employment_type'=>$request->employment_type,
+            
+
+        ]);
+
+           
+       
+          
+                        // dd($hostelemployee);
+         }
+                   
+                    // dd($hostelemployee->emp_id);
                 DB::commit();
+
              }catch (Exception $e) {
-                dd($e);
-                DB::rollback();
-                return redirect()->route('employee.index')->with('success','Employee updated successfully');
+                  DB::rollback();
+                    return redirect()->route('employee.index')->with('success','Employee updated successfully');
              }
                return redirect()->route('employee.index')->with('success','Employee updated successfully');
          }else{
@@ -593,7 +615,10 @@ class EmployeeController extends Controller
       
       $employee = new Employee();
 
-       $employee = $employee->leftjoin('department','department.id','=','employee.dep_id')
+       $employee = $employee->leftjoin('department','department.id','=','emp
+
+
+loyee.dep_id')
                             ->leftjoin('branch','branch.id','=','employee.branch_id')
                        ->select(
                         'department.name',
@@ -721,7 +746,9 @@ class EmployeeController extends Controller
           }
           $employees = $employees->update([
             'user_id'=>$user_id
-          ]);
+
+
+]);
           return redirect()->route('employee.index')->with('success','Employee updated successfully');;
     }
 
