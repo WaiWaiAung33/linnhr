@@ -312,7 +312,7 @@ foreach ($branchHostelArr as $key => $brh) {
         .responsive()
         .beginAtZero()
         .legend({ position: 'bottom' })
-        .title('အဆောင်အလိုက် ပြသမှု')
+        .title('အဆောင်အလိုက် ကျား/မ ပြသမှု')
     })
 
 
