@@ -132,7 +132,7 @@ input:checked + .slider:before {
                     @if($branchs->count()>0)
               		 @foreach($branchs as $branch)
 
-                        <tr>
+                        <tr class="table-tr" data-url="{{  url('employee?branch_id='.$branch->id) }}">
                             <td>{{++$i}}</td>
                             <td>{{$branch->name}}</td>
                             <td>{{$branch->phone}}</td>
