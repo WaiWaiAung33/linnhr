@@ -31,8 +31,8 @@ class EmployeeController extends Controller
     {
      
         // dd($request->join_date);
-        
-        $join_date = date('m/d/Y',strtotime($request->join_date));
+
+        $join_date = date('Y-m-d',strtotime($request->join_date));
         // dd($join_date);
         $branchs = Branch::all();
         $departments = Department::all();
