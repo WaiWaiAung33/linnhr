@@ -29,7 +29,10 @@ class EmployeeController extends Controller
      */
     public function index(Request $request)
     {
-      // dd($request->join_month);
+     
+        // dd($request->join_date);
+        $join_date = date('m/d/Y',strtotime($request->join_date));
+        // dd($join_date);
         $branchs = Branch::all();
         $departments = Department::all();
         $positions = Position::all();
@@ -60,11 +63,12 @@ class EmployeeController extends Controller
         if ($request->join_month != '') {
             $employees = $employees->where('join_month',$request->join_month);
         }
-        if ($request->join_date != '') {
-            $startDate = date('Y-m-d', strtotime($request->join_date))." 00:00:00";
-            $employees = $employees->where('join_date',$startDate);
-            // dd($customers);
+        if ($join_date) {
+            // dd("here");
+             $employees = $employees->where('join_date',$join_date);
+            // dd($employees->get());
         }
+        // dd($employees->get());
         $count = $employees->get()->count();
         $employees = $employees->orderBy('emp_id','asc')->paginate(10);
     
