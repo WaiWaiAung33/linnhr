@@ -33,7 +33,7 @@ Route::get('/department', 'Api\DepartmentApiController@department');
 Route::post('/department_create','Api\DepartmentApiController@department_create');
 Route::post('/department_edit/{id}','Api\DepartmentApiController@department_edit');
 Route::post('/department_delete/{id}','Api\DepartmentApiController@department_delete');
-Route::post('/department_activeInactive/{id}','Api\DepartmentApiController@active_inactive');
+Route::post('/department_activeInactive/{id}','Api\DepartmentApiController@department_activeInactive');
 
 Route::get('/branch', 'Api\BranchApiController@branch');
 Route::post('/branch_create','Api\BranchApiController@branch_create');
