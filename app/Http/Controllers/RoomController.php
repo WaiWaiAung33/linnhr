@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Room;
 use App\Hostel;
+use App\HoselEmployee;
 use Illuminate\Http\Request;
 
 class RoomController extends Controller
@@ -104,10 +105,16 @@ class RoomController extends Controller
      */
     public function destroy($id)
     {
-        $rooms = Room::find($id);
-        $rooms->delete();
-  
-        return redirect()->route('room.index')
+
+        $hostelemployee = HoselEmployee::where('room_id',$id)->get();
+        if (count($hostelemployee)>0) {
+            return redirect()->route('room.index')
+                        ->with('error','Room cannot delete!!!');
+        }else{
+         $room = Room::find($id)->delete();
+         return redirect()->route('room.index')
                         ->with('success','Room deleted successfully');
+        }
+      
     }
 }

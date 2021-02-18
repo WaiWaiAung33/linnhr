@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Hostel;
+use App\HoselEmployee;
 use Illuminate\Http\Request;
 
 class HostelController extends Controller
@@ -105,9 +106,14 @@ class HostelController extends Controller
      */
     public function destroy($id)
     {
-        $hostels = Hostel::find($id);
-        $hostels->delete();
-        return redirect()->route('hostel.index')
+        $hostelemployee = HoselEmployee::where('hostel_id',$id)->get();
+        if (count($hostelemployee)>0) {
+            return redirect()->route('hostel.index')
+                        ->with('error','Hostel cannot delete!!!');
+        }else{
+         $hostel = Hostel::find($id)->delete();
+         return redirect()->route('hostel.index')
                         ->with('success','Hostel deleted successfully');
+        }
     }
 }
