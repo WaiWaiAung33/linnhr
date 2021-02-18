@@ -27,8 +27,7 @@
         {{-- Email field --}}
         <div class="input-group mb-3">
             <input type="text" name="email" class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}"
-                   value="{{ old('email') }}" placeholder="{{ __('adminlte::adminlte.email') }}" autofocus>
-           <!--  <input id="username" type="text" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" placeholder="{{ __('adminlte::adminlte.email') }}" required autofocus > -->
+                   value="{{ old('email') }}" placeholder="Phone number or Email" autofocus>
 
             <div class="input-group-append">
                 <div class="input-group-text">

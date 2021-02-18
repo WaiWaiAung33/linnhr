@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Department;
 use DB;
+use Validator;
 
 class DepartmentApiController extends Controller
 {
@@ -20,5 +21,83 @@ class DepartmentApiController extends Controller
                      ->get();
         $departments = $department->where('status',1);
         return response(['departments' => $departments,'message'=>"Successfully login",'status'=>1]);
+    }
+
+    public function department_create(Request $request)
+    {
+        $input = $request->all();
+        $rules=[
+            'dept_name'=>'required',
+            'color_code'=>'required'
+        ];
+
+        $validator = Validator::make($input, $rules);
+
+         if ($validator->fails()) {
+            $messages = $validator->messages();
+               return response()->json(['message'=>"Error",'status'=>0]);
+        }else{
+            $department = Department::create([
+                'name'=>$request->dept_name,
+                'color_code'=>$request->color_code,
+                'status'=>1
+            ]);
+        return response(['message'=>"Successfully create",'status'=>1]);
+        }
+    }
+
+    public function department_edit($id,Request $request)
+    {
+        $input = $request->all();
+        $rules=[
+            'dept_name'=>'required',
+            'color_code'=>'required'
+        ];
+
+        $validator = Validator::make($input, $rules);
+
+         if ($validator->fails()) {
+            $messages = $validator->messages();
+               return response()->json(['message'=>"Error",'status'=>0]);
+        }else{
+            $department = Department::find($id);
+            $department = $department->update([
+                'name'=>$request->dept_name,
+                'color_code'=>$request->color_code,
+            ]);
+            return response(['message'=>"Successfully update",'status'=>1]);
+        }
+    }
+
+    public function department_delete($id)
+    {
+        $department = Department::find($id);
+        if ($department != null) {
+            $department = $department->delete();
+            return response(['message'=>"Successfully delete",'status'=>1]);
+        }else{
+            return response(['message'=>"Delete id does not exit!!!",'status'=>0]);
+        }
+    }
+
+    public function department_activeInactive($id,Request $request)
+    {
+        $input = $request->all();
+        $rules=[
+            'status'=>'required'
+        ];
+
+        $validator = Validator::make($input, $rules);
+
+         if ($validator->fails()) {
+            $messages = $validator->messages();
+               return response()->json(['message'=>"Status Required",'status'=>0]);
+        }else{
+            $department = Department::find($id);
+            $department = $department->update([
+                'status'=>$request->status
+            ]);
+            return response(['message'=>"Successfully",'status'=>1]);
+        }
     }
 }
