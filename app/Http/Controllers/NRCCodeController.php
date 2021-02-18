@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\NRCCode;
+use App\Employee;
 use Illuminate\Http\Request;
 
 class NRCCodeController extends Controller
@@ -99,10 +100,14 @@ class NRCCodeController extends Controller
      */
     public function destroy($id)
     {
-        $nrccode = NRCCode::find($id);
-        $nrccode->delete();
-  
-        return redirect()->route('nrccode.index')
+        $employee = Employee::where('nrc_code',$id)->get();
+        if (count($employee)>0) {
+            return redirect()->route('nrccode.index')
+                        ->with('error','NRCCode cannot delete!!!');
+        }else{
+         $nrccode = NRCCode::find($id)->delete();
+         return redirect()->route('nrccode.index')
                         ->with('success','NRCCode deleted successfully');
+        }
     }
 }
