@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Position;
+use App\Employee;
 use Illuminate\Http\Request;
 
 class PositionController extends Controller
@@ -97,11 +98,17 @@ class PositionController extends Controller
      * @param  \App\Position  $position
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Position $position)
+    public function destroy($id)
     {
-        $position->delete();
-  
-        return redirect()->route('position.index')
+        $employee = Employee::where('position_id',$id)->get();
+        if (count($employee)>0) {
+            return redirect()->route('position.index')
+                        ->with('error','Position cannot delete!!!');
+        }else{
+         $position = Position::find($id)->delete();
+         return redirect()->route('position.index')
                         ->with('success','Position deleted successfully');
+        }
+       
     }
 }
