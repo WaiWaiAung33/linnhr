@@ -335,7 +335,7 @@ return [
         [
                     'text' => 'NRC Code',
                     'url'  => 'nrccode',
-                    'icon' => 'fa fa-id-card',
+                    'icon' => 'fas fa-id-card-alt',
                     'can'  => 'nrc-code-list'
          ],
          [

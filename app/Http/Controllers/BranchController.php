@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Branch;
+use App\Employee;
 use Illuminate\Http\Request;
 
 class BranchController extends Controller
@@ -114,12 +115,17 @@ class BranchController extends Controller
      * @param  \App\Branch  $branch
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Branch $branch)
+    public function destroy($id)
     {
-         $branch->delete();
-  
-        return redirect()->route('branch.index')
+        $employee = Employee::where('branch_id',$id)->get();
+        if (count($employee)>0) {
+            return redirect()->route('branch.index')
+                        ->with('error','Branch cannot delete!!!');
+        }else{
+         $branch = Branch::find($id)->delete();
+         return redirect()->route('branch.index')
                         ->with('success','Branch deleted successfully');
+        }
     }
 
     public function changestatusactive(Request $request)

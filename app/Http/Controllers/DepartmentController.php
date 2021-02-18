@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Department;
+use App\Employee;
 use Illuminate\Http\Request;
 
 class DepartmentController extends Controller
@@ -106,12 +107,19 @@ class DepartmentController extends Controller
      * @param  \App\Department  $department
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Department $department)
+    public function destroy($id)
     {
-        $department->delete();
-  
-        return redirect()->route('department.index')
+
+        $employee = Employee::where('dep_id',$id)->get();
+        if (count($employee)>0) {
+            return redirect()->route('department.index')
+                        ->with('error','Department cannot delete!!!');
+        }else{
+         $department = Department::find($id)->delete();
+         return redirect()->route('department.index')
                         ->with('success','Department deleted successfully');
+        }
+       
     }
 
     public function changestatusdept(Request $request)
