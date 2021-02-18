@@ -108,7 +108,7 @@
                     <tbody>
                     @if($hostelemployees->count()>0)
                      @foreach($hostelemployees as $hostelemployee)
-                        <tr>
+                        <tr class="table-tr" data-url="{{route('employee.show',$hostelemployee->emp_id)}}">
 
                             <td>{{++$i}}</td>
                             <td>{{$hostelemployee->viewEmployee->name}}</td>
