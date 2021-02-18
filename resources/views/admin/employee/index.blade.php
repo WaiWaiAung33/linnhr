@@ -34,6 +34,13 @@
   $hostel = isset($_GET['hostel'])?$_GET['hostel']:''; 
   $join_date = isset($_GET['join_date'])?$_GET['join_date']:'';
   $join_month = isset($_GET['join_month'])?$_GET['join_month']:'';
+  $sy_from = isset($_GET['sy_from'])?$_GET['sy_from']:'';
+  $sy_to = isset($_GET['sy_to'])?$_GET['sy_to']:'';
+  $age_from = isset($_GET['age_from'])?$_GET['age_from']:'';
+  $age_to = isset($_GET['age_to'])?$_GET['age_to']:'';
+
+  $active = isset($_GET['active'])?$_GET['active']:'';
+  
   ?>
 
         <form class="form-horizontal unicode" action="{{route('import')}}" method="POST" enctype="multipart/form-data">
@@ -138,7 +145,11 @@
                               <option value="Male" {{ (old('gender',$gender)=="Male")?'selected':'' }}>Male</option>
                               <option value="Female" {{ (old('gender',$gender)=="Female")?'selected':'' }}>Female</option>
                              </select>
-                        </div>
+                        </div>  
+                      
+                    </div>
+                    <br>
+                     <div class="row">
 
                         <div class="col-md-3">
                              <label for="">Hostel/No Hostel</label>
@@ -160,19 +171,35 @@
                              <input type="text" name="join_month" id="join_month"class="form-control unicode" placeholder="January" value="{{ old('join_month',$join_month) }}" style="font-size: 13px">
                         </div>
 
-
-
-                      {{--   <div class="col-md-3">
-                             <label for="">Hostel/No Hostel</label>
-                            <select class="form-control" id="hostel" name="hostel" style="font-size: 13px">
+                        <div class="col-md-3">
+                             <label for="">Employement Status</label>
+                            <select class="form-control" id="active" name="active" style="font-size: 13px">
                               <option value="">All</option>  
-                              <option value="No" {{ (old('hostel',$hostel)=="No")?'selected':'' }}>No Hostel</option>
-                              <option value="Yes" {{ (old('hostel',$hostel)=="Yes")?'selected':'' }}>Hostel</option>
+                              <option value="1" {{ (old('hostel',$hostel)=="1")?'selected':'' }}>Active</option>
+                              <option value="0" {{ (old('hostel',$hostel)=="0")?'selected':'' }}>Inactive</option>
                              </select>
-                        </div> --}}
+                        </div>
+                      </div>
 
-                        
-                      
+
+                    <br>
+                    <div class="row">
+                      <div class="col-md-3">
+                           <label for="">Service Year From</label>
+                           <input type="number" name="sy_from" id="sy_from" class="form-control" placeholder="1" value="{{ old('sy_from',$sy_from) }}" style="font-size: 13px">
+                      </div>
+                      <div class="col-md-3">
+                         <label for="">Service Year To</label>
+                        <input type="number" name="sy_to" id="sy_to" class="form-control" placeholder="1" value="{{ old('sy_to',$sy_to) }}" style="font-size: 13px">
+                      </div>
+                      <div class="col-md-3">
+                           <label for="">Age From</label>
+                           <input type="number" name="age_from" id="age_from" class="form-control" placeholder="1" value="{{ old('age_from',$age_from) }}" style="font-size: 13px">
+                      </div>
+                      <div class="col-md-3">
+                         <label for="">Age To</label>
+                        <input type="number" name="age_to" id="age_to" class="form-control" placeholder="1" value="{{ old('age_to',$age_to) }}" style="font-size: 13px">
+                      </div>
                     </div>
                     <br>
                     <div class="row">
@@ -274,7 +301,15 @@
                               ?>
                              
                             <td>{{date('d-m-Y',strtotime($employee->join_date))}} <br>
-                              ({{$workyear}}) years
+                              {{-- ({{  Carbon\Carbon::parse($employee->join_date)->age + 1}}) years --}}
+                              @php  
+                                $d1 = new DateTime(date('Y-m-d',strtotime($employee->join_date)));
+                                $d2 = new DateTime(date("Y-m-d"));
+                                $interval = $d1->diff($d2);
+                                $format = $interval->format('%yY, %mM, %dD');
+
+                              @endphp
+                               ({{ $format }})
                             </td>
                             <td>{{$employee->phone_no}}</td>
 
@@ -300,8 +335,6 @@
            </table> 
         {!! $employees->appends(request()->input())->links() !!}
     </div>
-         
-
 @stop 
 @section('css')
 <link rel="stylesheet" href="{{ asset('select2/css/select2.min.css') }}"/>
@@ -475,6 +508,7 @@
           $(function() {
             $(document).find("#clear_search").click(function(){
                 $(document).find("select").val('');
+                $(document).find("input").val('');
             });
           });
 

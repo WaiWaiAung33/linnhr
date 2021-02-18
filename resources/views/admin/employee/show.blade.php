@@ -34,8 +34,6 @@
   $years = floor($diff / (365*60*60*24));
   $months = floor(($diff - $years * 365*60*60*24) / (30*60*60*24));
   $days = floor(($diff - $years * 365*60*60*24 - $months*30*60*60*24)/ (60*60*24));
-
-
 ?>
 
 <?php 
@@ -123,7 +121,7 @@
                     <td>Parent's Name<span style="padding-left: 115px">{{$employees->father_name ? $employees->father_name : "-"}}</span></td>
                 </tr>
                 <tr>
-                    <td>Date of birth<span style="padding-left: 125px">{{date('d-m-Y',strtotime($employees->date_of_birth))}}</span> <span>({{$workyearbirth}}) years</span></td>
+                    <td>Date of birth<span style="padding-left: 125px">{{date('d-m-Y',strtotime($employees->date_of_birth))}}</span> <span>({{ Carbon\Carbon::parse($employees->date_of_birth)->age + 1 }}) years</span></td>
                 </tr>
                 <tr>
                     <td>Full Nrc<span style="padding-left: 155px">{{$employees->fullnrc ? $employees->fullnrc : "-"}}</span></td>
@@ -257,7 +255,15 @@
                     <td>Branch<span style="padding-left: 165px">{{$employees->ViewBranch->name ? $employees->ViewBranch->name : "-"}}</span></td>
                 </tr>
                  <tr>
-                    <td>Join Date<span style="padding-left: 150px">{{ date("d-m-Y",strtotime($employees->join_date)) }} ({{$years}} Years ,{{ $months }} Months ,{{ $days }} Days )</span></td>
+                     @php  
+                      $d1 = new DateTime(date('Y-m-d',strtotime($employees->join_date)));
+                      $d2 = new DateTime(date("Y-m-d"));
+                      $interval = $d1->diff($d2);
+                      $format = $interval->format('%yY, %mM,%d D');
+
+                    @endphp
+                               ({{ $format }})
+                    <td>Join Date<span style="padding-left: 150px">{{ date("d-m-Y",strtotime($employees->join_date)) }} ({{ $format }})</td>
                 </tr>
                   <tr>
                     <td>isHostel<span style="padding-left: 160px">{{$employees->hostel ? $employees->hostel : "-"}}</span></td>
