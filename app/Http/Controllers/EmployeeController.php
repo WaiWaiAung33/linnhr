@@ -31,6 +31,7 @@ class EmployeeController extends Controller
     {
      
         // dd($request->join_date);
+        
         $join_date = date('m/d/Y',strtotime($request->join_date));
         // dd($join_date);
         $branchs = Branch::all();
@@ -63,7 +64,7 @@ class EmployeeController extends Controller
         if ($request->join_month != '') {
             $employees = $employees->where('join_month',$request->join_month);
         }
-        if ($join_date) {
+        if ($join_date != '01/01/1970') {
             // dd("here");
              $employees = $employees->where('join_date',$join_date);
             // dd($employees->get());
