@@ -31,6 +31,9 @@ class JobapplicationController extends Controller
         if($request->name != '') {
         $jobapplications = $jobapplications->Where('name','like','%'.$request->name.'%');
         }
+        if ($request->status != '') {
+            $jobapplications = $jobapplications->where('status',$request->status);
+        }
         $count = $jobapplications->get()->count();
         $jobapplications = $jobapplications->orderBy('created_at','desc')->paginate(10);
         return view('admin.jobapplication.index',compact('jobapplications','departments','positions','count'))->with('i', (request()->input('page', 1) - 1) * 10);;

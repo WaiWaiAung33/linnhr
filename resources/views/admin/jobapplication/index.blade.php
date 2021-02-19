@@ -17,6 +17,7 @@
 
 <?php
         $name = isset($_GET['name'])?$_GET['name']:'';
+        $status = isset($_GET['status'])?$_GET['status']:'';
 ?>
 
 
@@ -31,6 +32,15 @@
       
        <div class="col-md-3">                 
           <input type="text" name="name" id="name" value="{{ old('name',$name) }}" class="form-control" placeholder="Search..." style="font-size: 13px">
+        </div>
+        <div class="col-md-3">
+          <select class="form-control" id="status" name="status" style="font-size: 13px">
+            <option value="">Select Interview Step</option>  
+            <option value="0" {{ (old('status',$status)=="0")?'selected':'' }}>New</option>
+            <option value="1" {{ (old('status',$status)=="1")?'selected':'' }}>First Interview</option>
+            <option value="2" {{ (old('status',$status)=="2")?'selected':'' }}>Second Interview</option>
+            <option value="3" {{ (old('status',$status)=="3")?'selected':'' }}>Done</option>
+           </select>
         </div>
      </div>
     </form>
@@ -117,8 +127,12 @@
             $(function() {
                 $('#name').on('change',function(e) {
                 this.form.submit();
+            
             }); 
-   
+                $('#status').on('change',function(e) {
+                this.form.submit();
+            
+              }); 
         });
           $(function() {
           $('table').on("click", "tr.table-tr", function() {
