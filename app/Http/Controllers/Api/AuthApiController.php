@@ -57,6 +57,7 @@ class AuthApiController extends Controller
                         'name'=>auth()->user()->name,
                         'email'=>auth()->user()->email,
                         'employeeId'=>$employee[0]->id,
+                        'photo'=>$employee[0]->photo,
                         'ename'=>$employee[0]->name,
                         'phone'=>$employee[0]->phone_no,
                         'user_role'=>auth()->user()->roles[0]->name
