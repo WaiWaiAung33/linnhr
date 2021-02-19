@@ -9,10 +9,12 @@ use App\NRCCode;
 use App\NRCState;
 use App\Employee;
 use App\Jobopening;
+use App\Interview;
 use Illuminate\Http\Request;
 use File;
 use Illuminate\Support\Str;
 use DB;
+use Validator;
 
 class JobapplicationController extends Controller
 {
@@ -52,72 +54,148 @@ class JobapplicationController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request->all());
+         $rules = [
+                    'name'=>'required',
+        ];
+        $validator = Validator::make($request->all(), $rules);
+        if ($validator->passes()){
+             DB::beginTransaction();
+             try{
 
-        $departments = Department::all();
-        $positions = Position::all();
-        $destinationPath = public_path() . '/uploads/employeePhoto/';
-        $photo = ($request->photo != '') ? $request->photo : null;
-        //upload image
-        if ($file = $request->file('photo')) {
-            $extension = $file->getClientOriginalExtension();
-            $var = Str::random(32) . '.' . $extension;
-            $file->move($destinationPath, $var);
-            $photo = $var;
-        }
-        foreach ($departments as $key => $value) {
-            if ($value->name == $request->department) {
-               $dep_id = $value->id ;
-            }
-        }
-        foreach ($positions as $key => $value) {
-           if ($value->name == $request->location) {
-             $pos_id = $value->id;
-             // dd($pos_id);
-           }
-        }
-        $max = DB::table('employee')->max('emp_id');
-        $max_id = ++$max;
-        $date = date('d-m-Y');
-        $month = date('m');
+                $departments = Department::all();
+                    $positions = Position::all();
+                    $destinationPath = public_path() . '/uploads/employeePhoto/';
+                    $policePath = public_path() . '/uploads/policestationrecomPhoto/';
+                    $wardPath = public_path() . '/uploads/wardrecoPhoto/';
+                    $attachPath = public_path() . '/uploads/attachfile';
+                    $photo = ($request->photo != '') ? $request->photo : null;
+                    //upload image
+                    if ($file = $request->file('photo')) {
+                        $extension = $file->getClientOriginalExtension();
+                        $var = Str::random(32) . '.' . $extension;
+                        $file->move($destinationPath, $var);
+                        $photo = $var;
+                    }
 
-         $employee=Employee::create([
-            'emp_id'=>$max_id,
-            'branch_id'=>1,
-            'dep_id'=>$dep_id,
-            'position_id'=>$pos_id,
-            'name'=> $request->name,
-            'gender'=>$request->gender,
-            'marrical_status'=>$request->marrical_status,
-            'father_name'=>$request->fName,
-            'phone_no'=>$request->phone,
-            'nrc_code'=>$request->nrc_code,
-            'nrc_state'=>$request->nrc_state,
-            'nrc_status'=>$request->nrc_status,
-            'nrc'=>$request->nrc,
-            'fullnrc'=>$request->fullnrc,
-            'date_of_birth'=>$request->dob,
-            'join_date'=>$date ,
-            'join_month'=>$month,
-            'address'=>$request->address,
-            'city'=>$request->city,
-            'township'=>$request->township,
-            'qualification'=>$request->education,
-            'photo'=>$photo,
-            'religion'=>$request->religion,
-            'email'=>$request->email,
-            'fPhone'=>$request->fPhone,
-            'experience'=>$request->experience,
-            'exp_salary'=>$request->salary,
-            'hostel'=>$request->hostel,
-        ]
-        );
+                     $police_reco_photo = ($request->police_reco != '') ? $request->police_reco : $request->police_reco;
+                     
+                    if ($file = $request->file('police_reco')) {
+                        $police_reco = $request->file('police_reco');
+                        $ext = '.'.$request->police_reco->getClientOriginalExtension();
+                        $fileName = str_replace($ext, date('d-m-Y-H-i') . $ext, $request->police_reco->getClientOriginalName());
+                        $file->move($policePath, $fileName);
+                        $police_reco_photo = $fileName;
+                    }
 
-         $updatedata = DB::table('cvform')
-                        ->update(['status' => 1]);
+                    $ward_reco_photo =  ($request->ward_reco != '') ? $request->ward_reco : $request->ward_reco;
+                    if ($file = $request->file('ward_reco')) {
+                       $ward_reco = $request->file('ward_reco');
+                        $ext = '.'.$request->ward_reco->getClientOriginalExtension();
+                        $fileName = str_replace($ext, date('d-m-Y-H-i') . $ext, $request->ward_reco->getClientOriginalName());
+                        $file->move($wardPath, $fileName);
+                        $ward_reco_photo = $fileName;
+                    }
 
-         DB::commit();
 
-          return redirect()->route('jobapplication.index')->with('success','Employee created successfully');;
+                    $cvfile_photo = ($request->cvfile != '') ? $request->cvfile : $request->cvfile;
+                    if ($file = $request->file('cvfile')) {
+                        $cvfile = $request->file('cvfile');
+                        $ext = '.'.$request->cvfile->getClientOriginalExtension();
+                        $fileName = str_replace($ext, date('d-m-Y-H-i') . $ext, $request->cvfile->getClientOriginalName());
+                        $file->move($attachPath, $fileName);
+                        $cvfile_photo = $fileName;
+                        // dd($cvfile_photo);
+                        // $extension = $file->getClientOriginalExtension();
+                        // $var = Str::random(32) . '.' .
+
+
+                        $extension;
+                        // $file->move($destinationPath, $var);
+                        // $cvfile_photo = $var;
+                        // dd($cvfile_photo);
+                    }
+
+                    $otherfile_photo = ($request->otherfile != '') ? $request->otherfile : $request->otherfile;
+                    if ($file = $request->file('otherfile')) {
+                       $otherfile = $request->file('otherfile');
+                        $ext = '.'.$request->otherfile->getClientOriginalExtension();
+                        $fileName = str_replace($ext, date('d-m-Y-H-i') . $ext, $request->otherfile->getClientOriginalName());
+                        $file->move($attachPath, $fileName);
+                        $otherfile_photo = $fileName;
+                    }
+
+
+                    foreach ($departments as $key => $value) {
+                        if ($value->name == $request->department) {
+
+                           $dep_id = $value->id ;
+                        }
+                    }
+                    foreach ($positions as $key => $value) {
+                       if ($value->name == $request->location) {
+                         $pos_id = $value->id;
+                         // dd($pos_id);
+                       }
+                    }
+                    $max = DB::table('employee')->max('emp_id');
+                    $max_id = ++$max;
+                    $date = date('d-m-Y');
+                    $month = date('m');
+
+                     $employee=Employee::create([
+                        'emp_id'=>$max_id,
+                        'branch_id'=>1,
+                        'dep_id'=>$dep_id,
+                        'position_id'=>$pos_id,
+                        'name'=> $request->name,
+                        'gender'=>$request->gender,
+                        'marrical_status'=>$request->marrical_status,
+                        'father_name'=>$request->fName,
+                        'phone_no'=>$request->phone,
+                        'nrc_code'=>$request->nrc_code,
+                        'nrc_state'=>$request->nrc_state,
+                        'nrc_status'=>$request->nrc_status,
+                        'nrc'=>$request->nrc,
+                        'fullnrc'=>$request->fullnrc,
+                        'date_of_birth'=>$request->dob,
+                        'join_date'=>$date ,
+                        'join_month'=>$month,
+                        'address'=>$request->address,
+                        'city'=>$request->city,
+                        'township'=>$request->township,
+                        'qualification'=>$request->education,
+                        'photo'=>$photo,
+                        'religion'=>$request->religion,
+                        'email'=>$request->email,
+                        'fPhone'=>$request->fPhone,
+                        'experience'=>$request->experience,
+                        'exp_salary'=>$request->salary,
+                        'hostel'=>$request->hostel,
+                        'police_reco'=>$police_reco_photo,
+                        'ward_reco'=>$ward_reco_photo,
+                        'cvfile'=>$cvfile_photo,
+                        'otherfile'=> $otherfile_photo,
+                    ]
+                    );
+
+                    $employees = Cvform::find($request->emp_id);
+                    $updatedata = $employees->update([
+                            'status'=>3,
+                          ]);
+
+                     DB::commit();
+
+             }catch (Exception $e) {
+                  DB::rollback();
+                    return redirect()->route('jobapplication.index')->with('success','Successfully');
+             }
+            return redirect()->route('jobapplication.index')->with('success','Successfully');
+
+        }else{
+            return redirect()->route('jobapplication.show');
+         }
+
     }
 
     /**
@@ -133,7 +211,9 @@ class JobapplicationController extends Controller
         $nrccodes = NRCCode::all();
         $nrcstates = NRCState::all(); 
         $jobapplications = Cvform::find($id);
-        return view('admin.jobapplication.show',compact('departments','positions','jobapplications','nrccodes','nrcstates'));
+        $interviewemployee = Interview::where('emp_id',$id)->get();
+        // dd($interviewemployee);
+        return view('admin.jobapplication.show',compact('departments','positions','jobapplications','nrccodes','nrcstates','interviewemployee'));
     }
 
     /**

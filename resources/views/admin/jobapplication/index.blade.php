@@ -47,6 +47,7 @@
                       <th>Branch</th>
                       <th>Education</th>
                       <th>Expected Salary</th>
+                      <th>Interview Step</th>
                       <!-- <th>Experience</th> -->
                     </tr>
                   </thead>
@@ -64,15 +65,24 @@
                              <img src="{{ asset('uploads/jobapplicationPhoto/'.$jobapplication->photo) }}" alt="photo" width="80px" height="80px">
                              </td>
                              @endif
-                            <td style="{{ $jobapplication->status == 1 ? 'color: #2874A6 ' : '' }}">{{$jobapplication->name}}</td>
+                            <td>{{$jobapplication->name}}</td>
                            
                            
-                           <td style="{{ $jobapplication->status == 1 ? 'color: #2874A6 ' : '' }}">{{$jobapplication->department}}</td>
+                           <td >{{$jobapplication->department}}</td>
                           
-                           <td style="{{ $jobapplication->status == 1 ? 'color: #2874A6 ' : '' }}">{{ $jobapplication->job}}</td>
-                           <td style="{{ $jobapplication->status == 1 ? 'color: #2874A6 ' : '' }}">{{$jobapplication->edu}}</td>
-                           <td style="{{ $jobapplication->status == 1 ? 'color: #2874A6 ' : '' }}">{{$jobapplication->exp_salary}}</td>
-                           <!-- <td style="{{ $jobapplication->status == 1 ? 'color: #2874A6 ' : '' }}">{{$jobapplication->experience}}</td> -->
+                           <td >{{ $jobapplication->job}}</td>
+                           <td >{{$jobapplication->edu}}</td>
+                           <td >{{$jobapplication->exp_salary}}</td>
+                           @if($jobapplication->status == 0)
+                           <td >New</td>
+                           @elseif($jobapplication->status == 1)
+                           <td >First Interview</td>
+                            @elseif($jobapplication->status == 2)
+                            <td>Second Interview</td>
+                            @elseif($jobapplication->status == 3)
+                            <td>Done</td>
+                            @endif
+                           <!-- <td >{{$jobapplication->experience}}</td> -->
                         </tr>
                         
                  @endforeach

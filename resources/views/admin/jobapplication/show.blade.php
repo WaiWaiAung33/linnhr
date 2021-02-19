@@ -14,9 +14,6 @@
 @section('content')
    
 
-<form action="#" method="POST" class="form-horizontal" enctype="multipart/form-data">
-@csrf
-@method('post')
 <div class="row">
         <div class="col-lg-10">
              <a class="btn btn-success unicode" href="{{route('jobapplication.index')}}"> Back</a>
@@ -24,12 +21,148 @@
 
         @if($jobapplications->status == 0)
          <div>
-            <button type="submit" class="btn btn-sm btn-primary" style="'float: left;">Call Interview</button>
+            {{--  <button type="button" class="btn btn-warning " id="morefilter" style="font-size: 13px"><i class="fa fa-filter" aria-hidden="true"></i></button> --}}
+            <button type="button" class="btn btn-warning "  data-toggle="modal" data-target="#myModal" >Call InterView</button>
          </div>
+         @elseif($jobapplications->status == 1)
+          <div>
+            <button type="button" class="btn btn-warning "  data-toggle="modal" data-target="#myModal" >Second InterView</button>
+         </div>
+         @elseif($jobapplications->status == 2)
+         <form action="{{route('jobapplication.store')}}" method="POST" accept-charset="utf-8" class="form-horizontal unicode">
+            @csrf
+            @method('post')
+               <input type="hidden" name="nrc_code" value="{{$jobapplications->nrc_code}}">
+                 <input type="hidden" name="nrc_state" value="{{$jobapplications->nrc_state}}">
+                <input type="hidden" name="nrc_status" value="{{$jobapplications->nrc_status}}">
+                <input type="hidden" name="nrc" value="{{$jobapplications->nrc}}">
+                 <input type="hidden" name="fullnrc" value="{{$jobapplications->fullnrc}}">
+                <input id="first-name" type="hidden" name="emp_id" class="form-control resume" placeholder="Name :" value="{{$jobapplications->id}}">
+                 <input id="first-name" type="hidden" name="name" class="form-control resume" placeholder="Name :" value="{{$jobapplications->name}}">
+                 <input type="hidden" class="form-control resume" placeholder="Parent Name :" name="fName" value="{{$jobapplications->fName}}">
+                <input type="hidden" class="form-control resume" placeholder="01-01-2021 :" name="dob" value="{{date('d-m-Y',strtotime($jobapplications->dob))}}">
+                <input type="hidden" class="form-control resume" name="religion" value="{{$jobapplications->religion}}">
+                <input type="hidden" class="form-control resume" name="gender" value="{{$jobapplications->gender}}">
+                <input type="hidden" class="form-control resume" name="marrical_status" value="{{$jobapplications->marrical_status}}">
+                <input type="hidden" class="form-control resume" placeholder="email :" name="email" value="{{$jobapplications->email}}">
+                <input type="hidden" class="form-control resume" value="{{$jobapplications->fullnrc}}">
+                <input id="phone" type="hidden" class="form-control resume" name="phone" value="{{$jobapplications->phone}}">
+                <input type="hidden" class="form-control resume" name="fPhone" value="{{$jobapplications->fPhone}}" >
+                <input type="hidden" class="form-control resume" placeholder="City :" name="city" value="{{$jobapplications->city}}">
+                <input type="hidden" class="form-control resume" placeholder="Township :" name="township" value="{{$jobapplications->township}}" >
+                <input type="hidden" class="form-control resume" placeholder="Township :" name="address" value="{{$jobapplications->address}}" >
+                <input id="graduation" type="hidden" class="form-control resume" placeholder="" name="graduation" value="{{$jobapplications->graduation}}">
+                <input id="university/college" type="hidden" class="form-control resume" placeholder="" name="education" value="{{$jobapplications->edu}}">
+                <input id="degree/certification" type="hidden" class="form-control resume" placeholder="" name="degree">
+                <input type="hidden" class="form-control resume" placeholder="" name="level" value="{{$jobapplications->level}}"> 
+                <input id="course-title" type="hidden" class="form-control resume" placeholder="" name="course_title" value="{{$jobapplications->course_title}}">
+                <input id="company-name" type="hidden" class="form-control resume" placeholder="" name="exp_company" value="{{$jobapplications->exp_company}}">
+                <input id="job-position" type="hidden" class="form-control resume" placeholder="" name="exp_position" value="{{$jobapplications->exp_position}}">
+                <input id="job-position" type="hidden" class="form-control resume" placeholder="" name="exp_location" value="{{$jobapplications->exp_location}}">
+                <input id="exp_date_from" type="hidden" class="form-control resume" placeholder="01-01-2021" name="exp_date_from" value="{{date('d-m-Y',strtotime($jobapplications->exp_date_from))}}">
+                <input id="exp_date_to" type="hidden" class="form-control resume" placeholder="01-01-2021" name="exp_date_to" value="{{date('d-m-Y',strtotime($jobapplications->exp_date_to))}}">
+                <input id="company-name" type="hidden" class="form-control resume"  readonly name="department" value="{{$jobapplications->department}}">
+                <input id="job-position" type="hidden" class="form-control resume" readonly name="location" value="{{$jobapplications->job}}">
+                <input id="company-name" type="hidden" class="form-control resume" name="appliedDate" value="{{date('d-m-Y')}}">
+                <input id="company-name" type="hidden" class="form-control resume" placeholder="" name="salary" value="{{$jobapplications->exp_salary}}">
+                <input type="hidden" name="hostel" value="{{ $jobapplications->hostel}}" > 
+                <input id="skills" type="hidden" class="form-control resume" name="skills" value="{{$jobapplications->skills}}">
+                <input id="skill_proficiency" type="hidden" class="form-control resume" placeholder="75%" name="proficiency" value="{{$jobapplications->proficiency}}">
+                <input type="hidden" class="form-control resume" name="cvfile" value="{{$jobapplications->cvfile}}">
+                <input type="hidden" class="form-control resume" name="ward_reco" value="{{$jobapplications->ward_reco}}">
+                 <input type="hidden" class="form-control resume" name="police_reco" value="{{$jobapplications->police_reco}}">
+                 <input type="hidden" class="form-control resume" name="otherfile" value="{{$jobapplications->otherfile}}">
+                <button type="submit" class="btn btn-primary btn-sm" >Done</button>
+                
+        </form>
         @endif
         
 </div><br>
 
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-lg">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        @if($jobapplications->status == 0)
+         <h5 class="modal-title">First Interview</h5>
+         @elseif($jobapplications->status == 1)
+         <h5 class="modal-title">Second Interview</h5>
+         @endif
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+       
+      </div>
+      <div class="modal-body">
+         <form action="{{route('interview.store')}}" method="POST" accept-charset="utf-8" class="form-horizontal unicode" >
+            @csrf
+            @method('post')
+            <div class="row form-group" id="adv_filter">
+                <div class="col-md-12">
+                    <div class="row">
+                         <div class="col-md-6">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <h6 style="font-weight:bold;font-size:13px;">Name</h6>
+                                </div>
+
+                                <div class="col-md-10 {{ $errors->first('name', 'has-error') }}">
+
+                                    <input type="text" class="form-control unicode" value="{{$jobapplications->name}}" readonly style="background-color: white"> 
+                                    <input type="hidden" name="emp_id" class="form-control unicode" value="{{$jobapplications->id}}"> 
+                                     <input type="hidden" name="status" class="form-control unicode" value="{{$jobapplications->status}}"> 
+
+                                </div>
+                            </div>
+                        </div>
+
+                         <div class="col-md-6">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <h6 style="font-weight:bold;font-size:13px;">Step</h6>
+                                </div>
+
+                                <div class="col-md-10 {{ $errors->first('name', 'has-error') }}">
+                                    @if($jobapplications->status == 0)
+                                    <input type="text" name="step_id" class="form-control unicode" placeholder="First Step" readonly style="background-color: white"> 
+                                    <input type="hidden" name="step_id" class="form-control unicode" value="1"> 
+                                    @elseif($jobapplications->status == 1)
+                                     <input type="text" class="form-control unicode" placeholder="Second Step" readonly style="background-color: white">
+                                     <input type="hidden" name="step_id" class="form-control unicode" value="2" > 
+                                     @endif
+
+                                </div>
+                            </div>
+                        </div>
+                       
+                    </div><br>
+                    <div class="row">
+                        <div class="col-md-1">Reason</div>
+                        <div class="col-md-11">
+                            <textarea name="reason" rows="4" class="form-control unicode" id="reason" placeholder="Good"></textarea>
+                        </div>
+                    </div>
+                    <br>
+                     
+                    <div class="row">
+                       <div class="col-md-12" align="center">
+                         <button type="submit" class="btn btn-primary btn-sm" >Save</button>
+                       </div>
+                    </div>
+                </div>
+               
+            </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
 
         <div class="row">
              <div class="col-md-6">
@@ -144,6 +277,48 @@
 
 
               <div class="col-md-6">
+                @if($interviewemployee->count()>0)
+                @foreach($interviewemployee as $interview)
+                @if($interview->step_id == 1)
+                  <div class="table-responsive">
+                     <table class="table table-bordered styled-table">
+                        <thead>
+                            <tr>
+                                <th style="font-size: 16px"><i class="fa fa-briefcase"> </i> First InterView</th>
+                                
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Reason<span style="padding-left: 160px">{{$interview->reason ? $interview->reason : "-"}}</span></td>
+                                
+                            </tr>
+                            
+                        </tbody>
+                     </table>
+                     </div>
+                     @endif
+                    @if($interview->step_id == 2)
+                  <div class="table-responsive">
+                     <table class="table table-bordered styled-table">
+                        <thead>
+                            <tr>
+                                <th style="font-size: 16px"><i class="fa fa-briefcase"> </i> Second InterView</th>
+                                
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Reason<span style="padding-left: 160px">{{$interview->reason ? $interview->reason : "-"}}</span></td>
+                                
+                            </tr>
+                            
+                        </tbody>
+                     </table>
+                     </div>
+                     @endif
+                    @endforeach
+                     @endif
                   <div class="table-responsive">
                      <table class="table table-bordered styled-table">
                         <thead>
@@ -244,5 +419,17 @@
         </div>
   
          @stop
-    </form>
+
+@section('js')
+<script type="text/javascript">
+            $( "#morefilter" ).click(function(e) {
+              e.preventDefault();
+              if($('#adv_filter:visible').length)
+                  $('#adv_filter').hide("slide", { direction: "right" }, 1000);
+              else
+              $('#adv_filter').show("slide", { direction: "right" }, 1000);
+          });
+</script>
+@stop
+ 
 
