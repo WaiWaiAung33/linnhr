@@ -57,7 +57,7 @@ class BackupController extends Controller
             Log::info("Backpack\BackupManager -- new backup started from admin interface \r\n" . $output);
             // return the results as a response to the ajax call
 
-            return redirect()->route('admin.backup.index')
+            return redirect()->route('backup.index')
                         ->with('success','Database Backup  successful.');
         } catch (Exception $e) {
         	dd($e);
