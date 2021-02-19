@@ -41,6 +41,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::resource('hostel','HostelController');
 	Route::resource('room','RoomController');
 	Route::resource('hostelemployee','HostelEmployeeController');
+	Route::resource('interview','InterviewController');
 
 	Route::post('select-ajax-code','EmployeeController@selectcode')->name('select-ajax-code');
 
