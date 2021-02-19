@@ -29,6 +29,10 @@ Route::post('/adminlogin','Api\AuthApiController@adminlogin');
 
 Route::get('/dashboard', 'Api\DashboardApiController@dashboard');
 
+Route::post('/emp_data/{id}','Api\EmployeeApiController@get_emp_data');
+
+Route::post('/emp_salary','Api\EmployeeApiController@get_emp_salary');
+
 Route::get('/department', 'Api\DepartmentApiController@department');
 Route::post('/department_create','Api\DepartmentApiController@department_create');
 Route::post('/department_edit/{id}','Api\DepartmentApiController@department_edit');
