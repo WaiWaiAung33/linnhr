@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Department;
+use App\Employee;
 use DB;
 use Validator;
 
@@ -12,14 +13,22 @@ class DepartmentApiController extends Controller
     public function department()
     {
         // $departments = Department::where('status',1)->get();
-        $department = Department::with('employees')->get();
-        $department = DB::table('department')
-                     ->select('department.id','department.name', 'department.dept_color','department.in_time','department.out_time','department.created_at','department.updated_at','department.status',DB::raw('count(employee.id) as total'))
-                     ->leftjoin('employee','employee.dep_id','department.id')
-                     ->where('employee.name','!=','')
-                     ->groupBy('dep_id')
-                     ->get();
-        $departments = $department->where('status',1);
+        // $department = Department::with('employees')->get();
+        // $department = DB::table('department')
+        //              ->select('department.id','department.name', 'department.dept_color','department.in_time','department.out_time','department.created_at','department.updated_at','department.status',DB::raw('count(employee.id) as total'))
+        //              ->leftjoin('employee','employee.dep_id','department.id')
+        //              ->groupBy('dep_id')
+        //              ->get();
+        // $departments = $department->where('status',1);
+        $departments = new Department();
+        $departments = $departments->where('status',1)->orderBy('id','asc')->get();
+        $departmentlist = [];
+            foreach ($departments as $department) { 
+                $department->total= $this->getEmpCount($department->id);
+                // dd($car);
+                array_push($departmentlist, $department);
+            }
+
         return response(['departments' => $departments,'message'=>"Successfully login",'status'=>1]);
     }
 
@@ -99,5 +108,12 @@ class DepartmentApiController extends Controller
             ]);
             return response(['message'=>"Successfully",'status'=>1]);
         }
+    }
+
+    public function getEmpCount($id)
+    {
+        $employee_count = Employee::where('dep_id',$id)->get();
+        $count = $employee_count->count();
+        return $count;
     }
 }

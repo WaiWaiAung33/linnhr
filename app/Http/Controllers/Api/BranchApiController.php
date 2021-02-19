@@ -6,20 +6,22 @@ use Illuminate\Http\Request;
 use App\Branch;
 use DB;
 use Validator;
+use App\Employee;
 
 
 class BranchApiController extends Controller
 {
     public function branch()
     {
-    	$branches = Branch::with('employees')->get();
-        $branches = DB::table('branch')
-                     ->select('branch.id','branch.name','branch.branch_color','branch.created_at','branch.updated_at','branch.latitude','branch.longitude','branch.status',DB::raw('count(employee.id) as total'))
-                     ->leftjoin('employee','employee.branch_id','branch.id')
-                     ->where('employee.name','!=','')
-                     ->groupBy('branch_id')
-                     ->get();
-        $branches = $branches->where('status',1);
+        $branches = new Branch();
+        $branches = $branches->where('status',1)->orderBy('id','asc')->get();
+        $branchlist = [];
+            foreach ($branches as $branch) { 
+                $branch->total= $this->getEmpCount($branch->id);
+                // dd($car);
+                array_push($branchlist, $branch);
+            }
+
         return response(['branches' => $branches,'message'=>"Successfully login",'status'=>1]);
     }
 
@@ -113,6 +115,14 @@ class BranchApiController extends Controller
             ]);
             return response(['message'=>"Successfully",'status'=>1]);
         }
+    }
+
+    public function getEmpCount($id)
+    {
+        $employee_count = Employee::where('branch_id',$id)->get();
+        $count = $employee_count->count();
+        // dd($count);
+        return $count;
     }
 
 
