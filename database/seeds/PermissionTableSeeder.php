@@ -57,7 +57,10 @@ class PermissionTableSeeder extends Seeder
            'dashboard',
            'hostel-list',
            'room-list',
-           'hostel-employee-list'
+           'hostel-employee-list',
+           'backup-list',
+           'backup-create',
+           'backup-delete'
         ];
    
         foreach ($permissions as $permission) {

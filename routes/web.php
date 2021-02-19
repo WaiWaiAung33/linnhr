@@ -16,7 +16,7 @@ Auth::routes();
 
 Route::get('/', function () {
     // return view('dashboard');
-    return redirect()->route('dashboard');
+    return redirect()->route('dashboard'); 
 })->middleware('auth');
 Route::get('/home', function () {
     // return view('dashboard');
@@ -57,6 +57,12 @@ Route::group(['middleware' => 'auth'], function () {
 
 	Route::get('setting','SettingController@setting')->name('setting.index');
 	Route::post('setting/{id}/update/','SettingController@settingUpdate')->name('setting.update');
+
+	// Backup routes
+    Route::get('/backup', 'BackupController@index')->name('backup.index');
+    Route::get('/backup/create', 'BackupController@create')->name('backup.create');
+    Route::get('/backup/download/{file_name}', 'BackupController@download')->name('backup.download');
+    Route::get('/backup/delete/{file_name}', 'BackupController@delete')->name('backup.delete');
 });
 
 Route::get('/', [App\Http\Controllers\CvformController::class, 'index'])->name('frontend.home');

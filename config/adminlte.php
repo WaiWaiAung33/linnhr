@@ -30,7 +30,7 @@ return [
     |
     */
 
-    'use_ico_only' => false,
+    'use_ico_only' => false, 
     'use_full_favicon' => false,
 
     /*
@@ -310,6 +310,7 @@ return [
                     'can'  => 'hostel-employee-list'
         ],
 
+
         ['header' => 'Payroll Management','can' => 'salary-list'],
         [
                     'text' => 'Salary',
@@ -350,6 +351,13 @@ return [
                     'icon' => 'fa fa-cogs',
                     'can'  => 'setting'
          ],
+         ['header' => 'System Setting'],
+         [
+            'text' => 'Backup',
+            'url'  => 'backup',
+            'icon' => 'fas fa-database',
+            'can'  => 'backup-list'
+        ],
          ['header' => 'Account Setting'],
           [
             'text' => 'Login User',
@@ -363,6 +371,9 @@ return [
             'icon' => 'fas fa-user-cog',
             'can'  => 'role-list'
         ],
+        
+
+        
     ],
 
     /*
