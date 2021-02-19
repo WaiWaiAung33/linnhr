@@ -17,7 +17,7 @@ class CreateInterviewTable extends Migration
             $table->id();
             $table->integer('emp_id');
             $table->integer('step_id');
-            $table->text('reason');
+            $table->text('reason')->nullable();
             $table->timestamps();
         });
     }
