@@ -14,433 +14,235 @@
 @section('content')
    
 
-
+<form action="#" method="POST" class="form-horizontal" enctype="multipart/form-data">
+@csrf
+@method('post')
 <div class="row">
         <div class="col-lg-10">
              <a class="btn btn-success unicode" href="{{route('jobapplication.index')}}"> Back</a>
         </div>
-        
-    </div>
 
-      <form action="{{route('jobapplication.store')}}" method="POST" class="form-horizontal" enctype="multipart/form-data">
-         @csrf
-        @method('post')
         @if($jobapplications->status == 0)
-         <div class="pull-right">
-           
-              <button type="submit" class="btn btn-sm btn-primary" style="float: right;">Accept</button>
-         </div><br>
+         <div>
+            <button type="submit" class="btn btn-sm btn-primary" style="'float: left;">Call Interview</button>
+         </div>
         @endif
+        
+</div><br>
 
-    <input type="hidden" name="nrc_code" value="{{$jobapplications->nrc_code}}">
-     <input type="hidden" name="nrc_state" value="{{$jobapplications->nrc_state}}">
-    <input type="hidden" name="nrc_status" value="{{$jobapplications->nrc_status}}">
-    <input type="hidden" name="nrc" value="{{$jobapplications->nrc}}">
-     <input type="hidden" name="fullnrc" value="{{$jobapplications->fullnrc}}">
 
-   
-          <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h5 class="text-dark">General Information :</h5>
-                </div>
- 
-                <div class="col-12 mt-3">
-                    <div class="custom-form p-4 border rounded" style="background-color: white">
-                         <div style="text-align: center;">
+        <div class="row">
+             <div class="col-md-6">
+                 <div class="table-responsive">
+                 <table class="table table-bordered styled-table unicode">
+                     <thead>
+                        <tr>
+                            <th style="font-size: 16px"><i class="fa fa-address-book" ></i> Personal Data</th>
+                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                         <tr>
                            @if($jobapplications->photo == '')
+                          <td style="text-align: center;" colspan ="2">
                             <img src="{{ asset('uploads/employeePhoto/default.png') }}" alt="photo" width="180px" height="180px">
+                          </td>
+                           
                             @else
-                             <img src="{{ asset('uploads/jobapplicationPhoto/'.$jobapplications->photo) }}" alt="photo" width="130px" height="130px">
-                             @endif
-                          </div>
-                        
-                      
-                            <div class="row mt-4">
-                                <div class="col-md-4">
-                                    <div class="form-group app-label">
-                                        <label class="text-muted">Name :</label>
-                                        <input id="first-name" type="text" name="name" class="form-control resume" placeholder="Name :" value="{{$jobapplications->name}}" readonly style="background-color: white">
-                                    </div>
-                                </div>
+                            <td style="text-align: center;" colspan ="2">
+                                 <img src="{{ asset('uploads/jobapplicationPhoto/'.$jobapplications->photo) }}" alt="photo" width="130px" height="130px">
+                            </td>
+                          
+                           @endif
+                        </tr>
 
-                                <div class="col-md-4">
-                                    <div class="form-group app-label">
-                                        <label class="text-muted">Parent Name :</label>
-                                        <input type="text" class="form-control resume" placeholder="Parent Name :" name="fName" value="{{$jobapplications->fName}}" readonly style="background-color: white">
-                                    </div>
-                                </div>
-
-                                <div class="col-md-4">
-                                    <div class="form-group app-label">
-                                        <label class="text-muted">Date of birth :</label>
-                                        <input type="text" class="form-control resume" placeholder="01-01-2021 :" name="dob" value="{{date('d-m-Y',strtotime($jobapplications->dob))}}" readonly style="background-color: white">
-                                    </div>
-                                </div>
-
-                                <div class="col-md-4">
-                                    <div class="form-group app-label">
-                                        <label class="text-muted">Religion :</label>
-                                        <input type="text" class="form-control resume" name="religion" value="{{$jobapplications->religion}}" readonly style="background-color: white">
-                                    </div>
-                                </div>
-
-                                <div class="col-md-4">
-                                    <div class="form-group app-label">
-                                        <label class="text-muted">Sex :</label>
-                                       <input type="text" class="form-control resume" name="gender" value="{{$jobapplications->gender}}" readonly style="background-color: white">
-                                    </div>
-                                </div>
-
-                                <div class="col-md-4">
-                                    <div class="form-group app-label">
-                                        <label class="text-muted">Marital Status</label>
-                                        <input type="text" class="form-control resume" name="marrical_status" value="{{$jobapplications->marrical_status}}" readonly style="background-color: white">
-                                    </div>
-                                </div>
-
-                                   <div class="col-md-4">
-                                    <div class="form-group app-label">
-                                        <label class="text-muted">Email :</label>
-                                        <input type="email" class="form-control resume" placeholder="email :" name="email" value="{{$jobapplications->email}}" readonly style="background-color: white">
-                                    </div>
-                                </div>
-
-                                   <div class="col-md-4">
-                                    <div>
-                                        <label class="text-muted">NRC<span class="text-danger">*</span> :</label>
-                                       <input type="text" class="form-control resume" value="{{$jobapplications->fullnrc}}" readonly style="background-color: white">
-                                    </div>
-                                </div>
-
-
-                            </div>
+                         <tr>
+                            <td>Name<span style="padding-left: 165px">{{$jobapplications->name ? $jobapplications->name : "-" }}</span></td>
+                            
+                        </tr>
+                         <tr>
+                            <td>Parent's Name<span style="padding-left: 115px">{{$jobapplications->fName ? $jobapplications->fName : "-"}}</span></td>
+                        </tr>
+                         <tr>
+                            <td>Date of birth<span style="padding-left: 125px">{{date('d-m-Y',strtotime($jobapplications->dob))}}</span> 
+                            </td>
+                        </tr>
+                         <tr>
+                            <td>Full Nrc<span style="padding-left: 155px">{{$jobapplications->fullnrc ? $jobapplications->fullnrc : "-"}}</span></td>
+                        </tr>
+                         <tr>
+                            <td>Gender<span style="padding-left: 160px">{{$jobapplications->gender ? $jobapplications->gender : "-"}}</span></td>
+                        </tr>
+                         <tr>
+                            <td>Marital Status<span style="padding-left: 120px">{{$jobapplications->marrical_status ? $jobapplications->marrical_status : "-"}}</span></td>
+                        </tr>
+                         <tr>
+                            <td>Religion<span style="padding-left: 155px">{{$jobapplications->religion ? $jobapplications->religion : "-"}}</span></td>
+                        </tr>
+                    </tbody>
+                 </table>
+                </div>
+                 <div class="table-responsive">
+                 <table class="table table-bordered styled-table">
+                    <thead>
+                        <tr>
+                            <th style="font-size: 16px"><i class="fa fa-address-card"> </i> Contact Information</th>
+                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Phone<span style="padding-left: 165px">{{$jobapplications->phone ? $jobapplications->phone : "-"}}</span></td>
+                            
+                        </tr>
+                        <tr>
+                            <td>Parent's Phone<span style="padding-left: 110px">{{$jobapplications->fPhone ? $jobapplications->fPhone : "-"}}</span></td>
+                        </tr>
+                         <tr>
+                            <td>Email <span style="padding-left: 165px">{{  $jobapplications->email ? $jobapplications->email : "-"}} </span></td>
+                        </tr>
+                        <tr>
+                            <td>City<span style="padding-left: 180px">{{$jobapplications->city ? $jobapplications->city : "-"}}</span></td>
+                        </tr>
+                        <tr>
+                            <td>Township<span style="padding-left: 145px">{{$jobapplications->township ? $jobapplications->township : "-"}}</span></td>
+                        </tr>
+                        <tr>
+                            <td>Address <span style="padding-left: 155px">{{  $jobapplications->address ? $jobapplications->address : "-"}} </span></td>
+                        </tr>
                        
-                    </div>
+                    </tbody>
+                 </table>
                 </div>
-            </div>
+                 <div class="table-responsive">
+                     <table class="table table-bordered styled-table">
+                        <thead>
+                            <tr>
+                                <th style="font-size: 16px"><i class="fa fa-briefcase"> </i> Work Experience</th>
+                                
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Company Name<span style="padding-left: 110px">{{$jobapplications->exp_company ? $jobapplications->exp_company : "-"}}</span></td>
+                                
+                            </tr>
+                            <tr>
+                                <td>Job Position<span style="padding-left: 130px">{{$jobapplications->exp_position ? $jobapplications->exp_position : "-"}}</span></td>
+                            </tr>
+                             <tr>
+                                <td>Location<span style="padding-left: 155px">{{$jobapplications->exp_location ? $jobapplications->exp_location : "-"}}</span></td>
+                            </tr>
+                             <tr>
+                                <td>Date<span style="padding-left: 178px">{{$jobapplications->exp_date_from ? date('d-m-Y',strtotime($jobapplications->exp_date_from)) : "-"}} to {{$jobapplications->exp_date_to ? date('d-m-Y',strtotime($jobapplications->exp_date_to)) : ""}}</span></td>
+                            </tr>
+                           
+                        </tbody>
+                     </table>
+               </div>
+             </div>
 
-            <div class="row mt-5">
-                <div class="col-12">
-                    <h5 class="text-dark">Contact Information :</h5>
-                </div>
 
-                <div class="col-12 mt-3">
-                    <div class="custom-form p-4 border rounded" style="background-color: white">
-                       
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group app-label">
-                                        <label class="text-muted">Phone</label>
-                                        <input id="phone" type="number" class="form-control resume" name="phone" value="{{$jobapplications->phone}}" readonly style="background-color: white">
-                                    </div>
-                                </div>
+              <div class="col-md-6">
+                  <div class="table-responsive">
+                     <table class="table table-bordered styled-table">
+                        <thead>
+                            <tr>
+                                <th style="font-size: 16px"><i class="fa fa-briefcase"> </i> Employement</th>
+                                
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Rank<span style="padding-left: 175px">{{$jobapplications->job ? $jobapplications->job : "-"}}</span></td>
+                                
+                            </tr>
+                            <tr>
+                                <td>Department<span style="padding-left: 135px">{{$jobapplications->department ? $jobapplications->department : "-"}}</span></td>
+                            </tr>
+                           
+                            
+                              <tr>
+                                <td>isHostel<span style="padding-left: 160px">{{$jobapplications->hostel ? $jobapplications->hostel : "-"}}</span></td>
+                            </tr>
 
-                                <div class="col-md-6">
-                                    <div class="form-group app-label">
-                                        <label class="text-muted">Parent Phone</label>
-                                         <input type="number" class="form-control resume" name="fPhone" value="{{$jobapplications->fPhone}}" readonly style="background-color: white">
-                                    </div>
-                                </div>
+                             <tr>
+                                <td>Applied Date<span style="padding-left: 130px">{{$jobapplications->applied_date ? date('d-m-Y',strtotime($jobapplications->applied_date)) : "-"}}</span></td>
+                            </tr>
 
-                                <div class="col-md-6">
-                                    <div class="form-group app-label">
-                                        <label class="text-muted">City</label>
-                                        <input type="text" class="form-control resume" placeholder="City :" name="city" value="{{$jobapplications->city}}" readonly style="background-color: white">
-                                    </div>
-                                </div>
+                             <tr>
+                                <td>Expected Salary<span style="padding-left: 110px">{{$jobapplications->exp_salary ? $jobapplications->exp_salary : "-"}}</span></td>
+                            </tr>
 
-                                <div class="col-md-6">
-                                    <div class="form-group app-label">
-                                        <label class="text-muted">Township</label>
-                                        <input type="text" class="form-control resume" placeholder="Township :" name="township" value="{{$jobapplications->township}}" readonly style="background-color: white">
-                                    </div>
-                                </div>
+                        </tbody>
+                     </table>
+                     </div>
 
-                             
+                       <div class="table-responsive">
+                     <table class="table table-bordered styled-table">
+                        <thead>
+                            <tr>
+                                <th style="font-size: 16px"><i class="fa fa-university"> </i> Education Details</th>
+                                
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Graduation<span style="padding-left: 145px">{{$jobapplications->graduation ? $jobapplications->graduation : "-"}}</span></td>
+                                
+                            </tr>
+                            <tr>
+                                <td>University/College<span style="padding-left: 100px">{{$jobapplications->edu ? $jobapplications->edu : "-"}}</span></td>
+                            </tr>
+                             <tr>
+                                <td>Course Title <span style="padding-left: 135px">{{  $jobapplications->course_title ? $jobapplications->course_title : "-"}} </span></td>
+                            </tr>
+                            <tr>
+                                <td>Level<span style="padding-left: 180px">{{$jobapplications->level ? $jobapplications->level : "-"}}</span></td>
+                            </tr>
+                             <tr>
+                                <td>Skill<span style="padding-left: 190px">{{$jobapplications->skills ? $jobapplications->skills : "-"}}</span></td>
+                                
+                            </tr>
+                            <tr>
+                                <td>Skill proficiency<span style="padding-left: 120px">{{$jobapplications->proficiency ? $jobapplications->proficiency : "-"}}</span></td>
+                            </tr>
+                           
+                        </tbody>
+                     </table>
+                     </div>
+                      <div class="table-responsive">
+                     <table class="table table-bordered styled-table">
+                        <thead>
+                            <tr>
+                                <th style="font-size: 16px"><i class="fa fa-file"> </i> Attach File</th>
+                                
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><a href="{{ url('uploads/jobapplicationPhoto/'.$jobapplications->cvfile) }}" target="_blank">{{$jobapplications->cvfile}}</a><span style="padding-left: 165px">   
 
-                                <div class="col-lg-12">
-                                    <div class="form-group app-label">
-                                        <label>Address </label>
-                                        <textarea id="address" rows="4" class="form-control resume" placeholder="" name="address" readonly style="background-color: white">{{$jobapplications->address}}</textarea>
-                                    </div>
-                                </div>
-                            </div>
-                       
-                    </div>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-lg-12">
-                    <h5 class="text-dark mt-5">Education Details :</h5>
-                </div>
-
-                <div class="col-12 mt-3">
-                    <div class="custom-form p-4 border rounded" style="background-color: white">
-                      
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group app-label">
-                                        <label class="text-muted">Graduation</label>
-                                        <input id="graduation" type="text" class="form-control resume" placeholder="" name="graduation" value="{{$jobapplications->graduation}}" readonly style="background-color: white">
-                                    </div>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <div class="form-group app-label">
-                                        <label class="text-muted">University/College</label>
-                                        <input id="university/college" type="text" class="form-control resume" placeholder="" name="education" value="{{$jobapplications->edu}}" readonly style="background-color: white">
-                                    </div>
-                                </div>
-
-                                <div class="col-lg-6">
-                                    <div class="form-group app-label">
-                                        <label class="text-muted">Degree/Certification</label>
-                                        <input id="degree/certification" type="file" class="form-control resume" placeholder="" name="degree">
-                                    </div>
-                                </div>
-
-                                <div class="col-lg-6">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="form-group app-label">
-                                                <label class="text-muted">Level</label>
-                                                 <input type="text" class="form-control resume" placeholder="" name="level" value="{{$jobapplications->level}}" readonly style="background-color: white"> 
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-6">
-                                            <div class="form-group app-label">
-                                                <label class="text-muted">Course Title</label>
-                                                <input id="course-title" type="text" class="form-control resume" placeholder="" name="course_title" value="{{$jobapplications->course_title}}" readonly style="background-color: white">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                        
-                            </div>
-                      
-                    </div>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-12 mt-5">
-                    <h5 class="text-dark">Work Experience :</h5>
-                </div>
-
-                <div class="col-12 mt-3">
-                    <div class="custom-form p-4 border rounded" style="background-color: white">
-                      
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group app-label">
-                                        <label class="text-muted">Company Name</label>
-                                        <input id="company-name" type="text" class="form-control resume" placeholder="" name="exp_company" value="{{$jobapplications->exp_company}}" readonly style="background-color: white">
-                                    </div>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <div class="form-group app-label">
-                                        <label class="text-muted">Job Position</label>
-                                        <input id="job-position" type="text" class="form-control resume" placeholder="" name="exp_position" value="{{$jobapplications->exp_position}}" readonly style="background-color: white">
-                                    </div>
-                                </div>
-
-                                <div class="col-lg-6">
-                                    <div class="form-group app-label">
-                                        <label class="text-muted">Location</label>
-                                        <input id="job-position" type="text" class="form-control resume" placeholder="" name="exp_location" value="{{$jobapplications->exp_location}}" readonly style="background-color: white">
-                                        
-                                    </div>
-                                </div>
-
-                                <div class="col-lg-6">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="form-group app-label">
-                                                <label class="text-muted">Date From</label>
-                                                <input id="exp_date_from" type="text" class="form-control resume" placeholder="01-01-2021" name="exp_date_from" value="{{date('d-m-Y',strtotime($jobapplications->exp_date_from))}}" readonly style="background-color: white">
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-6">
-                                            <div class="form-group app-label">
-                                                <label class="text-muted">Date To</label>
-                                                <input id="exp_date_to" type="text" class="form-control resume" placeholder="01-01-2021" name="exp_date_to" value="{{date('d-m-Y',strtotime($jobapplications->exp_date_to))}}" readonly style="background-color: white">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                       
-                    </div>
-                </div>
-            </div>
-
-              <div class="row">
-                <div class="col-12 mt-5">
-                    <h5 class="text-dark">Employement :</h5>
-                </div>
-
-                <div class="col-12 mt-3">
-                    <div class="custom-form p-4 border rounded" style="background-color: white">
-                       
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group app-label">
-                                        <label class="text-muted">Department</label>
-                                        <input id="company-name" type="text" class="form-control resume"  readonly name="department" value="{{$jobapplications->department}}" style="background-color: white">
-                                    </div>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <div class="form-group app-label">
-                                        <label class="text-muted">Position</label>
-                                        <input id="job-position" type="text" class="form-control resume" readonly name="location" value="{{$jobapplications->job}}" style="background-color: white">
-                                    </div>
-                                </div>
-
-                                   <div class="col-md-6">
-                                    <div class="form-group app-label">
-                                        <label class="text-muted">Applied Date</label>
-                                        <input id="company-name" type="text" class="form-control resume" name="appliedDate" value="{{date('d-m-Y')}}" readonly style="background-color: white">
-                                    </div>
-                                </div>
-
-                               <div class="col-md-6">
-                                    <div class="form-group app-label">
-                                        <label class="text-muted">Expected Salary</label>
-                                        <input id="company-name" type="text" class="form-control resume" placeholder="" name="salary" value="{{$jobapplications->exp_salary}}" readonly style="background-color: white">
-                                    </div>
-                                </div>
-
-                              
-
-                                <div class="col-md-6">
-                                    <div class="form-group app-label">
-                                        <label class="text-muted">Hostel</label>
-                                       <div class="row">
-                                            <div class="col-md-1">
-                                                  <input type="radio" name="hostel" value="နေ" {{ $jobapplications->hostel == 'နေ' ? 'checked' : '' }}> 
-                                                  
-                                              </div> 
-                                              <div class="col-md-3"><label class="unicode">Yes</label></div>  
-                                              <div class="col-md-1">
-                                                  <input type="radio" name="hostel" value="မနေ" {{ $jobapplications->hostel == 'မနေ' ? 'checked' : '' }}> 
-                                              </div> 
-                                              <div class="col-md-3">
-                                                <label class="unicode">No</label>
-                                              </div>
-                                       </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                      
-                    </div>
-                </div>
-            </div>
-            
-
-            <div class="row">
-                <div class="col-12 mt-5">
-                    <h5 class="text-dark">Skills :</h5>
-                </div>
-                
-                <div class="col-12 mt-3">
-                    <div class="custom-form p-4 border rounded" style="background-color: white">
-                       
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <div class="form-group app-label">
-                                        <label class="text-muted">Skills</label>
-                                        <input id="skills" type="text" class="form-control resume" placeholder="HTML, CSS, PHP, javascript, ..." name="skills" value="{{$jobapplications->skills}}" readonly style="background-color: white">
-                                    </div>
-                                </div>
-
-                                <div class="col-lg-12">
-                                    <div class="form-group app-label">
-                                        <label class="text-muted">Skill proficiency</label>
-                                        <input id="skill_proficiency" type="text" class="form-control resume" placeholder="75%" name="proficiency" value="{{$jobapplications->proficiency}}" readonly style="background-color: white">
-                                    </div>
-                                </div>
-                            </div>
-                      
-                    </div>
-                </div>
-              </div>
-
-               <div class="row">
-                <div class="col-12 mt-5">
-                    <h5 class="text-dark">File Attachment :</h5>
-                </div>
-                
-                <div class="col-12 mt-3">
-                    <div class="custom-form p-4 border rounded" style="background-color: white">
-                       
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <div class="form-group app-label">
-                                        <label class="text-muted">CV File</label>
-                                        <div>
-                                           <a href="{{ url('uploads/jobapplicationPhoto/'.$jobapplications->cvfile) }}" target="_blank">{{$jobapplications->cvfile}}</a>
-                                        </div>
-                                       
-                                    </div>
-                                </div>
-
-                                 <div class="col-md-4">
-                                    <div class="form-group app-label">
-                                        <label class="text-muted">Ward recommendation letter Photo</label>
-                                        <div>
-                                         @if($jobapplications->photo == '')
-                                        <img src="{{ asset('uploads/employeePhoto/default.png') }}" alt="photo" width="180px" height="180px">
-                                        @else
+                                      
                                          <img src="{{ asset('uploads/jobapplicationPhoto/'.$jobapplications->ward_reco) }}" alt="photo" width="130px" height="130px">
-                                         @endif
-                                         </div>
-                                       
-                                    </div>
-                                </div>
+                                        
+                                 </span></td>
+                                 </tr>
+                                 <tr>
+                                   <td style="width: 100%"> <span > <img src="{{ asset('uploads/jobapplicationPhoto/'.$jobapplications->police_reco) }}" alt="photo" width="130px" height="130px"></span> <span style="padding-left: 100px">   
 
-                                 <div class="col-lg-4">
-                                    <div class="form-group app-label">
-                                        <label class="text-muted">Police station recommendation Photo</label>
-                                         <div>
-                                         @if($jobapplications->photo == '')
-                                        <img src="{{ asset('uploads/employeePhoto/default.png') }}" alt="photo" width="180px" height="180px">
-                                        @else
-                                         <img src="{{ asset('uploads/jobapplicationPhoto/'.$jobapplications->police_reco) }}" alt="photo" width="130px" height="130px">
-                                         @endif
-                                         </div>
-                                    </div>
-                                </div>
+                                  <img src="{{ asset('uploads/jobapplicationPhoto/'.$jobapplications->otherfile) }}" alt="photo" width="130px" height="130px">
+                                 </span></td>
+                                </tr>
+                           
+                           
+                        </tbody>
+                     </table>
+                     </div>
 
-                                 <div class="col-lg-4">
-                                    <div class="form-group app-label">
-                                        <label class="text-muted">Other file</label>
-                                        <div>
-                                        @if($jobapplications->photo == '')
-                                        <img src="{{ asset('uploads/employeePhoto/default.png') }}" alt="photo" width="180px" height="180px">
-                                        @else
-                                         <img src="{{ asset('uploads/jobapplicationPhoto/'.$jobapplications->otherfile) }}" alt="photo" width="130px" height="130px">
-                                         @endif
-                                         </div>
-
-                                    </div>
-                                </div>
-                            </div>
-                      
-                    </div>
-                </div>
-
-                @stop
-            </div>
-
-     </div>
+              </div>
+        </div>
+  
+         @stop
     </form>
 
