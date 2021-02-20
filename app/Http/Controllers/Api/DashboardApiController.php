@@ -57,7 +57,7 @@ class DashboardApiController extends Controller
         $nothostelTotal = Employee::where('hostel','No')->count();
 
         $positions = Position::all();
-        return response(['employee' => ['male'=>$maleTotal,'female'=>$femaleTotal],'isHostel'=>['ishostel'=>$hostelTotal,'isnothostel'=>$nothostelTotal],'branchHostel'=>$branchHostelArr,'branch'=>$branches,'department'=>$department,'positions'=>$positions,'message'=>"Successfully login",'status'=>1]);
+        return response(['employee' => ['male'=>$maleTotal,'female'=>$femaleTotal],'isHostel'=>['ishostel'=>$hostelTotal,'isnothostel'=>$nothostelTotal],'branchHostel'=>$branchHostelArr,'branch'=>$branches,'department'=>$departments,'positions'=>$positions,'message'=>"Successfully login",'status'=>1]);
     }
 
     public function getBranchEmpCount($id)
