@@ -3,26 +3,17 @@
 @section('title', 'Backup Manager')
 
 @section('content_header')
-
+<script src=" {{ asset('toasterjquery.js') }}" ></script>
+<link rel="stylesheet" type="text/css" href="{{asset('toasterbootstrap.css')}}">
+<link rel="stylesheet" type="text/css" href="{{asset('toastermin.css')}}">
+<script type="text/javascript" src="{{asset('toastermin.js')}}"></script>
      <h3>Backup Lists</h3>
 
 @stop
 @section('content')
 <div class="page_body">
 
-        <div class="row">
-            @if ($message = Session::get('success'))
-              <div class="alert alert-success">
-                  <p>{{ $message }}</p>
-              </div>
-            @endif
-            @if ($message = Session::get('error'))
-              <div class="alert alert-danger">
-                  <p>{{ $message }}</p>
-              </div>
-            @endif
-           
-        </div>
+       
        
        <div class="row">
         <div class="col-md-10">
@@ -88,6 +79,22 @@
 
 @section('js')
 <script> 
+    @if(Session::has('success'))
+            toastr.options =
+            {
+            "closeButton" : true,
+            "progressBar" : true
+            }
+            toastr.success("{{ session('success') }}");
+        @endif
+        @if(Session::has('error'))
+          toastr.options =
+          {
+            "closeButton" : true,
+            "progressBar" : true
+          }
+                toastr.error("{{ session('error') }}");
+          @endif
     $("document").ready(function(){
     setTimeout(function(){
         $("div.alert").remove();
