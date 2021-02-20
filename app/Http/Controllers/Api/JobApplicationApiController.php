@@ -89,7 +89,7 @@ class JobApplicationApiController extends Controller
                     if ($request->job_status != '') {
                     	$cvforms = $cvforms->where('cvform.status',$request->job_status);
                     }
-            		$cvforms = $cvforms->orderBy('cvforms.id','asc')->limit(10)->paginate(10);
+            		$cvforms = $cvforms->orderBy('cvform.id','asc')->limit(10)->paginate(10);
                     return response(['joblists' => $cvforms,'message'=>"Successfully",'status'=>1]);
             	}else{
             		$cvforms = new CvForm();
