@@ -68,8 +68,8 @@
                                        href="{{ url('backup/download/'.$backup['file_name']) }}"><i
                                             class="fa fa-cloud-download"></i> Download</a>
 
-                                    <button class="btn btn-sm btn-danger btn-sm" type="submit">
-                                        <i class="fa fa-fw fa-trash" title="Delete">Delete</i>
+                                    <button class="btn btn-sm btn-danger btn-sm" type="submit" value="Delete">
+                                        <i class="fa fa-fw fa-trash" title="Delete"></i>
                                     </button>
                                 </form>
                                 </td>
