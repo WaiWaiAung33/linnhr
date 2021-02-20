@@ -25,8 +25,8 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->command('backup:run --only-db')
-                 ->daily();    
-    }
+                 ->dailyAt('20:00');    
+    } 
  
     /**
      * Register the commands for the application.
