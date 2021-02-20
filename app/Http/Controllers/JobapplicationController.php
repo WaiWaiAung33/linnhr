@@ -34,6 +34,14 @@ class JobapplicationController extends Controller
         if ($request->status != '') {
             $jobapplications = $jobapplications->where('status',$request->status);
         }
+
+        if ($request->finterview_date != '' && $request->sinterview_date != '') {
+            $startDate = date('m/d/Y', strtotime($request->finterview_date))." 00:00:00";
+            $endDate = date('m/d/Y', strtotime($request->sinterview_date))." 23:59:59";
+            $jobapplications = $jobapplications->whereBetween('cvform.first_date',[$startDate, $endDate]);
+            // dd($customers);
+        }
+
         $count = $jobapplications->get()->count();
         $jobapplications = $jobapplications->orderBy('created_at','desc')->paginate(10);
         return view('admin.jobapplication.index',compact('jobapplications','departments','positions','count'))->with('i', (request()->input('page', 1) - 1) * 10);;
@@ -129,18 +137,18 @@ class JobapplicationController extends Controller
                     }
 
 
-                    foreach ($departments as $key => $value) {
-                        if ($value->name == $request->department) {
+                    // foreach ($departments as $key => $value) {
+                    //     if ($value->name == $request->department) {
 
-                           $dep_id = $value->id ;
-                        }
-                    }
-                    foreach ($positions as $key => $value) {
-                       if ($value->name == $request->location) {
-                         $pos_id = $value->id;
-                         // dd($pos_id);
-                       }
-                    }
+                    //        $dep_id = $value->id ;
+                    //     }
+                    // }
+                    // foreach ($positions as $key => $value) {
+                    //    if ($value->name == $request->location) {
+                    //      $pos_id = $value->id;
+                    //      // dd($pos_id);
+                    //    }
+                    // }
                     $max = DB::table('employee')->max('emp_id');
                     $max_id = ++$max;
                     $date = date('d-m-Y');
@@ -149,8 +157,8 @@ class JobapplicationController extends Controller
                      $employee=Employee::create([
                         'emp_id'=>$max_id,
                         'branch_id'=>1,
-                        'dep_id'=>$dep_id,
-                        'position_id'=>$pos_id,
+                        'dep_id'=>$request->department,
+                        'position_id'=>$request->location,
                         'name'=> $request->name,
                         'gender'=>$request->gender,
                         'marrical_status'=>$request->marrical_status,

@@ -151,11 +151,11 @@ return [
         'notifiable' => \Spatie\Backup\Notifications\Notifiable::class,
 
         'mail' => [
-            'to' => 'linndeveloper3@gmail.com',
+            'to' => 'rnd@linncomputer.com',
 
             'from' => [
                 'address' => env('MAIL_FROM_ADDRESS', 'linnitrnd@gmail.com'),
-                'name' => env('MAIL_FROM_NAME', 'Linn HR'),
+                'name' => env('MAIL_FROM_NAME', 'LinnHR'),
             ],
         ],
 

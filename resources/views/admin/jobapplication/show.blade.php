@@ -87,7 +87,10 @@
                 <button type="submit" class="btn btn-primary btn-sm" >Done</button>
                 
         </form>
+        @elseif($jobapplications->status == 4)
+           <a class="btn btn-success unicode" href="{{route('recallinterview',$jobapplications->id)}}">Recall</a>
         @endif
+
         
 </div><br>
 
@@ -160,6 +163,12 @@
                      
                     <div class="row">
                        <div class="col-md-12" align="center">
+                        @csrf
+                        @method('post')
+                        @if($jobapplications->status != 4)
+                        <a class="btn btn-success unicode" href="{{route('cancelinterview',$jobapplications->id)}}"> Cancle</a>
+                        
+                        @endif
                          <button type="submit" class="btn btn-primary btn-sm" >Save</button>
                        </div>
                     </div>
@@ -467,11 +476,11 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td>Rank<span style="padding-left: 175px">{{$jobapplications->job ? $jobapplications->job : "-"}}</span></td>
+                                <td>Rank<span style="padding-left: 175px">{{$jobapplications->viewPosition ? $jobapplications->viewPosition->name : "-"}}</span></td>
                                 
                             </tr>
                             <tr>
-                                <td>Department<span style="padding-left: 135px">{{$jobapplications->department ? $jobapplications->department : "-"}}</span></td>
+                                <td>Department<span style="padding-left: 135px">{{$jobapplications->viewDepartment ? $jobapplications->viewDepartment->name : "-"}}</span></td>
                             </tr>
                            
                             

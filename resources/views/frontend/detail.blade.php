@@ -520,14 +520,16 @@
                                 <div class="col-md-6">
                                     <div class="form-group app-label">
                                         <label class="text-muted">Department</label>
-                                        <input id="company-name" type="text" class="form-control resume" value="{{$jobopenings->viewDepartment->name}}" readonly name="department">
+                                        <input id="company-name" type="text" class="form-control resume" value="{{$jobopenings->viewDepartment->name}}" readonly>
+                                        <input id="company-name" type="hidden" class="form-control resume" value="{{$jobopenings->viewDepartment->id}}" readonly name="department">
                                     </div>
                                 </div>
 
                                 <div class="col-md-6">
                                     <div class="form-group app-label">
                                         <label class="text-muted">Position</label>
-                                        <input id="job-position" type="text" class="form-control resume" value="{{$jobopenings->viewPosition->name}}" readonly name="location">
+                                        <input id="job-position" type="text" class="form-control resume" value="{{$jobopenings->viewPosition->name}}" readonly >
+                                         <input id="job-position" type="hidden" class="form-control resume" value="{{$jobopenings->viewPosition->id}}" readonly name="location">
                                     </div>
                                 </div>
 
