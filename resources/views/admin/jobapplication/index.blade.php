@@ -56,7 +56,7 @@
                       <th>Department</th>
                       <th>Branch</th>
                       <th>Education</th>
-                      <th>Expected Salary</th>
+                      <th>Appointment Date</th>
                       <th>Interview Step</th>
                       <!-- <th>Experience</th> -->
                     </tr>
@@ -82,7 +82,7 @@
                           
                            <td >{{ $jobapplication->job}}</td>
                            <td >{{$jobapplication->edu}}</td>
-                           <td >{{$jobapplication->exp_salary}}</td>
+                           <td >-</td>
                            @if($jobapplication->status == 0)
                            <td >New</td>
                            @elseif($jobapplication->status == 1)
