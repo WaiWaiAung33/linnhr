@@ -73,7 +73,7 @@
                       <th>Image</th>
                       <th>Name</th>
                       <th>Department</th>
-                      <th>Branch</th>
+                      <th>Rank</th>
                       <th>Education</th>
                       <th>Appointment Date</th>
                       <th>Interview Step</th>
@@ -94,12 +94,14 @@
                              <img src="{{ asset('uploads/jobapplicationPhoto/'.$jobapplication->photo) }}" alt="photo" width="80px" height="80px">
                              </td>
                              @endif
+                             <td>{{$jobapplication->name}}</td>
+                              <td >{{$jobapplication->viewDepartment->name}}</td>
                             <td>{{$jobapplication->viewPosition->name}}</td>
                            
                            
-                           <td >{{$jobapplication->viewDepartment->name}}</td>
                           
-                           <td >{{ $jobapplication->job}}</td>
+                          
+                           
                            <td >{{$jobapplication->edu}}</td>
                            <td >{{$jobapplication->first_date ? date('d M Y',strtotime($jobapplication->first_date)) : "-" }}<br>
                             {{$jobapplication->second_date ? date('d M Y',strtotime($jobapplication->second_date)) : "-" }}
