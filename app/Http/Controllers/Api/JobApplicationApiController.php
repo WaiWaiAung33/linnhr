@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\CvForm;
+use App\Cvform;
 use App\Department;
 use App\Position;
 use App\NRCCode;
