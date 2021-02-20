@@ -201,7 +201,7 @@
                 <div class="col-12 mt-3">
                     <div class="custom-form p-4 border rounded">
                          <div style="text-align: center;">
-                          <input type="file" id="imgupload" name="myPhoto" onchange="PreviewImage();" style="display: none;" /> 
+                          <input type="file" id="imgupload" name="photo" onchange="PreviewImage();" style="display: none;" /> 
                           <div class="next" id="file" type="file">
                             <img id="blah" src="{{ asset('uploads/jobopeningPhoto/nophoto.png') }}" alt="your image" style="width: 90px;height: 90px;border-radius: 45px" />
                           </div>
@@ -552,12 +552,12 @@
                                         <label class="text-muted">Hostel</label>
                                        <div class="row">
                                             <div class="col-md-1">
-                                                  <input type="radio" name="isHostel" value="နေ" checked> 
+                                                  <input type="radio" name="isHostel" value="Yes" checked> 
                                                   
                                               </div> 
                                               <div class="col-md-3"><label class="unicode">Yes</label></div>  
                                               <div class="col-md-1">
-                                                  <input type="radio" name="isHostel" value="မနေ" > 
+                                                  <input type="radio" name="isHostel" value="No" > 
                                               </div> 
                                               <div class="col-md-3">
                                                 <label class="unicode">No</label>
