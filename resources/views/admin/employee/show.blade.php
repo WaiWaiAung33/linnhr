@@ -262,7 +262,7 @@
                       $format = $interval->format('%yY, %mM,%d D');
 
                     @endphp
-                               ({{ $format }})
+                              <!--  ({{ $format }}) -->
                     <td>Join Date<span style="padding-left: 150px">{{ date("d-m-Y",strtotime($employees->join_date)) }} ({{ $format }})</td>
                 </tr>
                   <tr>

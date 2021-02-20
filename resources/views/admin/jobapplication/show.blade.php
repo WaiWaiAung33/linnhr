@@ -126,10 +126,10 @@
 
                                 <div class="col-md-10 {{ $errors->first('name', 'has-error') }}">
                                     @if($jobapplications->status == 0)
-                                    <input type="text" name="step_id" class="form-control unicode" placeholder="First Step" readonly style="background-color: white"> 
+                                    <input type="text" name="step_id" class="form-control unicode" placeholder="First Interview" readonly style="background-color: white"> 
                                     <input type="hidden" name="step_id" class="form-control unicode" value="1"> 
                                     @elseif($jobapplications->status == 1)
-                                     <input type="text" class="form-control unicode" placeholder="Second Step" readonly style="background-color: white">
+                                     <input type="text" class="form-control unicode" placeholder="Second Interview" readonly style="background-color: white">
                                      <input type="hidden" name="step_id" class="form-control unicode" value="2" > 
                                      @endif
 
@@ -139,7 +139,7 @@
                        
                     </div><br>
                     <div class="row">
-                        <div class="col-md-1">Reason</div>
+                        <div class="col-md-1">Remark</div>
                         <div class="col-md-11">
                             <textarea name="reason" rows="4" class="form-control unicode" id="reason" placeholder="Good"></textarea>
                         </div>
@@ -290,7 +290,7 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td>Reason<span style="padding-left: 160px">{{$interview->reason ? $interview->reason : "-"}}</span></td>
+                                <td>Remark<span style="padding-left: 160px">{{$interview->reason ? $interview->reason : "-"}}</span></td>
                                 
                             </tr>
                             
@@ -309,7 +309,7 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td>Reason<span style="padding-left: 160px">{{$interview->reason ? $interview->reason : "-"}}</span></td>
+                                <td>Remark<span style="padding-left: 160px">{{$interview->reason ? $interview->reason : "-"}}</span></td>
                                 
                             </tr>
                             
