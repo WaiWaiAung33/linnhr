@@ -48,3 +48,5 @@ Route::post('/branch_activeInactive/{id}','Api\BranchApiController@active_inacti
 Route::post('/employee', 'Api\EmployeeApiController@employee'); 
 
 Route::post('/job_list','Api\JobApplicationApiController@job_application_list');
+
+Route::post('/job_detail/{id}','Api\JobApplicationApiController@job_application_detail')
