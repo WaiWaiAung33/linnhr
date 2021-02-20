@@ -82,7 +82,9 @@
                           
                            <td >{{ $jobapplication->job}}</td>
                            <td >{{$jobapplication->edu}}</td>
-                           <td >-</td>
+                           <td >{{$jobapplication->first_date ? date('d M Y',strtotime($jobapplication->first_date)) : "-" }}<br>
+                            {{$jobapplication->second_date ? date('d M Y',strtotime($jobapplication->second_date)) : "-" }}
+                           </td>
                            @if($jobapplication->status == 0)
                            <td >New</td>
                            @elseif($jobapplication->status == 1)

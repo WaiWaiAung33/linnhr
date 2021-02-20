@@ -174,7 +174,7 @@ class JobapplicationController extends Controller
                         'fPhone'=>$request->fPhone,
                         'experience'=>$request->experience,
                         'exp_salary'=>$request->salary,
-                        'hostel'=>$request->hostel,
+                        'hostel'=>$request->isHostel,
                         'police_reco'=>$police_reco_photo,
                         'ward_reco'=>$ward_reco_photo,
                         'cvfile'=>$cvfile_photo,
@@ -239,7 +239,110 @@ class JobapplicationController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+               
+                $jobapplications = Cvform::find($id);
+                $destinationPath = public_path() . '/uploads/jobapplicationPhoto/';
+                $photo =($request->photo != '') ? $request->photo : null;
+                if ($file = $request->file('myPhoto')) {
+                    $extension = $file->getClientOriginalExtension();
+                    $var = Str::random(32) . '.' . $extension;
+                    $file->move($destinationPath, $var);
+                    $photo = $var;
+                    // dd($photo);
+                }
+
+                $police_reco_photo = ($request->police_reco != '') ? $request->police_reco : $request->police_reco;
+                if ($file = $request->file('police_reco')) {
+                    $extension = $file->getClientOriginalExtension();
+                    $var = Str::random(32) . '.' . $extension;
+                    $file->move($destinationPath, $var);
+                    $police_reco_photo = $var;
+                }
+
+                $ward_reco_photo =  ($request->ward_reco != '') ? $request->ward_reco : $request->ward_reco;
+                if ($file = $request->file('ward_reco')) {
+                    $extension = $file->getClientOriginalExtension();
+                    $var = Str::random(32) . '.' . $extension;
+                    $file->move($destinationPath, $var);
+                    $ward_reco_photo = $var;
+                }
+
+
+                $cvfile_photo = ($request->cvfile != '') ? $request->cvfile : $request->cvfile;
+                if ($file = $request->file('cvfile')) {
+                    $name = $file->getClientOriginalName();
+                    $destinationPath = public_path('/uploads/jobapplicationPhoto/');
+                    $file->move($destinationPath, $name);
+                    $cvfile_photo=$name;
+                    // dd($cvfile_photo);
+                    // $extension = $file->getClientOriginalExtension();
+                    // $var = Str::random(32) . '.' . $extension;
+                    // $file->move($destinationPath, $var);
+                    // $cvfile_photo = $var;
+                    // dd($cvfile_photo);
+                }
+
+                $otherfile_photo = ($request->otherfile != '') ? $request->otherfile : $request->otherfile;
+                if ($file = $request->file('otherfile')) {
+                    $extension = $file->getClientOriginalExtension();
+                    $var = Str::random(32) . '.' . $extension;
+                    $file->move($destinationPath, $var);
+                    $otherfile_photo = $var;
+                }
+
+                $degree_photo = "";
+                if ($file = $request->file('degree')) {
+                    $extension = $file->getClientOriginalExtension();
+                    $var = Str::random(32) . '.' . $extension;
+                    $file->move($destinationPath, $var);
+                    $degree_photo = $var;
+                }
+                $jobapplications =  $jobapplications->update([
+                    'name'=>$request->name,
+                    'nrc_code'=>$request->nrc_code,
+                    'nrc_state'=>$request->nrc_state,
+                    'nrc_status'=>$request->nrc_status,
+                    'nrc'=>$request->nrc,
+                    'fullnrc'=>$request->fullnrc,
+                    'dob'=>$request->dob,
+                    'edu'=>$request->education,
+                    'religion'=>$request->religion,
+                    'gender'=>$request->gender,
+                    'marrical_status'=>$request->marrical_status,
+                    'email'=>$request->email,
+                    'fName'=>$request->fName,
+                    'fPhone'=>$request->pPhone,
+                    'experience'=>$request->experience,
+                    'job'=> $request->location,
+                    'department'=>$request->department,
+                    'exp_salary'=>$request->salary,
+                    'hostel'=>$request->hostel,
+                    'applied_date'=>$request->appliedDate,
+                    'address'=>$request->address,
+                    'phone'=>$request->phone,
+                    'signature'=>$request->signed,
+                    'photo'=>$photo,
+                    'city'=>$request->city,
+                    'township'=>$request->township,
+                    'graduation'=>$request->graduation,
+                    'degree'=>$degree_photo,
+                    'level'=>$request->level,
+                    'course_title'=>$request->course_title,
+                    'exp_company'=>$request->exp_company,
+                    'exp_position'=>$request->exp_position,
+                    'exp_location'=>$request->exp_location,
+                    'exp_date_from'=>$request->exp_date_from,
+                    'exp_date_to'=>$request->exp_date_to,
+                    'skills'=>$request->skills,
+                    'proficiency'=>$request->proficiency,
+                    'police_reco'=>$police_reco_photo,
+                    'ward_reco'=>$ward_reco_photo,
+                    'cvfile'=>$cvfile_photo,
+                    'otherfile'=> $otherfile_photo,
+                    'first_date'=>$request->first_date,
+                    'second_date'=>$request->second_date,
+                ]);
+               return redirect()->route('jobapplication.index')->with('success','Successfully');;
     }
 
     /**

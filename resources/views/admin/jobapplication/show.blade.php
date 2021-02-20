@@ -20,14 +20,26 @@
         </div>
 
         @if($jobapplications->status == 0)
-         <div>
-            {{--  <button type="button" class="btn btn-warning " id="morefilter" style="font-size: 13px"><i class="fa fa-filter" aria-hidden="true"></i></button> --}}
-            <button type="button" class="btn btn-warning "  data-toggle="modal" data-target="#myModal" >Call InterView</button>
-         </div>
+             @if($jobapplications->first_date == '')
+                {{--  <button type="button" class="btn btn-warning " id="moredatefilter" style="font-size: 13px"><i class="fa fa-filter" aria-hidden="true"></i></button> --}}
+                <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#mydateModal" >First Date</button>
+     
+             @else
+                 <div>
+                    {{--  <button type="button" class="btn btn-warning " id="morefilter" style="font-size: 13px"><i class="fa fa-filter" aria-hidden="true"></i></button> --}}
+                    <button type="button" class="btn btn-warning "  data-toggle="modal" data-target="#myModal" >Call InterView</button>
+                 </div>
+             @endif
          @elseif($jobapplications->status == 1)
-          <div>
-            <button type="button" class="btn btn-warning "  data-toggle="modal" data-target="#myModal" >Second InterView</button>
-         </div>
+                @if($jobapplications->second_date == '')
+                    {{--  <button type="button" class="btn btn-warning " id="moredatefilter" style="font-size: 13px"><i class="fa fa-filter" aria-hidden="true"></i></button> --}}
+                    <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#mydateModal" >Second Date</button>
+     
+                @else
+                  <div>
+                    <button type="button" class="btn btn-warning "  data-toggle="modal" data-target="#myModal" >Second InterView</button>
+                 </div>
+                 @endif
          @elseif($jobapplications->status == 2)
          <form action="{{route('jobapplication.store')}}" method="POST" accept-charset="utf-8" class="form-horizontal unicode">
             @csrf
@@ -163,6 +175,132 @@
 
   </div>
 </div>
+
+
+
+<!-- Date Modal -->
+<div id="mydateModal" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-lg">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        @if($jobapplications->status == 0)
+         <h5 class="modal-title">First Date</h5>
+         @elseif($jobapplications->status == 1)
+         <h5 class="modal-title">Second Date</h5>
+         @endif
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+       
+      </div>
+      <div class="modal-body">
+         <form action="{{route('jobapplication.update',$jobapplications->id)}}" method="POST" accept-charset="utf-8" class="form-horizontal unicode" >
+            @csrf
+            @method('PUT')
+            <div class="row form-group" id="adv_filter_date">
+                <div class="col-md-12">
+                    <div class="row">
+                         <div class="col-md-6">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <h6 style="font-weight:bold;font-size:13px;">Name</h6>
+                                </div>
+
+                                <div class="col-md-10 {{ $errors->first('name', 'has-error') }}">
+
+                                    <input type="text" class="form-control unicode" value="{{$jobapplications->name}}" readonly style="background-color: white"> 
+                                   <!--  <input type="hidden" name="emp_id" class="form-control unicode" value="{{$jobapplications->id}}"> 
+                                     <input type="hidden" name="status" class="form-control unicode" value="{{$jobapplications->status}}">  -->
+
+                                </div>
+                            </div>
+                        </div>
+
+                         <div class="col-md-6">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <h6 style="font-weight:bold;font-size:13px;">Date</h6>
+                                </div>
+
+                                <div class="col-md-10 {{ $errors->first('name', 'has-error') }}">
+                                    @if($jobapplications->status == 0)
+                                    <input type="text" name="first_date" class="form-control unicode" placeholder="01-01-2021" readonly style="background-color: white" id="first_date"> 
+                                    
+                                    @elseif($jobapplications->status == 1)
+                                     <input type="text" name="second_date" class="form-control unicode" placeholder="01-01-2021" readonly style="background-color: white" id="second_date" value="{{$jobapplications->second_date}}">
+                                     <input type="hidden" name="first_date" value="{{$jobapplications->first_date}}">
+                                    
+                                     @endif
+
+                                </div>
+                            </div>
+                        </div>
+                       
+                    </div><br>
+                     
+                    <div class="row">
+                       <div class="col-md-12" align="center">
+                         <button type="submit" class="btn btn-primary btn-sm" >Save</button>
+                       </div>
+                    </div>
+                </div>
+               
+            </div>
+
+             <input type="hidden" name="nrc_code" value="{{$jobapplications->nrc_code}}">
+                 <input type="hidden" name="nrc_state" value="{{$jobapplications->nrc_state}}">
+                <input type="hidden" name="nrc_status" value="{{$jobapplications->nrc_status}}">
+                <input type="hidden" name="nrc" value="{{$jobapplications->nrc}}">
+                 <input type="hidden" name="fullnrc" value="{{$jobapplications->fullnrc}}">
+                <input id="first-name" type="hidden" name="emp_id" class="form-control resume" placeholder="Name :" value="{{$jobapplications->id}}">
+                 <input id="first-name" type="hidden" name="name" class="form-control resume" placeholder="Name :" value="{{$jobapplications->name}}">
+                 <input type="hidden" class="form-control resume" placeholder="Parent Name :" name="fName" value="{{$jobapplications->fName}}">
+                <input type="hidden" class="form-control resume" placeholder="01-01-2021 :" name="dob" value="{{date('d-m-Y',strtotime($jobapplications->dob))}}">
+                <input type="hidden" class="form-control resume" name="religion" value="{{$jobapplications->religion}}">
+                <input type="hidden" class="form-control resume" name="gender" value="{{$jobapplications->gender}}">
+                <input type="hidden" class="form-control resume" name="marrical_status" value="{{$jobapplications->marrical_status}}">
+                <input type="hidden" class="form-control resume" placeholder="email :" name="email" value="{{$jobapplications->email}}">
+                <input type="hidden" class="form-control resume" value="{{$jobapplications->fullnrc}}">
+                <input id="phone" type="hidden" class="form-control resume" name="phone" value="{{$jobapplications->phone}}">
+                <input type="hidden" class="form-control resume" name="fPhone" value="{{$jobapplications->fPhone}}" >
+                <input type="hidden" class="form-control resume" placeholder="City :" name="city" value="{{$jobapplications->city}}">
+                <input type="hidden" class="form-control resume" placeholder="Township :" name="township" value="{{$jobapplications->township}}" >
+                <input type="hidden" class="form-control resume" placeholder="Township :" name="address" value="{{$jobapplications->address}}" >
+                <input id="graduation" type="hidden" class="form-control resume" placeholder="" name="graduation" value="{{$jobapplications->graduation}}">
+                <input id="university/college" type="hidden" class="form-control resume" placeholder="" name="education" value="{{$jobapplications->edu}}">
+                <input id="degree/certification" type="hidden" class="form-control resume" placeholder="" name="degree">
+                <input type="hidden" class="form-control resume" placeholder="" name="level" value="{{$jobapplications->level}}"> 
+                <input id="course-title" type="hidden" class="form-control resume" placeholder="" name="course_title" value="{{$jobapplications->course_title}}">
+                <input id="company-name" type="hidden" class="form-control resume" placeholder="" name="exp_company" value="{{$jobapplications->exp_company}}">
+                <input id="job-position" type="hidden" class="form-control resume" placeholder="" name="exp_position" value="{{$jobapplications->exp_position}}">
+                <input id="job-position" type="hidden" class="form-control resume" placeholder="" name="exp_location" value="{{$jobapplications->exp_location}}">
+                <input id="exp_date_from" type="hidden" class="form-control resume" placeholder="01-01-2021" name="exp_date_from" value="{{date('d-m-Y',strtotime($jobapplications->exp_date_from))}}">
+                <input id="exp_date_to" type="hidden" class="form-control resume" placeholder="01-01-2021" name="exp_date_to" value="{{date('d-m-Y',strtotime($jobapplications->exp_date_to))}}">
+                <input id="company-name" type="hidden" class="form-control resume"  readonly name="department" value="{{$jobapplications->department}}">
+                <input id="job-position" type="hidden" class="form-control resume" readonly name="location" value="{{$jobapplications->job}}">
+                <input id="company-name" type="hidden" class="form-control resume" name="appliedDate" value="{{date('d-m-Y')}}">
+                <input id="company-name" type="hidden" class="form-control resume" placeholder="" name="salary" value="{{$jobapplications->exp_salary}}">
+                <input type="hidden" name="hostel" value="{{ $jobapplications->hostel}}" > 
+                <input id="skills" type="hidden" class="form-control resume" name="skills" value="{{$jobapplications->skills}}">
+                <input id="skill_proficiency" type="hidden" class="form-control resume" placeholder="75%" name="proficiency" value="{{$jobapplications->proficiency}}">
+                <input type="hidden" class="form-control resume" name="cvfile" value="{{$jobapplications->cvfile}}">
+                <input type="hidden" class="form-control resume" name="ward_reco" value="{{$jobapplications->ward_reco}}">
+                 <input type="hidden" class="form-control resume" name="police_reco" value="{{$jobapplications->police_reco}}">
+                 <input type="hidden" class="form-control resume" name="otherfile" value="{{$jobapplications->otherfile}}">
+                 <input type="hidden" class="form-control resume" name="photo" value="{{$jobapplications->photo}}">
+
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
 
         <div class="row">
              <div class="col-md-6">
@@ -420,7 +558,12 @@
   
          @stop
 
+@section('css')
+  <link id="bsdp-css" href="{{ asset('css/bootstrap-datepicker3.min.css') }}" rel="stylesheet">
+@stop
+
 @section('js')
+<script src="{{ asset('js/bootstrap-datepicker.min.js') }}"></script>
 <script type="text/javascript">
             $( "#morefilter" ).click(function(e) {
               e.preventDefault();
@@ -429,6 +572,19 @@
               else
               $('#adv_filter').show("slide", { direction: "right" }, 1000);
           });
+
+            $( "#moredatefilter" ).click(function(e) {
+              e.preventDefault();
+              if($('#adv_filter_date:visible').length)
+                  $('#adv_filter_date').hide("slide", { direction: "right" }, 1000);
+              else
+              $('#adv_filter_date').show("slide", { direction: "right" }, 1000);
+          });
+
+            $(function(){
+                 $("#first_date").datepicker({ dateFormat:'dd-mm-yy' });
+                $("#second_date").datepicker({ dateFormat:'dd-mm-yy' });
+            });
 </script>
 @stop
  

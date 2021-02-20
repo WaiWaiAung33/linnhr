@@ -57,6 +57,8 @@ class CreateCvformTable extends Migration
             $table->string('ward_reco');
             $table->string('cvfile');
             $table->string('otherfile');
+            $table->string('first_date')->nullable();;
+            $table->string('second_date')->nullable();;
             $table->timestamps();
         });
     }
