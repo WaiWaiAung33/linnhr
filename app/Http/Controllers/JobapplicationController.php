@@ -239,7 +239,7 @@ class JobapplicationController extends Controller
      */
     public function update(Request $request, $id)
     {
-               
+               // dd($request->fPhone);
                 $jobapplications = Cvform::find($id);
                 $destinationPath = public_path() . '/uploads/jobapplicationPhoto/';
                 $photo =($request->photo != '') ? $request->photo : null;
@@ -311,7 +311,7 @@ class JobapplicationController extends Controller
                     'marrical_status'=>$request->marrical_status,
                     'email'=>$request->email,
                     'fName'=>$request->fName,
-                    'fPhone'=>$request->pPhone,
+                    'fPhone'=>$request->fPhone,
                     'experience'=>$request->experience,
                     'job'=> $request->location,
                     'department'=>$request->department,

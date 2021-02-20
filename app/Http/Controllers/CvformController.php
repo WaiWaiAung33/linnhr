@@ -46,7 +46,7 @@ class CvformController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->myPhoto);
+        // dd($request->photo);
         $positions = Position::all();
         $departments = Department::all();
         $nrccode = NRCCode::find($request->nrc_code);
@@ -61,7 +61,7 @@ class CvformController extends Controller
           }
         $destinationPath = public_path() . '/uploads/jobapplicationPhoto/';
         $photo = "";
-        if ($file = $request->file('myPhoto')) {
+        if ($file = $request->file('photo')) {
             $extension = $file->getClientOriginalExtension();
             $var = Str::random(32) . '.' . $extension;
             $file->move($destinationPath, $var);
