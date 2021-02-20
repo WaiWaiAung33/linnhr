@@ -57,10 +57,10 @@
                                 </td>
                                 <td class="text-right">
                                     <a class="btn btn-xs btn-default"
-                                       href="{{ url('admin/backup/download/'.$backup['file_name']) }}"><i
+                                       href="{{ url('backup/download/'.$backup['file_name']) }}"><i
                                             class="fa fa-cloud-download"></i> Download</a>
                                     <a class="btn btn-xs btn-danger" data-button-type="delete"
-                                       href="{{ url('admin/backup/delete/'.$backup['file_name']) }}"><i class="fa fa-trash-o"></i>
+                                       href="{{ url('backup/delete/'.$backup['file_name']) }}"><i class="fa fa-trash-o"></i>
                                         Delete</a>
                                 </td>
                             </tr>

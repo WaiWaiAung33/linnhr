@@ -57,7 +57,7 @@ class BackupController extends Controller
             Log::info("Backpack\BackupManager -- new backup started from admin interface \r\n" . $output);
             // return the results as a response to the ajax call
 
-            return redirect()->route('admin.backup.index')
+            return redirect()->route('backup.index')
                         ->with('success','Database Backup  successful.');
         } catch (Exception $e) {
         	dd($e);
@@ -91,7 +91,7 @@ class BackupController extends Controller
         $disk = Storage::disk(config('backup.backup.destination.disks')[0]);
         if ($disk->exists(config('backup.backup.name') . '/' . $file_name)) {
             $disk->delete(config('backup.backup.name') . '/' . $file_name);
-            return redirect()->route('admin.backup.index')
+            return redirect()->route('backup.index')
                         ->with('success',' Backup  delete successful.');
         } else {
             abort(404, "The backup file doesn't exist.");
