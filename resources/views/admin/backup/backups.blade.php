@@ -29,7 +29,7 @@
             <div class="col-md-12 table-responsive" style="font-size:15px">
                 @if (count($backups))
 
-                    <table class="table table-striped table-bordered">
+                    <table class="table table-bordered styled-table">
                         <thead>
                         <tr>
                             <th>File</th>
