@@ -26,7 +26,7 @@
                 </a>
             </div>
             <br>
-            <div class="col-md-12 table-responsive" style="font-size:15px">
+            <div class="table-responsive" style="font-size:15px">
                 @if (count($backups))
 
                     <table class="table table-bordered styled-table">
