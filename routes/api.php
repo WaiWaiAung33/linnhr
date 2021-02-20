@@ -49,4 +49,4 @@ Route::post('/employee', 'Api\EmployeeApiController@employee');
 
 Route::post('/job_list','Api\JobApplicationApiController@job_application_list');
 
-Route::post('/job_detail/{id}','Api\JobApplicationApiController@job_application_detail')
+Route::post('/job_detail/{id}','Api\JobApplicationApiController@job_application_detail');
