@@ -45,6 +45,10 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::resource('hostelemployee','HostelEmployeeController');
 	Route::resource('interview','InterviewController');
 
+	Route::resource('leave_type','LeaveTypeController');
+	Route::resource('leave_application','LeaveApplicationController');
+	Route::resource('award','AwardApplicationController');
+
 	Route::post('select-ajax-code','EmployeeController@selectcode')->name('select-ajax-code');
 
 	Route::get('change-status-active','BranchController@changestatusactive')->name('change-status-active');
