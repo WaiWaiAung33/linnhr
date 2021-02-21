@@ -162,13 +162,13 @@
                         
 
                         <div class="col-md-3">
-                            <label>Join Date</label>
+                            <label>Join From Date</label>
                              <input type="text" name="join_date" id="join_date"class="form-control unicode" placeholder="01-08-2020" value="{{ old('join_date',$join_date) }}" style="font-size: 13px">
                         </div>
 
                          <div class="col-md-3">
-                            <label>Join Month</label>
-                             <input type="text" name="join_month" id="join_month"class="form-control unicode" placeholder="January" value="{{ old('join_month',$join_month) }}" style="font-size: 13px">
+                            <label>Join To Date</label>
+                             <input type="text" name="join_month" id="join_month"class="form-control unicode" placeholder="01-02-2021" value="{{ old('join_month',$join_month) }}" style="font-size: 13px">
                         </div>
 
                         <div class="col-md-3">
@@ -523,9 +523,7 @@
           $("#join_date").datepicker({ dateFormat: 'dd-mm-yy' });
 
 
-           $("#join_month").datepicker({  format: "mm",
-          viewMode: "months", 
-          minViewMode: "months" });
+           $("#join_month").datepicker({dateFormat: 'dd-mm-yy'});
 
            $('#export_btn').click(function(){
                 $('#excel_form').submit();
