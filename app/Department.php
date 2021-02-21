@@ -13,4 +13,8 @@ class Department extends Model
     public function employees(){
     	 return $this->hasMany('App\Employee','dep_id');
     }
+
+     public function viewJobopening(){
+    	 return $this->hasMany('App\Jobopening','dep_id');
+    }
 }

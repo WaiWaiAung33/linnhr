@@ -73,9 +73,9 @@ class EmployeeController extends Controller
         // }
 
          if ($request->join_date != '' && $request->join_month != '') {
-            $startDate =  date('Y-m-d', strtotime($request->join_date))." 00:00:00";
-            $endDate = date('Y-m-d', strtotime($request->join_month))." 23:59:59";
-            $employees = $employees->whereBetween('employee.join_date',[$startDate,$endDate]);
+            $startDate =  date('Y-m-d', strtotime($request->join_date));
+            $endDate = date('Y-m-d', strtotime($request->join_month));
+            $employees = Employee::whereBetween('employee.join_date',[$startDate,$endDate]);
             // dd($employees->get());
         }
 

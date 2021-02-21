@@ -26,6 +26,7 @@ class JobapplicationController extends Controller
      */
     public function index(Request $request)
     {
+        // dd($request->secondinv_fromdate , $request->secondinv_todate);
         $jobapplications = new Cvform();
         $departments = Department::all();
         $positions = Position::all();
@@ -37,11 +38,20 @@ class JobapplicationController extends Controller
         }
 
         if ($request->finterview_date != '' && $request->sinterview_date != '') {
-            $startDate = date('m/d/Y', strtotime($request->finterview_date))." 00:00:00";
-            $endDate = date('m/d/Y', strtotime($request->sinterview_date))." 23:59:59";
-            $jobapplications = $jobapplications->whereBetween('cvform.first_date',[$startDate, $endDate]);
+            $startDate = date('m/d/Y', strtotime($request->finterview_date));
+            $endDate = date('m/d/Y', strtotime($request->sinterview_date));
+            $jobapplications = Cvform::whereBetween('cvform.first_date',[$startDate,$endDate]);
+            
+        }
+
+         if ($request->secondinv_todate != '' && $request->secondinv_fromdate != '') {
+            $startDate = date('m/d/Y', strtotime($request->secondinv_fromdate));
+            $endDate = date('m/d/Y', strtotime($request->secondinv_todate));
+            $jobapplications = Cvform::whereBetween('cvform.second_date',[$startDate,$endDate]);
+            // dd($jobapplications->get());
             // dd($customers);
         }
+        // dd($jobapplications);
 
         $count = $jobapplications->get()->count();
         $jobapplications = $jobapplications->orderBy('created_at','desc')->paginate(10);
