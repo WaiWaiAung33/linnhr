@@ -33,7 +33,7 @@ class EmployeeController extends Controller
     public function index(Request $request)
     {
      
-        // dd($request->join_date);
+        // dd($request->join_month);
 
         $join_date = date('Y-m-d',strtotime($request->join_date));
         $join_month = date('Y-m-d',strtotime($request->join_month));
@@ -72,11 +72,11 @@ class EmployeeController extends Controller
         //      $employees = $employees->where('join_date',$join_date);
         // }
 
-         if ($join_date != '1970-01-01' && $join_month != '1970-01-01') {
-            $startDate = $join_date ." 00:00:00";
-            $endDate = $join_month ." 23:59:59";
-            $employees = $employees->whereBetween('employee.join_date',[$startDate, $endDate]);
-            // dd($customers);
+         if ($request->join_date != '' && $request->join_month != '') {
+            $startDate =  date('Y-m-d', strtotime($request->join_date))." 00:00:00";
+            $endDate = date('Y-m-d', strtotime($request->join_month))." 23:59:59";
+            $employees = $employees->whereBetween('employee.join_date',[$startDate,$endDate]);
+            // dd($employees->get());
         }
 
 
