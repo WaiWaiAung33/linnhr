@@ -34,6 +34,14 @@ class JobapplicationController extends Controller
         if ($request->status != '') {
             $jobapplications = $jobapplications->where('status',$request->status);
         }
+
+        if ($request->finterview_date != '' && $request->sinterview_date != '') {
+            $startDate = date('m/d/Y', strtotime($request->finterview_date))." 00:00:00";
+            $endDate = date('m/d/Y', strtotime($request->sinterview_date))." 23:59:59";
+            $jobapplications = $jobapplications->whereBetween('cvform.first_date',[$startDate, $endDate]);
+            // dd($customers);
+        }
+
         $count = $jobapplications->get()->count();
         $jobapplications = $jobapplications->orderBy('created_at','desc')->paginate(10);
         return view('admin.jobapplication.index',compact('jobapplications','departments','positions','count'))->with('i', (request()->input('page', 1) - 1) * 10);;

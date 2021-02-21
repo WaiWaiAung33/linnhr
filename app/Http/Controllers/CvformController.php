@@ -8,6 +8,7 @@ use App\Department;
 use App\Position;
 use App\NRCCode;
 use App\NRCState;
+use App\Interview;
 use Illuminate\Http\Request;
 use DB;
 use File;
@@ -201,9 +202,16 @@ class CvformController extends Controller
      * @param  \App\Cvform  $cvform
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Cvform $cvform)
+    public function update(Request $request,$id)
     {
-        //
+        // dd($id);
+            $employees = Cvform::find($id);
+            $updatedata = $employees->update([
+                    'status'=>4,
+
+                  ]);
+        return redirect()->route('jobapplication.index')->with('success','Cancel Successfully');
+       // dd($id);
     }
 
     /**
@@ -227,4 +235,23 @@ class CvformController extends Controller
             }
         }
     }
+
+    public function recallupdate(Request $request,$id)
+    {
+        $employees = Cvform::find($id);
+        $updatedata = $employees->update([
+                    'status'=>0,
+                    'first_date'=>'',
+                    'second_date'=>'',
+
+                  ]);
+        $interviewreacll = Interview::where('emp_id',$id)->get();
+        $interviewreacll = $interviewreacll[0];
+        $interviewreacll = $interviewreacll->delete();
+        // dd($interviewreacll);
+
+        return redirect()->route('jobapplication.index')->with('success','Recall Successfully');
+    }
+
+
 }
