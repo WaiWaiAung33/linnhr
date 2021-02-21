@@ -10,6 +10,7 @@ use App\NRCState;
 use App\Employee;
 use App\Jobopening;
 use App\Interview;
+use App\Cancelreason;
 use Illuminate\Http\Request;
 use File;
 use Illuminate\Support\Str;
@@ -223,8 +224,9 @@ class JobapplicationController extends Controller
         $nrcstates = NRCState::all(); 
         $jobapplications = Cvform::find($id);
         $interviewemployee = Interview::where('emp_id',$id)->get();
+        $cancelreason = Cancelreason::where('emp_id',$id)->get();
         // dd($interviewemployee);
-        return view('admin.jobapplication.show',compact('departments','positions','jobapplications','nrccodes','nrcstates','interviewemployee'));
+        return view('admin.jobapplication.show',compact('departments','positions','jobapplications','nrccodes','nrcstates','interviewemployee','cancelreason'));
     }
 
     /**

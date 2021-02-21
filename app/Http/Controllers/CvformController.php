@@ -9,6 +9,7 @@ use App\Position;
 use App\NRCCode;
 use App\NRCState;
 use App\Interview;
+use App\Cancelreason;
 use Illuminate\Http\Request;
 use DB;
 use File;
@@ -202,14 +203,43 @@ class CvformController extends Controller
      * @param  \App\Cvform  $cvform
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,$id)
+    public function update(Request $request)
     {
-        // dd($id);
-            $employees = Cvform::find($id);
+        // dd($request->all());
+            $employees = Cvform::find($request->id);
             $updatedata = $employees->update([
                     'status'=>4,
 
                   ]);
+
+            //   $cancelreason = Cancelreason::create([
+            //   'emp_id'=> $request->id,
+            //   'fcancel_reason'=>$request->reason,
+
+            // ]);
+
+            $cancelreason = Cancelreason::where('emp_id',$request->id)->get();
+            // dd($cancelreason);
+            if (count($cancelreason)>0) {
+              // dd("Here");
+               $cancelreasons = $cancelreason->update([
+              'fcancel_reason'=>$request->reason,
+              
+
+            ]);
+               // dd($cancelreasons);
+            }else{
+              // dd($cancelreasons);
+
+               $cancelreason = Cancelreason::create([
+              'emp_id'=> $request->id,
+              'fcancel_reason'=>$request->reason,
+
+            ]);
+            }
+
+            // return response()->json(['success'=>'Status change successfully.']);
+           
         return redirect()->route('jobapplication.index')->with('success','Cancel Successfully');
        // dd($id);
     }
@@ -246,8 +276,12 @@ class CvformController extends Controller
 
                   ]);
         $interviewreacll = Interview::where('emp_id',$id)->get();
-        $interviewreacll = $interviewreacll[0];
-        $interviewreacll = $interviewreacll->delete();
+        // dd($interviewreacll);
+        if (count($interviewreacll)>0) {
+          $interviewreacll = $interviewreacll[0];
+          $interviewreacll = $interviewreacll->delete();
+        }
+        
         // dd($interviewreacll);
 
         return redirect()->route('jobapplication.index')->with('success','Recall Successfully');
