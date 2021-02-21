@@ -73,7 +73,7 @@
                       <th>Image</th>
                       <th>Name</th>
                       <th>Department</th>
-                      <th>Branch</th>
+                      <th>Rank</th>
                       <th>Education</th>
                       <th>Appointment Date</th>
                       <th>Interview Step</th>
