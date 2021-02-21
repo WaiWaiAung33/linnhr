@@ -95,10 +95,11 @@
                              </td>
                              @endif
                              <td>{{$jobapplication->name}}</td>
+                              <td >{{$jobapplication->viewDepartment->name}}</td>
                             <td>{{$jobapplication->viewPosition->name}}</td>
                            
                            
-                           <td >{{$jobapplication->viewDepartment->name}}</td>
+                          
                           
                            
                            <td >{{$jobapplication->edu}}</td>
