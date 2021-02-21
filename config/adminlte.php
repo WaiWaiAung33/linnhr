@@ -296,6 +296,12 @@ return [
                     'icon' => 'fa fa-home',
                     'can'  => 'hostel-list'
         ],
+         [
+                    'text' => 'Actual Time In',
+                    'url' => 'actual_timein',
+                    'icon' => 'fa fa-home',
+                    'can'  => 'hostel-list'
+        ],
 
          [
                     'text' => 'Room',
