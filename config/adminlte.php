@@ -267,27 +267,27 @@ return [
         //     'url'  => 'admin/settings',
         //     'icon' => 'fas fa-fw fa-lock',
         // ],
-        // [
-        //     'text'    => 'Master Data',
-        //     'icon'    => 'fa fa-cog',
-        //     'submenu' => [
-        //         [
-        //             'text' => 'Branch',
-        //             'url'  => 'admin/settings',
-        //             'icon' => 'fa fa-location-arrow',
-        //         ],
-        //         [
-        //             'text' => 'Department',
-        //             'url'  => 'admin/settings',
-        //             'icon' => 'fa fa-cubes',
-        //         ],
-        //         [
-        //             'text' => 'Position',
-        //             'url'  => 'admin/settings',
-        //             'icon' => 'fa fa-bullseye',
-        //         ],
-        //     ],
-        // ],
+        [
+            'text'    => 'Time In',
+            'icon'    => 'fa fa-cog',
+            'submenu' => [
+                [
+                    'text' => 'Actual Time In',
+                    'url'  => 'actual_timein',
+                    'icon' => 'fa fa-location-arrow',
+                ],
+                [
+                    'text' => 'Time In',
+                    'url'  => 'timein',
+                    'icon' => 'fa fa-cubes',
+                ],
+                [
+                    'text' => 'Late Arrival',
+                    'url'  => 'late_arrival',
+                    'icon' => 'fa fa-bullseye',
+                ],
+            ],
+        ],
 
          ['header' => 'Hostel Management', 'can' => 'hostel-list'],
         [
