@@ -189,7 +189,7 @@
                                         </div>
                                         <div class="col-lg-3 col-md-3">
                                             <div class="job-list-button-sm text-right">
-                                                <span class="badge">Close Date : {{date('d-m-Y',strtotime($jobopening->close_date))}}</span>
+                                                <span>Close Date : {{date('d-m-Y',strtotime($jobopening->close_date))}}</span>
 
                                                 <div class="mt-3">
                                                     <a href="{{route('cvform.show',$jobopening->id)}}" class="btn btn-sm btn-primary">Apply</a>
