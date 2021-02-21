@@ -268,17 +268,18 @@ return [
         //     'icon' => 'fas fa-fw fa-lock',
         // ],
         [
-            'text'    => 'Time In',
+            'text'    => 'Attendance',
             'icon'    => 'fa fa-clock',
             'submenu' => [
+                
                 [
-                    'text' => 'Actual Time In',
-                    'url'  => 'actual_timein',
+                    'text' => 'Make Attendance',
+                    'url'  => 'timein',
                     'icon' => 'fa fa-clock',
                 ],
                 [
-                    'text' => 'Time In',
-                    'url'  => 'timein',
+                    'text' => 'Actual Time In',
+                    'url'  => 'actual_timein',
                     'icon' => 'fa fa-clock',
                 ],
                 [
@@ -286,13 +287,6 @@ return [
                     'url'  => 'late_arrival',
                     'icon' => 'fa fa-clock',
                 ],
-            ],
-        ],
-
-        [
-            'text'    => 'Leave',
-            'icon'    => 'fa fa-cog',
-            'submenu' => [
                 [
                     'text' => 'Leave Type',
                     'url'  => 'leave_type',

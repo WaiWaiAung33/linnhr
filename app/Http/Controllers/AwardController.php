@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Award;
+use App\Employee;
 use Illuminate\Http\Request;
 
 class AwardController extends Controller
@@ -12,9 +13,16 @@ class AwardController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $awards = new Award();
+        // if ($request->name != '') {
+        //     $branchs = $branchs->where('name','like','%'.$request->name.'%');
+        // }
+        $count=$awards->get()->count();
+        $awards = $awards->orderBy('created_at','desc')->paginate(10);
+        // dd($count);
+        return view('admin.award.index',compact('count','awards'))->with('i', (request()->input('page', 1) - 1) * 10);
     }
 
     /**
@@ -24,7 +32,7 @@ class AwardController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.award.create');
     }
 
     /**
@@ -35,7 +43,23 @@ class AwardController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd($request->all());
+        $this->validate($request,[
+            'emp_id'=>'required',
+            'award_name'=>'required'
+        ]);
+        $award = Award::create([
+            'emp_id'=>$request->emp_id,
+            'award_name'=>$request->award_name,
+            'gift'=>$request->gift?$request->gift:"",
+            'cash_price'=>$request->cash_price?$request->cash_price:"",
+            'month'=>$request->month?$request->month:"",
+            'year'=>$request->year?$request->year:"",
+            'branch_id'=>$request->branch_id,
+            'dept_id'=>$request->dep_id,
+            'position_id'=>$request->position_id
+        ]);
+        return redirect()->route('award.index')->with('success','Success');
     }
 
     /**
@@ -44,9 +68,10 @@ class AwardController extends Controller
      * @param  \App\Award  $award
      * @return \Illuminate\Http\Response
      */
-    public function show(Award $award)
+    public function show($id)
     {
-        //
+        $award = Award::find($id);
+        return view('admin.award.show',compact('award'));
     }
 
     /**
@@ -55,9 +80,11 @@ class AwardController extends Controller
      * @param  \App\Award  $award
      * @return \Illuminate\Http\Response
      */
-    public function edit(Award $award)
+    public function edit($id)
     {
-        //
+        $employees = Employee::all();
+        $award = Award::find($id);
+        return view('admin.award.edit',compact('award','employees'));
     }
 
     /**
@@ -67,9 +94,25 @@ class AwardController extends Controller
      * @param  \App\Award  $award
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Award $award)
+    public function update(Request $request,$id)
     {
-        //
+        $this->validate($request,[
+            'emp_id'=>'required',
+            'award_name'=>'required'
+        ]);
+        $award = Award::find($id);
+        $award = $award->update([
+            'emp_id'=>$request->emp_id,
+            'award_name'=>$request->award_name,
+            'gift'=>$request->gift?$request->gift:"",
+            'cash_price'=>$request->cash_price?$request->cash_price:"",
+            'month'=>$request->month?$request->month:"",
+            'year'=>$request->year?$request->year:"",
+            'branch_id'=>$request->branch_id,
+            'dept_id'=>$request->dep_id,
+            'position_id'=>$request->position_id
+        ]);
+        return redirect()->route('award.index')->with('success','Success');
     }
 
     /**
@@ -78,8 +121,9 @@ class AwardController extends Controller
      * @param  \App\Award  $award
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Award $award)
+    public function destroy($id)
     {
-        //
+        $award = Award::find($id)->delete();
+        return redirect()->route('award.index')->with('success','Success');
     }
 }

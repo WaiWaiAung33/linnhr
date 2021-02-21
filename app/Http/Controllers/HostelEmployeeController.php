@@ -296,7 +296,6 @@ class HostelEmployeeController extends Controller
     }
 
       public function get_hostelemployee_data(Request $request){
-      // dd($request->all());
       
       $employee = new Employee();
 
