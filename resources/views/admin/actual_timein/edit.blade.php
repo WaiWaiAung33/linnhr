@@ -7,15 +7,15 @@
 @section('content')
 
  <div class="container" style="margin-top: 50px; ">
-        <form action="{{route('actual_timein.store')}}" method="post" enctype="multipart/form-data" style="padding-top: 10px">
+        <form action="{{route('actual_timein.update',$actual_timein->id)}}" method="post" enctype="multipart/form-data" style="padding-top: 10px">
         @csrf
-
+        @method('PUT')
        <div class="row">
                
         <label class="col-md-2 unicode">Actual Time In</label>
         <div class="col-md-5 {{ $errors->first('actual_timein', 'has-error') }}">
 
-         <input type="text" class="form-control bs-timepicker" name="actual_timein">
+         <input type="text" class="form-control bs-timepicker" name="actual_timein" value="{{$actual_timein->actual_timein}}">
         </div>    
     </div><br>
     

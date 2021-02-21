@@ -38,7 +38,15 @@ class ActualTimeInController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd($request->all());
+        $rules = [
+            'actual_timein'=>'required',
+        ];
+         $this->validate($request,$rules);
+         $actual_timein = ActualTimeIn::create([
+            'actual_timein'=>$request->actual_timein
+         ]);
+         return redirect()->route('actual_timein.index')->with('success','Success');
     }
 
     /**
@@ -58,9 +66,10 @@ class ActualTimeInController extends Controller
      * @param  \App\ActualTimeIn  $actualTimeIn
      * @return \Illuminate\Http\Response
      */
-    public function edit(ActualTimeIn $actualTimeIn)
+    public function edit($id)
     {
-        //
+        $actual_timein = ActualTimeIn::find($id);
+        return view('admin.actual_timein.edit',compact('actual_timein'));
     }
 
     /**
@@ -70,9 +79,18 @@ class ActualTimeInController extends Controller
      * @param  \App\ActualTimeIn  $actualTimeIn
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ActualTimeIn $actualTimeIn)
+    public function update(Request $request, $id)
     {
-        //
+        $rules = [
+            'actual_timein'=>'required',
+        ];
+         $this->validate($request,$rules);
+         $actual_timein = ActualTimeIn::find($id);
+
+         $actual_timein = $actual_timein->update([
+            'actual_timein'=>$request->actual_timein
+        ]);
+         return redirect()->route('actual_timein.index')->with('success','Success');
     }
 
     /**
@@ -81,8 +99,9 @@ class ActualTimeInController extends Controller
      * @param  \App\ActualTimeIn  $actualTimeIn
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ActualTimeIn $actualTimeIn)
+    public function destroy($id)
     {
-        //
+        $actual_timein = ActualTimeIn::find($id)->delete();
+        return redirect()->route('actual_timein.index')->with('success','Success');
     }
 }

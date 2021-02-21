@@ -15,7 +15,7 @@ class CreateActualTimeInsTable extends Migration
     {
         Schema::create('actual_time_ins', function (Blueprint $table) {
             $table->id();
-            $table->timestamp('actual_time_in');
+            $table->time('actual_timein');
             $table->timestamps();
         });
     }
