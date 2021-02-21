@@ -47,7 +47,7 @@ class CvformController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->photo);
+        // dd($request->location);
         $positions = Position::all();
         $departments = Department::all();
         $nrccode = NRCCode::find($request->nrc_code);

@@ -137,18 +137,18 @@ class JobapplicationController extends Controller
                     }
 
 
-                    foreach ($departments as $key => $value) {
-                        if ($value->name == $request->department) {
+                    // foreach ($departments as $key => $value) {
+                    //     if ($value->name == $request->department) {
 
-                           $dep_id = $value->id ;
-                        }
-                    }
-                    foreach ($positions as $key => $value) {
-                       if ($value->name == $request->location) {
-                         $pos_id = $value->id;
-                         // dd($pos_id);
-                       }
-                    }
+                    //        $dep_id = $value->id ;
+                    //     }
+                    // }
+                    // foreach ($positions as $key => $value) {
+                    //    if ($value->name == $request->location) {
+                    //      $pos_id = $value->id;
+                    //      // dd($pos_id);
+                    //    }
+                    // }
                     $max = DB::table('employee')->max('emp_id');
                     $max_id = ++$max;
                     $date = date('d-m-Y');
@@ -157,8 +157,8 @@ class JobapplicationController extends Controller
                      $employee=Employee::create([
                         'emp_id'=>$max_id,
                         'branch_id'=>1,
-                        'dep_id'=>$dep_id,
-                        'position_id'=>$pos_id,
+                        'dep_id'=>$request->department,
+                        'position_id'=>$request->location,
                         'name'=> $request->name,
                         'gender'=>$request->gender,
                         'marrical_status'=>$request->marrical_status,

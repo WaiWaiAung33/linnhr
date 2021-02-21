@@ -94,10 +94,10 @@
                              <img src="{{ asset('uploads/jobapplicationPhoto/'.$jobapplication->photo) }}" alt="photo" width="80px" height="80px">
                              </td>
                              @endif
-                            <td>{{$jobapplication->name}}</td>
+                            <td>{{$jobapplication->viewPosition->name}}</td>
                            
                            
-                           <td >{{$jobapplication->department}}</td>
+                           <td >{{$jobapplication->viewDepartment->name}}</td>
                           
                            <td >{{ $jobapplication->job}}</td>
                            <td >{{$jobapplication->edu}}</td>

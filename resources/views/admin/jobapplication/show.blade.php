@@ -476,11 +476,11 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td>Rank<span style="padding-left: 175px">{{$jobapplications->job ? $jobapplications->job : "-"}}</span></td>
+                                <td>Rank<span style="padding-left: 175px">{{$jobapplications->viewPosition ? $jobapplications->viewPosition->name : "-"}}</span></td>
                                 
                             </tr>
                             <tr>
-                                <td>Department<span style="padding-left: 135px">{{$jobapplications->department ? $jobapplications->department : "-"}}</span></td>
+                                <td>Department<span style="padding-left: 135px">{{$jobapplications->viewDepartment ? $jobapplications->viewDepartment->name : "-"}}</span></td>
                             </tr>
                            
                             
