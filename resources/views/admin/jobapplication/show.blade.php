@@ -15,32 +15,37 @@
    
 
 <div class="row">
-        <div class="col-lg-10">
+        <div class="col-md-2">
              <a class="btn btn-success unicode" href="{{route('jobapplication.index')}}"> Back</a>
         </div>
 
         @if($jobapplications->status == 0)
              @if($jobapplications->first_date == '')
+             <div class="col-md-10">
                 {{--  <button type="button" class="btn btn-warning " id="moredatefilter" style="font-size: 13px"><i class="fa fa-filter" aria-hidden="true"></i></button> --}}
-                <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#mydateModal" >First Date</button>
+                <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#mydateModal" style="float: right;">First Date</button>
+             </div>
      
              @else
-                 <div>
+                 <div class="col-md-10">
                     {{--  <button type="button" class="btn btn-warning " id="morefilter" style="font-size: 13px"><i class="fa fa-filter" aria-hidden="true"></i></button> --}}
-                    <button type="button" class="btn btn-warning "  data-toggle="modal" data-target="#myModal" >Call InterView</button>
+                    <button type="button" class="btn btn-warning "  data-toggle="modal" data-target="#myModal" style="float: right;">Call InterView</button>
                  </div>
              @endif
          @elseif($jobapplications->status == 1)
                 @if($jobapplications->second_date == '')
+                <div class="col-md-10">
                     {{--  <button type="button" class="btn btn-warning " id="moredatefilter" style="font-size: 13px"><i class="fa fa-filter" aria-hidden="true"></i></button> --}}
-                    <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#mydateModal" >Second Date</button>
+                    <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#mydateModal" style="float: right;">Second Date</button>
+                </div>
      
                 @else
-                  <div>
-                    <button type="button" class="btn btn-warning "  data-toggle="modal" data-target="#myModal" >Second InterView</button>
+                  <div class="col-md-10">
+                    <button type="button" class="btn btn-warning "  data-toggle="modal" data-target="#myModal" style="float: right;">Second InterView</button>
                  </div>
                  @endif
          @elseif($jobapplications->status == 2)
+         <div class="col-md-10">
          <form action="{{route('jobapplication.store')}}" method="POST" accept-charset="utf-8" class="form-horizontal unicode">
             @csrf
             @method('post')
@@ -84,11 +89,14 @@
                 <input type="hidden" class="form-control resume" name="ward_reco" value="{{$jobapplications->ward_reco}}">
                  <input type="hidden" class="form-control resume" name="police_reco" value="{{$jobapplications->police_reco}}">
                  <input type="hidden" class="form-control resume" name="otherfile" value="{{$jobapplications->otherfile}}">
-                <button type="submit" class="btn btn-primary btn-sm" >Done</button>
+                <button type="submit" class="btn btn-primary btn-sm" style="float: right;">Done</button>
                 
         </form>
+        </div>
         @elseif($jobapplications->status == 4)
-           <a class="btn btn-success unicode" href="{{route('recallinterview',$jobapplications->id)}}">Recall</a>
+        <div class="col-md-10">
+           <a class="btn btn-success unicode" href="{{route('recallinterview',$jobapplications->id)}}" style="float: right;">Recall</a>
+        </div>
         @endif
 
         
