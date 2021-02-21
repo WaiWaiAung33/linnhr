@@ -148,7 +148,12 @@
                 </div>
             </div>  
 
-                     @foreach($jobopenings as $i=>$jobopening)
+                    @foreach($jobopenings as $i=>$jobopening)
+                    @php
+                    $todaydate = date("m/d/Y");
+
+                    @endphp
+                    @if($jobopening->close_date > $todaydate)
                     <div class="row">
                         <div class="col-lg-12 mt-4 pt-2">
                             <div class="job-list-box border rounded">
@@ -184,7 +189,7 @@
                                         </div>
                                         <div class="col-lg-3 col-md-3">
                                             <div class="job-list-button-sm text-right">
-                                                <span class="badge">Close Date : {{date('d-m-Y',strtotime($jobopening->close_date))}}</span>
+                                                <span>Close Date : {{date('d-m-Y',strtotime($jobopening->close_date))}}</span>
 
                                                 <div class="mt-3">
                                                     <a href="{{route('cvform.show',$jobopening->id)}}" class="btn btn-sm btn-primary">Apply</a>
@@ -197,6 +202,7 @@
                                 </div>
                             </a>
                             </div>
+                            @endif
                                  @endforeach
                         </div>
                         

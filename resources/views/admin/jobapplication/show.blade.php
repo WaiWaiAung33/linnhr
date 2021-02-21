@@ -165,6 +165,7 @@
                         <div class="col-md-1">Remark</div>
                         <div class="col-md-11">
                             <textarea name="reason" rows="4" class="form-control unicode" id="reason" placeholder="Good"></textarea>
+                            <input type="hidden" name="job_id" value="{{$jobapplications->id}}" id="job_id">
                         </div>
                     </div>
                     <br>
@@ -174,10 +175,12 @@
                         @csrf
                         @method('post')
                         @if($jobapplications->status != 4)
-                        <a class="btn btn-success unicode" href="{{route('cancelinterview',$jobapplications->id)}}"> Cancle</a>
+                        
+                        <!--  <a class="btn btn-success unicode" href="{{route('jobapplication.update',$jobapplications->id)}}" id="cancel"> Cancle</a> -->
+                        <input type="submit" name="cancel" class="btn btn-success" id="cancel" value="Cancel" data-dismiss="modal">
                         
                         @endif
-                         <button type="submit" class="btn btn-primary btn-sm" >Save</button>
+                         <button type="submit" class="btn btn-primary btn-sm">Save</button>
                        </div>
                     </div>
                 </div>
@@ -453,7 +456,8 @@
                      </table>
                      </div>
                      @endif
-                    @if($interview->step_id == 2)
+                @if($interview->step_id == 2)
+
                   <div class="table-responsive">
                      <table class="table table-bordered styled-table">
                         <thead>
@@ -473,6 +477,28 @@
                      </div>
                      @endif
                     @endforeach
+                     @endif
+
+                     @if($cancelreason->count()>0)
+                     @foreach($cancelreason as $cancelreasons)
+                       <div class="table-responsive">
+                     <table class="table table-bordered styled-table">
+                        <thead>
+                            <tr>
+                                <th style="font-size: 16px"><i class="fa fa-briefcase"> </i> Cancel Reason</th>
+                                
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Remark<span style="padding-left: 160px">{{$cancelreasons->fcancel_reason ? $cancelreasons->fcancel_reason : "-"}}</span></td>
+                                
+                            </tr>
+                            
+                        </tbody>
+                     </table>
+                     </div>
+                     @endforeach
                      @endif
                   <div class="table-responsive">
                      <table class="table table-bordered styled-table">
@@ -589,6 +615,25 @@
               else
               $('#adv_filter').show("slide", { direction: "right" }, 1000);
           });
+
+
+            $("#cancel").click(function(){
+               var reason = $("#reason").val(); 
+                var id = $("#job_id").val(); 
+                $.ajax({
+                    type: "GET",
+                    dataType: "json",
+                    url: "<?php echo(route("cancel")) ?>",
+                    data: {'reason': reason, 'id': id},
+                    success: function(data){
+                     console.log(data.success);
+                        // $(location).attr('href', 'jobapplication.index');
+                    }
+                });
+                $('#myModal').modal('hide');
+                // this.form.submit();
+                return false;
+            });
 
             $( "#moredatefilter" ).click(function(e) {
               e.preventDefault();

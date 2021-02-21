@@ -10,6 +10,7 @@ use App\NRCState;
 use App\Employee;
 use App\Jobopening;
 use App\Interview;
+use App\Cancelreason;
 use Illuminate\Http\Request;
 use File;
 use Illuminate\Support\Str;
@@ -149,13 +150,33 @@ class JobapplicationController extends Controller
                     //      // dd($pos_id);
                     //    }
                     // }
-                    $max = DB::table('employee')->max('emp_id');
-                    $max_id = ++$max;
+                    $max = Employee::max('emp_id');
+                    $items = (string)$max;
+                    // dd($items);
+                    $max_year = substr($items, 0, 2);
+                    $max_count = substr($items,-2);
+                    $max_middle = substr($items,-4);
+                    $max_middle_month = substr($max_middle, 0, 2);
+                    // dd($max_count);
                     $date = date('d-m-Y');
                     $month = date('m');
+                    $joinyear = date('y');
+                    $joinmonth = date('m');
+                    $joinday = '01';
+                    // $joindate = $joinyear . $joinmonth . $joinday;
+
+                    if($max_year == $joinyear && $max_middle_month == $joinmonth){
+                        $join_count = sprintf("%02d", ++$max_count);
+                        $joindate = $joinyear . $joinmonth . $join_count;
+                    
+                    }else{
+                        $joindate = $joinyear . $joinmonth . $joinday;
+                    }
+                   
+
 
                      $employee=Employee::create([
-                        'emp_id'=>$max_id,
+                        'emp_id'=>$joindate,
                         'branch_id'=>1,
                         'dep_id'=>$request->department,
                         'position_id'=>$request->location,
@@ -223,8 +244,9 @@ class JobapplicationController extends Controller
         $nrcstates = NRCState::all(); 
         $jobapplications = Cvform::find($id);
         $interviewemployee = Interview::where('emp_id',$id)->get();
+        $cancelreason = Cancelreason::where('emp_id',$id)->get();
         // dd($interviewemployee);
-        return view('admin.jobapplication.show',compact('departments','positions','jobapplications','nrccodes','nrcstates','interviewemployee'));
+        return view('admin.jobapplication.show',compact('departments','positions','jobapplications','nrccodes','nrcstates','interviewemployee','cancelreason'));
     }
 
     /**
