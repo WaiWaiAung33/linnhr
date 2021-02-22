@@ -168,7 +168,7 @@
                             </div>
                             <div class="popu-category-content">
                                 <h5 class="mb-2 text-dark title">{{$department->name}}</h5>
-                                <p class="text-success mb-0 rounded">{{$department->viewJobopening->count()}} jobs</p>
+                                <p class="text-success mb-0 rounded">{{$department->employees->count()}}</p>
                             </div>
                         </div>
                     </a>
