@@ -20,6 +20,8 @@
         $status = isset($_GET['status'])?$_GET['status']:'';
         $finterview_date = isset($_GET['finterview_date'])?$_GET['finterview_date']:'';
         $sinterview_date = isset($_GET['sinterview_date'])?$_GET['sinterview_date']:'';
+        $secondinv_fromdate = isset($_GET['secondinv_fromdate'])?$_GET['secondinv_fromdate']:'';
+        $secondinv_todate = isset($_GET['secondinv_todate'])?$_GET['secondinv_todate']:'';
 ?>
 
 
@@ -56,6 +58,15 @@
              <div class="col-md-2">
               <label>First_Inv To Date</label>
                <input type="text" name="sinterview_date" id="sinterview_date"class="form-control unicode" placeholder="01-08-2020" value="{{ old('sinterview_date',$sinterview_date) }}">
+            </div>
+
+            <div class="col-md-2">
+              <label>Second_Inv From Date</label>
+               <input type="text" name="secondinv_fromdate" id="secondinv_fromdate"class="form-control unicode" placeholder="01-08-2020" value="{{ old('secondinv_fromdate',$secondinv_fromdate) }}">
+            </div>
+             <div class="col-md-2">
+              <label>Second_Inv To Date</label>
+               <input type="text" name="secondinv_todate" id="secondinv_todate"class="form-control unicode" placeholder="01-08-2020" value="{{ old('secondinv_todate',$secondinv_todate) }}">
             </div>
         </div>
 
@@ -168,6 +179,14 @@
                 this.form.submit();
                // $( "#form_id" )[0].submit();   
             });
+                 $('#secondinv_todate').on('change',function(e) {
+                this.form.submit();
+               // $( "#form_id" )[0].submit();   
+            });
+                $('#secondinv_fromdate').on('change',function(e) {
+                this.form.submit();
+               // $( "#form_id" )[0].submit();   
+            });
         });
           $(function() {
           $('table').on("click", "tr.table-tr", function() {
@@ -175,6 +194,8 @@
           });
           $("#finterview_date").datepicker({ dateFormat: 'dd-mm-yy' });
           $("#sinterview_date").datepicker({ dateFormat: 'dd-mm-yy' });
+          $("#secondinv_todate").datepicker({ dateFormat: 'dd-mm-yy' });
+          $("#secondinv_fromdate").datepicker({ dateFormat: 'dd-mm-yy' });
         });
 
 
