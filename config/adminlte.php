@@ -269,25 +269,49 @@ return [
         // ],
         [
             'text'    => 'Time In',
-            'icon'    => 'fa fa-cog',
+            'icon'    => 'fa fa-clock',
             'submenu' => [
                 [
                     'text' => 'Actual Time In',
                     'url'  => 'actual_timein',
-                    'icon' => 'fa fa-location-arrow',
+                    'icon' => 'fa fa-clock',
                 ],
                 [
                     'text' => 'Time In',
                     'url'  => 'timein',
-                    'icon' => 'fa fa-cubes',
+                    'icon' => 'fa fa-clock',
                 ],
                 [
                     'text' => 'Late Arrival',
                     'url'  => 'late_arrival',
+                    'icon' => 'fa fa-clock',
+                ],
+            ],
+        ],
+
+        [
+            'text'    => 'Leave',
+            'icon'    => 'fa fa-cog',
+            'submenu' => [
+                [
+                    'text' => 'Leave Type',
+                    'url'  => 'leave_type',
+                    'icon' => 'fa fa-location-arrow',
+                ],
+                [
+                    'text' => 'Leave Application',
+                    'url'  => 'leave_application',
+                    'icon' => 'fa fa-cubes',
+                ],
+                [
+                    'text' => 'Award',
+                    'url'  => 'award',
                     'icon' => 'fa fa-bullseye',
                 ],
             ],
         ],
+
+
 
          ['header' => 'Hostel Management', 'can' => 'hostel-list'],
         [
