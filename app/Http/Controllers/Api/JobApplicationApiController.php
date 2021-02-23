@@ -220,9 +220,10 @@ class JobApplicationApiController extends Controller
 						   		'cvform.second_date'
 						   );
 		$cvforms = $cvforms->where('cvform.id',$id)->get();
+        $interview_steps = Interview::where('emp_id',$id)->get();
         if ($cvforms->count()>0) {
             $cvforms = $cvforms[0];
-            return response(['job_detail' => $cvforms,'message'=>"Successfully",'status'=>1]); 
+            return response(['job_detail' => $cvforms,"interview_steps"=>$interview_steps,'message'=>"Successfully",'status'=>1]); 
         }else{
             return response(['message'=>"Job id does not exit!!!",'status'=>0]); 
         }
