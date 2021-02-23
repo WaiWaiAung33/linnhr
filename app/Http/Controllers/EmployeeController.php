@@ -721,6 +721,22 @@ loyee.dep_id')
         return response()->json(['success'=>'Status change successfully.']);
     }
 
+     public function changestatusid(Request $request)
+    {
+        // dd($request->all());
+        $max = Employee::max('emp_id');
+                    $items = (string)$max;
+                    // dd($items);
+                    $max_year = substr($items, 0, 2);
+                    $max_count = substr($items,-2);
+                    $max_middle = substr($items,-4);
+                    $max_middle_month = substr($max_middle, 0, 2);
+                    $join_count = sprintf("%02d", ++$max_count);
+                    $data = $max_year . $max_middle_month . $join_count;
+                    // dd($data);
+                    return response()->json($data);
+    }
+
      public function selectdepartment(Request $request)
     {
         $data = new Department();

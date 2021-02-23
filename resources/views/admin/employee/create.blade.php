@@ -624,7 +624,7 @@
                                     <h6 style="font-weight:bold;font-size:13px;">Employee ID</h6>
                                 </div>
                                 <div class="col-md-8">
-                                    <input type="text" name="emp_id" class="form-control unicode">
+                                    <input type="text" name="emp_id" class="form-control unicode" id="emp_id">
 
                                 </div>
                             </div>
@@ -1326,7 +1326,7 @@
                 });
             });
 
-                 $(function(){
+                $(function(){
                $("select[name='home_no']").change(function(){
                   var is_employee = $(this).find(':selected').val();
                   
@@ -1340,6 +1340,23 @@
                                 console.log(data.full_address);
                             }
                         });
+                });
+            });
+
+                $(function(){
+               $("#workexp_next").click(function(){
+                  var is_employee = $(this).find(':selected').val();
+                  
+                        $.ajax({
+                        type: "GET",
+                        dataType: "json",
+                        url: "<?php echo route('change-status-employeeid') ?>",
+                        // data: {'emp_id': is_employee},
+                        success: function(data){
+                            $("#emp_id").val(data);
+                            console.log(data);
+                        }
+                         });
                 });
             });
 
@@ -1442,6 +1459,7 @@
             $("#tab-5").prop("checked", true);
             $("#tab-2").prop("disabled", false);
             $("#tab-3").prop("disabled", false);
+
         });
            $("#employee_next").click(function(){
             $("#tab-6").prop("checked", true);
@@ -1565,6 +1583,8 @@
             }
         });
         });
+
+         
 
 
     </script>
