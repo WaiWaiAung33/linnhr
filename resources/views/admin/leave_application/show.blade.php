@@ -43,13 +43,24 @@
     </div><br>
     <div class="row">
                
-        <label class="col-md-2 unicode">Half_day Type</label>
-        <div class="col-md-5 {{ $errors->first('half_day', 'has-error') }}">
+        <label class="col-md-2 unicode">Full Day/Half Day</label>
+        <div class="col-md-5 {{ $errors->first('halforfull', 'has-error') }}">
             
-            <input type="text" name="half_day" id="half_day" class="form-control" value="{{$leave_application->halfDayType}}" readonly="readonly">
+            <input type="text" name="halforfull" id="halforfull" class="form-control" @if($leave_application->halforfull == 1) value="Half Day" @else value = "Full Day" @endif readonly="readonly">
          
         </div>    
     </div><br>
+    @if($leave_application->halforfull == 1)
+    <div class="row">
+               
+        <label class="col-md-2 unicode">Half Day</label>
+        <div class="col-md-5 {{ $errors->first('halfDayType', 'has-error') }}">
+            
+            <input type="text" name="halfDayType" id="halfDayType" class="form-control" @if($leave_application->halfDayType == 1) value="Morning" @else value = "Evening" @endif readonly="readonly">
+         
+        </div>    
+    </div><br>
+    @endif
 
     <div class="row">
                

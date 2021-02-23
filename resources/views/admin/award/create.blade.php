@@ -197,9 +197,17 @@
         });
     });
 
-        $("#start_date").datepicker({ dateFormat: 'dd-mm-yy' });
+        // $("#year").datepicker({ format: 'yyyy' });
+        $("#year").datepicker({  format: "yyyy",
+            viewMode: "years", 
+            minViewMode: "years" });
 
-});
+        $("#month").datepicker({  format: "MM",
+            viewMode: "months", 
+            minViewMode: "months" });
 
+        });
+     
+    
 </script>
 @stop

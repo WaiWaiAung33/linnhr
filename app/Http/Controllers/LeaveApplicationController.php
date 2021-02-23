@@ -80,6 +80,7 @@ class LeaveApplicationController extends Controller
             'emp_id'=>$request->emp_id,
             'leavetype_id'=>$request->leave_type,
             'halfDayType'=>$request->half_day ? $request->half_day : "",
+            'halforfull'=>$request->halforfull,
             'start_date'=>date('Y-m-d',strtotime($request->start_date)),
             'end_date'=>date('Y-m-d',strtotime($request->end_date)),
             'days'=>$request->day,
@@ -129,6 +130,7 @@ class LeaveApplicationController extends Controller
      */
     public function update(Request $request, $id)
     {
+        // dd($request->all());
         $this->validate($request,[
             'emp_id'=>'required',
             'leave_type'=>'required',
@@ -144,6 +146,7 @@ class LeaveApplicationController extends Controller
             'emp_id'=>$request->emp_id,
             'leavetype_id'=>$request->leave_type,
             'halfDayType'=>$request->half_day ? $request->half_day : "",
+            'halforfull'=>$request->fullorhalf,
             'start_date'=>date('Y-m-d',strtotime($request->start_date)),
             'end_date'=>date('Y-m-d',strtotime($request->end_date)),
             'days'=>$request->day,

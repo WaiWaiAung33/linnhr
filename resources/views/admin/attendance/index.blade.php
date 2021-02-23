@@ -3,7 +3,7 @@
 @section('title', 'Branch')
 
 @section('content_header')
-<h5 style="color: blue;">Award</h5>
+<h5 style="color: blue;">Attendance List</h5>
 @stop
 @section('content')
 <?php
@@ -52,10 +52,12 @@
                     <tr> 
                       <th>No</th>
                         <th>Employee Name</th>
+                        <th>Image</th>
                         <th>Branch</th>
                         <th>Department</th>
                         <th>Position</th>
                         <th>Clock In</th>
+                        <th>Clock Out</th>
                         <th>Location</th>
                         <th>Attendance Status</th>
                     </tr>
@@ -67,18 +69,30 @@
                         <tr class="table-tr" data-url="{{route('attendance.show',$attendance->id)}}">
                           <td>{{++$i}}</td>
                             <td>{{$attendance->name}}</td>
+                            @if($attendance->photo == '')
+                            <td>
+                            <img src="{{ asset('uploads/employeePhoto/default.png') }}" alt="photo" width="80px" height="80px">
+                            </td>
+                            @else
+                            <td>
+                             <img src="{{ asset('uploads/employeePhoto/'.$attendance->photo) }}" alt="photo" width="80px" height="80px">
+                             </td>
+                             @endif
                             <td>{{$attendance->branch_name}}</td> 
                             <td>{{$attendance->dept_name}}</td>
                             <td>{{$attendance->position_name}}</td>
                             <td>{{$attendance->clock_in}}</td>
+                            <td>{{$attendance->clock_out}}</td>
                             <td>{{$attendance->clockin_ip_address}}</td>
+
                             @if($attendance->attendance_status == 1)
                             <td>Present</td>
                             @elseif($attendance->attendance_status == 2)
                             <td>Absent</td>
-                            @else
+                            @elseif($attendance->attendance_status == 3)
                             <td>Leave</td>
                             @endif
+                            <!-- <td>Present</td> -->
                         </tr>
                          @endforeach
                           @else

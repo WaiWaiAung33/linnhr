@@ -84,7 +84,7 @@
          
         </div>    
     </div><br>
-    <div class="row">
+    <!-- <div class="row">
                
         <label class="col-md-2 unicode">Clock In IP Address</label>
         <div class="col-md-5 {{ $errors->first('clockin_ip_address', 'has-error') }}">
@@ -101,7 +101,7 @@
             <input type="text" name="clockout_ip_address" id="clockout_ip_address" class="form-control" value="{{$attendance->clockout_ip_address}}">
          
         </div>    
-    </div><br>
+    </div><br> -->
     <div class="row">
                
         <label class="col-md-2 unicode">Working From</label>

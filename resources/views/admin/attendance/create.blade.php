@@ -80,7 +80,7 @@
          
         </div>    
     </div><br>
-    <div class="row">
+    <!-- <div class="row">
                
         <label class="col-md-2 unicode">Clock In IP Address</label>
         <div class="col-md-5 {{ $errors->first('clockin_ip_address', 'has-error') }}">
@@ -97,7 +97,7 @@
             <input type="text" name="clockout_ip_address" id="clockout_ip_address" class="form-control">
          
         </div>    
-    </div><br>
+    </div><br> -->
     <div class="row">
                
         <label class="col-md-2 unicode">Working From</label>
@@ -133,7 +133,7 @@
         <div class="row">
                     <div class="col-md-2"></div>
                     <div class="col-md-5">
-                        <a class="btn btn-primary unicode" href="{{route('award.index')}}"> Back</a>
+                        <a class="btn btn-primary unicode" href="{{route('attendance.index')}}"> Back</a>
                          <button class="btn btn-success unicode" type="submit" style="font-size: 13px">
                           Save
                     </button>

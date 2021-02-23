@@ -52,11 +52,26 @@
     </div><br>
     <div class="row">
                
-        <label class="col-md-2 unicode">Half_day Type</label>
+        <label class="col-md-2 unicode">Full Day/Half Day</label>
+        <div class="col-md-5 {{ $errors->first('halforfull', 'has-error') }}">
+            
+            <!-- <input type="text" name="half_day" id="half_day" class="form-control"> -->
+            <select class="form-control" id="halforfull" name="halforfull" style="font-size: 13px">
+            <option value="0">Full Day</option>
+            <option value="1">Half Day</option>
+         </select>
+        </div>    
+    </div> <br id="break">
+    <div class="row" id="half_day">
+               
+        <label class="col-md-2 unicode">Half Day</label>
         <div class="col-md-5 {{ $errors->first('half_day', 'has-error') }}">
             
-            <input type="text" name="half_day" id="half_day" class="form-control">
-         
+            <!-- <input type="text" name="half_day" id="half_day" class="form-control"> -->
+            <select class="form-control" id="half_day" name="half_day" style="font-size: 13px">
+            <option value="0">Morning</option>
+            <option value="1">Evening</option>
+         </select>
         </div>    
     </div><br>
 
@@ -146,7 +161,8 @@
 <script src="https://unpkg.com/bootstrap-datepicker@1.9.0/dist/js/bootstrap-datepicker.min.js"></script>
 <script type="text/javascript">
      $(document).ready(function(){
-
+        $("#half_day").hide();
+        $("#break").hide();
         $(function() {
             $('.livesearch').select2({
             placeholder: 'Employee Name',
@@ -191,7 +207,19 @@
                 });
         });
     });
-
+    $("#halforfull").change(function () {
+            var val = $('#halforfull option:selected').val();
+            if (val == "1") {
+            $("#half_day").show();
+        
+            $("#break").show();
+          
+            }else if(val == 0 ){
+            $("#half_day").hide();
+            $("#break").hide();
+            }
+            
+        });
 
         $("#start_date").datepicker({ dateFormat: 'dd-mm-yy' });
          $("#end_date").datepicker({ dateFormat: 'dd-mm-yy' });

@@ -3,7 +3,7 @@
 @section('title', 'Branch')
 
 @section('content_header')
-<h5 style="color: blue;">Award</h5>
+<h5 style="color: blue;">Leave Application</h5>
 @stop
 @section('content')
 <?php

@@ -26,6 +26,7 @@ class AttendanceController extends Controller
                                     ->select(
                                         'attendances.*',
                                         'employee.name',
+                                        'employee.photo',
                                         'branch.name AS branch_name',
                                         'department.name AS dept_name',
                                         'position.name AS position_name'

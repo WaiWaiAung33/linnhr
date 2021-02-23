@@ -17,7 +17,8 @@ class CreateLeaveApplicationsTable extends Migration
             $table->id();
             $table->integer('emp_id');
             $table->integer('leavetype_id');
-            $table->string('halfDayType');
+            $table->boolean('halfDayType')->default(0);
+            $table->boolean('halforfull')->default(0);
             $table->integer('last_updated_by');
             $table->date('start_date');
             $table->string('end_date');
