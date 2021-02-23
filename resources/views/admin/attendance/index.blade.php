@@ -1,0 +1,138 @@
+@extends('adminlte::page')
+
+@section('title', 'Branch')
+
+@section('content_header')
+<h5 style="color: blue;">Award</h5>
+@stop
+@section('content')
+<?php
+        $name = isset($_GET['name'])?$_GET['name']:'';
+        $branch_id = isset($_GET['branch_id'])?$_GET['branch_id']:'';
+        $dept_id = isset($_GET['dept_id'])?$_GET['dept_id']:'';
+?>
+<!-- <div class="row"> -->
+    <form action="{{route('attendance.index')}}" method="get" accept-charset="utf-8" class="form-horizontal">
+     <div class="row">
+     
+       <div class="col-md-2">   
+       <label style="margin-top: 13px;"></label>              
+          <input type="text" name="name" id="name" value="{{ old('name',$name) }}" class="form-control" placeholder="Search..." style="font-size: 13px">
+        </div>
+        <div class="col-md-2">
+          <label for="">Select Branch</label>
+        <select class="form-control" id="branch_id" name="branch_id" style="font-size: 13px">
+              <option value="">All</option>
+              @foreach($branches as $branch)
+              <option value="{{$branch->id}}" {{ (old('branch_id',$branch_id)==$branch->id)?'selected':'' }}>{{$branch->name}}</option>
+              @endforeach
+          </select>
+      </div>
+      <div class="col-md-2">
+          <label for="">Select Department</label>
+        <select class="form-control" id="dept_id" name="dept_id" style="font-size: 13px">
+              <option value="">All</option>
+              @foreach($departments as $department)
+              <option value="{{$department->id}}" {{ (old('dept_id',$dept_id)==$department->id)?'selected':'' }}>{{$department->name}}</option>
+              @endforeach
+          </select>
+      </div>
+     </div>
+      </form>
+<!-- </div> -->
+ 
+
+   <a class="btn btn-success unicode" href="{{route('attendance.create')}}" style="float: right;font-size: 13px"><i class="fas fa-plus"></i>Add New!!!</a><br>
+
+
+      <p style="padding-left: 10px">Total record:{{$count}}</p>
+    <div class="table-responsive" style="font-size:14px">
+                <table class="table table-bordered styled-table">
+                  <thead>
+                    <tr> 
+                      <th>No</th>
+                        <th>Employee Name</th>
+                        <th>Branch</th>
+                        <th>Department</th>
+                        <th>Position</th>
+                        <th>Clock In</th>
+                        <th>Location</th>
+                        <th>Attendance Status</th>
+                    </tr>
+                  </thead>
+                    <tbody>
+                    @if($attendances->count()>0)
+              		 @foreach($attendances as $attendance)
+
+                        <tr class="table-tr" data-url="{{route('attendance.show',$attendance->id)}}">
+                          <td>{{++$i}}</td>
+                            <td>{{$attendance->name}}</td>
+                            <td>{{$attendance->branch_name}}</td> 
+                            <td>{{$attendance->dept_name}}</td>
+                            <td>{{$attendance->position_name}}</td>
+                            <td>{{$attendance->clock_in}}</td>
+                            <td>{{$attendance->clockin_ip_address}}</td>
+                            @if($attendance->attendance_status == 1)
+                            <td>Present</td>
+                            @elseif($attendance->attendance_status == 2)
+                            <td>Absent</td>
+                            @else
+                            <td>Leave</td>
+                            @endif
+                        </tr>
+                         @endforeach
+                          @else
+                          <tr align="center">
+                            <td colspan="10">No Data!</td>
+                          </tr>
+                        @endif
+			            
+                    </tbody>
+           </table> 
+           {!! $attendances->appends(request()->input())->links() !!}
+       </div>   
+@stop 
+@section('css')
+
+@stop
+
+@section('js')
+ <script> 
+      @if(Session::has('success'))
+            toastr.options =
+            {
+            "closeButton" : true,
+            "progressBar" : true
+            }
+            toastr.success("{{ session('success') }}");
+        @endif
+        $(document).ready(function(){
+            setTimeout(function(){
+            $("div.alert").remove();
+            }, 1000 ); 
+            $(function() {
+                $('#name').on('change',function(e) {
+
+                this.form.submit();
+            }); 
+            $('#branch_id').on('change',function(e) {
+
+                this.form.submit();
+            });
+            $('#dept_id').on('change',function(e) {
+
+                this.form.submit();
+            });
+   
+        });
+          $(function() {
+          $('table').on("click", "tr.table-tr", function() {
+            window.location = $(this).data("url");
+          });
+        });
+
+        });
+
+
+     </script>
+@stop

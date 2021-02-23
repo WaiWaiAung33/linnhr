@@ -274,7 +274,7 @@ return [
                 
                 [
                     'text' => 'Make Attendance',
-                    'url'  => 'timein',
+                    'url'  => 'attendance',
                     'icon' => 'fa fa-clock',
                 ],
                 [

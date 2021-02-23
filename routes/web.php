@@ -72,6 +72,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/backup/delete/{file_name}', 'BackupController@delete')->name('backup.delete');
 
     Route::resource('/actual_timein','ActualTimeInController');
+     Route::resource('/attendance','AttendanceController');
 });
 
 Route::get('/', [App\Http\Controllers\CvformController::class, 'index'])->name('frontend.home');
