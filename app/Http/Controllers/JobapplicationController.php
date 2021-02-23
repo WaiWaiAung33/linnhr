@@ -168,7 +168,7 @@ class JobapplicationController extends Controller
                     $max_middle = substr($items,-4);
                     $max_middle_month = substr($max_middle, 0, 2);
                     // dd($max_count);
-                    $date = date('d-m-Y');
+                    $date = date('Y-m-d');
                     $month = date('m');
                     $joinyear = date('y');
                     $joinmonth = date('m');
