@@ -8,6 +8,7 @@ use App\Department;
 use App\Position;
 use App\NRCCode;
 use App\NRCState;
+use App\Interview;
 use DB;
 use Validator;
 
@@ -34,6 +35,7 @@ class JobApplicationApiController extends Controller
             						   ->leftJoin('position','position.id','=','cvform.job')
             						   ->leftJoin('nrccode','nrccode.id','=','cvform.nrc_code')
             						   ->leftJoin('nrcstate','nrcstate.id','=','cvform.nrc_state')
+
             						   ->select(
             						   		'cvform.id',
             						   		'cvform.name',
@@ -42,6 +44,7 @@ class JobApplicationApiController extends Controller
             						   		'nrcstate.id AS nrc_state_id',
             						   		'nrcstate.name AS nrc_state',
             						   		'cvform.nrc_status',
+                                            'cvform.status',
             						   		'cvform.nrc',
             						   		'cvform.fullnrc',
             						   		'cvform.dob',
