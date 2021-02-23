@@ -3,6 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\LeaveApplication;
+use App\Employee;
+use App\Branch;
+use App\Department;
+use App\User;
+use App\LeaveType;
 use Illuminate\Http\Request;
 
 class LeaveApplicationController extends Controller
@@ -12,9 +17,33 @@ class LeaveApplicationController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $leave_applications = new LeaveApplication();
+        $branches = Branch::where('status',1)->get();
+        $departments = Department::where('status',1)->get();
+        $leave_applications = $leave_applications->leftjoin('employee','employee.id','=','leave_applications.emp_id')
+                                                ->leftjoin('leave_types','leave_types.id','=','leave_applications.leavetype_id')
+                                                ->leftjoin('users','users.id','=','leave_applications.last_updated_by')
+                                                ->select(
+                                                    'leave_applications.*',
+                                                    'employee.name',
+                                                    'leave_types.leave_type',
+                                                    'users.name'
+                                                );
+        if ($request->name != '') {
+            $leave_applications = $leave_applications->where('employee.name','like','%'.$request->name.'%');
+        }
+        if ($request->branch_id != '') {
+            $leave_applications = $leave_applications->where('employee.branch_id',$request->branch_id);
+        }
+        if ($request->dept_id != '') {
+            $leave_applications = $leave_applications->where('employee.dep_id',$request->dept_id);
+        }
+        $count=$leave_applications->get()->count();
+        $leave_applications = $leave_applications->orderBy('created_at','desc')->paginate(10);
+        // dd($count);
+        return view('admin.leave_application.index',compact('count','leave_applications','branches','departments'))->with('i', (request()->input('page', 1) - 1) * 10);
     }
 
     /**
@@ -24,7 +53,8 @@ class LeaveApplicationController extends Controller
      */
     public function create()
     {
-        //
+        $leave_types = LeaveType::all();
+        return view('admin.leave_application.create',compact('leave_types'));
     }
 
     /**
@@ -35,7 +65,31 @@ class LeaveApplicationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd($request->all());
+        $this->validate($request,[
+            'emp_id'=>'required',
+            'leave_type'=>'required',
+            'start_date'=>'required',
+            'end_date'=>'required',
+            'day'=>'required',
+            'apply_date'=>'required',
+            'reason'=>'required',
+            'application_status'=>'required'
+        ]);
+        $leave_application = LeaveApplication::create([
+            'emp_id'=>$request->emp_id,
+            'leavetype_id'=>$request->leave_type,
+            'halfDayType'=>$request->half_day ? $request->half_day : "",
+            'start_date'=>date('Y-m-d',strtotime($request->start_date)),
+            'end_date'=>date('Y-m-d',strtotime($request->end_date)),
+            'days'=>$request->day,
+            'last_updated_by'=>auth()->user()->id,
+            'apply_date'=>date('Y-m-d',strtotime($request->apply_date)),
+            'reason'=>$request->reason,
+            'application_status'=>$request->application_status
+        ]);
+
+        return redirect()->route('leave_application.index')->with('success','Success');
     }
 
     /**
@@ -44,9 +98,10 @@ class LeaveApplicationController extends Controller
      * @param  \App\LeaveApplication  $leaveApplication
      * @return \Illuminate\Http\Response
      */
-    public function show(LeaveApplication $leaveApplication)
+    public function show($id)
     {
-        //
+        $leave_application = LeaveApplication::find($id);
+        return view('admin.leave_application.show',compact('leave_application'));
     }
 
     /**
@@ -55,9 +110,14 @@ class LeaveApplicationController extends Controller
      * @param  \App\LeaveApplication  $leaveApplication
      * @return \Illuminate\Http\Response
      */
-    public function edit(LeaveApplication $leaveApplication)
+    public function edit($id)
     {
-        //
+        $leave_application = LeaveApplication::find($id);
+        $branches = Branch::where('status',1)->get();
+        $departments = Department::where('status',1)->get();
+        $leave_types = LeaveType::all();
+        $employees = Employee::all();
+        return view('admin.leave_application.edit',compact('leave_application','branches','departments','leave_types','employees'));
     }
 
     /**
@@ -67,9 +127,33 @@ class LeaveApplicationController extends Controller
      * @param  \App\LeaveApplication  $leaveApplication
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, LeaveApplication $leaveApplication)
+    public function update(Request $request, $id)
     {
-        //
+        $this->validate($request,[
+            'emp_id'=>'required',
+            'leave_type'=>'required',
+            'start_date'=>'required',
+            'end_date'=>'required',
+            'day'=>'required',
+            'apply_date'=>'required',
+            'reason'=>'required',
+            'application_status'=>'required'
+        ]);
+
+        $leave_application = LeaveApplication::find($id)->update([
+            'emp_id'=>$request->emp_id,
+            'leavetype_id'=>$request->leave_type,
+            'halfDayType'=>$request->half_day ? $request->half_day : "",
+            'start_date'=>date('Y-m-d',strtotime($request->start_date)),
+            'end_date'=>date('Y-m-d',strtotime($request->end_date)),
+            'days'=>$request->day,
+            'last_updated_by'=>auth()->user()->id,
+            'apply_date'=>date('Y-m-d',strtotime($request->apply_date)),
+            'reason'=>$request->reason,
+            'application_status'=>$request->application_status
+        ]);
+
+        return redirect()->route('leave_application.index')->with('success','Success');
     }
 
     /**
@@ -78,8 +162,9 @@ class LeaveApplicationController extends Controller
      * @param  \App\LeaveApplication  $leaveApplication
      * @return \Illuminate\Http\Response
      */
-    public function destroy(LeaveApplication $leaveApplication)
+    public function destroy($id)
     {
-        //
+        $leave_application = LeaveApplication::find($id)->delete();
+        return redirect()->route('leave_application.index')->with('success','Success');
     }
 }

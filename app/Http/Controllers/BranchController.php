@@ -22,7 +22,7 @@ class BranchController extends Controller
         $count=$branchs->get()->count();
         $branchs = $branchs->orderBy('created_at','desc')->paginate(10);
         // dd($count);
-        return view('admin.branch.index',compact('count','branchs'))->with('i', (request()->input('page', 1) - 1) * 10);;
+        return view('admin.branch.index',compact('count','branchs'))->with('i', (request()->input('page', 1) - 1) * 10);
     }
 
     /**

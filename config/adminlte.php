@@ -282,11 +282,11 @@ return [
                     'url'  => 'actual_timein',
                     'icon' => 'fa fa-clock',
                 ],
-                [
-                    'text' => 'Late Arrival',
-                    'url'  => 'late_arrival',
-                    'icon' => 'fa fa-clock',
-                ],
+                // [
+                //     'text' => 'Late Arrival',
+                //     'url'  => 'late_arrival',
+                //     'icon' => 'fa fa-clock',
+                // ],
                 [
                     'text' => 'Leave Type',
                     'url'  => 'leave_type',

@@ -17,5 +17,9 @@ class LeaveApplication extends Model
     {
     	return $this->hasOne('App\LeaveType','id','leavetype_id');
     }
+    public function last_updated_user()
+    {
+        return $this->hasOne('App\User','id','last_updated_by');
+    }
 
 }

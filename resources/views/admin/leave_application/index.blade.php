@@ -10,9 +10,10 @@
         $name = isset($_GET['name'])?$_GET['name']:'';
         $branch_id = isset($_GET['branch_id'])?$_GET['branch_id']:'';
         $dept_id = isset($_GET['dept_id'])?$_GET['dept_id']:'';
+        $application_status = isset($_GET['application_status'])?$_GET['application_status']:'';
 ?>
 <!-- <div class="row"> -->
-    <form action="{{route('award.index')}}" method="get" accept-charset="utf-8" class="form-horizontal">
+    <form action="{{route('leave_application.index')}}" method="get" accept-charset="utf-8" class="form-horizontal">
      <div class="row">
      
        <div class="col-md-2">   
@@ -20,15 +21,15 @@
           <input type="text" name="name" id="name" value="{{ old('name',$name) }}" class="form-control" placeholder="Search..." style="font-size: 13px">
         </div>
         <div class="col-md-2">
-          <label for="">Select Branch</label>
-        <select class="form-control" id="branch_id" name="branch_id" style="font-size: 13px">
+          <label>Select Branch</label>
+           <select class="form-control" id="branch_id" name="branch_id" style="font-size: 13px">
               <option value="">All</option>
               @foreach($branches as $branch)
               <option value="{{$branch->id}}" {{ (old('branch_id',$branch_id)==$branch->id)?'selected':'' }}>{{$branch->name}}</option>
               @endforeach
           </select>
-      </div>
-      <div class="col-md-2">
+        </div>
+        <div class="col-md-2">
           <label for="">Select Department</label>
         <select class="form-control" id="dept_id" name="dept_id" style="font-size: 13px">
               <option value="">All</option>
@@ -37,12 +38,22 @@
               @endforeach
           </select>
       </div>
+        <div class="col-md-2">
+          <label for="">Select Application Status</label>
+          <select class="form-control" id="application_status" name="application_status" style="font-size: 13px">
+                <option value="">All</option>  
+                <option value="0" {{ (old('application_status',$application_status)=="0")?'selected':'' }}>Pending</option>
+                <option value="1" {{ (old('application_status',$application_status)=="1")?'selected':'' }}>Approved</option>
+                <option value="2" {{ (old('application_status',$application_status)=="2")?'selected':'' }}>Rejected</option>
+               </select>
+      </div>
+      
      </div>
       </form>
 <!-- </div> -->
  
 
-   <a class="btn btn-success unicode" href="{{route('award.create')}}" style="float: right;font-size: 13px"><i class="fas fa-plus"></i>Add New!!!</a><br>
+   <a class="btn btn-success unicode" href="{{route('leave_application.create')}}" style="float: right;font-size: 13px"><i class="fas fa-plus"></i>Add New!!!</a><br>
 
 
       <p style="padding-left: 10px">Total record:{{$count}}</p>
@@ -52,25 +63,35 @@
                     <tr> 
                       <th>No</th>
                         <th>Employee Name</th>
-                        <th>Award Name</th>
-                        <th>Gift</th>
-                        <th>Cash Price</th>
-                        <th>Month</th>
-                        <th>Year</th>
+                        <th>Leave Type</th>
+                        <th>Half Day Type</th>
+                        <th>Apply Date</th>
+                        <th>Day</th>
+                        <th>Reason</th>
+                        <th>Application Status</th>
+                        <th>Last Updated by</th>
                     </tr>
                   </thead>
                     <tbody>
-                    @if($awards->count()>0)
-              		 @foreach($awards as $award)
+                    @if($leave_applications->count()>0)
+              		 @foreach($leave_applications as $leave_application)
 
-                        <tr class="table-tr" data-url="{{route('award.show',$award->id)}}">
+                        <tr class="table-tr" data-url="{{route('leave_application.show',$leave_application->id)}}">
                           <td>{{++$i}}</td>
-                            <td>{{$award->employee->name}}</td>
-                            <td>{{$award->award_name}}</td> 
-                            <td>{{$award->gift}}</td>
-                            <td>{{$award->cash_price}}</td>
-                            <td>{{$award->month}}</td>
-                            <td>{{$award->year}}</td>
+                            <td>{{$leave_application->employee->name}}</td>
+                            <td>{{$leave_application->leave_type}}</td> 
+                            <td>{{$leave_application->halfDayType}}</td>
+                            <td>{{$leave_application->apply_date}}</td>
+                            <td>{{$leave_application->days}}</td>
+                            <td>{{$leave_application->reason}}</td>
+                            @if($leave_application->application_status == 0)
+                            <td>Pending</td>
+                            @elseif($leave_application->application_status == 1)
+                            <td>Approved</td>
+                            @else
+                            <td>Rejected</td>
+                            @endif
+                            <td>{{$leave_application->name}}</td>
                         </tr>
                          @endforeach
                           @else
@@ -81,7 +102,7 @@
 			            
                     </tbody>
            </table> 
-           {!! $awards->appends(request()->input())->links() !!}
+           {!! $leave_applications->appends(request()->input())->links() !!}
        </div>   
 @stop 
 @section('css')

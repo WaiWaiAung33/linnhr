@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Award;
 use App\Employee;
+use App\Branch;
+use App\Department;
+use App\Position;
 use Illuminate\Http\Request;
 
 class AwardController extends Controller
@@ -15,14 +18,29 @@ class AwardController extends Controller
      */
     public function index(Request $request)
     {
+        // dd("Here");
         $awards = new Award();
-        // if ($request->name != '') {
-        //     $branchs = $branchs->where('name','like','%'.$request->name.'%');
-        // }
+        
+        $branches = Branch::where('status',1)->get();
+        $departments = Department::where('status',1)->get();
+        $awards = $awards->leftjoin('employee','employee.id','=','awards.emp_id')
+                        ->select(
+                            'awards.*',
+                            'employee.name'
+                        );
+        if ($request->name != '') {
+            $awards = $awards->where('awards.award_name','like','%'.$request->name.'%')->orwhere('employee.name','like','%'.$request->name.'%')->orwhere('awards.gift','like','%'.$request->name.'%')->orwhere('awards.cash_price','like','%'.$request->name.'%');
+        }
+        if ($request->branch_id != '') {
+            $awards = $awards->where('awards.branch_id',$request->branch_id);
+        }
+        if ($request->dept_id != '') {
+            $awards = $awards->where('awards.dept_id',$request->dept_id);
+        }
         $count=$awards->get()->count();
         $awards = $awards->orderBy('created_at','desc')->paginate(10);
         // dd($count);
-        return view('admin.award.index',compact('count','awards'))->with('i', (request()->input('page', 1) - 1) * 10);
+        return view('admin.award.index',compact('count','awards','branches','departments'))->with('i', (request()->input('page', 1) - 1) * 10);
     }
 
     /**
