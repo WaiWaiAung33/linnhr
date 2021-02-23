@@ -674,7 +674,9 @@
                                       <select class="form-control" name="branch" id="branch">
                                         <option value="">Branch</option>
                                         @foreach ($branchs as $branch )
+                                        @if($branch->status == 1)
                                           <option  value="{{$branch->id}}">{{$branch->name}}</option>
+                                        @endif
                                         @endforeach
                                     </select>   
                                 </div>
