@@ -63,6 +63,7 @@
                     <tr> 
                       <th>No</th>
                         <th>Employee Name</th>
+                        <th>Image</th>
                         <th>Leave Type</th>
                         <th>Half Day Type</th>
                         <th>Apply Date</th>
@@ -79,6 +80,15 @@
                         <tr class="table-tr" data-url="{{route('leave_application.show',$leave_application->id)}}">
                           <td>{{++$i}}</td>
                             <td>{{$leave_application->employee->name}}</td>
+                            @if($leave_application->photo == '')
+                            <td>
+                            <img src="{{ asset('uploads/employeePhoto/default.png') }}" alt="photo" width="80px" height="80px">
+                            </td>
+                            @else
+                            <td>
+                             <img src="{{ asset('uploads/employeePhoto/'.$leave_application->photo) }}" alt="photo" width="80px" height="80px">
+                             </td>
+                             @endif
                             <td>{{$leave_application->leave_type}}</td> 
                             <td>{{$leave_application->halfDayType}}</td>
                             <td>{{$leave_application->apply_date}}</td>

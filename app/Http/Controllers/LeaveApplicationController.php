@@ -28,6 +28,7 @@ class LeaveApplicationController extends Controller
                                                 ->select(
                                                     'leave_applications.*',
                                                     'employee.name',
+                                                    'employee.photo',
                                                     'leave_types.leave_type',
                                                     'users.name'
                                                 );

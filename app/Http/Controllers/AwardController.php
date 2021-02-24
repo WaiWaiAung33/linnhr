@@ -26,7 +26,8 @@ class AwardController extends Controller
         $awards = $awards->leftjoin('employee','employee.id','=','awards.emp_id')
                         ->select(
                             'awards.*',
-                            'employee.name'
+                            'employee.name',
+                            'employee.photo'
                         );
         if ($request->name != '') {
             $awards = $awards->where('awards.award_name','like','%'.$request->name.'%')->orwhere('employee.name','like','%'.$request->name.'%')->orwhere('awards.gift','like','%'.$request->name.'%')->orwhere('awards.cash_price','like','%'.$request->name.'%');
