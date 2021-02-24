@@ -49,14 +49,24 @@
                         
                        <a class="btn btn-primary btn-sm"  href="{{route('salarys.download.csv')}}" style="margin-left: 10px;font-size: 13px "><i class="fa fa-fw fa-download" style="padding-top: 8px" ></i>Demo CSV File</a>
 
-                       <button type="button" class="btn btn-warning " id="morefilter" style="margin-left: 20px;font-size: 13px"><i class="fa fa-filter" aria-hidden="true"></i></button>
+                       <a class="btn btn-warning btn-sm" id="export_btn" style="font-size: 13px;margin-left: 10px"><i class="fa fa-fw fa-file-excel" style="padding-top: 8px"></i>Export</a>
 
-                         <a class="btn btn-success unicode" href="{{route('salary.create')}}" style="margin-left: 20px;font-size: 13px"><i class="fas fa-plus"></i> Salary</a>
+                     <!--   <button type="button" class="btn btn-warning " id="morefilter" style="margin-left: 10px;font-size: 13px"><i class="fa fa-filter" aria-hidden="true"></i></button> -->
+
+                         <a class="btn btn-success unicode" href="{{route('salary.create')}}" style="margin-left: 10px;font-size: 13px"><i class="fas fa-plus"></i> Salary</a>
                        
                     
                     </div>
         </form>
       </div>
+
+      <form id="excel_form" action="{{ route('salaryexport') }}"  method="POST" class="unicode">
+                @csrf
+                @method('post')
+                
+                <input type="hidden" name="dep_id" value="{{ $dep_id }}">
+               
+     </form>
 
          <form action="{{route('salary.index')}}" method="get" accept-charset="utf-8" class="form-horizontal" >
             <div class="row form-group" id="adv_filter">
@@ -574,15 +584,16 @@
 
 
 @section('css')
- {{-- <link rel="stylesheet" href="/css/admin_custom.css"> --}}
+
+  <link rel="stylesheet" href="/css/admin_custom.css">
 @stop
 
 
 
 @section('js')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js"></script>
-<script src="{{ asset('jquery.js') }}"></script>
- <script type="text/javascript" src="{{ asset('jquery-ui.js') }}"></script>
+<!-- <script src="{{ asset('jquery.js') }}"></script>
+<script type="text/javascript" src="{{ asset('jquery-ui.js') }}"></script> -->
 <script type="text/javascript">
 	  @if(Session::has('success'))
             toastr.options =
@@ -614,6 +625,9 @@
                     $('#year').on('change',function(e) {
                       this.form.submit();
                              // $( "#form_id" )[0].submit();   
+                    });
+                      $('#export_btn').click(function(){
+                        $('#excel_form').submit();
                     });
 
                      $( "#morefilter" ).click(function(e) {
