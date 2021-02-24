@@ -131,7 +131,7 @@ input:checked + .slider:before {
                     <tbody>
                   @if($departments->count()>0)
               		@foreach($departments as $department)
-                        <tr  class="table-tr" data-url="{{  url('employee?dep_id='.$department->id) }}">
+                        <tr>
                             <td>{{++$i}}</td>
                             <td>{{$department->name}}</td>
                             <td>{{ $department->employees()->count() }}</td>
@@ -146,6 +146,7 @@ input:checked + .slider:before {
                                     onsubmit="return confirm('Do you want to delete?');">
                                     @csrf
                                     @method('DELETE')
+                                     <a class="btn btn-sm btn-info" href="{{url('employee?dep_id='.$department->id)}}"><i class="fa fa-fw fa-eye" /></i></a> 
                                     <a class="btn btn-sm btn-primary" href="{{route('department.edit',$department->id)}}"><i class="fa fa-fw fa-edit"></i></a>
                                     <button class="btn btn-sm btn-danger btn-sm" type="submit">
                                         <i class="fa fa-fw fa-trash" title="Delete"></i>
