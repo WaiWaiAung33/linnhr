@@ -21,7 +21,20 @@ class EmployeeExport implements FromCollection, WithHeadings, WithEvents ,Should
 
     public function headings(): array
     {
-        return $this->header;
+       return [
+            "Photo",
+            "Employee ID",
+            'Name',
+            'Father Name',
+            'DOB',
+            'Rank',
+            'Department',
+            'Branch',
+            'Join_Date',
+            'Phone',
+            'Address'
+           
+        ];
     }
 
     public function registerEvents(): array

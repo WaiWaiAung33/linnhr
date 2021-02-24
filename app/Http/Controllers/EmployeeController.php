@@ -708,7 +708,7 @@ $extension;
         }
 
         $employees =$employee->select(
-                           'employee.photo',
+                           'employee.id',
                            'employee.emp_id',
                            'employee.name',
                            'employee.father_name',
@@ -718,8 +718,9 @@ $extension;
                            'branch.name AS branch_name',
                            'employee.join_date',
                            'employee.phone_no',
-                           'employee.address'
-                           )->get()->toArray();
+                           'employee.address',
+                           'employee.photo',
+                        )->get()->toArray();
 
         // \Excel::store(
         //         new \App\Exports\EmployeeExport(array_keys($employees[0]),$employees, $employees),
