@@ -661,10 +661,7 @@ $extension;
       
       $employee = new Employee();
 
-       $employee = $employee->leftjoin('department','department.id','=','emp
-
-
-loyee.dep_id')
+       $employee = $employee->leftjoin('department','department.id','=','employee.dep_id')
                             ->leftjoin('branch','branch.id','=','employee.branch_id')
                        ->select(
                         'department.name',

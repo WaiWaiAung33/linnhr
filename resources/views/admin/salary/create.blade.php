@@ -198,7 +198,7 @@
                         $("#department").val(data.name);
                         $("#branch").val(data.branch_name);
                         $("#name").val(data.employee_name);
-                        // console.log(data.name);
+                        // console.log(data.branch_name);
                     }
                 });
         });
@@ -208,6 +208,7 @@
          var salary = $("#salary").val();
          var bonus = $("#bonus").val();
          var total =  parseInt(salary) +  parseInt(bonus);
+         dd(total);
           $("#month_total").val(total);
     });
 
