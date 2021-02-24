@@ -739,7 +739,8 @@ loyee.dep_id')
 
      public function selectdepartment(Request $request)
     {
-        $data = new Department();
+        // $data = new Department();
+        $data = Department::where('status',1);
         // $data = $data->leftjoin('inquiries','inquiries.id','=','customers.cust_id')
         //                ->select(
         //                 'customers.id',
@@ -760,6 +761,7 @@ loyee.dep_id')
       public function selectrank(Request $request)
     {
         $data = new Position();
+        
         // $data = $data->leftjoin('inquiries','inquiries.id','=','customers.cust_id')
         //                ->select(
         //                 'customers.id',
