@@ -4,7 +4,9 @@
 @section('title', 'Employee')
 
 @section('content_header')
-
+<style type="text/css">
+  .active{background-color:green;}
+</style>
 @stop
 
 @section('content')
@@ -51,6 +53,11 @@
   }
 ?>
 
+ <?php
+    $salary_total = 0;
+    $bonus_total = 0;
+ ?>
+
 <div class="row">
     <div class="col-lg-10">
          <a class="btn btn-success unicode" href="{{route('employee.index')}}"> Back</a>
@@ -68,29 +75,71 @@
         </div>
     </div>
 </div><br>
- <!--  <h6 style="color: gray;padding-top: 10px" class="unicode">{{$employees->name}}</h6> -->
-
-<!--  <div style="text-align: center;">
-   @if($employees->photo == '')
-  <img src="{{ asset('uploads/employeePhoto/default.png') }}" alt="photo" width="180px" height="180px">
-  @else
-   <img src="{{ asset('uploads/employeePhoto/'.$employees->photo) }}" alt="photo" width="150px" height="150px">
-   @endif
-
-</div><br> -->
-<!--   
-<div>
-  @if($employees->photo == '')
-  <img src="{{ asset('uploads/employeePhoto/default.png') }}" alt="photo" width="80px" height="80px">
-  @else
- <img src="{{ asset('uploads/employeePhoto/'.$employees->photo) }}" alt="photo" width="80px" height="80px">
- @endif
-</div><br> -->
-
-<div class="row">
  
-    <div class="col-md-6">
-    <div class="table-responsive">
+ <div class="row">
+   <div class="col-md-3">
+                @if($employees->photo == '')
+                  <div style="text-align: center;">
+                     <img src="{{ asset('uploads/employeePhoto/default.png') }}" alt="photo" style="width: 20% !important">
+                  </div>
+                   
+                    @else
+                    <div style="text-align: center;">
+                       <img src="{{ asset('uploads/employeePhoto/'.$employees->photo) }}" alt="photo" style="width: 20% !important">
+                    </div>
+                  
+                   @endif
+                  <div style="text-align: center;">
+                   <h6 style="margin-top: 10px">{{$employees->emp_id ? $employees->emp_id : "-"}}</h6>
+                   <h6>{{$employees->name ? $employees->name : "-" }}</h6>
+                   </div>
+                   <div style="text-align: center;margin-top:20px">
+                    <a id="personal" style="color: white;padding-left: 65px;padding-right: 65px;border-width: 1px solid;padding-top: 5px;padding-bottom: 5px;border-radius: 5px">Personal Data</a>
+
+                    <!--  <p style="margin-left: 100px;padding: 10px;margin-right: 100px;">Personal Data</p> -->
+                   </div>
+                    <div style="text-align: center;margin-top: 20px">
+                    <a id="contact" style="color: white;padding-left: 85px;padding-right: 85px;padding-top: 5px;padding-bottom: 5px;border-radius: 5px">Contact</a>
+                    
+                    <!--  <p style="margin-left: 100px;padding: 10px;margin-right: 100px;">Personal Data</p> -->
+                   </div>
+
+                   
+
+                    <div style="text-align: center;margin-top: 20px">
+                    <a id="employement" style="color: white;padding-left: 65px;padding-right: 65px;padding-top: 5px;padding-bottom: 5px;border-radius: 5px">Employement</a>
+                    
+                    <!--  <p style="margin-left: 100px;padding: 20px;margin-right: 100px;">Personal Data</p> -->
+                   </div>
+
+                    <div style="text-align: center;margin-top: 20px">
+                    <a id="salary" style="color: white;padding-left: 90px;padding-right: 90px;padding-top: 5px;padding-bottom: 5px;border-radius: 5px">Salary</a>
+                    
+                    <!--  <p style="margin-left: 100px;padding: 20px;margin-right: 100px;">Personal Data</p> -->
+                   </div>
+
+                    <div style="text-align: center;margin-top: 20px">
+                    <a id="education" style="color: white;padding-left: 53px;padding-right: 53px;padding-top: 5px;padding-bottom: 5px;border-radius: 5px">Education Details</a>
+                    
+                    <!--  <p style="margin-left: 100px;padding: 20px;margin-right: 100px;">Personal Data</p> -->
+                   </div>
+
+                   <div style="text-align: center;margin-top: 20px">
+                    <a id="work" style="color: white;padding-left: 58px;padding-right: 58px;padding-top: 5px;padding-bottom: 5px;border-radius: 5px">Work Experience</a>
+                    
+                    <!--  <p style="margin-left: 100px;padding: 20px;margin-right: 100px;">Personal Data</p> -->
+                   </div>
+
+                   <div style="text-align: center;margin-top: 20px">
+                    <a id="attach" style="color: white;padding-left: 77px;padding-right: 77px;padding-top: 5px;padding-bottom: 5px;border-radius: 5px">Attach File</a>
+                    
+                    <!--  <p style="margin-left: 100px;padding: 10px;margin-right: 100px;">Personal Data</p> -->
+                   </div>
+   </div>
+
+   <div class="col-md-9">
+   
+        <div class="table-responsive" id="personal_table">
          <table class="table table-bordered styled-table unicode">
             <thead>
                 <tr>
@@ -146,9 +195,9 @@
                 </tr> -->
             </tbody>
          </table>
-     
-    </div>
-      <div class="table-responsive">
+      </div>
+
+        <div class="table-responsive" id="contact_table">
          <table class="table table-bordered styled-table">
             <thead>
                 <tr>
@@ -180,58 +229,69 @@
             </tbody>
          </table>
          </div>
-   
-        <!--   <div class="table-responsive">
-         <table class="table table-bordered styled-table">
+
+         <div class="table-responsive" style="font-size:15px;" id="salary_table">
+          <table class="table table-bordered styled-table">
+
+
             <thead>
-                <tr>
-                    <th style="font-size: 16px"><i class="fa fa-deaf"> </i> Skill</th>
-                    
-                </tr>
+              <tr>
+                <th>Year</th>
+                <th>Month</th>
+                <th >Salary</th>
+                <th style="width: 250px">Bonus</th>
+                <th>Total</th>
+                <th>Action</th>
+              </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>Skill<span style="padding-left: 200px">{{$employees->skills}}</span></td>
-                    
-                </tr>
-                <tr>
-                    <td>Skill proficiency<span style="padding-left: 130px">{{$employees->proficiency}}</span></td>
-                </tr>
+              @if($salary_count > 0)
+              @foreach($salarys as $salary)
+              @if($salary->emp_id == $employees->id)
+              <tr>
+                <td>{{$salary->year}}</td>
+                <td>{{$salary->pay_date}}</td>
+                <td>{{number_format($salary->salary_amt)}}</td>
+                <td>{{number_format($salary->bonus)}}</td>
+                <td>{{number_format($salary->month_total)}}</td>
+                <?php
+                  $salary_total+= $salary->salary_amt;
+                  $bonus_total+= $salary->bonus;
+                ?>
+                
+                   <td>
+                          <form action="{{route('salary.destroy',$salary->id)}}" method="POST" onsubmit="return confirm('Do you really want to delete?');">
+                            @csrf
+                            @method('DELETE')
+                            <a class="btn btn-sm btn-primary" href="{{route('salary.edit',$salary->id)}}" ><i class="fa fa-fw fa-edit" style="padding-top: 5px;padding-bottom: 5px;padding-left: 2px;padding-right: 5px"/></i></a> 
+                             <button type="submit" class="btn btn-sm btn-danger" style="margin-left: 10px"><i class="fa fa-fw fa-trash" /></i></button> 
+                           </form>
+                        </td>
                
+              </tr>
+             
+              @endif
+              @endforeach
+              @endif
+               <tr style=" background-color: #c7d4dd;">
+                <td colspan="2">Month Total</td>
+                <td>{{number_format($salary_total)}}</td>
+                <td>{{number_format($bonus_total)}}</td>
+                <?php
+                $total = 0;
+                $total = $salary_total + $bonus_total;
+                ?>
+                <td colspan="2">{{number_format($total)}}</td>
+              </tr>
             </tbody>
-         </table>
-         </div> -->
-           <div class="table-responsive">
-         <table class="table table-bordered styled-table">
-            <thead>
-                <tr>
-                    <th style="font-size: 16px"><i class="fa fa-briefcase"> </i> Work Experience</th>
-                    
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Company Name<span style="padding-left: 110px">{{$employees->exp_company ? $employees->exp_company : "-"}}</span></td>
-                    
-                </tr>
-                <tr>
-                    <td>Job Position<span style="padding-left: 130px">{{$employees->exp_position ? $employees->exp_position : "-"}}</span></td>
-                </tr>
-                 <tr>
-                    <td>Location<span style="padding-left: 155px">{{$employees->exp_location ? $employees->exp_location : "-"}}</span></td>
-                </tr>
-                 <tr>
-                    <td>Date<span style="padding-left: 178px">{{$employees->exp_date_from ? date('d-m-Y',strtotime($employees->exp_date_from)) : "-"}} to {{$employees->exp_date_to ? date('d-m-Y',strtotime($employees->exp_date_to)) : ""}}</span></td>
-                </tr>
-               
-            </tbody>
-         </table>
-   </div>
-  </div>
 
-    <div class="col-md-6">
+          
+          </table>
 
-        <div class="table-responsive">
+        </div>
+
+
+          <div class="table-responsive" id="employement_table">
          <table class="table table-bordered styled-table">
             <thead>
                 <tr>
@@ -306,8 +366,8 @@
             </tbody>
          </table>
          </div>
-   
-        <div class="table-responsive">
+
+          <div class="table-responsive" id="education_table">
          <table class="table table-bordered styled-table">
             <thead>
                 <tr>
@@ -340,7 +400,37 @@
             </tbody>
          </table>
          </div>
-          <div class="table-responsive">
+        
+
+         <div class="table-responsive" id="work_table">
+         <table class="table table-bordered styled-table">
+            <thead>
+                <tr>
+                    <th style="font-size: 16px"><i class="fa fa-briefcase"> </i> Work Experience</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Company Name<span style="padding-left: 110px">{{$employees->exp_company ? $employees->exp_company : "-"}}</span></td>
+                    
+                </tr>
+                <tr>
+                    <td>Job Position<span style="padding-left: 130px">{{$employees->exp_position ? $employees->exp_position : "-"}}</span></td>
+                </tr>
+                 <tr>
+                    <td>Location<span style="padding-left: 155px">{{$employees->exp_location ? $employees->exp_location : "-"}}</span></td>
+                </tr>
+                 <tr>
+                    <td>Date<span style="padding-left: 178px">{{$employees->exp_date_from ? date('d-m-Y',strtotime($employees->exp_date_from)) : "-"}} to {{$employees->exp_date_to ? date('d-m-Y',strtotime($employees->exp_date_to)) : ""}}</span></td>
+                </tr>
+               
+            </tbody>
+         </table>
+   </div>
+
+
+    <div class="table-responsive" id="attachfile_table">
          <table class="table table-bordered styled-table">
             <thead>
                 <tr>
@@ -366,9 +456,276 @@
             </tbody>
          </table>
          </div>
-     
-    </div>
-  </div>
+   
+
+   </div>
+ </div>
 
  @stop 
+
+@section('js')
+<script type="text/javascript">
+  $("#contact_table").hide();
+  $("#education_table").hide();
+  $("#employement_table").hide();
+  $("#work_table").hide();
+  $("#attachfile_table").hide();
+  $("#salary_table").hide();
+
+  $("#personal").css('color', '#2a3c66'); 
+  $("#personal").css('border', '1px solid'); 
+  $("#personal").css('border-color', '#2a3c66');
+
+  $("#contact").css('color', 'white'); 
+  $("#contact").css('background-color', '#2a3c66'); 
+
+  $("#education").css('color', 'white'); 
+  $("#education").css('background-color', '#2a3c66'); 
+
+  $("#work").css('color', 'white'); 
+  $("#work").css('background-color', '#2a3c66'); 
+
+  $("#attach").css('color', 'white'); 
+  $("#attach").css('background-color', '#2a3c66'); 
+
+  $("#employement").css('color', 'white'); 
+  $("#employement").css('background-color', '#2a3c66'); 
+
+  $("#salary").css('color', 'white'); 
+  $("#salary").css('background-color', '#2a3c66'); 
+
+  $("#contact").click(function(){
+      $("#contact_table").show();
+      $("#education_table").hide();
+      $("#employement_table").hide();
+      $("#work_table").hide();
+      $("#attachfile_table").hide();
+      $("#personal_table").hide();
+      $("#salary_table").hide();
+
+      $("#contact").css('color', '#2a3c66'); 
+      $("#contact").css('border', '1px solid'); 
+      $("#contact").css('border-color', '#2a3c66');
+      $("#contact").css('background-color', 'white');
+
+      $("#personal").css('color', 'white'); 
+      $("#personal").css('background-color', '#2a3c66'); 
+
+      $("#education").css('color', 'white'); 
+      $("#education").css('background-color', '#2a3c66'); 
+
+      $("#work").css('color', 'white'); 
+      $("#work").css('background-color', '#2a3c66'); 
+
+      $("#attach").css('color', 'white'); 
+      $("#attach").css('background-color', '#2a3c66'); 
+
+      $("#employement").css('color', 'white'); 
+      $("#employement").css('background-color', '#2a3c66'); 
+
+      $("#salary").css('color', 'white'); 
+      $("#salary").css('background-color', '#2a3c66'); 
+  });
+
+   $("#personal").click(function(){
+      $("#personal_table").show();
+      $("#contact_table").hide();
+      $("#education_table").hide();
+      $("#employement_table").hide();
+      $("#work_table").hide();
+      $("#attachfile_table").hide();
+      $("#salary_table").hide();
+
+      $("#personal").css('color', '#2a3c66'); 
+      $("#personal").css('border', '1px solid'); 
+      $("#personal").css('border-color', '#2a3c66');
+      $("#personal").css('background-color', 'white');
+
+      $("#contact").css('color', 'white'); 
+      $("#contact").css('background-color', '#2a3c66'); 
+
+      $("#education").css('color', 'white'); 
+      $("#education").css('background-color', '#2a3c66'); 
+
+      $("#work").css('color', 'white'); 
+      $("#work").css('background-color', '#2a3c66'); 
+
+      $("#attach").css('color', 'white'); 
+      $("#attach").css('background-color', '#2a3c66'); 
+
+      $("#employement").css('color', 'white'); 
+      $("#employement").css('background-color', '#2a3c66'); 
+
+      $("#salary").css('color', 'white'); 
+      $("#salary").css('background-color', '#2a3c66'); 
+  });
+
+   $("#education").click(function(){
+      $("#personal_table").hide();
+      $("#contact_table").hide();
+      $("#education_table").show();
+      $("#employement_table").hide();
+      $("#work_table").hide();
+      $("#attachfile_table").hide();
+      $("#salary_table").hide();
+
+      $("#education").css('color', '#2a3c66'); 
+      $("#education").css('border', '1px solid'); 
+      $("#education").css('border-color', '#2a3c66');
+      $("#education").css('background-color', 'white');
+
+      $("#contact").css('color', 'white'); 
+      $("#contact").css('background-color', '#2a3c66'); 
+
+      $("#personal").css('color', 'white'); 
+      $("#personal").css('background-color', '#2a3c66'); 
+
+      $("#work").css('color', 'white'); 
+      $("#work").css('background-color', '#2a3c66'); 
+
+      $("#attach").css('color', 'white'); 
+      $("#attach").css('background-color', '#2a3c66'); 
+
+      $("#employement").css('color', 'white'); 
+      $("#employement").css('background-color', '#2a3c66'); 
+
+      $("#salary").css('color', 'white'); 
+      $("#salary").css('background-color', '#2a3c66'); 
+  });
+
+   $("#work").click(function(){
+      $("#personal_table").hide();
+      $("#contact_table").hide();
+      $("#education_table").hide();
+      $("#employement_table").hide();
+      $("#work_table").show();
+      $("#attachfile_table").hide();
+      $("#salary_table").hide();
+
+      $("#work").css('color', '#2a3c66'); 
+      $("#work").css('border', '1px solid'); 
+      $("#work").css('border-color', '#2a3c66');
+      $("#work").css('background-color', 'white');
+
+      $("#contact").css('color', 'white'); 
+      $("#contact").css('background-color', '#2a3c66'); 
+
+      $("#education").css('color', 'white'); 
+      $("#education").css('background-color', '#2a3c66'); 
+
+      $("#personal").css('color', 'white'); 
+      $("#personal").css('background-color', '#2a3c66'); 
+
+      $("#attach").css('color', 'white'); 
+      $("#attach").css('background-color', '#2a3c66'); 
+
+      $("#employement").css('color', 'white'); 
+      $("#employement").css('background-color', '#2a3c66'); 
+
+      $("#salary").css('color', 'white'); 
+      $("#salary").css('background-color', '#2a3c66'); 
+  });
+
+    $("#employement").click(function(){
+      $("#personal_table").hide();
+      $("#contact_table").hide();
+      $("#education_table").hide();
+      $("#employement_table").show();
+      $("#work_table").hide();
+      $("#attachfile_table").hide();
+      $("#salary_table").hide();
+
+       $("#employement").css('color', '#2a3c66'); 
+      $("#employement").css('border', '1px solid'); 
+      $("#employement").css('border-color', '#2a3c66');
+      $("#employement").css('background-color', 'white');
+
+      $("#contact").css('color', 'white'); 
+      $("#contact").css('background-color', '#2a3c66'); 
+
+      $("#education").css('color', 'white'); 
+      $("#education").css('background-color', '#2a3c66'); 
+
+      $("#work").css('color', 'white'); 
+      $("#work").css('background-color', '#2a3c66'); 
+
+      $("#attach").css('color', 'white'); 
+      $("#attach").css('background-color', '#2a3c66'); 
+
+      $("#personal").css('color', 'white'); 
+      $("#personal").css('background-color', '#2a3c66'); 
+
+      $("#salary").css('color', 'white'); 
+      $("#salary").css('background-color', '#2a3c66'); 
+  });
+
+     $("#attach").click(function(){
+      $("#personal_table").hide();
+      $("#contact_table").hide();
+      $("#education_table").hide();
+      $("#employement_table").hide();
+      $("#work_table").hide();
+      $("#attachfile_table").show();
+      $("#salary_table").hide();
+
+      $("#attach").css('color', '#2a3c66'); 
+      $("#attach").css('border', '1px solid'); 
+      $("#attach").css('border-color', '#2a3c66');
+      $("#attach").css('background-color', 'white');
+
+      $("#contact").css('color', 'white'); 
+      $("#contact").css('background-color', '#2a3c66'); 
+
+      $("#education").css('color', 'white'); 
+      $("#education").css('background-color', '#2a3c66'); 
+
+      $("#work").css('color', 'white'); 
+      $("#work").css('background-color', '#2a3c66'); 
+
+      $("#personal").css('color', 'white'); 
+      $("#personal").css('background-color', '#2a3c66'); 
+
+      $("#employement").css('color', 'white'); 
+      $("#employement").css('background-color', '#2a3c66'); 
+
+      $("#salary").css('color', 'white'); 
+      $("#salary").css('background-color', '#2a3c66'); 
+  });
+
+      $("#salary").click(function(){
+      $("#personal_table").hide();
+      $("#contact_table").hide();
+      $("#education_table").hide();
+      $("#employement_table").hide();
+      $("#work_table").hide();
+      $("#attachfile_table").hide();
+      $("#salary_table").show();
+
+      $("#salary").css('color', '#2a3c66'); 
+      $("#salary").css('border', '1px solid'); 
+      $("#salary").css('border-color', '#2a3c66');
+      $("#salary").css('background-color', 'white');
+
+      $("#contact").css('color', 'white'); 
+      $("#contact").css('background-color', '#2a3c66'); 
+
+      $("#education").css('color', 'white'); 
+      $("#education").css('background-color', '#2a3c66'); 
+
+      $("#work").css('color', 'white'); 
+      $("#work").css('background-color', '#2a3c66'); 
+
+      $("#personal").css('color', 'white'); 
+      $("#personal").css('background-color', '#2a3c66'); 
+
+      $("#employement").css('color', 'white'); 
+      $("#employement").css('background-color', '#2a3c66'); 
+
+      $("#attach").css('color', 'white'); 
+      $("#attach").css('background-color', '#2a3c66'); 
+  });
+
+
+</script>
+@stop
 
