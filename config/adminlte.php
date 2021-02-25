@@ -241,11 +241,11 @@ return [
         [
             'text' => 'Employee',
             'url'  => 'employee',
-            'icon' => 'fas fa-fw fa-users',
+            'icon' => 'fas fa-fw fa-user',
             'can'  => 'employee-list'
         ], 
         [
-            'text' => 'Group',
+            'text' => 'Assign Group',
             'url'  => 'groups',
             'icon' => 'fas fa-fw fa-users',
             'can'  => 'employee-list'
