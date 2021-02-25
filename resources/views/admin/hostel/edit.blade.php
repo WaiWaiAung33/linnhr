@@ -22,7 +22,7 @@
     
      <div class="row">
                
-        <label class="col-md-2 unicode">Name</label>
+        <label class="col-md-2 unicode">Photo</label>
         <div class="col-md-5 {{ $errors->first('name', 'has-error') }}">
             
           <input type="file" name="photo" class="form-control unicode" id="photo" placeholder="Hostel photo"><br>

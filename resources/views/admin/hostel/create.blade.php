@@ -22,10 +22,10 @@
             <h6 style="font-weight:bold;font-size:13px;">Photo</h6>
         </div>
 
-        <div class="col-md-8 ">
+        <div class="col-md-5 ">
             <input type="file" name="photo" class="form-control unicode">
         </div>
-    </div>
+    </div><br>
     <div class="row">
                 
         <label class="col-md-2 unicode">Full Address</label>

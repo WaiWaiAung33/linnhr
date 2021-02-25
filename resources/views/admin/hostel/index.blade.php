@@ -21,7 +21,7 @@
      {{-- @if ($message = Session::get('success'))
             <div class="alert alert-success">
                 <p>{{ $message }}</p>
-            </div>
+            </div> 
       @endif --}}
 
       <form action="{{route('hostel.index')}}" method="get" accept-charset="utf-8" class="form-horizontal">
@@ -39,6 +39,7 @@
                     <tr> 
                       <th>No</th>
                         <th>Name</th>
+                        <th>Image</th>
                         <th>Full Address</th>
                         <th>Action</th>
                     </tr>
@@ -49,6 +50,15 @@
                         <tr>
                             <td>{{++$i}}</td>
                             <td>{{$hostel->name}}</td>
+                            @if($hostel->photo == '')
+                            <td>
+                            <img src="{{ asset('uploads/employeePhoto/default.png') }}" alt="photo" width="80px" height="80px">
+                            </td>
+                            @else
+                            <td>
+                             <img src="{{ asset($hostel->path.'/'.$hostel->photo) }}" alt="photo" width="80px" height="80px">
+                             </td>
+                             @endif
                             <td>{{$hostel->full_address}}</td>
                             <td>
                                 <form action="{{route('hostel.destroy',$hostel->id)}}" method="post"
