@@ -73,7 +73,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/backup/delete/{file_name}', 'BackupController@delete')->name('backup.delete');
 
     Route::resource('/actual_timein','ActualTimeInController');
-     Route::resource('/attendance','AttendanceController');
+    Route::resource('/attendance','AttendanceController');
+
+    Route::resource('groups','AssignGroupController');
 });
 
 Route::get('/', [App\Http\Controllers\CvformController::class, 'index'])->name('frontend.home');
@@ -105,6 +107,9 @@ Route::get('ajax-autocomplete-department', 'EmployeeController@selectdepartment'
 Route::get('ajax-autocomplete-rank', 'EmployeeController@selectrank')->name('ajax-autocomplete-rank');
 
 Route::get('get_hostelemployee_data','HostelEmployeeController@get_hostelemployee_data')->name('get_hostelemployee_data');
+
+
+Route::get('ajax-get-emp-group','AssignGroupController@get_gp_employee_data')->name('ajax-get-emp-group');
 
 
 

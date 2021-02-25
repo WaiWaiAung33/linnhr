@@ -243,6 +243,12 @@ return [
             'url'  => 'employee',
             'icon' => 'fas fa-fw fa-users',
             'can'  => 'employee-list'
+        ], 
+        [
+            'text' => 'Group',
+            'url'  => 'groups',
+            'icon' => 'fas fa-fw fa-users',
+            'can'  => 'employee-list'
         ],        
         [
                     'text' => 'Branch',

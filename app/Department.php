@@ -17,4 +17,8 @@ class Department extends Model
      public function viewJobopening(){
     	 return $this->hasMany('App\Jobopening','dep_id');
     }
+
+    public function groups(){
+    	 return $this->hasMany('App\AssignGroup','department_id');
+    }
 }
