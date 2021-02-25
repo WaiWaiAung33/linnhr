@@ -54,10 +54,14 @@ class TimeInApiController extends Controller
         }else{
             $attendance = DB::table('attendances')->where('emp_id',$request->emp_id)->get()->first();
             // dd($attendance->id);
-            if ($attendance->clock_out != null) {
-                return response(['message'=>"Success",'status'=>1,'attendance_id',$attendance->id,'timein_status'=>0]);
+            if (count($attendance)>0) {
+                if ($attendance->clock_out != null) {
+                return response(['message'=>"Success",'status'=>1,'attendance_id',$attendance->id,'timein_status'=>0,'time_in'=>$attendance->clock_in]);
             }else{
-                return response(['message'=>"Success",'status'=>1,'attendance_id'=>$attendance->id,'timein_status'=>1,'timein_date'=>$attendance->date]);
+                return response(['message'=>"Success",'status'=>1,'attendance_id'=>$attendance->id,'timein_status'=>1,'timein_date'=>$attendance->date,'time_in'=>$attendance->clock_in]);
+            }
+            }else{
+                return response(['message'=>"No Data...",'status'=>1]);
             }
 
         }
