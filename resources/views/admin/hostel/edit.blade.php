@@ -26,8 +26,11 @@
         <div class="col-md-5 {{ $errors->first('name', 'has-error') }}">
             
           <input type="file" name="photo" class="form-control unicode" id="photo" placeholder="Hostel photo"><br>
+          @if($hostels->photo != null)
           <img src="{{ asset($hostels->path.'/'. $hostels->photo) }}" alt="image" width="100px">
-         
+         @else
+         <img src="{{ asset('uploads/employeePhoto/default.png') }}" alt="photo" width="100px">
+         @endif
         </div>    
     </div><br>
 
