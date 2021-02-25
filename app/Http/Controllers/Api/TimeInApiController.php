@@ -56,7 +56,7 @@ class TimeInApiController extends Controller
             // dd($attendance->id);
             if ($attendance != null) {
                 if ($attendance->clock_out != null) {
-                return response(['message'=>"Success",'status'=>1,'attendance_id'=>$attendance->id,'timein_status'=>0,'time_in'=>$attendance->clock_in]);
+                return response(['message'=>"Success",'status'=>1,'attendance_id'=>$attendance->id,'timein_status'=>0,'timein_date'=>$attendance->date,'time_in'=>$attendance->clock_in]);
             }else{
                 return response(['message'=>"Success",'status'=>1,'attendance_id'=>$attendance->id,'timein_status'=>1,'timein_date'=>$attendance->date,'time_in'=>$attendance->clock_in]);
             }
