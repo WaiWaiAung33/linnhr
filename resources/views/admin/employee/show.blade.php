@@ -112,11 +112,7 @@
                     <!--  <p style="margin-left: 100px;padding: 20px;margin-right: 100px;">Personal Data</p> -->
                    </div>
 
-                    <div style="text-align: center;margin-top: 20px">
-                    <a id="salary" style="color: white;padding-left: 90px;padding-right: 90px;padding-top: 5px;padding-bottom: 5px;border-radius: 5px">Salary</a>
-                    
-                    <!--  <p style="margin-left: 100px;padding: 20px;margin-right: 100px;">Personal Data</p> -->
-                   </div>
+
 
                     <div style="text-align: center;margin-top: 20px">
                     <a id="education" style="color: white;padding-left: 53px;padding-right: 53px;padding-top: 5px;padding-bottom: 5px;border-radius: 5px">Education Details</a>
@@ -135,6 +131,12 @@
                     
                     <!--  <p style="margin-left: 100px;padding: 10px;margin-right: 100px;">Personal Data</p> -->
                    </div>
+
+                  <div style="text-align: center;margin-top: 20px">
+                    <a id="salary" style="color: white;padding-left: 90px;padding-right: 90px;padding-top: 5px;padding-bottom: 5px;border-radius: 5px">Salary</a>
+                    
+                    <!--  <p style="margin-left: 100px;padding: 20px;margin-right: 100px;">Personal Data</p> -->
+                   </div>
    </div>
 
    <div class="col-md-9">
@@ -148,7 +150,7 @@
                 </tr>
             </thead>
             <tbody>
-            <!--   <tr>
+             <!--  <tr>
                   @if($employees->photo == '')
                   <td style="text-align: center;" colspan ="2">
                      <img src="{{ asset('uploads/employeePhoto/default.png') }}" alt="photo" style="width: 20% !important">
@@ -241,7 +243,7 @@
                 <th >Salary</th>
                 <th style="width: 250px">Bonus</th>
                 <th>Total</th>
-                <th>Action</th>
+                <!-- <th>Action</th> -->
               </tr>
             </thead>
             <tbody>
@@ -259,14 +261,14 @@
                   $bonus_total+= $salary->bonus;
                 ?>
                 
-                   <td>
+                  <!--  <td>
                           <form action="{{route('salary.destroy',$salary->id)}}" method="POST" onsubmit="return confirm('Do you really want to delete?');">
                             @csrf
                             @method('DELETE')
                             <a class="btn btn-sm btn-primary" href="{{route('salary.edit',$salary->id)}}" ><i class="fa fa-fw fa-edit" style="padding-top: 5px;padding-bottom: 5px;padding-left: 2px;padding-right: 5px"/></i></a> 
                              <button type="submit" class="btn btn-sm btn-danger" style="margin-left: 10px"><i class="fa fa-fw fa-trash" /></i></button> 
                            </form>
-                        </td>
+                        </td> -->
                
               </tr>
              

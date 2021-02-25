@@ -368,7 +368,8 @@ play the specified resource.
         $positions = Position::all();
          $nrccodes = NRCCode::all();
         $nrcstates = NRCState::all(); 
-        $salarys = Salary::where('emp_id',$id);
+        $salarys = Salary::where('emp_id',$id)->get();
+        // dd($salarys);
         $salary_count = $salarys->count();
         $employees = Employee::find($id);
         return view('admin.employee.show',compact('branchs','departments','positions','employees','nrccodes','nrcstates','salarys','salary_count'));
