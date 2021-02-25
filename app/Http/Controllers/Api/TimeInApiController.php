@@ -54,7 +54,7 @@ class TimeInApiController extends Controller
         }else{
             $attendance = DB::table('attendances')->where('emp_id',$request->emp_id)->get()->first();
             // dd($attendance->id);
-            if (count($attendance)>0) {
+            if ($attendance != null) {
                 if ($attendance->clock_out != null) {
                 return response(['message'=>"Success",'status'=>1,'attendance_id',$attendance->id,'timein_status'=>0,'time_in'=>$attendance->clock_in]);
             }else{
