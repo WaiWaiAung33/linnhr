@@ -18,7 +18,7 @@
         </div>    
     </div><br>
     <div class="row">
-        <div class="col-md-3">
+        <div class="col-md-2">
             <h6 style="font-weight:bold;font-size:13px;">Photo</h6>
         </div>
 
