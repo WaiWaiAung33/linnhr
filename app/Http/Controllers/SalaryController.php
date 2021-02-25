@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Salary;
 use Illuminate\Http\Request;
 use App\Imports\SalaryImport;
+use App\Exports\SalaryExport;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Employee;
 use App\Department;
@@ -68,9 +69,17 @@ class SalaryController extends Controller
      */
     public function store(Request $request)
     {
+      // dd($request->pay_date);
+      // $this->validate($request,[
+
+      // ]);
         $employees = Employee::all();
+        // dd($request->emp_id);
+        // $salarys = Salary::all();
+        
         $date = date('m',strtotime($request->pay_date));
-        // dd($date);
+        $month_total =  $request->salary_amt + $request->bonus;
+        // dd(date('m',strtotime($request->pay_date)));
         if($date == '01'){
             $dates = "January";
         }elseif ($date == '02') {
@@ -97,6 +106,9 @@ class SalaryController extends Controller
             $dates = "December";
         }
 
+        $salarys = Salary::where('emp_id',$request->emp_id)->where('pay_date',$dates)->where('year', date('Y',strtotime($request->pay_date)))->get();
+        // dd($salarys); 
+
         $empid = $request->emp_id;
 
         foreach ($employees as $key => $value) {
@@ -104,13 +116,32 @@ class SalaryController extends Controller
                 $empname = $value->name;
             }
         }
-
-
-
-       
-        // dd($request->month_total);
-
-        $salary=Salary::create([
+         if ($salarys->count()>0) {
+            foreach ($salarys as $key => $salary) {
+              $pay_date = $salarys[$key]->pay_date;
+              $year = $salarys[$key]->year;
+               if ($year == date('Y',strtotime($request->pay_date)) && $pay_date == $dates){
+                  // dd("Here");
+                return redirect()->route('salary.index')->with('success','Salary exist');
+               }else{
+                      $salary=Salary::create([
+                      'emp_id'=>$empid,
+                      'name'=>$empname,
+                      'department'=>$request->department,
+                      'branch'=>$request->branch,
+                      'pay_date'=>$dates,
+                      'year'=>date('Y',strtotime($request->pay_date)),
+                      'salary_amt'=>$request->salary_amt,
+                      'bonus'=>$request->bonus,
+                      'month_total'=>$month_total,
+                  ]
+                  );
+                      // dd("Not HEre");
+                      return redirect()->route('salary.index')->with('success','Salary created successfully');
+                         }
+                      }
+         }else{
+             $salary=Salary::create([
             'emp_id'=>$empid,
             'name'=>$empname,
             'department'=>$request->department,
@@ -119,11 +150,12 @@ class SalaryController extends Controller
             'year'=>date('Y',strtotime($request->pay_date)),
             'salary_amt'=>$request->salary_amt,
             'bonus'=>$request->bonus,
-            'month_total'=>$request->month_total,
+            'month_total'=>$month_total,
         ]
         );
-
-          return redirect()->route('salary.index')->with('success','Salary created successfully');;
+            return redirect()->route('salary.index')->with('success','Salary created successfully');
+           
+         }
     }
 
     /**
@@ -246,6 +278,19 @@ class SalaryController extends Controller
         // dd($data);
         // $data =$data->select('name',DB::raw("CONCAT(nrc_code,'/',nrc_state,'(နိုင်)',nrc_no) as full_nrc"));
         return response()->json($data);
+    }
+
+    public function export() 
+    {
+      // dd("here");
+        return Excel::download(new SalaryExport,'salary.xlsx');
+    }
+
+    public function salaryValidate($id,$salarys)
+    {
+        // if ($salarys[$id]->year == date('Y',strtotime($request->pay_date)) && $salarys[$i]->pay_date == $dates)
+      $pay_date = $salarys[$id]->pay_date;
+      return $pay_date;
     }
 
 }
