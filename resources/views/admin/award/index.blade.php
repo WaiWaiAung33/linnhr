@@ -52,6 +52,7 @@
                     <tr> 
                       <th>No</th>
                         <th>Employee Name</th>
+                        <th>Image</th>
                         <th>Award Name</th>
                         <th>Gift</th>
                         <th>Cash Price</th>
@@ -66,6 +67,15 @@
                         <tr class="table-tr" data-url="{{route('award.show',$award->id)}}">
                           <td>{{++$i}}</td>
                             <td>{{$award->employee->name}}</td>
+                            @if($award->photo == '')
+                            <td>
+                            <img src="{{ asset('uploads/employeePhoto/default.png') }}" alt="photo" width="80px" height="80px">
+                            </td>
+                            @else
+                            <td>
+                             <img src="{{ asset('uploads/employeePhoto/'.$award->photo) }}" alt="photo" width="80px" height="80px">
+                             </td>
+                             @endif
                             <td>{{$award->award_name}}</td> 
                             <td>{{$award->gift}}</td>
                             <td>{{$award->cash_price}}</td>
