@@ -117,11 +117,11 @@
                             <img src="{{ asset('uploads/employeePhoto/default.png') }}" alt="photo" width="80px" height="80px">
                             </td>
                             @else
-                            <td>{{$hostelemployee->viewEmployee->name}}</td>
                             <td>
                              <img src="{{ asset('uploads/employeePhoto/'.$hostelemployee->viewEmployee->photo) }}" alt="photo" width="80px" height="80px">
                              </td>
                              @endif
+                              <td>{{$hostelemployee->viewEmployee->name}}</td>
                             <td>{{$hostelemployee->viewHostel->name}}</td>
                             <td>{{$hostelemployee->viewRoom->room_no}}</td>
                             <td>{{date('d-m-Y',strtotime($hostelemployee->start_date))}}</td>
