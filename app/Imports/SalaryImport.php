@@ -33,7 +33,8 @@ class SalaryImport implements ToCollection,WithHeadingRow
       
         DB::beginTransaction();
         try {
-                
+
+            
                 foreach ($rows as $row) 
                 {
                     // dd($row);
@@ -95,20 +96,67 @@ class SalaryImport implements ToCollection,WithHeadingRow
                         }elseif ($row['month'] == '12') {
                             $dates = "December";
                         }
+
+                        $salarys = Salary::where('emp_id',$employeeid)->where('pay_date',$dates)->where('year', $row['year'])->get();
+                        // dd($employeeid);
+
+
+                        if ($salarys->count()>0) {
+                            foreach ($salarys as $key => $salary) {
+                              $pay_date = $salarys[$key]->pay_date;
+                              $year = $salarys[$key]->year;
+                               if ($year == $row['year'] && $pay_date == $dates){
+                                  // dd("Here");
+                                return redirect()->route('salary.index')->with('success','Salary exist');
+                               }else{
+                                     
+                                      // dd("Not HEre");
+                                      $arr=[
+                                        'emp_id'=>$employeeid,
+                                        'name'=>$employee_name,
+                                        'department'=>$departmentname,
+                                        'branch'=>$branchname,
+                                        'pay_date'=>$dates,
+                                        'year'=>$row['year'],
+                                        'salary_amt'=>$row['amount'],
+                                        'bonus'=>$row['bonus'],
+                                        'month_total'=>$month_total,
+                                        ];
+                                       
+                                        Salary::create($arr);
+                                         }
+                                      }
+                         }else{
+                            
+                             $arr=[
+                                        'emp_id'=>$employeeid,
+                                        'name'=>$employee_name,
+                                        'department'=>$departmentname,
+                                        'branch'=>$branchname,
+                                        'pay_date'=>$dates,
+                                        'year'=>$row['year'],
+                                        'salary_amt'=>$row['amount'],
+                                        'bonus'=>$row['bonus'],
+                                        'month_total'=>$month_total,
+                                        ];
+                                       
+                             Salary::create($arr);
+                           
+                         }
                     
-                         $arr=[
-                        'emp_id'=>$employeeid,
-                        'name'=>$employee_name,
-                        'department'=>$departmentname,
-                        'branch'=>$branchname,
-                        'pay_date'=>$dates,
-                        'year'=>$row['year'],
-                        'salary_amt'=>$row['amount'],
-                        'bonus'=>$row['bonus'],
-                        'month_total'=>$month_total,
-                        ];
+                        //  $arr=[
+                        // 'emp_id'=>$employeeid,
+                        // 'name'=>$employee_name,
+                        // 'department'=>$departmentname,
+                        // 'branch'=>$branchname,
+                        // 'pay_date'=>$dates,
+                        // 'year'=>$row['year'],
+                        // 'salary_amt'=>$row['amount'],
+                        // 'bonus'=>$row['bonus'],
+                        // 'month_total'=>$month_total,
+                        // ];
                        
-                        Salary::create($arr);
+                        // Salary::create($arr);
 
                 }
             DB::commit();
