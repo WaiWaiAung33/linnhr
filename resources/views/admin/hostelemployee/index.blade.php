@@ -98,6 +98,7 @@
                     <tr> 
                       <th>No</th>
                         <th>Employee Name</th>
+                        <th>Image</th>
                         <th>Hostel Name</th>
                         <th>Room No</th>
                         <th>Start Date</th>
@@ -112,6 +113,15 @@
 
                             <td>{{++$i}}</td>
                             <td>{{$hostelemployee->viewEmployee->name}}</td>
+                            @if($hostelemployee->viewEmployee->photo == '')
+                            <td>
+                            <img src="{{ asset('uploads/employeePhoto/default.png') }}" alt="photo" width="80px" height="80px">
+                            </td>
+                            @else
+                            <td>
+                             <img src="{{ asset('uploads/employeePhoto/'.$hostelemployee->viewEmployee->photo) }}" alt="photo" width="80px" height="80px">
+                             </td>
+                             @endif
                             <td>{{$hostelemployee->viewHostel->name}}</td>
                             <td>{{$hostelemployee->viewRoom->room_no}}</td>
                             <td>{{date('d-m-Y',strtotime($hostelemployee->start_date))}}</td>

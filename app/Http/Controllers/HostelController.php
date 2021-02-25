@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Hostel;
 use App\HoselEmployee;
 use Illuminate\Http\Request;
+use File;
 
 class HostelController extends Controller
 {
@@ -49,9 +50,27 @@ class HostelController extends Controller
         ];
 
         $this->validate($request,$rules);
+
+        $filename="img_".date("Y-m-d-H-m-s");
+            $path="uploads/hostel/".$filename;
+            // dd($path);
+
+            if(!File::isDirectory($path)){
+                File::makeDirectory($path, 0777, true, true);
+            }
+            $photo = "";
+            //upload image
+            if ($file = $request->file('photo')) {
+                $extension = $file->getClientOriginalExtension();
+                $safeName = 'img'.'.' . $extension;
+                $file->move($path, $safeName);
+                $photo = $safeName;
+            }
         $hostel=Hostel::create([
             'name'=> $request->name,
-            'full_address'=>$request->full_address
+            'full_address'=>$request->full_address,
+            'path'=>$path,
+            'photo'=>$photo
         ]
         );
         return redirect()->route('hostel.index')->with('success','Hostel created successfully');;;
@@ -89,10 +108,28 @@ class HostelController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $filename="img_".date("Y-m-d-H-m-s");
+        $path="uploads/hostel/".$filename;
+
+        if(!File::isDirectory($path)){
+            File::makeDirectory($path, 0777, true, true);
+        }
         $hostels=Hostel::find($id);
+
+        $photo = $hostels->photo;
+        //upload image
+        if ($file = $request->file('photo')) {
+            // dd("Here");
+            $extension = $file->getClientOriginalExtension();
+            $safeName =  'img'.'.' . $extension;
+            $file->move($path, $safeName);
+            $photo = $safeName;
+        }
          $hostels=$hostels->update([
             'name'=>$request->name,
             'full_address'=> $request->full_address,
+            'path'=>$path,
+            'photo'=>$photo
         ]
         );
          return redirect()->route('hostel.index')->with('success','Hostel updated successfully');;
@@ -111,7 +148,13 @@ class HostelController extends Controller
             return redirect()->route('hostel.index')
                         ->with('error','Hostel cannot delete!!!');
         }else{
-         $hostel = Hostel::find($id)->delete();
+         // $hostel = Hostel::find($id)->delete();
+            $storagePath = public_path() . '/uploads/hostel/';
+
+                $hostel = Hostel::find($id);
+            if (File::exists($storagePath . $hostel->photo)) {
+                File::delete($storagePath . $hostel->photo);
+            };
          return redirect()->route('hostel.index')
                         ->with('success','Hostel deleted successfully');
         }

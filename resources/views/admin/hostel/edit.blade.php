@@ -18,6 +18,20 @@
          
         </div>    
     </div><br>
+
+    
+     <div class="row">
+               
+        <label class="col-md-2 unicode">Name</label>
+        <div class="col-md-5 {{ $errors->first('name', 'has-error') }}">
+            
+          <input type="file" name="photo" class="form-control unicode" id="photo" placeholder="Hostel photo"><br>
+          <img src="{{ asset($hostels->path.'/'. $hostels->photo) }}" alt="image" width="100px">
+         
+        </div>    
+    </div><br>
+
+
     <div class="row">
                
         <label class="col-md-2 unicode">Full Address</label>
@@ -28,6 +42,8 @@
          
         </div>    
     </div><br>
+
+
 
         <div class="row">
                     <div class="col-md-2"></div>

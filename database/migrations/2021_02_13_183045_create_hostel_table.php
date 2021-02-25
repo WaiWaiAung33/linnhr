@@ -16,6 +16,8 @@ class CreateHostelTable extends Migration
         Schema::create('hostel', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('path')->nullable();
+            $table->string('photo')->nullable();
             $table->string('full_address');
             $table->timestamps();
         });

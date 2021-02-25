@@ -18,7 +18,16 @@
         </div>    
     </div><br>
     <div class="row">
-               
+        <div class="col-md-3">
+            <h6 style="font-weight:bold;font-size:13px;">Photo</h6>
+        </div>
+
+        <div class="col-md-8 ">
+            <input type="file" name="photo" class="form-control unicode">
+        </div>
+    </div>
+    <div class="row">
+                
         <label class="col-md-2 unicode">Full Address</label>
         <div class="col-md-5 {{ $errors->first('name', 'has-error') }}">
             

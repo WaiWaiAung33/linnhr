@@ -61,7 +61,7 @@ class TimeInApiController extends Controller
                 return response(['message'=>"Success",'status'=>1,'attendance_id'=>$attendance->id,'timein_status'=>1,'timein_date'=>$attendance->date,'time_in'=>$attendance->clock_in]);
             }
             }else{
-                return response(['message'=>"No Data...",'status'=>1]);
+                return response(['message'=>"Success",'status'=>1,'timein_status'=>0]);
             }
 
         }
