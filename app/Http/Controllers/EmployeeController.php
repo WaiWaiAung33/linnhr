@@ -14,6 +14,7 @@ use App\NRCState;
 use App\Room;
 use App\Hostel;
 use App\User;
+use App\Salary;
 use File;
 use Illuminate\Support\Str;
 use DB;
@@ -367,8 +368,10 @@ play the specified resource.
         $positions = Position::all();
          $nrccodes = NRCCode::all();
         $nrcstates = NRCState::all(); 
+        $salarys = Salary::where('emp_id',$id);
+        $salary_count = $salarys->count();
         $employees = Employee::find($id);
-        return view('admin.employee.show',compact('branchs','departments','positions','employees','nrccodes','nrcstates'));
+        return view('admin.employee.show',compact('branchs','departments','positions','employees','nrccodes','nrcstates','salarys','salary_count'));
     }
 
     /**
