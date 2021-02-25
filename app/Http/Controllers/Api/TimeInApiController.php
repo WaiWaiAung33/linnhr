@@ -9,7 +9,7 @@ use Validator;
 use App\Employee;
 
 
-class BranchApiController extends Controller
+class TimeInApiController extends Controller
 {
 
     public function time_in(Request $request)
@@ -36,6 +36,55 @@ class BranchApiController extends Controller
                 
             ]);
             return response(['message'=>"Successfully create",'status'=>1]);
+        }
+    }
+
+    public function check_in_out(Request $request)
+    {
+        $input = $request->all();
+        $rules=[
+            'emp_id'=>'required',
+        ];
+
+        $validator = Validator::make($input, $rules);
+
+         if ($validator->fails()) {
+            $messages = $validator->messages();
+               return response()->json(['message'=>"Emp_id is null",'status'=>0]);
+        }else{
+            $attendance = DB::table('attendances')->where('emp_id',$request->emp_id)->get()->first();
+            // dd($attendance->id);
+            if ($attendance->clock_out != null) {
+                return response(['message'=>"Success",'status'=>1,'attendance_id',$attendance->id,'timein_status'=>0]);
+            }else{
+                return response(['message'=>"Success",'status'=>1,'attendance_id'=>$attendance->id,'timein_status'=>1,'timein_date'=>$attendance->date]);
+            }
+
+        }
+        
+    }
+
+    public function time_out(Request $request)
+    {
+        $input = $request->all();
+        $rules=[
+            'attendance_id'=>'required',
+            'out_date'=>'required',
+            'clock_out'=>'required'
+        ];
+
+        $validator = Validator::make($input, $rules);
+
+         if ($validator->fails()) {
+            $messages = $validator->messages();
+               return response()->json(['message'=>"Error",'status'=>0]);
+        }else{
+            $attendance = Attendance::find($request->attendance_id);
+            $attendance = $attendance->update([
+                'clock_out'=>$request->clock_out,
+                'out_date'=>date('Y-m-d',strtotime($request->out_date))
+            ]);
+            return response(['message'=>"Success",'status'=>1]);
         }
     }
 

@@ -40,7 +40,7 @@
     
       <div class="row">
                
-        <label class="col-md-2 unicode">Clock In</label>
+        <label class="col-md-2 unicode">Time In</label>
         <div class="col-md-5 ">
             
            <input type="text" class="form-control bs-timepicker" name="clock_in" id="clock_in">
@@ -48,17 +48,7 @@
     </div><br>
     <div class="row">
                
-        <label class="col-md-2 unicode">Clock Out</label>
-        <div class="col-md-5">
-            
-            <input type="text" class="form-control bs-timepicker" name="clock_out" id="clock_out">
-         
-        </div>    
-    </div><br>
-
-    <div class="row">
-               
-        <label class="col-md-2 unicode">Date</label>
+        <label class="col-md-2 unicode">Time In Date</label>
         <div class="col-md-5">
             
             <input type="text" name="date" id="date" class="form-control">
@@ -66,6 +56,25 @@
         </div>    
     </div><br>
 
+    <div class="row">
+               
+        <label class="col-md-2 unicode">Time Out</label>
+        <div class="col-md-5">
+            
+            <input type="text" class="form-control bs-timepicker" name="clock_out" id="clock_out">
+         
+        </div>    
+    </div><br>
+    <div class="row">
+               
+        <label class="col-md-2 unicode">Time Out Date</label>
+        <div class="col-md-5">
+            
+            <input type="text" name="out_date" id="out_date" class="form-control">
+         
+        </div>    
+    </div><br>
+    
     <div class="row">
                
         <label class="col-md-2 unicode">Attendance Status</label>
@@ -179,7 +188,9 @@
         });
         });
 
-        $("#date").datepicker({ dateFormat: 'dd-mm-yy' });
+        $("#date").datepicker({ format: 'dd-mm-yyyy' });
+
+        $("#out_date").datepicker({ format: 'dd-mm-yyyy' });
 
 });
        $(function () {

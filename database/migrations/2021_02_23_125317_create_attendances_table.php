@@ -19,6 +19,7 @@ class CreateAttendancesTable extends Migration
             $table->time('clock_in')->nullable();
             $table->time('clock_out')->nullable();
             $table->date('date');
+            $table->date('out_date');
             $table->boolean('attendance_status')->default(1);
             $table->string('clockin_ip_address')->nullable();
             $table->string('colckout_ip_address')->nullable();

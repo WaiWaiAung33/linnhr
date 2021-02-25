@@ -44,7 +44,7 @@
     
       <div class="row">
                
-        <label class="col-md-2 unicode">Clock In</label>
+        <label class="col-md-2 unicode">Time In</label>
         <div class="col-md-5 ">
             
            <input type="text" class="form-control bs-timepicker" name="clock_in" id="clock_in" value="{{$attendance->clock_in}}">
@@ -52,7 +52,17 @@
     </div><br>
     <div class="row">
                
-        <label class="col-md-2 unicode">Clock Out</label>
+        <label class="col-md-2 unicode">Time In Date</label>
+        <div class="col-md-5">
+            
+            <input type="text" name="date" id="date" class="form-control" value="{{date('d-m-Y',strtotime($attendance->date))}}">
+         
+        </div>    
+    </div><br>
+
+    <div class="row">
+               
+        <label class="col-md-2 unicode">Time Out</label>
         <div class="col-md-5">
             
             <input type="text" class="form-control bs-timepicker" name="clock_out" id="clock_out" value="{{$attendance->clock_out}}">
@@ -62,10 +72,10 @@
 
     <div class="row">
                
-        <label class="col-md-2 unicode">Date</label>
+        <label class="col-md-2 unicode">Time Out Date</label>
         <div class="col-md-5">
             
-            <input type="text" name="date" id="date" class="form-control" value="{{$attendance->date}}">
+            <input type="text" name="out_date" id="out_date" class="form-control" value="{{date('d-m-Y',strtotime($attendance->out_date))}}">
          
         </div>    
     </div><br>
@@ -137,7 +147,7 @@
         <div class="row">
                     <div class="col-md-2"></div>
                     <div class="col-md-5">
-                        <a class="btn btn-primary unicode" href="{{route('award.index')}}"> Back</a>
+                        <a class="btn btn-primary unicode" href="{{route('attendance.index')}}"> Back</a>
                          <button class="btn btn-success unicode" type="submit" style="font-size: 13px">
                           Save
                     </button>
@@ -183,7 +193,8 @@
         });
         });
 
-        $("#date").datepicker({ dateFormat: 'dd-mm-yy' });
+        $("#date").datepicker({ format: 'dd-mm-yyyy' });
+        $("#out_date").datepicker({ format: 'dd-mm-yyyy' });
 
 });
        $(function () {

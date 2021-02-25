@@ -56,8 +56,10 @@
                         <th>Branch</th>
                         <th>Department</th>
                         <th>Position</th>
-                        <th>Clock In</th>
-                        <th>Clock Out</th>
+                        <th>Time In</th>
+                        <th>Time In Date</th>
+                        <th>Time Out</th>
+                        <th>Time Out Date</th>
                         <th>Location</th>
                         <th>Attendance Status</th>
                     </tr>
@@ -82,7 +84,13 @@
                             <td>{{$attendance->dept_name}}</td>
                             <td>{{$attendance->position_name}}</td>
                             <td>{{$attendance->clock_in}}</td>
+                            <td>{{date('d-m-Y',strtotime($attendance->date))}}</td>
                             <td>{{$attendance->clock_out}}</td>
+                            @if($attendance->out_date != null)
+                            <td>{{date('d-m-Y',strtotime($attendance->out_date))}}</td>
+                            @else
+                            <td></td>
+                            @endif
                             <td>{{$attendance->clockin_ip_address}}</td>
 
                             @if($attendance->attendance_status == 1)

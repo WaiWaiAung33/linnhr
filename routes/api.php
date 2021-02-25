@@ -51,4 +51,8 @@ Route::post('/job_list','Api\JobApplicationApiController@job_application_list');
 
 Route::post('/job_detail/{id}','Api\JobApplicationApiController@job_application_detail');
 
-Route::post('/time_in','Api\AttendanceController@time_in');
+Route::post('/time_in','Api\TimeInApiController@time_in');
+
+Route::post('/check_in_out','Api\TimeInApiController@check_in_out');
+
+Route::post('/time_out','Api\TimeInApiController@time_out');
