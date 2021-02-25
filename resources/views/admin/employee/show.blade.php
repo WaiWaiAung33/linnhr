@@ -94,12 +94,12 @@
                    <h6>{{$employees->name ? $employees->name : "-" }}</h6>
                    </div>
                    <div style="text-align: center;margin-top:20px">
-                    <a id="personal" style="color: white;padding-left: 65px;padding-right: 65px;border-width: 1px solid;padding-top: 5px;padding-bottom: 5px;border-radius: 5px">Personal Data</a>
+                    <a id="personal" style="color: white;padding-left: 65px;padding-right: 65px;border-width: 1px solid;padding-top: 5px;padding-bottom: 5px;border-radius: 5px;cursor: pointer;">Personal Data</a>
 
                     <!--  <p style="margin-left: 100px;padding: 10px;margin-right: 100px;">Personal Data</p> -->
                    </div>
                     <div style="text-align: center;margin-top: 20px">
-                    <a id="contact" style="color: white;padding-left: 85px;padding-right: 85px;padding-top: 5px;padding-bottom: 5px;border-radius: 5px">Contact</a>
+                    <a id="contact" style="color: white;padding-left: 85px;padding-right: 85px;padding-top: 5px;padding-bottom: 5px;border-radius: 5px;cursor: pointer;">Contact</a>
                     
                     <!--  <p style="margin-left: 100px;padding: 10px;margin-right: 100px;">Personal Data</p> -->
                    </div>
@@ -107,7 +107,7 @@
                    
 
                     <div style="text-align: center;margin-top: 20px">
-                    <a id="employement" style="color: white;padding-left: 65px;padding-right: 65px;padding-top: 5px;padding-bottom: 5px;border-radius: 5px">Employement</a>
+                    <a id="employement" style="color: white;padding-left: 65px;padding-right: 65px;padding-top: 5px;padding-bottom: 5px;border-radius: 5px;cursor: pointer;">Employement</a>
                     
                     <!--  <p style="margin-left: 100px;padding: 20px;margin-right: 100px;">Personal Data</p> -->
                    </div>
@@ -115,25 +115,25 @@
 
 
                     <div style="text-align: center;margin-top: 20px">
-                    <a id="education" style="color: white;padding-left: 53px;padding-right: 53px;padding-top: 5px;padding-bottom: 5px;border-radius: 5px">Education Details</a>
+                    <a id="education" style="color: white;padding-left: 53px;padding-right: 53px;padding-top: 5px;padding-bottom: 5px;border-radius: 5px;cursor: pointer;">Education Details</a>
                     
                     <!--  <p style="margin-left: 100px;padding: 20px;margin-right: 100px;">Personal Data</p> -->
                    </div>
 
                    <div style="text-align: center;margin-top: 20px">
-                    <a id="work" style="color: white;padding-left: 58px;padding-right: 58px;padding-top: 5px;padding-bottom: 5px;border-radius: 5px">Work Experience</a>
+                    <a id="work" style="color: white;padding-left: 58px;padding-right: 58px;padding-top: 5px;padding-bottom: 5px;border-radius: 5px;cursor: pointer;">Work Experience</a>
                     
                     <!--  <p style="margin-left: 100px;padding: 20px;margin-right: 100px;">Personal Data</p> -->
                    </div>
 
                    <div style="text-align: center;margin-top: 20px">
-                    <a id="attach" style="color: white;padding-left: 77px;padding-right: 77px;padding-top: 5px;padding-bottom: 5px;border-radius: 5px">Attach File</a>
+                    <a id="attach" style="color: white;padding-left: 77px;padding-right: 77px;padding-top: 5px;padding-bottom: 5px;border-radius: 5px;cursor: pointer;">Attach File</a>
                     
                     <!--  <p style="margin-left: 100px;padding: 10px;margin-right: 100px;">Personal Data</p> -->
                    </div>
 
                   <div style="text-align: center;margin-top: 20px">
-                    <a id="salary" style="color: white;padding-left: 90px;padding-right: 90px;padding-top: 5px;padding-bottom: 5px;border-radius: 5px">Salary</a>
+                    <a id="salary" style="color: white;padding-left: 90px;padding-right: 90px;padding-top: 5px;padding-bottom: 5px;border-radius: 5px;cursor: pointer;">Salary</a>
                     
                     <!--  <p style="margin-left: 100px;padding: 20px;margin-right: 100px;">Personal Data</p> -->
                    </div>
