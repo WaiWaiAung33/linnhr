@@ -33,73 +33,90 @@
         @csrf
         @method('post')
 
-    <div class="row">
-               
-        <label class="col-md-2 unicode">Group</label>
-        <div class="col-md-5 {{ $errors->first('group', 'has-error') }}">
-            
-            <select class="form-control" name="group" style="font-size: 13px">
-                <option value="">Select Group</option>
-                <option  value="A">A</option>
-                <option  value="B">B</option>  
-            </select>  
-         
-        </div>    
-    </div><br>
-
-    <div class="row">
-               
+    <div class="row">       
         <label class="col-md-2 unicode">Branch Name</label>
-        <div class="col-md-5 {{ $errors->first('name', 'has-error') }}">
+        <div class="col-md-4 {{ $errors->first('name', 'has-error') }}">
             
             <select class="form-control" name="branch_id" id="branch_id" style="font-size: 13px">
-                <option value="">select branch</option>
+                <option value="">Select Branch</option>
                 @foreach ($branches as $branch )
                   <option  value="{{$branch->id}}">{{$branch->name}}</option>
                 @endforeach
             </select>  
          
         </div>    
-    </div><br>
-
-      <div class="row">
-               
-            <label class="col-md-2 unicode">Department</label>
-            <div class="col-md-5 {{ $errors->first('name', 'has-error') }}">
-                
-                <select class="form-control" name="dep_id" id="dep_id" style="font-size: 13px">
-                    <option value="">Select Department</option>
-                    @foreach ($departments as $department )
-                      <option  value="{{$department->id}}">{{$department->name}}</option>
-                    @endforeach
-                </select> 
-             
-            </div>    
-        </div><br>
-        <div class="row">
-            <label class="col-md-2 unicode">Employee Name</label>
-            <div class="col-md-5 {{ $errors->first('name', 'has-error') }}">
-                
-                <select multiple class="livesearch form-control" name="emp_id[]"></select>
-             
-            </div>    
-        </div><br>
-        
-
-
-
-        <div class="row">
-                    <div class="col-md-2"></div>
-                    <div class="col-md-5">
-                        <a class="btn btn-primary unicode" href="{{route('hostelemployee.index')}}"> Back</a>
-                         <button class="btn btn-success unicode" type="submit" style="font-size: 13px">
-                          Save
-                    </button>
-                    </div>
-            </div>
-
-        </form>
     </div>
+    <br>
+
+    <div class="row">  
+        <label class="col-md-2 unicode">Department</label>
+        <div class="col-md-4 {{ $errors->first('name', 'has-error') }}">
+            
+            <select class="form-control" name="dep_id" id="dep_id" style="font-size: 13px">
+                <option value="">Select Department</option>
+                @foreach ($departments as $department )
+                  <option  value="{{$department->id}}">{{$department->name}}</option>
+                @endforeach
+            </select> 
+         
+        </div>    
+    </div>
+    <br>
+
+    <div class="row">
+        <div class="col-md-6">
+             <div class="row">
+               
+                <label class="col-md-4 unicode">Group</label>
+                <div class="col-md-8 {{ $errors->first('group', 'has-error') }}">
+                    
+                    <select class="form-control" name="group_a" style="font-size: 13px">
+                        <option  value="A">A</option> 
+                    </select>  
+                 
+                </div>    
+            </div>
+            <br>
+            
+            <div class="row">
+                <label class="col-md-4 unicode">Employee Name</label>
+                <div class="col-md-8 {{ $errors->first('name', 'has-error') }}">
+                    <select multiple class="livesearch form-control" name="a_emp_id[]"></select>
+                </div>    
+            </div>
+        
+        </div>
+         <div class="col-md-6">
+            <div class="row">
+                <div class="col-md-8 {{ $errors->first('group', 'has-error') }}">
+                    <select class="form-control" name="group_b" style="font-size: 13px">
+                        <option  value="B">B</option>  
+                    </select>  
+                 
+                </div>    
+            </div>
+            <br>
+             <div class="row">
+                <div class="col-md-8 {{ $errors->first('name', 'has-error') }}">
+                    <select multiple class="livesearch form-control" name="b_emp_id[]"></select>
+                </div>    
+            </div>
+        
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-5">
+            <a class="btn btn-primary unicode" href="{{route('hostelemployee.index')}}"> Back</a>
+             <button class="btn btn-success unicode" type="submit" style="font-size: 13px">
+              Save
+            </button>
+        </div>
+    </div>
+
+    </form>
+</div>
 @stop
 
 @section('css')

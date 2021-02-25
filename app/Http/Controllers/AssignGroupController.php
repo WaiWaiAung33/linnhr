@@ -50,20 +50,31 @@ class AssignGroupController extends Controller
     public function store(Request $request)
     {
         $rules = [
-            'group'=>'required',
+            'group_a'=>'required',
+            'group_b'=>'required',
             'branch_id'=>'required',
             'dep_id'=>'required',
-            'emp_id'=>'required'
+            'a_emp_id'=>'required',
+            'b_emp_id'=>'required'
         ];
 
         $this->validate($request,$rules);
 
-        foreach ($request->emp_id as $key => $emp_id) {
+        foreach ($request->a_emp_id as $key => $a_emp) {
              AssignGroup::create([
-                'group'=>$request->group,
+                'group'=>$request->group_a,
                 'branch_id'=>$request->branch_id,
                 'department_id'=>$request->dep_id,
-                'emp_id'=>$emp_id
+                'emp_id'=>$a_emp
+            ]);
+        }
+
+        foreach ($request->b_emp_id as $key => $b_emp) {
+             AssignGroup::create([
+                'group'=>$request->group_b,
+                'branch_id'=>$request->branch_id,
+                'department_id'=>$request->dep_id,
+                'emp_id'=>$b_emp
             ]);
         }
 
@@ -78,8 +89,7 @@ class AssignGroupController extends Controller
      */
     public function show($id)
     {
-        $leave_type = LeaveType::find($id);
-        return view('admin.leave_type.show',compact('leave_type'));
+
     }
 
     /**
@@ -90,8 +100,13 @@ class AssignGroupController extends Controller
      */
     public function edit($id)
     {
-        $leave_type = LeaveType::find($id);
-        return view('admin.leave_type.edit',compact('leave_type'));
+
+        $branches = Branch::where('status',1)->get();
+        $departments = Department::where('status',1)->orderBy('name','asc')->get();
+
+        $groups = AssignGroup::with('employees')->where('department_id',$id)->get();
+
+        return view('admin.group.edit',compact('branches','departments','groups'));
     }
 
     /**
@@ -103,16 +118,38 @@ class AssignGroupController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request,[
-            'leave_type'=>'required',
-            'num_of_leave'=>'required'
-        ]);
-        $leave_type = LeaveType::find($id);
-        $leave_type = $leave_type->update([
-            'leave_type'=>$request->leave_type,
-            'num_of_leave'=>$request->num_of_leave
-        ]);
-    return redirect()->route('leave_type.index')->with('success','Success');
+         $rules = [
+            'group_a'=>'required',
+            'group_b'=>'required',
+            'branch_id'=>'required',
+            'dep_id'=>'required',
+            'a_emp_id'=>'required',
+            'b_emp_id'=>'required'
+        ];
+
+        $this->validate($request,$rules);
+
+        $res = AssignGroup::where('department_id',$id)->delete();
+
+        foreach ($request->a_emp_id as $key => $a_emp) {
+             AssignGroup::create([
+                'group'=>$request->group_a,
+                'branch_id'=>$request->branch_id,
+                'department_id'=>$request->dep_id,
+                'emp_id'=>$a_emp
+            ]);
+        }
+
+        foreach ($request->b_emp_id as $key => $b_emp) {
+             AssignGroup::create([
+                'group'=>$request->group_b,
+                'branch_id'=>$request->branch_id,
+                'department_id'=>$request->dep_id,
+                'emp_id'=>$b_emp
+            ]);
+        }
+
+    return redirect()->route('groups.index')->with('success','Success');
     }
 
     /**
@@ -123,7 +160,7 @@ class AssignGroupController extends Controller
      */
     public function destroy($id)
     {
-        $leave_type = AssignGroup::where('department_id',$id)->delete();
+        $res = AssignGroup::where('department_id',$id)->delete();
         return redirect()->route('groups.index')->with('success','Success');
     }
 

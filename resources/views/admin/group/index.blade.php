@@ -127,7 +127,7 @@
                                     onsubmit="return confirm('Do you want to delete?');">
                                    @csrf
                                    @method('DELETE')
-                                    {{-- <a class="btn btn-sm btn-primary" href="{{route('groups.edit',$dept->id)}}"><i class="fa fa-fw fa-edit"></i></a> --}}
+                                    <a class="btn btn-sm btn-primary" href="{{route('groups.edit',$dept->id)}}"><i class="fa fa-fw fa-edit"></i></a>
                                     <button class="btn btn-sm btn-danger btn-sm" type="submit">
                                         <i class="fa fa-fw fa-trash" title="Delete"></i>
                                     </button>

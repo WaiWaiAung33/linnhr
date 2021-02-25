@@ -1,110 +1,138 @@
 @extends('adminlte::page')
 
-@section('title', 'Hostel')
+@section('title', 'Group Edit')
 
 @section('content_header')
-<link id="bsdp-css" href="https://unpkg.com/bootstrap-datepicker@1.9.0/dist/css/bootstrap-datepicker3.min.css" rel="stylesheet">
 
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
 <style type="text/css">
     .select2-container .select2-selection--single {
-    box-sizing: border-box;
-    cursor: pointer;
-    display: block;
-    height: 35px;
-    user-select: none;
-    -webkit-user-select: none; }
-    .select2-container--default .select2-selection--single .select2-selection__arrow {
-    height: 30px;
-    position: absolute;
-    top: 2px;
-    right: 0px;
-    left: 365px;
-    width: 100px; }
+        box-sizing: border-box;
+        cursor: pointer;
+        display: block;
+        height: 35px;
+        user-select: none;
+        -webkit-user-select: none; 
+    }
+        .select2-container--default .select2-selection--single .select2-selection__arrow {
+        height: 30px;
+        position: absolute;
+        top: 2px;
+        right: 0px;
+        left: 365px;
+        width: 100px; 
+    }
+    .select2-container--default .select2-selection--multiple .select2-selection__choice {
+        color: black;
+    }
 </style>
 @stop
 @section('content')
  <div class="container" >
-        <form action="{{route('hostelemployee.update',$hostelemployees->id)}}" method="post" enctype="multipart/form-data">
+        <form action="{{route('groups.update',$groups[0]->department_id)}}" method="post" enctype="multipart/form-data">
         @csrf
         @method('PUT')
-       <div class="row">
-               
-        <label class="col-md-2 unicode">Employee Name</label>
-        <div class="col-md-5 {{ $errors->first('name', 'has-error') }}">
+
+    <div class="row">       
+        <label class="col-md-2 unicode">Branch Name</label>
+        <div class="col-md-4 {{ $errors->first('name', 'has-error') }}">
             
-            <select class="livesearch form-control" name="emp_id">
-                @foreach ($employees as $employee )
-                  <option  value="{{$employee->id}}" {{ (old('emp_id',$hostelemployees->emp_id)==$employee->id)?'selected':'' }}>{{$employee->name}}</option>
-                @endforeach
-            </select>
-         
-        </div>    
-    </div><br>
-<input type="hidden" name="name" class="form-control unicode" id="name" value="{{$hostelemployees->name}}"> 
- <input type="hidden" name="branch_id" class="form-control unicode" id="branch" value="{{$hostelemployees->branch_id}}"> 
- <input type="hidden" name="dep_id" class="form-control unicode" id="department" value="{{$hostelemployees->dep_id}}" > 
- <input type="hidden" name="position_id" class="form-control unicode" id="position" value="{{$hostelemployees->position_id}}"> 
-    <div class="row">
-               
-        <label class="col-md-2 unicode">Hostel Name</label>
-        <div class="col-md-5 {{ $errors->first('name', 'has-error') }}">
-            
-            <select class="form-control" name="hostel_id" style="font-size: 13px">
-                <option value="">select hostel</option>
-                @foreach ($hostels as $hostel )
-                  <option  value="{{$hostel->id}}" {{ (old('hostel_id',$hostelemployees->hostel_id)==$hostel->id)?'selected':'' }}>{{$hostel->name}}</option>
+            <select class="form-control" name="branch_id" id="branch_id" style="font-size: 13px">
+                <option value="">Select Branch</option>
+                @foreach ($branches as $branch )
+                  <option  value="{{$branch->id}}" @if($branch->id=== $groups[0]->branch_id) selected='selected' @endif>{{$branch->name}}</option>
                 @endforeach
             </select>  
          
         </div>    
-    </div><br>
-     <div class="row">
-               
-        <label class="col-md-2 unicode">Full Address</label>
-        <div class="col-md-5 {{ $errors->first('name', 'has-error') }}">
-           <textarea name="full_address" rows="4" class="form-control unicode" id="full_address" placeholder="Paung Long 4 street,Pyinmana">{{$hostelemployees->full_address}}</textarea>
-         
-        </div>    
-    </div><br>
-
-      <div class="row">
-               
-        <label class="col-md-2 unicode">Room No</label>
-        <div class="col-md-5 {{ $errors->first('name', 'has-error') }}">
-            
-            <select class="form-control" name="room_id" style="font-size: 13px">
-                <option value="">-</option>
-                 @foreach($rooms as $room)
-                 <option value="{{$room->id}}" {{ (old('room_id',$hostelemployees->room_id)==$room->id)?'selected':'' }}>{{$room->room_no}}</option>
-               @endforeach
-            </select>  
-         
-        </div>    
-    </div><br>
-
-     <div class="row">
-               
-        <label class="col-md-2 unicode">Start Date</label>
-        <div class="col-md-5 {{ $errors->first('name', 'has-error') }}">
-            
-           <input type="text" name="start_date" class="form-control unicode" id="start_date" value="{{$hostelemployees->start_date}}"> 
-         
-        </div>    
-    </div><br>
-
-        <div class="row">
-                    <div class="col-md-2"></div>
-                    <div class="col-md-5">
-                        <a class="btn btn-primary unicode" href="{{route('hostelemployee.index')}}"> Back</a>
-                         <button class="btn btn-success unicode" type="submit" style="font-size: 13px">
-                          Save
-                    </button>
-                    </div>
-            </div>
-
-        </form>
     </div>
+    <br>
+
+    <div class="row">  
+        <label class="col-md-2 unicode">Department</label>
+        <div class="col-md-4 {{ $errors->first('name', 'has-error') }}">
+            
+            <select class="form-control" name="dep_id" id="dep_id" style="font-size: 13px">
+                <option value="">Select Department</option>
+                @foreach ($departments as $department )
+                  <option  value="{{$department->id}}" @if($department->id=== $groups[0]->department_id) selected='selected' @endif>{{$department->name}}</option>
+                @endforeach
+            </select> 
+         
+        </div>    
+    </div>
+    <br>
+
+    <div class="row">
+        <div class="col-md-6">
+             <div class="row">
+               
+                <label class="col-md-4 unicode">Group</label>
+                <div class="col-md-8 {{ $errors->first('group', 'has-error') }}">
+                    
+                    <select class="form-control" name="group_a" style="font-size: 13px">
+                        <option  value="A">A</option> 
+                    </select>  
+                 
+                </div>    
+            </div>
+            <br>
+            
+            <div class="row">
+                <label class="col-md-4 unicode">Employee Name</label>
+                <div class="col-md-8 {{ $errors->first('name', 'has-error') }}">
+                    <select multiple class="livesearch form-control" name="a_emp_id[]">
+                        @foreach($groups as $skey=>$group)
+                            @if($group->group == 'A')                                   
+                                <option value="{{$group->emp_id }}"}} selected>
+                                  {{ $group->employees[0]->name }}
+                                </option>
+                            @endif
+                        @endforeach  
+                    </select>
+                </div>    
+            </div>
+        
+        </div>
+         <div class="col-md-6">
+            <div class="row">
+                <div class="col-md-8 {{ $errors->first('group', 'has-error') }}">
+                    <select class="form-control" name="group_b" style="font-size: 13px">
+                        <option  value="B">B</option>  
+                    </select>  
+                 
+                </div>    
+            </div>
+            <br>
+             <div class="row">
+                <div class="col-md-8 {{ $errors->first('name', 'has-error') }}">
+                    <select multiple class="livesearch form-control" name="b_emp_id[]">
+                         @foreach($groups as $skey=>$group)
+                            @if($group->group == 'B')                                   
+                                <option value="{{$group->emp_id }}"}} selected>
+                                {{ $group->employees[0]->name }}
+                                </option>
+                            @endif
+                        @endforeach
+                    </select>
+                </div>    
+            </div>
+        
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-5">
+            <a class="btn btn-primary unicode" href="{{route('hostelemployee.index')}}"> Back</a>
+             <button class="btn btn-success unicode" type="submit" style="font-size: 13px">
+              Save
+            </button>
+        </div>
+    </div>
+
+    </form>
+</div>
 @stop
 
 @section('css')
@@ -114,32 +142,31 @@
 @section('js')
 <script type="text/javascript" src="{{ asset('select2/js/select2.min.js') }}"></script>
 <script src="{{ asset('jquery-ui.js') }}"></script>
-<script src="https://unpkg.com/bootstrap-datepicker@1.9.0/dist/js/bootstrap-datepicker.min.js"></script>
 <script type="text/javascript">
-     $(document).ready(function(){
+    $(function() {
 
-        $("select[name='hostel_id']").change(function() {
-        var room_id = $(this).val();
-        var token = $("input[name='_token']").val();
-        $.ajax({
-            url: "<?php echo route('select-ajax-hostel') ?>",
-            method: 'POST',
-            dataType: 'html',
-            data: {
-                room_id: room_id,
-                _token: token
-            },
-            success: function(data) {
-                $("select[name='room_id']").html(data);
-            }
+        var branch_id = $("#branch_id").val();
+        var dep_id = $("#dep_id").val();
+        $("#branch_id").change(function(){
+            branch_id = $(this).val();
         });
+
+        $("#dep_id").change(function(){
+            dep_id = $(this).val();
+            getEmployee(branch_id,dep_id)
+        });
+
+
+        getEmployee(branch_id,dep_id);
     });
 
-        $(function() {
-            $('.livesearch').select2({
-            placeholder: 'Employee Name',
+    function getEmployee(branch_id,dep_id){
+        var url = "<?php echo(route("ajax-get-emp-group")) ?>";
+        var fullurl = url + '?branch_id='+branch_id+"&dep_id="+dep_id;
+        $('.livesearch').select2({
+            placeholder: 'Select Employees',
             ajax: {
-                url: "<?php echo(route("ajax-autocomplete-search")) ?>",
+                url: fullurl,
                 dataType: 'json',
                 delay: 250,
                 processResults: function (data) {
@@ -155,51 +182,7 @@
                 cache: true
             }
         });
-        });
-
-        $(function(){
-        $('.livesearch').change(function(){
-          var is_employee = $(this).find(':selected').val();
-          // alert(is_employee);
-            // alert(is_employee);$('#first').find(':selected').val();
-             $.ajax({
-                    type: "GET",
-                    dataType: "json",
-                    url: "<?php echo route('get_hostelemployee_data') ?>",
-                    data: {'emp_id': is_employee},
-                    success: function(data){
-                        $("#department").val(data.department_id);
-                        $("#branch").val(data.branch_id);
-                        $("#name").val(data.employee_name);
-                        $("#position").val(data.position_id);
-
-                        console.log(data.name);
-                    }
-                });
-        });
-    });
-
-
-         $(function(){
-       $("select[name='hostel_id']").change(function(){
-          var is_employee = $(this).find(':selected').val();
-          
-             $.ajax({
-                    type: "GET",
-                    dataType: "json",
-                    url: "<?php echo route('get_department_address') ?>",
-                    data: {'emp_id': is_employee},
-                    success: function(data){
-                        $("#full_address").val(data.full_address);
-                        console.log(data.full_address);
-                    }
-                });
-        });
-    });
-
-        $("#start_date").datepicker({ dateFormat: 'dd-mm-yy' });
-
-});
+    }
 
 </script>
 @stop
