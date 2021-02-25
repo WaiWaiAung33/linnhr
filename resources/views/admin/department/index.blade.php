@@ -131,7 +131,7 @@ input:checked + .slider:before {
                     <tbody>
                   @if($departments->count()>0)
               		@foreach($departments as $department)
-                        <tr>
+                        <tr class="table-tr" data-url="{{  url('employee?dep_id='.$department->id) }}">
                             <td>{{++$i}}</td>
                             <td>{{$department->name}}</td>
                             <td>{{ $department->employees()->count() }}</td>
