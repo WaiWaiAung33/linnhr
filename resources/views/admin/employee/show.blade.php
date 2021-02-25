@@ -85,7 +85,7 @@
                    
                     @else
                     <div style="text-align: center;">
-                       <img src="{{ asset('uploads/employeePhoto/'.$employees->photo) }}" alt="photo" style="width: 20% !important">
+                       <img src="{{ asset('uploads/employeePhoto/'.$employees->photo) }}" alt="photo" width="100px" height="100px">
                     </div>
                   
                    @endif
