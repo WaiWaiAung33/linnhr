@@ -97,8 +97,8 @@
                   <thead>
                     <tr> 
                       <th>No</th>
+                       <th>Image</th>
                         <th>Employee Name</th>
-                        <th>Image</th>
                         <th>Hostel Name</th>
                         <th>Room No</th>
                         <th>Start Date</th>
@@ -112,12 +112,12 @@
                         <tr class="table-tr" data-url="{{route('employee.show',$hostelemployee->emp_id)}}">
 
                             <td>{{++$i}}</td>
-                            <td>{{$hostelemployee->viewEmployee->name}}</td>
                             @if($hostelemployee->viewEmployee->photo == '')
                             <td>
                             <img src="{{ asset('uploads/employeePhoto/default.png') }}" alt="photo" width="80px" height="80px">
                             </td>
                             @else
+                            <td>{{$hostelemployee->viewEmployee->name}}</td>
                             <td>
                              <img src="{{ asset('uploads/employeePhoto/'.$hostelemployee->viewEmployee->photo) }}" alt="photo" width="80px" height="80px">
                              </td>

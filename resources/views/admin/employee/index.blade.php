@@ -249,8 +249,8 @@
                   <thead>
                     <tr> 
                       <th>No</th>
-                      <th>Employee Id</th>
                       <th>Image</th>
+                       <th>Employee Id</th>
                        <th>Name</th>
                        <th>Rank</th>
                         <th>Department</th>
@@ -269,7 +269,6 @@
               		 @foreach($employees as $employee)
                         <tr class="table-tr" data-url="{{route('employee.show',$employee->id)}}">
                             <td>{{++$i}}</td>
-                            <td>{{$employee->emp_id}}</td>
                             @if($employee->photo == '')
                             <td>
                             <img src="{{ asset('uploads/employeePhoto/default.png') }}" alt="photo" width="80px" height="80px">
@@ -279,6 +278,7 @@
                              <img src="{{ asset('uploads/employeePhoto/'.$employee->photo)}}" alt="photo" width="80px" height="80px">
                              </td>
                              @endif
+                            <td>{{$employee->emp_id}}</td>
                             <td>{{$employee->name}}</td>
                              <td>{{$employee->viewPosition->name}}</td>
                             <td>{{$employee->viewDepartment->name}}</td>
