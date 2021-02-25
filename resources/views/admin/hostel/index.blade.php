@@ -52,7 +52,7 @@
                             <td>{{$hostel->name}}</td>
                             @if($hostel->photo == '')
                             <td>
-                            <img src="{{ asset('uploads/employeePhoto/default.png') }}" alt="photo" width="80px" height="80px">
+                            <img src="{{ asset('uploads/images/download.png') }}" alt="photo" width="80px" height="80px">
                             </td>
                             @else
                             <td>

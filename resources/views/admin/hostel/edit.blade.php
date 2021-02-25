@@ -29,7 +29,7 @@
           @if($hostels->photo != null)
           <img src="{{ asset($hostels->path.'/'. $hostels->photo) }}" alt="image" width="100px">
          @else
-         <img src="{{ asset('uploads/employeePhoto/default.png') }}" alt="photo" width="100px">
+         <img src="{{ asset('uploads/images/download.png') }}" alt="photo" width="100px">
          @endif
         </div>    
     </div><br>
