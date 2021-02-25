@@ -148,7 +148,7 @@
                 </tr>
             </thead>
             <tbody>
-              <tr>
+            <!--   <tr>
                   @if($employees->photo == '')
                   <td style="text-align: center;" colspan ="2">
                      <img src="{{ asset('uploads/employeePhoto/default.png') }}" alt="photo" style="width: 20% !important">
@@ -160,7 +160,7 @@
                     </td>
                   
                    @endif
-              </tr>
+              </tr> -->
                
                 <tr>
                     <td>Name<span style="padding-left: 165px">{{$employees->name ? $employees->name : "-" }}</span></td>
