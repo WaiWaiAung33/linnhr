@@ -413,17 +413,30 @@ play the specified resource.
         $policePath = public_path() . '/uploads/policestationrecomPhoto/';
         $wardPath = public_path() . '/uploads/wardrecoPhoto/';
         $attachPath = public_path() . '/uploads/attachfile';
-
-        $photo = ($request->photo != '') ? $request->photo : $employees->photo;
+        // dd($employees->photo);
+        $photos = ($request->photo != '') ? $request->photo : $employees->photo;
+        // dd($photo);
 
         //upload image
-        if ($file = $request->file('photo')) {
-           $photo = $request->file('photo');
+         if ($file = $request->file('photo')) {
+    
+            $photos = $request->file('photo');
             $ext = '.'.$request->photo->getClientOriginalExtension();
-            $fileName = str_replace($ext, date('d-m-Y-H-i') . $ext, $request->photo->getClientOriginalName());
+            $fileName = str_replace($ext, date('d-m-Y-H-i') . $ext, $photos->getClientOriginalName());
             $file->move($destinationPath, $fileName);
-            $photo = $fileName;
+            $photos = $fileName;
+            // dd($photos);
+          
+
         }
+
+        // if ($file = $request->file('photo')) {
+        //    $photo = $request->file('photo');
+        //     $ext = '.'.$request->photo->getClientOriginalExtension();
+        //     $fileName = str_replace($ext, date('d-m-Y-H-i') . $ext, $photo->getClientOriginalName());
+        //     $file->move($destinationPath, $fileName);
+        //     $photo = $fileName;
+        // }
 
           $police_reco_photo = ($request->police_reco != '') ? $request->police_reco : $employees->police_reco;
          
@@ -517,6 +530,69 @@ $extension;
             $hostelemployee = HoselEmployee::where('emp_id',$employees->id)->get();
             // dd($hostelemployee);
             if ($hostelemployee->count()>0) {
+
+                  $employees = $employees->update([
+                    'user_id'=>$user_id,
+                    'emp_id'=>$request->emp_id,
+                    'branch_id'=>$request->branch,
+                    'dep_id'=>$request->department,
+                    'position_id'=>$request->position,
+                    'name'=> $request->name,
+                    'gender'=>$request->gender,
+                    'marrical_status'=>$request->marrical_status,
+                    'father_name'=>$request->father_name,
+                    'phone_no'=>$request->phone_no,
+                    'nrc_code'=>$request->nrc_code,
+                    'nrc_state'=>$request->nrc_state,
+                    'nrc_status'=>$request->nrc_status,
+                    'nrc'=>$request->nrc,
+                    'fullnrc'=>$fullnrc,
+                    'date_of_birth'=>$request->date_of_birth,
+                    'join_date'=>$request->join_date,
+                    'join_month'=>$month,
+                    'address'=>$request->address,
+                    'city'=>$request->city,
+                    'township'=>$request->township,
+                    'qualification'=>$request->qualification,
+                    'salary'=>$request->salary,
+                    'photo'=>$photos,
+                    'race'=>$request->race,
+                    'religion'=>$request->religion,
+                    'email'=>$request->email,
+                    'fPhone'=>$request->pPhone,
+                    'experience'=>$request->experience,
+                    'exp_salary'=>$request->salary,
+                    'hostel'=>$request->isHostel,
+                    'address'=>$request->address,
+                    'phone'=>$request->phone,
+                    'signature'=>$request->signed,
+                    // 'photo'=>$photo,
+                    'city'=>$request->city,
+                    'township'=>$request->township,
+                    'graduation'=>$request->graduation,
+                    'degree'=>$degree_photo,
+                    'level'=>$request->level,
+                    'course_title'=>$request->course_title,
+                    'exp_company'=>$request->exp_company,
+                    'exp_position'=>$request->exp_position,
+                    'exp_location'=>$request->exp_location,
+                    'exp_date_from'=>$request->exp_date_from,
+                    'exp_date_to'=>$request->exp_date_to,
+                    'skills'=>$request->skills,
+                    'proficiency'=>$request->proficiency,
+                    'police_reco'=>$police_reco_photo,
+                    'ward_reco'=>$ward_reco_photo,
+                    'cvfile'=>$cvfile_photo,
+                    'otherfile'=> $otherfile_photo,
+                    'hostel_location'=>$request->hostel_location,
+                    'room_no'=>$request->room_no,
+                    'home_no'=>$request->home_no,
+                    'hostel_sdate'=>$request->hostel_sdate,
+                    'employment_type'=>$request->employment_type,
+                    
+
+                ]);
+
                  $hostelemployee = User::find($hostelemployee[0]->id);
                   $arr=[
                          'hostel_id' => $request->home_no,
@@ -531,6 +607,69 @@ $extension;
 
                   $hostelemployee->fill($arr)->save();
             }else{
+
+                  $employees = $employees->update([
+                    'user_id'=>$user_id,
+                    'emp_id'=>$request->emp_id,
+                    'branch_id'=>$request->branch,
+                    'dep_id'=>$request->department,
+                    'position_id'=>$request->position,
+                    'name'=> $request->name,
+                    'gender'=>$request->gender,
+                    'marrical_status'=>$request->marrical_status,
+                    'father_name'=>$request->father_name,
+                    'phone_no'=>$request->phone_no,
+                    'nrc_code'=>$request->nrc_code,
+                    'nrc_state'=>$request->nrc_state,
+                    'nrc_status'=>$request->nrc_status,
+                    'nrc'=>$request->nrc,
+                    'fullnrc'=>$fullnrc,
+                    'date_of_birth'=>$request->date_of_birth,
+                    'join_date'=>$request->join_date,
+                    'join_month'=>$month,
+                    'address'=>$request->address,
+                    'city'=>$request->city,
+                    'township'=>$request->township,
+                    'qualification'=>$request->qualification,
+                    'salary'=>$request->salary,
+                    'photo'=>$photos,
+                    'race'=>$request->race,
+                    'religion'=>$request->religion,
+                    'email'=>$request->email,
+                    'fPhone'=>$request->pPhone,
+                    'experience'=>$request->experience,
+                    'exp_salary'=>$request->salary,
+                    'hostel'=>$request->isHostel,
+                    'address'=>$request->address,
+                    'phone'=>$request->phone,
+                    'signature'=>$request->signed,
+                    // 'photo'=>$photo,
+                    'city'=>$request->city,
+                    'township'=>$request->township,
+                    'graduation'=>$request->graduation,
+                    'degree'=>$degree_photo,
+                    'level'=>$request->level,
+                    'course_title'=>$request->course_title,
+                    'exp_company'=>$request->exp_company,
+                    'exp_position'=>$request->exp_position,
+                    'exp_location'=>$request->exp_location,
+                    'exp_date_from'=>$request->exp_date_from,
+                    'exp_date_to'=>$request->exp_date_to,
+                    'skills'=>$request->skills,
+                    'proficiency'=>$request->proficiency,
+                    'police_reco'=>$police_reco_photo,
+                    'ward_reco'=>$ward_reco_photo,
+                    'cvfile'=>$cvfile_photo,
+                    'otherfile'=> $otherfile_photo,
+                    'hostel_location'=>$request->hostel_location,
+                    'room_no'=>$request->room_no,
+                    'home_no'=>$request->home_no,
+                    'hostel_sdate'=>$request->hostel_sdate,
+                    'employment_type'=>$request->employment_type,
+                    
+
+                ]);
+                  
                 $hostelemployee = HoselEmployee::create(
                 [
                   'emp_id'=>  $id,
@@ -545,75 +684,69 @@ $extension;
                 ]
               );
             }
-
-         $employees = $employees->update([
-            'user_id'=>$user_id,
-            'emp_id'=>$request->emp_id,
-            'branch_id'=>$request->branch,
-            'dep_id'=>$request->department,
-            'position_id'=>$request->position,
-            'name'=> $request->name,
-            'gender'=>$request->gender,
-            'marrical_status'=>$request->marrical_status,
-            'father_name'=>$request->father_name,
-            'phone_no'=>$request->phone_no,
-            'nrc_code'=>$request->nrc_code,
-            'nrc_state'=>$request->nrc_state,
-            'nrc_status'=>$request->nrc_status,
-            'nrc'=>$request->nrc,
-            'fullnrc'=>$fullnrc,
-            'date_of_birth'=>$request->date_of_birth,
-            'join_date'=>$request->join_date,
-            'join_month'=>$month,
-            'address'=>$request->address,
-            'city'=>$request->city,
-            'township'=>$request->township,
-            'qualification'=>$request->qualification,
-            'salary'=>$request->salary,
-            'photo'=>$photo,
-            'race'=>$request->race,
-            'religion'=>$request->religion,
-            'email'=>$request->email,
-            'fPhone'=>$request->pPhone,
-            'experience'=>$request->experience,
-            'exp_salary'=>$request->salary,
-            'hostel'=>$request->isHostel,
-            'address'=>$request->address,
-            'phone'=>$request->phone,
-            'signature'=>$request->signed,
-            'photo'=>$photo,
-            'city'=>$request->city,
-            'township'=>$request->township,
-            'graduation'=>$request->graduation,
-            'degree'=>$degree_photo,
-            'level'=>$request->level,
-            'course_title'=>$request->course_title,
-            'exp_company'=>$request->exp_company,
-            'exp_position'=>$request->exp_position,
-            'exp_location'=>$request->exp_location,
-
-
-'exp_date_from'=>$request->exp_date_from,
-            'exp_date_to'=>$request->exp_date_to,
-            'skills'=>$request->skills,
-            'proficiency'=>$request->proficiency,
-            'police_reco'=>$police_reco_photo,
-            'ward_reco'=>$ward_reco_photo,
-            'cvfile'=>$cvfile_photo,
-            'otherfile'=> $otherfile_photo,
-            'hostel_location'=>$request->hostel_location,
-            'room_no'=>$request->room_no,
-            'home_no'=>$request->home_no,
-            'hostel_sdate'=>$request->hostel_sdate,
-            'employment_type'=>$request->employment_type,
-            
-
-        ]);
-
-           
-       
-          
                         // dd($hostelemployee);
+         }else{
+              $employees = $employees->update([
+                    'user_id'=>$user_id,
+                    'emp_id'=>$request->emp_id,
+                    'branch_id'=>$request->branch,
+                    'dep_id'=>$request->department,
+                    'position_id'=>$request->position,
+                    'name'=> $request->name,
+                    'gender'=>$request->gender,
+                    'marrical_status'=>$request->marrical_status,
+                    'father_name'=>$request->father_name,
+                    'phone_no'=>$request->phone_no,
+                    'nrc_code'=>$request->nrc_code,
+                    'nrc_state'=>$request->nrc_state,
+                    'nrc_status'=>$request->nrc_status,
+                    'nrc'=>$request->nrc,
+                    'fullnrc'=>$fullnrc,
+                    'date_of_birth'=>$request->date_of_birth,
+                    'join_date'=>$request->join_date,
+                    'join_month'=>$month,
+                    'address'=>$request->address,
+                    'city'=>$request->city,
+                    'township'=>$request->township,
+                    'qualification'=>$request->qualification,
+                    'salary'=>$request->salary,
+                    'photo'=>$photos,
+                    'race'=>$request->race,
+                    'religion'=>$request->religion,
+                    'email'=>$request->email,
+                    'fPhone'=>$request->pPhone,
+                    'experience'=>$request->experience,
+                    'exp_salary'=>$request->salary,
+                    'hostel'=>$request->isHostel,
+                    'address'=>$request->address,
+                    'phone'=>$request->phone,
+                    'signature'=>$request->signed,
+                    // 'photo'=>$photo,
+                    'city'=>$request->city,
+                    'township'=>$request->township,
+                    'graduation'=>$request->graduation,
+                    'degree'=>$degree_photo,
+                    'level'=>$request->level,
+                    'course_title'=>$request->course_title,
+                    'exp_company'=>$request->exp_company,
+                    'exp_position'=>$request->exp_position,
+                    'exp_location'=>$request->exp_location,
+                    'exp_date_from'=>$request->exp_date_from,
+                    'exp_date_to'=>$request->exp_date_to,
+                    'skills'=>$request->skills,
+                    'proficiency'=>$request->proficiency,
+                    'police_reco'=>$police_reco_photo,
+                    'ward_reco'=>$ward_reco_photo,
+                    'cvfile'=>$cvfile_photo,
+                    'otherfile'=> $otherfile_photo,
+                    'hostel_location'=>$request->hostel_location,
+                    'room_no'=>$request->room_no,
+                    'home_no'=>$request->home_no,
+                    'hostel_sdate'=>$request->hostel_sdate,
+                    'employment_type'=>$request->employment_type,
+                    
+
+                ]);
          }
                    
                     // dd($hostelemployee->emp_id);

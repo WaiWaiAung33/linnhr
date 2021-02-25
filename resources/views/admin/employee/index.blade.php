@@ -276,7 +276,7 @@
                             </td>
                             @else
                             <td>
-                             <img src="{{ asset('uploads/employeePhoto/'.$employee->photo) }}" alt="photo" width="80px" height="80px">
+                             <img src="{{ asset('uploads/employeePhoto/'.$employee->photo)}}" alt="photo" width="80px" height="80px">
                              </td>
                              @endif
                             <td>{{$employee->name}}</td>

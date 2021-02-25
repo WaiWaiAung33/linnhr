@@ -213,7 +213,7 @@
                                 </div>
 
                                 <div class="col-md-8 ">
-                                    <input type="file" name="photo" class="form-control unicode" value="{{$employees->photo}}">
+                                    <input type="file" name="photo" class="form-control unicode">
                                 </div>
                             </div>
                         </div>
