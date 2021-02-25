@@ -117,7 +117,7 @@
                                 
                                  <select class="form-control" name="nrc_state" id="state_id">
                                     <option value="">-</option>
-                                   <!--  @foreach ($departments as $department )
+                                  <!--   @foreach ($departments as $department )
                                       <option  value="{{$department->id}}">{{$department->name}}</option>
                                     @endforeach -->
                                 </select>   
@@ -220,7 +220,9 @@
                                 </div>
 
                                 <div class="col-md-8 ">
-                                    <input type="file" name="photo" class="form-control unicode">
+                                    <!-- <input type="file" name="photo" class="form-control unicode" onchange="PreviewImage();"> -->
+                                    <input type='file' id="imgInp" name="photo" class="form-control unicode"/>
+                                    <img id="blah" src="#" alt="your image" width="100" height="100" />
                                 </div>
                             </div>
                         </div>
@@ -653,14 +655,14 @@
                                 </div>
                                 <!-- <label class="col-md-3 unicode" id="assign_label" style="text-align: right;">Assign Date</label> -->
                                 <div class="col-md-8">
-                                     <select class="livesearch form-control" name="department"></select>
+                                    <!--  <select class="form-control" name="department"></select> -->
 
-                                    <!--  <select class="form-control" name="department" id="department"> -->
-                                       <!--  <option value="">Department</option>
+                                     <select class="form-control" name="department" id="department">
+                                        <option value="">Department</option>
                                         @foreach ($departments as $department )
                                           <option  value="{{$department->id}}">{{$department->name}}</option>
                                         @endforeach
-                                    </select>    -->
+                                    </select>   
                                 </div>
                             </div>
                         </div>
@@ -693,13 +695,13 @@
                                 </div>
                                 <!-- <label class="col-md-3 unicode" id="appointment_label" style="text-align: right;">Appoint Date</label> -->
                                 <div class="col-md-8">
-                                    <select class="livesearchrank form-control" name="position"></select>
-                                     <!--  <select class="form-control" name="position" id="rank">
+                                    <!-- <select class="form-control" name="position"></select> -->
+                                      <select class="form-control" name="position" id="rank">
                                         <option value="">Rank</option>
                                         @foreach ($positions as $position )
                                           <option  value="{{$position->id}}">{{$position->name}}</option>
                                         @endforeach
-                                    </select>   --> 
+                                    </select>   
                                 </div>
                             </div>
                         </div>
@@ -1307,8 +1309,44 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
 <script src="{{ asset('js/bootstrap-datepicker.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('select2/js/select2.min.js') }}"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
     <script type="text/javascript">
+
+       function readURL(input) {
+          if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            
+            reader.onload = function(e) {
+              $('#blah').attr('src', e.target.result);
+            }
+            
+            reader.readAsDataURL(input.files[0]); // convert to base64 string
+          }
+        }
+
+        $("#imgInp").change(function() {
+          readURL(this);
+        }); 
+
+        $(function(){
+               $("#workexp_next").click(function(){
+                // alert("hello");
+                 
+                  
+                        $.ajax({
+                        type: "GET",
+                        dataType: "json",
+                        url: "<?php echo route('change-status-employeeid') ?>",
+                        // data: {'emp_id': is_employee},
+                        success: function(data){
+                            $("#emp_id").val(data);
+                            console.log(data);
+                        }
+                         });
+                });
+            });    
+
         $(document).ready(function(){
 
              $("select[name='home_no']").change(function() {
@@ -1328,7 +1366,7 @@
                 });
             });
 
-                $(function(){
+            $(function(){
                $("select[name='home_no']").change(function(){
                   var is_employee = $(this).find(':selected').val();
                   
@@ -1345,22 +1383,7 @@
                 });
             });
 
-                $(function(){
-               $("#workexp_next").click(function(){
-                  var is_employee = $(this).find(':selected').val();
-                  
-                        $.ajax({
-                        type: "GET",
-                        dataType: "json",
-                        url: "<?php echo route('change-status-employeeid') ?>",
-                        // data: {'emp_id': is_employee},
-                        success: function(data){
-                            $("#emp_id").val(data);
-                            console.log(data);
-                        }
-                         });
-                });
-            });
+                
 
             var ss = $('input[name="isHostel"]:checked').val();
                 if (ss == "No") {
