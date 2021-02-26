@@ -312,7 +312,7 @@
 
           
           </table>
-
+          {!! $salarys->appends(request()->input())->links() !!}
         </div>
 
 
@@ -390,6 +390,7 @@
                
             </tbody>
          </table>
+      
          </div>
 
           <div class="table-responsive" id="education_table">

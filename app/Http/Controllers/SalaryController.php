@@ -178,8 +178,9 @@ class SalaryController extends Controller
         }
         $employees = Employee::find($id);
         $count = $salarys->count();
+        $salarys = Salary::paginate(10);
        
-        return view('admin.salary.show',compact('employees','salarys','count'));
+        return view('admin.salary.show',compact('employees','salarys','count'))->with('i', (request()->input('page', 1) - 1) * 10);;
     }
 
     /**
