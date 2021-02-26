@@ -117,6 +117,14 @@ class EmployeeController extends Controller
 
             $employees = $employees->whereBetween('join_date',[$to, $from]);
         }
+
+        if($request->new_emp ==1){
+            $dateS = Carbon::now()->startOfMonth()->subMonth(3);
+            $dateE = Carbon::now()->startOfMonth(); 
+            $employees = $employees->whereBetween('join_date',[$dateS,$dateE]);
+        } 
+        
+
         $count = $employees->get()->count();
         $employees = $employees->orderBy('emp_id','asc')->paginate(10);
     
