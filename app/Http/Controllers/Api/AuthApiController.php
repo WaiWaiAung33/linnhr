@@ -26,7 +26,15 @@ class AuthApiController extends Controller
              $accessToken = auth()->user()->createToken('authToken')->accessToken;
              $user = auth()->user();
              $user->user_role = $user->roles[0]->name;
-             // dd($user->roles->pluck('name'));
+             $employee = Employee::where('user_id',auth()->user()->id)->get();
+            if (count($employee)>0) {
+                if ($employee[0]->active == 0) {
+                    return response(['message'=>"Employee is inactive",'status'=>1]);
+                }else{
+                    $user->emp_id = $employee[0]->id;
+                }
+            }
+                
              return response(['user' => $user,'accessToken'=>$accessToken,'message'=>"Successfully login",'status'=>1]);
         } 
     }
