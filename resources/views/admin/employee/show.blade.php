@@ -255,11 +255,11 @@
 
             <thead>
               <tr>
-                <th style="text-align: center;">Year</th>
-                <th style="text-align: center;">Month</th>
-                <th style="text-align: center;">Salary</th>
-                <th style="text-align: center;">Bonus</th>
-                <th style="text-align: center;">Total</th>
+                <th>Year</th>
+                <th>Month</th>
+                <th >Salary</th>
+                <th style="width: 250px">Bonus</th>
+                <th>Total</th>
                 <!-- <th>Action</th> -->
               </tr>
             </thead>
@@ -270,9 +270,9 @@
               <tr>
                 <td>{{$salary->year}}</td>
                 <td>{{$salary->pay_date}}</td>
-                <td style="text-align: right;">{{number_format($salary->salary_amt)}}</td>
-                <td style="text-align: right;">{{number_format($salary->bonus)}}</td>
-                <td style="text-align: right;">{{number_format($salary->month_total)}}</td>
+                <td>{{number_format($salary->salary_amt)}}</td>
+                <td>{{number_format($salary->bonus)}}</td>
+                <td>{{number_format($salary->month_total)}}</td>
                 <?php
                   $salary_total+= $salary->salary_amt;
                   $bonus_total+= $salary->bonus;
@@ -293,14 +293,14 @@
               @endforeach
               @endif
                <tr style=" background-color: #c7d4dd;">
-                <td colspan="2">Grand Total</td>
-                <td style="text-align: right;">{{number_format($salary_total)}}</td>
-                <td style="text-align: right;">{{number_format($bonus_total)}}</td>
+                <td colspan="2">Month Total</td>
+                <td>{{number_format($salary_total)}}</td>
+                <td>{{number_format($bonus_total)}}</td>
                 <?php
                 $total = 0;
                 $total = $salary_total + $bonus_total;
                 ?>
-                <td colspan="2" style="text-align: right;">{{number_format($total)}}</td>
+                <td colspan="2">{{number_format($total)}}</td>
               </tr>
             </tbody>
 
@@ -460,16 +460,55 @@
             </thead>
             <tbody>
                 <tr>
-                    <td><a href="{{ url('uploads/attachfile/'.$employees->cvfile) }}" target="_blank">{{$employees->cvfile}}</a><span style="padding-left: 165px">   
+                    <td class="row">
+                      <span class="col-md-6">
+                      @if($employees->cvfile == '')
+                      <p>No File</p>
+                      @else
+                      <a href="{{ url('uploads/attachfile/'.$employees->cvfile) }}" target="_blank">{{$employees->cvfile}}</a>
+                      @endif 
+                      </span> 
 
+                      <span class="col-md-6">
+                      @if($employees->ward_reco == '')
+                      <p>No Ward recommendation</p>
+                      @else
+                       <p>Ward recommendation</p>
                        <img src="{{asset('uploads/wardrecoPhoto/'.$employees->ward_reco) }}" alt="photo" width="130px" height="130px">
-                     </span></td>
+                       @endif
+                       </span>
+                     </td>
                      </tr>
                      <tr>
-                       <td style="width: 100%"> <span ><img src="{{ asset('uploads/policestationrecomPhoto/'.$employees->police_reco) }}" alt="photo" width="130px" height="130px"></span> <span style="padding-left: 100px">   
 
-                       <img src="{{ asset('uploads/attachfile/'.$employees->otherfile) }}" alt="photo" width="130px" height="130px">
-                     </span></td>
+                       <td class="row"> 
+                        <span class="col-md-6" >
+                          @if($employees->police_reco == '')
+                          <p>No police recommendation</p>
+                          @else
+                          <div>
+                          <p>Police recommendation</p>
+                          <img src="{{ asset('uploads/policestationrecomPhoto/'.$employees->police_reco) }}" alt="photo" width="130px" height="130px">
+                          </div>
+                          @endif
+                        </span>
+                         
+                         <span class="col-md-6">
+                          @if($employees->otherfile == '')
+                         
+                          <p>No otherfile</p>
+                        
+                          @else
+                          
+                          <div>
+                          <p>Otherfile</p>
+                           <img src="{{ asset('uploads/attachfile/'.$employees->otherfile) }}" alt="photo" width="130px" height="130px">
+                           </div>
+                           </span>
+                          
+                         @endif
+                       
+                   </td>
                     </tr>
                
                
