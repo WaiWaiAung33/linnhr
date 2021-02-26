@@ -3,9 +3,7 @@
 @section('title', 'Hostel')
 
 @section('content_header')
-<link id="bsdp-css" href="https://unpkg.com/bootstrap-datepicker@1.9.0/dist/css/bootstrap-datepicker3.min.css" rel="stylesheet">
-
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+<script src="{{ asset('js/jquery-3.4.1.slim.min.js')}}"></script>
 <style type="text/css">
     .select2-container .select2-selection--single {
     box-sizing: border-box;
@@ -109,12 +107,13 @@
 
 @section('css')
 <link rel="stylesheet" href="{{ asset('select2/css/select2.min.css') }}"/>
+<link id="bsdp-css" href="{{ asset('/css/bootstrap-datepicker3.min.css') }}" rel="stylesheet">
 @stop
 
 @section('js')
 <script type="text/javascript" src="{{ asset('select2/js/select2.min.js') }}"></script>
 <script src="{{ asset('jquery-ui.js') }}"></script>
-<script src="https://unpkg.com/bootstrap-datepicker@1.9.0/dist/js/bootstrap-datepicker.min.js"></script>
+<script src="{{ asset('js/bootstrap-datepicker.min.js') }}"></script>
 <script type="text/javascript">
      $(document).ready(function(){
 
