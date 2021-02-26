@@ -383,10 +383,10 @@ play the specified resource.
         }
         // dd($salarys);
         $salary_count = $salarys->get()->count();
-        $salarys = $salarys->orderBy('created_at','asc')->paginate(10);
+        $salarys = $salarys->orderBy('created_at','asc')->paginate(12);
         // $salarys = Salary::paginate(10);
         $employees = Employee::find($id);
-        return view('admin.employee.show',compact('branchs','departments','positions','employees','nrccodes','nrcstates','salarys','salary_count'))->with('i', (request()->input('page', 1) - 1) * 10);
+        return view('admin.employee.show',compact('branchs','departments','positions','employees','nrccodes','nrcstates','salarys','salary_count'))->with('i', (request()->input('page', 1) - 1) * 12);
     }
 
     /**

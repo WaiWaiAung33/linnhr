@@ -255,11 +255,11 @@
 
             <thead>
               <tr>
-                <th>Year</th>
-                <th>Month</th>
-                <th >Salary</th>
-                <th style="width: 250px">Bonus</th>
-                <th>Total</th>
+                <th style="text-align: center;">Year</th>
+                <th style="text-align: center;">Month</th>
+                <th style="text-align: center;">Salary</th>
+                <th style="text-align: center;">Bonus</th>
+                <th style="text-align: center;">Total</th>
                 <!-- <th>Action</th> -->
               </tr>
             </thead>
@@ -270,9 +270,9 @@
               <tr>
                 <td>{{$salary->year}}</td>
                 <td>{{$salary->pay_date}}</td>
-                <td>{{number_format($salary->salary_amt)}}</td>
-                <td>{{number_format($salary->bonus)}}</td>
-                <td>{{number_format($salary->month_total)}}</td>
+                <td style="text-align: right;">{{number_format($salary->salary_amt)}}</td>
+                <td style="text-align: right;">{{number_format($salary->bonus)}}</td>
+                <td style="text-align: right;">{{number_format($salary->month_total)}}</td>
                 <?php
                   $salary_total+= $salary->salary_amt;
                   $bonus_total+= $salary->bonus;
@@ -293,14 +293,14 @@
               @endforeach
               @endif
                <tr style=" background-color: #c7d4dd;">
-                <td colspan="2">Month Total</td>
-                <td>{{number_format($salary_total)}}</td>
-                <td>{{number_format($bonus_total)}}</td>
+                <td colspan="2">Grand Total</td>
+                <td style="text-align: right;">{{number_format($salary_total)}}</td>
+                <td style="text-align: right;">{{number_format($bonus_total)}}</td>
                 <?php
                 $total = 0;
                 $total = $salary_total + $bonus_total;
                 ?>
-                <td colspan="2">{{number_format($total)}}</td>
+                <td colspan="2" style="text-align: right;">{{number_format($total)}}</td>
               </tr>
             </tbody>
 
