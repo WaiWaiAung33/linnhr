@@ -40,7 +40,7 @@
   $age_to = isset($_GET['age_to'])?$_GET['age_to']:'';
 
   $active = isset($_GET['active'])?$_GET['active']:'';
-  $new_emp = isset($_GET['new_emp'])?$_GET['new_emp']:'';
+  $emp_type = isset($_GET['emp_type'])?$_GET['emp_type']:'';
   
   ?>
 
@@ -206,10 +206,13 @@
                     <div class="row">
                          <div class="col-md-3">
                              <label for="">Employement Status</label>
-                            <select class="form-control" id="active" name="active" style="font-size: 13px">
+                            <select class="form-control" id="emp_type" name="emp_type" style="font-size: 13px">
                               <option value="">All</option>  
-                              <option value="1" {{ (old('hostel',$hostel)=="1")?'selected':'' }}>Active</option>
-                              <option value="0" {{ (old('hostel',$hostel)=="0")?'selected':'' }}>Inactive</option>
+                              <option value="1" {{ (old('emp_type',$emp_type)=="1")?'selected':'' }}>New</option>
+                              <option value="2" {{ (old('emp_type',$emp_type)=="2")?'selected':'' }}>Rejoin</option>
+                              <option value="3" {{ (old('emp_type',$emp_type)=="3")?'selected':'' }}>On Join Training</option>
+                              <option value="4" {{ (old('emp_type',$emp_type)=="4")?'selected':'' }}>Probation</option>
+                              <option value="5" {{ (old('emp_type',$emp_type)=="5")?'selected':'' }}>Permanent</option>
                              </select>
                         </div>
                     </div>

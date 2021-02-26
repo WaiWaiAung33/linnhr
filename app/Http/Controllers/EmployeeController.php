@@ -34,9 +34,6 @@ class EmployeeController extends Controller
      */
     public function index(Request $request)
     {
-     
-        // dd($request->join_month);
-
         $join_date = date('Y-m-d',strtotime($request->join_date));
         $join_month = date('Y-m-d',strtotime($request->join_month));
         // dd($join_date);
@@ -123,7 +120,10 @@ class EmployeeController extends Controller
             $dateE = Carbon::now()->startOfMonth(); 
             $employees = $employees->whereBetween('join_date',[$dateS,$dateE]);
         } 
-        
+
+        if($request->emp_type !=''){
+            $employees = $employees->where('employment_type',$request->emp_type);
+        } 
 
         $count = $employees->get()->count();
         $employees = $employees->orderBy('emp_id','asc')->paginate(10);
@@ -144,7 +144,7 @@ class EmployeeController extends Controller
         $nrcstates = NRCState::all();
         $positions= Position::all();
         $hostels = Hostel::all();
-       $rooms = Room::all();
+        $rooms = Room::all();
         return view('admin.employee.create',compact('branchs','departments','positions','nrccodes','nrcstates','hostels','rooms'));
     }
 
