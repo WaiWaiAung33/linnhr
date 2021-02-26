@@ -95,7 +95,7 @@ class SalaryController extends Controller
         }elseif ($date == '07') {
             $dates = "July";
         }elseif ($date == '08') {
-            $dates = "Augest";
+            $dates = "August";
         }elseif ($date == '09') {
             $dates = "September";
         }elseif ($date == '10') {

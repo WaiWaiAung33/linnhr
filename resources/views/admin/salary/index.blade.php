@@ -111,7 +111,7 @@
         <th colspan="2">May</th>
         <th colspan="2">June</th>
         <th colspan="2">July</th>
-        <th colspan="2">Augest</th>
+        <th colspan="2">August</th>
         <th colspan="2">September</th>
         <th colspan="2">October</th>
         <th colspan="2">November</th>
@@ -389,13 +389,13 @@
         <td><p style="font-weight: bold">Salary</p>
            @foreach($employee->viewSalary as $salary)
            @if($year != "")
-                 @if($salary->pay_date == "Augest" && $salary->year == $year)
+                 @if($salary->pay_date == "August" && $salary->year == $year)
                   {{
                    number_format($salary->salary_amt)
                   }}
                 @endif
           @else
-                 @if($salary->pay_date == "Augest" && $salary->year == $now_year)
+                 @if($salary->pay_date == "August" && $salary->year == $now_year)
                   {{
                    number_format($salary->salary_amt)
                   }}
@@ -406,13 +406,13 @@
         <td><p style="font-weight: bold;">Bonus</p>
           @foreach($employee->viewSalary as $salary)
            @if($year != "")
-                 @if($salary->pay_date == "Augest" && $salary->year == $year)
+                 @if($salary->pay_date == "August" && $salary->year == $year)
                   {{
                    number_format($salary->bonus)
                   }}
                 @endif
           @else
-                 @if($salary->pay_date == "Augest" && $salary->year == $now_year)
+                 @if($salary->pay_date == "August" && $salary->year == $now_year)
                   {{
                    number_format($salary->bonus)
                   }}
