@@ -40,7 +40,7 @@ class TimeInApiController extends Controller
                                     );
                     if ($request->date != '') {
                         $date = date('Y-m-d', strtotime($request->date));
-                        $new_ticket = $new_ticket->whereBetween('attendances.date',$date)->orwhere('attendances.out_date',$date);
+                        $attendances = $attendances->whereBetween('attendances.date',$date)->orwhere('attendances.out_date',$date);
                     }
                     if ($request->keyword != '') {
                         $attendances = $attendances->where('employee.name','like','%'.$request->keyword.'%');
@@ -53,10 +53,10 @@ class TimeInApiController extends Controller
                     }
                     if ($request->emp_id != null) {
                         $attendances = $attendances->where('attendances.emp_id',$request->emp_id);
-                        $attendances = $attendances->orderBy('tickets.id','desc')->limit(10)->paginate(10);
+                        $attendances = $attendances->orderBy('attendances.id','desc')->limit(10)->paginate(10);
                         
                     }else{
-                        $attendances = $attendances->orderBy('tickets.id','desc')->limit(10)->paginate(10);
+                        $attendances = $attendances->orderBy('attendances.id','desc')->limit(10)->paginate(10);
                     }
                     
                     return response(['message'=>"Success",'status'=>1,'attendances'=>$attendances]);
@@ -76,7 +76,7 @@ class TimeInApiController extends Controller
                                     );
                     if ($request->date != '') {
                         $date = date('Y-m-d', strtotime($request->date));
-                        $new_ticket = $new_ticket->whereBetween('attendances.date',$date)->orwhere('attendances.out_date',$date);
+                        $attendances = $attendances->whereBetween('attendances.date',$date)->orwhere('attendances.out_date',$date);
                     }
                     if ($request->keyword != '') {
                         $attendances = $attendances->where('employee.name','like','%'.$request->keyword.'%');
@@ -89,10 +89,10 @@ class TimeInApiController extends Controller
                     }
                     if ($request->emp_id != null) {
                         $attendances = $attendances->where('attendances.emp_id',$request->emp_id);
-                        $attendances = $attendances->orderBy('tickets.id','desc')->get();
+                        $attendances = $attendances->orderBy('attendances.id','desc')->get();
                         
                     }else{
-                        $attendances = $attendances->orderBy('tickets.id','desc')->get();
+                        $attendances = $attendances->orderBy('attendances.id','desc')->get();
                     }
                     
                     return response(['message'=>"Success",'status'=>1,'attendances'=>$attendances]);
