@@ -140,7 +140,7 @@ class TimeInApiController extends Controller
             $messages = $validator->messages();
                return response()->json(['message'=>"Emp_id is null",'status'=>0]);
         }else{
-            $attendance = DB::table('attendances')->where('emp_id',$request->emp_id)->get()->first();
+            $attendance = DB::table('attendances')->where('emp_id',$request->emp_id)->get()->latest();
             // dd($attendance->id);
             if ($attendance != null) {
                 if ($attendance->clock_out != null) {
