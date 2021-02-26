@@ -742,7 +742,7 @@
                                     <h6 style="font-weight:bold;font-size:13px;">Hostel Name</h6>
                                 </div>
                                 <div class="col-md-9">
-                                     <select class="form-control" name="home_no" style="font-size: 13px">
+                                     <select class="form-control" name="home_no" style="font-size: 13px" >
                                         <option value="">select hostel</option>
                                         @foreach ($hostels as $hostel )
                                           <option  value="{{$hostel->id}}">{{$hostel->name}}</option>
@@ -987,7 +987,7 @@
 
 
     @section('css')
-    <link id="bsdp-css" href="{{ asset('css/bootstrap-datepicker3.min.css') }}" rel="stylesheet">
+   <link id="bsdp-css" href="{{ asset('/css/bootstrap-datepicker3.min.css') }}" rel="stylesheet">
 
     <link rel="stylesheet" href="{{ asset('select2/css/select2.min.css') }}"/>
     <style>
@@ -1304,12 +1304,13 @@
 
 
 
-    @section('js')
+@section('js')
 <script src="{{ asset('frontend/vendors/jquery/jquery-3.2.1.min.js')}}"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+<script src="{{ asset('js/ajax.2.18.1') }}"></script>
 <script src="{{ asset('js/bootstrap-datepicker.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('select2/js/select2.min.js') }}"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="{{asset('js/jquery.2.1.1.min')}}"></script>
+<script src="{{ asset('js/bootstrap-datepicker.js') }}"></script>
 
     <script type="text/javascript">
 
@@ -1350,6 +1351,7 @@
         $(document).ready(function(){
 
              $("select[name='home_no']").change(function() {
+                // alert("hhi");
                 var room_id = $(this).val();
                 var token = $("input[name='_token']").val();
                 $.ajax({
@@ -1360,14 +1362,14 @@
                         room_id: room_id,
                         _token: token
                     },
-                    success: function(data) {
-                        $("select[name='room_no']").html(data);
-                    }
+                        success: function(data) {
+                            $("select[name='room_no']").html(data);
+                        }
+                    });
                 });
-            });
 
-            $(function(){
-               $("select[name='home_no']").change(function(){
+            $("select[name='home_no']").change(function(){
+                 // alert("hello");
                   var is_employee = $(this).find(':selected').val();
                   
                      $.ajax({
@@ -1380,10 +1382,7 @@
                                 console.log(data.full_address);
                             }
                         });
-                });
             });
-
-                
 
             var ss = $('input[name="isHostel"]:checked').val();
                 if (ss == "No") {
@@ -1608,6 +1607,8 @@
             }
         });
         });
+
+       
 
          
 
