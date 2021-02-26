@@ -32,6 +32,7 @@ class AuthApiController extends Controller
                     return response(['message'=>"Employee is inactive",'status'=>1]);
                 }else{
                     $user->emp_id = $employee[0]->id;
+                    $user->emp_photo = $employee[0]->photo;
                 }
             }
                 
