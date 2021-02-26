@@ -74,7 +74,7 @@ class SalaryImport implements ToCollection,WithHeadingRow
                         if($row['month'] == '1'){
                             $dates = "January";
                         }elseif ($row['month'] == '2') {
-                            $dates = "Febuary";
+                            $dates = "February";
                         }elseif ($row['month'] == '3') {
                             $dates = "March";
                         }elseif ($row['month'] == '4') {

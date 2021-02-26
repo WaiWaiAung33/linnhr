@@ -83,7 +83,7 @@ class SalaryController extends Controller
         if($date == '01'){
             $dates = "January";
         }elseif ($date == '02') {
-            $dates = "Febuary";
+            $dates = "February";
         }elseif ($date == '03') {
             $dates = "March";
         }elseif ($date == '04') {
@@ -166,10 +166,14 @@ class SalaryController extends Controller
      */
     public function show(Request $request,$id)
     {
-        // dd($request->year);
+        // dd($request->month);
         $salarys = Salary::all();
         if ($request->year != '') {
             $salarys = $salarys->where('year',$request->year);
+            // dd($salarys);
+        }
+        if ($request->month != '') {
+            $salarys = $salarys->where('pay_date',$request->month);
             // dd($salarys);
         }
         $employees = Employee::find($id);

@@ -105,7 +105,7 @@
 				<th>No</th>
 				<th>Photo</th>
         <th colspan="2">January</th>
-        <th colspan="2">Febuary</th>
+        <th colspan="2">February</th>
         <th colspan="2">March</th>
         <th colspan="2">April</th>
         <th colspan="2">May</th>
@@ -179,13 +179,13 @@
         <td> <p style="font-weight: bold">Salary</p>
           @foreach($employee->viewSalary as $salary)
            @if($year != "")
-                 @if($salary->pay_date == "Febuary" && $salary->year == $year)
+                 @if($salary->pay_date == "February" && $salary->year == $year)
                   {{
                    number_format($salary->salary_amt)
                   }}
                 @endif
             @else
-                 @if($salary->pay_date == "Febuary" && $salary->year == $now_year)
+                 @if($salary->pay_date == "February" && $salary->year == $now_year)
                   {{
                    number_format($salary->salary_amt)
                   }}
@@ -196,13 +196,13 @@
         <td><p style="font-weight: bold;">Bonus</p>
            @foreach($employee->viewSalary as $salary)
             @if($year != "")
-                 @if($salary->pay_date == "Febuary" && $salary->year == $year)
+                 @if($salary->pay_date == "February" && $salary->year == $year)
                   {{
                    number_format($salary->bonus)
                   }}
                 @endif
             @else
-                 @if($salary->pay_date == "Febuary" && $salary->year == $now_year)
+                 @if($salary->pay_date == "February" && $salary->year == $now_year)
                   {{
                    number_format($salary->bonus)
                   }}

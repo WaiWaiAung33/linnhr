@@ -15,6 +15,7 @@
            
  <?php
   $year = isset($_GET['year'])?$_GET['year']:''; 
+  $month = isset($_GET['month'])?$_GET['month']:''; 
   // dd($year);
   ?>
 
@@ -33,6 +34,11 @@
              <label for="">Payment year</label>
              <input type="text" name="year" id="year"class="form-control unicode" placeholder="2021" value="{{ old('year',$year) }}">
           </div>
+          <div class="col-md-2">
+             <label for="">Payment Month</label>
+             <input type="text" name="month" id="month"class="form-control unicode" placeholder="2021" value="{{ old('month',$month) }}">
+          </div>
+          
         </div>
       </div>
     </div>
@@ -62,7 +68,7 @@
 				<th >Salary</th>
 				<th style="width: 250px">Bonus</th>
         <th>Total</th>
-        <th>Action</th>
+        <!-- <th>Action</th> -->
 			</tr>
 		</thead>
     <tbody>
@@ -79,14 +85,14 @@
           $bonus_total+= $salary->bonus;
         ?>
         
-           <td>
+          <!--  <td>
                   <form action="{{route('salary.destroy',$salary->id)}}" method="POST" onsubmit="return confirm('Do you really want to delete?');">
                     @csrf
                     @method('DELETE')
                     <a class="btn btn-sm btn-primary" href="{{route('salary.edit',$salary->id)}}" ><i class="fa fa-fw fa-edit" style="padding-top: 5px;padding-bottom: 5px;padding-left: 2px;padding-right: 5px"/></i></a> 
                      <button type="submit" class="btn btn-sm btn-danger" style="margin-left: 10px"><i class="fa fa-fw fa-trash" /></i></button> 
                    </form>
-                </td>
+                </td> -->
        
       </tr>
      
@@ -128,13 +134,25 @@
      $("#year").datepicker({  format: "yyyy",
     viewMode: "years", 
     minViewMode: "years" });
+
+      $("#month").datepicker({  format: "MM",
+            viewMode: "months", 
+            minViewMode: "months" });
        
    });
+
+
    $(function() {
      $('#year').on('change',function(e) {
         this.form.submit();
                // $( "#form_id" )[0].submit();   
       });
+
+     $('#month').on('change',function(e) {
+        this.form.submit();
+               // $( "#form_id" )[0].submit();   
+      });
+
    });
 });
  </script>
