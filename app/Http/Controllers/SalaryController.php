@@ -166,19 +166,16 @@ class SalaryController extends Controller
      */
     public function show(Request $request,$id)
     {
-        // dd($request->month);
-        $salarys = Salary::all();
+        $salarys =new Salary();
         if ($request->year != '') {
             $salarys = $salarys->where('year',$request->year);
-            // dd($salarys);
         }
         if ($request->month != '') {
             $salarys = $salarys->where('pay_date',$request->month);
-            // dd($salarys);
         }
         $employees = Employee::find($id);
         $count = $salarys->count();
-        $salarys = Salary::paginate(12);
+        $salarys = $salarys->paginate(12);
        
         return view('admin.salary.show',compact('employees','salarys','count'))->with('i', (request()->input('page', 1) - 1) * 10);;
     }

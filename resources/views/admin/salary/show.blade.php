@@ -22,7 +22,6 @@
  <?php
   $year = isset($_GET['year'])?$_GET['year']:''; 
   $month = isset($_GET['month'])?$_GET['month']:''; 
-  // dd($year);
   ?>
 
   <div class="row">
@@ -49,7 +48,7 @@
              <label for="">Payment year</label>
              <input type="text" name="year" id="year"class="form-control unicode" placeholder="2021" value="{{ old('year',$year) }}">
           </div>
-         {{--  <div class="col-md-2">
+{{--           <div class="col-md-2">
              <label for="">Payment Month</label>
              <input type="text" name="month" id="month"class="form-control unicode" placeholder="2021" value="{{ old('month',$month) }}">
           </div> --}}
@@ -105,7 +104,7 @@
       @endif
       @endforeach
        <tr style=" background-color: #c7d4dd;">
-        <td colspan="2">Month Total</td>
+        <td colspan="2">Grand Total</td>
         <td>{{number_format($salary_total)}}</td>
         <td>{{number_format($bonus_total)}}</td>
         <?php
