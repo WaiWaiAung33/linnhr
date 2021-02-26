@@ -3,9 +3,8 @@
 @section('title', 'Hostel')
 
 @section('content_header')
+<script src="{{ asset('js/jquery-3.4.1.slim.min.js')}}"></script>
 <link id="bsdp-css" href="https://unpkg.com/bootstrap-datepicker@1.9.0/dist/css/bootstrap-datepicker3.min.css" rel="stylesheet">
-
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
 <style type="text/css">
     .select2-container .select2-selection--single {
     box-sizing: border-box;
