@@ -51,8 +51,8 @@
                   <thead>
                     <tr> 
                       <th>No</th>
+                       <th>Image</th>
                         <th>Employee Name</th>
-                        <th>Image</th>
                         <th>Branch</th>
                         <th>Department</th>
                         <th>Position</th>
@@ -70,7 +70,7 @@
 
                         <tr class="table-tr" data-url="{{route('attendance.show',$attendance->id)}}">
                           <td>{{++$i}}</td>
-                            <td>{{$attendance->name}}</td>
+                           
                             @if($attendance->photo == '')
                             <td>
                             <img src="{{ asset('uploads/employeePhoto/default.png') }}" alt="photo" width="80px" height="80px">
@@ -80,6 +80,7 @@
                              <img src="{{ asset('uploads/employeePhoto/'.$attendance->photo) }}" alt="photo" width="80px" height="80px">
                              </td>
                              @endif
+                              <td>{{$attendance->name}}</td>
                             <td>{{$attendance->branch_name}}</td> 
                             <td>{{$attendance->dept_name}}</td>
                             <td>{{$attendance->position_name}}</td>

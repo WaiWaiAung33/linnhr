@@ -70,8 +70,9 @@ class EmployeeController extends Controller
         // if ($join_date != '1970-01-01') {
         //      $employees = $employees->where('join_date',$join_date);
         // }
+        // 
 
-         if ($request->join_date != '' && $request->join_month != '') {
+        if ($request->join_date != '' && $request->join_month != '') {
             $startDate =  date('Y-m-d', strtotime($request->join_date));
             $endDate = date('Y-m-d', strtotime($request->join_month));
             $employees = Employee::whereBetween('employee.join_date',[$startDate,$endDate]);
@@ -85,8 +86,7 @@ class EmployeeController extends Controller
 
         
    
-        if ($request->age_from!= '' || $request->age_to!='') {
-
+        if ($request->age_from!= '' && $request->age_to!='') {
             $age_start= $request->age_from;
             $age_end = $request->age_to;
             if (is_null($age_end)) {
@@ -96,6 +96,20 @@ class EmployeeController extends Controller
             $age_end = date('Y-m-d', strtotime('-'.$age_end.' years'));
             $employees = $employees->whereBetween('date_of_birth',[$age_end,$age_start]);
 
+        }
+
+
+        if ($request->age_from!= '' &&  $request->age_to =="") {
+            $age_start= $request->age_from;
+            $age_start = date('Y-m-d', strtotime('-'.$age_start.' years'));
+            $employees = $employees->whereDate('date_of_birth','<=',$age_start);
+
+        }
+
+        if ($request->age_from == '' && $request->age_to!='') {
+            $age_to= $request->age_to;
+            $age_to = date('Y-m-d', strtotime('-'.$age_to.' years'));
+            $employees = $employees->whereDate('date_of_birth','>=',$age_to);
         }
 
 
@@ -114,6 +128,20 @@ class EmployeeController extends Controller
 
             $employees = $employees->whereBetween('join_date',[$to, $from]);
         }
+
+        if ($request->sy_from!= '' &&  $request->sy_to =="") {
+            $sy_from= $request->sy_from;
+            $sy_from = date('Y-m-d', strtotime('-'.$sy_from.' years'));
+            $employees = $employees->whereDate('join_date','<=',$sy_from);
+
+        }
+
+        if ($request->sy_from == '' && $request->sy_to!='') {
+            $sy_to= $request->sy_to;
+            $sy_to = date('Y-m-d', strtotime('-'.$sy_to.' years'));
+            $employees = $employees->whereDate('join_date','>=',$sy_to);
+        }
+
 
         if($request->new_emp ==1){
             $dateS = Carbon::now()->startOfMonth()->subMonth(3);
@@ -383,10 +411,10 @@ play the specified resource.
         }
         // dd($salarys);
         $salary_count = $salarys->get()->count();
-        $salarys = $salarys->orderBy('created_at','asc')->paginate(10);
+        $salarys = $salarys->orderBy('created_at','asc')->paginate(12);
         // $salarys = Salary::paginate(10);
         $employees = Employee::find($id);
-        return view('admin.employee.show',compact('branchs','departments','positions','employees','nrccodes','nrcstates','salarys','salary_count'))->with('i', (request()->input('page', 1) - 1) * 10);
+        return view('admin.employee.show',compact('branchs','departments','positions','employees','nrccodes','nrcstates','salarys','salary_count'))->with('i', (request()->input('page', 1) - 1) * 12);
     }
 
     /**

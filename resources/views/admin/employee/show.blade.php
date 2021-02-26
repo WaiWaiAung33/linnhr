@@ -348,6 +348,7 @@
                     <td>isHostel<span style="padding-left: 160px">{{$employees->hostel ? $employees->hostel : "-"}}</span></td>
                 </tr>
                 
+                @if($employees->hostel == 'Yes')
                  <tr>
                     <td>Hostel Home<span style="padding-left: 130px">{{$employees->viewHostel ? $employees->viewHostel->name : '-' }} </span></td>
                 </tr>
@@ -360,6 +361,7 @@
                  <tr>
                     <td>Start Date<span style="padding-left: 145px">{{  $employees->hostel_sdate ? $employees->hostel_sdate : "-"}} </span></td>
                 </tr>
+                @endif
                 
                 <tr>
                     <td>Expected Salary<span style="padding-left: 110px">{{$employees->exp_salary ? $employees->exp_salary : "-"}}</span></td>
@@ -460,16 +462,55 @@
             </thead>
             <tbody>
                 <tr>
-                    <td><a href="{{ url('uploads/attachfile/'.$employees->cvfile) }}" target="_blank">{{$employees->cvfile}}</a><span style="padding-left: 165px">   
+                    <td class="row">
+                      <span class="col-md-6">
+                      @if($employees->cvfile == '')
+                      <p>No File</p>
+                      @else
+                      <a href="{{ url('uploads/attachfile/'.$employees->cvfile) }}" target="_blank">{{$employees->cvfile}}</a>
+                      @endif 
+                      </span> 
 
+                      <span class="col-md-6">
+                      @if($employees->ward_reco == '')
+                      <p>No Ward recommendation</p>
+                      @else
+                       <p>Ward recommendation</p>
                        <img src="{{asset('uploads/wardrecoPhoto/'.$employees->ward_reco) }}" alt="photo" width="130px" height="130px">
-                     </span></td>
+                       @endif
+                       </span>
+                     </td>
                      </tr>
                      <tr>
-                       <td style="width: 100%"> <span ><img src="{{ asset('uploads/policestationrecomPhoto/'.$employees->police_reco) }}" alt="photo" width="130px" height="130px"></span> <span style="padding-left: 100px">   
 
-                       <img src="{{ asset('uploads/attachfile/'.$employees->otherfile) }}" alt="photo" width="130px" height="130px">
-                     </span></td>
+                       <td class="row"> 
+                        <span class="col-md-6" >
+                          @if($employees->police_reco == '')
+                          <p>No police recommendation</p>
+                          @else
+                          <div>
+                          <p>Police recommendation</p>
+                          <img src="{{ asset('uploads/policestationrecomPhoto/'.$employees->police_reco) }}" alt="photo" width="130px" height="130px">
+                          </div>
+                          @endif
+                        </span>
+                         
+                         <span class="col-md-6">
+                          @if($employees->otherfile == '')
+                         
+                          <p>No otherfile</p>
+                        
+                          @else
+                          
+                          <div>
+                          <p>Otherfile</p>
+                           <img src="{{ asset('uploads/attachfile/'.$employees->otherfile) }}" alt="photo" width="130px" height="130px">
+                           </div>
+                           </span>
+                          
+                         @endif
+                       
+                   </td>
                     </tr>
                
                
