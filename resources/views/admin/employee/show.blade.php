@@ -348,6 +348,7 @@
                     <td>isHostel<span style="padding-left: 160px">{{$employees->hostel ? $employees->hostel : "-"}}</span></td>
                 </tr>
                 
+                @if($employees->hostel == 'Yes')
                  <tr>
                     <td>Hostel Home<span style="padding-left: 130px">{{$employees->viewHostel ? $employees->viewHostel->name : '-' }} </span></td>
                 </tr>
@@ -360,6 +361,7 @@
                  <tr>
                     <td>Start Date<span style="padding-left: 145px">{{  $employees->hostel_sdate ? $employees->hostel_sdate : "-"}} </span></td>
                 </tr>
+                @endif
                 
                 <tr>
                     <td>Expected Salary<span style="padding-left: 110px">{{$employees->exp_salary ? $employees->exp_salary : "-"}}</span></td>
