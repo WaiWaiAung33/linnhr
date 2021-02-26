@@ -11,6 +11,94 @@ use App\Employee;
 
 class TimeInApiController extends Controller
 {
+    public function attendance_list(Request $request)
+    {
+        $input = $request->all();
+             $rules=[
+                'page'=>'required'
+            ];
+
+            $validator = Validator::make($input, $rules);
+
+             if ($validator->fails()) {
+                $messages = $validator->messages();
+                   return response()->json(['message'=>"Error",'status'=>0]);
+            }else{
+                if ($request->page != 0) {
+                    $attendances = new Attendance();
+                    $attendances = $attendances->leftjoin('employee','employee.id','=','attendances.emp_id')
+                                    ->leftjoin('branch','branch.id','=','employee.branch_id')
+                                    ->leftjoin('department','department.id','=','employee.dep_id')
+                                    ->leftjoin('position','position.id','=','employee.position_id')
+                                    ->select(
+                                        'attendances.*',
+                                        'employee.name',
+                                        'employee.photo',
+                                        'branch.name AS branch_name',
+                                        'department.name AS dept_name',
+                                        'position.name AS position_name'
+                                    );
+                    if ($request->date != '') {
+                        $date = date('Y-m-d', strtotime($request->date));
+                        $new_ticket = $new_ticket->whereBetween('attendances.date',$date)->orwhere('attendances.out_date',$date);
+                    }
+                    if ($request->keyword != '') {
+                        $attendances = $attendances->where('employee.name','like','%'.$request->keyword.'%');
+                    }
+                    if ($request->branch_id != '') {
+                        $attendances = $attendances->where('employee.branch_id',$request->branch_id);
+                    }
+                    if ($request->dept_id != '') {
+                        $attendances = $attendances->where('employee.dep_id',$request->dept_id);
+                    }
+                    if ($request->emp_id != null) {
+                        $attendances = $attendances->where('attendances.emp_id',$request->emp_id);
+                        $attendances = $attendances->orderBy('tickets.id','desc')->limit(10)->paginate(10);
+                        
+                    }else{
+                        $attendances = $attendances->orderBy('tickets.id','desc')->limit(10)->paginate(10);
+                    }
+                    
+                    return response(['message'=>"Success",'status'=>1,'attendances'=>$attendances]);
+                }else{
+                    $attendances = new Attendance();
+                    $attendances = $attendances->leftjoin('employee','employee.id','=','attendances.emp_id')
+                                    ->leftjoin('branch','branch.id','=','employee.branch_id')
+                                    ->leftjoin('department','department.id','=','employee.dep_id')
+                                    ->leftjoin('position','position.id','=','employee.position_id')
+                                    ->select(
+                                        'attendances.*',
+                                        'employee.name',
+                                        'employee.photo',
+                                        'branch.name AS branch_name',
+                                        'department.name AS dept_name',
+                                        'position.name AS position_name'
+                                    );
+                    if ($request->date != '') {
+                        $date = date('Y-m-d', strtotime($request->date));
+                        $new_ticket = $new_ticket->whereBetween('attendances.date',$date)->orwhere('attendances.out_date',$date);
+                    }
+                    if ($request->keyword != '') {
+                        $attendances = $attendances->where('employee.name','like','%'.$request->keyword.'%');
+                    }
+                    if ($request->branch_id != '') {
+                        $attendances = $attendances->where('employee.branch_id',$request->branch_id);
+                    }
+                    if ($request->dept_id != '') {
+                        $attendances = $attendances->where('employee.dep_id',$request->dept_id);
+                    }
+                    if ($request->emp_id != null) {
+                        $attendances = $attendances->where('attendances.emp_id',$request->emp_id);
+                        $attendances = $attendances->orderBy('tickets.id','desc')->get();
+                        
+                    }else{
+                        $attendances = $attendances->orderBy('tickets.id','desc')->get();
+                    }
+                    
+                    return response(['message'=>"Success",'status'=>1,'attendances'=>$attendances]);
+                }
+            }
+    }
 
     public function time_in(Request $request)
     {
