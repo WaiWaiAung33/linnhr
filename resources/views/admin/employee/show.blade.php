@@ -4,6 +4,8 @@
 @section('title', 'Employee')
 
 @section('content_header')
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css" rel="stylesheet"/>
+
 <style type="text/css">
   .active{background-color:green;}
 </style>
@@ -58,6 +60,12 @@
     $bonus_total = 0;
  ?>
 
+  <?php
+  $year = isset($_GET['year'])?$_GET['year']:''; 
+  // $month = isset($_GET['month'])?$_GET['month']:''; 
+  // dd($year);
+  ?>
+
 <div class="row">
     <div class="col-lg-10">
          <a class="btn btn-success unicode" href="{{route('employee.index')}}"> Back</a>
@@ -75,6 +83,21 @@
         </div>
     </div>
 </div><br>
+
+ <form action="{{route('employee.show',$employees->id)}}" method="get" accept-charset="utf-8" class="form-horizontal">
+     <div class="row form-group">
+          <div class="col-md-12">
+          <div class="row payyear">
+          <div class="col-md-2">
+             <label for="">Payment year</label>
+             <input type="text" name="year" id="year"class="form-control unicode" placeholder="2021" value="{{ old('year',$year) }}">
+          </div>
+          
+          
+        </div>
+      </div>
+    </div>
+  </form><br>
  
  <div class="row">
    <div class="col-md-3">
@@ -466,6 +489,7 @@
  @stop 
 
 @section('js')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js"></script>
 <script type="text/javascript">
   $("#contact_table").hide();
   $("#education_table").hide();
@@ -726,6 +750,22 @@
       $("#attach").css('color', 'white'); 
       $("#attach").css('background-color', '#2a3c66'); 
   });
+
+       $(function() {
+    
+        $("#year").datepicker({  format: "yyyy",
+        viewMode: "years", 
+        minViewMode: "years" });
+
+        });
+
+       $(function() {
+         $('#year').on('change',function(e) {
+            this.form.submit();
+                   // $( "#form_id" )[0].submit();   
+          });
+
+       });
 
 
 </script>

@@ -361,7 +361,7 @@ play the specified resource.
      * @param  \App\Employee  $employee
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request,$id)
     {
         $branchs = Branch::all();
         $departments = Department::all();
@@ -369,6 +369,10 @@ play the specified resource.
          $nrccodes = NRCCode::all();
         $nrcstates = NRCState::all(); 
         $salarys = Salary::where('emp_id',$id)->get();
+        if ($request->year != '') {
+            $salarys = $salarys->where('year',$request->year);
+            // dd($salarys);
+        }
         // dd($salarys);
         $salary_count = $salarys->count();
         $employees = Employee::find($id);
