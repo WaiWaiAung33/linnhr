@@ -4,16 +4,7 @@
 @section('title', 'Employee')
 
 @section('content_header')
-<style type="text/css">
-     .select2-container .select2-selection--single {
-    box-sizing: border-box;
-    cursor: pointer;
-    display: block;
-    height: 35px;
-    user-select: none;
-    -webkit-user-select: none; }
-   
-</style>
+
 @stop
 
 @section('content')
@@ -977,9 +968,8 @@
 
 
     @section('css')
-     <link id="bsdp-css" href="{{ asset('css/bootstrap-datepicker3.min.css') }}" rel="stylesheet">
-
-      <link rel="stylesheet" href="{{ asset('select2/css/select2.min.css') }}"/>
+    <link id="bsdp-css" href="{{ asset('css/bootstrap-datepicker3.min.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('select2/css/select2.min.css') }}"/>
     <style>
         /* ------------------- */
         /* TEMPLATE        -- */
@@ -1108,7 +1098,7 @@
             }
 
 
-.tabby-content {
+            .tabby-content {
                 top: 60px;
             }
 
@@ -1271,22 +1261,30 @@
             -webkit-user-select: none;
         }
 
-.select2-container--default .select2-selection--single .select2-selection__arrow {
+        .select2-container--default .select2-selection--single .select2-selection__arrow {
             height: 30px;
             position: absolute;
             top: 2px;
             right: 1px;
             width: 20px;
         }
+         .select2-container .select2-selection--single {
+            box-sizing: border-box;
+            cursor: pointer;
+            display: block;
+            height: 35px;
+            user-select: none;
+            -webkit-user-select: none; 
+        }
 
 
-        border_bot {
+        .border_bot {
             outline: 0 !important;
             border-width: 0 0 2px !important;
             border-color: blue !important;
         }
 
-        border_bot:focus {
+        .border_bot:focus {
             border-color: green !important;
         }
     </style>
@@ -1296,8 +1294,8 @@
 
     @section('js')
     <script src="{{ asset('js/jquery.min.js') }}"></script>
-<script src="{{ asset('frontend/vendors/jquery/jquery-3.2.1.min.js')}}"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+    <script src="{{ asset('frontend/vendors/jquery/jquery-3.2.1.min.js')}}"></script>
+    <script src="{{ asset('js//moment.min.js')}}"></script>
     <script src="{{ asset('js/bootstrap-datepicker.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('select2/js/select2.min.js') }}"></script>
     <script type="text/javascript">

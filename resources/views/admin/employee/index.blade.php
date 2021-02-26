@@ -40,6 +40,7 @@
   $age_to = isset($_GET['age_to'])?$_GET['age_to']:'';
 
   $active = isset($_GET['active'])?$_GET['active']:'';
+  $new_emp = isset($_GET['new_emp'])?$_GET['new_emp']:'';
   
   ?>
 
@@ -172,7 +173,7 @@
                         </div>
 
                         <div class="col-md-3">
-                             <label for="">Employement Status</label>
+                             <label for="">Active/Inactive</label>
                             <select class="form-control" id="active" name="active" style="font-size: 13px">
                               <option value="">All</option>  
                               <option value="1" {{ (old('hostel',$hostel)=="1")?'selected':'' }}>Active</option>
@@ -202,6 +203,16 @@
                       </div>
                     </div>
                     <br>
+                    <div class="row">
+                         <div class="col-md-3">
+                             <label for="">Employement Status</label>
+                            <select class="form-control" id="active" name="active" style="font-size: 13px">
+                              <option value="">All</option>  
+                              <option value="1" {{ (old('hostel',$hostel)=="1")?'selected':'' }}>Active</option>
+                              <option value="0" {{ (old('hostel',$hostel)=="0")?'selected':'' }}>Inactive</option>
+                             </select>
+                        </div>
+                    </div>
                     <div class="row">
                        <div class="col-md-12" align="center">
                          <button type="button" class="btn btn-danger btn-sm" id="clear_search" >Clear</button>

@@ -3,12 +3,18 @@
 @section('title', 'Salary')
 
 @section('content_header')
-<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css" rel="stylesheet"/>
+<div class="row">
+  <div class="col-md-4">
+     <a class="btn btn-primary unicode btn-sm" href="{{route('salary.index')}}"> Back</a>
+  </div>
+   <div class="col-md-4">
+     <h6 class="text-center">{{$employees->name}} 's Salary Information</h6>
+   </div>
+    <div class="col-md-4 text-right">
+      
+    </div>
+</div>
 
- <script src=" {{ asset('toasterjquery.js') }}" ></script>
-    <link rel="stylesheet" type="text/css" href="{{asset('toasterbootstrap.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('toastermin.css')}}">
-    <script type="text/javascript" src="{{asset('toastermin.js')}}"></script>
 @stop
 
 @section('content')
@@ -19,12 +25,21 @@
   // dd($year);
   ?>
 
-<div class="row">
-        <div class="col-lg-10">
-             <a class="btn btn-success unicode" href="{{route('salary.index')}}"> Back</a>
-        </div>
-        
- </div><br>
+  <div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-2" align="center">
+            @if($employees->photo == '')
+              <img src="{{ asset('uploads/employeePhoto/default.png') }}" alt="photo" width="80px" height="90px">
+            @else
+               <img src="{{ asset('uploads/employeePhoto/'.$employees->photo) }}" alt="photo" width="80px" height="90px"> 
+            @endif
+    </div>
+    <div class="col-md-6">
+      <p class="text-dark text-md"><b>{{$employees->name}}</b></p>
+      <p>{{$employees->emp_id}}</p>
+      <p>{{$employees->viewDepartment->name}} ({{$employees->viewBranch->name}})</p>
+    </div>
+  </div>
 
   <form action="{{route('salary.show',$employees->id)}}" method="get" accept-charset="utf-8" class="form-horizontal">
      <div class="row form-group">
@@ -34,29 +49,20 @@
              <label for="">Payment year</label>
              <input type="text" name="year" id="year"class="form-control unicode" placeholder="2021" value="{{ old('year',$year) }}">
           </div>
-          <div class="col-md-2">
+         {{--  <div class="col-md-2">
              <label for="">Payment Month</label>
              <input type="text" name="month" id="month"class="form-control unicode" placeholder="2021" value="{{ old('month',$month) }}">
-          </div>
+          </div> --}}
           
         </div>
       </div>
     </div>
   </form>
+<?php
+  $salary_total = 0;
+  $bonus_total = 0;
+?>
 
-  <div class="row">
-        <div class="col-lg-12">
-            <div>
-                <h6 class="text-center text-dark text-md"><b>{{$employees->name}} 's Salary Information</b></h6>
-            </div>
-        </div>
-    </div>
-    <br>
-    <?php
-    $salary_total = 0;
-    $bonus_total = 0;
-    ?>
-<p >Total record: {{$count}}</p>
 <div class="table-responsive" style="font-size:15px;">
 	<table class="table table-bordered styled-table">
 
@@ -115,18 +121,20 @@
   {!! $salarys->appends(request()->input())->links() !!}
 
 </div>
+<p >Total record: {{$count}}</p>
 
 @stop 
 
 
 
 @section('css')
- <link rel="stylesheet" href="/css/admin_custom.css">
+<link href="{{ asset('css/bootstrap-datepicker.css') }}" rel="stylesheet"/>
 @stop
 
 @section('js')
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js"></script>
+<script src="{{ asset('js/jquery.min.js') }}"></script>
+<script src="{{ asset('js/bootstrap-datepicker.js')}}"></script>
 
 <script type="text/javascript">
  $(document).ready(function(){

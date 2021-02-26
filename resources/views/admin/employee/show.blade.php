@@ -4,11 +4,7 @@
 @section('title', 'Employee')
 
 @section('content_header')
-<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css" rel="stylesheet"/>
 
-<style type="text/css">
-  .active{background-color:green;}
-</style>
 @stop
 
 @section('content')
@@ -83,23 +79,8 @@
         </div>
     </div>
 </div><br>
-
- <form action="{{route('employee.show',$employees->id)}}" method="get" accept-charset="utf-8" class="form-horizontal">
-     <div class="row form-group">
-          <div class="col-md-12">
-          <div class="row payyear">
-          <div class="col-md-2">
-             <label for="">Payment year</label>
-             <input type="text" name="year" id="year"class="form-control unicode" placeholder="2021" value="{{ old('year',$year) }}">
-          </div>
-          
-          
-        </div>
-      </div>
-    </div>
-  </form><br>
  
- <div class="row">
+<div class="row">
    <div class="col-md-3">
                 @if($employees->photo == '')
                   <div style="text-align: center;">
@@ -255,7 +236,20 @@
          </table>
          </div>
 
-         <div class="table-responsive" style="font-size:15px;" id="salary_table">
+         <div class="row table-responsive" style="font-size:15px;" id="salary_table">
+          {{--  <form action="{{route('employee.show',$employees->id)}}" method="get" accept-charset="utf-8" class="form-horizontal">
+             <div class="row form-group">
+                  <div class="col-md-12">
+                  <div class="row payyear">
+                  <div class="col-md-2">
+                     <label for="">Payment year</label>
+                     <input type="text" name="year" id="year"class="form-control unicode" placeholder="2021" value="{{ old('year',$year) }}">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form> --}}
+          <a href="{{ url('salary/'.$employees->id) }}" target="_blank">View More Salary Information</a>
           <table class="table table-bordered styled-table">
 
 
@@ -489,8 +483,17 @@
 
  @stop 
 
+@section('css')
+<link href="{{ asset('css/bootstrap-datepicker.css') }}" rel="stylesheet"/>
+<style>
+  .active{background-color:green;}
+
+</style>
+@stop
+
 @section('js')
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js"></script>
+<script src="{{ asset('js/jquery.min.js') }}"></script>
+<script src="{{ asset('js/bootstrap-datepicker.js')}}"></script>
 <script type="text/javascript">
   $("#contact_table").hide();
   $("#education_table").hide();
@@ -719,7 +722,7 @@
       $("#salary").css('background-color', '#2a3c66'); 
   });
 
-      $("#salary").click(function(){
+  $("#salary").click(function(){
       $("#personal_table").hide();
       $("#contact_table").hide();
       $("#education_table").hide();

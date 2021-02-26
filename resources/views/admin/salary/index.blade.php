@@ -3,7 +3,6 @@
 @section('title', 'Payment')
 
 @section('content_header')
-<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css" rel="stylesheet"/>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <h5 style="color: blue;">Salary Management</h5>
 @stop
@@ -580,15 +579,15 @@
 
 
 @section('css')
-
+<link href="{{ asset('css/bootstrap-datepicker.css') }}" rel="stylesheet"/>
 @stop
 
 
 
 @section('js')
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js"></script>
-<!-- <script src="{{ asset('jquery.js') }}"></script>
-<script type="text/javascript" src="{{ asset('jquery-ui.js') }}"></script> -->
+<script src="{{ asset('js/jquery.min.js') }}"></script>
+<script src="{{ asset('js/bootstrap-datepicker.js')}}"></script>
+{{-- <script type="text/javascript" src="{{ asset('jquery-ui.js') }}"></script> --}}
 <script type="text/javascript">
 	  @if(Session::has('success'))
             toastr.options =
