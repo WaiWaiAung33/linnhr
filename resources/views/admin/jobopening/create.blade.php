@@ -3,9 +3,7 @@
 @section('title', 'Employee')
 
 @section('content_header')
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
-   
-<link id="bsdp-css" href="https://unpkg.com/bootstrap-datepicker@1.9.0/dist/css/bootstrap-datepicker3.min.css" rel="stylesheet">
+<script src="{{ asset('js/jquery-3.4.1.slim.min.js')}}"></script>
 @stop
 
 @section('content')
@@ -213,7 +211,7 @@
 
 
 @section('css')
-<link href = "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css"rel = "stylesheet">
+<link id="bsdp-css" href="{{ asset('/css/bootstrap-datepicker3.min.css') }}" rel="stylesheet">
     <style type="text/css" media="screen">
       .error_msg{
         color: #DD4B39;
@@ -231,7 +229,7 @@
 
 
 @section('js')
- <script src="https://unpkg.com/bootstrap-datepicker@1.9.0/dist/js/bootstrap-datepicker.min.js"></script>
+<script src="{{ asset('js/bootstrap-datepicker.min.js') }}"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
 		 $("#posted_date").datepicker({ dateFormat: 'dd-mm-yy' });
