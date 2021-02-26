@@ -38,8 +38,8 @@ class EmployeeController extends Controller
         $join_month = date('Y-m-d',strtotime($request->join_month));
         // dd($join_date);
         $branchs = Branch::all();
-        $departments = Department::all();
-        $positions = Position::all();
+        $departments = Department::orderBy('name','asc')->get();
+        $positions = Position::orderBy('name','asc')->get();
         $employees = new Employee();
         if($request->name != '') {
             $employees = $employees->where('name','like','%'.$request->name.'%')
