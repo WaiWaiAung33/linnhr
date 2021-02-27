@@ -73,7 +73,7 @@
 				<th style="text-align: center;">Salary</th>
 				<th style="text-align: center;">Bonus</th>
         <th style="text-align: center;">Total</th>
-        <!-- <th>Action</th> -->
+        <th>Action</th>
 			</tr>
 		</thead>
     <tbody>
@@ -90,14 +90,14 @@
           $bonus_total+= $salary->bonus;
         ?>
         
-          <!--  <td>
+           <td>
                   <form action="{{route('salary.destroy',$salary->id)}}" method="POST" onsubmit="return confirm('Do you really want to delete?');">
                     @csrf
                     @method('DELETE')
                     <a class="btn btn-sm btn-primary" href="{{route('salary.edit',$salary->id)}}" ><i class="fa fa-fw fa-edit" style="padding-top: 5px;padding-bottom: 5px;padding-left: 2px;padding-right: 5px"/></i></a> 
                      <button type="submit" class="btn btn-sm btn-danger" style="margin-left: 10px"><i class="fa fa-fw fa-trash" /></i></button> 
                    </form>
-                </td> -->
+                </td>
        
       </tr>
      
@@ -111,7 +111,8 @@
         $total = 0;
         $total = $salary_total + $bonus_total;
         ?>
-        <td colspan="2" style="text-align: right;">{{number_format($total)}}</td>
+        <td style="text-align: right;">{{number_format($total)}}</td>
+        <td></td>
       </tr>
     </tbody>
 
