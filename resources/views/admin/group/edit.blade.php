@@ -124,7 +124,7 @@
     <div class="row">
         <div class="col-md-2"></div>
         <div class="col-md-5">
-            <a class="btn btn-primary unicode" href="{{route('hostelemployee.index')}}"> Back</a>
+            <a class="btn btn-primary unicode" href="{{route('groups.index')}}"> Back</a>
              <button class="btn btn-success unicode" type="submit" style="font-size: 13px">
               Save
             </button>
