@@ -45,10 +45,10 @@ class AttendanceController extends Controller
             $attendances = $attendances->where('employee.dep_id',$request->dept_id);
         }
         if ($request->attendance_date != '') {
-            $attendances = $attendances->where('attendances.date',date('Y-m-d',strtotime($request->attendance_date)))->orwhere('attendances.out_date',date('Y-m-d',strtotime($request->attendance_date)));
+            $attendances = $attendances->where('attendances.date',date('Y-m-d',strtotime($request->attendance_date)));
             // $attendances_date = date('Y-m-d',strtotime($request->attendance_date));
         }else{
-             $attendances = $attendances->where('attendances.date',date('Y-m-d'))->orwhere('attendances.out_date',date('Y-m-d'));
+             $attendances = $attendances->where('attendances.date',date('Y-m-d'));
         }
 
         $count = $attendances->get()->count();
