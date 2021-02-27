@@ -62,7 +62,7 @@
                   </thead>
                     <tbody>
                     @if($departments->count()>0)
-                      @foreach($departments as $dept)
+                      @foreach($departments as $i=>$dept)
                         @if($dept->groups()->count()>0)
                         <tr class="table-tr" data-url="{{route('groups.show',$dept->id)}}">
                             <td>{{++$i}}</td>
