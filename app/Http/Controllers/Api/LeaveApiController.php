@@ -29,13 +29,15 @@ class LeaveApiController extends Controller
 	    		$leave_applications = new LeaveApplication();
 	    		$leave_applications = $leave_applications->leftjoin('employee','employee.id','=','leave_applications.emp_id')
 	                ->leftjoin('leave_types','leave_types.id','=','leave_applications.leavetype_id')
-	                ->leftjoin('users','users.id','=','leave_applications.last_updated_by')
+	                ->leftjoin('branch','branch.id','=','employee.branch_id')
+	                ->leftjoin('department','department.id','=','employee.dep_id')
 	                ->select(
 	                    'leave_applications.*',
 	                    'employee.name',
 	                    'employee.photo',
 	                    'leave_types.leave_type',
-	                    'users.name'
+	                    'branch.name AS branch_name',
+	                    'department.name AS dept_name'
 	                );
 	             if ($request->name != '') {
 		            $leave_applications = $leave_applications->where('employee.name','like','%'.$request->name.'%');
