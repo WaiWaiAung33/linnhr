@@ -8,7 +8,7 @@ use DB;
 use Validator;
 use App\Employee;
 use App\LeaveApplication;
-use App\OffDay;
+use App\Offday;
 use App\Overtime;
 
 class TimeInApiController extends Controller
