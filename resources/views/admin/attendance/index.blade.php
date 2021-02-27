@@ -89,7 +89,7 @@
                              <img src="{{ asset('uploads/employeePhoto/'.$attendance->photo) }}" alt="photo" width="80px" height="80px">
                              </td>
                              @endif
-                              <td>{{$attendance->name}}</td>
+                            <td>{{$attendance->employee->name}}</td>
                             <td>{{$attendance->branch_name}}</td> 
                             <td>{{$attendance->dept_name}}</td>
                             <td>{{$attendance->position_name}}</td>
@@ -118,7 +118,7 @@
                             @elseif($attendance->attendance_status == 3)
                             <td>Leave</td>
                             @endif
-                            <td>{{$attendance->user_name}}</td>
+                            <td>{{$attendance->last_updated_user->name}}</td>
                         </tr>
                          @endforeach
                           @else
