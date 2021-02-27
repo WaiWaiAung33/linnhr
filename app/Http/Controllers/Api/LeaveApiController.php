@@ -7,6 +7,7 @@ use App\Branch;
 use DB;
 use Validator;
 use App\Employee;
+use App\LeaveApplication;
 
 
 class LeaveApiController extends Controller
