@@ -60,3 +60,9 @@ Route::post('/time_out','Api\TimeInApiController@time_out');
 Route::post('/attendance_list','Api\TimeInApiController@attendance_list');
 
 Route::post('/attendance_dashboard','Api\TimeInApiController@attendance_dashboard');
+
+Route::post('/leave_list','Api\LeaveApiController@leave_list');
+
+Route::post('/offday_list','Api\OffDayApiController@offday_list');
+
+Route::post('/overtime_list','Api\OvertimeApiController@overtime_list');

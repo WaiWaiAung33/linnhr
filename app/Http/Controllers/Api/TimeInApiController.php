@@ -69,7 +69,7 @@ class TimeInApiController extends Controller
                                     );
                     if ($request->date != '') {
                         $date = date('Y-m-d', strtotime($request->date));
-                        $attendances = $attendances->whereDate('attendances.date',$date)->orwhereDate('attendances.out_date',$date);
+                        $attendances = $attendances->whereDate('attendances.date',$date);
                     }
                     if ($request->keyword != '') {
                         $attendances = $attendances->where('employee.name','like','%'.$request->keyword.'%');

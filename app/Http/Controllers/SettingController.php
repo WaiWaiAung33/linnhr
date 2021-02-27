@@ -54,7 +54,8 @@ class SettingController extends Controller
 	            'description'=> $request->description,
 	            'logo'=>$app_logo,
 	            'favicon'=>$favicon,
-	            'api_url'=>$request->api_url
+	            'api_url'=>$request->api_url,
+                'actual_timein'=>$request->actual_timein
 	        ]
         );
 
