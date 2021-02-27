@@ -45,6 +45,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::resource('hostelemployee','HostelEmployeeController');
 	Route::resource('interview','InterviewController');
 	Route::resource('offday','OffdayController');
+	Route::resource('overtime','OvertimeController');
 
 	Route::resource('leave_type','LeaveTypeController');
 	Route::resource('leave_application','LeaveApplicationController');

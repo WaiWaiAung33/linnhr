@@ -313,6 +313,11 @@ return [
                     'url'  => 'offday',
                     'icon' => 'fa fa-bullseye',
                 ],
+                  [
+                    'text' => 'Overtime',
+                    'url'  => 'overtime',
+                    'icon' => 'fa fa-bullseye',
+                ],
             ],
         ],
 
