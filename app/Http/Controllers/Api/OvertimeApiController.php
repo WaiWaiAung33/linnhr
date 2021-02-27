@@ -37,8 +37,8 @@ class OvertimeApiController extends Controller
 	    									'branch.name AS branch_name',
 	    									'department.name AS dept_name'
 	    								);
-	    		if ($request->name != '') {
-		            $overtimes = $overtimes->where('employee.name','like','%'.$request->name.'%');
+	    		if ($request->keyword != '') {
+		            $overtimes = $overtimes->where('employee.name','like','%'.$request->keyword.'%');
 		        }
 		        if ($request->branch_id != '') {
 		            $overtimes = $overtimes->where('employee.branch_id',$request->branch_id);
@@ -61,8 +61,8 @@ class OvertimeApiController extends Controller
 	    									'branch.name AS branch_name',
 	    									'department.name AS dept_name'
 	    								);
-	    		if ($request->name != '') {
-		            $overtimes = $overtimes->where('employee.name','like','%'.$request->name.'%');
+	    		if ($request->keyword != '') {
+		            $overtimes = $overtimes->where('employee.name','like','%'.$request->keyword.'%');
 		        }
 		        if ($request->branch_id != '') {
 		            $overtimes = $overtimes->where('employee.branch_id',$request->branch_id);

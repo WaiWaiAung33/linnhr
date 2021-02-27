@@ -36,8 +36,8 @@ class OffDayApiController extends Controller
 	    								'department.name AS dept_name'
 	    							);
 	    		// dd($offdays);
-	    		if ($request->name != '') {
-		            $offdays = $offdays->where('employee.name','like','%'.$request->name.'%');
+	    		if ($request->keyword != '') {
+		            $offdays = $offdays->where('employee.name','like','%'.$request->keyword.'%');
 		        }
 		        if ($request->branch_id != '') {
 		            $offdays = $offdays->where('employee.branch_id',$request->branch_id);
@@ -61,8 +61,8 @@ class OffDayApiController extends Controller
 	    								'department.name AS dept_name'
 	    							);
 	    		// dd($offdays);
-	    		if ($request->name != '') {
-		            $offdays = $offdays->where('employee.name','like','%'.$request->name.'%');
+	    		if ($request->keyword != '') {
+		            $offdays = $offdays->where('employee.name','like','%'.$request->keyword.'%');
 		        }
 		        if ($request->branch_id != '') {
 		            $offdays = $offdays->where('employee.branch_id',$request->branch_id);

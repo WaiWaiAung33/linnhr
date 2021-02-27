@@ -39,8 +39,8 @@ class LeaveApiController extends Controller
 	                    'branch.name AS branch_name',
 	                    'department.name AS dept_name'
 	                );
-	             if ($request->name != '') {
-		            $leave_applications = $leave_applications->where('employee.name','like','%'.$request->name.'%');
+	             if ($request->keyword != '') {
+		            $leave_applications = $leave_applications->where('employee.name','like','%'.$request->keyword.'%');
 		        }
 		        if ($request->branch_id != '') {
 		            $leave_applications = $leave_applications->where('employee.branch_id',$request->branch_id);
@@ -64,8 +64,8 @@ class LeaveApiController extends Controller
 	                    'leave_types.leave_type',
 	                    'users.name'
 	                );
-	             if ($request->name != '') {
-		            $leave_applications = $leave_applications->where('employee.name','like','%'.$request->name.'%');
+	             if ($request->keyword != '') {
+		            $leave_applications = $leave_applications->where('employee.name','like','%'.$request->keyword.'%');
 		        }
 		        if ($request->branch_id != '') {
 		            $leave_applications = $leave_applications->where('employee.branch_id',$request->branch_id);
