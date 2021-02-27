@@ -89,7 +89,7 @@
                              <img src="{{ asset('uploads/employeePhoto/'.$attendance->photo) }}" alt="photo" width="80px" height="80px">
                              </td>
                              @endif
-                            <td>{{$attendance->employee->name}}</td>
+                              <td>{{$attendance->name}}</td>
                             <td>{{$attendance->branch_name}}</td> 
                             <td>{{$attendance->dept_name}}</td>
                             <td>{{$attendance->position_name}}</td>
@@ -100,7 +100,7 @@
                             </td>
                             <td>{{date('d-m-Y',strtotime($attendance->date))}}</td>
                             <td>
-                              @if($attendance->clock_out!='')
+                              @if($attendance->clock_out)
                               {{date('h:i A', strtotime($attendance->clock_out))}}
                               @endif
                             </td>
@@ -118,7 +118,7 @@
                             @elseif($attendance->attendance_status == 3)
                             <td>Leave</td>
                             @endif
-                            <td>{{$attendance->last_updated_user->name}}</td>
+                            <td>{{$attendance->name}}</td>
                         </tr>
                          @endforeach
                           @else
