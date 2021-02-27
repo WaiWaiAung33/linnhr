@@ -25,7 +25,7 @@ class AssignGroupController extends Controller
         }
         $count=$departments->with('employees')->get()->count();
         $departments = $departments->orderBy('name','asc')->get();
-        return view('admin.group.index',compact('count','departments','departmentArr'))->with('i', (request()->input('page', 1) - 1) * 10);
+        return view('admin.group.index',compact('count','departments','departmentArr'));
     }
 
     /**
