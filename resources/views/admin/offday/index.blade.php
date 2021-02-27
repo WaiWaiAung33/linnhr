@@ -48,10 +48,10 @@
                         <tr class="table-tr" >
                             <td>{{++$i}}</td>
                             <td>{{$offday->viewEmployee->name}}</td>
-                            <td>{{$offday->off_day_1}}</td>
-                            <td>{{$offday->off_day_2}}</td>
-                            <td>{{$offday->off_day_3}}</td>
-                            <td>{{$offday->off_day_4}}</td>
+                            <td>{{date('d-m-Y',strtotime($offday->off_day_1))}}</td>
+                            <td>{{date('d-m-Y',strtotime($offday->off_day_2))}}</td>
+                            <td>{{date('d-m-Y',strtotime($offday->off_day_3))}}</td>
+                            <td>{{date('d-m-Y',strtotime($offday->off_day_4))}}</td>
                            
                             <td>
                                 <form action="{{route('offday.destroy',$offday->id)}}" method="post"
