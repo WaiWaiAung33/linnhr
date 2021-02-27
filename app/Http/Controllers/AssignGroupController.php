@@ -52,7 +52,7 @@ class AssignGroupController extends Controller
         $rules = [
             'group_a'=>'required',
             'group_b'=>'required',
-            'branch_id'=>'required',
+            // 'branch_id'=>'required',
             'dep_id'=>'required',
             'a_emp_id'=>'required',
             'b_emp_id'=>'required'
@@ -63,7 +63,7 @@ class AssignGroupController extends Controller
         foreach ($request->a_emp_id as $key => $a_emp) {
              AssignGroup::create([
                 'group'=>$request->group_a,
-                'branch_id'=>$request->branch_id,
+                // 'branch_id'=>$request->branch_id,
                 'department_id'=>$request->dep_id,
                 'emp_id'=>$a_emp
             ]);
@@ -72,7 +72,7 @@ class AssignGroupController extends Controller
         foreach ($request->b_emp_id as $key => $b_emp) {
              AssignGroup::create([
                 'group'=>$request->group_b,
-                'branch_id'=>$request->branch_id,
+                // 'branch_id'=>$request->branch_id,
                 'department_id'=>$request->dep_id,
                 'emp_id'=>$b_emp
             ]);
@@ -121,7 +121,7 @@ class AssignGroupController extends Controller
          $rules = [
             'group_a'=>'required',
             'group_b'=>'required',
-            'branch_id'=>'required',
+            // 'branch_id'=>'required',
             'dep_id'=>'required',
             'a_emp_id'=>'required',
             'b_emp_id'=>'required'
@@ -134,7 +134,7 @@ class AssignGroupController extends Controller
         foreach ($request->a_emp_id as $key => $a_emp) {
              AssignGroup::create([
                 'group'=>$request->group_a,
-                'branch_id'=>$request->branch_id,
+                // 'branch_id'=>$request->branch_id,
                 'department_id'=>$request->dep_id,
                 'emp_id'=>$a_emp
             ]);
@@ -143,7 +143,7 @@ class AssignGroupController extends Controller
         foreach ($request->b_emp_id as $key => $b_emp) {
              AssignGroup::create([
                 'group'=>$request->group_b,
-                'branch_id'=>$request->branch_id,
+                // 'branch_id'=>$request->branch_id,
                 'department_id'=>$request->dep_id,
                 'emp_id'=>$b_emp
             ]);
@@ -166,7 +166,7 @@ class AssignGroupController extends Controller
 
     public function get_gp_employee_data(Request $request)
     {
-        $data = Employee::where('active',1)->where('branch_id',$request->branch_id)->where('dep_id',$request->dep_id);
+        $data = Employee::where('active',1)->where('dep_id',$request->dep_id);
 
         if($request->has('q')){
             $search = $request->q;

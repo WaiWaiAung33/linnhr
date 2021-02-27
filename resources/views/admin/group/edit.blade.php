@@ -33,7 +33,7 @@
         @csrf
         @method('PUT')
 
-    <div class="row">       
+   {{--  <div class="row">       
         <label class="col-md-2 unicode">Branch Name</label>
         <div class="col-md-4 {{ $errors->first('name', 'has-error') }}">
             
@@ -46,7 +46,7 @@
          
         </div>    
     </div>
-    <br>
+    <br> --}}
 
     <div class="row">  
         <label class="col-md-2 unicode">Department</label>
