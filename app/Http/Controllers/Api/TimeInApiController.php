@@ -7,10 +7,39 @@ use App\Attendance;
 use DB;
 use Validator;
 use App\Employee;
-
+use App\LeaveApplication;
+use App\Offday;
+use App\Overtime;
 
 class TimeInApiController extends Controller
 {
+
+    public function attendance_dashboard(Request $request)
+    {
+        $input = $request->all();
+             $rules=[
+                'attendance_date'=>'required'
+            ];
+
+            $validator = Validator::make($input, $rules);
+
+             if ($validator->fails()) {
+                $messages = $validator->messages();
+                   return response()->json(['message'=>"Error",'status'=>0]);
+            }else{
+                $attendance_count = Attendance::where('date',date('Y-m-d',strtotime($request->attendance_date)))->orwhere('out_date',date('Y-m-d',strtotime($request->attendance_date)))->get()->count();
+
+                $leave_count = LeaveApplication::whereDate('start_date','<=',date('Y-m-d',strtotime($request->attendance_date)))->whereDate('end_date','>=',date('Y-m-d',strtotime($request->attendance_date)))->get()->count();
+                
+
+                $offday_count = OffDay::where('off_day_1',date('Y-m-d',strtotime($request->attendance_date)))->orwhere('off_day_2',date('Y-m-d',strtotime($request->attendance_date)))->orwhere('off_day_3',date('Y-m-d',strtotime($request->attendance_date)))->orwhere('off_day_4',date('Y-m-d',strtotime($request->attendance_date)))->get()->count();
+                
+                $overtime_count = Overtime::where('apply_date',date('Y-m-d',strtotime($request->attendance_date)))->get()->count();
+                $emp_count = Employee::where('status',1)->get()->count();
+
+                return response(['message'=>"Success",'status'=>1,'attendance_count'=>$attendance_count,'leave_count'=>$leave_count,'offday_count'=>$offday_count,'overtime_count'=>$overtime_count]);
+            }
+    }
     public function attendance_list(Request $request)
     {
         $input = $request->all();

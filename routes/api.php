@@ -58,3 +58,5 @@ Route::post('/check_in_out','Api\TimeInApiController@check_in_out');
 Route::post('/time_out','Api\TimeInApiController@time_out');
 
 Route::post('/attendance_list','Api\TimeInApiController@attendance_list');
+
+Route::post('/attendance_dashboard','Api\TimeInApiController@attendance_dashboard');
