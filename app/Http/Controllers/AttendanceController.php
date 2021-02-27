@@ -43,7 +43,10 @@ class AttendanceController extends Controller
         if ($request->dept_id != '') {
             $attendances = $attendances->where('employee.dep_id',$request->dept_id);
         }
-        $count = $attendances->get()->count();
+        if ($request->attendance_date != '') {
+            $attendances = $attendances->where('attendances.date',date('Y-m-d',strtotime($request->attendance_date)))->orwhere('attendances.out_date',date('Y-m-d',strtotime($request->attendance_date)));
+        }
+        $count = $attendances->where('attendances.date',date('Y-m-d'))->orwhere('attendances.out_date',date('Y-m-d'))->get()->count();
 
         $attendances = $attendances->orderBy('attendances.created_at','desc')->paginate(10);
         $branches = Branch::where('status',1)->get();
@@ -52,7 +55,7 @@ class AttendanceController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Show the form for creating a new resource. 
      *
      * @return \Illuminate\Http\Response
      */
