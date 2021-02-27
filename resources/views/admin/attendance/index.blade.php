@@ -118,7 +118,7 @@
                             @elseif($attendance->attendance_status == 3)
                             <td>Leave</td>
                             @endif
-                            <td>{{$attendance->name}}</td>
+                            <td>{{$attendance->user_name}}</td>
                         </tr>
                          @endforeach
                           @else
