@@ -93,9 +93,9 @@
                             <td>{{$attendance->branch_name}}</td> 
                             <td>{{$attendance->dept_name}}</td>
                             <td>{{$attendance->position_name}}</td>
-                            <td>{{$attendance->clock_in}}</td>
+                            <td>{{ date('h:i A', strtotime($attendance->clock_in))}}</td>
                             <td>{{date('d-m-Y',strtotime($attendance->date))}}</td>
-                            <td>{{$attendance->clock_out}}</td>
+                            <td>{{date('h:i A', strtotime($attendance->clock_out))}}</td>
                             @if($attendance->out_date != null)
                             <td>{{date('d-m-Y',strtotime($attendance->out_date))}}</td>
                             @else
