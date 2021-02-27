@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Branch')
+@section('title', 'Attendance')
 
 @section('content_header')
 <h5 style="color: blue;">Attendance List</h5>
@@ -62,6 +62,7 @@
                         <th>Time Out Date</th>
                         <th>Location</th>
                         <th>Attendance Status</th>
+                        <th>Last Updated by</th>
                     </tr>
                   </thead>
                     <tbody>
@@ -101,7 +102,7 @@
                             @elseif($attendance->attendance_status == 3)
                             <td>Leave</td>
                             @endif
-                            <!-- <td>Present</td> -->
+                            <td>{{$attendance->name}}</td>
                         </tr>
                          @endforeach
                           @else

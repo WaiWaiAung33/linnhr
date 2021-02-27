@@ -1,7 +1,7 @@
 
 @extends('adminlte::page')
 
-@section('title', 'Branch')
+@section('title', 'Leave Type')
 
 @section('content_header')
 @stop

@@ -59,7 +59,12 @@
                      <input type="text" name="api_key" id="api_key" class="form-control unicode" value="{{ $setting->api_key }}">
                 </div>    
             </div><br>
-
+            <div class="row"> 
+                <label class="col-md-2 unicode">Actual Time In</label>
+                <div class="col-md-5 {{ $errors->first('actual_timein', 'has-error') }}">        
+                     <input type="text" name="actual_timein" id="actual_timein" class="form-control bs-timepicker" value="{{ $setting->actual_timein }}">
+                </div>    
+            </div><br>
          
 
 
@@ -78,10 +83,11 @@
     </div>
 @stop
 @section('css')
-
+<link rel="stylesheet" href="{{asset('dist/css/timepicker.min.css')}}">
 @stop
 
 @section('js')
+<script src="{{asset('dist/js/timepicker.min.js')}}"></script>
     <script>
         @if(Session::has('success'))
             toastr.options =
@@ -91,5 +97,8 @@
             }
             toastr.success("{{ session('success') }}");
         @endif
+         $(function () {
+            $('.bs-timepicker').timepicker();
+          });
     </script>
 @stop

@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Hostel')
+@section('title', 'Leave Application')
 
 @section('content_header')
 <link id="bsdp-css" href="https://unpkg.com/bootstrap-datepicker@1.9.0/dist/css/bootstrap-datepicker3.min.css" rel="stylesheet">

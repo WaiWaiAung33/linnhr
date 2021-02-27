@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Branch')
+@section('title', 'Leave Type')
 
 @section('content_header')
 <h5 style="color: blue;">Leave Type</h5>

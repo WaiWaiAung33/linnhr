@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Hostel')
+@section('title', 'Leave Application')
 
 @section('content_header')
 

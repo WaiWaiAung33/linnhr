@@ -21,6 +21,7 @@ class CreateSettingsTable extends Migration
             $table->string('favicon')->nullable();
             $table->string('api_url')->nullable();
             $table->string('api_key')->nullable();
+            $table->time('actual_timein')->nullable();
             $table->timestamps();
         });
     }

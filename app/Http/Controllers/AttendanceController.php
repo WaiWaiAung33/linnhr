@@ -7,6 +7,7 @@ use App\Employee;
 use App\Branch;
 use App\Department;
 use App\Position;
+use App\User;
 use Illuminate\Http\Request;
 
 class AttendanceController extends Controller
@@ -23,13 +24,15 @@ class AttendanceController extends Controller
                                     ->leftjoin('branch','branch.id','=','employee.branch_id')
                                     ->leftjoin('department','department.id','=','employee.dep_id')
                                     ->leftjoin('position','position.id','=','employee.position_id')
+                                     ->leftjoin('users','users.id','=','attendances.last_updated_by')
                                     ->select(
-                                        'attendances.*',
+                                        'attendances.*', 
                                         'employee.name',
                                         'employee.photo',
                                         'branch.name AS branch_name',
                                         'department.name AS dept_name',
-                                        'position.name AS position_name'
+                                        'position.name AS position_name',
+                                        'users.name'
                                     );
         if ($request->name != '') {
             $attendances = $attendances->where('employee.name','like','%'.$request->name.'%');
@@ -80,7 +83,8 @@ class AttendanceController extends Controller
             'colckout_ip_address'=>$request->colckout_ip_address,
             'working_from'=>$request->working_from,
             'note'=>$request->note,
-            'is_late'=>$request->is_late
+            'is_late'=>$request->is_late,
+            'last_updated_by'=>auth()->user()->id,
         ]);
         return redirect()->route('attendance.index')->with('success','Success');
     }
@@ -135,7 +139,8 @@ class AttendanceController extends Controller
             'colckout_ip_address'=>$request->colckout_ip_address,
             'working_from'=>$request->working_from,
             'note'=>$request->note,
-            'is_late'=>$request->is_late
+            'is_late'=>$request->is_late,
+            'last_updated_by'=>auth()->user()->id,
         ]);
         return redirect()->route('attendance.index')->with('success','Success');
     }

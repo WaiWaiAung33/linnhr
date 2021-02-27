@@ -283,11 +283,11 @@ return [
                     'url'  => 'attendance',
                     'icon' => 'fa fa-clock',
                 ],
-                [
-                    'text' => 'Actual Time In',
-                    'url'  => 'actual_timein',
-                    'icon' => 'fa fa-clock',
-                ],
+                // [
+                //     'text' => 'Actual Time In',
+                //     'url'  => 'actual_timein',
+                //     'icon' => 'fa fa-clock',
+                // ],
                 // [
                 //     'text' => 'Late Arrival',
                 //     'url'  => 'late_arrival',
