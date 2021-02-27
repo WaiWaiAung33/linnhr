@@ -308,6 +308,11 @@ return [
                     'url'  => 'award',
                     'icon' => 'fa fa-bullseye',
                 ],
+                  [
+                    'text' => 'Offday',
+                    'url'  => 'offday',
+                    'icon' => 'fa fa-bullseye',
+                ],
             ],
         ],
 
