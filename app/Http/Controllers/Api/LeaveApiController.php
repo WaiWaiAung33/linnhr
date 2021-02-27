@@ -47,9 +47,9 @@ class LeaveApiController extends Controller
 		            $leave_applications = $leave_applications->where('employee.dep_id',$request->dept_id);
 		        }
 
-		        $attendances = $attendances->orderBy('attendances.id','asc')->limit(10)->paginate(10);
+		        $leave_applications = $leave_applications->orderBy('leave_applications.id','asc')->limit(10)->paginate(10);
 
-		        return response(['message'=>"Success",'status'=>1,'attendances'=>$attendances]);
+		        return response(['message'=>"Success",'status'=>1,'leave_applications'=>$leave_applications]);
 	    	}else{
 	    		$leave_applications = new LeaveApplication();
 	    		$leave_applications = $leave_applications->leftjoin('employee','employee.id','=','leave_applications.emp_id')
@@ -72,9 +72,9 @@ class LeaveApiController extends Controller
 		            $leave_applications = $leave_applications->where('employee.dep_id',$request->dept_id);
 		        }
 
-		        $attendances = $attendances->orderBy('attendances.id','asc')->get();
+		        $leave_applications = $leave_applications->orderBy('leave_applications.id','asc')->get();
 
-		        return response(['message'=>"Success",'status'=>1,'attendances'=>$attendances]);
+		        return response(['message'=>"Success",'status'=>1,'leave_applications'=>$leave_applications]);
 	    	}
 	    }
 	}
