@@ -53,7 +53,6 @@
                 <table class="table table-bordered styled-table">
                   <thead>
                     <tr> 
-                      <th>No</th>
                       <th>Department</th>
                       <th>Group A</th>
                       <th>Group B</th>
@@ -65,7 +64,6 @@
                       @foreach($departments as $i=>$dept)
                         @if($dept->groups()->count()>0)
                         <tr class="table-tr" data-url="{{route('groups.show',$dept->id)}}">
-                            <td>{{++$i}}</td>
                             <td>{{ $dept->name }}</td>
                            
                              
