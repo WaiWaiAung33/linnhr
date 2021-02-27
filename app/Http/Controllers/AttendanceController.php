@@ -19,7 +19,6 @@ class AttendanceController extends Controller
      */
     public function index(Request $request)
     {
-        // dd($request->attendance_date);
         $attendances = new Attendance();
         $attendances = $attendances->leftjoin('employee','employee.id','=','attendances.emp_id')
                                     ->leftjoin('branch','branch.id','=','employee.branch_id')
@@ -33,7 +32,7 @@ class AttendanceController extends Controller
                                         'branch.name AS branch_name',
                                         'department.name AS dept_name',
                                         'position.name AS position_name',
-                                        'users.name'
+                                        'users.name AS user_name'
                                     );
         if ($request->name != '') {
             $attendances = $attendances->where('employee.name','like','%'.$request->name.'%');
@@ -45,22 +44,21 @@ class AttendanceController extends Controller
             $attendances = $attendances->where('employee.dep_id',$request->dept_id);
         }
         if ($request->attendance_date != '') {
-            $attendances = $attendances->where('attendances.date',date('Y-m-d',strtotime($request->attendance_date)));
+            $attendances = $attendances->whereDate('attendances.date',date('Y-m-d',strtotime($request->attendance_date)));
             // $attendances_date = date('Y-m-d',strtotime($request->attendance_date));
         }else{
-             $attendances = $attendances->where('attendances.date',date('Y-m-d'));
+             $attendances = $attendances->whereDate('attendances.date',date('Y-m-d'));
         }
-
         $count = $attendances->get()->count();
 
-        $attendances = $attendances->paginate(10);
+        $attendances = $attendances->orderBy('attendances.created_at','desc')->paginate(10);
         $branches = Branch::where('status',1)->get();
         $departments = Department::where('status',1)->get();
         return view('admin.attendance.index',compact('count','attendances','branches','departments'))->with('i', (request()->input('page', 1) - 1) * 10);
     }
 
     /**
-     * Show the form for creating a new resource. 
+     * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
