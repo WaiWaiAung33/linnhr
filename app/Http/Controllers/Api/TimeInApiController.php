@@ -35,9 +35,9 @@ class TimeInApiController extends Controller
                 $offday_count = OffDay::where('off_day_1',date('Y-m-d',strtotime($request->attendance_date)))->orwhere('off_day_2',date('Y-m-d',strtotime($request->attendance_date)))->orwhere('off_day_3',date('Y-m-d',strtotime($request->attendance_date)))->orwhere('off_day_4',date('Y-m-d',strtotime($request->attendance_date)))->get()->count();
                 
                 $overtime_count = Overtime::where('apply_date',date('Y-m-d',strtotime($request->attendance_date)))->get()->count();
-                $emp_count = Employee::where('status',1)->get()->count();
+                $emp_count = Employee::where('active',1)->get()->count();
 
-                return response(['message'=>"Success",'status'=>1,'attendance_count'=>$attendance_count,'leave_count'=>$leave_count,'offday_count'=>$offday_count,'overtime_count'=>$overtime_count]);
+                return response(['message'=>"Success",'status'=>1,'attendance_count'=>$attendance_count,'leave_count'=>$leave_count,'offday_count'=>$offday_count,'overtime_count'=>$overtime_count,'total'=>$emp_count]);
             }
     }
     public function attendance_list(Request $request)

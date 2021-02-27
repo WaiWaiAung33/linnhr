@@ -19,6 +19,7 @@ class AttendanceController extends Controller
      */
     public function index(Request $request)
     {
+        // dd($request->attendance_date);
         $attendances = new Attendance();
         $attendances = $attendances->leftjoin('employee','employee.id','=','attendances.emp_id')
                                     ->leftjoin('branch','branch.id','=','employee.branch_id')
@@ -45,10 +46,14 @@ class AttendanceController extends Controller
         }
         if ($request->attendance_date != '') {
             $attendances = $attendances->where('attendances.date',date('Y-m-d',strtotime($request->attendance_date)))->orwhere('attendances.out_date',date('Y-m-d',strtotime($request->attendance_date)));
+            // $attendances_date = date('Y-m-d',strtotime($request->attendance_date));
+        }else{
+             $attendances = $attendances->where('attendances.date',date('Y-m-d'))->orwhere('attendances.out_date',date('Y-m-d'));
         }
-        $count = $attendances->where('attendances.date',date('Y-m-d'))->orwhere('attendances.out_date',date('Y-m-d'))->get()->count();
 
-        $attendances = $attendances->orderBy('attendances.created_at','desc')->paginate(10);
+        $count = $attendances->get()->count();
+
+        $attendances = $attendances->paginate(10);
         $branches = Branch::where('status',1)->get();
         $departments = Department::where('status',1)->get();
         return view('admin.attendance.index',compact('count','attendances','branches','departments'))->with('i', (request()->input('page', 1) - 1) * 10);
