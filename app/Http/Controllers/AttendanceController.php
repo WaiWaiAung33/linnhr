@@ -90,6 +90,7 @@ class AttendanceController extends Controller
             'working_from'=>$request->working_from,
             'note'=>$request->note,
             'is_late'=>$request->is_late,
+            'reason'=>$request->reason,
             'last_updated_by'=>auth()->user()->id,
         ]);
         return redirect()->route('attendance.index')->with('success','Success');
@@ -146,6 +147,7 @@ class AttendanceController extends Controller
             'working_from'=>$request->working_from,
             'note'=>$request->note,
             'is_late'=>$request->is_late,
+            'reason'=>$request->reason,
             'last_updated_by'=>auth()->user()->id,
         ]);
         return redirect()->route('attendance.index')->with('success','Success');

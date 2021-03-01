@@ -131,13 +131,20 @@
         <div class="col-md-5">
             
              <select class="form-control" id="is_late" name="is_late" style="font-size: 13px">
-                <!-- <option value="">All</option>   -->
                 <option value="0">No</option>
                 <option value="1">Yes</option>
                </select>
          
         </div>    
     </div><br>
+    <div class="row" id="reason">
+               
+        <label class="col-md-2 unicode">Reason</label>
+        <div class="col-md-5">
+            
+            <textarea class="form-control" id="reason" name="reason"></textarea>
+        </div>    
+    </div><br id="break">
 
         <div class="row">
                     <div class="col-md-2"></div>
@@ -165,7 +172,8 @@
  <script src="{{asset('dist/js/timepicker.min.js')}}"></script>
 <script type="text/javascript">
      $(document).ready(function(){
-
+        $("#reason").hide();
+        $("#break").hide();
         $(function() {
             $('.livesearch').select2({
             placeholder: 'Employee Name',
@@ -186,6 +194,20 @@
                 cache: true
             }
         });
+        });
+
+        $("#is_late").change(function () {
+            var val = $('#is_late option:selected').val();
+            if (val == "1") {
+            $("#reason").show();
+        
+            $("#break").show();
+          
+            }else if(val == 0 ){
+            $("#reason").hide();
+            $("#break").hide();
+            }
+            
         });
 
         $("#date").datepicker({ format: 'dd-mm-yyyy' });

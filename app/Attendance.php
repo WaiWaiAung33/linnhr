@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Attendance extends Model
 {
     protected $table = 'attendances';
-    protected $fillable = ['emp_id','clock_in','clock_out','date','out_date','attendance_status','clockin_ip_address','colckout_ip_address','working_from','note','is_late','last_updated_by'];
+    protected $fillable = ['emp_id','clock_in','clock_out','date','out_date','attendance_status','clockin_ip_address','colckout_ip_address','working_from','note','is_late','last_updated_by','reason'];
 
     public function employee()
     {
