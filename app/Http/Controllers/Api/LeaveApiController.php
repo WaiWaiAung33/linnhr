@@ -50,7 +50,7 @@ class LeaveApiController extends Controller
 		            $leave_applications = $leave_applications->where('employee.dep_id',$request->dept_id);
 		        }
 		        if ($request->date != '') {
-		        	$leave_applications = $leave_applications->whereDate('start_date','<=',date('Y-m-d',strtotime($request->attendance_date)))->whereDate('end_date','>=',date('Y-m-d',strtotime($request->attendance_date)));
+		        	$leave_applications = $leave_applications->whereDate('leave_applications.start_date','<=',date('Y-m-d',strtotime($request->attendance_date)))->whereDate('leave_applications.end_date','>=',date('Y-m-d',strtotime($request->attendance_date)));
 		        }
 		        
 
