@@ -35,6 +35,7 @@ class OvertimeApiController extends Controller
 	    								->select(
 	    									'overtime.*',
 	    									'employee.name',
+	    									'employee.photo',
 	    									'branch.name AS branch_name',
 	    									'department.name AS dept_name'
 	    								);

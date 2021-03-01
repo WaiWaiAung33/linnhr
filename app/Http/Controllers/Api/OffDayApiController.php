@@ -33,6 +33,7 @@ class OffDayApiController extends Controller
 	    							->select(
 	    								'offday.*',
 	    								'employee.name',
+	    								'employee.photo',
 	    								'branch.name AS branch_name',
 	    								'department.name AS dept_name'
 	    							);
