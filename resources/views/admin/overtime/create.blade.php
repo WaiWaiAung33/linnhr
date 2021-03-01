@@ -75,7 +75,7 @@
 
         <div class="row">
                
-        <label class="col-md-2 unicode">Overtime Reason</label>
+        <label class="col-md-2 unicode">Approved Reason</label>
         <div class="col-md-5 {{ $errors->first('name', 'has-error') }}">
             
            <input type="text" name="overtime_reason" class="form-control" id="overtime_reason">
