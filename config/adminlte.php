@@ -237,45 +237,34 @@ return [
             // 'label'       => 4,
             // 'label_color' => 'success',
         ],
-        ['header' => 'HR Management', 'can' => 'employee-list'],
         [
-            'text'        => 'Dashboard',
-            'url'         => 'hr-dashboard',
-            'icon'        => 'fas fa-fw fa-tachometer-alt',
-            'can'          => 'dashboard'
-            // 'label'       => 4,
-            // 'label_color' => 'success',
-        ],
-        [
-            'text' => 'Employee',
-            'url'  => 'employee',
-            'icon' => 'fas fa-fw fa-user',
-            'can'  => 'employee-list'
-        ], 
-        [
-            'text' => 'Assign Group',
-            'url'  => 'groups',
-            'icon' => 'fas fa-fw fa-users',
-            'can'  => 'employee-list'
-        ],        
-        [
-                    'text' => 'Branch',
-                    'url'  => 'branch',
-                    'icon' => 'fa fa-university',
-                    'can'  => 'branch-list'
-        ],
-        [
-                    'text' => 'Department',
-                    'url'  => 'department',
-                    'icon' => 'fa fa-building',
-                    'can'  => 'department-list'
-        ],
-        [
-                    'text' => 'Position',
-                    'url'  => 'position',
-                    'icon' => 'fa fa-sitemap',
-                    'can'  => 'rank-list'
-         ],
+            'text'    => 'HR Management',
+            'icon'    => 'fas fa-fw fa-users',
+            'can' => 'employee-list',
+            'submenu' => [
+                [
+                    'text'        => 'Dashboard',
+                    'url'         => 'hr-dashboard',
+                    'icon'        => 'fas fa-fw fa-chart-bar',
+                    'can'          => 'dashboard'
+                    // 'label'       => 4,
+                    // 'label_color' => 'success',
+                ],
+                [
+                    'text' => 'Employee',
+                    'url'  => 'employee',
+                    'icon' => 'fas fa-fw fa-user',
+                    'can'  => 'employee-list'
+                ], 
+                [
+                    'text' => 'Assign Group',
+                    'url'  => 'groups',
+                    'icon' => 'fas fa-fw fa-users',
+                    'can'  => 'employee-list'
+                ] 
+            ]
+        ],       
+        
         // [
         //     'text' => 'change_password',
         //     'url'  => 'admin/settings',
@@ -283,7 +272,7 @@ return [
         // ],
         [
             'text'    => 'Attendance',
-            'icon'    => 'fa fa-clock',
+            'icon'    => 'fa fa-business-time',
             'submenu' => [
                 
                 [
@@ -302,120 +291,180 @@ return [
                 //     'icon' => 'fa fa-clock',
                 // ],
                 [
-                    'text' => 'Leave Type',
-                    'url'  => 'leave_type',
-                    'icon' => 'fa fa-location-arrow',
-                ],
-                [
                     'text' => 'Leave Application',
                     'url'  => 'leave_application',
                     'icon' => 'fa fa-cubes',
                 ],
-                [
-                    'text' => 'Award',
-                    'url'  => 'award',
-                    'icon' => 'fa fa-bullseye',
-                ],
                   [
                     'text' => 'Offday',
                     'url'  => 'offday',
-                    'icon' => 'fa fa-bullseye',
+                    'icon' => 'fas fa-fw fa-calendar-alt',
                 ],
                   [
                     'text' => 'Overtime',
                     'url'  => 'overtime',
-                    'icon' => 'fa fa-bullseye',
+                    'icon' => 'fa fa-clock',
                 ],
             ],
         ],
-
-
-
-         ['header' => 'Hostel Management', 'can' => 'hostel-list'],
-        [
-                    'text' => 'Hostel',
-                    'url' => 'hostel',
-                    'icon' => 'fa fa-home',
-                    'can'  => 'hostel-list'
-        ],
-         
-
          [
-                    'text' => 'Room',
-                    'url' => 'room',
-                    'icon' => 'fa fa-th-large',
-                    'can'  => 'room-list'
+            'text'    => 'Performance',
+            'icon'    => 'fa fa-award',
+            'submenu' => [
+                [
+                    'text' => 'Award',
+                    'url'  => 'award',
+                    'icon' => 'fas fa-award',
+                ],
+                  [
+                    'text' => 'KPI',
+                    'url'  => 'offday',
+                    'icon' => 'fas fa-trophy',
+                ],
+            ],
         ],
-          [
-                    'text' => 'Hostel Employee',
-                    'url' => 'hostelemployee',
-                    'icon' => 'fas fa-house-user',
-                    'can'  => 'hostel-employee-list'
+        [
+            'text'    => 'Hostel Management',
+            'icon'    => 'fas fa-fw fa-bed',
+            'can' => 'salary-list',
+            'submenu' => [
+                    [
+                                'text' => 'Hostel',
+                                'url' => 'hostel',
+                                'icon' => 'fa fa-home',
+                                'can'  => 'hostel-list'
+                    ],
+                     
+
+                     [
+                                'text' => 'Room',
+                                'url' => 'room',
+                                'icon' => 'fa fa-th-large',
+                                'can'  => 'room-list'
+                    ],
+                      [
+                                'text' => 'Hostel Employee',
+                                'url' => 'hostelemployee',
+                                'icon' => 'fas fa-house-user',
+                                'can'  => 'hostel-employee-list'
+                    ]
+                ]
         ],
 
-
-        ['header' => 'Payroll Management','can' => 'salary-list'],
         [
-                    'text' => 'Salary',
-                    'url' => 'salary',
-                    'icon' => 'fa fa-credit-card',
-                    'can'  => 'salary-list'
+            'text'    => 'Payroll Management',
+            'icon'    => 'fas fa-fw fa-money-check-alt',
+            'can' => 'salary-list',
+            'submenu' => [
+                [
+                            'text' => 'Salary',
+                            'url' => 'salary',
+                            'icon' => 'fa fa-credit-card',
+                            'can'  => 'salary-list'
+                ]
+            ]
         ],
-        ['header' => 'Recruitment','can' => 'job-list'],
         [
+            'text'    => 'Recruitment',
+            'icon'    => 'fas fa-fw fa-briefcase',
+            'can' => 'job-list',
+            'submenu' => [
+                [
                     'text' => 'Job Openings',
                     'url' => 'jobopening',
                     'icon' => 'fa fa-briefcase',
                     'can'  => 'job-list'
+                ],
+                [
+                            'text' => 'Job Applications',
+                            'url' => 'jobapplication',
+                            'icon' => 'fa fa-list-alt',
+                            'can'  => 'job-list'
+                ]
+            ]
         ],
         [
-                    'text' => 'Job Applications',
-                    'url' => 'jobapplication',
-                    'icon' => 'fa fa-list-alt',
-                    'can'  => 'job-list'
+            'text'    => 'MASTER DATA',
+            'icon'    => 'fas fa-fw fa-table',
+            'can' => 'nrc-code-list',
+            'submenu' => [
+                    [
+                        'text' => 'Branch',
+                        'url'  => 'branch',
+                        'icon' => 'fa fa-university',
+                        'can'  => 'branch-list'
+                    ],
+                    [
+                                'text' => 'Department',
+                                'url'  => 'department',
+                                'icon' => 'fa fa-building',
+                                'can'  => 'department-list'
+                    ],
+                    [
+                                'text' => 'Position',
+                                'url'  => 'position',
+                                'icon' => 'fa fa-sitemap',
+                                'can'  => 'rank-list'
+                     ],
+                     [
+                                'text' => 'NRC Code',
+                                'url'  => 'nrccode',
+                                'icon' => 'fas fa-id-card-alt',
+                                'can'  => 'nrc-code-list'
+                     ],
+                     [
+                                'text' => 'NRC State',
+                                'url'  => 'nrcstate',
+                                'icon' => 'fa fa-id-card',
+                                'can'  => 'nrc-state-list'
+                     ],
+                     [
+                                'text' => 'Leave Type',
+                                'url'  => 'leave_type',
+                                'icon' => 'fa fa-location-arrow',
+                     ],
+                ]
         ],
-
-        ['header' => 'MASTER DATA','can' => 'nrc-code-list'],
         [
-                    'text' => 'NRC Code',
-                    'url'  => 'nrccode',
-                    'icon' => 'fas fa-id-card-alt',
-                    'can'  => 'nrc-code-list'
-         ],
-         [
-                    'text' => 'NRC State',
-                    'url'  => 'nrcstate',
-                    'icon' => 'fa fa-id-card',
-                    'can'  => 'nrc-state-list'
-         ],
-         [
-                    'text' => 'Setting',
-                    'url'  => 'setting',
-                    'icon' => 'fa fa-cogs',
-                    'can'  => 'setting'
-         ],
-         ['header' => 'System Setting'],
-         [
-            'text' => 'Backup',
-            'url'  => 'backup',
-            'icon' => 'fas fa-database',
-            'can'  => 'backup-list'
+            'text'    => 'Account Setting',
+            'icon'    => 'fas fa-fw fa-users-cog',
+            'can' => 'user-list',
+            'submenu' => [
+                    [
+                        'text' => 'Login User',
+                        'url'  => 'users',
+                        'icon' => 'fas fa-user-plus',
+                        'can'  => 'user-list'
+                    ],
+                    [
+                        'text' => 'User Roles',
+                        'url'  => 'roles',
+                        'icon' => 'fas fa-user-cog',
+                        'can'  => 'role-list'
+                    ]
+            ]
         ],
-         ['header' => 'Account Setting'],
-          [
-            'text' => 'Login User',
-            'url'  => 'users',
-            'icon' => 'fas fa-user-plus',
-            'can'  => 'user-list'
-        ],
+         
         [
-            'text' => 'User Roles',
-            'url'  => 'roles',
-            'icon' => 'fas fa-user-cog',
-            'can'  => 'role-list'
+            'text'    => 'System Setting',
+            'icon'    => 'fas fa-fw fa-tools',
+            'can' => 'setting',
+            'submenu' => [
+                [
+                            'text' => 'Setting',
+                            'url'  => 'setting',
+                            'icon' => 'fa fa-cogs',
+                            'can'  => 'setting'
+                ],
+                 [
+                    'text' => 'Backup',
+                    'url'  => 'backup',
+                    'icon' => 'fas fa-database',
+                    'can'  => 'backup-list'
+                 ]
+            ]
         ],
         
-
         
     ],
 
