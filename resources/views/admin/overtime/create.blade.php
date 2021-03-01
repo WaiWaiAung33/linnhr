@@ -48,12 +48,37 @@
         </div>    
         </div><br>
 
-         <div class="row">
+        <div class="row">
                
         <label class="col-md-2 unicode">Reason</label>
         <div class="col-md-5 {{ $errors->first('name', 'has-error') }}">
             
            <input type="text" name="reason" class="form-control" id="reason">
+         
+        </div>    
+        </div><br>
+
+        <div class="row">
+               
+        <label class="col-md-2 unicode">Overtime Status</label>
+        <div class="col-md-5 {{ $errors->first('name', 'has-error') }}">
+            
+            <select class="form-control" id="overtime_status" name="overtime_status" style="font-size: 13px">
+                <option value="">All</option>  
+                <option value="0">Pending</option>
+                <option value="1">Approved</option>
+                <option value="2">Rejected</option>
+            </select>
+         
+        </div>    
+        </div><br>
+
+        <div class="row">
+               
+        <label class="col-md-2 unicode">Overtime Reason</label>
+        <div class="col-md-5 {{ $errors->first('name', 'has-error') }}">
+            
+           <input type="text" name="overtime_reason" class="form-control" id="overtime_reason">
          
         </div>    
         </div><br>

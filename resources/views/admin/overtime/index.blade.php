@@ -7,7 +7,11 @@
 <h5 style="color: blue;">Overtime Management</h5>
 @stop
 @section('content')
-
+<?php
+        $name = isset($_GET['name'])?$_GET['name']:'';
+         $branch_id = isset($_GET['branch_id'])?$_GET['branch_id']:'';
+        $dept_id = isset($_GET['dept_id'])?$_GET['dept_id']:'';
+?>
 <div>
 
      <a class="btn btn-success unicode" href="{{route('overtime.create')}}" style="float: right;font-size: 13px"><i class="fas fa-plus"></i> Overtime</a>
@@ -18,6 +22,30 @@
             </div>
       @endif --}}
 
+    <form action="{{route('overtime.index')}}" method="get" accept-charset="utf-8" class="form-horizontal">
+     <div class="row form-group">
+     
+       <div class="col-md-3">                 
+          <input type="text" name="name" id="name" value="{{ old('name',$name) }}" class="form-control" placeholder="Search..." style="font-size: 13px">
+        </div>
+        <div class="col-md-3">
+            <select class="form-control" id="branch_id" name="branch_id" style="font-size: 13px">
+              <option value="">Select Branch</option>
+              @foreach($branches as $branch)
+              <option value="{{$branch->id}}" {{ (old('branch_id',$branch_id)==$branch->id)?'selected':'' }}>{{$branch->name}}</option>
+              @endforeach
+          </select>
+        </div>
+        <div class="col-md-3">
+           <select class="form-control" id="dept_id" name="dept_id" style="font-size: 13px">
+              <option value="">Select Department</option>
+              @foreach($departments as $department)
+              <option value="{{$department->id}}" {{ (old('dept_id',$dept_id)==$department->id)?'selected':'' }}>{{$department->name}}</option>
+              @endforeach
+          </select>
+        </div>
+     </div>
+    </form>
     
     <p>Total record: {{$count}}</p>
     <div class="table-responsive" style="font-size:14px">
@@ -25,10 +53,13 @@
                   <thead>
                     <tr> 
                       <th>No</th>
+                      <th>Image</th>
                         <th>Employee Name</th>
                         <th>Apply Date</th>
                         <th>Reason</th>
-                      
+                        <th>Overtime Staus</th>
+                        <th>Overtime Reason</th>
+                        <th>Last Updated by</th>
                         <th>Action</th>
                     </tr>
                   </thead>
@@ -37,11 +68,29 @@
                    @foreach($overtimes as $overtime)
                         <tr class="table-tr" >
                             <td>{{++$i}}</td>
-                            <td>{{$overtime->viewEmployee->name}}</td>
+                            @if($overtime->photo == '')
+                            <td>
+                            <img src="{{ asset('uploads/employeePhoto/default.png') }}" alt="photo" width="80px" height="80px">
+                            </td>
+                            @else
+                            <td>
+                             <img src="{{ asset('uploads/employeePhoto/'.$overtime->photo) }}" alt="photo" width="80px" height="80px">
+                             </td>
+                             @endif
+                            <td>{{$overtime->viewEmployee->name}}<br>
+                              {{$overtime->department_name}}<br>
+                              {{$overtime->branch_name}}</td>
                             <td>{{date('d-m-Y',strtotime($overtime->apply_date))}}</td>
                             <td>{{$overtime->reason}}</td>
-                            
-                           
+                            @if($overtime->overtime_status == 0)
+                            <td>Pending</td>
+                            @elseif($overtime->overtime_status == 1)
+                            <td>Approved</td>
+                            @else
+                            <td>Rejected</td>
+                            @endif
+                           <td>{{$overtime->overtime_reason}}</td>
+                          <td>{{$overtime->name}}</td>
                            
                             <td>
                                 <form action="{{route('overtime.destroy',$overtime->id)}}" method="post"
@@ -89,6 +138,14 @@
                 $('#name').on('change',function(e) {
                 this.form.submit();
             }); 
+            $('#branch_id').on('change',function(e) {
+
+                this.form.submit();
+            });
+            $('#dept_id').on('change',function(e) {
+
+                this.form.submit();
+            });
    
         });
           $(function() {
