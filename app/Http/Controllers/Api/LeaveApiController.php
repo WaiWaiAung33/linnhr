@@ -16,7 +16,8 @@ class LeaveApiController extends Controller
 	{
 		$input = $request->all();
 	     $rules=[
-	        'page'=>'required'
+	        'page'=>'required',
+	        'attendance_date'=>'required'
 	    ];
 
 	    $validator = Validator::make($input, $rules);
@@ -38,8 +39,8 @@ class LeaveApiController extends Controller
 	                    'leave_types.leave_type',
 	                    'branch.name AS branch_name',
 	                    'department.name AS dept_name'
-	                );
-	             if ($request->keyword != '') {
+	                ); 
+	             if ($request->keyword != '') { 
 		            $leave_applications = $leave_applications->where('employee.name','like','%'.$request->keyword.'%');
 		        }
 		        if ($request->branch_id != '') {
@@ -48,6 +49,10 @@ class LeaveApiController extends Controller
 		        if ($request->dept_id != '') {
 		            $leave_applications = $leave_applications->where('employee.dep_id',$request->dept_id);
 		        }
+		        if ($request->date != '') {
+		        	$leave_applications = $leave_applications->whereDate('start_date','<=',date('Y-m-d',strtotime($request->attendance_date)))->whereDate('end_date','>=',date('Y-m-d',strtotime($request->attendance_date)));
+		        }
+		        
 
 		        $leave_applications = $leave_applications->orderBy('leave_applications.id','asc')->limit(10)->paginate(10);
 
