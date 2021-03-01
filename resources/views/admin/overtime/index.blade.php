@@ -58,7 +58,7 @@
                         <th>Apply Date</th>
                         <th>Reason</th>
                         <th>Overtime Staus</th>
-                        <th>Overtime Reason</th>
+                        <th>Approved Reason</th>
                         <th>Last Updated by</th>
                         <th>Action</th>
                     </tr>
