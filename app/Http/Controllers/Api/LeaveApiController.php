@@ -8,10 +8,51 @@ use DB;
 use Validator;
 use App\Employee;
 use App\LeaveApplication;
+use App\LeaveType;
 
 
 class LeaveApiController extends Controller
 {
+	public function leave_type()
+	{
+		$leave_types = LeaveType::all();
+		return response(['message'=>"Success",'status'=>1,'leave_types'=>$leave_types]);
+	}
+
+	public function leave_create(Request $request)
+	{
+		$input = $request->all();
+	     $rules=[
+	        'emp_id'=>'required',
+	        'leave_type'=>'required',
+	        'start_date'=>'required',
+	        'end_date'=>'required',
+	        'day'=>'required',
+	        'apply_date'=>'required',
+	        'reason'=>'required',
+	    ];
+
+	    $validator = Validator::make($input, $rules);
+
+	     if ($validator->fails()) {
+	        $messages = $validator->messages();
+	           return response()->json(['message'=>"Error",'status'=>0]);
+	    }else{
+		    	$leave_application = LeaveApplication::create([
+	            'emp_id'=>$request->emp_id,
+	            'leavetype_id'=>$request->leave_type,
+	            'halfDayType'=>$request->halfDayType ? $request->halfDayType : "",
+	            'halforfull'=>$request->halforfull ? $request->halfDayType : 0,
+	            'start_date'=>date('Y-m-d',strtotime($request->start_date)),
+	            'end_date'=>date('Y-m-d',strtotime($request->end_date)),
+	            'days'=>$request->day,
+	            'apply_date'=>date('Y-m-d',strtotime($request->apply_date)),
+	            'reason'=>$request->reason,
+	            'application_status'=> 0
+	        ]);
+		    return response(['message'=>"Success",'status'=>1]);	
+	    }
+	}
 	public function leave_list(Request $request)
 	{
 		$input = $request->all();

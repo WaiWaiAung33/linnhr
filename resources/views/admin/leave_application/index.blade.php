@@ -98,7 +98,11 @@
                              </td>
                              @endif
                             <td>{{$leave_application->leave_type}}</td> 
-                            <td>{{$leave_application->halfDayType}}</td>
+                            @if($leave_application->halfDayType == 0)
+                            <td>Full Day</td>
+                            @else
+                            <td>Half Day</td>
+                            @endif
                             <td>{{date('d-m-Y',strtotime($leave_application->apply_date))}}</td>
                             <td>{{$leave_application->days}}</td>
                             <td>{{$leave_application->reason}}</td>
@@ -165,7 +169,7 @@
         });
         $(function() {
           $('table').on("click", "tr.table-tr", function() {
-            // window.location = $(this).data("url");
+            window.location = $(this).data("url");
           });
         });
 
