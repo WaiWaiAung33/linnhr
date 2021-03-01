@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Overtime;
 use App\Employee;
+use App\Branch;
+use App\Department;
+use App\User;
 use Illuminate\Http\Request;
 
 class OvertimeController extends Controller
@@ -13,12 +16,31 @@ class OvertimeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
        $overtimes = new Overtime();
+       $branches = Branch::where('status',1)->get();
+        $departments = Department::where('status',1)->get();
         $count=$overtimes->get()->count();
+       $overtimes = $overtimes->leftjoin('employee','employee.id','=','overtime.emp_id')->leftjoin('users','users.id','=','overtime.last_updated_by')->leftjoin('department','department.id','=','employee.dep_id')->leftjoin('branch','branch.id','=','employee.branch_id') ->select(
+                                                    'overtime.*',
+                                                    'employee.name',
+                                                    'employee.photo',
+                                                    'users.name',
+                                                    'department.name As department_name',
+                                                    'branch.name As branch_name'
+                                                );
+        if ($request->name != '') {
+            $overtimes = $overtimes->where('employee.name','like','%'.$request->name.'%');
+        }
+        if ($request->branch_id != '') {
+            $overtimes = $overtimes->where('employee.branch_id',$request->branch_id);
+        }
+        if ($request->dept_id != '') {
+            $overtimes = $overtimes->where('employee.dep_id',$request->dept_id);
+        }
         $overtimes = $overtimes->orderBy('created_at','desc')->paginate(10);
-        return view('admin.overtime.index',compact('overtimes','count'))->with('i', (request()->input('page', 1) - 1) * 10);;
+        return view('admin.overtime.index',compact('overtimes','count','branches','departments'))->with('i', (request()->input('page', 1) - 1) * 10);;
     }
 
     /**
@@ -48,6 +70,9 @@ class OvertimeController extends Controller
             'emp_id'=> $request->emp_id,
             'apply_date'=>date('Y-m-d',strtotime($request->apply_date)),
             'reason'=> $request->reason,
+            'overtime_status'=>$request->overtime_status,
+            'overtime_reason'=>$request->overtime_reason,
+            'last_updated_by'=>auth()->user()->id,
           
         ]
         );
@@ -92,6 +117,9 @@ class OvertimeController extends Controller
             'emp_id'=> $request->emp_id,
             'apply_date'=>date('Y-m-d',strtotime($request->apply_date)),
             'reason'=> $request->reason,
+            'overtime_status'=>$request->overtime_status,
+            'overtime_reason'=>$request->overtime_reason,
+            'last_updated_by'=>auth()->user()->id,
         ]
         );
         return redirect()->route('overtime.index')->with('success','Overtime updated successfully');;;
