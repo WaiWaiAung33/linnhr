@@ -31,6 +31,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('cancel','CvformController@update')->name('cancel');
     Route::get('/recall/{id}','CvformController@recallupdate')->name('recallinterview');
 	Route::get('dashboard','HomeController@index')->name('dashboard');
+	Route::get('hr-dashboard','HomeController@hrDashboard')->name('hrdashboard');
+
 	Route::resource('branch','BranchController');
 	Route::resource('department','DepartmentController');
 	Route::resource('position','PositionController');
