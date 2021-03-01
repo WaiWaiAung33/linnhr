@@ -27,7 +27,7 @@ class TimeInApiController extends Controller
                 $messages = $validator->messages();
                    return response()->json(['message'=>"Error",'status'=>0]);
             }else{
-                $attendance_count = Attendance::where('date',date('Y-m-d',strtotime($request->attendance_date)))->orwhere('out_date',date('Y-m-d',strtotime($request->attendance_date)))->get()->count();
+                $attendance_count = Attendance::where('date',date('Y-m-d',strtotime($request->attendance_date)))->get()->count();
 
                 $leave_count = LeaveApplication::whereDate('start_date','<=',date('Y-m-d',strtotime($request->attendance_date)))->whereDate('end_date','>=',date('Y-m-d',strtotime($request->attendance_date)))->get()->count();
                 
