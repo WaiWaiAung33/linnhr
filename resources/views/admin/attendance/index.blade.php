@@ -118,7 +118,11 @@
                             @elseif($attendance->attendance_status == 3)
                             <td>Leave</td>
                             @endif
+                            @if($attendance->last_updated_user != null)
                             <td>{{$attendance->last_updated_user->name}}</td>
+                            @else
+                            <td></td>
+                            @endif
                         </tr>
                          @endforeach
                           @else
