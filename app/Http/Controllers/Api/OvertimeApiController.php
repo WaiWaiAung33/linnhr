@@ -47,6 +47,10 @@ class OvertimeApiController extends Controller
 		        if ($request->dept_id != '') {
 		            $overtimes = $overtimes->where('employee.dep_id',$request->dept_id);
 		        }
+
+		        if ($request->overtime_date) {
+		        	$overtimes = $overtimes->where('overtime.apply_date',date('Y-m-d',strtotime($request->overtime_date)));
+		        }
 		       
 		        $overtimes = $overtimes->orderBy('overtime.id','asc')->limit(10)->paginate(10);
 

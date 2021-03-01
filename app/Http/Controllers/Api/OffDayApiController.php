@@ -46,6 +46,10 @@ class OffDayApiController extends Controller
 		        if ($request->dept_id != '') {
 		            $offdays = $offdays->where('employee.dep_id',$request->dept_id);
 		        }
+
+		        if ($request->off_date) {
+		        	$offdays = $offdays->where('off_day_1',date('Y-m-d',strtotime($request->off_date)))->orwhere('off_day_2',date('Y-m-d',strtotime($request->off_date)))->orwhere('off_day_3',date('Y-m-d',strtotime($request->off_date)))->orwhere('off_day_4',date('Y-m-d',strtotime($request->off_date)));
+		        }
 		       
 		        $offdays = $offdays->orderBy('offday.id','asc')->limit(10)->paginate(10);
 
