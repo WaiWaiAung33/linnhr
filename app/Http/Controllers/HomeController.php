@@ -217,7 +217,48 @@ class HomeController extends Controller
         $dateE = Carbon::now()->startOfMonth(); 
         $new_empoyee = Employee::whereBetween('join_date',[$dateS,$dateE])->get()->count();
 
+        $leaveChart = DB::table('leave_applications')
+                             ->selectRaw('department.name')
+                             ->selectRaw("count(leave_applications.id) as count")
+                             ->leftjoin('employee','employee.id','leave_applications.emp_id')
+                             ->leftjoin('department','department.id','employee.dep_id')
+                             ->whereDate('start_date','<=',date('Y-m-d'))->whereDate('end_date','>=',date('Y-m-d'))
+                             ->groupBy('department.id')
+                             ->get()->toArray();
+
+        $leavDeptArr = [];
+        $leavDeptCountArr = [];
+
+        foreach ($leaveChart as $key => $leave) {
+            array_push($leavDeptArr, $leave->name);
+            array_push($leavDeptCountArr, $leave->count);
+        }
+
+        $offday_count = OffDay::where('off_day_1',date('Y-m-d'))->orwhere('off_day_2',date('Y-m-d'))->orwhere('off_day_3',date('Y-m-d'))->orwhere('off_day_4',date('Y-m-d'))->get()->count();
+
+
+        $offday_arr = DB::table('offday')
+                                    ->selectRaw('department.name')
+                                    ->selectRaw("count(offday.id) as count")
+                                    ->leftjoin('employee','employee.id','offday.emp_id')
+                                    ->leftjoin('branch','branch.id','employee.branch_id')
+                                    ->leftjoin('department','department.id','employee.dep_id')
+                                    ->where('off_day_1',date('Y-m-d'))
+                                    ->orwhere('off_day_2',date('Y-m-d'))
+                                    ->orwhere('off_day_3',date('Y-m-d'))
+                                    ->orwhere('off_day_4',date('Y-m-d'))
+                                    ->groupBy('department.id')
+                                     ->get()->toArray();
+
+        $offDeptArr = [];
+        $offDeptCountArr = [];
+
+        foreach ($offday_arr as $key => $offday) {
+            array_push($offDeptArr, $offday->name);
+            array_push($offDeptCountArr, $offday->count);
+        }
+
        
-        return view('admin.dashboard.hr_dashboard',compact('attendance_count','leave_count','offday_count','overtime_count','emp_count','deptArr','branchArr','branchAttCountArr','deptArr','deptAttCountArr','bd_employess','offday_employess','total_branches','total_departments','new_empoyee'));
+        return view('admin.dashboard.hr_dashboard',compact('attendance_count','leave_count','offday_count','overtime_count','emp_count','deptArr','branchArr','branchAttCountArr','deptArr','deptAttCountArr','bd_employess','offday_employess','total_branches','total_departments','new_empoyee','leavDeptArr','leavDeptCountArr','offDeptArr','offDeptCountArr'));
     }
 }

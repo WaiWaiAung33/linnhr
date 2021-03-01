@@ -144,15 +144,24 @@
 
     <div class="row justify-content-center">
         <div class="col-md-6" align="center">
-            
-      <div id="pconchart" style="height: 300px;"></div>
+          <div id="pconchart" style="height: 300px;"></div>
         </div>
         <div class="col-md-6"  align="center">
              <div id="chart1" style="height: 300px;"></div>
         </div>
     </div>
     <br>
-   <hr>
+    <hr>
+      <div class="row justify-content-center">
+        <div class="col-md-6" align="center">
+          <div id="leavechart" style="height: 300px;"></div>
+        </div>
+        <div class="col-md-6"  align="center">
+             <div id="otchart" style="height: 300px;"></div>
+        </div>
+    </div>
+    <br>
+    <hr>
   <div class="row">
         <div class="col-md-6">
             <p><i class="fa fa-home"></i>  {{ date('d-M-Y') }} နားသူများ - {{ $offday_employess->count() }}</p>
@@ -253,15 +262,38 @@ $date = date('Ymd')."";
           data: {
               "chart": { "labels": deptArr },
               "datasets": [
-                 { "name": "Total ", "values":deptAttCountArr }
+                 { "name": "စုစုပေါင်း ", "values":deptAttCountArr }
+               
+              ]
+            },
+          hooks: new ChartisanHooks()
+            .beginAtZero()
+            .colors(['#C55539'])
+            .legend({ position: 'bottom' })
+            .title('ဌာနအလိုက်အလုပ်ဆင်းသူများ')
+        });
+
+
+        var leavDeptArr = <?php echo '["' . implode('", "', $leavDeptArr) . '"]' ?>;
+        var leavDeptCountArr = <?php echo '["' . implode('", "', $leavDeptCountArr) . '"]' ?>;
+
+        const leavechart = new Chartisan({
+          el: '#leavechart',
+          // url: 'https://chartisan.dev/chart/example.json',
+          data: {
+              "chart": { "labels": leavDeptArr },
+              "datasets": [
+                 { "name": "စုစုပေါင်း ", "values":leavDeptCountArr }
                
               ]
             },
           hooks: new ChartisanHooks()
             .beginAtZero()
             .colors(['#4172bd'])
-            .title('ဌာနအလိုက်အလုပ်ဆင်းသူများ')
-        })
+            .legend({ position: 'bottom' })
+            .title('ခွင့်ယူထားသူများ')
+        });
+
 
         var branchArr = <?php echo '["' . implode('", "', $branchArr) . '"]' ?>;
         var branchAttCountArr = <?php echo '["' . implode('", "', $branchAttCountArr) . '"]' ?>;
@@ -276,12 +308,33 @@ $date = date('Ymd')."";
                   ]
                 },
               hooks: new ChartisanHooks()
-                .colors(['#80007F'])
+                .colors(['#5E18EB'])
                 .responsive()
                 .beginAtZero()
                 .legend({ position: 'bottom' })
                 .title('ဆိုင်ခွဲအလိုက် အလုပ်ဆင်းသူများ')
-            })
+        });
+
+
+        var offDeptArr = <?php echo '["' . implode('", "', $offDeptArr) . '"]' ?>;
+        var offDeptCountArr = <?php echo '["' . implode('", "', $offDeptCountArr) . '"]' ?>;
+
+        const otchart = new Chartisan({
+              el: '#otchart',
+              // url: 'https://chartisan.dev/chart/example.json',
+              data: {
+                  "chart": { "labels": offDeptArr },
+                  "datasets": [
+                    { "name": "စုစုပေါင်း", "values": offDeptCountArr }
+                  ]
+                },
+              hooks: new ChartisanHooks()
+                .colors(['#62C500'])
+                .responsive()
+                .beginAtZero()
+                .legend({ position: 'bottom' })
+                .title('နားသူများ')
+        });
 
    
 
