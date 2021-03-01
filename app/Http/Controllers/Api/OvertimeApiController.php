@@ -17,7 +17,8 @@ class OvertimeApiController extends Controller
 	{
 		$input = $request->all();
 	     $rules=[
-	        'page'=>'required'
+	        'page'=>'required',
+	        'overtime_date'=>'required'
 	    ];
 
 	    $validator = Validator::make($input, $rules);
@@ -58,6 +59,7 @@ class OvertimeApiController extends Controller
 	    								->select(
 	    									'overtime.*',
 	    									'employee.name',
+	    									'employee.photo',
 	    									'branch.name AS branch_name',
 	    									'department.name AS dept_name'
 	    								);
@@ -70,7 +72,9 @@ class OvertimeApiController extends Controller
 		        if ($request->dept_id != '') {
 		            $overtimes = $overtimes->where('employee.dep_id',$request->dept_id);
 		        }
-		       
+		        if ($request->overtime_date) {
+		        	$overtimes = $overtimes->where('overtime.apply_date',date('Y-m-d',strtotime($request->overtime_date)));
+		        }
 		        $overtimes = $overtimes->orderBy('attendances.id','asc')->get();
 
 		        return response(['message'=>"Success",'status'=>1,'overtimes'=>$overtimes]);

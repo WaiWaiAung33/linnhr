@@ -15,7 +15,8 @@ class OffDayApiController extends Controller
 	{
 		$input = $request->all();
 	     $rules=[
-	        'page'=>'required'
+	        'page'=>'required',
+	        'off_date'=>'required'
 	    ];
 
 	    $validator = Validator::make($input, $rules);
@@ -57,6 +58,7 @@ class OffDayApiController extends Controller
 	    							->select(
 	    								'offday.*',
 	    								'employee.name',
+	    								'employee.photo',
 	    								'branch.name AS branch_name',
 	    								'department.name AS dept_name'
 	    							);
@@ -69,6 +71,9 @@ class OffDayApiController extends Controller
 		        }
 		        if ($request->dept_id != '') {
 		            $offdays = $offdays->where('employee.dep_id',$request->dept_id);
+		        }
+		        if ($request->off_date) {
+		        	$offdays = $offdays->where('off_day_1',date('Y-m-d',strtotime($request->off_date)))->orwhere('off_day_2',date('Y-m-d',strtotime($request->off_date)))->orwhere('off_day_3',date('Y-m-d',strtotime($request->off_date)))->orwhere('off_day_4',date('Y-m-d',strtotime($request->off_date)));
 		        }
 		       
 		        $offdays = $offdays->orderBy('attendances.id','asc')->get();
