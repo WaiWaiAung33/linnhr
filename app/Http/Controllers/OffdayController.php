@@ -76,10 +76,10 @@ class OffdayController extends Controller
          $this->validate($request,$rules);
         $offday=Offday::create([
             'emp_id'=> $request->emp_id,
-            'off_day_1'=>date('Y-m-d',strtotime($request->off_day_1)),
-            'off_day_2'=>date('Y-m-d',strtotime($request->off_day_2)),
-            'off_day_3'=>date('Y-m-d',strtotime($request->off_day_3)),
-            'off_day_4'=>date('Y-m-d',strtotime($request->off_day_3)),
+            'off_day_1'=>($request->off_day_1!='')?date('Y-m-d',strtotime($request->off_day_1)):NULL,
+            'off_day_2'=>($request->off_day_2!='')?date('Y-m-d',strtotime($request->off_day_2)):NULL,
+            'off_day_3'=>($request->off_day_3!='')?date('Y-m-d',strtotime($request->off_day_3)):NULL,
+            'off_day_4'=>($request->off_day_4!='')?date('Y-m-d',strtotime($request->off_day_3)):NULL,
             'actionBy'=>auth()->user()->id,
         ]
         );
@@ -122,10 +122,10 @@ class OffdayController extends Controller
        $offdays=Offday::find($id);
         $offdays=$offdays->update([
             'emp_id'=> $request->emp_id,
-            'off_day_1'=>date('Y-m-d',strtotime($request->off_day_1)),
-            'off_day_2'=>date('Y-m-d',strtotime($request->off_day_2)),
-            'off_day_3'=>date('Y-m-d',strtotime($request->off_day_3)),
-            'off_day_4'=>date('Y-m-d',strtotime($request->off_day_3)),
+            'off_day_1'=>($request->off_day_1!='')?date('Y-m-d',strtotime($request->off_day_1)):NULL,
+            'off_day_2'=>($request->off_day_2!='')?date('Y-m-d',strtotime($request->off_day_2)):NULL,
+            'off_day_3'=>($request->off_day_3!='')?date('Y-m-d',strtotime($request->off_day_3)):NULL,
+            'off_day_4'=>($request->off_day_4!='')?date('Y-m-d',strtotime($request->off_day_3)):NULL,
             'actionBy'=>auth()->user()->id,
         ]
         );
