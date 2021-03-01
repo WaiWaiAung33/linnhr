@@ -144,6 +144,15 @@
         </div>    
     </div><br>
 
+     <div class="row" id="reason">
+               
+        <label class="col-md-2 unicode">Reason</label>
+        <div class="col-md-5">
+            
+            <textarea class="form-control" id="reason" name="reason">{{$attendance->reason}}</textarea>
+        </div>    
+    </div><br id="break">
+
         <div class="row">
                     <div class="col-md-2"></div>
                     <div class="col-md-5">
@@ -170,7 +179,14 @@
  <script src="{{asset('dist/js/timepicker.min.js')}}"></script>
 <script type="text/javascript">
      $(document).ready(function(){
-
+        var val = $('#is_late option:selected').val();
+                if (val == '1') {
+                    $("#reason").show();
+                    $("#break").show();
+                } else {
+                    $("#reason").hide();
+                    $("#break").hide();
+                }
         $(function() {
             $('.livesearch').select2({
             placeholder: 'Employee Name',

@@ -142,6 +142,15 @@
                 @endif
         </div>    
     </div><br>
+    @if($attendance->is_late == 1)
+    <div class="row">
+               
+        <label class="col-md-2 unicode">Reason</label>
+        <div class="col-md-5">
+          <textarea class="form-control" id="reason" name="reason">{{$attendance->reason}}</textarea>            
+        </div>    
+    </div><br>
+    @endif
 
         </form>
     </div>
