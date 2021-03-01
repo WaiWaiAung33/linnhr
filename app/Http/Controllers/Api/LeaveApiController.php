@@ -17,7 +17,7 @@ class LeaveApiController extends Controller
 		$input = $request->all();
 	     $rules=[
 	        'page'=>'required',
-	        'date'=>'required'
+	        'attendance_date'=>'required'
 	    ];
 
 	    $validator = Validator::make($input, $rules);
