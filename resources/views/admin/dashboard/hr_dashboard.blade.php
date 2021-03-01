@@ -106,7 +106,7 @@
             <div class="icon">
                <i class="fa fa-users"></i>
             </div>
-            <a style="color: white !important;" href="{{ url('leave_application') }}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            <a style="color: white !important;" href="{{ url('leave_application?date='.date('d-m-Y')) }}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->
@@ -121,7 +121,7 @@
             <div class="icon">
                <i class="fa fa-users "></i>
             </div>
-            <a href="{{ url('offday') }}" class="small-box-footer"  style="color: white !important">More info <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="{{ url('offday?name=&date='.date('d-m-Y')) }}" class="small-box-footer"  style="color: white !important">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->
@@ -136,7 +136,7 @@
             <div class="icon">
                <i class="fa fa-clock "></i>
             </div>
-            <a href="{{ url("/overtime") }}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="{{ url("/overtime?date=".date('d-m-Y')) }}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->

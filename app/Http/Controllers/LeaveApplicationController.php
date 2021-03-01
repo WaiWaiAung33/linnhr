@@ -41,6 +41,9 @@ class LeaveApplicationController extends Controller
         if ($request->dept_id != '') {
             $leave_applications = $leave_applications->where('employee.dep_id',$request->dept_id);
         }
+        if ($request->date != '') {
+            $leave_applications = $leave_applications->where('leave_applications.start_date',date('Y-m-d',strtotime($request->date)));
+        }
         $count=$leave_applications->get()->count();
         $leave_applications = $leave_applications->orderBy('created_at','desc')->paginate(10);
         // dd($count);

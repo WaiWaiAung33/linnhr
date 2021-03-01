@@ -7,10 +7,14 @@
 @stop
 @section('content')
 <?php
-        $name = isset($_GET['name'])?$_GET['name']:'';
-        $branch_id = isset($_GET['branch_id'])?$_GET['branch_id']:'';
-        $dept_id = isset($_GET['dept_id'])?$_GET['dept_id']:'';
-        $application_status = isset($_GET['application_status'])?$_GET['application_status']:'';
+  $name = isset($_GET['name'])?$_GET['name']:'';
+  $branch_id = isset($_GET['branch_id'])?$_GET['branch_id']:'';
+  $dept_id = isset($_GET['dept_id'])?$_GET['dept_id']:'';
+  $application_status = isset($_GET['application_status'])?$_GET['application_status']:'';
+  $date = isset($_GET['date'])?$_GET['date']:''; 
+  if ($date == '') {
+    $date = date('d-m-Y');
+  }
 ?>
 <!-- <div class="row"> -->
     <form action="{{route('leave_application.index')}}" method="get" accept-charset="utf-8" class="form-horizontal">
@@ -47,6 +51,10 @@
                 <option value="2" {{ (old('application_status',$application_status)=="2")?'selected':'' }}>Rejected</option>
                </select>
       </div>
+      <div class="col-md-2">  
+        <label for="">Date</label>             
+        <input type="text" name="date" id="date" value="{{ old('date',$date) }}" class="form-control" style="font-size: 13px">
+       </div>
       
      </div>
       </form>
@@ -116,10 +124,11 @@
        </div>   
 @stop 
 @section('css')
-
+<link id="bsdp-css" href="{{ asset('/css/bootstrap-datepicker3.min.css')}}" rel="stylesheet">
 @stop
 
 @section('js')
+<script src="{{ asset('/js/bootstrap-datepicker.min.js')}}"></script>
  <script> 
       @if(Session::has('success'))
             toastr.options =
@@ -143,16 +152,21 @@
                 this.form.submit();
             });
             $('#dept_id').on('change',function(e) {
+                this.form.submit();
+            });
 
+            $('#date').on('change',function(e) {
                 this.form.submit();
             });
    
         });
-          $(function() {
+        $(function() {
           $('table').on("click", "tr.table-tr", function() {
-            window.location = $(this).data("url");
+            // window.location = $(this).data("url");
           });
         });
+
+        $("#date").datepicker({ format: 'dd-mm-yyyy' });
 
         });
 

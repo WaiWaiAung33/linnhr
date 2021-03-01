@@ -8,9 +8,13 @@
 @stop
 @section('content')
 <?php
-        $name = isset($_GET['name'])?$_GET['name']:'';
-         $branch_id = isset($_GET['branch_id'])?$_GET['branch_id']:'';
-        $dept_id = isset($_GET['dept_id'])?$_GET['dept_id']:'';
+  $name = isset($_GET['name'])?$_GET['name']:'';
+  $branch_id = isset($_GET['branch_id'])?$_GET['branch_id']:'';
+  $dept_id = isset($_GET['dept_id'])?$_GET['dept_id']:'';
+  $date = isset($_GET['date'])?$_GET['date']:''; 
+  if ($date == '') {
+    $date = date('d-m-Y');
+  }
 ?>
 <div>
 
@@ -25,10 +29,10 @@
       <form action="{{route('offday.index')}}" method="get" accept-charset="utf-8" class="form-horizontal">
      <div class="row form-group">
      
-       <div class="col-md-3">                 
+       <div class="col-md-2">                 
           <input type="text" name="name" id="name" value="{{ old('name',$name) }}" class="form-control" placeholder="Search..." style="font-size: 13px">
         </div>
-        <div class="col-md-3">
+        <div class="col-md-2">
             <select class="form-control" id="branch_id" name="branch_id" style="font-size: 13px">
               <option value="">Select Branch</option>
               @foreach($branches as $branch)
@@ -36,7 +40,7 @@
               @endforeach
           </select>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-2">
            <select class="form-control" id="dept_id" name="dept_id" style="font-size: 13px">
               <option value="">Select Department</option>
               @foreach($departments as $department)
@@ -44,6 +48,9 @@
               @endforeach
           </select>
         </div>
+        <div class="col-md-2">               
+            <input type="text" name="date" id="date" value="{{ old('date',$date) }}" class="form-control" style="font-size: 13px">
+       </div>
      </div>
     </form>
     <p>Total record: {{$count}}</p>
@@ -109,10 +116,12 @@
        </div>   
 @stop 
 @section('css')
+<link id="bsdp-css" href="{{ asset('/css/bootstrap-datepicker3.min.css')}}" rel="stylesheet">
 @stop
 
 @section('js')
- <script> 
+<script src="{{ asset('/js/bootstrap-datepicker.min.js')}}"></script>
+<script> 
     @if(Session::has('success'))
             toastr.options =
             {
@@ -137,13 +146,21 @@
 
                 this.form.submit();
             });
+
+            $('#date').on('change',function(e) {
+
+                this.form.submit();
+            });
    
         });
-          $(function() {
+        $(function() {
           $('table').on("click", "tr.table-tr", function() {
             window.location = $(this).data("url");
           });
         });
+
+        $("#date").datepicker({ format: 'dd-mm-yyyy' });
+
          
         });
      </script>
