@@ -9,7 +9,7 @@ use App\Department;
 use App\User;
 use App\LeaveType;
 use Illuminate\Http\Request;
-
+ 
 class LeaveApplicationController extends Controller
 {
     /**
@@ -41,6 +41,11 @@ class LeaveApplicationController extends Controller
         if ($request->dept_id != '') {
             $leave_applications = $leave_applications->where('employee.dep_id',$request->dept_id);
         }
+
+        if ($request->attendance_date != '') {
+            $leave_applications = $leave_applications->whereDate('leave_applications.apply_date',date('Y-m-d',strtotime($request->attendance_date)));
+        }
+
         $count=$leave_applications->get()->count();
         $leave_applications = $leave_applications->orderBy('created_at','desc')->paginate(10);
         // dd($count);
