@@ -17,8 +17,7 @@ class OvertimeApiController extends Controller
 	{
 		$input = $request->all();
 	     $rules=[
-	        'page'=>'required',
-	        'overtime_date'=>'required'
+	        'page'=>'required'
 	    ];
 
 	    $validator = Validator::make($input, $rules);
@@ -59,7 +58,6 @@ class OvertimeApiController extends Controller
 	    								->select(
 	    									'overtime.*',
 	    									'employee.name',
-	    									'employee.photo',
 	    									'branch.name AS branch_name',
 	    									'department.name AS dept_name'
 	    								);
@@ -72,13 +70,43 @@ class OvertimeApiController extends Controller
 		        if ($request->dept_id != '') {
 		            $overtimes = $overtimes->where('employee.dep_id',$request->dept_id);
 		        }
-		        if ($request->overtime_date) {
-		        	$overtimes = $overtimes->where('overtime.apply_date',date('Y-m-d',strtotime($request->overtime_date)));
-		        }
+		       
 		        $overtimes = $overtimes->orderBy('attendances.id','asc')->get();
 
 		        return response(['message'=>"Success",'status'=>1,'overtimes'=>$overtimes]);
 	    	}
 	    }
 	}
+
+
+	 public function overtime_create(Request $request)
+   	 {
+        $input = $request->all();
+        $rules=[
+            'emp_id'=>'required',
+            'apply_date'=>'required',
+            'reason'=>'required',
+
+        ];
+
+        $validator = Validator::make($input, $rules);
+
+         if ($validator->fails()) {
+            $messages = $validator->messages();
+               return response()->json(['message'=>"Error",'status'=>0]);
+        }else{
+            $overtime = Overtime::create([
+                'emp_id'=>$request->emp_id,
+                'apply_date'=>$request->apply_date,
+                'reason'=>$request->reason,
+                'actionBy'=>$request->actionBy,
+                'overtime_status'=>$request->overtime_status,
+                'overtime_reason'=>$request->overtime_reason,
+
+            ]);
+            return response(['message'=>"Successfully create",'status'=>1]);
+        }
+    }
+
+
 }
