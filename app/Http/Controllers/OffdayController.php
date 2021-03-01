@@ -39,6 +39,14 @@ class OffdayController extends Controller
         if ($request->dept_id != '') {
             $offdays = $offdays->where('employee.dep_id',$request->dept_id);
         }
+
+        if($request->date !=''){
+            $offdays = $offdays->where('off_day_1',date('Y-m-d',strtotime($request->date)))
+                                ->orwhere('off_day_2',date('Y-m-d',strtotime($request->date)))
+                                ->orwhere('off_day_3',date('Y-m-d',strtotime($request->date)))
+                                ->orwhere('off_day_4',date('Y-m-d',strtotime($request->date)));
+        }
+
         $offdays = $offdays->orderBy('created_at','desc')->paginate(10);
         return view('admin.offday.index',compact('offdays','count','branches','departments'))->with('i', (request()->input('page', 1) - 1) * 10);;
     }

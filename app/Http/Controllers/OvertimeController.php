@@ -22,14 +22,18 @@ class OvertimeController extends Controller
        $branches = Branch::where('status',1)->get();
         $departments = Department::where('status',1)->get();
         $count=$overtimes->get()->count();
-       $overtimes = $overtimes->leftjoin('employee','employee.id','=','overtime.emp_id')->leftjoin('users','users.id','=','overtime.actionBy')->leftjoin('department','department.id','=','employee.dep_id')->leftjoin('branch','branch.id','=','employee.branch_id') ->select(
-                                                    'overtime.*',
-                                                    'employee.name',
-                                                    'employee.photo',
-                                                    'users.name',
-                                                    'department.name As department_name',
-                                                    'branch.name As branch_name'
-                                                );
+       $overtimes = $overtimes->leftjoin('employee','employee.id','=','overtime.emp_id')
+                              ->leftjoin('users','users.id','=','overtime.actionBy')
+                              ->leftjoin('department','department.id','=','employee.dep_id')
+                              ->leftjoin('branch','branch.id','=','employee.branch_id')
+                              ->select(
+                                        'overtime.*',
+                                        'employee.name',
+                                        'employee.photo',
+                                        'users.name',
+                                        'department.name As department_name',
+                                        'branch.name As branch_name'
+                                    );
         if ($request->name != '') {
             $overtimes = $overtimes->where('employee.name','like','%'.$request->name.'%');
         }
@@ -38,6 +42,9 @@ class OvertimeController extends Controller
         }
         if ($request->dept_id != '') {
             $overtimes = $overtimes->where('employee.dep_id',$request->dept_id);
+        }
+        if ($request->date != '') {
+            $overtimes = $overtimes->where('overtime.apply_date',date('Y-m-d',strtotime($request->date)));
         }
         $overtimes = $overtimes->orderBy('created_at','desc')->paginate(10);
         return view('admin.overtime.index',compact('overtimes','count','branches','departments'))->with('i', (request()->input('page', 1) - 1) * 10);;

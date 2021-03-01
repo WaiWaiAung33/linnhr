@@ -8,6 +8,10 @@ use App\Department;
 use App\Branch;
 use Carbon\Carbon;
 use DB;
+use App\LeaveApplication;
+use App\Offday;
+use App\Overtime;
+use App\Attendance;
 
 class HomeController extends Controller
 {
@@ -133,7 +137,55 @@ class HomeController extends Controller
     }
 
 
-    public function hrDashboard(){
+    public function hrDashboard()
+    {
+
+        $attendance_count = Attendance::where('date',date('Y-m-d'))->get()->count();
+
+        $leave_count = LeaveApplication::whereDate('start_date','<=',date('Y-m-d'))->whereDate('end_date','>=',date('Y-m-d'))->get()->count();
+        
+
+        $offday_count = OffDay::where('off_day_1',date('Y-m-d'))->orwhere('off_day_2',date('Y-m-d'))->orwhere('off_day_3',date('Y-m-d'))->orwhere('off_day_4',date('Y-m-d'))->get()->count();
+        
+        $overtime_count = Overtime::where('apply_date',date('Y-m-d'))->get()->count();
+        $emp_count = Employee::where('active',1)->get()->count();
+
+        
+        $attbrArr = DB::table('branch')
+                             ->selectRaw('branch.name')
+                             ->selectRaw("count(attendances.id) as attcount")
+                             ->leftjoin('employee','branch.id','employee.branch_id')
+                             ->leftjoin('attendances','employee.id','attendances.emp_id')
+                             ->where('date',date('Y-m-d'))
+                             ->groupBy('branch.id')
+                             ->get()->toArray();
+
+        $branchArr = [];
+        $branchAttCountArr = [];
+
+        foreach ($attbrArr as $key => $attb) {
+            array_push($branchArr, $attb->name);
+            array_push($branchAttCountArr, $attb->attcount);
+        }
+
+
+        $attDetpArr = DB::table('department')
+                             ->selectRaw('department.name')
+                             ->selectRaw("count(attendances.id) as attcount")
+                             ->leftjoin('employee','department.id','employee.dep_id')
+                             ->leftjoin('attendances','employee.id','attendances.emp_id')
+                             ->where('date',date('Y-m-d'))
+                             ->groupBy('department.id')
+                             ->get()->toArray();
+
+        $deptArr = [];
+        $deptAttCountArr = [];
+
+        foreach ($attDetpArr as $key => $attdept) {
+            array_push($deptArr, $attdept->name);
+            array_push($deptAttCountArr, $attdept->attcount);
+        }
+
 
         $date = now();
         $bd_employess = Employee::select('name','date_of_birth')->whereMonth('date_of_birth', '=', $date->month)
@@ -143,11 +195,29 @@ class HomeController extends Controller
                                    ->whereDay('date_of_birth', '>=', $date->day);
 
                            })
-           // ->orderByRaw("DAYOFMONTH('date_of_birth')",'desc')
-           ->orderByRaw('DATE_FORMAT(date_of_birth, "%m-%d")')
-           ->get()->toArray();
+                           ->orderByRaw('DATE_FORMAT(date_of_birth, "%m-%d")')
+                           ->get()->toArray();
 
 
-        return view('admin.dashboard.hr_dashboard',compact('bd_employess'));
+        $offday_employess = OffDay::select('employee.name as empname','branch.name as branch_name','department.name as dep_name','employee.photo')
+                                    ->leftjoin('employee','employee.id','offday.emp_id')
+                                    ->leftjoin('branch','branch.id','employee.branch_id')
+                                    ->leftjoin('department','department.id','employee.dep_id')
+                                    ->where('off_day_1',date('Y-m-d'))
+                                    ->orwhere('off_day_2',date('Y-m-d'))
+                                    ->orwhere('off_day_3',date('Y-m-d'))
+                                    ->orwhere('off_day_4',date('Y-m-d'))
+                                    ->paginate(10);
+
+
+        $total_branches = Branch::count();
+        $total_departments = Department::count();
+
+        $dateS = Carbon::now()->startOfMonth()->subMonth(3);
+        $dateE = Carbon::now()->startOfMonth(); 
+        $new_empoyee = Employee::whereBetween('join_date',[$dateS,$dateE])->get()->count();
+
+       
+        return view('admin.dashboard.hr_dashboard',compact('attendance_count','leave_count','offday_count','overtime_count','emp_count','deptArr','branchArr','branchAttCountArr','deptArr','deptAttCountArr','bd_employess','offday_employess','total_branches','total_departments','new_empoyee'));
     }
 }

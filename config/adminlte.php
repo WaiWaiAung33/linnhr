@@ -230,7 +230,7 @@ return [
             'topnav' => true,
         ],
         [
-            'text'        => 'Dashboard',
+            'text'        => 'Main Dashboard',
             'url'         => 'dashboard',
             'icon'        => 'fas fa-tachometer-alt',
             'can'          => 'dashboard'
@@ -238,6 +238,14 @@ return [
             // 'label_color' => 'success',
         ],
         ['header' => 'HR Management', 'can' => 'employee-list'],
+        [
+            'text'        => 'Dashboard',
+            'url'         => 'hr-dashboard',
+            'icon'        => 'fas fa-fw fa-tachometer-alt',
+            'can'          => 'dashboard'
+            // 'label'       => 4,
+            // 'label_color' => 'success',
+        ],
         [
             'text' => 'Employee',
             'url'  => 'employee',

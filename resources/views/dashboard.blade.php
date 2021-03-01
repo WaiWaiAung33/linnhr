@@ -1,9 +1,9 @@
 @extends('adminlte::page')
 
-@section('title', 'Dashboard')
+@section('title', 'Main Dashboard')
 
 @section('content_header')
-    <h5 style="color: blue;" class="unicode">Dashboard</h5>
+    <h5 style="color: blue;" class="unicode">Main Dashboard</h5>
 @stop
 
 @section('content')
@@ -68,7 +68,7 @@
           </div>
         </div>
         <!-- ./col -->
-      </div>
+    </div>
 
  	<div class="row justify-content-center">
  		<div class="col-md-6" align="center">
