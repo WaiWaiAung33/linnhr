@@ -64,7 +64,7 @@
 
           <div class="row">
                
-        <label class="col-md-2 unicode">Reason</label>
+        <label class="col-md-2 unicode">Overtime Status</label>
         <div class="col-md-5 {{ $errors->first('name', 'has-error') }}">
             
            <select class="form-control" id="overtime_status" name="overtime_status" style="font-size: 13px">
@@ -79,7 +79,7 @@
 
           <div class="row">
                
-        <label class="col-md-2 unicode">Reason</label>
+        <label class="col-md-2 unicode">Approved Reason</label>
         <div class="col-md-5 {{ $errors->first('name', 'has-error') }}">
             
            <input type="text" name="overtime_reason" class="form-control" id="reason" value="{{$overtimes->overtime_reason}}">
