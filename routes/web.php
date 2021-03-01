@@ -80,6 +80,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('/attendance','AttendanceController');
 
     Route::resource('groups','AssignGroupController');
+
+    Route::resource('kpi','KPIController');
 });
 
 Route::get('/', [App\Http\Controllers\CvformController::class, 'index'])->name('frontend.home');
