@@ -86,10 +86,10 @@
                             <td>{{$offday->viewEmployee->name}}<br>
                               {{$offday->department_name}}<br>
                               {{$offday->branch_name}}</td>
-                            <td>{{date('d-m-Y',strtotime($offday->off_day_1))}}</td>
-                            <td>{{date('d-m-Y',strtotime($offday->off_day_2))}}</td>
-                            <td>{{date('d-m-Y',strtotime($offday->off_day_3))}}</td>
-                            <td>{{date('d-m-Y',strtotime($offday->off_day_4))}}</td>
+                            <td>@if($offday->off_day_1!='') {{date('d-m-Y',strtotime($offday->off_day_1))}} @endif</td>
+                            <td>@if($offday->off_day_2!='') {{date('d-m-Y',strtotime($offday->off_day_2))}} @endif</td>
+                            <td>@if($offday->off_day_3!='') {{date('d-m-Y',strtotime($offday->off_day_3))}} @endif</td>
+                            <td>@if($offday->off_day_4!='') {{date('d-m-Y',strtotime($offday->off_day_4))}} @endif</td>
                             <td>{{$offday->name}}</td>
                             <td>
                                 <form action="{{route('offday.destroy',$offday->id)}}" method="post"
