@@ -22,7 +22,7 @@ class OvertimeController extends Controller
        $branches = Branch::where('status',1)->get();
         $departments = Department::where('status',1)->get();
         $count=$overtimes->get()->count();
-       $overtimes = $overtimes->leftjoin('employee','employee.id','=','overtime.emp_id')->leftjoin('users','users.id','=','overtime.last_updated_by')->leftjoin('department','department.id','=','employee.dep_id')->leftjoin('branch','branch.id','=','employee.branch_id') ->select(
+       $overtimes = $overtimes->leftjoin('employee','employee.id','=','overtime.emp_id')->leftjoin('users','users.id','=','overtime.actionBy')->leftjoin('department','department.id','=','employee.dep_id')->leftjoin('branch','branch.id','=','employee.branch_id') ->select(
                                                     'overtime.*',
                                                     'employee.name',
                                                     'employee.photo',
@@ -72,7 +72,7 @@ class OvertimeController extends Controller
             'reason'=> $request->reason,
             'overtime_status'=>$request->overtime_status,
             'overtime_reason'=>$request->overtime_reason,
-            'last_updated_by'=>auth()->user()->id,
+            'actionBy'=>auth()->user()->id,
           
         ]
         );
@@ -119,7 +119,7 @@ class OvertimeController extends Controller
             'reason'=> $request->reason,
             'overtime_status'=>$request->overtime_status,
             'overtime_reason'=>$request->overtime_reason,
-            'last_updated_by'=>auth()->user()->id,
+            'actionBy'=>auth()->user()->id,
         ]
         );
         return redirect()->route('overtime.index')->with('success','Overtime updated successfully');;;

@@ -21,7 +21,6 @@ class CreateOvertimeTable extends Migration
             $table->integer('actionBy');
             $table->boolean('overtime_status')->default(0);
             $table->text('overtime_reason')->nullable();
-            $table->integer('last_updated_by');
             $table->timestamps();
         });
     }
