@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Offday;
 use App\Employee;
+use App\Branch;
+use App\Department;
+use App\User;
 use Illuminate\Http\Request;
 
 class OffdayController extends Controller
@@ -13,12 +16,31 @@ class OffdayController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $offdays = new Offday();
+        $branches = Branch::where('status',1)->get();
+        $departments = Department::where('status',1)->get();
         $count=$offdays->get()->count();
+          $offdays = $offdays->leftjoin('employee','employee.id','=','offday.emp_id')->leftjoin('users','users.id','=','offday.actionBy')->leftjoin('department','department.id','=','employee.dep_id')->leftjoin('branch','branch.id','=','employee.branch_id') ->select(
+                                                    'offday.*',
+                                                    'employee.name',
+                                                    'employee.photo',
+                                                    'users.name',
+                                                    'department.name As department_name',
+                                                    'branch.name As branch_name'
+                                                );
+        if ($request->name != '') {
+            $offdays = $offdays->where('employee.name','like','%'.$request->name.'%');
+        }
+        if ($request->branch_id != '') {
+            $offdays = $offdays->where('employee.branch_id',$request->branch_id);
+        }
+        if ($request->dept_id != '') {
+            $offdays = $offdays->where('employee.dep_id',$request->dept_id);
+        }
         $offdays = $offdays->orderBy('created_at','desc')->paginate(10);
-        return view('admin.offday.index',compact('offdays','count'))->with('i', (request()->input('page', 1) - 1) * 10);;
+        return view('admin.offday.index',compact('offdays','count','branches','departments'))->with('i', (request()->input('page', 1) - 1) * 10);;
     }
 
     /**
@@ -49,7 +71,8 @@ class OffdayController extends Controller
             'off_day_1'=>date('Y-m-d',strtotime($request->off_day_1)),
             'off_day_2'=>date('Y-m-d',strtotime($request->off_day_2)),
             'off_day_3'=>date('Y-m-d',strtotime($request->off_day_3)),
-            'off_day_4'=>date('Y-m-d',strtotime($request->off_day_3))
+            'off_day_4'=>date('Y-m-d',strtotime($request->off_day_3)),
+            'actionBy'=>auth()->user()->id,
         ]
         );
         return redirect()->route('offday.index')->with('success','Offday created successfully');;;
@@ -94,7 +117,8 @@ class OffdayController extends Controller
             'off_day_1'=>date('Y-m-d',strtotime($request->off_day_1)),
             'off_day_2'=>date('Y-m-d',strtotime($request->off_day_2)),
             'off_day_3'=>date('Y-m-d',strtotime($request->off_day_3)),
-            'off_day_4'=>date('Y-m-d',strtotime($request->off_day_3))
+            'off_day_4'=>date('Y-m-d',strtotime($request->off_day_3)),
+            'actionBy'=>auth()->user()->id,
         ]
         );
         return redirect()->route('offday.index')->with('success','Offday updated successfully');;;

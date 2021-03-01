@@ -9,6 +9,8 @@
 @section('content')
 <?php
         $name = isset($_GET['name'])?$_GET['name']:'';
+         $branch_id = isset($_GET['branch_id'])?$_GET['branch_id']:'';
+        $dept_id = isset($_GET['dept_id'])?$_GET['dept_id']:'';
 ?>
 <div>
 
@@ -20,25 +22,43 @@
             </div>
       @endif --}}
 
-      <!-- <form action="{{route('position.index')}}" method="get" accept-charset="utf-8" class="form-horizontal">
+      <form action="{{route('offday.index')}}" method="get" accept-charset="utf-8" class="form-horizontal">
      <div class="row form-group">
      
        <div class="col-md-3">                 
           <input type="text" name="name" id="name" value="{{ old('name',$name) }}" class="form-control" placeholder="Search..." style="font-size: 13px">
         </div>
+        <div class="col-md-3">
+            <select class="form-control" id="branch_id" name="branch_id" style="font-size: 13px">
+              <option value="">Select Branch</option>
+              @foreach($branches as $branch)
+              <option value="{{$branch->id}}" {{ (old('branch_id',$branch_id)==$branch->id)?'selected':'' }}>{{$branch->name}}</option>
+              @endforeach
+          </select>
+        </div>
+        <div class="col-md-3">
+           <select class="form-control" id="dept_id" name="dept_id" style="font-size: 13px">
+              <option value="">Select Department</option>
+              @foreach($departments as $department)
+              <option value="{{$department->id}}" {{ (old('dept_id',$dept_id)==$department->id)?'selected':'' }}>{{$department->name}}</option>
+              @endforeach
+          </select>
+        </div>
      </div>
-    </form> -->
+    </form>
     <p>Total record: {{$count}}</p>
     <div class="table-responsive" style="font-size:14px">
                 <table class="table table-bordered styled-table">
                   <thead>
                     <tr> 
                       <th>No</th>
+                      <th>Image</th>
                         <th>Employee Name</th>
                         <th>Off day 1</th>
                         <th>Off day 2</th>
                         <th>Off day 3</th>
                         <th>Off day 4</th>
+                         <th>Last Updated by</th>
                         <th>Action</th>
                     </tr>
                   </thead>
@@ -47,12 +67,23 @@
               		 @foreach($offdays as $offday)
                         <tr class="table-tr" >
                             <td>{{++$i}}</td>
-                            <td>{{$offday->viewEmployee->name}}</td>
+                             @if($offday->photo == '')
+                            <td>
+                            <img src="{{ asset('uploads/employeePhoto/default.png') }}" alt="photo" width="80px" height="80px">
+                            </td>
+                            @else
+                            <td>
+                             <img src="{{ asset('uploads/employeePhoto/'.$offday->photo) }}" alt="photo" width="80px" height="80px">
+                             </td>
+                             @endif
+                            <td>{{$offday->viewEmployee->name}}<br>
+                              {{$offday->department_name}}<br>
+                              {{$offday->branch_name}}</td>
                             <td>{{date('d-m-Y',strtotime($offday->off_day_1))}}</td>
                             <td>{{date('d-m-Y',strtotime($offday->off_day_2))}}</td>
                             <td>{{date('d-m-Y',strtotime($offday->off_day_3))}}</td>
                             <td>{{date('d-m-Y',strtotime($offday->off_day_4))}}</td>
-                           
+                            <td>{{$offday->name}}</td>
                             <td>
                                 <form action="{{route('offday.destroy',$offday->id)}}" method="post"
                                     onsubmit="return confirm('Do you want to delete?');">
@@ -95,9 +126,17 @@
             $("div.alert").remove();
             }, 1000 ); 
             $(function() {
-                $('#name').on('change',function(e) {
+                  $('#name').on('change',function(e) {
                 this.form.submit();
             }); 
+            $('#branch_id').on('change',function(e) {
+
+                this.form.submit();
+            });
+            $('#dept_id').on('change',function(e) {
+
+                this.form.submit();
+            });
    
         });
           $(function() {
