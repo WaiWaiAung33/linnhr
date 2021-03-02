@@ -155,7 +155,7 @@ class LeaveApiController extends Controller
 	    								'leave_types.leave_type'
 	    							);
 
-	    	$leave_days = $leave_days->where('leave_application.emp_id',$request->emp_id);
+	    	$leave_days = $leave_days->where('leave_applications.emp_id',$request->emp_id);
 	    	if ($leave_days->get()->count()>0) {
 	    		$leave_days = $leave_days->whereYear('leave_applications.start_date', '=', $request->year)
 					              ->whereMonth('leave_applications.start_date', '=', $request->month);
