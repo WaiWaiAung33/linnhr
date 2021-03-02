@@ -32,7 +32,7 @@
                        
                         <button class="btn btn-success btn-sm"><i class="fas fa-file-csv" style="margin-left: 10px;font-size: 13px "></i> Import CSV</button>
                         
-                       <a class="btn btn-primary btn-sm"  href="#" style="margin-left: 10px;font-size: 13px "><i class="fa fa-fw fa-download" style="padding-top: 8px" ></i>Demo CSV File</a>
+                       <a class="btn btn-primary btn-sm"  href="{{route('kpis.download.csv')}}" style="margin-left: 10px;font-size: 13px "><i class="fa fa-fw fa-download" style="padding-top: 8px" ></i>Demo CSV File</a>
 
                       <!--   <a class="btn btn-warning btn-sm" id="export_btn" style="font-size: 13px;margin-left: 10px"><i class="fa fa-fw fa-file-excel" style="padding-top: 8px"></i>Export</a> -->
                      
