@@ -62,6 +62,9 @@ Route::post('/attendance_list','Api\TimeInApiController@attendance_list');
 Route::post('/attendance_dashboard','Api\TimeInApiController@attendance_dashboard');
 
 Route::post('/leave_list','Api\LeaveApiController@leave_list');
+Route::post('/leave_create','Api\LeaveApiController@leave_create');
+Route::post('/leave_edit/{id}','Api\LeaveApiController@leave_edit');
+Route::delete('/leave_delete/{id}','Api\LeaveApiController@leave_delete');
 
 Route::post('/offday_list','Api\OffDayApiController@offday_list');
 
@@ -70,8 +73,6 @@ Route::post('/overtime_list','Api\OvertimeApiController@overtime_list');
 Route::post('/overtime_create','Api\OvertimeApiController@overtime_create');
 
 Route::get('/leave_type','Api\LeaveApiController@leave_type');
-
-Route::post('/leave_create','Api\LeaveApiController@leave_create');
 
 Route::post('/emp_off_day','Api\OffDayApiController@emp_off_day');
 

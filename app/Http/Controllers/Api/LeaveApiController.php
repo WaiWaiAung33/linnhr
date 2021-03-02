@@ -53,6 +53,8 @@ class LeaveApiController extends Controller
 		    return response(['message'=>"Success",'status'=>1]);	
 	    }
 	}
+
+
 	public function leave_list(Request $request)
 	{
 		$input = $request->all();
@@ -131,6 +133,54 @@ class LeaveApiController extends Controller
 		        return response(['message'=>"Success",'status'=>1,'leave_applications'=>$leave_applications]);
 	    	}
 	    }
+	}
+
+	public function leave_edit(Request $request,$id)
+	{
+		$input = $request->all();
+	     $rules=[
+	        'emp_id'=>'required',
+	        'leave_type'=>'required',
+	        'start_date'=>'required',
+	        'end_date'=>'required',
+	        'day'=>'required',
+	        'apply_date'=>'required',
+	        'reason'=>'required',
+	    ];
+
+	    $validator = Validator::make($input, $rules);
+
+	     if ($validator->fails()) {
+	        $messages = $validator->messages();
+	           return response()->json(['message'=>"Error",'status'=>0]);
+	    }else{
+
+	    		$leave_application = LeaveApplication::find($id);
+		    	$leave_application = $leave_application->update([
+	            'emp_id'=>$request->emp_id,
+	            'leavetype_id'=>$request->leave_type,
+	            'halfDayType'=>$request->halfDayType ? $request->halfDayType : "",
+	            'halforfull'=>$request->halforfull ? $request->halfDayType : 0,
+	            'start_date'=>date('Y-m-d',strtotime($request->start_date)),
+	            'end_date'=>date('Y-m-d',strtotime($request->end_date)),
+	            'days'=>$request->day,
+	            'apply_date'=>date('Y-m-d',strtotime($request->apply_date)),
+	            'reason'=>$request->reason,
+	            'application_status'=> 0
+	        ]);
+		    return response(['message'=>"Success",'status'=>1]);	
+	    }
+	}
+
+	public function leave_delete($id)
+	{
+		$leave_applications = LeaveApplication::find($id);
+		if ($leave_applications != null) {
+			$leave_applications = $leave_applications->delete();
+			return response(['message'=>"Success",'status'=>1]);
+		}else{
+			return response(['message'=>"Leave ID does not exist!!!",'status'=>0]);
+		}
 	}
 
 	public function emp_leave_day(Request $request)
