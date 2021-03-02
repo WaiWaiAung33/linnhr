@@ -132,5 +132,33 @@ class LeaveApiController extends Controller
 	    	}
 	    }
 	}
+
+	public function emp_leave_day(Request $request)
+	{
+		$input = $request->all();
+	     $rules=[
+	        'emp_id'=>'required',
+	        'month'=>'required',
+	        'year'=>'required'
+	    ];
+	    $validator = Validator::make($input, $rules);
+
+	     if ($validator->fails()) {
+	        $messages = $validator->messages();
+	           return response()->json(['message'=>"Error",'status'=>0]);
+	    }else{
+	    	$leave_days = new LeaveApplication();
+	    	$leave_days = $leave_days->where('emp_id',$request->emp_id);
+	    	if ($leave_days->get()->count()>0) {
+	    		$leave_days = $leave_days->whereYear('start_date', '=', $request->year)
+					              ->whereMonth('start_date', '=', $request->month);
+
+	    		$leave_days = $leave_days->get();
+	    		return response(['message'=>"Success",'status'=>1,'leave_days'=>$leave_days]);
+	    	}else{
+	    		return response(['message'=>"No Leave",'status'=>1]);
+	    	}
+	    }
+	}
 	
 }	

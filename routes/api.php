@@ -72,3 +72,9 @@ Route::post('/overtime_create','Api\OvertimeApiController@overtime_create');
 Route::get('/leave_type','Api\LeaveApiController@leave_type');
 
 Route::post('/leave_create','Api\LeaveApiController@leave_create');
+
+Route::post('/emp_off_day','Api\OffDayApiController@emp_off_day');
+
+Route::post('/emp_leave_day','Api\LeaveApiController@emp_leave_day');
+
+Route::post('/emp_overtime_day','Api\OvertimeApiController@emp_overtime_day');
