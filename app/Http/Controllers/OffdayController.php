@@ -83,7 +83,7 @@ class OffdayController extends Controller
             'actionBy'=>auth()->user()->id,
         ]
         );
-        return redirect()->route('offday.index')->with('success','Offday created successfully');;;
+        return redirect()->route('offday.index')->with('success','Offday created successfully');
     }
 
     /**

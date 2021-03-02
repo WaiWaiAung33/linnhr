@@ -318,7 +318,7 @@ return [
                 ],
                   [
                     'text' => 'KPI',
-                    'url'  => 'offday',
+                    'url'  => 'kpi',
                     'icon' => 'fas fa-trophy',
                 ],
             ],
