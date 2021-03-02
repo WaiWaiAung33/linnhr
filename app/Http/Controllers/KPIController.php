@@ -109,8 +109,10 @@ class KPIController extends Controller
      */
     public function edit($id)
     {
+    	$departments = Department::all();
         $kpi = KPI::find($id);
-        return view('admin.kpi.edit',compact('kpi'));
+        $employees = Employee::where('active',1)->where('dep_id',$kpi->employee->dep_id)->get();
+        return view('admin.kpi.edit',compact('kpi','departments','employees'));
     }
 
     /**
@@ -130,7 +132,7 @@ class KPIController extends Controller
         $kpi = $kpi->update([
             'emp_id'=>$request->emp_id,
             'knowledge'=>$request->knowledge,
-            'descipline'=>$request->discipline,
+            'descipline'=>$request->descipline,
             'skill_set'=>$request->skill_set,
             'team_work'=>$request->team_work,
             'social'=>$request->social,

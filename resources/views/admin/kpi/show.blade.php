@@ -12,9 +12,9 @@
       <div class="row">
         <div class="col-md-8 text-center">
           @if($kpi->employee->photo == '')
-            <img src="{{ asset('uploads/employeePhoto/default.png') }}" alt="photo" width="70%" height="auto">
+            <img src="{{ asset('uploads/employeePhoto/default.png') }}" alt="photo" width="100px" height="120px">
           @else
-            <img src="{{ asset('uploads/employeePhoto/'.$kpi->employee->photo) }}" alt="photo" width="70%" height="auto">
+            <img src="{{ asset('uploads/employeePhoto/'.$kpi->employee->photo) }}" alt="photo" width="100px" height="120px">
           @endif
         </div>
       </div>
@@ -76,7 +76,7 @@
               @endphp
               <tr>
                 <th>Date</th>
-                <td>{{ date('M Y',strtotime($date)) }}</td>
+                <td>{{ date('F Y',strtotime($date)) }}</td>
               </tr>
               <tr>
                 <th>Knowledge</th>
