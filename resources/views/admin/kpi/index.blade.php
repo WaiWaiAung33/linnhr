@@ -17,7 +17,30 @@
 
    <a class="btn btn-success unicode" href="{{route('kpi.create')}}" style="float: right;font-size: 13px"><i class="fas fa-plus"></i>Add KPI</a><br>
 
-    <form action="{{route('kpi.index')}}" method="get" accept-charset="utf-8" class="form-horizontal">
+   
+     <form class="form-horizontal" action="{{route('kpiimport')}}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    <div class="row form-group">
+                        <div class="col-md-2">
+                            <input type="file" name="file" class="form-control" style="font-size: 13px">
+                            @if ($errors->has('file'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('file') }}</strong>
+                                </span>
+                            @endif
+                        </div>
+                       
+                        <button class="btn btn-success btn-sm"><i class="fas fa-file-csv" style="margin-left: 10px;font-size: 13px "></i> Import CSV</button>
+                        
+                       <a class="btn btn-primary btn-sm"  href="#" style="margin-left: 10px;font-size: 13px "><i class="fa fa-fw fa-download" style="padding-top: 8px" ></i>Demo CSV File</a>
+
+                      <!--   <a class="btn btn-warning btn-sm" id="export_btn" style="font-size: 13px;margin-left: 10px"><i class="fa fa-fw fa-file-excel" style="padding-top: 8px"></i>Export</a> -->
+                     
+                    
+                    </div>
+        </form>
+
+         <form action="{{route('kpi.index')}}" method="get" accept-charset="utf-8" class="form-horizontal">
      <div class="row form-group">
      
        <div class="col-md-2">                 

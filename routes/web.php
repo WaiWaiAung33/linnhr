@@ -64,6 +64,9 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::post('export', [App\Http\Controllers\EmployeeController::class, 'export'])->name('export');
 	Route::post('salaryexport', [App\Http\Controllers\SalaryController::class, 'export'])->name('salaryexport');
 	Route::get('/employees/csv/download', 'EmployeeController@downloadEmployeesCSV')->name('employees.download.csv');
+	Route::post('kpiimport',[App\Http\Controllers\KPIController::class, 'import'])->name('kpiimport');
+	Route::post('kpiexport',[App\Http\Controllers\KPIController::class, 'export'])->name('kpiexport');
+
 	Route::get('/updateuser/{id}',[App\Http\Controllers\EmployeeController::class, 'updateuser'])->name('user.update');
 	Route::get('/salarys/csv/download','SalaryController@downloadSalarysCSV')->name('salarys.download.csv');
 
