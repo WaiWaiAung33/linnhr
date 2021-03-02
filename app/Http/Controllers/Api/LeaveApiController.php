@@ -151,7 +151,6 @@ class LeaveApiController extends Controller
 	    	$leave_days = $leave_days->leftjoin('leave_types','leave_types.id','=','leave_applications.leavetype_id')
 	    							->select(
 	    								'leave_applications.*',
-	    								'leave_types.id AS leave_id',
 	    								'leave_types.leave_type'
 	    							);
 
