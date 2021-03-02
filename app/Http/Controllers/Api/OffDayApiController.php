@@ -120,4 +120,38 @@ class OffDayApiController extends Controller
 
 	    }
 	}
+
+	public function check_off_day(Request $request)
+	{
+		$input = $request->all();
+	     $rules=[
+	        'emp_id'=>'required',
+	        'off_date'=>'required',
+	    ];
+
+	    $validator = Validator::make($input, $rules);
+
+	     if ($validator->fails()) {
+	        $messages = $validator->messages();
+	           return response()->json(['message'=>"Error",'status'=>0]);
+	    }else{
+	    	$off_days = Offday::where('emp_id',$request->emp_id);
+	    	if ($off_days->get()->count()>0) {
+	    		if ($request->off_date != '') {
+		        	$off_days = $off_days->where('off_day_1',date('Y-m-d',strtotime($request->off_date)))->orwhere('off_day_2',date('Y-m-d',strtotime($request->off_date)))->orwhere('off_day_3',date('Y-m-d',strtotime($request->off_date)))->orwhere('off_day_4',date('Y-m-d',strtotime($request->off_date)));
+		        	$off_days = $off_days->get();
+				    // dd($off_days);
+				    if (count($off_days)>0) {
+				    	return response(['message'=>"Success",'status'=>1,'off_days_status'=>1]);
+				    }else{
+				    	return response(['message'=>"Success",'status'=>1,'off_days_status'=>0]);
+				    }
+		        }
+	    	}else{
+	    		return response(['message'=>"Employee id does not exist!!!",'status'=>1]);
+	    	}
+	    	
+		    
+	    }	
+	}
 }
