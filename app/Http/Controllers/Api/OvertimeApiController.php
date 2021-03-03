@@ -122,16 +122,23 @@ class OvertimeApiController extends Controller
 	        'year'=>'required'
 	    ];
 	    $validator = Validator::make($input, $rules);
-
+ 
 	     if ($validator->fails()) {
 	        $messages = $validator->messages();
 	           return response()->json(['message'=>"Error",'status'=>0]);
 	    }else{
 	    	$overtime_days = new Overtime();
-	    	$overtime_days = $overtime_days->where('emp_id',$request->emp_id);
+	    	$overtime_days = $overtime_days->leftjoin('employee','employee.id','=','overtime.emp_id')
+	    									->leftjoin('users','users.id','=','overtime.actionBy')
+	    									->select(
+	    										'overtime.*',
+	    										'users.name'
+	    									);
+	    	$overtime_days = $overtime_days->where('overtime.emp_id',$request->emp_id);
 	    	if ($overtime_days->get()->count()>0) {
-	    		$overtime_days = $overtime_days->whereYear('apply_date', '=', $request->year)
-					              ->whereMonth('apply_date', '=', $request->month);
+
+	    		$overtime_days = $overtime_days->whereYear('overtime.apply_date', '=', $request->year)
+					              ->whereMonth('overtime.apply_date', '=', $request->month);
 
 	    		$overtime_days = $overtime_days->get();
 	    		return response(['message'=>"Success",'status'=>1,'overtime_days'=>$overtime_days]);
