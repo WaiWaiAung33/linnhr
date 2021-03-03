@@ -266,6 +266,7 @@ return [
                     'text' => 'Notice Board',
                     'url'  => 'notice_board',
                     'icon' => 'fas fa-clipboard',
+                ],
 
                  [
                     'text' => 'Ro',
