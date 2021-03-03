@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\KPI;
 use App\Department;
+use App\Branch;
 use App\Employee;
 
 class KPIController extends Controller
@@ -16,19 +17,66 @@ class KPIController extends Controller
      */
     public function index(Request $request)
     {
-
-        $departments = Department::all();
-
+        // dd($request->month);
+        $date = $request->month;
+        $branches = Branch::where('status',1)->get();
+        $departments = Department::where('status',1)->get();
         $kpis = new KPI();
+          if($date == 'January'){
+            $dates = "01";
+        }elseif ($date == 'February') {
+            $dates = "02";
+        }elseif ($date == 'March') {
+            $dates = "03";
+        }elseif ($date == 'April') {
+            $dates = "04";
+        }elseif ($date == 'May') {
+            $dates = "05";
+        }elseif ($date == 'June') {
+            $dates = "06";
+        }elseif ($date == 'July') {
+            $dates = "07";
+        }elseif ($date == 'August') {
+            $dates = "08";
+        }elseif ($date == 'September') {
+            $dates = "09";
+        }elseif ($date == 'October') {
+            $dates = "10";
+        }elseif ($date == 'November') {
+            $dates = "11";
+        }elseif ($date == 'December') {
+            $dates = "12";
+        }
+
+        $kpis = $kpis->leftjoin('employee','employee.id','=','kpi.emp_id')
+                              ->select(
+                                        'kpi.*',
+                                        'employee.name',
+                                        'employee.photo',
+                                    );
+         if ($request->name != '') {
+            $kpis = $kpis->where('employee.name','like','%'.$request->name.'%');
+        }
+
+         if ($request->branch_id != '') {
+            $kpis = $kpis->where('employee.branch_id',$request->branch_id);
+        }
+        if ($request->dept_id != '') {
+            $kpis = $kpis->where('employee.dep_id',$request->dept_id);
+        }
 
         if ($request->year != '') {
             $kpis = $kpis->where('year',$request->year);
         }
 
+        if ($date != '') {
+            $kpis = $kpis->where('month',$dates);
+        }
+
         $count = $kpis->count();
         $kpis = $kpis->paginate(20);
 
-        return view('admin.kpi.index',compact('kpis','departments','count'))->with('no', (request()->input('page', 1) - 1) * 20);;
+        return view('admin.kpi.index',compact('kpis','departments','count','branches'))->with('no', (request()->input('page', 1) - 1) * 20);;
     }
 
     /**
