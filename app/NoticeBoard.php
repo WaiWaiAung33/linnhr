@@ -11,21 +11,21 @@ class NoticeBoard extends Model
 
     public function position()
     {
-    	$this->hasOne('App\Position','id','position_id');
+    	return $this->hasOne('App\Position','id','position_id');
     }
 
     public function department()
     {
-    	$this->hasOne('App\Department','id','dept_id');
+        return $this->hasOne('App\Department','id','dept_id');
     }
 
     public function branch()
     {
-    	$this->hasOne('App\Branch','id','branch_id');
+    	return $this->hasOne('App\Branch','id','branch_id');
     }
 
     public function uploaded_by()
     {
-    	$this->hasOne('App\User','id','uploaded_by');
+    	return $this->hasOne('App\User','id','uploaded_by');
     }
 }

@@ -6,6 +6,7 @@ use App\NoticeBoard;
 use App\Position;
 use App\Branch;
 use App\Department;
+use File;
 
 use Illuminate\Http\Request;
 
@@ -56,7 +57,7 @@ class NoticeBoardController extends Controller
             'description'=>'required',
             'notice_type'=>'required'
         ]);
-        $destinationPath = public_path() . '/uploads/inquiryPhoto/';
+        $destinationPath = public_path() . '/uploads/postPhoto/';
 
         $data = [];
         
@@ -89,9 +90,10 @@ class NoticeBoardController extends Controller
      * @param  \App\NoticeBoard  $noticeBoard
      * @return \Illuminate\Http\Response
      */
-    public function show(NoticeBoard $noticeBoard)
+    public function show($id)
     {
-        //
+        $notice_boards = NoticeBoard::find($id);
+        return view('admin.notice_board.show',compact('notice_boards'));
     }
 
     /**
@@ -100,9 +102,13 @@ class NoticeBoardController extends Controller
      * @param  \App\NoticeBoard  $noticeBoard
      * @return \Illuminate\Http\Response
      */
-    public function edit(NoticeBoard $noticeBoard)
+    public function edit($id)
     {
-        //
+        $positions = Position::all();
+        $branches = Branch::where('status',1)->get();
+        $departments = Department::where('status',1)->get();
+        $notice_board = NoticeBoard::find($id);
+        return view('admin.notice_board.edit',compact('positions','branches','departments','notice_board'));
     }
 
     /**
@@ -112,9 +118,55 @@ class NoticeBoardController extends Controller
      * @param  \App\NoticeBoard  $noticeBoard
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, NoticeBoard $noticeBoard)
+    public function update(Request $request, $id)
     {
-        //
+        
+        $this->validate($request,[
+            'title'=>'required',
+            'description'=>'required',
+            'notice_type'=>'required'
+        ]);
+        $notice_board = NoticeBoard::find($id);
+
+        $destinationPath = public_path() . '/uploads/postPhoto/';
+
+         $data = [];
+        
+        if($request->hasfile('filename'))
+         {
+            foreach($request->file('filename') as $image)
+            {
+                $name=$image->getClientOriginalName();
+                $image->move($destinationPath, $name);  
+                $data[] = $name;  
+            }
+
+            $arr = [
+                        'title'=>$request->title,
+                        'description'=>$request->description,
+                        'publish_date'=>date('Y-m-d',strtotime($request->publish_date)),
+                        'notice_type'=>$request->notice_type,
+                        'position_id'=>$request->rank,
+                        'dept_id'=>$request->department,
+                        'branch_id'=>$request->branch,
+                        'uploaded_by'=>auth()->user()->id,
+                        'image'=>json_encode($data)
+                    ];
+         }else{
+            $arr = [
+                        'title'=>$request->title,
+                        'description'=>$request->description,
+                        'publish_date'=>date('Y-m-d',strtotime($request->publish_date)),
+                        'notice_type'=>$request->notice_type,
+                        'position_id'=>$request->rank,
+                        'dept_id'=>$request->department,
+                        'branch_id'=>$request->branch,
+                        'uploaded_by'=>auth()->user()->id,
+                    ];
+         }
+
+        $notice_board = $notice_board->update($arr);
+        return redirect()->route('notice_board.index')->with('success','Success');
     }
 
     /**
@@ -123,9 +175,17 @@ class NoticeBoardController extends Controller
      * @param  \App\NoticeBoard  $noticeBoard
      * @return \Illuminate\Http\Response
      */
-    public function destroy(NoticeBoard $noticeBoard)
+    public function destroy($id)
     {
-        //
+        $storagePath = public_path() . '/uploads/postPhoto/';
+
+        $notice_board = NoticeBoard::findorfail($id);
+        if (File::exists($storagePath . $notice_board->image)) {
+            File::delete($storagePath . $notice_board->image);
+        };
+
+        $notice_board->delete();
+        return redirect()->route('notice_board.index')->with('success','Successfully');
     }
 
     public function changestatuspost(Request $request)
