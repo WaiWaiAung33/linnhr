@@ -219,4 +219,24 @@ class KPIController extends Controller
              
         return back();
     }
+
+    public function downloadKpisCSV()
+    {
+
+        $strpath = public_path().'/uploads/files/kpi.xlsx';
+        // dd($strpath);
+        $isExists = File::exists($strpath);
+
+        if(!$isExists){
+            return redirect()->back()->with('error','File does not exists!');
+        }
+
+        $csvFile = str_replace("\\", '/', $strpath);
+        $headers = ['Content-Type: application/*'];
+        $fileName = 'Kpi Template.xlsx';
+
+        return response()->download($csvFile, $fileName, $headers);
+
+        
+    }
 }
