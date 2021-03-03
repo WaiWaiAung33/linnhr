@@ -266,6 +266,11 @@ return [
                     'text' => 'Notice Board',
                     'url'  => 'notice_board',
                     'icon' => 'fas fa-clipboard',
+
+                 [
+                    'text' => 'Ro',
+                    'url'  => 'ro',
+                    'icon' => 'fas fa-fw fa-users',
                     'can'  => 'employee-list'
                 ] 
             ]

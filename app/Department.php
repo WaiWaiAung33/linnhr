@@ -21,4 +21,8 @@ class Department extends Model
     public function groups(){
     	 return $this->hasMany('App\AssignGroup','department_id');
     }
+
+    public function group(){
+         return $this->hasMany('App\Ro','department_id');
+    }
 }
