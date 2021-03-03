@@ -261,6 +261,13 @@ return [
                     'url'  => 'groups',
                     'icon' => 'fas fa-fw fa-users',
                     'can'  => 'employee-list'
+                ],
+
+                 [
+                    'text' => 'Ro',
+                    'url'  => 'ro',
+                    'icon' => 'fas fa-fw fa-users',
+                    'can'  => 'employee-list'
                 ] 
             ]
         ],       
