@@ -198,10 +198,11 @@ class LeaveApiController extends Controller
 	           return response()->json(['message'=>"Error",'status'=>0]);
 	    }else{
 	    	$leave_days = new LeaveApplication();
-	    	$leave_days = $leave_days->leftjoin('leave_types','leave_types.id','=','leave_applications.leavetype_id')
+	    	$leave_days = $leave_days->leftjoin('leave_types','leave_types.id','=','leave_applications.leavetype_id')					->leftjoin('users','users.id','=','leave_applications.last_updated_by')
 	    							->select(
 	    								'leave_applications.*',
-	    								'leave_types.leave_type'
+	    								'leave_types.leave_type',
+	    								'users.name'
 	    							);
 
 	    	$leave_days = $leave_days->where('leave_applications.emp_id',$request->emp_id);
