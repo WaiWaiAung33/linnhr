@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Imports\KpiImport;
 use App\KPI;
 use App\Department;
 use App\Branch;
 use App\Employee;
+use Maatwebsite\Excel\Facades\Excel;
+use File;
 
 class KPIController extends Controller
 {
@@ -204,5 +207,16 @@ class KPIController extends Controller
         $kpi->delete();
         return redirect()->route('kpi.index')
                         ->with('success','KPI deleted successfully');
+    }
+
+      public function import(Request $request) 
+    {
+        $request->validate([
+            'file'=>'required',
+        ]);
+
+        Excel::import(new KpiImport,request()->file('file'));
+             
+        return back();
     }
 }
