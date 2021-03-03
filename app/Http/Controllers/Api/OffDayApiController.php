@@ -113,7 +113,7 @@ class OffDayApiController extends Controller
 					              ->whereMonth('off_day_1', '=', $request->month);
 
 	    		$off_days = $off_days->get();
-	    		return response(['message'=>"Success",'status'=>1,'off_days'=>$off_days]);
+	    		return response(['message'=>"Success",'status'=>1,'off_days'=>$off_days[0]]);
 	    	}else{
 	    		return response(['message'=>"No Offday",'status'=>1]);
 	    	}
