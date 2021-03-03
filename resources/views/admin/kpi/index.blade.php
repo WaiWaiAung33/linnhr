@@ -13,10 +13,6 @@
   $year = isset($_GET['year'])?$_GET['year']:'';
    $month = isset($_GET['month'])?$_GET['month']:'';
 ?>
-
-
-   <a class="btn btn-success unicode" href="{{route('kpi.create')}}" style="float: right;font-size: 13px"><i class="fas fa-plus"></i>Add KPI</a><br>
-
    
      <form class="form-horizontal" action="{{route('kpiimport')}}" method="POST" enctype="multipart/form-data">
                     @csrf
@@ -38,38 +34,105 @@
                      
                     
                     </div>
+        </form><br>
+
+
+      <!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-lg">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+         <h5 class="modal-title">More Filter</h5>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+       
+      </div>
+      <div class="modal-body">
+         <form action="{{route('kpi.index')}}" method="get" accept-charset="utf-8" class="form-horizontal unicode" >
+            <div class="row form-group" id="adv_filter">
+                <div class="col-md-12">
+                    <div class="row">
+                        
+                        <div class="col-md-3">
+                            <label for="">Select Branch</label>
+                             <select class="form-control" id="branch_id" name="branch_id" style="font-size: 13px">
+                                    <option value="">Select Branch</option>
+                                    @foreach($branches as $branch)
+                                    <option value="{{$branch->id}}" {{ (old('branch_id',$branch_id)==$branch->id)?'selected':'' }}>{{$branch->name}}</option>
+                                    @endforeach
+                                  </select>
+                        </div>
+                        <div class="col-md-3">
+                           <label for="">Select Department</label>
+                           
+                           <select class="form-control" id="dept_id" name="dept_id" style="font-size: 13px">
+                                  <option value="">Select Department</option>
+                                  @foreach($departments as $department)
+                                  <option value="{{$department->id}}" {{ (old('dept_id',$dept_id)==$department->id)?'selected':'' }}>{{$department->name}}</option>
+                                  @endforeach
+                              </select>
+                        </div>
+
+                          <div class="col-md-3">
+                           <label for="">Month</label>
+                           
+                            <input type="text" name="month" id="month"class="form-control unicode" placeholder="June" value="{{ old('month',$month) }}" style="font-size: 13px">
+                        </div>
+
+                         <div class="col-md-3">
+                           <label for="">Year</label>
+                           
+                           
+                               <input type="text" name="year" id="year"class="form-control unicode" placeholder="2021" value="{{ old('year',$year) }}" style="font-size: 13px">
+                        </div>
+                      
+                    </div>
+                    <br>
+                    
+
+                  
+
+                    <div class="row">
+                       <div class="col-md-12" align="center">
+                         <button type="button" class="btn btn-danger btn-sm" id="clear_search" >Clear</button>
+
+                         <button type="submit" class="btn btn-primary btn-sm" >Search</button>
+                       </div>
+                    </div>
+                </div>
+               
+            </div>
         </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
 
          <form action="{{route('kpi.index')}}" method="get" accept-charset="utf-8" class="form-horizontal">
-     <div class="row form-group">
-     
-       <div class="col-md-2">                 
-          <input type="text" name="name" id="name" value="{{ old('name',$name) }}" class="form-control" placeholder="Search..." style="font-size: 13px">
-        </div>
-        <div class="col-md-2">
-            <select class="form-control" id="branch_id" name="branch_id" style="font-size: 13px">
-              <option value="">Select Branch</option>
-              @foreach($branches as $branch)
-              <option value="{{$branch->id}}" {{ (old('branch_id',$branch_id)==$branch->id)?'selected':'' }}>{{$branch->name}}</option>
-              @endforeach
-          </select>
-        </div>
-        <div class="col-md-2">
-           <select class="form-control" id="dept_id" name="dept_id" style="font-size: 13px">
-              <option value="">Select Department</option>
-              @foreach($departments as $department)
-              <option value="{{$department->id}}" {{ (old('dept_id',$dept_id)==$department->id)?'selected':'' }}>{{$department->name}}</option>
-              @endforeach
-          </select>
-        </div>
-         <div class="col-md-2">               
-             <input type="text" name="month" id="month"class="form-control unicode" placeholder="June" value="{{ old('month',$month) }}" style="font-size: 13px">
-        </div>
-        <div class="col-md-2">               
-             <input type="text" name="year" id="year"class="form-control unicode" placeholder="2021" value="{{ old('year',$year) }}" style="font-size: 13px">
-        </div>
-     </div>
-    </form>
+             <div class="row form-group">
+             
+               <div class="col-md-2">                 
+                  <input type="text" name="name" id="name" value="{{ old('name',$name) }}" class="form-control" placeholder="Search..." style="font-size: 13px">
+                </div>
+
+                 <div class="col-md-2">
+                 <!-- Trigger the modal with a button -->
+                  <button type="button" class="btn btn-warning "  data-toggle="modal" data-target="#myModal" style="font-size: 13px"><i class="fa fa-filter" aria-hidden="true"></i></button>
+                 </div>
+
+                 <div class="col-md-8" align="right">
+                <a class="btn btn-success unicode" href="{{route('kpi.create')}}" style="float: right;font-size: 13px"><i class="fas fa-plus"></i>Add KPI</a>
+              </div>
+               
+             </div>
+        </form>
 
   @php
     $kpiArr = ['Poor','Bad','Average','Good','Excellent'];
@@ -225,21 +288,21 @@
                 $('#name').on('change',function(e) {
                 this.form.submit();
             }); 
-             $('#branch_id').on('change',function(e) {
+            //  $('#branch_id').on('change',function(e) {
 
-                this.form.submit();
-            });
-            $('#dept_id').on('change',function(e) {
+            //     this.form.submit();
+            // });
+            // $('#dept_id').on('change',function(e) {
 
-                this.form.submit();
-            });
-             $('#year').on('change',function(e) {
-                this.form.submit();
-            });
+            //     this.form.submit();
+            // });
+            //  $('#year').on('change',function(e) {
+            //     this.form.submit();
+            // });
 
-              $('#month').on('change',function(e) {
-                this.form.submit();
-            });
+            //   $('#month').on('change',function(e) {
+            //     this.form.submit();
+            // });
    
         });
           $(function() {
@@ -271,6 +334,13 @@
                     }
                 });
             })
+          });
+
+          $(function() {
+            $(document).find("#clear_search").click(function(){
+                $(document).find("select").val('');
+                $(document).find("input").val('');
+            });
           });
        
          
