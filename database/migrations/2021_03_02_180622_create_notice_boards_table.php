@@ -15,6 +15,16 @@ class CreateNoticeBoardsTable extends Migration
     {
         Schema::create('notice_boards', function (Blueprint $table) {
             $table->id();
+            $table->string('title');
+            $table->text('description');
+            $table->string('image')->nullable();
+            $table->boolean('status')->default(1);
+            $table->date('publish_date');
+            $table->integer('notice_type');
+            $table->integer('position_id')->nullable();
+            $table->integer('dept_id')->nullable();
+            $table->integer('branch_id')->nullable();
+            $table->integer('uploaded_by');
             $table->timestamps();
         });
     }

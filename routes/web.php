@@ -87,6 +87,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('groups','AssignGroupController');
 
     Route::resource('kpi','KPIController');
+
+    Route::resource('notice_board','NoticeBoardController');
+   
+    Route::get('change-status-post','NoticeBoardController@changestatuspost')->name('change-status-post');
 });
 
 Route::get('/', [App\Http\Controllers\CvformController::class, 'index'])->name('frontend.home');
