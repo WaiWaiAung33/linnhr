@@ -87,4 +87,37 @@ class OffDayApiController extends Controller
 	    	}
 	    }
 	}
+
+	public function emp_off_day(Request $request)
+	{
+		$input = $request->all();
+	     $rules=[
+	        'emp_id'=>'required',
+	        'month'=>'required',
+	        'year'=>'required'
+	    ];
+
+	    $validator = Validator::make($input, $rules);
+
+	     if ($validator->fails()) {
+	        $messages = $validator->messages();
+	           return response()->json(['message'=>"Error",'status'=>0]);
+	    }else{
+
+	    	$off_days = new Offday();
+	    	$off_days = $off_days->where('emp_id',$request->emp_id);
+	    	
+	    	if ($off_days->get()->count() >0) {
+	    		
+	    		$off_days = $off_days->whereYear('off_day_1', '=', $request->year)
+					              ->whereMonth('off_day_1', '=', $request->month);
+
+	    		$off_days = $off_days->get();
+	    		return response(['message'=>"Success",'status'=>1,'off_days'=>$off_days]);
+	    	}else{
+	    		return response(['message'=>"No Offday",'status'=>1]);
+	    	}
+
+	    }
+	}
 }
