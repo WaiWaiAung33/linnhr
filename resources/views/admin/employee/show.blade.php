@@ -139,8 +139,12 @@
                   <div style="text-align: center;margin-top: 20px">
                     <a id="salary" style="color: white;padding-left: 90px;padding-right: 90px;padding-top: 5px;padding-bottom: 5px;border-radius: 5px;cursor: pointer;">Salary</a>
                     
-                    <!--  <p style="margin-left: 100px;padding: 20px;margin-right: 100px;">Personal Data</p> -->
-                   </div>
+                  </div>
+
+                  <div style="text-align: center;margin-top: 20px">
+                    <a id="kpi" style="color: white;padding-left: 90px;padding-right: 90px;padding-top: 5px;padding-bottom: 5px;border-radius: 5px;cursor: pointer; width: 100%;"> KPI  </a>
+                    
+                  </div>
    </div>
 
    <div class="col-md-9">
@@ -564,6 +568,10 @@
 
   $("#salary").css('color', 'white'); 
   $("#salary").css('background-color', '#2a3c66'); 
+
+
+  $("#kpi").css('color', 'white'); 
+  $("#kpi").css('background-color', '#2a3c66'); 
 
   $("#contact").click(function(){
       $("#contact_table").show();

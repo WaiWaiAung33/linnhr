@@ -12,6 +12,7 @@ use App\LeaveApplication;
 use App\Offday;
 use App\Overtime;
 use App\Attendance;
+use App\KPI;
 
 class HomeController extends Controller
 {
@@ -260,5 +261,145 @@ class HomeController extends Controller
 
        
         return view('admin.dashboard.hr_dashboard',compact('attendance_count','leave_count','offday_count','overtime_count','emp_count','deptArr','branchArr','branchAttCountArr','deptArr','deptAttCountArr','bd_employess','offday_employess','total_branches','total_departments','new_empoyee','leavDeptArr','leavDeptCountArr','offDeptArr','offDeptCountArr'));
+    }
+
+
+    public function kpiDashboard(Request $request)
+    {   
+
+        $branchKPIArr = DB::table('branch')
+                             ->selectRaw('branch.name as bname')
+                             ->selectRaw("count(kpi.id) as count")
+                             ->selectRaw("sum(kpi.knowledge) as knowledge")
+                             ->selectRaw("sum(kpi.descipline) as descipline")
+                             ->selectRaw("sum(kpi.skill_set) as skill_set")
+                             ->selectRaw("sum(kpi.team_work) as team_work")
+                             ->selectRaw("sum(kpi.social) as social")
+                             ->selectRaw("sum(kpi.motivation) as motivation")
+                             ->leftjoin('employee','branch.id','employee.branch_id')
+                             ->leftjoin('kpi','employee.id','kpi.emp_id')
+                             ->groupBy('branch.id')
+                             ->where('kpi.month',date('m',strtotime($request->month)))
+                             ->where('kpi.year',$request->year)
+                             ->get()->toArray();
+
+
+
+
+        $branchArr = [];
+        $bkpiArr = [];
+
+        foreach ($branchKPIArr as $key => $data) {
+            $totalpoint = $data->knowledge + $data->descipline + $data->skill_set + $data->team_work + $data->social + $data->motivation;
+            $avgpt = $totalpoint / $data->count;
+            $avgtotalpoint =  number_format((float)$avgpt, 2, '.', '');
+            array_push($branchArr, $data->bname);
+            array_push($bkpiArr, $avgtotalpoint);  
+        }
+
+
+
+
+
+        $deptsKPIArr = DB::table('department')
+                             ->selectRaw('department.name as depname')
+                             ->selectRaw("count(kpi.id) as count")
+                             ->selectRaw("sum(kpi.knowledge) as knowledge")
+                             ->selectRaw("sum(kpi.descipline) as descipline")
+                             ->selectRaw("sum(kpi.skill_set) as skill_set")
+                             ->selectRaw("sum(kpi.team_work) as team_work")
+                             ->selectRaw("sum(kpi.social) as social")
+                             ->selectRaw("sum(kpi.motivation) as motivation")
+                             ->leftjoin('employee','department.id','employee.dep_id')
+                             ->leftjoin('kpi','employee.id','kpi.emp_id')
+                             ->groupBy('department.id')
+                             ->where('kpi.month',date('m',strtotime($request->month)))
+                             ->where('kpi.year',$request->year)
+                             ->orderBy('department.name','asc')
+                             ->get()->toArray();
+
+
+
+        $deptArr = [];
+        $kpiArr = [];
+
+        foreach ($deptsKPIArr as $key => $data) {
+            $totalpoint = $data->knowledge + $data->descipline + $data->skill_set + $data->team_work + $data->social + $data->motivation;
+            $avgpt = $totalpoint / $data->count;
+            array_push($deptArr, $data->depname);
+            array_push($kpiArr, $avgpt);
+        }
+
+
+         $aso = KPI::with('employee')->where('kpi.year','2020')->where('emp_id',592)->orderBy('month','asc')->get()->toArray();
+
+
+         $monthArr =[];
+         $asoPoint = [];
+         foreach ($aso as $key => $val) {
+            $point = $val['knowledge'] + $val['descipline'] + $val['skill_set'] + $val['team_work'] + $val['social'] + $val['motivation'];
+
+            $month = $val['month'];
+
+            if( $month== '01'){
+                 $month = "Jan";
+            }elseif ( $month== '02') {
+                 $month = "Feb";
+            }elseif ( $month== '03') {
+                 $month = "Mar";
+            }elseif ( $month== '04') {
+                 $month = "Apr";
+            }elseif ( $month== '05') {
+                 $month = "May";
+            }elseif ( $month== '06') {
+                 $month = "June";
+            }elseif ( $month== '07') {
+                 $month = "July";
+            }elseif ( $month== '08') {
+                 $month = "Aug";
+            }elseif ( $month== '09') {
+                 $month = "Sept";
+            }elseif ( $month== '10') {
+                 $month = "Oct";
+            }elseif ( $month== '11') {
+                 $month = "Nov";
+            }elseif ( $month== '12') {
+                 $month = "Dec";
+            }
+            array_push($monthArr,$month);
+            array_push($asoPoint, $point);
+         }
+
+        $min = 20;
+        $max = 30;
+        $bestEmployees = DB::table('employee')
+                             ->selectRaw('employee.name as empname')
+                             ->selectRaw('employee.emp_id as empID')
+                             ->selectRaw('employee.photo as photo')
+                             ->selectRaw('branch.name as branch')
+                             ->selectRaw('department.name as department')
+                             ->selectRaw("max(kpi.total) as total")
+                             ->leftjoin('kpi','employee.id','kpi.emp_id')
+                             ->leftjoin('branch','branch.id','employee.branch_id')
+                             ->leftjoin('department','department.id','employee.dep_id')
+                             ->where('kpi.month',date('m',strtotime($request->month)))
+                             ->where('kpi.year',$request->year)
+                             ->groupBy('kpi.emp_id')
+                             ->orderBy('total','desc')
+                             ->whereBetween('total', [$min, $max])
+                             ->get();
+
+
+        // $kpis = KPI::all();
+
+        // foreach ($kpis as $key => $kpi) {
+        //     $row = KPI::find($kpi->id);
+        //     $res = $row->update([
+        //         'total' => $kpi->knowledge + $kpi->descipline + $kpi->skill_set + $kpi->team_work + $kpi->social + $kpi->motivation
+        //     ]);
+        // }
+
+
+        return view('admin.dashboard.kpi_dashboard',compact('deptArr','kpiArr','monthArr','asoPoint','branchArr','bkpiArr','bestEmployees'));
     }
 }

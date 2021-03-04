@@ -77,7 +77,7 @@ class KPIController extends Controller
         }
 
         $count = $kpis->count();
-        $kpis = $kpis->paginate(20);
+        $kpis = $kpis->orderBy('created_at','desc')->paginate(20);
 
         return view('admin.kpi.index',compact('kpis','departments','count','branches'))->with('no', (request()->input('page', 1) - 1) * 20);;
     }
@@ -118,6 +118,10 @@ class KPIController extends Controller
 
         $data = KPI::where('emp_id',$request->emp_id)->where('month',$month)->where('year', $year)->get();
 
+
+
+        $total = $request->knowledge + $request->discipline + $request->skill_set + $request->team_work + $request->social + $request->motivation;
+
          if ($data->count()>0) {
             return redirect()->route('kpi.index')->with('success','Data already exist.');             
          }else{
@@ -129,6 +133,7 @@ class KPIController extends Controller
 				            'team_work'=>$request->team_work,
 				            'social'=>$request->social,
 				            'motivation'=>$request->motivation,
+                            'total' => $total,
 				            'month'=>$month,
 				            'year'=>$year,
 				            'comment'=>$request->comment
@@ -188,6 +193,7 @@ class KPIController extends Controller
             'team_work'=>$request->team_work,
             'social'=>$request->social,
             'motivation'=>$request->motivation,
+            'total' => $request->knowledge + $request->descipline + $request->skill_set + $request->team_work + $request->social + $request->motivation,
             'month'=>$month,
             'year'=>$year,
             'comment'=>$request->comment
