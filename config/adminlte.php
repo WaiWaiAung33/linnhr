@@ -230,26 +230,43 @@ return [
             'topnav' => true,
         ],
         [
-            'text'        => 'Main Dashboard',
-            'url'         => 'dashboard',
+            'text'        => 'Dashboard',
             'icon'        => 'fas fa-tachometer-alt',
-            'can'          => 'dashboard'
+            'can'          => 'dashboard',
             // 'label'       => 4,
             // 'label_color' => 'success',
-        ],
-        [
-            'text'    => 'HR Management',
-            'icon'    => 'fas fa-fw fa-users',
-            'can' => 'employee-list',
-            'submenu' => [
+             'submenu' => [
+                  [
+                    'text'        => 'Main Dashboard',
+                    'url'         => 'dashboard',
+                    'icon'        => 'fas fa-fw fa-chart-bar',
+                    'can'          => 'dashboard'
+                    // 'label'       => 4,
+                    // 'label_color' => 'success',
+                ],
                 [
-                    'text'        => 'Dashboard',
+                    'text'        => 'HR Dashboard',
                     'url'         => 'hr-dashboard',
                     'icon'        => 'fas fa-fw fa-chart-bar',
                     'can'          => 'dashboard'
                     // 'label'       => 4,
                     // 'label_color' => 'success',
                 ],
+                  [
+                    'text'        => 'KPI Dashboard',
+                    'url'         => 'kpi-dashboard',
+                    'icon'        => 'fas fa-fw fa-chart-bar',
+                    'can'          => 'dashboard'
+                    // 'label'       => 4,
+                    // 'label_color' => 'success',
+                ],
+             ]
+        ],
+        [
+            'text'    => 'HR Management',
+            'icon'    => 'fas fa-fw fa-users',
+            'can' => 'employee-list',
+            'submenu' => [
                 [
                     'text' => 'Employee',
                     'url'  => 'employee',
