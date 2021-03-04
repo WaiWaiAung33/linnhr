@@ -72,7 +72,7 @@
                     <tbody>
                   	 @if($offdays->count()>0)
               		 @foreach($offdays as $offday)
-                        <tr class="table-tr" >
+                        <tr class="table-tr" data-url="{{route('offday.show',$offday->emp_id)}}">
                             <td>{{++$i}}</td>
                              @if($offday->photo == '')
                             <td>
