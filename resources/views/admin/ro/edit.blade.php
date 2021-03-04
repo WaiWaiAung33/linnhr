@@ -1,7 +1,7 @@
 
 @extends('adminlte::page')
 
-@section('title', 'ro')
+@section('title', 'Ro')
 
 @section('content_header')
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
