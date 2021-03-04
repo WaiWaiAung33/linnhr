@@ -126,6 +126,7 @@ Route::get('get_hostelemployee_data','HostelEmployeeController@get_hostelemploye
 
 
 Route::get('ajax-get-emp-group','AssignGroupController@get_gp_employee_data')->name('ajax-get-emp-group');
+Route::get('ajax-get-emp-ro','RoController@get_gp_employee_data')->name('ajax-get-emp-ro');
 
 
 

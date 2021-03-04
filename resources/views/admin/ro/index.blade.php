@@ -1,7 +1,7 @@
 
 @extends('adminlte::page')
 
-@section('title', 'ro')
+@section('title', 'Ro')
 
 @section('content_header')
 <h5 style="color: blue;">Ro Management</h5>
