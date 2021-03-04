@@ -82,6 +82,7 @@
                     </tr>
                   </thead>
                     <tbody>
+                     
                     @if($leave_applications->count()>0)
               		 @foreach($leave_applications as $leave_application)
 
@@ -105,7 +106,7 @@
                             <td>{{$leave_application->leave_type}}</td> 
                             @if($leave_application->halfDayType == 0)
                             <td>Full Day</td>
-                            @else
+                            @elseif($leave_application->halfDayType == 1)
                             <td>Half Day</td>
                             @endif
                             <td>{{date('d-m-Y',strtotime($leave_application->apply_date))}}</td>

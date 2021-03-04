@@ -153,7 +153,7 @@ class LeaveApplicationController extends Controller
         $leave_application = LeaveApplication::find($id)->update([
             'emp_id'=>$request->emp_id,
             'leavetype_id'=>$request->leave_type,
-            'halfDayType'=>$request->half_day,
+            'halfDayType'=>$request->halfDayType,
             'halforfull'=>$request->fullorhalf,
             'start_date'=>date('Y-m-d',strtotime($request->start_date)),
             'end_date'=>date('Y-m-d',strtotime($request->end_date)),
