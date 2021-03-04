@@ -65,10 +65,10 @@
     <div class="row" id="half_day">
                
         <label class="col-md-2 unicode">Half Day</label>
-        <div class="col-md-5 {{ $errors->first('half_day', 'has-error') }}">
+        <div class="col-md-5 {{ $errors->first('halfDayType', 'has-error') }}">
             
-            <!-- <input type="text" name="half_day" id="half_day" class="form-control"> -->
-            <select class="form-control" id="half_day" name="half_day" style="font-size: 13px">
+            <!-- <input type="text" name="halfDayType" id="halfDayType" class="form-control"> -->
+            <select class="form-control" id="halfDayType" name="halfDayType" style="font-size: 13px">
             <option value="0">Morning</option>
             <option value="1">Evening</option>
          </select>

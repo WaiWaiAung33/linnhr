@@ -87,7 +87,7 @@ class LeaveApplicationController extends Controller
         $leave_application = LeaveApplication::create([
             'emp_id'=>$request->emp_id,
             'leavetype_id'=>$request->leave_type,
-            'halfDayType'=>$request->half_day ? $request->half_day : 0,
+            'halfDayType'=>$request->halfDayType ? $request->halfDayType : 0,
             'halforfull'=>$request->halforfull ? $request->halforfull: 0,
             'start_date'=>date('Y-m-d',strtotime($request->start_date)),
             'end_date'=>date('Y-m-d',strtotime($request->end_date)),
@@ -138,7 +138,7 @@ class LeaveApplicationController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // dd($request->all());
+        dd($request->all());
         $this->validate($request,[
             'emp_id'=>'required',
             'leave_type'=>'required',
@@ -154,7 +154,7 @@ class LeaveApplicationController extends Controller
             'emp_id'=>$request->emp_id,
             'leavetype_id'=>$request->leave_type,
             'halfDayType'=>$request->halfDayType,
-            'halforfull'=>$request->fullorhalf,
+            'halforfull'=>$request->halforfull,
             'start_date'=>date('Y-m-d',strtotime($request->start_date)),
             'end_date'=>date('Y-m-d',strtotime($request->end_date)),
             'days'=>$request->day,
