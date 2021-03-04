@@ -140,7 +140,7 @@
     });
 
     function getEmployee(branch_id,dep_id){
-        var url = "<?php echo(route("ajax-get-emp-group")) ?>";
+        var url = "<?php echo(route("ajax-get-emp-ro")) ?>";
         var fullurl = url + '?branch_id='+branch_id+"&dep_id="+dep_id;
         $('.livesearch').select2({
             placeholder: 'Select Employees',
