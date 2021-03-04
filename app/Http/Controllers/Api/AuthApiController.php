@@ -26,13 +26,18 @@ class AuthApiController extends Controller
              $accessToken = auth()->user()->createToken('authToken')->accessToken;
              $user = auth()->user();
              $user->user_role = $user->roles[0]->name;
+
              $employee = Employee::where('user_id',auth()->user()->id)->get();
+            
             if (count($employee)>0) {
                 if ($employee[0]->active == 0) {
                     return response(['message'=>"Employee is inactive",'status'=>1]);
                 }else{
                     $user->emp_id = $employee[0]->id;
                     $user->emp_photo = $employee[0]->photo;
+                    $user->branch_id = $employee[0]->branch_id;
+                    $user->dept_id = $employee[0]->dep_id;
+                    $user->position_id = $employee[0]->position_id;
                 }
             }
                 
@@ -66,6 +71,9 @@ class AuthApiController extends Controller
                         'name'=>auth()->user()->name,
                         'email'=>auth()->user()->email,
                         'employeeId'=>$employee[0]->id,
+                        'branch_id'=>$employee[0]->branch_id,
+                        'dept_id'=>$employee[0]->dep_id,
+                        'position_id'=>$employee[0]->position_id,
                         'photo'=>$employee[0]->photo,
                         'ename'=>$employee[0]->name,
                         'phone'=>$employee[0]->phone_no,
