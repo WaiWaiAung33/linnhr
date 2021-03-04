@@ -21,11 +21,23 @@ class NoticeBoardController extends Controller
     {
         $notice_boards = new NoticeBoard();
 
+        $notice_boards = $notice_boards->leftjoin('users','users.id','=','notice_boards.uploaded_by')
+                                        ->leftjoin('position','position.id','=','notice_boards.position_id')
+                                        ->leftjoin('branch','branch.id','=','notice_boards.branch_id')
+                                        ->leftjoin('department','department.id','=','notice_boards.dept_id')
+                                        ->select(
+                                            'notice_boards.*',
+                                            'users.name',
+                                            'position.name AS position',
+                                            'branch.name AS branch',
+                                            'department.name AS department'
+                                        );
         if ($request->name != '') {
-            $notice_boards = $notice_boards->where('title',$request->name);
+            $notice_boards = $notice_boards->where('notice_boards.title',$request->name);
         }
         $count=$notice_boards->get()->count();
-        $notice_boards = $notice_boards->orderBy('created_at','desc')->paginate(10);
+
+        $notice_boards = $notice_boards->orderBy('notice_boards.created_at','desc')->paginate(10);
         // dd($count);
         return view('admin.notice_board.index',compact('count','notice_boards'))->with('i', (request()->input('page', 1) - 1) * 10);
     }

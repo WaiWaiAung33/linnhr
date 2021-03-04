@@ -116,6 +116,7 @@ input:checked + .slider:before {
                         <th>Description</th>
                         <th>Publish Date</th>
                         <th>Active/Inactive</th>
+                        <th>Uploaded by</th>  
                         <th>Action</th>
                     </tr>
                   </thead>
@@ -134,6 +135,12 @@ input:checked + .slider:before {
                                   <span class="slider round"></span>
                               </label>
                             </td>
+                           
+                            @if($notice_board->name != null)
+                            <td>{{$notice_board->name}}</td>
+                            @else
+                            <td></td>
+                            @endif
                             <td>
                                 <form action="{{route('notice_board.destroy',$notice_board->id)}}" method="post"
                                     onsubmit="return confirm('Do you want to delete?');">
