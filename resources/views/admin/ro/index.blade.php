@@ -1,7 +1,7 @@
 
 @extends('adminlte::page')
 
-@section('title', 'ro')
+@section('title', 'Ro')
 
 @section('content_header')
 <h5 style="color: blue;">Ro Management</h5>
@@ -12,92 +12,58 @@
                 <table class="table table-bordered styled-table">
                   <thead>
                     <tr> 
-                       <!-- <th>Branch</th> -->
+                       <th>Branch</th>
                       <th>Department</th>
                       <th>Ro</th>
                       <th>Member</th>
                       <th>Action</th>
                     </tr>
                   </thead>
-                     <tbody>
-                    @if($departments->count()>0)
-                      @foreach($departments as $i=>$dept)
-
-
-                        @if($dept->group()->count()>0)
-                        <tr class="table-tr" data-url="#">
+                  <tbody>
+                    @if($office_reporters->count()>0)
+                      @foreach($office_reporters as $office_reporter)
+                        <tr>
+                          <td>{{$office_reporter->branch_name}}</td>
+                          <td>{{$office_reporter->department}}</td>
+                          <td>
+                             @if($office_reporter->photo == '')
+                                <img src="{{ asset('uploads/employeePhoto/default.png') }}" width="40px" height="40px">
+                                </td>
+                                @else
+                                 <img src="{{ asset('uploads/employeePhoto/'.$office_reporter->photo)}}" width="40px" height="40px">
+                                 @endif 
+                            {{$office_reporter->ro_name}}
+                          </td>
+                         
+                          <td>
+                            
+                          @foreach($ro_members as $ro_member)
+                          @if($ro_member->ro_id == $office_reporter->id)
+                            @if($ro_member->members->photo == '')
+                                <img src="{{ asset('uploads/employeePhoto/default.png') }}" width="40px" height="40px" style="margin-top: 10px">
+                                </td>
+                                @else
+                                 <img src="{{ asset('uploads/employeePhoto/'.$ro_member->members->photo)}}" width="40px" height="40px" style="margin-top: 10px">
+                                 @endif
+                            {{$ro_member->members->name}}<br>
+                           @endif
+                          @endforeach
                           
-                            <td>{{ $dept->name }}</td>
-
-                           
-                             
-                              <td>
-                                 @foreach($dept->group as $gp)
-                                 @if($gp->group == 'ro')
-                                    <table>
-                                        <tbody>
-                                             @foreach($gp->employees as $i=>$emp)
-                                                <tr >
-                                                  <td style="border: none;">
-                                                     @if($emp->photo == '')
-                                                      <img src="{{ asset('uploads/employeePhoto/default.png') }}" alt="photo" width="40px" height="40px">
-                                                      </td>
-                                                      @else
-                                                       <img src="{{ asset('uploads/employeePhoto/'.$emp->photo)}}" alt="photo" width="40px" height="40px">
-                                                       @endif
-                                                  </td>
-                                                  <td style="border: none;">{{ $emp['name'] }}</td>
-                                                </tr>
-                                                
-                                              @endforeach
-                                        </tbody>
-                                      </table>
-                                  @endif
-                                @endforeach
-                              </td>
-
-                              <td>
-                                @foreach($dept->group as $gp)
-                                   @if($gp->group == 'member')
-                                      <table>
-                                        <tbody>
-                                             @foreach($gp->employees as $i=>$emp)
-                                                <tr >
-                                                  <td style="border: none;">
-                                                     @if($emp->photo == '')
-                                                      <img src="{{ asset('uploads/employeePhoto/default.png') }}" alt="photo" width="40px" height="40px">
-                                                      </td>
-                                                      @else
-                                                       <img src="{{ asset('uploads/employeePhoto/'.$emp->photo)}}" alt="photo" width="40px" height="40px">
-                                                       @endif
-                                                  </td>
-                                                  <td style="border: none;">{{ $emp['name'] }}</td>
-                                                </tr>
-                                                
-                                              @endforeach
-                                        </tbody>
-                                      </table>
-                                       
-                                      
-                                    @endif
-                                @endforeach
-                              </td>
-
-                           
-                            <td>
-                                <form action="{{route('ro.destroy',$dept->id)}}" method="post"
+                        </td>
+                        <td>
+                                <form action="{{route('ro.destroy',$office_reporter->id)}}" method="post"
                                     onsubmit="return confirm('Do you want to delete?');">
                                    @csrf
                                    @method('DELETE')
-                                    <a class="btn btn-sm btn-primary" href="{{route('ro.edit',$dept->id)}}"><i class="fa fa-fw fa-edit"></i></a>
+                                    <a class="btn btn-sm btn-primary" href="{{route('ro.edit',$office_reporter->id)}}"><i class="fa fa-fw fa-edit"></i></a>
                                     <button class="btn btn-sm btn-danger btn-sm" type="submit">
                                         <i class="fa fa-fw fa-trash" title="Delete"></i>
                                     </button>
                                 </form>
                             </td>
+                         
                         </tr>
-                        @endif
-                      @endforeach
+                          @endforeach
                     @else
                           <tr align="center">
                             <td colspan="10">No Data!</td>

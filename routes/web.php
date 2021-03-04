@@ -50,7 +50,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::resource('interview','InterviewController');
 	Route::resource('offday','OffdayController');
 	Route::resource('overtime','OvertimeController');
-	Route::resource('ro','RoController');
+	Route::resource('ro','OfficeReporterController');
 
 	Route::resource('leave_type','LeaveTypeController');
 	Route::resource('leave_application','LeaveApplicationController');
@@ -128,6 +128,7 @@ Route::get('get_hostelemployee_data','HostelEmployeeController@get_hostelemploye
 
 
 Route::get('ajax-get-emp-group','AssignGroupController@get_gp_employee_data')->name('ajax-get-emp-group');
+Route::get('ajax-get-emp-ro','RoController@get_gp_employee_data')->name('ajax-get-emp-ro');
 
 
 

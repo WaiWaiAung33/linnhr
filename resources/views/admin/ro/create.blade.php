@@ -1,7 +1,7 @@
 
 @extends('adminlte::page')
 
-@section('title', 'ro')
+@section('title', 'Ro')
 
 @section('content_header')
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
@@ -114,6 +114,7 @@
             $("#branch_id").change(function(){
 
                 branch_id = $(this).val();
+               // alert(branch_id);
             });
 
             $("#dep_id").change(function(){
@@ -125,7 +126,7 @@
 
          function getEmployee(branch_id,dep_id){
             // alert("hello");
-            var url = "<?php echo(route("ajax-get-emp-group")) ?>";
+            var url = "<?php echo(route("ajax-get-emp-ro")) ?>";
             var fullurl = url + '?branch_id='+branch_id+"&dep_id="+dep_id;
             $('.livesearch').select2({
                 placeholder: 'Select Employees',

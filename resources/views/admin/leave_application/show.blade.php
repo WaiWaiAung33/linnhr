@@ -56,7 +56,7 @@
         <label class="col-md-2 unicode">Half Day</label>
         <div class="col-md-5 {{ $errors->first('halfDayType', 'has-error') }}">
             
-            <input type="text" name="halfDayType" id="halfDayType" class="form-control" @if($leave_application->halfDayType == 1) value="Morning" @else value = "Evening" @endif readonly="readonly">
+            <input type="text" name="halfDayType" id="halfDayType" class="form-control" @if($leave_application->halfDayType == 0) value="Morning" @else value = "Evening" @endif readonly="readonly">
          
         </div>    
     </div><br>

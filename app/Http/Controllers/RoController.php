@@ -150,4 +150,19 @@ class RoController extends Controller
         $res = Ro::where('department_id',$id)->delete();
         return redirect()->route('ro.index')->with('success','Success');
     }
+
+     public function get_gp_employee_data(Request $request)
+    {
+        $data = Employee::where('active',1)->where('dep_id',$request->dep_id)->where('branch_id',$request->branch_id);
+
+        if($request->has('q')){
+            $search = $request->q;
+            $data = $data->where('name','like','%'.$search.'%');
+        }
+       
+        $data = $data->get();
+        // dd($data);
+        // $data =$data->select('name',DB::raw("CONCAT(nrc_code,'/',nrc_state,'(နိုင်)',nrc_no) as full_nrc"));
+        return response()->json($data);
+    }
 }

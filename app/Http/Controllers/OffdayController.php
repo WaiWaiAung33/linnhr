@@ -79,7 +79,7 @@ class OffdayController extends Controller
             'off_day_1'=>($request->off_day_1!='')?date('Y-m-d',strtotime($request->off_day_1)):NULL,
             'off_day_2'=>($request->off_day_2!='')?date('Y-m-d',strtotime($request->off_day_2)):NULL,
             'off_day_3'=>($request->off_day_3!='')?date('Y-m-d',strtotime($request->off_day_3)):NULL,
-            'off_day_4'=>($request->off_day_4!='')?date('Y-m-d',strtotime($request->off_day_3)):NULL,
+            'off_day_4'=>($request->off_day_4!='')?date('Y-m-d',strtotime($request->off_day_4)):NULL,
             'actionBy'=>auth()->user()->id,
         ]
         );
@@ -92,9 +92,25 @@ class OffdayController extends Controller
      * @param  \App\Offday  $offday
      * @return \Illuminate\Http\Response
      */
-    public function show(Offday $offday)
+    public function show($id)
     {
-        //
+
+        $date = now();
+        // dd($date->year);
+        $offdays = Offday::select('*')->whereMonth('off_day_1', '=', $date->month)
+                             ->whereDay('off_day_1', '>=', $date->day)
+                             ->whereYear('off_day_1','=',$date->year)
+                            ->orWhere(function ($query) use ($date) {
+                               $query->whereMonth('off_day_1', '=', $date->month)
+                                   ->whereYear('off_day_1','=',$date->year);
+                           })
+           ->orderByRaw('DATE_FORMAT(off_day_1, "%m-%d")')
+           ->get();
+           $emp_offdays = $offdays->where('emp_id',$id);
+
+           $emp_offday_arr = [$emp_offdays[0]->off_day_1,$emp_offdays[0]->off_day_2,$emp_offdays[0]->off_day_3,$emp_offdays[0]->off_day_4];
+           // dd($emp_offday_arr);
+        return view('admin.offday.show',compact('emp_offdays','emp_offday_arr'));
     }
 
     /**
@@ -125,7 +141,7 @@ class OffdayController extends Controller
             'off_day_1'=>($request->off_day_1!='')?date('Y-m-d',strtotime($request->off_day_1)):NULL,
             'off_day_2'=>($request->off_day_2!='')?date('Y-m-d',strtotime($request->off_day_2)):NULL,
             'off_day_3'=>($request->off_day_3!='')?date('Y-m-d',strtotime($request->off_day_3)):NULL,
-            'off_day_4'=>($request->off_day_4!='')?date('Y-m-d',strtotime($request->off_day_3)):NULL,
+            'off_day_4'=>($request->off_day_4!='')?date('Y-m-d',strtotime($request->off_day_4)):NULL,
             'actionBy'=>auth()->user()->id,
         ]
         );

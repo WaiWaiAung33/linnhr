@@ -116,7 +116,7 @@
         <div class="row">
                     <div class="col-md-2"></div>
                     <div class="col-md-5">
-                        <a class="btn btn-primary unicode" href="{{route('branch.index')}}"> Back</a>
+                        <a class="btn btn-primary unicode" href="{{route('notice_board.index')}}"> Back</a>
                         <button class="btn btn-success" type="submit" style="font-size: 13px">
                     Save
                      </button>

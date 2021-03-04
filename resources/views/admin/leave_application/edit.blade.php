@@ -57,10 +57,10 @@
     <div class="row">
                
         <label class="col-md-2 unicode">Full Day/Half Day</label>
-        <div class="col-md-5 {{ $errors->first('fullorhalf', 'has-error') }}">
-           <select class="form-control" id="fullorhalf" name="fullorhalf" style="font-size: 13px">
-               <option value="0" {{old('fullorhalf',$leave_application->fullorhalf == 0 ? 'Selected':'')}}>Full Day</option>
-                <option value="1" {{old('fullorhalf',$leave_application->fullorhalf == 1 ? 'Selected':'')}}>Half Day</option>
+        <div class="col-md-5 {{ $errors->first('halforfull', 'has-error') }}">
+           <select class="form-control" id="halforfull" name="halforfull" style="font-size: 13px">
+               <option value="0" {{old('halforfull',$leave_application->halforfull == 0 ? 'Selected':'')}}>Full Day</option>
+                <option value="1" {{old('halforfull',$leave_application->halforfull == 1 ? 'Selected':'')}}>Half Day</option>
            </select>
          
         </div>    
@@ -71,6 +71,7 @@
         <label class="col-md-2 unicode">Half Day</label>
         <div class="col-md-5 {{ $errors->first('halfDayType', 'has-error') }}">
            <select class="form-control" id="halfDayType" name="halfDayType" style="font-size: 13px">
+                <option value="">All</option>
                <option value="0" {{old('halfDayType',$leave_application->halfDayType == 0 ? 'Selected':'')}}>Morning</option>
                 <option value="1" {{old('halfDayType',$leave_application->halfDayType == 1 ? 'Selected':'')}}>Evening</option>
            </select>
@@ -164,7 +165,7 @@
 <script src="https://unpkg.com/bootstrap-datepicker@1.9.0/dist/js/bootstrap-datepicker.min.js"></script>
 <script type="text/javascript">
      $(document).ready(function(){
-    var val = $('#fullorhalf option:selected').val();
+    var val = $('#halforfull option:selected').val();
                 if (val == '1') {
                     $("#halfDayType").show();
                     $("#break").show();
@@ -217,14 +218,15 @@
         });
     });
 
-         $("#fullorhalf").change(function() {
-                var val = $('#fullorhalf option:selected').val();
+         $("#halforfull").change(function() {
+                var val = $('#halforfull option:selected').val();
                 if (val == "1") {
                     $("#halfDayType").show();
                     $("#break").show();
                 } else {
                     $("#halfDayType").hide();
                     $("#break").hide();
+                    $('#halfDayType option:selected').val("");
                 }
 
             });
