@@ -106,8 +106,19 @@
  	<br><hr>
 
   <div class="row">
-        <div class="col-md-6"  align="center">
-              <div id="hostelchart" style="height: 300px;"></div>
+        <div class="col-md-6">
+          <p><i class="fas fa-envelope"></i>Notice Board</p>
+          @foreach($notice_boards as $notice_board)
+          <div class="row div-click" data-url="{{route('notice_board.show',$notice_board->id)}}">
+            <img src="{{ asset('email.png') }}" alt="photo" width="80px" height="80px">
+            <div style="margin-top: 20px;width: 500px;">
+              <h6 style="margin-left: 20px;">{{$notice_board->title}}</h6>
+            <p style="margin-left: 20px;">{{$notice_board->description}}</p>
+            </div>
+            <a href="" class="btn btn-success readmore" style="height: 30px;margin-left: 20px;"><i class="fas fa-calendar-week"></i>{{date('d-m-Y',strtotime($notice_board->publish_date))}}</a>
+          </div>
+          <hr>
+          @endforeach
         </div>
           
     <div class="col-md-6"  align="center">
@@ -291,29 +302,29 @@ foreach ($branchHostelArr as $key => $brh) {
 
 
 
-    var hostel = <?php echo json_encode($hostel) ?> ;
-    var fmcount =<?php echo json_encode($fmcount) ?> ;
-    var mcount =<?php echo json_encode($mcount) ?> ;
+    // var hostel = <?php echo json_encode($hostel) ?> ;
+    // var fmcount =<?php echo json_encode($fmcount) ?> ;
+    // var mcount =<?php echo json_encode($mcount) ?> ;
 
 
-    const hostelchart = new Chartisan({
-      el: '#hostelchart',
-      // url: 'https://chartisan.dev/chart/example.json',
-      data: {
-        "chart": { "labels": hostel },
-        "datasets": [
-          { "name": "ကျား", "values": mcount },
-          { "name": "မ", "values": fmcount }
-        ]
-      },
-      hooks: new ChartisanHooks()
-        // .colors(['#20FFFF', '#FD8008','#1F85DE','#DE781F'])
-        .colors()
-        .responsive()
-        .beginAtZero()
-        .legend({ position: 'bottom' })
-        .title('အဆောင်အလိုက် ကျား/မ ပြသမှု')
-    })
+    // const hostelchart = new Chartisan({
+    //   el: '#hostelchart',
+    //   // url: 'https://chartisan.dev/chart/example.json',
+    //   data: {
+    //     "chart": { "labels": hostel },
+    //     "datasets": [
+    //       { "name": "ကျား", "values": mcount },
+    //       { "name": "မ", "values": fmcount }
+    //     ]
+    //   },
+    //   hooks: new ChartisanHooks()
+    //     // .colors(['#20FFFF', '#FD8008','#1F85DE','#DE781F'])
+    //     .colors()
+    //     .responsive()
+    //     .beginAtZero()
+    //     .legend({ position: 'bottom' })
+    //     .title('အဆောင်အလိုက် ကျား/မ ပြသမှု')
+    // })
 
 
 
@@ -421,5 +432,11 @@ foreach ($branchHostelArr as $key => $brh) {
         // });
     });
 
+    $(function() {
+          $('div').on("click", "div.div-click", function() {
+
+            window.location = $(this).data("url");
+          });
+        });
     </script>
 @stop

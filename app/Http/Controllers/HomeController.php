@@ -13,6 +13,7 @@ use App\Offday;
 use App\Overtime;
 use App\Attendance;
 use App\KPI;
+use App\NoticeBoard;
 
 class HomeController extends Controller
 {
@@ -133,8 +134,10 @@ class HomeController extends Controller
                              ->groupBy('hostel.name')
                              ->get()->toArray();
 
+        $notice_boards =  NoticeBoard::where('status',1)->orderBy('publish_date','desc')->paginate(5);
+        // return view('frontend.news',compact('news'));
        
-        return view('dashboard',compact('total_employees','total_departments','total_branches','new_empoyee','deptArr','deptEmpArr','maleTotal','femaleTotal','branchArr','branchEmpArr','hostelStay','hostelNotStay','bd_employess','hostelArr','branchHostelArr'));
+        return view('dashboard',compact('total_employees','total_departments','total_branches','new_empoyee','deptArr','deptEmpArr','maleTotal','femaleTotal','branchArr','branchEmpArr','hostelStay','hostelNotStay','bd_employess','hostelArr','branchHostelArr','notice_boards'));
     }
 
 

@@ -95,7 +95,6 @@ class OffdayController extends Controller
     public function show($id)
     {
 
-            $date = now();
            $emp_offdays = Offday::where('emp_id',$id)->get();
            $emp_offday_arr = [];
            foreach ($emp_offdays as $key => $value) {
