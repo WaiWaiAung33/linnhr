@@ -18,10 +18,16 @@ class OfficeReporterController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        // dd($request->name);
         $office_reporters = new OfficeReporter();
         $ro_members = ROMember::all();
+        $branches = Branch::where('status',1)->get();
+        $departments = Department::where('status',1)->get();
+
+
+        
         $office_reporters = $office_reporters->leftjoin('employee','employee.id','=','office_reporters.ro_id')
             ->leftjoin('branch','branch.id','=','office_reporters.branch_id')->leftjoin('department','department.id','=','office_reporters.dept_id')
             ->select(
@@ -29,13 +35,27 @@ class OfficeReporterController extends Controller
                 'branch.name AS branch_name',
                 'department.name AS department',
                 'employee.name AS ro_name',
-                'employee.photo'
-               
+                'employee.photo',
             );
+
+        if ($request->name != '') {
+            $office_reporters = $office_reporters->where('employee.name','like','%'.$request->name.'%');
+            // dd($office_reporters->get());
+        }
+
+         if ($request->branch_id != '') {
+            $office_reporters = $office_reporters->where('employee.branch_id',$request->branch_id);
+            // dd($office_reporters->get());
+        }
+         
+        if ($request->dept_id != '') {
+            $office_reporters = $office_reporters->where('employee.dep_id',$request->dept_id);
+        }
+        
             // dd($office_reporters);
-            $office_reporters = $office_reporters->orderBy('branch.name','asc')->get();
+        $office_reporters = $office_reporters->orderBy('branch.name','asc')->get();
             // dd($office_reporters);
-        return view('admin.ro.index',compact('office_reporters','ro_members'));
+        return view('admin.ro.index',compact('office_reporters','ro_members','departments','branches'));
     }
 
     /**

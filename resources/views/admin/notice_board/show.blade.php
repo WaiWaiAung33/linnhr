@@ -81,7 +81,7 @@
 
               // dd($photo);
               ?>
-              <div class="row">
+              <!-- <div class="row"> -->
 
                   @if ($notice_boards->image == '[]')
                        <img src="{{ asset('uploads/images/download.png') }}" alt="photo" width="80px" height="80px">
@@ -97,7 +97,7 @@
                       @endforeach
                   @endif
 
-              </div>
+              <!-- </div> -->
           </div>
           <br><br>
         </form>
