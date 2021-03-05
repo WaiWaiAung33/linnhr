@@ -110,7 +110,7 @@
           <p><i class="fas fa-envelope"></i>Notice Board</p>
           @foreach($notice_boards as $notice_board)
           <div class="row div-click" data-url="{{route('notice_board.show',$notice_board->id)}}">
-            <img src="{{ asset('email.png') }}" alt="photo" width="80px" height="80px">
+            <img src="{{ asset('unnamed.png') }}" alt="photo" width="80px" height="80px">
             <div style="margin-top: 20px;width: 500px;">
               <h6 style="margin-left: 20px;">{{$notice_board->title}}</h6>
             <p style="margin-left: 20px;">{{$notice_board->description}}</p>
