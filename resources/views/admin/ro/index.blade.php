@@ -7,7 +7,43 @@
 <h5 style="color: blue;">RO Management</h5>
 @stop
 @section('content')
-<a class="btn btn-success unicode" href="{{route('ro.create')}}" style="float: right;font-size: 13px"><i class="fas fa-plus"></i> Ro</a><br><br>
+<?php
+  $name = isset($_GET['name'])?$_GET['name']:'';
+  $branch_id = isset($_GET['branch_id'])?$_GET['branch_id']:'';
+  $dept_id = isset($_GET['dept_id'])?$_GET['dept_id']:'';
+?>
+  <form action="{{route('ro.index')}}" method="get" accept-charset="utf-8" class="form-horizontal">
+             <div class="row form-group">
+             
+               <div class="col-md-2">                 
+                  <input type="text" name="name" id="name" value="{{ old('name',$name) }}" class="form-control" placeholder="Search..." style="font-size: 13px">
+                </div>
+
+                 <div class="col-md-2">
+                 <select class="form-control" id="branch_id" name="branch_id" style="font-size: 13px">
+                      <option value="">Select Branch</option>
+                      @foreach($branches as $branch)
+                      <option value="{{$branch->id}}" {{ (old('branch_id',$branch_id)==$branch->id)?'selected':'' }}>{{$branch->name}}</option>
+                      @endforeach
+                  </select>
+                 </div>
+
+                <div class="col-md-2">
+                 <select class="form-control" id="dept_id" name="dept_id" style="font-size: 13px">
+                        <option value="">Select Department</option>
+                        @foreach($departments as $department)
+                        <option value="{{$department->id}}" {{ (old('dept_id',$dept_id)==$department->id)?'selected':'' }}>{{$department->name}}</option>
+                        @endforeach
+                  </select>
+                 </div>
+
+                 <div class="col-md-6" align="right">
+                <a class="btn btn-success unicode" href="{{route('ro.create')}}" style="float: right;font-size: 13px"><i class="fas fa-plus"></i> Ro</a>
+              </div>
+               
+             </div>
+        </form><br>
+
 <div class="table-responsive" style="font-size:13px">
                 <table class="table table-bordered styled-table">
                   <thead>
@@ -94,7 +130,7 @@
             $("div.alert").remove();
             }, 1000 ); 
             $(function() {
-                  $('#name').on('change',function(e) {
+            $('#name').on('change',function(e) {
                 this.form.submit();
             }); 
             $('#branch_id').on('change',function(e) {
@@ -102,11 +138,6 @@
                 this.form.submit();
             });
             $('#dept_id').on('change',function(e) {
-
-                this.form.submit();
-            });
-
-            $('#date').on('change',function(e) {
 
                 this.form.submit();
             });
