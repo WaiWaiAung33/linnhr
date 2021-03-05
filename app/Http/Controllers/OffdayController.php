@@ -18,11 +18,13 @@ class OffdayController extends Controller
      */
     public function index(Request $request)
     {
-        $offdays = new Offday();
+       
         $branches = Branch::where('status',1)->get();
         $departments = Department::where('status',1)->get();
-        $count=$offdays->get()->count();
-          $offdays = $offdays->leftjoin('employee','employee.id','=','offday.emp_id')->leftjoin('users','users.id','=','offday.actionBy')->leftjoin('department','department.id','=','employee.dep_id')->leftjoin('branch','branch.id','=','employee.branch_id') ->select(
+        
+          
+        $offdays = new Offday();
+        $offdays = $offdays->leftjoin('employee','employee.id','=','offday.emp_id')->leftjoin('users','users.id','=','offday.actionBy')->leftjoin('department','department.id','=','employee.dep_id')->leftjoin('branch','branch.id','=','employee.branch_id') ->select(
                                                     'offday.*',
                                                     'employee.name',
                                                     'employee.photo',
@@ -47,6 +49,19 @@ class OffdayController extends Controller
                                 ->orwhere('off_day_4',date('Y-m-d',strtotime($request->date)));
         }
 
+        $year = $request->year;
+        if($year !=''){
+            $offdays = $offdays->whereYear('offday.off_day_1',$year);
+        }
+
+        $month = $request->month;
+        if($month !=''){
+            $month = date('m',strtotime($month));
+            $offdays = $offdays->whereMonth('offday.off_day_1',$month);
+        }
+
+
+        $count=$offdays->count();
         $offdays = $offdays->orderBy('created_at','desc')->paginate(10);
         return view('admin.offday.index',compact('offdays','count','branches','departments'))->with('i', (request()->input('page', 1) - 1) * 10);;
     }

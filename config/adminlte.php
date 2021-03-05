@@ -325,7 +325,7 @@ return [
                     'icon' => 'fa fa-cubes',
                 ],
                   [
-                    'text' => 'Offday',
+                    'text' => 'Day Off',
                     'url'  => 'offday',
                     'icon' => 'fas fa-fw fa-calendar-alt',
                 ],

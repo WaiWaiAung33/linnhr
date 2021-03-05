@@ -32,4 +32,28 @@ class RoApiController extends Controller
 	       
 	    }
 	}
+
+
+	public function ro_manage_list(Request $request)
+	{
+		// dd($request->emp_id);
+		$input = $request->all();
+		  $rules=[
+	        'emp_id'=>'required',
+	    ];
+	    $validator = Validator::make($input,$rules);
+	     if ($validator->fails()) {
+	        $messages = $validator->messages();
+	           return response()->json(['message'=>"Error",'status'=>0]);
+	    }else{
+	        $ro = ROMember::where('repoter_id',$request->emp_id);
+	        $ro = $ro->leftjoin('employee','employee.id','=','r_o_members.member_id')
+	    							->select(
+	    								'employee.name',
+	    								'employee.photo',
+	    							)->get();
+	        return response(['message'=>"Success",'status'=>1,'ro'=>$ro]);
+	       
+	    }
+	}
 }

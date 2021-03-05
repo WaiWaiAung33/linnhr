@@ -8,23 +8,22 @@
   $year = isset($_GET['year'])?$_GET['year']:date('Y'); 
   $month = isset($_GET['month'])?$_GET['month']:date('F'); 
 ?>    
-<div class="row justify-content-center">
+<div class="row">
     <div class="col-md-4">
-      <form action="{{route('kpi-dashboard')}}" method="get" accept-charset="utf-8" class="form-horizontal">
-         <div class="row">
-           <div class="col-md-3">
-            <label for="">Month</label>
-              <input type="text" name="month" id="month"class="form-control unicode" placeholder="June" value="{{ old('month',$month) }}" style="font-size: 13px">
-           </div>
-
-            <div class="col-md-3">
-               <label for="">Year</label>
-                   <input type="text" name="year" id="year"class="form-control unicode" placeholder="2021" value="{{ old('year',$year) }}" style="font-size: 13px">
+        <form action="{{route('kpi-dashboard')}}" method="get" accept-charset="utf-8" class="form-horizontal">
+            <div class="row">
+              <div class="col-md-3">
+                 <label for="">Month</label>
+                 <input type="text" name="month" id="month"class="form-control unicode" placeholder="June" value="{{ old('month',$month) }}" style="font-size: 13px">
+              </div>  
+              <div class="col-md-3">
+                  <label for="">Year</label>
+                  <input type="text" name="year" id="year"class="form-control unicode" placeholder="2021" value="{{ old('year',$year) }}" style="font-size: 13px">
+              </div>
             </div>
-         </div>
-      </form>
+        </form>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-4 text-center">
          <h5 style="color: blue;" class="unicode">KPI Dashboard</h5>
     </div>
     <div class="col-md-4 text-right">
@@ -62,7 +61,7 @@
                      </thead>
                      <tbody>
                         @foreach($bestEmployees as $bemp)
-                         <tr>
+                         <tr class="table-tr" data-url="{{route('kpi.show',$bemp->kpiid)}}">
                             <td align="center">
                              @if($bemp->photo == '')
                              <img src="{{ asset('uploads/employeePhoto/default.png') }}" alt="photo" width="40px" height="40px">
@@ -73,7 +72,7 @@
                              <td>
                                 {{ $bemp->empID }} <br>
                                 {{ $bemp->empname }} ({{ $bemp->department }})<br>
-                                {{ $bemp->branch }} 
+                                {{ $bemp->branch }}
                               </td>
                              <td>{{ $bemp->total }}</td>
                          </tr>
@@ -178,6 +177,12 @@
                 .borderColors()
                 .title('KPI by Department')
                 .datasets([{ type: 'line', fill: false }, 'bar'])
+        });
+
+        $(function() {
+          $('table').on("click", "tr.table-tr", function() {
+            window.location = $(this).data("url");
+          });
         });
 
 

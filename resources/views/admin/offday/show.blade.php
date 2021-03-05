@@ -1,15 +1,84 @@
 @extends('adminlte::page')
 
-@section('title', 'Branch')
+@section('title', 'Day Off')
 
 @section('content_header')
+<div class="row"> 
 
+  <div class="col-md-2">
+       <a class="btn btn-primary unicode" href="{{route('offday.index')}}"> Back</a>
+  </div>
+  <div class="col-md-8 text-center">
+
+  </div>
+  <div class="col-md-2 text-right">
+     
+  </div>
+
+</div>
 @stop
 @section('content')
- <div class="container" style="margin-top: 50px; ">
-     <div class="col-md-6"  align="center">
-        <h6>Off Day</h6> 
-        <div id='calendar'></div>
+ <div class="row">
+    <div class="col-md-3">
+        @if($emp_offdays[0]->viewEmployee->photo == '')
+          <div style="text-align: center;">
+             <img src="{{ asset('uploads/employeePhoto/default.png') }}" alt="photo" style="width: 30% !important">
+          </div>
+           
+        @else
+            <div style="text-align: center;">
+               <img src="{{ asset('uploads/employeePhoto/'.$emp_offdays[0]->viewEmployee->photo) }}" alt="photo" width="120px" height="140px">
+            </div>
+        @endif
+        <div style="text-align: center;">
+            <h6 style="margin-top: 10px">{{$emp_offdays[0]->viewEmployee->emp_id ? $emp_offdays[0]->viewEmployee->emp_id : "-"}}</h6>
+            <h6>{{$emp_offdays[0]->viewEmployee->name ? $emp_offdays[0]->viewEmployee->name : "-" }}</h6>
+            <h6>{{$emp_offdays[0]->viewEmployee->viewDepartment->name ? $emp_offdays[0]->viewEmployee->viewDepartment->name : "-" }}</h6>
+            <h6>{{$emp_offdays[0]->viewEmployee->viewBranch->name ? $emp_offdays[0]->viewEmployee->viewBranch->name : "-" }}</h6>
+        </div>
+        <div style="text-align: center;margin-top:20px">
+            <a id="calendar_view" style="color: white;padding-left: 65px;padding-right: 65px;border-width: 1px solid;padding-top: 5px;padding-bottom: 5px;border-radius: 5px;cursor: pointer;">Calendar View</a>
+        </div>
+        <div style="text-align: center;margin-top: 20px">
+            <a id="table_view" style="color: white;padding-left: 85px;padding-right: 85px;padding-top: 5px;padding-bottom: 5px;border-radius: 5px;cursor: pointer;">Table View</a>
+        </div>
+    </div>
+     <div class="col-md-9"  align="center">
+        <div  id="offday_calendar">
+            <h6> Day Off Calendar View</h6> 
+            <div id='calendar'></div>
+        </div>
+        <div class="table-responsive" id="offday_table">
+            <h6> Day Off Table  View</h6> 
+            <table class="table table-bordered styled-table">
+                <thead>
+                    <tr> 
+                        <th>No</th>
+                        <th>Day Off 1</th>
+                        <th>Day Off 2</th>
+                        <th>Day Off 3</th>
+                        <th>Day Off 4</th>
+                    </tr>
+                </thead>
+                <tbody>
+                 @if($emp_offdays->count()>0)
+                 @foreach($emp_offdays as $i=>$offday)
+                    <tr>
+                        <td>{{++$i}}</td>
+                        <td>@if($offday->off_day_1!='') {{date('d-m-Y',strtotime($offday->off_day_1))}} @endif</td>
+                        <td>@if($offday->off_day_2!='') {{date('d-m-Y',strtotime($offday->off_day_2))}} @endif</td>
+                        <td>@if($offday->off_day_3!='') {{date('d-m-Y',strtotime($offday->off_day_3))}} @endif</td>
+                        <td>@if($offday->off_day_4!='') {{date('d-m-Y',strtotime($offday->off_day_4))}} @endif</td>
+                    </tr>
+                    @endforeach
+                      @else
+                      <tr align="center">
+                        <td colspan="10">No Data!</td>
+                      </tr>
+                @endif    
+                </tbody>
+            </table> 
+        </div>
     </div>
   </div>
 @stop 
@@ -20,7 +89,7 @@
   <link href='{{ asset("calender/fullcalendar.print.min.css") }}' rel='stylesheet' media='print' />
   <style>
      #calendar {
-        max-width: 95%;
+        max-width: 75%;
         margin: 0 auto;
         font-family:Pyidaungsu,Yunghkio,'Masterpiece Uni Sans' !important;
         font-size: 13px;
@@ -32,26 +101,63 @@
 @stop
 
 <?php
-$arr1 = []; 
-$arr0 = [];
-foreach($emp_offday_arr as $emp_offday){
-
-    $a = ['title'=>'Offday', 'start'=> date('Y-').date('m-d',strtotime($emp_offday)) ];
-
-    array_push($arr1, $a);
-    array_push($arr0,$a);
-}
-$date = date('Ymd')."";
+    $arr1 = []; 
+    $arr0 = [];
+    foreach($emp_offday_arr as $emp_offday){
+        $a = ['title'=>'နားရက်', 'start'=> date('Y-').date('m-d',strtotime($emp_offday)) ];
+        array_push($arr1, $a);
+        array_push($arr0,$a);
+    }
+    $date = date('Ymd')."";
 ?>
 
 @section('js')
- <script src="{{ asset('js/jquery.min.js') }}"></script> 
+<script src="{{ asset('js/jquery.min.js') }}"></script> 
 <script src='{{ asset("calender/moment.min.js") }}'></script>
 <script src='{{ asset("calender/fullcalendar.min.js") }}'></script>
 <script>
-  var bdEmployees = <?php echo json_encode($arr0); ?>;
+
+    $(function() {
+         $("#offday_table").hide();
+    });
+
+    $("#table_view").css('color', '#2a3c66'); 
+    $("#table_view").css('border', '1px solid'); 
+    $("#table_view").css('border-color', '#2a3c66');
+
+    $("#calendar_view").css('color', 'white'); 
+    $("#calendar_view").css('background-color', '#2a3c66'); 
+
+    $("#calendar_view").click(function(){
+          $("#offday_table").hide();
+          $("#offday_calendar").show();
+
+        $("#table_view").css('color', '#2a3c66'); 
+        $("#table_view").css('border', '1px solid'); 
+        $("#table_view").css('border-color', '#2a3c66');
+        $("#table_view").css('background-color', 'white');
+        
+        $("#calendar_view").css('color', 'white'); 
+        $("#calendar_view").css('background-color', '#2a3c66'); 
+
+    });
+    
+    $("#table_view").click(function(){
+      $("#offday_table").show();
+      $("#offday_calendar").hide();
+
+      $("#calendar_view").css('color', '#2a3c66'); 
+      $("#calendar_view").css('border', '1px solid'); 
+      $("#calendar_view").css('border-color', '#2a3c66');
+      $("#calendar_view").css('background-color', 'white');
+
+      $("#table_view").css('color', 'white'); 
+      $("#table_view").css('background-color', '#2a3c66'); 
+
+    });
+
     $(document).ready(function() {
-        console.log(<?php echo json_encode($arr1); ?>);
+        // console.log(<?php echo json_encode($arr1); ?>);
         $('#calendar').fullCalendar({
             defaultDate: new Date(),
             editable: true,
@@ -59,39 +165,6 @@ $date = date('Ymd')."";
             events: <?php echo json_encode($arr1); ?>
         });
         
-        $('#calendar').delegate('.fc-day', 'mouseover', function(){
-            if(bdEmployees.indexOf($(this).attr('data-date'))=="-1"){
-                pointerdate = $(this).attr('data-date');
-                curdate = <?php echo $date; ?>;
-                // console.log(curdate);
-                arr=pointerdate.split('-');
-                pointerdate = arr[0]+arr[1]+arr[2];
-                // console.log(" > "+pointerdate);
-                if(pointerdate<=curdate){
-                    return false;
-                }
-                // $(this).html('<center><a href="{{ route("employee.index") }}" style="text-decoration:none"><h2 style="margin-top:40px; width:150px"></h2></a></center>');
-                // $(this).css('background', '#fdf');
-                // $(this).css('cursor', 'pointer');
-            }
-        });
-
-        $('#calendar').delegate('.fc-day a', 'mouseover', function(){
-         // alert("a mouseover");
-        });
-
-        $('#calendar').delegate('.fc-day', 'mouseout', function(){
-            $(this).html('');
-            $(this).css('background', '#ffffff');
-        });
-
-        // $('#calendar').delegate('.fc-day', 'click', function(){
-        //     href = $(this).find('a').attr('href');
-        //     if(href==undefined){
-        //         return false;
-        //     }
-        //     window.location.href=$(this).find('a').attr('href');
-        // });
     });
 </script>
 @stop

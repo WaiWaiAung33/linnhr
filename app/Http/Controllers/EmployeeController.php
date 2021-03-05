@@ -17,6 +17,7 @@ use App\Room;
 use App\Hostel;
 use App\User;
 use App\Salary;
+use App\KPI;
 use File;
 use Illuminate\Support\Str;
 use DB;
@@ -448,7 +449,50 @@ play the specified resource.
         $salarys = $salarys->orderBy('created_at','asc')->paginate(12);
         // $salarys = Salary::paginate(10);
         $employees = Employee::find($id);
-        return view('admin.employee.show',compact('branchs','departments','positions','employees','nrccodes','nrcstates','salarys','salary_count'))->with('i', (request()->input('page', 1) - 1) * 12);
+
+        $month = ($request->month!='')?$request->month:date('m');
+        $year = ($request->year!='')?$request->year:date('Y');
+
+        $kpis = KPI::with('employee')->where('kpi.year',$year)->where('emp_id',$id)->orderBy('month','asc')->get();
+
+        $monthArr =[];
+        $kpiPoint = [];
+        
+        foreach ($kpis as $key => $val) {
+            $point = $val['knowledge'] + $val['descipline'] + $val['skill_set'] + $val['team_work'] + $val['social'] + $val['motivation'];
+
+            $month = $val['month'];
+
+            if( $month== '01'){
+                 $month = "Jan";
+            }elseif ( $month== '02') {
+                 $month = "Feb";
+            }elseif ( $month== '03') {
+                 $month = "Mar";
+            }elseif ( $month== '04') {
+                 $month = "Apr";
+            }elseif ( $month== '05') {
+                 $month = "May";
+            }elseif ( $month== '06') {
+                 $month = "June";
+            }elseif ( $month== '07') {
+                 $month = "July";
+            }elseif ( $month== '08') {
+                 $month = "Aug";
+            }elseif ( $month== '09') {
+                 $month = "Sept";
+            }elseif ( $month== '10') {
+                 $month = "Oct";
+            }elseif ( $month== '11') {
+                 $month = "Nov";
+            }elseif ( $month== '12') {
+                 $month = "Dec";
+            }
+            array_push($monthArr,$month);
+            array_push($kpiPoint, $point);
+         }
+
+        return view('admin.employee.show',compact('branchs','departments','positions','employees','nrccodes','nrcstates','salarys','salary_count','monthArr','kpiPoint','kpis'))->with('i', (request()->input('page', 1) - 1) * 12);
     }
 
     /**

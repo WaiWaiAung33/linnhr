@@ -2,7 +2,23 @@
 @section('title', 'KPI Detail')
 @section('content_header')
 <div class="row">
-  <a class="btn btn-primary unicode" href="{{route('kpi.index')}}"> Back</a>
+<?php
+  $year = isset($_GET['year'])?$_GET['year']:date('Y');
+?>    
+
+  <div class="col-md-2">
+       <a class="btn btn-primary unicode" href="{{route('kpi.index')}}"> Back</a>
+  </div>
+  <div class="col-md-8 text-center">
+       <h5 style="color: blue;" class="unicode">KPI Detail</h5>
+  </div>
+  <div class="col-md-2 text-right">
+      <form action="{{route('kpi.show',$kpi->id)}}" method="get" accept-charset="utf-8" class="form-horizontal">
+           <input type="text" name="year" id="year"class="form-control unicode" placeholder="2021" value="{{ old('year',$year) }}" style="font-size: 13px; width: 50%">
+      </form>
+     
+  </div>
+
 </div>
 @stop
 @section('content')
@@ -54,7 +70,12 @@
         </div>
 
         <div class="col-md-8">
-          @php
+          <div id="kpiChart" style="height: 300px;"></div>
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+         @php
             $kpiArr = ['Poor','Bad','Average','Good','Excellent'];
             $colorArr = ['#FC0107','#FD8008','#0576f4','#00A825','#21FF06'];
 
@@ -62,111 +83,166 @@
             $totalpoint = $kpi->knowledge + $kpi->descipline + $kpi->skill_set + $kpi->team_work + $kpi->social + $kpi->motivation; 
           @endphp
 
-            <div class="row">
-            @foreach($kpiArr as $i=>$label)
-
-              <button class="btn btn-sm" style="background-color:{{ $colorArr[$i]  }}; color: black; height: 30px;"> {{++$i}} = {{ $label }}</button>&nbsp;&nbsp;&nbsp;
-            @endforeach
+          <div class="row ">
+            <div class="com-md-12 text-center">
+                @foreach($kpiArr as $i=>$label)
+                  <button class="btn btn-sm" style="background-color:{{ $colorArr[$i]  }}; color: black; height: 30px;"> {{++$i}} = {{ $label }}</button>&nbsp;&nbsp;&nbsp;
+                @endforeach
             </div>
-            <br>
+          </div>
+          <br>
+          <br>
+
           <div class="table-responsive" style="font-size:14px">
-            <table class="table table-bordered styled-table">
-              @php 
-                $date = $kpi->year .'-'. $kpi->month;
-              @endphp
-              <tr>
-                <th>Date</th>
-                <td>{{ date('F Y',strtotime($date)) }}</td>
-              </tr>
-              <tr>
-                <th>Knowledge</th>
-                <td>
-                  @foreach($kpiArr as $i=>$label) 
-                    @php $j = $i +1; @endphp
-                    @if($j==$kpi->knowledge)
-                      <button class="btn btn-sm" style="background-color:{{ $colorArr[$i]  }}; color: black; height: 30px;">{{ $label }}</button>
+                <table class="table table-bordered styled-table">
+                  <thead>
+                    <tr> 
+                      <th>No</th>
+                      <th>Date</th>
+                      <th>Knowledge</th>
+                      <th>Discipline</th>
+                      <th>Skill Set</th>
+                      <th>Team Work</th>
+                      <th>Social</th>
+                      <th>Motivation</th>
+                      <th>Total Point</th>
+                    </tr>
+                  </thead>
+                    <tbody>
+                    @if($kpis->count()>0)
+                      @foreach($kpis as $i=>$kpi)
+
+                        @php
+                          $totalpoint = 0;
+                          $totalpoint = $kpi->knowledge + $kpi->descipline + $kpi->skill_set + $kpi->team_work + $kpi->social + $kpi->motivation; 
+                        @endphp
+
+                        <tr class="table-tr" data-url="{{route('kpi.show',$kpi->id)}}">
+                          <td>{{++$i}}</td>
+                          @php 
+                            $date = $kpi->year .'-'. $kpi->month;
+                          @endphp
+                          <td>{{ date('M Y',strtotime($date)) }}</td>
+                            <td> 
+                              @foreach($kpiArr as $i=>$label) 
+                                @php $j = $i +1; @endphp
+                                @if($j==$kpi->knowledge)
+                                  <button class="btn btn-sm" style="background-color:{{ $colorArr[$i]  }}; color: black; height: 30px;">{{ $label }}</button>
+                                @endif
+                              @endforeach
+                            </td>
+                            <td>
+                              @foreach($kpiArr as $i=>$label) 
+                                @php $j = $i +1; @endphp
+                                @if($j==$kpi->descipline)
+                                  <button class="btn btn-sm" style="background-color:{{ $colorArr[$i]  }}; color: black; height: 30px;">{{ $label }}</button>
+                                @endif
+                              @endforeach
+                            </td>
+                            <td>
+                              @foreach($kpiArr as $i=>$label) 
+                                @php $j = $i +1; @endphp
+                                @if($j==$kpi->skill_set)
+                                  <button class="btn btn-sm" style="background-color:{{ $colorArr[$i]  }}; color: black; height: 30px;">{{ $label }}</button>
+                                @endif
+                              @endforeach
+                            </td>
+                            <td>
+                              @foreach($kpiArr as $i=>$label) 
+                                @php $j = $i +1; @endphp
+                                @if($j==$kpi->team_work)
+                                  <button class="btn btn-sm" style="background-color:{{ $colorArr[$i]  }}; color: black; height: 30px;">{{ $label }}</button>
+                                @endif
+                              @endforeach
+                            </td>
+                            <td>
+                              @foreach($kpiArr as $i=>$label) 
+                                @php $j = $i +1; @endphp
+                                @if($j==$kpi->social)
+                                  <button class="btn btn-sm" style="background-color:{{ $colorArr[$i]  }}; color: black; height: 30px;">{{ $label }}</button>
+                                @endif
+                              @endforeach
+                            </td>
+                            <td>
+                              @foreach($kpiArr as $i=>$label) 
+                                @php $j = $i +1; @endphp
+                                @if($j==$kpi->motivation)
+                                  <button class="btn btn-sm" style="background-color:{{ $colorArr[$i]  }}; color: black; height: 30px;">{{ $label }}</button>
+                                @endif
+                              @endforeach
+                            </td>
+                            <td style="text-align: right;">{{ $totalpoint }}</td>
+                        </tr>
+                      @endforeach
+                    @else
+                          <tr align="center">
+                            <td colspan="10">No Data!</td>
+                          </tr>
                     @endif
-                  @endforeach
-                </td>
-              </tr>
-              <tr>
-                <th>Discipline</th>
-                <td>
-                  @foreach($kpiArr as $i=>$label) 
-                    @php $j = $i +1; @endphp
-                    @if($j==$kpi->descipline)
-                      <button class="btn btn-sm" style="background-color:{{ $colorArr[$i]  }}; color: black; height: 30px;">{{ $label }}</button>
-                    @endif
-                  @endforeach
-                </td>
-              </tr>
-              <tr>
-                <th>Skill Set</th>
-                <td>
-                  @foreach($kpiArr as $i=>$label) 
-                    @php $j = $i +1; @endphp
-                    @if($j==$kpi->skill_set)
-                      <button class="btn btn-sm" style="background-color:{{ $colorArr[$i]  }}; color: black; height: 30px;">{{ $label }}</button>
-                    @endif
-                  @endforeach
-                </td>
-              </tr>
-              <tr>
-                <th>Team Work</th>
-                <td>
-                  @foreach($kpiArr as $i=>$label) 
-                    @php $j = $i +1; @endphp
-                    @if($j==$kpi->team_work)
-                      <button class="btn btn-sm" style="background-color:{{ $colorArr[$i]  }}; color: black; height: 30px;">{{ $label }}</button>
-                    @endif
-                  @endforeach
-                </td>
-              </tr>
-              <tr>
-                <th>Social</th>
-                <td>@foreach($kpiArr as $i=>$label) 
-                    @php $j = $i +1; @endphp
-                    @if($j==$kpi->social)
-                      <button class="btn btn-sm" style="background-color:{{ $colorArr[$i]  }}; color: black; height: 30px;">{{ $label }}</button>
-                    @endif
-                  @endforeach</td>
-              </tr>
-              <tr>
-                <th>Motivation</th>
-                <td>
-                  @foreach($kpiArr as $i=>$label) 
-                    @php $j = $i +1; @endphp
-                    @if($j==$kpi->motivation)
-                      <button class="btn btn-sm" style="background-color:{{ $colorArr[$i]  }}; color: black; height: 30px;">{{ $label }}</button>
-                    @endif
-                  @endforeach
-                </td>
-              </tr>
-              <tr>
-                <th>Total Point</th>
-                <td>{{$totalpoint }}</td>
-              </tr>
-              <tr>
-                <th>Comment</th>
-                <td>{{ $kpi->comment }}</td>
-              </tr>
-            </table>
-        </div>
-      </div>
+                  
+                    </tbody>
+                </table> 
+          </div>
+       </div>   
   </div>
 </div>
 
 
 @stop 
 @section('css')
-<style>
-  th {
-    font-weight: bold;
-    color: black;
-    font-size: 14px;
-  }
-</style>
+ <link id="bsdp-css" href="{{ asset('/css/bootstrap-datepicker3.min.css')}}" rel="stylesheet">
 @stop
 @section('js')
+  <script src="{{ asset('/js/bootstrap-datepicker.min.js')}}"></script>
+  <script src="{{ asset('js/chart.min.js') }}"></script>
+  <!-- Chartisan -->
+  <script src="{{ asset('js/chartisan_chartjs.umd.js') }}"></script>
+    <!-- Your application script -->
+     <script>
 
+      $(function() {
+    
+        $("#year").datepicker({  format: "yyyy",
+          viewMode: "years", 
+          minViewMode: "years" 
+         });
+
+          $("#month").datepicker({  format: "MM",
+              viewMode: "months", 
+              minViewMode: "months" 
+          });
+
+          $('#year').on('change',function(e) {
+            this.form.submit();
+          });
+
+          $('#month').on('change',function(e) {
+            this.form.submit();
+          });
+
+      });
+
+      var monthArr = <?php echo '["' . implode('", "', $monthArr) . '"]' ?>;
+      var kpiPoint = <?php echo '["' . implode('", "', $kpiPoint) . '"]' ?>;
+
+        const kpiChart = new Chartisan({
+              el: '#kpiChart',
+              data: {
+                  "chart": { "labels": monthArr },
+                  "datasets": [
+                    { "name": "", "values": kpiPoint },
+                    { "name": "", "values": kpiPoint }
+                  ]
+                },
+              hooks: new ChartisanHooks()
+                 .colors(['#00ED83'])
+                .responsive()
+                .beginAtZero()
+                .legend({ position: 'bottom' })
+                .borderColors()
+                .title('KPI by Branch')
+                .datasets([{ type: 'line', fill: false }, 'bar'])
+        });
+
+</script>
 @stop

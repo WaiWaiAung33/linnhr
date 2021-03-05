@@ -270,6 +270,10 @@ class HomeController extends Controller
     public function kpiDashboard(Request $request)
     {   
 
+       
+        $month = ($request->month!='')?$request->month:date('F');
+        $year = ($request->year!='')?$request->year:date('Y');
+
         $branchKPIArr = DB::table('branch')
                              ->selectRaw('branch.name as bname')
                              ->selectRaw("count(kpi.id) as count")
@@ -282,8 +286,8 @@ class HomeController extends Controller
                              ->leftjoin('employee','branch.id','employee.branch_id')
                              ->leftjoin('kpi','employee.id','kpi.emp_id')
                              ->groupBy('branch.id')
-                             ->where('kpi.month',date('m',strtotime($request->month)))
-                             ->where('kpi.year',$request->year)
+                             ->where('kpi.month',date('m',strtotime($month)))
+                             ->where('kpi.year',$year)
                              ->get()->toArray();
 
 
@@ -316,8 +320,8 @@ class HomeController extends Controller
                              ->leftjoin('employee','department.id','employee.dep_id')
                              ->leftjoin('kpi','employee.id','kpi.emp_id')
                              ->groupBy('department.id')
-                             ->where('kpi.month',date('m',strtotime($request->month)))
-                             ->where('kpi.year',$request->year)
+                             ->where('kpi.month',date('m',strtotime($month)))
+                             ->where('kpi.year',$year)
                              ->orderBy('department.name','asc')
                              ->get()->toArray();
 
@@ -381,13 +385,14 @@ class HomeController extends Controller
                              ->selectRaw('employee.photo as photo')
                              ->selectRaw('branch.name as branch')
                              ->selectRaw('department.name as department')
+                             ->selectRaw("kpi.id as kpiid")
                              ->selectRaw("max(kpi.total) as total")
                              ->leftjoin('kpi','employee.id','kpi.emp_id')
                              ->leftjoin('branch','branch.id','employee.branch_id')
                              ->leftjoin('department','department.id','employee.dep_id')
-                             ->where('kpi.month',date('m',strtotime($request->month)))
-                             ->where('kpi.year',$request->year)
-                             ->groupBy('kpi.emp_id')
+                             ->where('kpi.month',($request->month!='')?date('m',strtotime($request->month)):date('m'))
+                             ->where('kpi.year',$year)
+                             ->groupBy('kpi.emp_id','kpi.id')
                              ->orderBy('total','desc')
                              ->whereBetween('total', [$min, $max])
                              ->get();
