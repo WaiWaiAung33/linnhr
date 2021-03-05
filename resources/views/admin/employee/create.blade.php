@@ -790,15 +790,18 @@
 
                      <div class="row">
                          <div class="col-md-6">
-                            <div class="row">
+
+                             <div class="row">
                                 <div class="col-md-2">
-                                    <h6 style="font-weight:bold;font-size:13px;">Expected Salary</h6>
+                                    <h6 style="font-weight:bold;font-size:13px;">Ro</h6>
                                 </div>
-                                <!-- <label class="col-md-3 unicode" id="appointment_label" style="text-align: right;">Appoint Date</label> -->
-                                <div class="col-md-8">
-                                      <input type="text" name="salary" class="form-control unicode"> 
+
+                                <div class="col-md-8 {{ $errors->first('name', 'has-error') }}">
+                                    <select class="livesearchs form-control" name="ro_id"></select>
+
                                 </div>
                             </div>
+
                         </div>
                           <div class="col-md-6">
                             <div class="row">
@@ -820,6 +823,24 @@
                             </div>
                         </div>
                     </div><br>
+
+                       <div class="row">
+                         <div class="col-md-6">
+
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <h6 style="font-weight:bold;font-size:13px;">Expected Salary</h6>
+                                </div>
+                                <!-- <label class="col-md-3 unicode" id="appointment_label" style="text-align: right;">Appoint Date</label> -->
+                                <div class="col-md-8">
+                                      <input type="text" name="salary" class="form-control unicode"> 
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div><br>
+
 
 
                     <div style="width: 100%">
@@ -1608,10 +1629,28 @@
         });
         });
 
-       
 
-         
-
+            $(function() {
+                $('.livesearchs').select2({
+                placeholder: 'Employee Name',
+                ajax: {
+                    url: "<?php echo(route("ajax-autocomplete-search")) ?>",
+                    dataType: 'json',
+                    delay: 250,
+                    processResults: function (data) {
+                        return {
+                            results: $.map(data, function (item) {
+                                return {
+                                    text: item.name,
+                                    id: item.id
+                                }
+                            })
+                        };
+                    },
+                    cache: true
+                }
+            });
+            });
 
     </script>
 

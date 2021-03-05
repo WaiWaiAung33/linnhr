@@ -2,6 +2,8 @@
 namespace App\Http\Controllers;
 use App\Employee;
 use App\HoselEmployee;
+use App\OfficeReporter;
+use App\ROMember;
 use Illuminate\Http\Request;
 use App\Imports\EmployeeImport;
 use App\Exports\EmployeeExport;
@@ -83,8 +85,6 @@ class EmployeeController extends Controller
         if ($request->active != '') {
             $employees = $employees->where('active',$request->active);
         }
-
-        
    
         if ($request->age_from!= '' && $request->age_to!='') {
             $age_start= $request->age_from;
@@ -173,7 +173,8 @@ class EmployeeController extends Controller
         $positions= Position::all();
         $hostels = Hostel::all();
         $rooms = Room::all();
-        return view('admin.employee.create',compact('branchs','departments','positions','nrccodes','nrcstates','hostels','rooms'));
+        $employees = Employee::all();
+        return view('admin.employee.create',compact('branchs','departments','positions','nrccodes','nrcstates','hostels','rooms','employees'));
     }
 
     /**
@@ -184,6 +185,7 @@ class EmployeeController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request->all());
         $rules = [
                     'emp_id'=>'required',
         ];
@@ -210,7 +212,7 @@ class EmployeeController extends Controller
         }
 
 
-$police_reco_photo = "";
+        $police_reco_photo = "";
         if ($file = $request->file('police_reco')) {
            
             $police_reco = $request->file('police_reco');
@@ -373,6 +375,38 @@ $police_reco_photo = "";
                         ]);
                         // dd($hostelemployee);
                     }
+                    // dd($request->all());
+                    if($request->ro_id){
+                          $office_reporter = OfficeReporter::where('branch_id',$request->branch)->where('dept_id',$request->department)->where('ro_id',$request->ro_id)->get();
+                    $office_reporters = $office_reporter->toArray();
+                   // dd($office_reporter);
+                    if(count($office_reporter) > 0){
+                     // dd($employee->id);
+                       $ro_members = ROMember::create([
+                        'ro_id'=>$office_reporters[0]['id'],
+                        'repoter_id'=>$office_reporters[0]['ro_id'],
+                        'member_id'=>$employee->id
+                         ]);
+                    }else{
+                            $office_reporters = OfficeReporter::create([
+                            'branch_id'=>$request->branch,
+                            'dept_id'=>$request->department,
+                            'ro_id'=>$request->ro_id
+                            ]);
+
+                          // dd($office_reporters);
+                  
+
+                           $ro_members = ROMember::create([
+                            'ro_id'=>$office_reporters->id,
+                            'repoter_id'=>$request->ro_id,
+                            'member_id'=>$employee->id
+                            ]);
+
+                    }
+                    }
+                  
+                    // dd($office_reporter);
                    
                     // dd($hostelemployee->emp_id);
                 DB::commit();
