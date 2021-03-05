@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class LeaveApplication extends Model
 {
     protected $table = 'leave_applications';
-    protected $fillable = ['emp_id','leavetype_id','halfDayType','last_updated_by','start_date','end_date','days','apply_date','reason','application_status','halforfull'];
+    protected $fillable = ['emp_id','leavetype_id','halfDayType','last_updated_by','start_date','end_date','days','apply_date','reason','application_status','halforfull','approve_reason'];
 
     public function employee()
     {
