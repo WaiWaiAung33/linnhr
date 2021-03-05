@@ -107,7 +107,7 @@ class OffdayController extends Controller
            ->orderByRaw('DATE_FORMAT(off_day_1, "%m-%d")')
            ->get();
            $emp_offdays = $offdays->where('emp_id',$id);
-           dd($emp_offdays[0]);
+           dd($emp_offdays->off_day_1);
            $emp_offday_arr = [$emp_offdays[0]->off_day_1,$emp_offdays[0]->off_day_2,$emp_offdays[0]->off_day_3,$emp_offdays[0]->off_day_4];
            // dd($emp_offday_arr);
         return view('admin.offday.show',compact('emp_offdays','emp_offday_arr'));
