@@ -29,7 +29,7 @@
 @stop
 @section('content')
 <div class="container" >
-        <form action="{{route('ro.update',$groups[0]->department_id)}}" method="post" enctype="multipart/form-data">
+        <form action="{{route('ro.update',$office_reporters->id)}}" method="post" enctype="multipart/form-data">
          @csrf
         @method('PUT')
      
@@ -41,7 +41,7 @@
              <select class="form-control" name="branch_id" id="branch_id">
                 <option value="">Branch</option>
                 @foreach ($branches as $branch )
-                  <option  value="{{$branch->id}}" @if($branch->id=== $groups[0]->branch_id) selected='selected' @endif>{{$branch->name}}</option>
+                  <option  value="{{$branch->id}}" @if($branch->id=== $office_reporters->branch_id) selected='selected' @endif>{{$branch->name}}</option>
                 @endforeach
             </select>   
          
@@ -53,10 +53,10 @@
         <label class="col-md-2 unicode">Department</label>
         <div class="col-md-5 {{ $errors->first('name', 'has-error') }}">
             
-             <select class="form-control" name="department_id" id="dep_id">
+             <select class="form-control" name="dept_id" id="dep_id">
                 <option value="">Department</option>
                 @foreach ($departments as $department )
-                  <option  value="{{$department->id}}" @if($department->id=== $groups[0]->department_id) selected='selected' @endif>{{$department->name}}</option>
+                  <option  value="{{$department->id}}" @if($department->id=== $office_reporters->dept_id) selected='selected' @endif>{{$department->name}}</option>
                 @endforeach
             </select>   
          
@@ -68,13 +68,9 @@
         <label class="col-md-2 unicode">Ro</label>
         <div class="col-md-5 {{ $errors->first('name', 'has-error') }}">
              <select class="livesearchs form-control" name="ro_id">
-             @foreach($groups as $skey=>$group)
-                @if($group->group == 'ro')                                   
-                    <option value="{{$group->ro_id }}"}} selected>
-                      {{ $group->employees[0]->name }}
-                    </option>
-                @endif
-            @endforeach  
+              @foreach ($employees as $employee )
+                  <option  value="{{$employee->id}}" @if($employee->id=== $office_reporters->ro_id) selected='selected' @endif>{{$employee->name}}</option>
+            @endforeach
             </select>
          
         </div>    
@@ -86,12 +82,11 @@
         <div class="col-md-5 {{ $errors->first('name', 'has-error') }}">
             
           <select multiple class="livesearch form-control" name="emp_id[]">
-             @foreach($groups as $skey=>$group)
-                @if($group->group == 'member')                                   
-                    <option value="{{$group->ro_id }}"}} selected>
-                    {{ $group->employees[0]->name }}
-                    </option>
-                @endif
+             @foreach ($ro_members as $ro_member )
+                 
+                <option value="{{$ro_member->member_id }}"}} selected>
+                {{ $ro_member->members->name }}
+                </option>
             @endforeach
         </select>
          
