@@ -143,13 +143,12 @@
 
                   <div style="text-align: center;margin-top: 20px">
                     <a id="kpi" style="color: white;padding-left: 90px;padding-right: 90px;padding-top: 5px;padding-bottom: 5px;border-radius: 5px;cursor: pointer; width: 100%;"> KPI  </a>
-                    
                   </div>
    </div>
 
    <div class="col-md-9">
    
-        <div class="table-responsive" id="personal_table">
+      <div class="table-responsive" id="personal_table">
          <table class="table table-bordered styled-table unicode">
             <thead>
                 <tr>
@@ -520,10 +519,129 @@
                
             </tbody>
          </table>
-         </div>
+    </div>
+
+    <div class="table-responsive kpi_row" id="kpi_row">
+      @if($kpis->count()>0)
+         <a href="{{ route('kpi.show',$kpis[0]->id) }}">View more KPI detial</a>
+          <div id="kpiChart" style="height: 300px;"></div>
+          <hr>
+          @php
+            $kpiArr = ['Poor','Bad','Average','Good','Excellent'];
+            $colorArr = ['#FC0107','#FD8008','#0576f4','#00A825','#21FF06'];
+
+            $totalpoint = 0;
+          @endphp
+
+          <div class="row">
+            <div class="com-md-12 text-center">
+                @foreach($kpiArr as $i=>$label)
+                  <button class="btn btn-sm" style="background-color:{{ $colorArr[$i]  }}; color: black; height: 30px;"> {{++$i}} = {{ $label }}</button>&nbsp;&nbsp;&nbsp;
+                @endforeach
+            </div>
+          </div>
+          <br>
+  
+          <div class="table-responsive" style="font-size:14px">
+                <table class="table table-bordered styled-table">
+                  <thead>
+                    <tr> 
+                      <th>No</th>
+                      <th>Date</th>
+                      <th>Knowledge</th>
+                      <th>Discipline</th>
+                      <th>Skill Set</th>
+                      <th>Team Work</th>
+                      <th>Social</th>
+                      <th>Motivation</th>
+                      <th>Total Point</th>
+                    </tr>
+                  </thead>
+                    <tbody>
+                    @if($kpis->count()>0)
+                      @foreach($kpis as $i=>$kpi)
+
+                        @php
+                          $totalpoint = 0;
+                          $totalpoint = $kpi->knowledge + $kpi->descipline + $kpi->skill_set + $kpi->team_work + $kpi->social + $kpi->motivation; 
+                        @endphp
+
+                        <tr class="table-tr" data-url="{{route('kpi.show',$kpi->id)}}">
+                          <td>{{++$i}}</td>
+                          @php 
+                            $date = $kpi->year .'-'. $kpi->month;
+                          @endphp
+                          <td>{{ date('M Y',strtotime($date)) }}</td>
+                            <td> 
+                              @foreach($kpiArr as $i=>$label) 
+                                @php $j = $i +1; @endphp
+                                @if($j==$kpi->knowledge)
+                                  <button class="btn btn-sm" style="background-color:{{ $colorArr[$i]  }}; color: black; height: 30px;">{{ $label }}</button>
+                                @endif
+                              @endforeach
+                            </td>
+                            <td>
+                              @foreach($kpiArr as $i=>$label) 
+                                @php $j = $i +1; @endphp
+                                @if($j==$kpi->descipline)
+                                  <button class="btn btn-sm" style="background-color:{{ $colorArr[$i]  }}; color: black; height: 30px;">{{ $label }}</button>
+                                @endif
+                              @endforeach
+                            </td>
+                            <td>
+                              @foreach($kpiArr as $i=>$label) 
+                                @php $j = $i +1; @endphp
+                                @if($j==$kpi->skill_set)
+                                  <button class="btn btn-sm" style="background-color:{{ $colorArr[$i]  }}; color: black; height: 30px;">{{ $label }}</button>
+                                @endif
+                              @endforeach
+                            </td>
+                            <td>
+                              @foreach($kpiArr as $i=>$label) 
+                                @php $j = $i +1; @endphp
+                                @if($j==$kpi->team_work)
+                                  <button class="btn btn-sm" style="background-color:{{ $colorArr[$i]  }}; color: black; height: 30px;">{{ $label }}</button>
+                                @endif
+                              @endforeach
+                            </td>
+                            <td>
+                              @foreach($kpiArr as $i=>$label) 
+                                @php $j = $i +1; @endphp
+                                @if($j==$kpi->social)
+                                  <button class="btn btn-sm" style="background-color:{{ $colorArr[$i]  }}; color: black; height: 30px;">{{ $label }}</button>
+                                @endif
+                              @endforeach
+                            </td>
+                            <td>
+                              @foreach($kpiArr as $i=>$label) 
+                                @php $j = $i +1; @endphp
+                                @if($j==$kpi->motivation)
+                                  <button class="btn btn-sm" style="background-color:{{ $colorArr[$i]  }}; color: black; height: 30px;">{{ $label }}</button>
+                                @endif
+                              @endforeach
+                            </td>
+                            <td style="text-align: right;">{{ $kpi->total }}</td>
+                        </tr>
+                      @endforeach
+                    @else
+                          <tr align="center">
+                            <td colspan="10">No Data!</td>
+                          </tr>
+                    @endif
+                  
+                    </tbody>
+                </table> 
+          </div>
+      @else
+        <p style="text-align: center;">No Data found!</p>
+      @endif
+       </div>  
+    </div>
    
 
    </div>
+
+  
  </div>
 
  @stop 
@@ -539,6 +657,10 @@
 @section('js')
 <script src="{{ asset('js/jquery.min.js') }}"></script>
 <script src="{{ asset('js/bootstrap-datepicker.js')}}"></script>
+<!-- Chartisan -->
+<script src="{{ asset('js/chart.min.js') }}"></script>
+<script src="{{ asset('js/chartisan_chartjs.umd.js') }}"></script>
+
 <script type="text/javascript">
   $("#contact_table").hide();
   $("#education_table").hide();
@@ -546,6 +668,7 @@
   $("#work_table").hide();
   $("#attachfile_table").hide();
   $("#salary_table").hide();
+  $("#kpi_row").hide();
 
   $("#personal").css('color', '#2a3c66'); 
   $("#personal").css('border', '1px solid'); 
@@ -581,6 +704,7 @@
       $("#attachfile_table").hide();
       $("#personal_table").hide();
       $("#salary_table").hide();
+      $("#kpi_row").hide();
 
       $("#contact").css('color', '#2a3c66'); 
       $("#contact").css('border', '1px solid'); 
@@ -614,6 +738,7 @@
       $("#work_table").hide();
       $("#attachfile_table").hide();
       $("#salary_table").hide();
+      $("#kpi_row").hide();
 
       $("#personal").css('color', '#2a3c66'); 
       $("#personal").css('border', '1px solid'); 
@@ -647,6 +772,7 @@
       $("#work_table").hide();
       $("#attachfile_table").hide();
       $("#salary_table").hide();
+      $("#kpi_row").hide();
 
       $("#education").css('color', '#2a3c66'); 
       $("#education").css('border', '1px solid'); 
@@ -680,6 +806,7 @@
       $("#work_table").show();
       $("#attachfile_table").hide();
       $("#salary_table").hide();
+      $("#kpi_row").hide();
 
       $("#work").css('color', '#2a3c66'); 
       $("#work").css('border', '1px solid'); 
@@ -713,6 +840,7 @@
       $("#work_table").hide();
       $("#attachfile_table").hide();
       $("#salary_table").hide();
+      $("#kpi_row").hide();
 
        $("#employement").css('color', '#2a3c66'); 
       $("#employement").css('border', '1px solid'); 
@@ -746,6 +874,7 @@
       $("#work_table").hide();
       $("#attachfile_table").show();
       $("#salary_table").hide();
+      $("#kpi_row").hide();
 
       $("#attach").css('color', '#2a3c66'); 
       $("#attach").css('border', '1px solid'); 
@@ -779,6 +908,7 @@
       $("#work_table").hide();
       $("#attachfile_table").hide();
       $("#salary_table").show();
+      $("#kpi_row").hide();
 
       $("#salary").css('color', '#2a3c66'); 
       $("#salary").css('border', '1px solid'); 
@@ -804,6 +934,43 @@
       $("#attach").css('background-color', '#2a3c66'); 
   });
 
+    $("#kpi").click(function(){
+      $("#personal_table").hide();
+      $("#contact_table").hide();
+      $("#education_table").hide();
+      $("#employement_table").hide();
+      $("#work_table").hide();
+      $("#attachfile_table").hide();
+      $("#salary_table").hide();
+      $("#kpi_row").show();
+
+      $("#kpi").css('color', '#2a3c66'); 
+      $("#kpi").css('border', '1px solid'); 
+      $("#kpi").css('border-color', '#2a3c66');
+      $("#kpi").css('background-color', 'white');
+
+      $("#contact").css('color', 'white'); 
+      $("#contact").css('background-color', '#2a3c66'); 
+
+      $("#education").css('color', 'white'); 
+      $("#education").css('background-color', '#2a3c66'); 
+
+      $("#work").css('color', 'white'); 
+      $("#work").css('background-color', '#2a3c66'); 
+
+      $("#personal").css('color', 'white'); 
+      $("#personal").css('background-color', '#2a3c66'); 
+
+      $("#employement").css('color', 'white'); 
+      $("#employement").css('background-color', '#2a3c66'); 
+
+      $("#attach").css('color', 'white'); 
+      $("#attach").css('background-color', '#2a3c66'); 
+
+      $("#salary").css('color', 'white'); 
+      $("#salary").css('background-color', '#2a3c66'); 
+  });
+
        $(function() {
     
         $("#year").datepicker({  format: "yyyy",
@@ -819,6 +986,29 @@
           });
 
        });
+
+
+      var monthArr = <?php echo '["' . implode('", "', $monthArr) . '"]' ?>;
+      var kpiPoint = <?php echo '["' . implode('", "', $kpiPoint) . '"]' ?>;
+
+        const kpiChart = new Chartisan({
+              el: '#kpiChart',
+              data: {
+                  "chart": { "labels": monthArr },
+                  "datasets": [
+                    { "name": "", "values": kpiPoint },
+                    { "name": "", "values": kpiPoint }
+                  ]
+                },
+              hooks: new ChartisanHooks()
+                 .colors(['#00ED83'])
+                .responsive()
+                .beginAtZero()
+                .legend({ position: 'bottom' })
+                .borderColors()
+                .title('KPI by Branch')
+                .datasets([{ type: 'line', fill: false }, 'bar'])
+        });
 
 
 </script>

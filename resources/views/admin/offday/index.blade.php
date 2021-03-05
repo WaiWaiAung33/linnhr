@@ -1,24 +1,23 @@
 
 @extends('adminlte::page')
 
-@section('title', 'Offday')
+@section('title', 'Day Off')
 
 @section('content_header')
-<h5 style="color: blue;">Offday Management</h5>
+<h5 style="color: blue;">Day Off Management</h5>
 @stop
 @section('content')
 <?php
   $name = isset($_GET['name'])?$_GET['name']:'';
   $branch_id = isset($_GET['branch_id'])?$_GET['branch_id']:'';
   $dept_id = isset($_GET['dept_id'])?$_GET['dept_id']:'';
-  $date = isset($_GET['date'])?$_GET['date']:''; 
-  if ($date == '') {
-    $date = date('d-m-Y');
-  }
+
+  $year = isset($_GET['year'])?$_GET['year']:date('Y'); 
+  $month = isset($_GET['month'])?$_GET['month']:date('F');  
 ?>
 <div>
 
-     <a class="btn btn-success unicode" href="{{route('offday.create')}}" style="float: right;font-size: 13px"><i class="fas fa-plus"></i> Offday</a>
+     <a class="btn btn-success unicode" href="{{route('offday.create')}}" style="float: right;font-size: 13px"><i class="fas fa-plus"></i> Day Off</a>
   
       {{-- @if ($message = Session::get('success'))
             <div class="alert alert-success">
@@ -48,8 +47,11 @@
               @endforeach
           </select>
         </div>
-        <div class="col-md-2">               
-            <input type="text" name="date" id="date" value="{{ old('date',$date) }}" class="form-control" style="font-size: 13px">
+        <div class="col-md-2">   
+           <input type="text" name="month" id="month"class="form-control unicode" placeholder="June" value="{{ old('month',$month) }}" style="font-size: 13px">
+        </div>
+         <div class="col-md-2">   
+            <input type="text" name="year" id="year"class="form-control unicode" placeholder="2021" value="{{ old('year',$year) }}" style="font-size: 13px">
        </div>
      </div>
     </form>
@@ -61,10 +63,10 @@
                       <th>No</th>
                       <th>Image</th>
                         <th>Employee Name</th>
-                        <th>Off day 1</th>
-                        <th>Off day 2</th>
-                        <th>Off day 3</th>
-                        <th>Off day 4</th>
+                        <th>Day Off 1</th>
+                        <th>Day Off 2</th>
+                        <th>Day Off 3</th>
+                        <th>Day Off 4</th>
                          <th>Last Updated by</th>
                         <th>Action</th>
                     </tr>
@@ -151,6 +153,26 @@
 
                 this.form.submit();
             });
+
+    
+          $("#year").datepicker({  format: "yyyy",
+            viewMode: "years", 
+            minViewMode: "years" 
+          });
+
+          $("#month").datepicker({  format: "MM",
+              viewMode: "months", 
+              minViewMode: "months" 
+          });
+
+          $('#year').on('change',function(e) {
+            this.form.submit();
+          });
+
+          $('#month').on('change',function(e) {
+            this.form.submit();
+          });
+
    
         });
         $(function() {
