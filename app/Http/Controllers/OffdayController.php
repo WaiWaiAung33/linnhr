@@ -95,21 +95,17 @@ class OffdayController extends Controller
     public function show($id)
     {
 
-        $date = now();
-        // dd($date->year);
-        $offdays = Offday::select('*')->whereMonth('off_day_1', '=', $date->month)
-                             ->whereDay('off_day_1', '>=', $date->day)
-                             ->whereYear('off_day_1','=',$date->year)
-                            ->orWhere(function ($query) use ($date) {
-                               $query->whereMonth('off_day_1', '=', $date->month)
-                                   ->whereYear('off_day_1','=',$date->year);
-                           })
-           ->orderByRaw('DATE_FORMAT(off_day_1, "%m-%d")')
-           ->get();
-           $emp_offdays = $offdays->where('emp_id',$id);
-           dd($emp_offdays->off_day_1);
-           $emp_offday_arr = [$emp_offdays[0]->off_day_1,$emp_offdays[0]->off_day_2,$emp_offdays[0]->off_day_3,$emp_offdays[0]->off_day_4];
-           // dd($emp_offday_arr);
+            $date = now();
+           $emp_offdays = Offday::where('emp_id',$id)->get();
+           $emp_offday_arr = [];
+           foreach ($emp_offdays as $key => $value) {
+            // dd($value->off_day_1);
+               array_push($emp_offday_arr, $value->off_day_1);
+               array_push($emp_offday_arr, $value->off_day_2);
+               array_push($emp_offday_arr, $value->off_day_3);
+               array_push($emp_offday_arr, $value->off_day_4);
+           }
+
         return view('admin.offday.show',compact('emp_offdays','emp_offday_arr'));
     }
 
