@@ -86,7 +86,7 @@
 
 @section('css')
 <link href='{{ asset("calender/fullcalendar.min.css") }}' rel='stylesheet' />
-  <link href='{{ asset("calender/fullcalendar.print.min.css") }}' rel='stylesheet' media='print' />
+<link href='{{ asset("calender/fullcalendar.print.min.css") }}' rel='stylesheet' media='print' />
   <style>
      #calendar {
         max-width: 75%;

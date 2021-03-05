@@ -109,16 +109,15 @@ class OffdayController extends Controller
      */
     public function show($id)
     {
-
-           $emp_offdays = Offday::where('emp_id',$id)->get();
-           $emp_offday_arr = [];
-           foreach ($emp_offdays as $key => $value) {
-            // dd($value->off_day_1);
-               array_push($emp_offday_arr, $value->off_day_1);
-               array_push($emp_offday_arr, $value->off_day_2);
-               array_push($emp_offday_arr, $value->off_day_3);
-               array_push($emp_offday_arr, $value->off_day_4);
-           }
+       $emp_offdays = Offday::where('emp_id',$id)->get();
+       $emp_offday_arr = [];
+       foreach ($emp_offdays as $key => $value) {
+        // dd($value->off_day_1);
+           array_push($emp_offday_arr, $value->off_day_1);
+           array_push($emp_offday_arr, $value->off_day_2);
+           array_push($emp_offday_arr, $value->off_day_3);
+           array_push($emp_offday_arr, $value->off_day_4);
+       }
 
         return view('admin.offday.show',compact('emp_offdays','emp_offday_arr'));
     }
@@ -166,6 +165,8 @@ class OffdayController extends Controller
      */
     public function destroy($id)
     {
+        
+        
         $offdays = Offday::find($id);
         $offdays->delete();
         return redirect()->route('offday.index')->with('success','Offday deleted successfully');;;
