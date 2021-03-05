@@ -16,7 +16,6 @@ class NoticeBoardApiController extends Controller
 		$input = $request->all();
 	     $rules=[
 	        'page'=>'required',
-	        'notice_type'=>'required'
 	    ];
 
 	    $validator = Validator::make($input, $rules);
@@ -26,25 +25,18 @@ class NoticeBoardApiController extends Controller
 	           return response()->json(['message'=>"Error",'status'=>0]);
 	    }else{
 	    	if ($request->page != 0) {
-	    		if ($request->notice_type == "all") {
+	    		
 	    			$notice_boards = new NoticeBoard();
-	    		}else{
-	    			// dd("Here");
-	    			$notice_boards = new NoticeBoard();
-	    			$notice_boards = $notice_boards->where('position_id',$request->position_id)->orwhere('dept_id',$request->dept_id)->orwhere('branch_id',$request->branch_id);
-	    		}
-
-	    		$notice_boards = $notice_boards->orderBy('id','asc')->limit(10)->paginate(10);
+	    			$notice_boards = $notice_boards->where('notice_type',1)->orwhere('position_id',$request->position_id)->orwhere('dept_id',$request->dept_id)->orwhere('branch_id',$request->branch_id);
+	    		
+	    			$notice_boards = $notice_boards->orderBy('id','asc')->limit(10)->paginate(10);
 
 		        return response(['message'=>"Success",'status'=>1,'notice_boards'=>$notice_boards]);
 	    	}else{
-		    		if ($request->notice_type == "all") {
+		    		
 		    			$notice_boards = new NoticeBoard();
-		    		}else{
-		    			$notice_boards = new NoticeBoard();
-		    			$notice_boards = $notice_boards->where('position_id',$request->position_id)->orwhere('dept_id',$request->dept_id)->orwhere('branch_id',$request->branch_id);
-		    		}
-
+		    			$notice_boards = $notice_boards->where('notice_type',1)->orwherewhere('position_id',$request->position_id)->orwhere('dept_id',$request->dept_id)->orwhere('branch_id',$request->branch_id);
+		    		
 		    		$notice_boards = $notice_boards->orderBy('attendances.id','asc')->get();
 
 			        return response(['message'=>"Success",'status'=>1,'notice_boards'=>$notice_boards]);
