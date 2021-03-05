@@ -83,3 +83,5 @@ Route::post('/emp_overtime_day','Api\OvertimeApiController@emp_overtime_day');
 Route::post('/check_off_day','Api\OffDayApiController@check_off_day');
 
 Route::post('/ro_list','Api\RoApiController@ro_list');
+
+Route::post('/notice_board','Api\NoticeBoardApiController@notice_board');
