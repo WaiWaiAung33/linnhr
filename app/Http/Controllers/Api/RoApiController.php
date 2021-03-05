@@ -22,13 +22,13 @@ class RoApiController extends Controller
 	        $messages = $validator->messages();
 	           return response()->json(['message'=>"Error",'status'=>0]);
 	    }else{
-	        $ro_members = ROMember::where('member_id',$request->emp_id);
-	        $ro_members = $ro_members->leftjoin('employee','employee.id','=','r_o_members.repoter_id')
+	        $ro = ROMember::where('member_id',$request->emp_id);
+	        $ro = $ro->leftjoin('employee','employee.id','=','r_o_members.repoter_id')
 	    							->select(
 	    								'employee.name',
 	    								'employee.photo',
 	    							)->get();
-	        return response(['message'=>"Success",'status'=>1,'ro_members'=>$ro_members]);
+	        return response(['message'=>"Success",'status'=>1,'ro'=>$ro]);
 	       
 	    }
 	}
