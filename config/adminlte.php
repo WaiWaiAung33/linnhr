@@ -286,7 +286,7 @@ return [
                 ],
 
                  [
-                    'text' => 'Ro',
+                    'text' => 'RO',
                     'url'  => 'ro',
                     'icon' => 'fas fa-fw fa-users',
                     'can'  => 'employee-list'

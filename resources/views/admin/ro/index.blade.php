@@ -1,10 +1,10 @@
 
 @extends('adminlte::page')
 
-@section('title', 'Ro')
+@section('title', 'RO')
 
 @section('content_header')
-<h5 style="color: blue;">Ro Management</h5>
+<h5 style="color: blue;">RO Management</h5>
 @stop
 @section('content')
 <a class="btn btn-success unicode" href="{{route('ro.create')}}" style="float: right;font-size: 13px"><i class="fas fa-plus"></i> Ro</a><br><br>
