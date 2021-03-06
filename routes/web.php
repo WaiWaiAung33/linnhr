@@ -94,6 +94,14 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('notice_board','NoticeBoardController');
    
     Route::get('change-status-post','NoticeBoardController@changestatuspost')->name('change-status-post');
+
+    Route::get('notice_board_show/{id}','NoticeBoardController@notice_board_show')->name('notice_board_show');
+
+    Route::get('notice_board_edit/{id}','NoticeBoardController@notice_board_edit')->name('notice_board_edit');
+
+    Route::put('notice_board_update/{id}','NoticeBoardController@notice_board_update')->name('notice_board_update.update');
+
+    Route::delete('notice_board_delete/{id}','NoticeBoardController@notice_board_delete')->name('notice_board_delete');
 });
 
 Route::get('/', [App\Http\Controllers\CvformController::class, 'index'])->name('frontend.home');

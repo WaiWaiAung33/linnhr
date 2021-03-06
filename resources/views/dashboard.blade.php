@@ -109,7 +109,7 @@
         <div class="col-md-6">
           <p><i class="fas fa-envelope"></i>Notice Board</p>
           @foreach($notice_boards as $notice_board)
-          <div class="row div-click" data-url="{{route('notice_board.show',$notice_board->id)}}">
+          <div class="row div-click" data-url="{{route('notice_board_show',$notice_board->id)}}"> 
             <img src="{{ asset('announed.png') }}" alt="photo" width="80px" height="80px">
             <div style="width: 500px;">
               <p style="margin-left: 10px;">{{date('d-m-Y',strtotime($notice_board->publish_date))}}</p>

@@ -25,12 +25,17 @@
 </style>
 @stop
 @section('content')
+
  <div class="container" style="margin-top: 50px; ">
-         <form action="{{route('notice_board.update',$notice_board->id)}}" method="post" enctype="multipart/form-data" style="padding-top: 10px">
+  
+           <form @if($redirect_route == 0) action="{{route('notice_board.update',$notice_board->id)}}" @else action="{{route('notice_board_update.update',$notice_board->id)}}" @endif method="post" enctype="multipart/form-data" style="padding-top: 10px">
+         
         @csrf
         @method('PUT')
 
          <div class="row">
+
+
                  
           <label class="col-md-2 unicode">Title</label>
           <div class="col-md-5 {{ $errors->first('title', 'has-error') }}">
@@ -121,7 +126,7 @@
 
               // dd($photo);
               ?>
-              <div class="row">
+              
 
                   @if ($notice_board->image == '[]')
                        <img src="{{ asset('uploads/images/download.png') }}" alt="photo" width="80px" height="80px">
@@ -137,7 +142,7 @@
                       @endforeach
                   @endif
 
-              </div>
+             
           </div>
         <div class="row">
                     <div class="col-md-2"></div>

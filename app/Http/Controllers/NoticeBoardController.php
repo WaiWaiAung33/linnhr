@@ -105,7 +105,8 @@ class NoticeBoardController extends Controller
     public function show($id)
     {
         $notice_boards = NoticeBoard::find($id);
-        return view('admin.notice_board.show',compact('notice_boards'));
+        $back_route = 0;
+        return view('admin.notice_board.show',compact('notice_boards','back_route'));
     }
 
     /**
@@ -120,7 +121,8 @@ class NoticeBoardController extends Controller
         $branches = Branch::where('status',1)->get();
         $departments = Department::where('status',1)->get();
         $notice_board = NoticeBoard::find($id);
-        return view('admin.notice_board.edit',compact('positions','branches','departments','notice_board'));
+        $redirect_route = 0;
+        return view('admin.notice_board.edit',compact('positions','branches','departments','notice_board','redirect_route'));
     }
 
     /**
@@ -207,5 +209,86 @@ class NoticeBoardController extends Controller
 
         $notice_board->save();
         return response()->json(['success'=>'Status change successfully.']);
+    }
+
+    public function notice_board_show($id)
+    {
+        $notice_boards = NoticeBoard::find($id);
+        $back_route = 1;
+        return view('admin.notice_board.show',compact('notice_boards','back_route'));
+    }
+
+    public function notice_board_edit($id)
+    {
+        $positions = Position::all();
+        $branches = Branch::where('status',1)->get();
+        $departments = Department::where('status',1)->get();
+        $notice_board = NoticeBoard::find($id);
+        $redirect_route = 1;
+        return view('admin.notice_board.edit',compact('positions','branches','departments','notice_board','redirect_route'));
+    }
+
+    public function notice_board_update($id,Request $request)
+    {
+        // dd("Here");
+        $this->validate($request,[
+            'title'=>'required',
+            'description'=>'required',
+            'notice_type'=>'required'
+        ]);
+        $notice_board = NoticeBoard::find($id);
+
+        $destinationPath = public_path() . '/uploads/postPhoto/';
+
+         $data = [];
+        
+        if($request->hasfile('filename'))
+         {
+            foreach($request->file('filename') as $image)
+            {
+                $name=$image->getClientOriginalName();
+                $image->move($destinationPath, $name);  
+                $data[] = $name;  
+            }
+
+            $arr = [
+                        'title'=>$request->title,
+                        'description'=>$request->description,
+                        'publish_date'=>date('Y-m-d',strtotime($request->publish_date)),
+                        'notice_type'=>$request->notice_type,
+                        'position_id'=>$request->rank,
+                        'dept_id'=>$request->department,
+                        'branch_id'=>$request->branch,
+                        'uploaded_by'=>auth()->user()->id,
+                        'image'=>json_encode($data)
+                    ];
+         }else{
+            $arr = [
+                        'title'=>$request->title,
+                        'description'=>$request->description,
+                        'publish_date'=>date('Y-m-d',strtotime($request->publish_date)),
+                        'notice_type'=>$request->notice_type,
+                        'position_id'=>$request->rank,
+                        'dept_id'=>$request->department,
+                        'branch_id'=>$request->branch,
+                        'uploaded_by'=>auth()->user()->id,
+                    ];
+         }
+
+        $notice_board = $notice_board->update($arr);
+        return redirect()->route('dashboard')->with('success','Success');
+    }
+
+    public function notice_board_delete($id)
+    {
+        $storagePath = public_path() . '/uploads/postPhoto/';
+
+        $notice_board = NoticeBoard::findorfail($id);
+        if (File::exists($storagePath . $notice_board->image)) {
+            File::delete($storagePath . $notice_board->image);
+        };
+
+        $notice_board->delete();
+        return redirect()->route('dashboard')->with('success','Successfully');
     }
 }
