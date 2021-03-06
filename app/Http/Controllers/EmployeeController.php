@@ -18,6 +18,7 @@ use App\Hostel;
 use App\User;
 use App\Salary;
 use App\KPI;
+use App\Offday;
 use File;
 use Illuminate\Support\Str;
 use DB;
@@ -492,7 +493,17 @@ play the specified resource.
             array_push($kpiPoint, $point);
          }
 
-        return view('admin.employee.show',compact('branchs','departments','positions','employees','nrccodes','nrcstates','salarys','salary_count','monthArr','kpiPoint','kpis'))->with('i', (request()->input('page', 1) - 1) * 12);
+
+        $emp_offdays = Offday::where('emp_id',$id)->get();
+        $emp_offday_arr = [];
+        foreach ($emp_offdays as $key => $value) {
+           array_push($emp_offday_arr, $value->off_day_1);
+           array_push($emp_offday_arr, $value->off_day_2);
+           array_push($emp_offday_arr, $value->off_day_3);
+           array_push($emp_offday_arr, $value->off_day_4);
+        }
+
+        return view('admin.employee.show',compact('branchs','departments','positions','employees','nrccodes','nrcstates','salarys','salary_count','monthArr','kpiPoint','kpis','emp_offday_arr'))->with('i', (request()->input('page', 1) - 1) * 12);
     }
 
     /**
