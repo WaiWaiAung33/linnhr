@@ -141,13 +141,25 @@ class OffDayApiController extends Controller
 	        $messages = $validator->messages();
 	           return response()->json(['message'=>"Error",'status'=>0]);
 	    }else{
-	    	$off_days = Offday::where('emp_id',$request->emp_id);
-	    	// dd($off_days->get());
-	    	if ($off_days->get()->count()>0) {
+	    	$emp_off_days = Offday::where('emp_id',$request->emp_id);
+	    	// dd($emp_off_days->get()->toArray());
+
+	    	if ($emp_off_days->get()->count()>0) {
+
 	    		if ($request->off_date != '') {
-		        	$off_days = $off_days->where('off_day_1',date('Y-m-d',strtotime($request->off_date)))->orwhere('off_day_2',date('Y-m-d',strtotime($request->off_date)))->orwhere('off_day_3',date('Y-m-d',strtotime($request->off_date)))->orwhere('off_day_4',date('Y-m-d',strtotime($request->off_date)));
-		        	$off_days = $off_days->get();
-				    dd($off_days);
+	    			$date = date('Y-m-d',strtotime($request->off_date));
+	    			// dd($emp_off_days->get()->toArray());
+		      //   	$off_days = $emp_off_days->whereDate('off_day_2',$date)->orwhere('off_day_1',$date);
+		      //   	$off_days_emp = $off_days->get();
+				    // dd($off_days_emp->toArray());
+				    $off_days = $emp_off_days
+					            ->where(function($q) use ($date) {
+					                 $q->where('off_day_1', '=', $date)
+					                 	->orWhere('off_day_2', '=',$date)
+					                   ->orWhere('off_day_3', '=',$date)
+					                   ->orWhere('off_day_4','=',$date);
+					             })->get();
+					// dd($off_days->get());
 				    if (count($off_days)>0) {
 				    	return response(['message'=>"Success",'status'=>1,'off_days_status'=>1]);
 				    }else{
