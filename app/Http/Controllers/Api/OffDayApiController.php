@@ -146,7 +146,7 @@ class OffDayApiController extends Controller
 	    		if ($request->off_date != '') {
 		        	$off_days = $off_days->where('off_day_1',date('Y-m-d',strtotime($request->off_date)))->orwhere('off_day_2',date('Y-m-d',strtotime($request->off_date)))->orwhere('off_day_3',date('Y-m-d',strtotime($request->off_date)))->orwhere('off_day_4',date('Y-m-d',strtotime($request->off_date)));
 		        	$off_days = $off_days->get();
-				    // dd($off_days);
+				    dd($off_days);
 				    if (count($off_days)>0) {
 				    	return response(['message'=>"Success",'status'=>1,'off_days_status'=>1]);
 				    }else{
