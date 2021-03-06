@@ -176,7 +176,7 @@ class LeaveApiController extends Controller
 		            'days'=>$request->day,
 		            'apply_date'=>date('Y-m-d',strtotime($request->apply_date)),
 		            'reason'=>$request->reason,
-		            'application_status'=>$request->application_status,
+		            'application_status'=>0,
 		            'approve_reason'=>$request->approve_reason
 			        ]);
 		    return response(['message'=>"Success",'status'=>1]);	
