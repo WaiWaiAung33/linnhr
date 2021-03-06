@@ -324,11 +324,11 @@ class KPIController extends Controller
             $dates = "12";
         }
 
-        if($branch_id != ''){
+        if($request->branch_id != ''){
             $kpi = $kpi->where('employee.branch_id',$request->branch_id);
         }
 
-        if($dept_id != ''){
+        if($request->dept_id != ''){
             $kpi = $kpi->where('employee.dep_id',$request->dept_id);
         }
 
