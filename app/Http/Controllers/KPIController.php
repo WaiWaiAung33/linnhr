@@ -323,17 +323,13 @@ class KPIController extends Controller
         }elseif ($date == 'December') {
             $dates = "12";
         }
-        $branch_id = (!empty($_POST['branch_id']))?$_POST['branch_id']:'';
-        $dep_id = (!empty($_POST['dep_id']))?$_POST['dep_id']:'';
 
-       
-
-        if($branch_id!=''){
-            $kpi = $kpi->where('employee.branch_id',$branch_id);
+        if($branch_id != ''){
+            $kpi = $kpi->where('employee.branch_id',$request->branch_id);
         }
 
-        if($dep_id!=''){
-            $kpi = $kpi->where('employee.dep_id',$dep_id);
+        if($dept_id != ''){
+            $kpi = $kpi->where('employee.dep_id',$request->dept_id);
         }
 
          if ($request->year != '') {

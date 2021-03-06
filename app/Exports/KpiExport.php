@@ -30,6 +30,8 @@ class KpiExport implements FromCollection, WithHeadings, WithEvents ,ShouldAutoS
             'Team Work',
             'Social',
             'Motivation',
+            'Month',
+            'Year'
         ];
     }
 
