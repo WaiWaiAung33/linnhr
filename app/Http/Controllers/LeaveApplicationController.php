@@ -95,7 +95,8 @@ class LeaveApplicationController extends Controller
             'last_updated_by'=>auth()->user()->id,
             'apply_date'=>date('Y-m-d',strtotime($request->apply_date)),
             'reason'=>$request->reason,
-            'application_status'=>$request->application_status
+            'application_status'=>$request->application_status,
+            'approve_reason'=>$request->approve_reason
         ]);
 
         return redirect()->route('leave_application.index')->with('success','Success');
@@ -138,7 +139,7 @@ class LeaveApplicationController extends Controller
      */
     public function update(Request $request, $id)
     {
-        dd($request->all());
+        // dd($request->all());
         $this->validate($request,[
             'emp_id'=>'required',
             'leave_type'=>'required',
@@ -161,7 +162,8 @@ class LeaveApplicationController extends Controller
             'last_updated_by'=>auth()->user()->id,
             'apply_date'=>date('Y-m-d',strtotime($request->apply_date)),
             'reason'=>$request->reason,
-            'application_status'=>$request->application_status
+            'application_status'=>$request->application_status,
+            'approve_reason'=>$request->approve_reason
         ]);
 
         return redirect()->route('leave_application.index')->with('success','Success');

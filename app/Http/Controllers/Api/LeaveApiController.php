@@ -157,17 +157,28 @@ class LeaveApiController extends Controller
 
 	    		$leave_application = LeaveApplication::find($id);
 		    	$leave_application = $leave_application->update([
-	            'emp_id'=>$request->emp_id,
-	            'leavetype_id'=>$request->leave_type,
-	            'halfDayType'=>$request->halfDayType ? $request->halfDayType : "",
-	            'halforfull'=>$request->halforfull ? $request->halfDayType : 0,
-	            'start_date'=>date('Y-m-d',strtotime($request->start_date)),
-	            'end_date'=>date('Y-m-d',strtotime($request->end_date)),
-	            'days'=>$request->day,
-	            'apply_date'=>date('Y-m-d',strtotime($request->apply_date)),
-	            'reason'=>$request->reason,
-	            'application_status'=> 0
-	        ]);
+	            // 'emp_id'=>$request->emp_id,
+	            // 'leavetype_id'=>$request->leave_type,
+	            // 'halfDayType'=>$request->halfDayType ? $request->halfDayType : "",
+	            // 'halforfull'=>$request->halforfull ? $request->halfDayType : 0,
+	            // 'start_date'=>date('Y-m-d',strtotime($request->start_date)),
+	            // 'end_date'=>date('Y-m-d',strtotime($request->end_date)),
+	            // 'days'=>$request->day,
+	            // 'apply_date'=>date('Y-m-d',strtotime($request->apply_date)),
+	            // 'reason'=>$request->reason,
+	            // 'application_status'=> 0
+		    		'emp_id'=>$request->emp_id,
+		            'leavetype_id'=>$request->leave_type,
+		            'halfDayType'=>$request->halfDayType,
+		            'halforfull'=>$request->halforfull,
+		            'start_date'=>date('Y-m-d',strtotime($request->start_date)),
+		            'end_date'=>date('Y-m-d',strtotime($request->end_date)),
+		            'days'=>$request->day,
+		            'apply_date'=>date('Y-m-d',strtotime($request->apply_date)),
+		            'reason'=>$request->reason,
+		            'application_status'=>0,
+		            'approve_reason'=>$request->approve_reason
+			        ]);
 		    return response(['message'=>"Success",'status'=>1]);	
 	    }
 	}

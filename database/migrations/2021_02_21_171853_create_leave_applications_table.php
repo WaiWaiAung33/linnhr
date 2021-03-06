@@ -26,6 +26,7 @@ class CreateLeaveApplicationsTable extends Migration
             $table->date('apply_date');
             $table->text('reason');
             $table->boolean('application_status')->default(0);
+            $table->string('approve_reason')->nullable();
             $table->timestamps();
         });
     }
