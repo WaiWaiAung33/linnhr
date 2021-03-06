@@ -29,7 +29,7 @@ class NoticeBoardApiController extends Controller
 	    			$notice_boards = new NoticeBoard();
 	    			$notice_boards = $notice_boards->where('notice_type',1)->orwhere('position_id',$request->position_id)->orwhere('dept_id',$request->dept_id)->orwhere('branch_id',$request->branch_id);
 	    		
-	    			$notice_boards = $notice_boards->orderBy('id','asc')->limit(10)->paginate(10);
+	    			$notice_boards = $notice_boards->orderBy('id','desc')->limit(10)->paginate(10);
 
 		        return response(['message'=>"Success",'status'=>1,'notice_boards'=>$notice_boards]);
 	    	}else{
@@ -37,7 +37,7 @@ class NoticeBoardApiController extends Controller
 		    			$notice_boards = new NoticeBoard();
 		    			$notice_boards = $notice_boards->where('notice_type',1)->orwherewhere('position_id',$request->position_id)->orwhere('dept_id',$request->dept_id)->orwhere('branch_id',$request->branch_id);
 		    		
-		    		$notice_boards = $notice_boards->orderBy('attendances.id','asc')->get();
+		    		$notice_boards = $notice_boards->orderBy('attendances.id','desc')->get();
 
 			        return response(['message'=>"Success",'status'=>1,'notice_boards'=>$notice_boards]);
 	    	}
