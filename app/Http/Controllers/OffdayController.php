@@ -7,7 +7,17 @@ use App\Employee;
 use App\Branch;
 use App\Department;
 use App\User;
+use App\Exports\OffdayExport;
+use App\Imports\OffdayImport;
+use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Http\Request;
+use DB;
+use Validator;
+use Illuminate\Support\Facades\Hash;
+use Carbon\Carbon;
+use DateTime;
+use File;
+use Illuminate\Support\Str;
 
 class OffdayController extends Controller
 {
@@ -175,4 +185,71 @@ class OffdayController extends Controller
         $offdays->delete();
         return redirect()->route('offday.index')->with('success','Offday deleted successfully');;;
     }
+
+     public function offdayimport(Request $request) 
+    {
+        $request->validate([
+            'file'=>'required',
+        ]);
+
+        Excel::import(new OffdayImport,request()->file('file'));
+             
+        return back();
+    }
+
+     public function downloadOffdaysCSV()
+    {
+
+        $strpath = public_path().'/uploads/files/offday.xlsx';
+        // dd($strpath);
+        $isExists = File::exists($strpath);
+
+        if(!$isExists){
+            return redirect()->back()->with('error','File does not exists!');
+        }
+
+        $csvFile = str_replace("\\", '/', $strpath);
+        $headers = ['Content-Type: application/*'];
+        $fileName = 'Offday Template.xlsx';
+
+        return response()->download($csvFile, $fileName, $headers);
+
+        
+    }
+
+      public function offdayexport(Request $request) 
+    {
+
+        $offday = new Offday();
+      
+        if($request->branch_id != ''){
+            $offday = $offday->where('employee.branch_id',$request->branch_id);
+        }
+
+        if($request->dept_id != ''){
+            $offday = $offday->where('employee.dep_id',$request->dept_id);
+        }
+
+        $offday = $offday->leftjoin('employee','employee.id','=','offday.emp_id')
+        ->select(
+                
+                'employee.photo As photo',
+                'employee.name As name',
+                'offday.off_day_1',
+                'offday.off_day_2',
+                'offday.off_day_3',
+                'offday.off_day_4'
+              
+        )->get()->toArray();
+        // dd($kpi);
+
+      
+        // \Excel::store(
+        //         new \App\Exports\EmployeeExport(array_keys($employees[0]),$employees, $employees),
+        //         'employees'.'.xlsx',
+        //         'local',
+        //         \Maatwebsite\Excel\Excel::XLSX);
+        return Excel::download(new OffdayExport(array_keys($offday[0]),$offday, $offday), 'offday.xlsx');
+    }
+
 }

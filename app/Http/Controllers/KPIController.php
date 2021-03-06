@@ -4,12 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Imports\KpiImport;
+use App\Exports\KpiExport;
 use App\KPI;
 use App\Department;
 use App\Branch;
 use App\Employee;
 use Maatwebsite\Excel\Facades\Excel;
 use File;
+use PHPExcel_Worksheet_Drawing;
 
 class KPIController extends Controller
 {
@@ -25,7 +27,7 @@ class KPIController extends Controller
         $branches = Branch::where('status',1)->get();
         $departments = Department::where('status',1)->get();
         $kpis = new KPI();
-          if($date == 'January'){
+        if($date == 'January'){
             $dates = "01";
         }elseif ($date == 'February') {
             $dates = "02";
@@ -288,5 +290,78 @@ class KPIController extends Controller
         return response()->download($csvFile, $fileName, $headers);
 
         
+    }
+
+
+      public function kpiexport(Request $request) 
+    {
+
+        $kpi = new Kpi();
+        $date = $request->month;
+         if($date == 'January'){
+            $dates = "01";
+        }elseif ($date == 'February') {
+            $dates = "02";
+        }elseif ($date == 'March') {
+            $dates = "03";
+        }elseif ($date == 'April') {
+            $dates = "04";
+        }elseif ($date == 'May') {
+            $dates = "05";
+        }elseif ($date == 'June') {
+            $dates = "06";
+        }elseif ($date == 'July') {
+            $dates = "07";
+        }elseif ($date == 'August') {
+            $dates = "08";
+        }elseif ($date == 'September') {
+            $dates = "09";
+        }elseif ($date == 'October') {
+            $dates = "10";
+        }elseif ($date == 'November') {
+            $dates = "11";
+        }elseif ($date == 'December') {
+            $dates = "12";
+        }
+
+        if($request->branch_id != ''){
+            $kpi = $kpi->where('employee.branch_id',$request->branch_id);
+        }
+
+        if($request->dept_id != ''){
+            $kpi = $kpi->where('employee.dep_id',$request->dept_id);
+        }
+
+         if ($request->year != '') {
+            $kpis = $kpis->where('year',$request->year);
+        }
+
+        if ($date != '') {
+            $kpis = $kpis->where('month',$dates);
+        }
+
+        $kpi = $kpi->leftjoin('employee','employee.id','=','kpi.emp_id')
+        ->select(
+                
+                'employee.photo As photo',
+                'employee.name As name',
+                'kpi.knowledge',
+               'kpi.descipline',
+               'kpi.skill_set',
+               'kpi.team_work',
+               'kpi.social',
+               'kpi.motivation',
+               'kpi.month',
+               'kpi.year'
+        )->get()->toArray();
+        // dd($kpi);
+
+      
+        // \Excel::store(
+        //         new \App\Exports\EmployeeExport(array_keys($employees[0]),$employees, $employees),
+        //         'employees'.'.xlsx',
+        //         'local',
+        //         \Maatwebsite\Excel\Excel::XLSX);
+        return Excel::download(new KpiExport(array_keys($kpi[0]),$kpi, $kpi), 'kpi.xlsx');
     }
 }

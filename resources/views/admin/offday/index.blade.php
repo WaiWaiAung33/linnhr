@@ -14,6 +14,40 @@
   $date = isset($_GET['date'])?$_GET['date']:''; 
  
 ?>
+
+ <form class="form-horizontal" action="{{route('offdayimport')}}" method="POST" enctype="multipart/form-data">
+          @csrf
+
+           <div class="row form-group">
+                <div class="col-md-2">
+                  <input type="file" name="file" class="form-control" style="font-size: 13px">
+                    @if ($errors->has('file'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('file') }}</strong>
+                        </span>
+                    @endif
+                </div>
+                <div class="col-md-1">
+                <button class="btn btn-success btn-sm"><i class="fas fa-file-csv"></i> Import</button>
+                </div>
+               <!-- <div class="col-md-5"></div> -->
+               <div>
+               <a class="btn btn-primary btn-sm"  href="{{route('offdays.download.csv')}}"><i class="fa fa-fw fa-download" ></i>Demo CSV File</a>
+               </div>
+               <div style="margin-left: 10px">
+                 <a class="btn btn-warning btn-sm" id="export_btn" style="font-size: 13px;><i class="fa fa-fw fa-file-excel" style="padding-top: 8px"></i>Export</a> 
+               </div>
+          </div>
+           
+</form><br>
+
+ <form id="excel_form" action="{{ route('offdayexport') }}"  method="POST" class="unicode">
+                @csrf
+                @method('post')
+                <input type="hidden" id="branch_id" name="branch_id" value="{{ $branch_id }}">
+                <input type="hidden" id="dept_id" name="dept_id" value="{{ $dept_id }}">
+</form>
+
 <div>
 
      <a class="btn btn-success unicode" href="{{route('offday.create')}}" style="float: right;font-size: 13px"><i class="fas fa-plus"></i> Offday</a>
@@ -178,6 +212,9 @@
                   $('#name').on('change',function(e) {
                 this.form.submit();
             }); 
+             $('#export_btn').click(function(){
+                    $('#excel_form').submit();
+            });
             // $('#branch_id').on('change',function(e) {
 
             //     this.form.submit();
