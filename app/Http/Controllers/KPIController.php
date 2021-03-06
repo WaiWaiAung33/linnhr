@@ -346,8 +346,9 @@ class KPIController extends Controller
 
         $kpi = $kpi->leftjoin('employee','employee.id','=','kpi.emp_id')
         ->select(
-                'employee.name As name',
+                
                 'employee.photo As photo',
+                'employee.name As name',
                 'kpi.knowledge',
                'kpi.descipline',
                'kpi.skill_set',
