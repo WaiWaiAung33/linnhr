@@ -7,6 +7,27 @@
 
 @stop
 @section('content')
+<div class="row">
+    <div class="col-lg-10">
+           @if($back_route == 1)
+         <a class="btn btn-success unicode" href="{{route('dashboard')}}"> Back</a>
+         @else
+         <a class="btn btn-success unicode" href="{{route('notice_board.index')}}"> Back</a>
+         @endif
+    </div>
+    <div class="col-lg-2">
+        <div class="pull-right">
+          <form action="{{route('notice_board_delete',$notice_boards->id)}}" method="POST" onsubmit="return confirm('Do you really want to delete?');">
+                            @csrf
+                            @method('DELETE')
+                            
+                              <a class="btn btn-sm btn-primary" href="{{route('notice_board_edit',$notice_boards->id)}}"><i class="fa fa-fw fa-edit" /></i></a>
+                           
+                            <button type="submit" class="btn btn-sm btn-danger"><i class="fa fa-fw fa-trash" /></i></button> 
+          </form>
+        </div>
+    </div>
+</div><br>
  <div class="container" style="margin-top: 50px; ">
          <form action="{{route('notice_board.store')}}" method="post" enctype="multipart/form-data" style="padding-top: 10px">
         @csrf
