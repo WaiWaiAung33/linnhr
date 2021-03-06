@@ -75,15 +75,17 @@ class LeaveApiController extends Controller
 	                ->leftjoin('leave_types','leave_types.id','=','leave_applications.leavetype_id')
 	                ->leftjoin('branch','branch.id','=','employee.branch_id')
 	                ->leftjoin('department','department.id','=','employee.dep_id')
+	                ->leftjoin('users','users.id','=','leave_applications.last_updated_by')
 	                ->select(
 	                    'leave_applications.*',
 	                    'employee.name',
 	                    'employee.photo',
 	                    'leave_types.leave_type',
 	                    'branch.name AS branch_name',
-	                    'department.name AS dept_name'
+	                    'department.name AS dept_name',
+	                    'users.name AS approve_name'
 	                ); 
-	             if ($request->keyword != '') { 
+	             if ($request->keyword != '') {  
 		            $leave_applications = $leave_applications->where('employee.name','like','%'.$request->keyword.'%');
 		        }
 		        if ($request->branch_id != '') {
@@ -213,7 +215,7 @@ class LeaveApiController extends Controller
 	    							->select(
 	    								'leave_applications.*',
 	    								'leave_types.leave_type',
-	    								'users.name'
+	    								'users.name AS approve_name'
 	    							);
 
 	    	$leave_days = $leave_days->where('leave_applications.emp_id',$request->emp_id);
