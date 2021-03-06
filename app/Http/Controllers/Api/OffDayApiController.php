@@ -142,7 +142,7 @@ class OffDayApiController extends Controller
 	           return response()->json(['message'=>"Error",'status'=>0]);
 	    }else{
 	    	$off_days = Offday::where('emp_id',$request->emp_id);
-	    	dd($off_days);
+	    	dd($off_days->get());
 	    	if ($off_days->get()->count()>0) {
 	    		if ($request->off_date != '') {
 		        	$off_days = $off_days->where('off_day_1',date('Y-m-d',strtotime($request->off_date)))->orwhere('off_day_2',date('Y-m-d',strtotime($request->off_date)))->orwhere('off_day_3',date('Y-m-d',strtotime($request->off_date)))->orwhere('off_day_4',date('Y-m-d',strtotime($request->off_date)));
