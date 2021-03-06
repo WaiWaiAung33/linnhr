@@ -11,109 +11,106 @@
   $branch_id = isset($_GET['branch_id'])?$_GET['branch_id']:'';
   $dept_id = isset($_GET['dept_id'])?$_GET['dept_id']:'';
   $year = isset($_GET['year'])?$_GET['year']:'';
-   $month = isset($_GET['month'])?$_GET['month']:'';
+  $month = isset($_GET['month'])?$_GET['month']:'';
 ?>
    
-     <form class="form-horizontal" action="{{route('kpiimport')}}" method="POST" enctype="multipart/form-data">
-                    @csrf
-                    <div class="row form-group">
-                        <div class="col-md-2">
-                            <input type="file" name="file" class="form-control" style="font-size: 13px">
-                            @if ($errors->has('file'))
-                                <span class="help-block">
-                                    <strong>{{ $errors->first('file') }}</strong>
-                                </span>
-                            @endif
-                        </div>
-                       
-                        <button class="btn btn-success btn-sm"><i class="fas fa-file-csv" style="margin-left: 10px;font-size: 13px "></i> Import CSV</button>
-                        
-                       <a class="btn btn-primary btn-sm"  href="{{route('kpis.download.csv')}}" style="margin-left: 10px;font-size: 13px "><i class="fa fa-fw fa-download" style="padding-top: 8px" ></i>Demo CSV File</a>
+    <form class="form-horizontal" action="{{route('kpiimport')}}" method="POST" enctype="multipart/form-data">
+          @csrf
 
-                      <!--   <a class="btn btn-warning btn-sm" id="export_btn" style="font-size: 13px;margin-left: 10px"><i class="fa fa-fw fa-file-excel" style="padding-top: 8px"></i>Export</a> -->
-                     
-                    
-                    </div>
-        </form><br>
+           <div class="row form-group">
+                <div class="col-md-2">
+                  <input type="file" name="file" class="form-control" style="font-size: 13px">
+                    @if ($errors->has('file'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('file') }}</strong>
+                        </span>
+                    @endif
+                </div>
+                <div class="col-md-1">
+                <button class="btn btn-success btn-sm"><i class="fas fa-file-csv"></i> Import</button>
+                </div>
+               <!-- <div class="col-md-5"></div> -->
+               <div>
+               <a class="btn btn-primary btn-sm"  href="{{route('kpis.download.csv')}}"><i class="fa fa-fw fa-download" ></i>Demo CSV File</a>
+               </div>
+               <div style="margin-left: 10px">
+                 <a class="btn btn-warning btn-sm" id="export_btn" style="font-size: 13px;><i class="fa fa-fw fa-file-excel" style="padding-top: 8px"></i>Export</a> 
+               </div>
+          </div>
+           
+    </form><br>
 
 
-      <!-- Modal -->
+<!-- Modal -->
 <div id="myModal" class="modal fade" role="dialog">
   <div class="modal-dialog modal-lg">
 
     <!-- Modal content-->
-    <div class="modal-content">
+      <div class="modal-content">
       <div class="modal-header">
          <h5 class="modal-title">More Filter</h5>
         <button type="button" class="close" data-dismiss="modal">&times;</button>
        
       </div>
       <div class="modal-body">
-         <form action="{{route('kpi.index')}}" method="get" accept-charset="utf-8" class="form-horizontal unicode" >
-            <div class="row form-group" id="adv_filter">
-                <div class="col-md-12">
-                    <div class="row">
-                        
-                        <div class="col-md-3">
-                            <label for="">Select Branch</label>
-                             <select class="form-control" id="branch_id" name="branch_id" style="font-size: 13px">
-                                    <option value="">Select Branch</option>
-                                    @foreach($branches as $branch)
-                                    <option value="{{$branch->id}}" {{ (old('branch_id',$branch_id)==$branch->id)?'selected':'' }}>{{$branch->name}}</option>
-                                    @endforeach
+             <form action="{{route('kpi.index')}}" method="get" accept-charset="utf-8" class="form-horizontal unicode" >
+                <div class="row form-group" id="adv_filter">
+                    <div class="col-md-12">
+                        <div class="row">
+                            
+                            <div class="col-md-3">
+                                <label for="">Select Branch</label>
+                                 <select class="form-control" id="branch_id" name="branch_id" style="font-size: 13px">
+                                        <option value="">Select Branch</option>
+                                        @foreach($branches as $branch)
+                                        <option value="{{$branch->id}}" {{ (old('branch_id',$branch_id)==$branch->id)?'selected':'' }}>{{$branch->name}}</option>
+                                        @endforeach
+                                      </select>
+                            </div>
+                            <div class="col-md-3">
+                               <label for="">Select Department</label>
+                               
+                               <select class="form-control" id="dept_id" name="dept_id" style="font-size: 13px">
+                                      <option value="">Select Department</option>
+                                      @foreach($departments as $department)
+                                      <option value="{{$department->id}}" {{ (old('dept_id',$dept_id)==$department->id)?'selected':'' }}>{{$department->name}}</option>
+                                      @endforeach
                                   </select>
-                        </div>
-                        <div class="col-md-3">
-                           <label for="">Select Department</label>
-                           
-                           <select class="form-control" id="dept_id" name="dept_id" style="font-size: 13px">
-                                  <option value="">Select Department</option>
-                                  @foreach($departments as $department)
-                                  <option value="{{$department->id}}" {{ (old('dept_id',$dept_id)==$department->id)?'selected':'' }}>{{$department->name}}</option>
-                                  @endforeach
-                              </select>
-                        </div>
+                            </div>
 
-                          <div class="col-md-3">
-                           <label for="">Month</label>
-                           
-                            <input type="text" name="month" id="month"class="form-control unicode" placeholder="June" value="{{ old('month',$month) }}" style="font-size: 13px">
-                        </div>
+                              <div class="col-md-3">
+                               <label for="">Month</label>
+                               
+                                <input type="text" name="month" id="month"class="form-control unicode" placeholder="June" value="{{ old('month',$month) }}" style="font-size: 13px">
+                            </div>
 
-                         <div class="col-md-3">
-                           <label for="">Year</label>
-                           
-                           
-                               <input type="text" name="year" id="year"class="form-control unicode" placeholder="2021" value="{{ old('year',$year) }}" style="font-size: 13px">
+                             <div class="col-md-3">
+                               <label for="">Year</label>
+                               
+                               
+                                   <input type="text" name="year" id="year"class="form-control unicode" placeholder="2021" value="{{ old('year',$year) }}" style="font-size: 13px">
+                            </div>
+                          
                         </div>
-                      
+                        <br>
+                        <div class="row">
+                           <div class="col-md-12" align="center">
+                             <button type="button" class="btn btn-danger btn-sm" id="clear_search" >Clear</button>
+
+                             <button type="submit" class="btn btn-primary btn-sm" >Search</button>
+                           </div>
+                        </div>
                     </div>
-                    <br>
-                    
-
-                  
-
-                    <div class="row">
-                       <div class="col-md-12" align="center">
-                         <button type="button" class="btn btn-danger btn-sm" id="clear_search" >Clear</button>
-
-                         <button type="submit" class="btn btn-primary btn-sm" >Search</button>
-                       </div>
-                    </div>
+                   
                 </div>
-               
-            </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
-      </div>
+            </form>
+         </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
+        </div>
     </div>
-
   </div>
 </div>
-
-
 
          <form action="{{route('kpi.index')}}" method="get" accept-charset="utf-8" class="form-horizontal">
              <div class="row form-group">
@@ -134,6 +131,17 @@
              </div>
         </form>
 
+          <form id="excel_form" action="{{ route('kpiexport') }}"  method="POST" class="unicode">
+                @csrf
+                @method('post')
+                <input type="hidden" id="branch_id" name="branch_id" value="{{ $branch_id }}">
+                <input type="hidden" id="dept_id" name="dept_id" value="{{ $dept_id }}">
+                <input type="hidden" name="month" id="month"class="form-control unicode" value="{{ old('month',$month) }}" >
+
+                 <input type="hidden" name="year" id="year"class="form-control unicode" value="{{ old('year',$year) }}">
+         </form>
+
+
   @php
     $kpiArr = ['Poor','Bad','Average','Good','Excellent'];
     $colorArr = ['#FC0107','#FD8008','#0576f4','#00A825','#21FF06'];
@@ -146,6 +154,7 @@
     @endforeach
     </div>
     <br>
+
     <div class="table-responsive" style="font-size:14px">
                 <table class="table table-bordered styled-table">
                   <thead>
@@ -253,11 +262,11 @@
                             </td>
                         </tr>
                       @endforeach
-                    @else
-                          <tr align="center">
-                            <td colspan="10">No Data!</td>
-                          </tr>
-                    @endif
+                      @else
+                            <tr align="center">
+                              <td colspan="10">No Data!</td>
+                            </tr>
+                      @endif
 			            
                     </tbody>
            </table> 
@@ -288,6 +297,10 @@
                 $('#name').on('change',function(e) {
                 this.form.submit();
             }); 
+
+                  $('#export_btn').click(function(){
+                    $('#excel_form').submit();
+                });
             //  $('#branch_id').on('change',function(e) {
 
             //     this.form.submit();
@@ -306,35 +319,35 @@
    
         });
           $(function() {
-          $('table').on("click", "tr.table-tr", function() {
-            window.location = $(this).data("url");
+            $('table').on("click", "tr.table-tr", function() {
+              window.location = $(this).data("url");
+            });
+            });
+              $("#year").datepicker({  format: "yyyy",
+              viewMode: "years", 
+              minViewMode: "years" }); 
+
+               $("#month").datepicker({  format: "MM",
+              viewMode: "months", 
+              minViewMode: "months" });
+
           });
-        });
-            $("#year").datepicker({  format: "yyyy",
-            viewMode: "years", 
-            minViewMode: "years" }); 
 
-             $("#month").datepicker({  format: "MM",
-            viewMode: "months", 
-            minViewMode: "months" });
-
-        });
-
-        $(function() {
-            $('.toggle-class').change(function() {
-                var status = $(this).prop('checked') == true ? 1 : 0; 
-                var branch_id = $(this).data('id'); 
-                $.ajax({
-                    type: "GET",
-                    dataType: "json",
-                    url: "<?php echo(route("change-status-active")) ?>",
-                    data: {'status': status, 'branch_id': branch_id},
-                    success: function(data){
-                     console.log(data.success);
-                    }
-                });
-            })
-          });
+          $(function() {
+              $('.toggle-class').change(function() {
+                  var status = $(this).prop('checked') == true ? 1 : 0; 
+                  var branch_id = $(this).data('id'); 
+                  $.ajax({
+                      type: "GET",
+                      dataType: "json",
+                      url: "<?php echo(route("change-status-active")) ?>",
+                      data: {'status': status, 'branch_id': branch_id},
+                      success: function(data){
+                       console.log(data.success);
+                      }
+                  });
+              })
+            });
 
           $(function() {
             $(document).find("#clear_search").click(function(){
