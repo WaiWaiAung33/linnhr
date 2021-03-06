@@ -112,9 +112,9 @@
           <div class="row div-click" data-url="{{route('notice_board.show',$notice_board->id)}}">
             <img src="{{ asset('announed.png') }}" alt="photo" width="80px" height="80px">
             <div style="width: 500px;">
-              <p>{{date('d-m-Y',strtotime($notice_board->publish_date))}}</p>
-              <h6 style="margin-left: 20px;">{{$notice_board->title}}</h6>
-              <p style="margin-left: 20px;">{{$notice_board->description}}</p>
+              <p style="margin-left: 10px;">{{date('d-m-Y',strtotime($notice_board->publish_date))}}</p>
+              <h6 style="margin-left: 10px;">{{$notice_board->title}}</h6>
+              <p style="margin-left: 10px;">{{$notice_board->description}}</p>
             </div>
             <!-- <a href="" class="btn btn-success readmore" style="height: 30px;margin-left: 20px;"><i class="fas fa-calendar-week"></i>{{date('d-m-Y',strtotime($notice_board->publish_date))}}</a> -->
           </div>
