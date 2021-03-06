@@ -132,6 +132,11 @@ Route::get('ajax-get-emp-ro','RoController@get_gp_employee_data')->name('ajax-ge
 
 Route::post('kpiexport', [App\Http\Controllers\KPIController::class, 'kpiexport'])->name('kpiexport');
 
+Route::post('offdayimport',[App\Http\Controllers\OffdayController::class, 'offdayimport'])->name('offdayimport');
+
+Route::get('/offdays/csv/download', 'OffdayController@downloadOffdaysCSV')->name('offdays.download.csv');
+
+Route::post('offdayexport', [App\Http\Controllers\OffdayController::class, 'offdayexport'])->name('offdayexport');
 
 
 
