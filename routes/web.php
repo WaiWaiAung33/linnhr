@@ -94,6 +94,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('notice_board','NoticeBoardController');
    
     Route::get('change-status-post','NoticeBoardController@changestatuspost')->name('change-status-post');
+
+    Route::get('organization-chart','HomeController@orgChart')->name('org-chart');
 });
 
 Route::get('/', [App\Http\Controllers\CvformController::class, 'index'])->name('frontend.home');
