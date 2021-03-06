@@ -102,6 +102,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::put('notice_board_update/{id}','NoticeBoardController@notice_board_update')->name('notice_board_update.update');
 
     Route::delete('notice_board_delete/{id}','NoticeBoardController@notice_board_delete')->name('notice_board_delete');
+    Route::get('organization-chart','HomeController@orgChart')->name('org-chart');
 });
 
 Route::get('/', [App\Http\Controllers\CvformController::class, 'index'])->name('frontend.home');
@@ -140,6 +141,11 @@ Route::get('ajax-get-emp-ro','RoController@get_gp_employee_data')->name('ajax-ge
 
 Route::post('kpiexport', [App\Http\Controllers\KPIController::class, 'kpiexport'])->name('kpiexport');
 
+Route::post('offdayimport',[App\Http\Controllers\OffdayController::class, 'offdayimport'])->name('offdayimport');
+
+Route::get('/offdays/csv/download', 'OffdayController@downloadOffdaysCSV')->name('offdays.download.csv');
+
+Route::post('offdayexport', [App\Http\Controllers\OffdayController::class, 'offdayexport'])->name('offdayexport');
 
 
 

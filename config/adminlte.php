@@ -452,6 +452,11 @@ return [
                                 'url'  => 'leave_type',
                                 'icon' => 'fa fa-location-arrow',
                      ],
+                     [
+                                'text' => 'Organization Chart',
+                                'url'  => 'organization-chart',
+                                'icon' => 'fa fa-tree',
+                     ],
                 ]
         ],
         [

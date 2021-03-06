@@ -410,4 +410,8 @@ class HomeController extends Controller
 
         return view('admin.dashboard.kpi_dashboard',compact('deptArr','kpiArr','monthArr','asoPoint','branchArr','bkpiArr','bestEmployees'));
     }
+
+    public function orgChart(){
+        return view('admin.setting.organization');
+    }
 }
