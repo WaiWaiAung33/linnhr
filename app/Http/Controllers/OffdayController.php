@@ -26,7 +26,7 @@ class OffdayController extends Controller
         $offdays = new Offday();
         $offdays = $offdays->leftjoin('employee','employee.id','=','offday.emp_id')->leftjoin('users','users.id','=','offday.actionBy')->leftjoin('department','department.id','=','employee.dep_id')->leftjoin('branch','branch.id','=','employee.branch_id') ->select(
                                                     'offday.*',
-                                                    'employee.name',
+                                                    'employee.name as empname',
                                                     'employee.photo',
                                                     'users.name',
                                                     'department.name As department_name',
@@ -62,8 +62,12 @@ class OffdayController extends Controller
 
 
         $count=$offdays->count();
+        $emp_offdays = $offdays->get();
         $offdays = $offdays->orderBy('created_at','desc')->paginate(10);
-        return view('admin.offday.index',compact('offdays','count','branches','departments'))->with('i', (request()->input('page', 1) - 1) * 10);;
+
+        $emp_offday_arr = $emp_offdays->toArray();
+        
+        return view('admin.offday.index',compact('offdays','count','branches','departments','emp_offday_arr'))->with('i', (request()->input('page', 1) - 1) * 10);;
     }
 
     /**
