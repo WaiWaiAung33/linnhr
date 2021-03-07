@@ -272,7 +272,7 @@ class RoApiController extends Controller
                 $today_time_in = $this->getTodayTimein($ro->member_id);
                 $ro->time_in= $today_time_in;
                 // dd($car);
-                array_push($memberlist, $car);
+                array_push($memberlist, $ro);
             }
 
 	        return response(['message'=>"Success",'status'=>1,'ro'=>$ros]);
