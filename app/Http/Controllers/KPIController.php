@@ -79,7 +79,7 @@ class KPIController extends Controller
         }
 
         $count = $kpis->count();
-        $kpis = $kpis->orderBy('created_at','desc')->paginate(20);
+        $kpis = $kpis->orderBy('year','desc')->orderBy('month','desc')->paginate(20);
 
         return view('admin.kpi.index',compact('kpis','departments','count','branches'))->with('no', (request()->input('page', 1) - 1) * 20);;
     }
