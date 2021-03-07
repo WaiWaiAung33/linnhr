@@ -77,7 +77,7 @@
                                 </div>
 
                                 <div class="col-md-8 {{ $errors->first('lat', 'has-error') }}">
-                                    <input type="text" name="date_of_birth" class="form-control unicode" id="date_of_birth" value="{{ old('date_of_birth',$employees->date_of_birth) }}">
+                                    <input type="text" name="date_of_birth" class="form-control unicode" id="date_of_birth" value="{{ old('date_of_birth' ,date('d-m-Y',strtotime($employees->date_of_birth))) }}">
 
                                 </div>
                             </div><br>
@@ -535,7 +535,7 @@
 
                                 <div class="col-md-8 {{ $errors->first('name', 'has-error') }}">
 
-                                    <input type="text" name="exp_date_from" class="form-control unicode" id="from_date"  value="{{ old('date_of_birth',$employees->exp_date_from) }}">
+                                    <input type="text" name="exp_date_from" class="form-control unicode" id="from_date"  value="{{ old('from_date',$employees->exp_date_from) }}">
 
                                 </div>
                             </div>
@@ -547,7 +547,7 @@
                                 </div>
                                  <div class="col-md-8 {{ $errors->first('name', 'has-error') }}">
 
-                                    <input type="text" name="exp_date_to" class="form-control unicode" id="to_date" value="{{ old('date_of_birth',$employees->exp_date_to) }}">
+                                    <input type="text" name="exp_date_to" class="form-control unicode" id="to_date" value="{{ old('to_date',$employees->exp_date_to) }}">
 
                                 </div>
                             </div>
