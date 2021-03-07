@@ -278,8 +278,8 @@ class RoApiController extends Controller
 
 	        return response(['message'=>"Success",'status'=>1,'ro'=>$ros]);
 	    	}else{
-	    		$ro = new ROMember();
-	        	$ro = $ro->leftjoin('employee','employee.id','=','r_o_members.member_id')
+	    		$rosos = new ROMember();
+	        	$ros = $ros->leftjoin('employee','employee.id','=','r_o_members.member_id')
 	        						->leftJoin('branch','branch.id','=','employee.branch_id')
 		                             ->leftJoin('department','department.id','=','employee.dep_id')
 		                             ->leftJoin('position','position.id','=','employee.position_id')
@@ -340,10 +340,16 @@ class RoApiController extends Controller
 		                                'hostel.name AS hostel_name',
 		                                'employee.join_date'
 	    							);
-	    	$ro = $ro->where('r_o_members.repoter_id',$request->emp_id);
-	    	$ro = $ro->orderBy('r_o_members.id','asc')->get();
-
-	        return response(['message'=>"Success",'status'=>1,'ro'=>$ro]);
+	    	$ros = $ros->where('r_o_members.repoter_id',$request->emp_id);
+	    	$ros = $ros->orderBy('r_o_members.id','asc')->get();
+	    	$memberlist = [];
+            foreach ($ros as $ro) { 
+                $today_time_in = $this->getTodayTimein($ro->member_id);
+                $ro->time_in= $today_time_in;
+                // dd($car);
+                array_push($memberlist, $ro);
+            }
+	        return response(['message'=>"Success",'status'=>1,'ro'=>$ros]);
 	    	}
 	    }
 	}
