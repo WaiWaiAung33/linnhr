@@ -350,7 +350,7 @@ class RoApiController extends Controller
 
 	public function getTodayTimein($member_id)
 	{
-		dd($member_id);
+		// dd($member_id);
 		$date = date('Y-m-d');
 
 		$today_timein = Attendance::where('emp_id',$member_id)->where('date',$date)->get();
