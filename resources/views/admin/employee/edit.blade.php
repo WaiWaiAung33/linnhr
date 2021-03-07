@@ -1494,11 +1494,11 @@
         });
     });
 
-         $("#date_of_birth").datepicker({ dateFormat: 'dd-mm-yy' });
-         $("#join_date").datepicker({ dateFormat: 'dd-mm-yy' });
-         $("#from_date").datepicker({ dateFormat: 'dd-mm-yy' });
-         $("#to_date").datepicker({ dateFormat: 'dd-mm-yy' });
-         $("#hostel_sdate").datepicker({ dateFormat: 'dd-mm-yy' });
+         $("#date_of_birth").datepicker({ format: 'dd-mm-yyyy' });
+         $("#join_date").datepicker({ format: 'dd-mm-yyyy' });
+         $("#from_date").datepicker({ format: 'dd-mm-yyyy' });
+         $("#to_date").datepicker({ format: 'dd-mm-yyyy' });
+         $("#hostel_sdate").datepicker({ format: 'dd-mm-yyyy' });
 
          
 });
