@@ -48,11 +48,9 @@ class RoApiController extends Controller
 	    }else{
 	        $ro = ROMember::where('repoter_id',$request->emp_id);
 	        $ro = $ro->leftjoin('employee','employee.id','=','r_o_members.member_id')
-	        			->leftjoin('employee','employee.id','=','attendances.emp_id')
 	    							->select(
 	    								'employee.name',
 	    								'employee.photo',
-	    								'attendances.clock_in'
 	    							)->get();
 	        return response(['message'=>"Success",'status'=>1,'ro'=>$ro]);
 	       
