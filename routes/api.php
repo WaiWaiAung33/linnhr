@@ -87,3 +87,6 @@ Route::post('/ro_list','Api\RoApiController@ro_list');
 Route::post('/ro_manage_list','Api\RoApiController@ro_manage_list');
 
 Route::post('/notice_board','Api\NoticeBoardApiController@notice_board');
+
+//ro backup
+Route::post('ro_member_list','Api\RoApiController@ro_member_list');
