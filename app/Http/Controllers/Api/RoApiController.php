@@ -262,7 +262,8 @@ class RoApiController extends Controller
 		                                'employee.police_reco',
 		                                'employee.otherfile',
 		                                'hostel.name AS hostel_name',
-		                                'employee.join_date'
+		                                'employee.join_date',
+		                                'r_o_members.member_id'
 	    							);
 	    	$ros = $ros->where('r_o_members.repoter_id',$request->emp_id);
 	    	$ros = $ros->orderBy('r_o_members.id','asc')->limit(10)->paginate(10);
