@@ -352,6 +352,12 @@ class RoApiController extends Controller
 		$date = date('Y-m-d');
 
 		$today_timein = Attendance::where('emp_id',$member_id)->where('date',$date)->get();
-		return $today_timein[0]->clock_in;
+
+		if (count($today_timein)>0) {
+			return $today_timein[0]->clock_in;
+		}else{
+			return "0";
+		}
+		
 	}
 }
