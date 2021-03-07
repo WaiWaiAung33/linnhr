@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\User;
 use App\Employee;
+use App\OfficeReporter;
+
 use Illuminate\Http\Request;
 
 class AuthApiController extends Controller
@@ -94,8 +96,17 @@ class AuthApiController extends Controller
                 'user_role'=>auth()->user()->roles[0]->name
              ];
              }
+
+             // dd($data['employeeId']);
+             $ro = OfficeReporter::where('ro_id',$data['employeeId'])->get();
+             // dd($ro);
+             if (count($ro)>0) {
+                 return response(['data' => $data, 'access_token' => $accessToken,'message'=>"Successfully login",'status'=>1,'ro_status'=>1]);
+             }else{
+                return response(['data' => $data, 'access_token' => $accessToken,'message'=>"Successfully login",'status'=>1,'ro_status'=>0]);
+             }
              
-             return response(['data' => $data, 'access_token' => $accessToken,'message'=>"Successfully login",'status'=>1]);
+             // return response(['data' => $data, 'access_token' => $accessToken,'message'=>"Successfully login",'status'=>1]);
         } 
 
     }
