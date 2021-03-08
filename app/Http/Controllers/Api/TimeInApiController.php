@@ -209,5 +209,81 @@ class TimeInApiController extends Controller
         }
     }
 
+
+    public function emp_attendance_list(Request $request)
+    {
+        $input = $request->all();
+        $rules=[
+            'emp_id'=>'required',
+            'page'=>'required',
+            'month'=>'required',
+            'year'=>'required'
+        ];
+
+        $validator = Validator::make($input, $rules);
+
+         if ($validator->fails()) {
+            $messages = $validator->messages();
+               return response()->json(['message'=>"Error",'status'=>0]);
+        }else{
+            if ($request->page != 0) {
+                $attendances = new Attendance();
+
+                $attendances = $attendances->leftjoin('employee','employee.id','=','attendances.emp_id')
+                                            ->select(
+                                                'attendances.*',
+                                                'employee.name'
+                                            );
+                $attendances = $attendances->where('attendances.emp_id',$request->emp_id);
+                // dd($attendances->get()->count());
+                if ($attendances->get()->count()) {
+
+                    $attendances = $attendances->whereYear('date', '=', $request->year)
+                                  ->whereMonth('date', '=', $request->month);
+
+                    $attendances = $attendances->limit(10)->paginate(10);
+
+                    if (count($attendances)>0) {
+
+                        return response(['message'=>"Success",'status'=>1,'attendances'=>$attendances]);
+
+                    }else{
+                        return response(['message'=>"No Attendance",'status'=>1,'attendances'=>null]);
+                    }
+                }else{
+                   return response(['message'=>"No Attendance",'status'=>1]); 
+                }
+            }else{
+                $attendances = new Attendance();
+
+                $attendances = $attendances->leftjoin('employee','employee.id','=','attendances.emp_id')
+                                            ->select(
+                                                'attendances.*',
+                                                'employee.name'
+                                            );
+                $attendances = $attendances->where('attendances.emp_id',$request->emp_id);
+                // dd($attendances->get()->count());
+                if ($attendances->get()->count()) {
+
+                    $attendances = $attendances->whereYear('date', '=', $request->year)
+                                  ->whereMonth('date', '=', $request->month);
+
+                    $attendances = $attendances->get();
+
+                    if (count($attendances)>0) {
+
+                        return response(['message'=>"Success",'status'=>1,'attendances'=>$attendances]);
+
+                    }else{
+                        return response(['message'=>"No Attendance",'status'=>1,'attendances'=>null]);
+                    }
+                }else{
+                   return response(['message'=>"No Attendance",'status'=>1]); 
+                }
+            }
+        }
+    }
+
+
 }
 	
