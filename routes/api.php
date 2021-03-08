@@ -90,3 +90,5 @@ Route::post('/notice_board','Api\NoticeBoardApiController@notice_board');
 
 //ro backup
 Route::post('ro_member_list','Api\RoApiController@ro_member_list');
+
+Route::post('/emp_attendance_list','Api\TimeInApiController@emp_attendance_list');
