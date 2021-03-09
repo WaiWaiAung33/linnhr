@@ -25,10 +25,8 @@ class NotiApiController extends Controller
 	           return response()->json(['message'=>"Error",'status'=>0]);
 	    }else{
 	    	$employee = Employee::find($request->emp_id);
-	    	// dd($employee->user_id);
-	    	$user = User::find($employee->user_id);
-	    	// dd($user);
-	    	$user = $user->update([
+	    	
+	    	$employee = $employee->update([
 	    		'noti_token'=>$request->noti_token
 	    	]);
 	    	return response(['message'=>"Success",'status'=>1]);

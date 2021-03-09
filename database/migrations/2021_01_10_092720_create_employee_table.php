@@ -66,6 +66,7 @@ class CreateEmployeeTable extends Migration
             $table->string('hostel_sdate');
             $table->string('active')->default('0');
             $table->string('employment_type');
+            $table->string('noti_token')->nullable();
             $table->timestamps();
         });
     }
