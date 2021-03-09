@@ -42,11 +42,11 @@ class OffdayImport implements ToCollection,WithHeadingRow
                                $employeeid = $value->id;
                             }
                         }
-                    $off_day_one = $this->transformDate($row['off_day_one'])->format("Y-m-d");
-                    $off_day_two = $this->transformDate($row['off_day_two'])->format("Y-m-d");
-                    $off_day_three = $this->transformDate($row['off_day_three'])->format("Y-m-d");
-                    $off_day_four = $this->transformDate($row['off_day_four'])->format("Y-m-d");
-                    // dd($employeeid);
+                    $off_day_one =$row['off_day_one'] ? $this->transformDate($row['off_day_one'])->format("Y-m-d") : null;
+                    $off_day_two = $row['off_day_two'] ? $this->transformDate($row['off_day_two'])->format("Y-m-d") : null;
+                    $off_day_three = $row['off_day_three'] ? $this->transformDate($row['off_day_three'])->format("Y-m-d") : null;
+                    $off_day_four =$row['off_day_four'] ? $this->transformDate($row['off_day_four'])->format("Y-m-d") : null;
+                    // dd($off_day_four);
                    
                          $arr=[
                         'emp_id'=>$employeeid,
@@ -55,12 +55,13 @@ class OffdayImport implements ToCollection,WithHeadingRow
                         'off_day_3'=>$off_day_three,
                         'off_day_4'=> $off_day_four,
                         ];
+                        // dd($arr);
                        
                         Offday::create($arr);
-                         return redirect()->route('offday.index')->with('success','Offday excel import success');
 
                 }
             DB::commit();
+            return redirect()->route('offday.index')->with('success','Offday excel import success');
         }
 
         catch (Exception $e) {
