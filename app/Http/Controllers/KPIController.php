@@ -203,31 +203,31 @@ class KPIController extends Controller
 
             $month = $val['month'];
 
-            // if( $month== '01'){
-            //      $month = "Jan";
-            // }elseif ( $month== '02') {
-            //      $month = "Feb";
-            // }elseif ( $month== '03') {
-            //      $month = "Mar";
-            // }elseif ( $month== '04') {
-            //      $month = "Apr";
-            // }elseif ( $month== '05') {
-            //      $month = "May";
-            // }elseif ( $month== '06') {
-            //      $month = "June";
-            // }elseif ( $month== '07') {
-            //      $month = "July";
-            // }elseif ( $month== '08') {
-            //      $month = "Aug";
-            // }elseif ( $month== '09') {
-            //      $month = "Sept";
-            // }elseif ( $month== '10') {
-            //      $month = "Oct";
-            // }elseif ( $month== '11') {
-            //      $month = "Nov";
-            // }elseif ( $month== '12') {
-            //      $month = "Dec";
-            // }
+            if( $month== '01'){
+                 $month = "Jan";
+            }elseif ( $month== '02') {
+                 $month = "Feb";
+            }elseif ( $month== '03') {
+                 $month = "Mar";
+            }elseif ( $month== '04') {
+                 $month = "Apr";
+            }elseif ( $month== '05') {
+                 $month = "May";
+            }elseif ( $month== '06') {
+                 $month = "June";
+            }elseif ( $month== '07') {
+                 $month = "July";
+            }elseif ( $month== '08') {
+                 $month = "Aug";
+            }elseif ( $month== '09') {
+                 $month = "Sept";
+            }elseif ( $month== '10') {
+                 $month = "Oct";
+            }elseif ( $month== '11') {
+                 $month = "Nov";
+            }elseif ( $month== '12') {
+                 $month = "Dec";
+            }
             array_push($monthArr,$month);
             array_push($kpi1, $val['knowledge']);
             array_push($kpi2, $val['descipline']);

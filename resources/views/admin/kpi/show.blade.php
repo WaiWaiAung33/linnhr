@@ -10,71 +10,45 @@
        <a class="btn btn-primary unicode" href="{{route('kpi.index')}}"> Back</a>
   </div>
   <div class="col-md-8 text-center">
-       <h5 style="color: blue;" class="unicode">KPI Detail</h5>
+       <h5 style="color: blue;" class="unicode">KPI Detail</h5><br>
+       <div class="row">
+          <div class="col-md-6 text-right">
+            @if($kpi->employee->photo == '')
+              <img src="{{ asset('uploads/employeePhoto/default.png') }}" alt="photo" width="100px" height="120px">
+            @else
+              <img src="{{ asset('uploads/employeePhoto/'.$kpi->employee->photo) }}" alt="photo" width="100px" height="120px">
+            @endif
+          </div>
+          <div class="col-md-6 text-left">
+               {{ $kpi->employee->name }} <br>
+               {{ $kpi->employee->viewDepartment->name }} <br>
+               {{ $kpi->employee->viewPosition->name }} <br>
+               {{ $kpi->employee->viewBranch->name }}
+          </div>
+      </div>
   </div>
-  <div class="col-md-2 text-right">
-      <form action="{{route('kpi.show',$kpi->id)}}" method="get" accept-charset="utf-8" class="form-horizontal">
-           <input type="text" name="year" id="year"class="form-control unicode" placeholder="2021" value="{{ old('year',$year) }}" style="font-size: 13px; width: 50%">
-      </form>
-     
+  <div class="col-md-2 text-right"> 
   </div>
 
 </div>
+<br>
 @stop
 @section('content')
-<div class="container">
+<div >
   <div class="row">
-    <div class="col-md-4">
-      <div class="row">
-        <div class="col-md-8 text-center">
-          @if($kpi->employee->photo == '')
-            <img src="{{ asset('uploads/employeePhoto/default.png') }}" alt="photo" width="100px" height="120px">
-          @else
-            <img src="{{ asset('uploads/employeePhoto/'.$kpi->employee->photo) }}" alt="photo" width="100px" height="120px">
-          @endif
-        </div>
+      <div class="col-md-2 text-right">
+          <form action="{{route('kpi.show',$kpi->id)}}" method="get" accept-charset="utf-8" class="form-horizontal">
+               <input type="text" name="year" id="year"class="form-control unicode" placeholder="2021" value="{{ old('year',$year) }}" style="font-size: 13px; width: 50%">
+          </form>
+         
       </div>
-      <br>
-      <div class="row">
-            <div class="col-md-4">
-              <b>Name : </b>
-            </div>
-            <div class="col-md-6">
-              {{ $kpi->employee->name }}
-            </div>
-      </div>
-          <div class="row">
-            <div class="col-md-4">
-              <b>Department : </b>
-            </div>
-            <div class="col-md-6">
-              {{ $kpi->employee->viewDepartment->name }}
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-4">
-              <b>Position : </b>
-            </div>
-            <div class="col-md-6">
-              {{ $kpi->employee->viewPosition->name }}
-            </div>
-          </div>
-           <div class="row">
-            <div class="col-md-4">
-              <b>Branch : </b>
-            </div>
-            <div class="col-md-6">
-              {{ $kpi->employee->viewBranch->name }}
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-8">
+      <div class="col-md-12">
           <div id="kpiChart" style="height: 300px;"></div>
-        </div>
-      </div>
-      <hr>
-      <div class="row">
+      </div>  
+  </div>
+  <hr>
+  <br>
+  <div class="row">
          @php
             $kpiArr = ['Poor','Bad','Average','Good','Excellent'];
             $colorArr = ['#FC0107','#FD8008','#0576f4','#00A825','#21FF06'];
@@ -86,7 +60,7 @@
           <div class="row ">
             <div class="com-md-12 text-center">
                 @foreach($kpiArr as $i=>$label)
-                  <button class="btn btn-sm" style="background-color:{{ $colorArr[$i]  }}; color: black; height: 30px;"> {{++$i}} = {{ $label }}</button>&nbsp;&nbsp;&nbsp;
+                  &nbsp;&nbsp;<button class="btn btn-sm" style="background-color:{{ $colorArr[$i]  }}; color: black; height: 30px;"> {{++$i}} = {{ $label }}</button>&nbsp;&nbsp;&nbsp;
                 @endforeach
             </div>
           </div>
@@ -183,8 +157,7 @@
                     </tbody>
                 </table> 
           </div>
-       </div>   
-  </div>
+       </div> 
 </div>
 
 
