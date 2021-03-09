@@ -80,6 +80,7 @@
                       <th>Social</th>
                       <th>Motivation</th>
                       <th>Total Point</th>
+                      <th>Comment</th>
                     </tr>
                   </thead>
                     <tbody>
@@ -146,6 +147,7 @@
                               @endforeach
                             </td>
                             <td style="text-align: right;">{{ $totalpoint }}</td>
+                            <td>{{ $kpi->comment  }}</td>
                         </tr>
                       @endforeach
                     @else
