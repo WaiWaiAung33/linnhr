@@ -338,7 +338,7 @@ class KPIController extends Controller
         $headers = ['Content-Type: application/*'];
         $fileName = 'Kpi Template.xlsx';
 
-        return response()->download($csvFile, $fileName, $headers);
+        return response()->download($csvFile, $fileName, $headers)->with('success','KPI excel import successfully');
 
         
     }
