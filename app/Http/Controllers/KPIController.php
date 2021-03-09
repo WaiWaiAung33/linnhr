@@ -254,7 +254,7 @@ class KPIController extends Controller
     {
     	$month = date('m',strtotime($request->date));
         $year = date('Y',strtotime($request->date));
-        
+
          if($month == '01'){
             $months = "January";
         }elseif ($month == '02') {
@@ -405,7 +405,7 @@ class KPIController extends Controller
                'kpi.team_work',
                'kpi.social',
                'kpi.motivation',
-               $totalpoint,
+               'kpi.total',
                'kpi.month',
                'kpi.year'
         )->get()->toArray();
