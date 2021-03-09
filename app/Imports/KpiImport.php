@@ -44,6 +44,7 @@ class KpiImport implements ToCollection,WithHeadingRow
                             }
                         }
 
+
                         
 
                         $kpis = KPI::where('emp_id',$employeeid)->where('month',$row['month'])->where('year', $row['year'])->get();
@@ -51,6 +52,31 @@ class KpiImport implements ToCollection,WithHeadingRow
                          $totalpoint = $row['knowledge'] + $row['descipline'] + $row['skill_set'] + $row['teamwork'] + $row['social'] + $row['motivation']; 
                         // dd($kpis->count());
 
+                        if($row['month'] == '01'){
+                            $dates = "January";
+                        }elseif ($row['month'] == '02') {
+                            $dates = "February";
+                        }elseif ($row['month'] == '03') {
+                            $dates = "March";
+                        }elseif ($row['month'] == '04') {
+                            $dates = "April";
+                        }elseif ($row['month'] == '05') {
+                            $dates = "May";
+                        }elseif ($row['month'] == '06') {
+                            $dates = "June";
+                        }elseif ($row['month'] == '07') {
+                            $dates = "July";
+                        }elseif ($row['month'] == '08') {
+                            $dates = "August";
+                        }elseif ($row['month'] == '09') {
+                            $dates = "September";
+                        }elseif ($row['month'] == '10') {
+                            $dates = "October";
+                        }elseif ($row['month'] == '11') {
+                            $dates = "November";
+                        }elseif ($row['month'] == '12') {
+                            $dates = "December";
+                        }
 
                         if ($kpis->count()>0) {
                              return redirect()->route('kpi.index')->with('success','KPI exist');
@@ -65,12 +91,13 @@ class KpiImport implements ToCollection,WithHeadingRow
                                         'social'=>$row['social'],
                                         'motivation'=>$row['motivation'],
                                         'total'=>$totalpoint,
-                                        'month'=>$row['month'],
+                                        'month'=>$dates,
                                         'year'=>$row['year'],
                                         'comment'=>$row['comment']
                                         ];
                                        
                                 KPI::create($arr);
+                                return redirect()->route('kpi.index')->with('success','KPI excel import success');
                           
                         }
                 }
