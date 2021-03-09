@@ -57,6 +57,7 @@ class OffdayImport implements ToCollection,WithHeadingRow
                         ];
                        
                         Offday::create($arr);
+                         return redirect()->route('offday.index')->with('success','Offday excel import success');
 
                 }
             DB::commit();
