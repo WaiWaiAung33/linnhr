@@ -223,25 +223,33 @@
       });
 
       var monthArr = <?php echo '["' . implode('", "', $monthArr) . '"]' ?>;
-      var kpiPoint = <?php echo '["' . implode('", "', $kpiPoint) . '"]' ?>;
+      var kpi1 = <?php echo '["' . implode('", "', $kpi1) . '"]' ?>;
+      var kpi2 = <?php echo '["' . implode('", "', $kpi2) . '"]' ?>;
+      var kpi3 = <?php echo '["' . implode('", "', $kpi3) . '"]' ?>;
+      var kpi4 = <?php echo '["' . implode('", "', $kpi4) . '"]' ?>;
+      var kpi5 = <?php echo '["' . implode('", "', $kpi5) . '"]' ?>;
+      var kpi6 = <?php echo '["' . implode('", "', $kpi6) . '"]' ?>;
 
         const kpiChart = new Chartisan({
               el: '#kpiChart',
               data: {
                   "chart": { "labels": monthArr },
                   "datasets": [
-                    { "name": "", "values": kpiPoint },
-                    { "name": "", "values": kpiPoint }
+                    { "name": "Knowledge", "values": kpi1 },
+                    { "name": "Discipline", "values": kpi2 },
+                    { "name": "Skill", "values": kpi3 },
+                    { "name": "Team Work", "values": kpi4 },
+                    { "name": "Social", "values": kpi5 },
+                    { "name": "Motivation", "values": kpi6 }
                   ]
                 },
               hooks: new ChartisanHooks()
-                 .colors(['#00ED83'])
+                .colors(['#00ED83','#00FFFF','#800080','#FFFF00','#FF00FF','#800000'])
                 .responsive()
                 .beginAtZero()
                 .legend({ position: 'bottom' })
                 .borderColors()
                 .title('KPI by Branch')
-                .datasets([{ type: 'line', fill: false }, 'bar'])
         });
 
 </script>

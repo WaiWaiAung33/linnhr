@@ -190,10 +190,16 @@ class KPIController extends Controller
         $kpis = KPI::with('employee')->where('kpi.year',$year)->where('emp_id',$kpi->emp_id)->orderBy('month','asc')->get();
 
         $monthArr =[];
-        $kpiPoint = [];
+        $kpi1 = [];
+        $kpi2 = [];
+        $kpi3 = [];
+        $kpi4 = [];
+        $kpi5 = [];
+        $kpi6 = [];
+
         
         foreach ($kpis as $key => $val) {
-            $point = $val['knowledge'] + $val['descipline'] + $val['skill_set'] + $val['team_work'] + $val['social'] + $val['motivation'];
+            $point1 = $val['knowledge'] + $val['descipline'] + $val['skill_set'] + $val['team_work'] + $val['social'] + $val['motivation'];
 
             $month = $val['month'];
 
@@ -223,10 +229,15 @@ class KPIController extends Controller
             //      $month = "Dec";
             // }
             array_push($monthArr,$month);
-            array_push($kpiPoint, $point);
+            array_push($kpi1, $val['knowledge']);
+            array_push($kpi2, $val['descipline']);
+            array_push($kpi3, $val['skill_set']);
+            array_push($kpi4, $val['team_work']);
+            array_push($kpi5, $val['social']);
+            array_push($kpi6, $val['motivation']);
          }
 
-        return view('admin.kpi.show',compact('kpi','departments','monthArr','kpiPoint','kpis'));
+        return view('admin.kpi.show',compact('kpi','departments','monthArr','kpi1','kpi2','kpi3','kpi4','kpi5','kpi6','kpis'));
     }
 
     /**
