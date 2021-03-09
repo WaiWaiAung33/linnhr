@@ -44,7 +44,11 @@ class KpiImport implements ToCollection,WithHeadingRow
                             }
                         }
 
+                        
+
                         $kpis = KPI::where('emp_id',$employeeid)->where('month',$row['month'])->where('year', $row['year'])->get();
+                         $totalpoint = 0;
+                         $totalpoint = $row['knowledge'] + $row['descipline'] + $row['skill_set'] + $row['teamwork'] + $row['social'] + $row['motivation']; 
                         // dd($kpis->count());
 
 
@@ -60,6 +64,7 @@ class KpiImport implements ToCollection,WithHeadingRow
                                         'team_work'=>$row['teamwork'],
                                         'social'=>$row['social'],
                                         'motivation'=>$row['motivation'],
+                                        'total'=>$totalpoint,
                                         'month'=>$row['month'],
                                         'year'=>$row['year'],
                                         'comment'=>$row['comment']
