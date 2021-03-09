@@ -3,7 +3,24 @@
 @section('title', 'KPI')
 
 @section('content_header')
-<h5 style="color: blue;">KPI</h5>
+
+@php
+$kpiArr = ['Poor','Bad','Average','Good','Excellent'];
+$colorArr = ['#FC0107','#FD8008','#0576f4','#00A825','#21FF06'];
+@endphp
+
+<div class="row">
+  <div class="col-md-2">
+    <h5 style="color: blue;">KPI</h5>
+  </div>
+  <div class="col-md-10 text-right">
+  @foreach($kpiArr as $i=>$label)
+
+    <button class="btn btn-sm" style="background-color:{{ $colorArr[$i]  }}; color: black; height: 30px;"> {{++$i}} = {{ $label }}</button>&nbsp;&nbsp;&nbsp;
+  @endforeach
+  </div>
+</div>
+<br>
 @stop
 @section('content')
 <?php
@@ -14,31 +31,31 @@
   $month = isset($_GET['month'])?$_GET['month']:'';
 ?>
    
-    <form class="form-horizontal" action="{{route('kpiimport')}}" method="POST" enctype="multipart/form-data">
-          @csrf
+<form class="form-horizontal" action="{{route('kpiimport')}}" method="POST" enctype="multipart/form-data">
+      @csrf
 
-           <div class="row form-group">
-                <div class="col-md-2">
-                  <input type="file" name="file" class="form-control" style="font-size: 13px">
-                    @if ($errors->has('file'))
-                        <span class="help-block">
-                            <strong>{{ $errors->first('file') }}</strong>
-                        </span>
-                    @endif
-                </div>
-                <div class="col-md-1">
-                <button class="btn btn-success btn-sm"><i class="fas fa-file-csv"></i> Import</button>
-                </div>
-               <!-- <div class="col-md-5"></div> -->
-               <div>
-               <a class="btn btn-primary btn-sm"  href="{{route('kpis.download.csv')}}"><i class="fa fa-fw fa-download" ></i>Demo CSV File</a>
-               </div>
-               <div style="margin-left: 10px">
-                 <a class="btn btn-warning btn-sm" id="export_btn" style="font-size: 13px;><i class="fa fa-fw fa-file-excel" style="padding-top: 8px"></i>Export</a> 
-               </div>
-          </div>
-           
-    </form><br>
+       <div class="row form-group">
+            <div class="col-md-2">
+              <input type="file" name="file" class="form-control" style="font-size: 13px">
+                @if ($errors->has('file'))
+                    <span class="help-block">
+                        <strong>{{ $errors->first('file') }}</strong>
+                    </span>
+                @endif
+            </div>
+            <div class="col-md-1">
+            <button class="btn btn-success btn-sm"><i class="fas fa-file-csv"></i> Import</button>
+            </div>
+           <!-- <div class="col-md-5"></div> -->
+           <div>
+           <a class="btn btn-primary btn-sm"  href="{{route('kpis.download.csv')}}"><i class="fa fa-fw fa-download" ></i>Demo CSV File</a>
+           </div>
+           <div style="margin-left: 10px">
+             <a class="btn btn-warning btn-sm" id="export_btn" style="font-size: 13px;><i class="fa fa-fw fa-file-excel" style="padding-top: 8px"></i>Export</a> 
+           </div>
+      </div>
+       
+</form>
 
 
 <!-- Modal -->
@@ -123,9 +140,9 @@
                  <!-- Trigger the modal with a button -->
                   <button type="button" class="btn btn-warning "  data-toggle="modal" data-target="#myModal" style="font-size: 13px"><i class="fa fa-filter" aria-hidden="true"></i></button>
                  </div>
-
+                 
                  <div class="col-md-8" align="right">
-                <a class="btn btn-success unicode" href="{{route('kpi.create')}}" style="float: right;font-size: 13px"><i class="fas fa-plus"></i>Add KPI</a>
+                <a class="btn btn-success unicode" href="{{route('kpi.create')}}" style="float: right;font-size: 13px"><i class="fas fa-plus"></i> &nbsp;Add KPI</a>
               </div>
                
              </div>
@@ -142,35 +159,70 @@
          </form>
 
 
-  @php
-    $kpiArr = ['Poor','Bad','Average','Good','Excellent'];
-    $colorArr = ['#FC0107','#FD8008','#0576f4','#00A825','#21FF06'];
-  @endphp
-
-    <div class="row">
-    @foreach($kpiArr as $i=>$label)
-
-      <button class="btn btn-sm" style="background-color:{{ $colorArr[$i]  }}; color: black; height: 30px;"> {{++$i}} = {{ $label }}</button>&nbsp;&nbsp;&nbsp;
-    @endforeach
-    </div>
     <br>
-
+    <div class="row">
+      <div class="col-md-2">
+        <p style="padding-left: 10px">Total record:{{$count}}</p>
+      </div>
+      <div class="col-md-10 text-right">
+             <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown"><i class="fa fa-eye-slash"></i>
+                <span class="caret"></span></button>
+                <ul class="dropdown-menu" id="grpChkBox">
+                  <li class="list-group-item clickable toggle-table-column">
+                    <input type="checkbox" checked="checked" name="date" /> &nbsp;Date&nbsp;&nbsp;
+                  </li>
+                  <li class="list-group-item clickable toggle-table-column"> 
+                    <input type="checkbox" checked="checked" name="photo" /> &nbsp;Photo&nbsp;&nbsp;
+                  </li>
+                  <li class="list-group-item clickable toggle-table-column"> 
+                    <input type="checkbox" checked="checked" name="empname" /> &nbsp;Name&nbsp;&nbsp;
+                  </li>
+                  <li class="list-group-item clickable toggle-table-column">
+                    <input type="checkbox" checked="checked" name="knowledge" /> &nbsp;Knowledge&nbsp;&nbsp;
+                  </li>
+                  <li class="list-group-item clickable toggle-table-column"> 
+                    <input type="checkbox" checked="checked" name="discipline" /> &nbsp;Discipline&nbsp;&nbsp;
+                  </li>
+                  <li class="list-group-item clickable toggle-table-column"> 
+                     <input type="checkbox" checked="checked" name="skill_set" /> &nbsp;Team Work&nbsp;&nbsp;
+                  </li>
+                  <li class="list-group-item clickable toggle-table-column"> 
+                     <input type="checkbox" checked="checked" name="team_work" /> &nbsp;Skill Set&nbsp;&nbsp;
+                  </li>
+                  <li class="list-group-item clickable toggle-table-column">
+                      <input type="checkbox" checked="checked" name="social" /> &nbsp;Social&nbsp;&nbsp;
+                  </li>
+                  <li class="list-group-item clickable toggle-table-column"> 
+                    <input type="checkbox" checked="checked" name="motivation" /> &nbsp;Motivation&nbsp;&nbsp;
+                  </li>
+                  <li class="list-group-item clickable toggle-table-column"> 
+                    <input type="checkbox" checked="checked" name="total" /> &nbsp;Total Point&nbsp;&nbsp;
+                  </li>
+                   <li class="list-group-item clickable toggle-table-column"> 
+                    <input type="checkbox" checked="checked" name="action" /> &nbsp;Action&nbsp;&nbsp;
+                  </li>
+                </ul>
+              </div>
+       </div> 
+      
+    </div>
     <div class="table-responsive" style="font-size:14px">
-                <table class="table table-bordered styled-table">
+                <table class="table table-bordered styled-table" id="kpiTabble">
                   <thead>
                     <tr> 
-                      <th>No</th>
-                      <th>Date</th>
-                      <th>Photo</th>
-                      <th>Name</th>
-                      <th>Knowledge</th>
-                      <th>Discipline</th>
-                      <th>Skill Set</th>
-                      <th>Team Work</th>
-                      <th>Social</th>
-                      <th>Motivation</th>
-                      <th>Total Point</th>
-                      <td>Action</td>
+                      <th class="no">No</th>
+                      <th class="date">Date</th>
+                      <th class="photo">Photo</th>
+                      <th class="empname">Name</th>
+                      <th class="knowledge">Knowledge</th>
+                      <th class="discipline">Discipline</th>
+                      <th class="skill_set">Skill Set</th>
+                      <th class="team_work">Team Work</th>
+                      <th class="social">Social</th>
+                      <th class="motivation">Motivation</th>
+                      <th class="total">Total Point</th>
+                      <th class="action">Action</th>
                     </tr>
                   </thead>
                     <tbody>
@@ -183,24 +235,24 @@
                         @endphp
 
                         <tr class="table-tr" data-url="{{route('kpi.show',$kpi->id)}}">
-                          <td>{{++$no}}</td>
+                          <td class="no">{{++$no}}</td>
                           @php 
                             $date = $kpi->year .'-'. $kpi->month;
                           @endphp
-                          <td>{{ date('M Y',strtotime($date)) }}</td>
-                            <td align="center">
+                          <td class="date">{{ date('M Y',strtotime($date)) }}</td>
+                          <td align="center" class="photo">
                               @if($kpi->employee->photo == '')
                                 <img src="{{ asset('uploads/employeePhoto/default.png') }}" alt="photo" width="60px" height="60px">
                               @else
                                 <img src="{{ asset('uploads/employeePhoto/'.$kpi->employee->photo) }}" alt="photo" width="60px" height="60px">
                               @endif
-                            </td>
-                            <td>
-                              {{ $kpi->employee->name}} <br>
-                              {{ $kpi->employee->viewDepartment->name}} <br>
-                              {{ $kpi->employee->viewPosition->name}}
-                            </td>
-                            <td> 
+                          </td>
+                          <td class="empname">
+                            {{ $kpi->employee->name}} <br>
+                            {{ $kpi->employee->viewDepartment->name}} <br>
+                            {{ $kpi->employee->viewPosition->name}}
+                          </td>
+                            <td class="knowledge"> 
                               @foreach($kpiArr as $i=>$label) 
                                 @php $j = $i +1; @endphp
                                 @if($j==$kpi->knowledge)
@@ -208,7 +260,7 @@
                                 @endif
                               @endforeach
                             </td>
-                            <td>
+                            <td class="discipline">
                               @foreach($kpiArr as $i=>$label) 
                                 @php $j = $i +1; @endphp
                                 @if($j==$kpi->descipline)
@@ -216,7 +268,7 @@
                                 @endif
                               @endforeach
                             </td>
-                            <td>
+                            <td class="skill_set">
                               @foreach($kpiArr as $i=>$label) 
                                 @php $j = $i +1; @endphp
                                 @if($j==$kpi->skill_set)
@@ -224,7 +276,7 @@
                                 @endif
                               @endforeach
                             </td>
-                            <td>
+                            <td class="team_work">
                               @foreach($kpiArr as $i=>$label) 
                                 @php $j = $i +1; @endphp
                                 @if($j==$kpi->team_work)
@@ -232,7 +284,7 @@
                                 @endif
                               @endforeach
                             </td>
-                            <td>
+                            <td class="social">
                               @foreach($kpiArr as $i=>$label) 
                                 @php $j = $i +1; @endphp
                                 @if($j==$kpi->social)
@@ -240,7 +292,7 @@
                                 @endif
                               @endforeach
                             </td>
-                            <td>
+                            <td class="motivation">
                               @foreach($kpiArr as $i=>$label) 
                                 @php $j = $i +1; @endphp
                                 @if($j==$kpi->motivation)
@@ -248,8 +300,8 @@
                                 @endif
                               @endforeach
                             </td>
-                            <td style="text-align: right;">{{ $totalpoint }}</td>
-                            <td>
+                            <td class="total" style="text-align: right;">{{ $totalpoint }}</td>
+                            <td class="action">
                               <form action="{{route('kpi.destroy',$kpi->id)}}" method="post"
                                     onsubmit="return confirm('Do you want to delete?');">
                                     @csrf
@@ -270,7 +322,7 @@
 			            
                     </tbody>
            </table> 
-          <p style="padding-left: 10px">Total record:{{$count}}</p>
+          
            {!! $kpis->appends(request()->input())->links() !!}
        </div>   
 @stop 
@@ -281,6 +333,23 @@
 @section('js')
 <script src="{{ asset('/js/bootstrap-datepicker.min.js')}}"></script>
  <script> 
+
+    $(function () {
+      var $chk = $("#grpChkBox input:checkbox"); 
+      var $tbl = $("#kpiTabble");
+      var $tblhead = $("#kpiTabble th");
+   
+      $chk.prop('checked', true); 
+   
+      $chk.click(function () {
+          var colToHide = $tblhead.filter("." + $(this).attr("name"));
+          var index = $(colToHide).index();
+          $tbl.find('tr :nth-child(' + (index + 1) + ')').toggle();
+      });
+    });
+       
+         
+
       @if(Session::has('success'))
             toastr.options =
             {
@@ -355,9 +424,6 @@
                 $(document).find("input").val('');
             });
           });
-       
-         
-      
 
      </script>
 @stop

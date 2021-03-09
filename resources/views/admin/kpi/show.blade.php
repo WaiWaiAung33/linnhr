@@ -220,7 +220,7 @@
                 .colors(['#00ED83','#00FFFF','#800080','#FFFF00','#FF00FF','#800000'])
                 .responsive()
                 .beginAtZero()
-                .legend({ position: 'bottom' })
+                .legend({ position: 'top' })
                 .borderColors()
                 .title('KPI by Branch')
         });
