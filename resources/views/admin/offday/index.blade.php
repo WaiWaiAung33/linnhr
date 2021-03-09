@@ -11,6 +11,7 @@
   $name = isset($_GET['name'])?$_GET['name']:'';
   $branch_id = isset($_GET['branch_id'])?$_GET['branch_id']:'';
   $dept_id = isset($_GET['dept_id'])?$_GET['dept_id']:'';
+  $position_id = isset($_GET['position_id'])?$_GET['position_id']:'';
   $date = isset($_GET['date'])?$_GET['date']:'';
 
   $year = isset($_GET['year'])?$_GET['year']:date('Y'); 
@@ -103,18 +104,29 @@
                                     @endforeach
                                 </select>
                               </div>
-                              {{-- <div class="col-md-4">               
-                                  <input type="text" name="date" id="date" value="{{ old('date',$date) }}" class="form-control" style="font-size: 13px" placeholder="01-01-2021">
-                              </div> --}}
-                              <div class="col-md-2">   
-                                 <input type="text" name="month" id="month"class="form-control unicode" placeholder="June" value="{{ old('month',$month) }}" style="font-size: 13px">
+                               <div class="col-md-4">
+                                 <select class="form-control" id="position_id" name="position_id" style="font-size: 13px">
+                                    <option value="">Select Rank</option>
+                                    @foreach($ranks as $rank)
+                                    <option value="{{$rank->id}}" {{ (old('position_id',$position_id)==$rank->id)?'selected':'' }}>{{$rank->name}}</option>
+                                    @endforeach
+                                </select>
                               </div>
-                              <div class="col-md-2">   
-                                 <input type="text" name="year" id="year"class="form-control unicode" placeholder="2021" value="{{ old('year',$year) }}" style="font-size: 13px">
-                              </div>
+                            
                             
                           </div>
                           <br>
+                          <div class="row">
+                              {{-- <div class="col-md-4">               
+                                  <input type="text" name="date" id="date" value="{{ old('date',$date) }}" class="form-control" style="font-size: 13px" placeholder="01-01-2021">
+                              </div> --}}
+                              <div class="col-md-4">   
+                                 <input type="text" name="month" id="month"class="form-control unicode" placeholder="June" value="{{ old('month',$month) }}" style="font-size: 13px">
+                              </div>
+                              <div class="col-md-4">   
+                                 <input type="text" name="year" id="year"class="form-control unicode" placeholder="2021" value="{{ old('year',$year) }}" style="font-size: 13px">
+                              </div>
+                          </div><br>
                           <div class="row">
                              <div class="col-md-12" align="center">
                                <button type="button" class="btn btn-danger btn-sm" id="clear_search" >Clear</button>
@@ -335,6 +347,13 @@
              });
    
         });
+
+            $(function() {
+            $(document).find("#clear_search").click(function(){
+                $(document).find("select").val('');
+                $(document).find("input").val('');
+            });
+          });
 
         $(function() {
           $('table').on("click", "tr.table-tr", function() {
