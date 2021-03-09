@@ -118,7 +118,33 @@ class KPIController extends Controller
         $month = date('m',strtotime($request->date));
         $year = date('Y',strtotime($request->date));
 
-        $data = KPI::where('emp_id',$request->emp_id)->where('month',$month)->where('year', $year)->get();
+         if($month == '01'){
+            $months = "January";
+        }elseif ($month == '02') {
+            $months = "February";
+        }elseif ($month == '03') {
+            $months = "March";
+        }elseif ($month == '04') {
+            $months = "April";
+        }elseif ($month == '05') {
+            $months = "May";
+        }elseif ($month == '06') {
+            $months = "June";
+        }elseif ($month == '07') {
+            $months = "July";
+        }elseif ($month == '08') {
+            $months = "August";
+        }elseif ($month == '09') {
+            $months = "September";
+        }elseif ($month == '10') {
+            $months = "October";
+        }elseif ($month == '11') {
+            $months = "November";
+        }elseif ($month == '12') {
+            $months = "December";
+        }
+
+        $data = KPI::where('emp_id',$request->emp_id)->where('month',$months)->where('year', $year)->get();
 
 
 
@@ -136,7 +162,7 @@ class KPIController extends Controller
 				            'social'=>$request->social,
 				            'motivation'=>$request->motivation,
                             'total' => $total,
-				            'month'=>$month,
+				            'month'=>$months,
 				            'year'=>$year,
 				            'comment'=>$request->comment
 			        	]
@@ -171,31 +197,31 @@ class KPIController extends Controller
 
             $month = $val['month'];
 
-            if( $month== '01'){
-                 $month = "Jan";
-            }elseif ( $month== '02') {
-                 $month = "Feb";
-            }elseif ( $month== '03') {
-                 $month = "Mar";
-            }elseif ( $month== '04') {
-                 $month = "Apr";
-            }elseif ( $month== '05') {
-                 $month = "May";
-            }elseif ( $month== '06') {
-                 $month = "June";
-            }elseif ( $month== '07') {
-                 $month = "July";
-            }elseif ( $month== '08') {
-                 $month = "Aug";
-            }elseif ( $month== '09') {
-                 $month = "Sept";
-            }elseif ( $month== '10') {
-                 $month = "Oct";
-            }elseif ( $month== '11') {
-                 $month = "Nov";
-            }elseif ( $month== '12') {
-                 $month = "Dec";
-            }
+            // if( $month== '01'){
+            //      $month = "Jan";
+            // }elseif ( $month== '02') {
+            //      $month = "Feb";
+            // }elseif ( $month== '03') {
+            //      $month = "Mar";
+            // }elseif ( $month== '04') {
+            //      $month = "Apr";
+            // }elseif ( $month== '05') {
+            //      $month = "May";
+            // }elseif ( $month== '06') {
+            //      $month = "June";
+            // }elseif ( $month== '07') {
+            //      $month = "July";
+            // }elseif ( $month== '08') {
+            //      $month = "Aug";
+            // }elseif ( $month== '09') {
+            //      $month = "Sept";
+            // }elseif ( $month== '10') {
+            //      $month = "Oct";
+            // }elseif ( $month== '11') {
+            //      $month = "Nov";
+            // }elseif ( $month== '12') {
+            //      $month = "Dec";
+            // }
             array_push($monthArr,$month);
             array_push($kpiPoint, $point);
          }
@@ -229,6 +255,31 @@ class KPIController extends Controller
     	$month = date('m',strtotime($request->date));
         $year = date('Y',strtotime($request->date));
 
+         if($month == '01'){
+            $months = "January";
+        }elseif ($month == '02') {
+            $months = "February";
+        }elseif ($month == '03') {
+            $months = "March";
+        }elseif ($month == '04') {
+            $months = "April";
+        }elseif ($month == '05') {
+            $months = "May";
+        }elseif ($month == '06') {
+            $months = "June";
+        }elseif ($month == '07') {
+            $months = "July";
+        }elseif ($month == '08') {
+            $months = "August";
+        }elseif ($month == '09') {
+            $months = "September";
+        }elseif ($month == '10') {
+            $months = "October";
+        }elseif ($month == '11') {
+            $months = "November";
+        }elseif ($month == '12') {
+            $months = "December";
+        }
 
        	$kpi = KPI::find($id);
         $kpi = $kpi->update([
@@ -240,7 +291,7 @@ class KPIController extends Controller
             'social'=>$request->social,
             'motivation'=>$request->motivation,
             'total' => $request->knowledge + $request->descipline + $request->skill_set + $request->team_work + $request->social + $request->motivation,
-            'month'=>$month,
+            'month'=>$months,
             'year'=>$year,
             'comment'=>$request->comment
         ]);
@@ -287,7 +338,7 @@ class KPIController extends Controller
         $headers = ['Content-Type: application/*'];
         $fileName = 'Kpi Template.xlsx';
 
-        return response()->download($csvFile, $fileName, $headers);
+        return response()->download($csvFile, $fileName, $headers)->with('success','KPI excel import successfully');
 
         
     }
@@ -340,6 +391,9 @@ class KPIController extends Controller
             $kpis = $kpis->where('month',$dates);
         }
 
+        $totalpoint = 0;
+        $totalpoint = $kpi->knowledge + $kpi->descipline + $kpi->skill_set + $kpi->team_work + $kpi->social + $kpi->motivation; 
+
         $kpi = $kpi->leftjoin('employee','employee.id','=','kpi.emp_id')
         ->select(
                 
@@ -351,6 +405,7 @@ class KPIController extends Controller
                'kpi.team_work',
                'kpi.social',
                'kpi.motivation',
+               'kpi.total',
                'kpi.month',
                'kpi.year'
         )->get()->toArray();

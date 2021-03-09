@@ -6,6 +6,7 @@ use App\Offday;
 use App\Employee;
 use App\Branch;
 use App\Department;
+use App\Position;
 use App\User;
 use App\Exports\OffdayExport;
 use App\Imports\OffdayImport;
@@ -19,6 +20,7 @@ use DateTime;
 use File;
 use Illuminate\Support\Str;
 
+
 class OffdayController extends Controller
 {
     /**
@@ -28,9 +30,10 @@ class OffdayController extends Controller
      */
     public function index(Request $request)
     {
-       
+       // dd($request->position_id);
         $branches = Branch::where('status',1)->get();
         $departments = Department::where('status',1)->get();
+        $ranks = Position::All();
         
           
         $offdays = new Offday();
@@ -40,7 +43,7 @@ class OffdayController extends Controller
                                                     'employee.photo',
                                                     'users.name',
                                                     'department.name As department_name',
-                                                    'branch.name As branch_name'
+                                                    'branch.name As branch_name',
                                                 );
         if ($request->name != '') {
             $offdays = $offdays->where('employee.name','like','%'.$request->name.'%');
@@ -50,6 +53,9 @@ class OffdayController extends Controller
         }
         if ($request->dept_id != '') {
             $offdays = $offdays->where('employee.dep_id',$request->dept_id);
+        }
+        if ($request->position_id != '') {
+            $offdays = $offdays->where('employee.position_id',$request->position_id);
         }
 
         if($request->date !=''){
@@ -77,7 +83,7 @@ class OffdayController extends Controller
 
         $emp_offday_arr = $emp_offdays->toArray();
         
-        return view('admin.offday.index',compact('offdays','count','branches','departments','emp_offday_arr'))->with('i', (request()->input('page', 1) - 1) * 10);;
+        return view('admin.offday.index',compact('offdays','count','branches','departments','emp_offday_arr','ranks'))->with('i', (request()->input('page', 1) - 1) * 10);;
     }
 
     /**
@@ -235,11 +241,9 @@ class OffdayController extends Controller
                 
                 'employee.photo As photo',
                 'employee.name As name',
-                'offday.off_day_1',
-                'offday.off_day_2',
-                'offday.off_day_3',
-                'offday.off_day_4'
+                 transformDate(offday.off_day_1)->format("d-m-Y"),
               
+                
         )->get()->toArray();
         // dd($kpi);
 
@@ -251,5 +255,14 @@ class OffdayController extends Controller
         //         \Maatwebsite\Excel\Excel::XLSX);
         return Excel::download(new OffdayExport(array_keys($offday[0]),$offday, $offday), 'offday.xlsx');
     }
+
+      public function transformDate($value, $format = 'd-m-Y')
+        {
+            try {
+                return \Carbon\Carbon::instance(\PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($value));
+            } catch (\ErrorException $e) {
+                return \Carbon\Carbon::createFromFormat($format, $value);
+            }
+        }
 
 }
