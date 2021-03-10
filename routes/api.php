@@ -96,3 +96,7 @@ Route::post('/emp_attendance_list','Api\TimeInApiController@emp_attendance_list'
 Route::post('/token_create','Api\NotiApiController@token_create');
 
 Route::get('/get_noti_count','Api\NoticeBoardApiController@get_noti_count');
+
+Route::post('/branch_employee','Api\BranchApiController@branch_employee');
+
+Route::post('/dept_employee','Api\DepartmentApiController@dept_employee');
