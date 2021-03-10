@@ -14,6 +14,9 @@ class BranchApiController extends Controller
     public function branch(Request $request)
     {
         $branches = new Branch();
+        if ($request->keyword != '') {
+            $branches = $branches->where('name','like','%'.$request->keyword.'%');
+        }
         $branches = $branches->where('status',1)->orderBy('id','asc')->get();
         $branchlist = [];
             foreach ($branches as $branch) { 
@@ -21,9 +24,7 @@ class BranchApiController extends Controller
                 // dd($car);
                 array_push($branchlist, $branch);
             }
-        if ($request->keyword != '') {
-            $branches = $branches->where('name','like','%'.$request->keyword.'%');
-        }
+        
 
         return response(['branches' => $branches,'message'=>"Successfully login",'status'=>1]);
     }

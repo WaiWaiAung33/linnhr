@@ -21,6 +21,9 @@ class DepartmentApiController extends Controller
         //              ->get();
         // $departments = $department->where('status',1);
         $departments = new Department();
+        if ($request->keyword != '') {
+            $departments = $departments->where('name','like','%'.$request->keyword.'%');
+        }
         $departments = $departments->where('status',1)->orderBy('id','asc')->get();
         $departmentlist = [];
             foreach ($departments as $department) { 
@@ -29,9 +32,7 @@ class DepartmentApiController extends Controller
                 array_push($departmentlist, $department);
             }
 
-        if ($request->keyword != '') {
-            $departments = $departments->where('name','like','%'.$request->keyword.'%');
-        }
+        
 
         return response(['departments' => $departments,'message'=>"Successfully login",'status'=>1]);
     }
