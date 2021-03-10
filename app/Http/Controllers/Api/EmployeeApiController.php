@@ -10,6 +10,7 @@ use App\Position;
 use App\NRCCode;
 use App\NRCState;
 use App\Salary;
+use App\ROMember;
 use Validator;
 
 
@@ -267,13 +268,38 @@ class EmployeeApiController extends Controller
                                 'employee.join_date'
                              );
         $employee = $employee->where('employee.id',$id)->get();
-        if ($employee->count()>0) {
+
+        // $emplist = [];
+        //     foreach ($ros as $ro) { 
+        //         $today_time_in = $this->getTodayTimein($ro->member_id);
+        //         $ro->time_in= $today_time_in;
+        //         // dd($car);
+        //         array_push($memberlist, $ro);
+        //     }
+        if ($employee->count()>0) { 
             $employee = $employee[0];
+            $employee->ro_name = $this->getROName($id);
             return response(['employees' => $employee,'message'=>"Successfully",'status'=>1]); 
         }else{
             return response(['message'=>"Employee id does not exit!!!",'status'=>0]); 
         }
 
+    }
+
+    public function getROName($id)
+    {
+        $ro = new ROMember();
+        $ro = $ro->leftJoin('employee','employee.id','=','r_o_members.repoter_id')
+                ->select('employee.name AS ro_name');
+                // dd($ro);
+        $ro = $ro->where('r_o_members.member_id',$id)->get();
+        // dd($ro);
+        if (count($ro)>0) {
+            return $ro[0]->ro_name;
+        }else{
+            return "0";
+        }
+        
     }
 
     public function get_emp_salary(Request $request)
