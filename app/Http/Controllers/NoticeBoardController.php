@@ -175,7 +175,8 @@ class NoticeBoardController extends Controller
             //'registration_ids' => $tokenList, //multple token array
             'to'        => $token, //single token
             'notification' => $notification,
-            'body' => $body
+            'body' => $body,
+            'click_action'=>'com.linn.solution.linn_hr.FCM_NOTIFICATION_DETAIL'
         ];
         // dd($fcmNotification);
         $headers = [
