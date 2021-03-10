@@ -94,18 +94,18 @@ class EmployeeApiController extends Controller
                                                     'employee.join_date'
                                                  );
                             if ($request->keyword != '') {
-                                $employee = $employee->where('employee.name','like','%'.$request->keyword.'%')->where('employee.phone_no','like','%'.$request->keyword.'%')->where('emp_id','like','%'.$request->keyword.'%')->where('employee.branch_id',$request->branch_id)->where('employee.dep_id',$request->dept_id)->where('position_id',$request->position_id);
+                                $employee = $employee->where('employee.name','like','%'.$request->keyword.'%')->orwhere('employee.phone_no','like','%'.$request->keyword.'%')->orwhere('emp_id','like','%'.$request->keyword.'%');
                             }
-                            // if ($request->branch_id != '') {
-                            //     $employee = $employee->where('employee.branch_id',$request->branch_id);
-                            // }
-                            // if ($request->dept_id != '') {
+                            if ($request->branch_id != '') {
+                                $employee = $employee->where('employee.branch_id',$request->branch_id);
+                            }
+                            if ($request->dept_id != '') {
                                 
-                            //     $employee = $employee->where('employee.dep_id',$request->dept_id);
-                            // }
-                            // if ($request->position_id != '') {
-                            //     $employee = $employee->where('position_id',$request->position_id);
-                            // }
+                                $employee = $employee->where('employee.dep_id',$request->dept_id);
+                            }
+                            if ($request->position_id != '') {
+                                $employee = $employee->where('position_id',$request->position_id);
+                            }
 
                             if ($request->gender != '') {
                                 $employee = $employee->where('gender',$request->gender);
@@ -116,7 +116,7 @@ class EmployeeApiController extends Controller
                             }
 
                             $employee = $employee->orderBy('employee.emp_id','asc')->limit(10)->paginate(10);
-                            return response(['employees' => $employee,'message'=>"Successfully",'status'=>1]); 
+                            return response(['employees' => $employee,'message'=>"Successfully",'status'=>1]);  
                         }else{
                            $employee = new Employee();
 
