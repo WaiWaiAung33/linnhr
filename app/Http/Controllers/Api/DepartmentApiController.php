@@ -10,7 +10,7 @@ use Validator;
 
 class DepartmentApiController extends Controller
 {
-    public function department()
+    public function department(Request $request)
     {
         // $departments = Department::where('status',1)->get();
         // $department = Department::with('employees')->get();
@@ -28,6 +28,10 @@ class DepartmentApiController extends Controller
                 // dd($car);
                 array_push($departmentlist, $department);
             }
+
+        if ($request->keyword != '') {
+            $departments = $departments->where('name',$request->keyword);
+        }
 
         return response(['departments' => $departments,'message'=>"Successfully login",'status'=>1]);
     }

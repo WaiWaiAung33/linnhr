@@ -11,7 +11,7 @@ use App\Employee;
 
 class BranchApiController extends Controller
 {
-    public function branch()
+    public function branch(Request $request)
     {
         $branches = new Branch();
         $branches = $branches->where('status',1)->orderBy('id','asc')->get();
@@ -21,6 +21,9 @@ class BranchApiController extends Controller
                 // dd($car);
                 array_push($branchlist, $branch);
             }
+        if ($request->keyword != '') {
+            $branches = $branches->where('name',$request->keyword);
+        }
 
         return response(['branches' => $branches,'message'=>"Successfully login",'status'=>1]);
     }
