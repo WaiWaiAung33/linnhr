@@ -297,7 +297,7 @@ class EmployeeApiController extends Controller
         if (count($ro)>0) {
             return $ro[0]->ro_name;
         }else{
-            return "0";
+            return null;
         }
         
     }
