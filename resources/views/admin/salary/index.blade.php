@@ -67,11 +67,11 @@
             <div class="row form-group" id="adv_filter">
                <div class="col-md-12">
                     <div class="row">
-                        <div class="col-md-3">
+                        <div class="col-md-2">
                            <label for="">Search by Keyword</label>
                             <input type="text" name="name" id="name" class="form-control" placeholder="Search..." value="{{ old('name',$name) }}" style="font-size: 13px">
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-2">
                             
                             <label for="">Select Department</label>
                             <select class="form-control" id="dep_id" name="dep_id" style="font-size: 13px">
@@ -82,7 +82,7 @@
                             </select>
                            
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-2">
                           
                             <label for="">Payment year</label>
                              <input type="text" name="year" id="year"class="form-control unicode" placeholder="2021" value="{{ old('year',$year) }}" style="font-size: 13px">
