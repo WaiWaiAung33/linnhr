@@ -254,23 +254,66 @@
 
 </form> 
 
+<div class="row">
+  <div class="col-md-2">
+     <p style="padding-top: 20px" class="unicode">Total record: {{$count}}</p>
+  </div>
 
-  <p style="padding-top: 20px" class="unicode">Total record: {{$count}}</p>
+    <div class="col-md-10 text-right">
+             <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown"><i class="fa fa-eye-slash"></i>
+                <span class="caret"></span></button>
+                <ul class="dropdown-menu" id="grpChkBox">
+                  <li class="list-group-item clickable toggle-table-column">
+                    <input type="checkbox" checked="checked" name="image" /> &nbsp;Image&nbsp;&nbsp;
+                  </li>
+                  <li class="list-group-item clickable toggle-table-column"> 
+                    <input type="checkbox" checked="checked" name="employee_id" /> &nbsp;Employee Id&nbsp;&nbsp;
+                  </li>
+                  <li class="list-group-item clickable toggle-table-column"> 
+                    <input type="checkbox" checked="checked" name="name" /> &nbsp;Name&nbsp;&nbsp;
+                  </li>
+                  <li class="list-group-item clickable toggle-table-column">
+                    <input type="checkbox" checked="checked" name="rank" /> &nbsp;Rank&nbsp;&nbsp;
+                  </li>
+                  <li class="list-group-item clickable toggle-table-column"> 
+                    <input type="checkbox" checked="checked" name="department" /> &nbsp;Department&nbsp;&nbsp;
+                  </li>
+                  <li class="list-group-item clickable toggle-table-column"> 
+                     <input type="checkbox" checked="checked" name="branch" /> &nbsp;Branch&nbsp;&nbsp;
+                  </li>
+                  <li class="list-group-item clickable toggle-table-column"> 
+                     <input type="checkbox" checked="checked" name="join_date" /> &nbsp;Joined Date&nbsp;&nbsp;
+                  </li>
+                  <li class="list-group-item clickable toggle-table-column">
+                      <input type="checkbox" checked="checked" name="phone_no" /> &nbsp;Phone No&nbsp;&nbsp;
+                  </li>
+                  <li class="list-group-item clickable toggle-table-column"> 
+                    <input type="checkbox" checked="checked" name="age" /> &nbsp;Age&nbsp;&nbsp;
+                  </li>
+                  
+                </ul>
+              </div>
+       </div> 
+
+</div>
+ 
  
 
     <div class="table-responsive unicode" style="font-size:14px;">
-                <table class="table table-bordered styled-table unicode">
+                <table class="table table-bordered styled-table unicode" id="empoloyeeTable">
                   <thead>
                     <tr> 
-                      <th>No</th>
-                      <th>Image</th>
-                       <th>Employee Id</th>
-                       <th>Name</th>
-                       <th>Rank</th>
-                        <th>Department</th>
-                        <th>Branch</th>
-                        <th>Joined Date</th>
-                        <th>Phone No</th>
+                      <th class="no">No</th>
+                      <th class="image">Image</th>
+                       <th class="employee_id">Employee Id</th>
+                       <th class="name">Name</th>
+                       <th class="rank">Rank</th>
+                        <th class="department">Department</th>
+                        <th class="branch">Branch</th>
+                        <th class="joined_date">Joined Date</th>
+                        <th class="phone_no">Phone No</th>
+                        <th class="age">Age</th>
                         <th>Status</th>
                         <!-- <th></th> -->
                        <!--  <th>NRC</th>
@@ -282,21 +325,21 @@
                     @if($employees->count()>0)
               		 @foreach($employees as $employee)
                         <tr class="table-tr" data-url="{{route('employee.show',$employee->id)}}">
-                            <td>{{++$i}}</td>
+                            <td class="no">{{++$i}}</td>
                             @if($employee->photo == '')
-                            <td>
+                            <td class="image">
                             <img src="{{ asset('uploads/employeePhoto/default.png') }}" alt="photo" width="80px" height="80px">
                             </td>
                             @else
-                            <td>
+                            <td class="image">
                              <img src="{{ asset('uploads/employeePhoto/'.$employee->photo)}}" alt="photo" width="80px" height="80px">
                              </td>
                              @endif
-                            <td>{{$employee->emp_id}}</td>
-                            <td>{{$employee->name}}</td>
-                             <td>{{$employee->viewPosition->name}}</td>
-                            <td>{{$employee->viewDepartment->name}}</td>
-                            <td>{{$employee->viewBranch->name}}</td>
+                            <td class="employee_id">{{$employee->emp_id}}</td>
+                            <td class="name">{{$employee->name}}</td>
+                             <td class="rank">{{$employee->viewPosition->name}}</td>
+                            <td class="department">{{$employee->viewDepartment->name}}</td>
+                            <td class="branch">{{$employee->viewBranch->name}}</td>
                             <?php 
                                   $currentyear = date('Y');
                                   $currentday = date('m');
@@ -314,7 +357,7 @@
                                   }
                               ?>
                              
-                            <td>{{date('d-m-Y',strtotime($employee->join_date))}} <br>
+                            <td class="joined_date">{{date('d-m-Y',strtotime($employee->join_date))}} <br>
                               {{-- ({{  Carbon\Carbon::parse($employee->join_date)->age + 1}}) years --}}
                               @php  
                                 $d1 = new DateTime(date('Y-m-d',strtotime($employee->join_date)));
@@ -325,7 +368,8 @@
                               @endphp
                                ({{ $format }})
                             </td>
-                            <td>{{$employee->phone_no}}</td>
+                            <td class="phone_no">{{$employee->phone_no}}</td>
+                            <td class="age">{{date('d-m-Y',strtotime($employee->date_of_birth))}}</td>
 
                             <td>
                               <label class="switch">
@@ -444,6 +488,22 @@
             }
             toastr.success("{{ session('success') }}");
         @endif
+
+         $(function () {
+          var $chk = $("#grpChkBox input:checkbox"); 
+          var $tbl = $("#empoloyeeTable");
+          var $tblhead = $("#empoloyeeTable th");
+       
+          $chk.prop('checked', true); 
+       
+          $chk.click(function () {
+              var colToHide = $tblhead.filter("." + $(this).attr("name"));
+              var index = $(colToHide).index();
+              $tbl.find('tr :nth-child(' + (index + 1) + ')').toggle();
+          });
+        });
+
+
         $(document).ready(function(){
 
            $(function() {
