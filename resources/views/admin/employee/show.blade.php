@@ -53,14 +53,15 @@
    // dd($year);
    ?>
 <div class="row">
-   <div class="col-lg-10">
+   <div class="col-lg-8">
       <a class="btn btn-success unicode" href="{{route('employee.index')}}"> Back</a>
    </div>
-   <div class="col-lg-2">
+   <div class="col-lg-4">
       <div class="pull-right">
          <form action="{{route('employee.destroy',$employees->id)}}" method="POST" onsubmit="return confirm('Do you really want to delete?');">
             @csrf
             @method('DELETE')
+            <a class="btn btn-sm btn-primary" href="{{route('downloadPDF',$employees->id)}}">Download PDF</a>
             <a class="btn btn-sm btn-primary" href="{{route('employee.edit',$employees->id)}}"><i class="fa fa-fw fa-edit" /></i></a>
             <button type="submit" class="btn btn-sm btn-danger"><i class="fa fa-fw fa-trash" /></i></button> 
          </form>

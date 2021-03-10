@@ -314,6 +314,7 @@
                         <th class="joined_date">Joined Date</th>
                         <th class="phone_no">Phone No</th>
                         <th class="age">Age</th>
+                        <th>Download PDF</th>
                         <th>Status</th>
                         <!-- <th></th> -->
                        <!--  <th>NRC</th>
@@ -370,6 +371,7 @@
                             </td>
                             <td class="phone_no">{{$employee->phone_no}}</td>
                             <td class="age">{{date('d-m-Y',strtotime($employee->date_of_birth))}}</td>
+                           <td><a href="{{route('downloadPDF',$employee->id)}}">Download PDF</a></td>
 
                             <td>
                               <label class="switch">
