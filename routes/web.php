@@ -147,6 +147,9 @@ Route::get('/offdays/csv/download', 'OffdayController@downloadOffdaysCSV')->name
 
 Route::post('offdayexport', [App\Http\Controllers\OffdayController::class, 'offdayexport'])->name('offdayexport');
 
+Route::get('/downloadPDF/{id}','EmployeeController@downloadPDF')->name('downloadPDF');
+
+
 
 
 

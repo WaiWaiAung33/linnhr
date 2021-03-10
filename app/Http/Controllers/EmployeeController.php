@@ -27,7 +27,7 @@ use Illuminate\Support\Facades\Hash;
 use Carbon\Carbon;
 use DateTime;
 use PHPExcel_Worksheet_Drawing;
-
+use PDF;
 
 class EmployeeController extends Controller
 {
@@ -1122,7 +1122,13 @@ $extension;
           return redirect()->route('employee.index')->with('success','Employee updated successfully');;
     }
 
- 
-  
+    public function downloadPDF($id) {
+        // dd($id);
+        $show = Employee::find($id);
+        // dd($show);
+        $pdf = PDF::loadView('admin.employee.pdfshow', compact('show'));
+        
+        return $pdf->download('employee.pdf');
+    }
 
 }
