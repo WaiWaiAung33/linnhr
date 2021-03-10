@@ -94,13 +94,62 @@ class NoticeBoardController extends Controller
             'uploaded_by'=>auth()->user()->id,
             'image'=>json_encode($data)
         ]);
-        $employees = Employee::where('active',1)->get();
 
-        // foreach ($employees as $key => $employee) {
+        if ($request->notice_type == 1) {
+            // dd("All");
+            $employees = Employee::where('active',1)->get();
 
-        //     $this->notification($employee->noti_token,$request->title,$employee->id);
-        // }
-        $this->notification("fnEky0MyT7yF3IVADpzrLi:APA91bFeuH5zM7N_ddnlMWu5PTkGK5vLojhPmUpc5s__0FpkhhLELoFjPhrkTXPl0GRtlFPhU-P5flHXRRShejYRQ_FvwnTz09cBCwOAhdREWJ74wdW6CXYCBM9pAMi6mr3j-4vCP4zr",$request->title,619);
+            foreach ($employees as $key => $employee) {
+
+                if ($employee->noti_token != null) {
+                    $this->notification($employee->noti_token,$request->title,$employee->id);
+                }
+                
+            }
+        }
+
+        if ($request->notice_type == 2) {
+            // dd("Rank");
+            $employees = Employee::where('position_id',$request->rank)->where('active',1)->get();
+            
+            foreach ($employees as $key => $employee) {
+
+                if ($employee->noti_token != null) {
+                    $this->notification($employee->noti_token,$request->title,$employee->id);
+                }
+                
+            }
+        }
+
+        if ($request->notice_type == 3) {
+
+            // dd("Department");
+            $employees = Employee::where('dept_id',$request->department)->where('active',1)->get();
+            
+            foreach ($employees as $key => $employee) {
+
+                if ($employee->noti_token != null) {
+                    $this->notification($employee->noti_token,$request->title,$employee->id);
+                }
+                
+            }
+        }
+
+        if ($request->notice_type == 4) {
+
+            // dd("Branch");
+            $employees = Employee::where('branch_id',$request->branch)->where('active',1)->get();
+            
+            foreach ($employees as $key => $employee) {
+
+                if ($employee->noti_token != null) {
+                    $this->notification($employee->noti_token,$request->title,$employee->id);
+                }
+                
+            }
+        }
+        
+        // $this->notification("fnEky0MyT7yF3IVADpzrLi:APA91bFeuH5zM7N_ddnlMWu5PTkGK5vLojhPmUpc5s__0FpkhhLELoFjPhrkTXPl0GRtlFPhU-P5flHXRRShejYRQ_FvwnTz09cBCwOAhdREWJ74wdW6CXYCBM9pAMi6mr3j-4vCP4zr",$request->title,619);
 
         return redirect()->route('notice_board.index')->with('success','Success');
     }
@@ -118,17 +167,19 @@ class NoticeBoardController extends Controller
             'userId'=>$userId,
         ];
 
+        // dd($notification);
+
         $extraNotificationData = ["message" => $notification,"moredata" =>$body];
         
         $fcmNotification = [
             //'registration_ids' => $tokenList, //multple token array
-            'to'        => "fnEky0MyT7yF3IVADpzrLi:APA91bFeuH5zM7N_ddnlMWu5PTkGK5vLojhPmUpc5s__0FpkhhLELoFjPhrkTXPl0GRtlFPhU-P5flHXRRShejYRQ_FvwnTz09cBCwOAhdREWJ74wdW6CXYCBM9pAMi6mr3j-4vCP4zr", //single token
+            'to'        => $token, //single token
             'notification' => $notification,
             'body' => $body
         ];
         // dd($fcmNotification);
         $headers = [
-            'Authorization: key=AAAAt_TS_4s:APA91bE32l2lZ8VOiCqX_nZKcppXNP_rEbYURKwPQqTtTY99MZ15oiFy-s46SGtCGT3rAr-qNbNBsCsCyNrDP3FjdpsdMHrXcsAU0F7zMukBBImaEWQDZVpbQJ8dBkTJv0bfsn2IE7Wa',
+            'Authorization: key=AAAAyrPd2Jw:APA91bFPVoAlY8hPRo5-VItGttnTQKiKTbu4vQEsQJXUxH5SGRAtbL34d6p3dLkyqCMrkRAOavoyTAjHzfAKFB5uexmnt9YlCX1vUSkQx_xMrLZipMq3p-vazqU1Uwkb2yn_jacfxPCn',
             'Content-Type: application/json'
         ];
 
@@ -140,6 +191,7 @@ class NoticeBoardController extends Controller
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
         curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($fcmNotification));
+        // dd($ch);
         $result = curl_exec($ch);
         // dd($result);
         curl_close($ch);
