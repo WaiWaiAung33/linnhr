@@ -94,7 +94,7 @@ class EmployeeApiController extends Controller
                                                     'employee.join_date'
                                                  );
                             if ($request->keyword != '') {
-                                $employee = $employee->where('employee.name','like','%'.$request->keyword.'%')->orwhere('employee.phone_no','like','%'.$request->keyword.'%')->where('emp_id','like','%'.$request->keyword.'%');
+                                $employee = $employee->where('employee.name','like','%'.$request->keyword.'%')->where('employee.phone_no','like','%'.$request->keyword.'%')->where('emp_id','like','%'.$request->keyword.'%');
                             }
                             if ($request->branch_id != '') {
                                 $employee = $employee->where('employee.branch_id',$request->branch_id);
