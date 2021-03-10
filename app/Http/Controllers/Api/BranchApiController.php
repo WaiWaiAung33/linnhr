@@ -22,7 +22,7 @@ class BranchApiController extends Controller
                 array_push($branchlist, $branch);
             }
         if ($request->keyword != '') {
-            $branches = $branches->where('name',$request->keyword);
+            $branches = $branches->where('name','like','%'.$request->keyword.'%');
         }
 
         return response(['branches' => $branches,'message'=>"Successfully login",'status'=>1]);

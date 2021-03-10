@@ -30,7 +30,7 @@ class DepartmentApiController extends Controller
             }
 
         if ($request->keyword != '') {
-            $departments = $departments->where('name',$request->keyword);
+            $departments = $departments->where('name','like','%'.$request->keyword.'%');
         }
 
         return response(['departments' => $departments,'message'=>"Successfully login",'status'=>1]);
