@@ -19,6 +19,7 @@ use Carbon\Carbon;
 use DateTime;
 use File;
 use Illuminate\Support\Str;
+use PhpOffice\PhpSpreadsheet\Shared\Date;
 
 
 class OffdayController extends Controller
@@ -236,16 +237,19 @@ class OffdayController extends Controller
             $offday = $offday->where('employee.dep_id',$request->dept_id);
         }
 
+        // dd($offday->get());
+
         $offday = $offday->leftjoin('employee','employee.id','=','offday.emp_id')
         ->select(
                 
                 'employee.photo As photo',
                 'employee.name As name',
-                 transformDate(offday.off_day_1)->format("d-m-Y"),
-              
-                
-        )->get()->toArray();
-        // dd($kpi);
+                DB::raw('DATE_FORMAT(offday.off_day_1, "%d-%b-%Y") as day_1'),
+                DB::raw('DATE_FORMAT(offday.off_day_2, "%d-%b-%Y") as day_2'),
+                DB::raw('DATE_FORMAT(offday.off_day_3, "%d-%b-%Y") as day_3'),
+                DB::raw('DATE_FORMAT(offday.off_day_4, "%d-%b-%Y") as day_4'),
+           )->get()->toArray();
+        // dd($offday);
 
       
         // \Excel::store(
@@ -255,14 +259,5 @@ class OffdayController extends Controller
         //         \Maatwebsite\Excel\Excel::XLSX);
         return Excel::download(new OffdayExport(array_keys($offday[0]),$offday, $offday), 'offday.xlsx');
     }
-
-      public function transformDate($value, $format = 'd-m-Y')
-        {
-            try {
-                return \Carbon\Carbon::instance(\PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($value));
-            } catch (\ErrorException $e) {
-                return \Carbon\Carbon::createFromFormat($format, $value);
-            }
-        }
 
 }
