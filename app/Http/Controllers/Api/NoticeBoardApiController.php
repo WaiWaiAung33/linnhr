@@ -43,4 +43,14 @@ class NoticeBoardApiController extends Controller
 	    	}
 	    }
 	}
+
+	public function get_noti_count()
+	{
+		$date = now();
+		$today_date = date('Y-m-d',strtotime($date));
+		// dd($today_date);
+		$noti_count = NoticeBoard::whereDate('publish_date',$today_date)->get()->count();
+
+		 return response(['message'=>"Success",'status'=>1,'noti_count'=>$noti_count]);
+	}
 }
