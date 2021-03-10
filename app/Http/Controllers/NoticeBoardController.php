@@ -102,7 +102,7 @@ class NoticeBoardController extends Controller
             foreach ($employees as $key => $employee) {
 
                 if ($employee->noti_token != null) {
-                    $this->notification($employee->noti_token,$request->title,$employee->id);
+                    $this->notification($employee->noti_token,$request->title,$request->description,$employee->id);
                 }
                 
             }
@@ -115,7 +115,7 @@ class NoticeBoardController extends Controller
             foreach ($employees as $key => $employee) {
 
                 if ($employee->noti_token != null) {
-                    $this->notification($employee->noti_token,$request->title,$employee->id);
+                    $this->notification($employee->noti_token,$request->title,$request->description,$employee->id);
                 }
                 
             }
@@ -129,7 +129,7 @@ class NoticeBoardController extends Controller
             foreach ($employees as $key => $employee) {
 
                 if ($employee->noti_token != null) {
-                    $this->notification($employee->noti_token,$request->title,$employee->id);
+                    $this->notification($employee->noti_token,$request->title,$request->description,$employee->id);
                 }
                 
             }
@@ -143,7 +143,7 @@ class NoticeBoardController extends Controller
             foreach ($employees as $key => $employee) {
 
                 if ($employee->noti_token != null) {
-                    $this->notification($employee->noti_token,$request->title,$employee->id);
+                    $this->notification($employee->noti_token,$request->title,$request->description,$employee->id);
                 }
                 
             }
@@ -154,14 +154,14 @@ class NoticeBoardController extends Controller
         return redirect()->route('notice_board.index')->with('success','Success');
     }
 
-    public function notification($token, $body,$userId) 
+    public function notification($token,$title,$body,$userId) 
     {
         // dd($token);
         $fcmUrl = 'https://fcm.googleapis.com/fcm/send';
         $token=$token;
 
         $notification = [
-            'title' => "Linn HR",
+            'title' => $title,
             'sound' => true,
             'body' => $body,
             'userId'=>$userId,
@@ -175,7 +175,8 @@ class NoticeBoardController extends Controller
             //'registration_ids' => $tokenList, //multple token array
             'to'        => $token, //single token
             'notification' => $notification,
-            'body' => $body
+            'body' => $body,
+            'click_action'=>'com.linn.solution.linn_hr.FCM_NOTIFICATION_DETAIL'
         ];
         // dd($fcmNotification);
         $headers = [
