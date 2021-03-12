@@ -147,7 +147,11 @@
                               @endforeach
                             </td>
                             <td style="text-align: right;">{{ $totalpoint }}</td>
-                            <td>{{ $kpi->comment  }}</td>
+                            <td>
+                               <button class="btn btn-secondary btn-sm" data-comment="{{ $kpi->comment }}" first-name="Endurance" data-toggle="modal" data-target="#myModal">
+                                <i class="fa fa-eye" aria-hidden="true"></i>
+                              </button>
+                            </td>
                         </tr>
                       @endforeach
                     @else
@@ -160,6 +164,24 @@
                 </table> 
           </div>
        </div> 
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">Comment</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      </div>
+      <div class="modal-body">
+       <p name="comment"></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
 </div>
 
 
@@ -226,6 +248,17 @@
                 .borderColors()
                 .title('KPI by Branch')
         });
+
+      $('#myModal').on('show.bs.modal', function (e) {
+        // get information to update quickly to modal view as loading begins
+        var opener=e.relatedTarget;//this holds the element who called the modal
+         //we get details from attributes
+        var cmt=$(opener).attr('data-comment');
+
+      //set what we got to our form
+        $('.modal-body').find('[name="comment"]').text(cmt);
+         
+      });
 
 </script>
 @stop
