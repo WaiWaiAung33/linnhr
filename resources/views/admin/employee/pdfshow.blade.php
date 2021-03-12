@@ -4,16 +4,16 @@
 	<title>Employee PDF</title>
 </head>
 <body>
-   <h3>Personal Data</h3>
- <!--   @if($show->photo == '')
+   @if($show->photo == '')
       <div style="text-align: center;">
          <img src="{{ asset('uploads/employeePhoto/default.png') }}" alt="photo" style="width: 20% !important">
       </div>
-      @else
+   @else
       <div style="text-align: center;">
-         <img src="{{ asset('uploads/employeePhoto/'.$show->photo) }}" alt="photo" width="100px" height="100px">
+         <img src="{{ $b64img }}" alt="{{$show->photo}}" width="100px" height="120px">
       </div>
-   @endif -->
+   @endif
+   <br>
  <div class="table-responsive" id="personal_table">
          <table class="table table-bordered styled-table unicode">
             <tbody>
@@ -42,12 +42,6 @@
                <tr>
                   <td>Religion<span style="padding-left: 155px">{{$show->religion ? $show->religion : "-"}}</span></td>
                </tr>
-               <!--  <tr>
-                  <td>Phone <span style="padding-left: 195px">{{$show->phone_no}}</span></td>
-                  </tr> -->
-               <!--  <tr>
-                  <td>Address<span style="padding-left: 190px">{{$show->address}}</span></td>
-                  </tr> -->
             </tbody>
          </table>
       </div>
