@@ -29,6 +29,9 @@ $colorArr = ['#FC0107','#FD8008','#0576f4','#00A825','#21FF06'];
   $dept_id = isset($_GET['dept_id'])?$_GET['dept_id']:'';
   $year = isset($_GET['year'])?$_GET['year']:'';
   $month = isset($_GET['month'])?$_GET['month']:'';
+  $kpi = isset($_GET['kpi'])?$_GET['kpi']:'';
+  $point = isset($_GET['point'])?$_GET['point']:'';
+  $order = isset($_GET['order'])?$_GET['order']:'';
 ?>
    
 <form class="form-horizontal" action="{{route('kpiimport')}}" method="POST" enctype="multipart/form-data">
@@ -107,7 +110,41 @@ $colorArr = ['#FC0107','#FD8008','#0576f4','#00A825','#21FF06'];
                                
                                    <input type="text" name="year" id="year"class="form-control unicode" placeholder="2021" value="{{ old('year',$year) }}" style="font-size: 13px">
                             </div>
-                          
+                        </div>
+                        <div class="row">
+                          <div class="col-md-3">
+                             <label for="">Select KPI</label> 
+                              <select class="form-control" id="kpi" name="kpi" style="font-size: 13px">
+                                  <option value="">Select KPI</option> 
+                                  <option value="knowledge" {{ ($kpi==='knowledge')?'selected':'' }}>Knowledge</option>
+                                  <option value="descipline" {{ ($kpi==='descipline')?'selected':'' }}>Discipline</option> 
+                                  <option value="skill_set" {{ ($kpi==='skill_set')?'selected':'' }}>Skill Set</option>
+                                  <option value="team_work" {{ ($kpi==='team_work')?'selected':'' }}>Team Work</option> 
+                                  <option value="social" {{ ($kpi==='social')?'selected':'' }}>Social</option>    
+                                  <option value="motivation" {{ ($kpi==='motivation')?'selected':'' }}>Motivation</option>     
+                              </select>
+                          </div>
+                          <div class="col-md-3">
+                             <label for="">Max/Min</label> 
+                              <select class="form-control" id="point" name="point" style="font-size: 13px">
+                                  <option value="">Select Point</option> 
+                                  <option value="1" {{ ($point==1)?'selected':'' }}>Poor</option>
+                                  <option value="2" {{ ($point==2)?'selected':'' }}>Bad</option> 
+                                  <option value="3" {{ ($point==3)?'selected':'' }}>Average</option>
+                                  <option value="4" {{ ($point==4)?'selected':'' }}>Good</option> 
+                                  <option value="5" {{ ($point==5)?'selected':'' }}>Excellent</option>     
+                              </select>
+                          </div>
+
+                           <div class="col-md-3">
+                             <label for="">Order By Points</label> 
+                              <select class="form-control" id="order" name="order" style="font-size: 13px">
+                                  <option value="">Select Order</option> 
+                                  <option value="desc" {{ ($order=='desc')?'selected':'' }}>Highest</option>
+                                  <option value="asc" {{ ($order=='asc')?'selected':'' }}>Lowest</option>    
+                              </select>
+                          </div>
+
                         </div>
                         <br>
                         <div class="row">

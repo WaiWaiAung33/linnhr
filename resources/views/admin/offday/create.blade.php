@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Hostel')
+@section('title', 'Offday')
 
 @section('content_header')
 @stop

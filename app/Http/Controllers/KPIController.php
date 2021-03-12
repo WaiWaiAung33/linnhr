@@ -78,6 +78,14 @@ class KPIController extends Controller
             $kpis = $kpis->where('month',$dates);
         }
 
+        if(($request->kpi!='') && ($request->point!='')){
+          $kpis = $kpis->where($request->kpi,$request->point);
+        }
+        
+        if($request->order!=''){
+          $kpis = $kpis->orderBy('total',$request->order);
+        }
+
         $count = $kpis->count();
         $kpis = $kpis->orderBy('year','desc')->orderBy('month','desc')->paginate(20);
 
