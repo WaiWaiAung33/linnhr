@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Day Off')
+@section('title', 'Offday')
 
 @section('content_header')
 <div class="row"> 

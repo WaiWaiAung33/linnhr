@@ -27,7 +27,7 @@
 
 
 
-          <div class="row">
+       <!--    <div class="row">
           <form class="form-horizontal" action="{{route('salaryimport')}}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="row form-group">
@@ -48,12 +48,39 @@
  --}}
                      <!--   <button type="button" class="btn btn-warning " id="morefilter" style="margin-left: 10px;font-size: 13px"><i class="fa fa-filter" aria-hidden="true"></i></button> -->
 
-                         <a class="btn btn-success unicode" href="{{route('salary.create')}}" style="margin-left: 10px;font-size: 13px"><i class="fas fa-plus"></i> Salary</a>
+                    <!--      <a class="btn btn-success unicode" href="{{route('salary.create')}}" style="margin-left: 10px;font-size: 13px"><i class="fas fa-plus"></i> Salary</a>
                        
                     
                     </div>
         </form>
+      </div> --> 
+
+
+      <form class="form-horizontal" action="{{route('salaryimport')}}" method="POST" enctype="multipart/form-data">
+      @csrf
+
+       <div class="row form-group">
+            <div class="col-md-2">
+             <input type="file" name="file" class="form-control" style="font-size: 13px">
+                            @if ($errors->has('file'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('file') }}</strong>
+                                </span>
+                            @endif
+            </div>
+            <div class="col-md-1">
+               <button class="btn btn-success btn-sm"><i class="fas fa-file-csv"></i> Import</button>
+            </div>
+           <!-- <div class="col-md-5"></div> -->
+           <div>
+            <a class="btn btn-primary btn-sm"  href="{{route('salarys.download.csv')}}"><i class="fa fa-fw fa-download"></i> Demo CSV File</a>
+           </div>
+           <div style="margin-left: 10px">
+             <a class="btn btn-warning btn-sm" id="export_btn" style="font-size: 13px;" href="{{route('salary.create')}}">Salary</a> 
+           </div>
       </div>
+       
+</form>
 
       {{-- <form id="excel_form" action="{{ route('salaryexport') }}"  method="POST" class="unicode">
                 @csrf
