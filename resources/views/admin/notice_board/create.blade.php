@@ -47,15 +47,7 @@
             </div>    
         </div><br>
 
-         <div class="row">
-               
-        <label class="col-md-2 unicode">Photo</label>
-        <div class="col-md-5">
-          <input type="file" id="filename" name="filename[]" multiple>
-        </div>  
-        <div id="selectedFiles"></div>
-               
-        </div><br>
+         
 
           <div class="row">
                
@@ -113,6 +105,15 @@
                    </select>
               </div>
           </div><br id="break_branch">
+            <div class="row">
+                 
+              <label class="col-md-2 unicode">Photo</label>
+              <div class="col-md-5">
+                <input type="file" id="filename" name="filename[]" multiple>
+              </div>  
+          <div id="selectedFiles"></div>
+                 
+          </div><br>
         <div class="row">
                     <div class="col-md-2"></div>
                     <div class="col-md-5">
@@ -127,27 +128,15 @@
     </div>
 @stop 
 @section('css')
-   <style type="text/css" media="screen">
-        .error_msg{
-            color: #DD4B39;
-        }
-        .has-error input{
-            border-color: #DD4B39;
-        }
-        .jQWCP-wWidget{
-            width: 300px !important;
-            height: 200px !important;
-        }
-  </style>
-    <link type="text/css" rel="stylesheet" href="{{ asset('colorpicker/css/wheelcolorpicker.css')}} " />
-   
+<link id="bsdp-css" href="{{ asset('/css/bootstrap-datepicker3.min.css') }}" rel="stylesheet">
 @stop
 
 
 
 @section('js')
-<!-- <script type="text/javascript" src="{{asset('jquery.min.js')}}"></script> -->
-<script src="https://unpkg.com/bootstrap-datepicker@1.9.0/dist/js/bootstrap-datepicker.min.js"></script>
+<script src="{{ asset('js/bootstrap-datepicker.min.js') }}"></script>
+<script src="{{ asset('js/bootstrap-datepicker.js') }}"></script>
+
   <script type="text/javascript">
     $("#publish_date").datepicker({ format: 'dd-mm-yyyy' });
       $(document).ready(function() {
@@ -182,82 +171,8 @@
               $('#dept_break').hide();
             }
         });
-      /*multiple image preview first input*/
 
-      $("#files").on("change", handleFileSelect);
-
-      selDiv = $("#selectedFiles");
-      $("#myForm").on("submit", handleForm);
-
-      $("body").on("click", ".selFile", removeFile);
-
-      /*end image preview */
-
-      /* Multiple image preview second input*/
-      $("#mobile").on("change", handleFileSelect);
-
-      selDivM = $("#selectFiles");
-      $("#myForm").on("submit", handleForm);
-
-      $("body").on("click", ".selFile", removeFile);
    });
-      /*multiple image preview*/
-
-
-    var selDiv = "";
-    // var selDivM="";
-    var storedFiles = [];
-
-    function handleFileSelect(e) {
-        var files = e.target.files;
-        var filesArr = Array.prototype.slice.call(files);
-        filesArr.forEach(function(f) {
-
-            if(!f.type.match("image.*")) {
-                return;
-            }
-            storedFiles.push(f);
-
-            var reader = new FileReader();
-            reader.onload = function (e) {
-                var html = "<div><img src=\"" + e.target.result + "\" data-file='"+f.name+"' class='selFile' title='Click to remove'>" + f.name + "<br clear=\"left\"/></div>";
-                 selDivM.append(html);
-              }
-            reader.readAsDataURL(f);
-        });
-
-    }
-
-    function handleForm(e) {
-        e.preventDefault();
-        var data = new FormData();
-
-        for(var i=0, len=storedFiles.length; i<len; i++) {
-            data.append('files', storedFiles[i]);
-        }
-
-        var xhr = new XMLHttpRequest();
-        xhr.open('POST', 'handler.cfm', true);
-
-        xhr.onload = function(e) {
-            if(this.status == 200) {
-                console.log(e.currentTarget.responseText);
-                alert(e.currentTarget.responseText + ' items uploaded.');
-            }
-        }
-
-        xhr.send(data);
-    }
-
-    function removeFile(e) {
-        var file = $(this).data("file");
-        for(var i=0;i<storedFiles.length;i++) {
-            if(storedFiles[i].name === file) {
-                storedFiles.splice(i,1);
-                break;
-            }
-        }
-        $(this).parent().remove();
-    }
+     
   </script>
 @stop
