@@ -4,7 +4,6 @@
 	<title>Employee PDF</title>
 </head>
 <body>
-   <h3>Personal Data</h3>
    @if($show->photo == '')
       <div style="text-align: center;">
          <img src="{{ asset('uploads/employeePhoto/default.png') }}" alt="photo" style="width: 20% !important">
