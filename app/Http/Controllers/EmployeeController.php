@@ -1125,10 +1125,11 @@ $extension;
     public function downloadPDF($id) {
         // dd($id);
         $show = Employee::find($id);
+        $name = $show->name;
         // dd($show);
         $pdf = PDF::loadView('admin.employee.pdfshow', compact('show'));
         
-        return $pdf->download('employee.pdf');
+        return $pdf->download($name.'.pdf');
     }
 
 }
