@@ -43,12 +43,6 @@
                <tr>
                   <td>Religion<span style="padding-left: 155px">{{$show->religion ? $show->religion : "-"}}</span></td>
                </tr>
-               <!--  <tr>
-                  <td>Phone <span style="padding-left: 195px">{{$show->phone_no}}</span></td>
-                  </tr> -->
-               <!--  <tr>
-                  <td>Address<span style="padding-left: 190px">{{$show->address}}</span></td>
-                  </tr> -->
             </tbody>
          </table>
       </div>
