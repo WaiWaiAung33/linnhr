@@ -165,8 +165,7 @@
 
 
 @section('js')
-<!-- <script type="text/javascript" src="{{asset('jquery.min.js')}}"></script> -->
-<!-- <script src="https://unpkg.com/bootstrap-datepicker@1.9.0/dist/js/bootstrap-datepicker.min.js"></script> -->
+
 <script src="{{ asset('js/bootstrap-datepicker.min.js') }}"></script>
 <script src="{{ asset('js/bootstrap-datepicker.js') }}"></script>
 

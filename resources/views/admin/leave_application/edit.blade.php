@@ -177,8 +177,10 @@
 @section('js')
 <script type="text/javascript" src="{{ asset('select2/js/select2.min.js') }}"></script>
 <script src="{{ asset('jquery-ui.js') }}"></script>
+
 <script src="{{ asset('js/bootstrap-datepicker.min.js') }}"></script>
 <script src="{{ asset('js/bootstrap-datepicker.js') }}"></script>
+
 <script type="text/javascript">
      $(document).ready(function(){
     var val = $('#halforfull option:selected').val();
