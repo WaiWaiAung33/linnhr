@@ -57,6 +57,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::resource('award','AwardController');
 	Route::resource('training_emp','TrainingEmployeeController');
 	Route::resource('training_attendance','TrainingAttendanceController');
+	Route::resource('test_result','TestResultController');
 
 	Route::post('select-ajax-code','EmployeeController@selectcode')->name('select-ajax-code');
 

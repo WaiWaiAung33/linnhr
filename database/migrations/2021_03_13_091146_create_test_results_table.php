@@ -15,6 +15,11 @@ class CreateTestResultsTable extends Migration
     {
         Schema::create('test_results', function (Blueprint $table) {
             $table->id();
+            $table->integer('training_id');
+            $table->integer('emp_id');
+            $table->date('test_date');
+            $table->text('marks');
+            $table->text('remark');
             $table->timestamps();
         });
     }
