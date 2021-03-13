@@ -1125,10 +1125,16 @@ $extension;
     public function downloadPDF($id) {
         // dd($id);
         $show = Employee::find($id);
-        // dd($show);
-        $pdf = PDF::loadView('admin.employee.pdfshow', compact('show'));
-        
-        return $pdf->download('employee.pdf');
+        $name = $show->name;
+
+        $path = public_path() . '/uploads/employeePhoto/'.$show->photo;
+        $type = pathinfo($path,PATHINFO_EXTENSION);
+        $data = file_get_contents($path);
+        $b64img = 'data:image/' . $type . ';base64,' . base64_encode($data);
+
+        $pdf = PDF::loadView('admin.employee.pdfshow', compact('show','b64img'));
+
+        return $pdf->download($name.'.pdf');
     }
 
 }
