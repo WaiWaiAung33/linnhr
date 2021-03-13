@@ -352,6 +352,39 @@ return [
                 ],
             ],
         ],
+
+        [
+            'text'    => 'Training',
+            'icon'    => 'fa fa-business-time',
+            'submenu' => [
+                
+                [
+                    'text' => 'Training',
+                    'url'  => 'training',
+                    'icon' => 'fa fa-clock',
+                ],
+
+                 [
+                    'text' => 'Training Employee',
+                    'url'  => 'training_emp',
+                    'icon' => 'fa fa-clock',
+                ],
+
+                 [
+                    'text' => 'Training Attendance',
+                    'url'  => 'training_attendance',
+                    'icon' => 'fa fa-clock',
+                ],
+
+                 [
+                    'text' => 'Test Result',
+                    'url'  => 'test_result',
+                    'icon' => 'fa fa-clock',
+                ],
+               
+            ],
+        ],
+        
         [
             'text'    => 'Hostel Management',
             'icon'    => 'fas fa-fw fa-bed',
