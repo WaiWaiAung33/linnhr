@@ -19,10 +19,10 @@
             <tbody>
 
                <tr>
-                  <td>Name<span style="padding-left: 165px">{{$show->name ? $show->name : "-" }}</span></td>
+                  <td>Name<span style="padding-left: 168px">{{$show->name ? $show->name : "-" }}</span></td>
                </tr>
                <tr>
-                  <td>Parent's Name<span style="padding-left: 120px">{{$show->father_name ? $show->father_name : "-"}}</span></td>
+                  <td>Parent's Name<span style="padding-left: 115px">{{$show->father_name ? $show->father_name : "-"}}</span></td>
                </tr>
                <tr>
                   <td>Date of birth<span style="padding-left: 125px">{{date('d-m-Y',strtotime($show->date_of_birth))}}</span></td>
@@ -34,13 +34,13 @@
                   <td>Gender<span style="padding-left: 160px">{{$show->gender ? $show->gender : "-"}}</span></td>
                </tr>
                <tr>
-                  <td>Marital Status<span style="padding-left: 120px">{{$show->marrical_status ? $show->marrical_status : "-"}}</span></td>
+                  <td>Marital Status<span style="padding-left: 117px">{{$show->marrical_status ? $show->marrical_status : "-"}}</span></td>
                </tr>
                <tr>
                   <td>Race<span style="padding-left: 175px">{{$show->race ? $show->race : "-"}}</span></td>
                </tr>
                <tr>
-                  <td>Religion<span style="padding-left: 155px">{{$show->religion ? $show->religion : "-"}}</span></td>
+                  <td>Religion<span style="padding-left: 152px">{{$show->religion ? $show->religion : "-"}}</span></td>
                </tr>
             </tbody>
          </table>
@@ -52,10 +52,10 @@
          <table class="table table-bordered styled-table">
             <tbody>
                <tr>
-                  <td>Phone<span style="padding-left: 163px">{{$show->phone_no ? $show->phone_no : "-"}}</span></td>
+                  <td>Phone<span style="padding-left: 165px">{{$show->phone_no ? $show->phone_no : "-"}}</span></td>
                </tr>
                <tr>
-                  <td>Parent's Phone<span style="padding-left: 110px">{{$show->fPhone ? $show->fPhone : "-"}}</span></td>
+                  <td>Parent's Phone<span style="padding-left: 112px">{{$show->fPhone ? $show->fPhone : "-"}}</span></td>
                </tr>
                <tr>
                   <td>Email <span style="padding-left: 165px">{{  $show->email ? $show->email : "-"}} </span></td>
@@ -78,7 +78,7 @@
             
             <tbody>
                <tr>
-                  <td>Employee Id<span style="padding-left: 130px">{{$show->emp_id ? $show->emp_id : "-"}}</span></td>
+                  <td>Employee Id<span style="padding-left: 128px">{{$show->emp_id ? $show->emp_id : "-"}}</span></td>
                </tr>
                <tr>
                   <td>Rank<span style="padding-left: 175px">{{$show->viewPosition->name ? $show->viewPosition->name : "-"}}</span></td>
@@ -147,7 +147,7 @@
                   <td>Graduation<span style="padding-left: 145px">{{$show->graduation ? $show->graduation : "-"}}</span></td>
                </tr>
                <tr>
-                  <td>University/College<span style="padding-left: 100px">{{$show->qualification ? $show->qualification : "-"}}</span></td>
+                  <td>University/College<span style="padding-left: 98px">{{$show->qualification ? $show->qualification : "-"}}</span></td>
                </tr>
                <tr>
                   <td>Course Title <span style="padding-left: 135px">{{  $show->course_title ? $show->course_title : "-"}} </span></td>
@@ -156,10 +156,10 @@
                   <td>Level<span style="padding-left: 180px">{{$show->level ? $show->level : "-"}}</span></td>
                </tr>
                <tr>
-                  <td>Skill<span style="padding-left: 190px">{{$show->skills ? $show->skills : "-"}}</span></td>
+                  <td>Skill<span style="padding-left: 188px">{{$show->skills ? $show->skills : "-"}}</span></td>
                </tr>
                <tr>
-                  <td>Skill proficiency<span style="padding-left: 120px">{{$show->proficiency ? $show->proficiency : "-"}}</span></td>
+                  <td>Skill proficiency<span style="padding-left: 112px">{{$show->proficiency ? $show->proficiency : "-"}}</span></td>
                </tr>
             </tbody>
          </table>
@@ -173,13 +173,13 @@
                   <td>Company Name<span style="padding-left: 110px">{{$show->exp_company ? $show->exp_company : "-"}}</span></td>
                </tr>
                <tr>
-                  <td>Job Position<span style="padding-left: 130px">{{$show->exp_position ? $show->exp_position : "-"}}</span></td>
+                  <td>Job Position<span style="padding-left: 134px">{{$show->exp_position ? $show->exp_position : "-"}}</span></td>
                </tr>
                <tr>
                   <td>Location<span style="padding-left: 155px">{{$show->exp_location ? $show->exp_location : "-"}}</span></td>
                </tr>
                <tr>
-                  <td>Date<span style="padding-left: 178px">{{$show->exp_date_from ? date('d-m-Y',strtotime($show->exp_date_from)) : "-"}} to {{$show->exp_date_to ? date('d-m-Y',strtotime($show->exp_date_to)) : ""}}</span></td>
+                  <td>Date<span style="padding-left: 182px">{{$show->exp_date_from ? date('d-m-Y',strtotime($show->exp_date_from)) : "-"}} to {{$show->exp_date_to ? date('d-m-Y',strtotime($show->exp_date_to)) : ""}}</span></td>
                </tr>
             </tbody>
          </table>
