@@ -92,6 +92,9 @@ input:checked + .slider:before {
 @section('content')
 <?php
         $name = isset($_GET['name'])?$_GET['name']:'';
+        $branch_id = isset($_GET['branch_id'])?$_GET['branch_id']:'';
+        $dept_id = isset($_GET['dept_id'])?$_GET['dept_id']:'';
+        $position_id = isset($_GET['position_id'])?$_GET['position_id']:'';
 ?>
 <div>
 
@@ -100,9 +103,37 @@ input:checked + .slider:before {
       <form action="{{route('notice_board.index')}}" method="get" accept-charset="utf-8" class="form-horizontal">
      <div class="row form-group">
      
-       <div class="col-md-3">                 
+       <div class="col-md-2">  
+       <label style="margin-top: 13px;"></label>               
           <input type="text" name="name" id="name" value="{{ old('name',$name) }}" class="form-control" placeholder="Search..." style="font-size: 13px">
         </div>
+        <div class="col-md-2">
+          <label>Select Branch</label>
+           <select class="form-control" id="branch_id" name="branch_id" style="font-size: 13px">
+              <option value="">All</option>
+              @foreach($branches as $branch)
+              <option value="{{$branch->id}}" {{ (old('branch_id',$branch_id)==$branch->id)?'selected':'' }}>{{$branch->name}}</option>
+              @endforeach
+          </select>
+        </div>
+        <div class="col-md-2">
+          <label for="">Select Department</label>
+        <select class="form-control" id="dept_id" name="dept_id" style="font-size: 13px">
+              <option value="">All</option>
+              @foreach($departments as $department)
+              <option value="{{$department->id}}" {{ (old('dept_id',$dept_id)==$department->id)?'selected':'' }}>{{$department->name}}</option>
+              @endforeach
+          </select>
+      </div>
+      <div class="col-md-2">
+          <label for="">Select Position</label>
+        <select class="form-control" id="position_id" name="position_id" style="font-size: 13px">
+              <option value="">All</option>
+              @foreach($positions as $position)
+              <option value="{{$position->id}}" {{ (old('position_id',$position_id)==$position->id)?'selected':'' }}>{{$position->name}}</option>
+              @endforeach
+          </select>
+      </div>
      </div>
       </form>
 
@@ -112,12 +143,12 @@ input:checked + .slider:before {
                   <thead>
                     <tr> 
                       <th>No</th>
-                        <th>Title</th>
+                        <th style="width: 20%;">Title</th>
                         <th>Description</th>
-                        <th>Publish Date</th>
+                        <th style="width: 10%;">Publish Date</th>
                         <th>Active/Inactive</th>
-                        <th>Uploaded by</th>  
-                        <th>Action</th>
+                        <th style="width: 8%;">Uploaded by</th>  
+                        <th style="width: 13%;">Action</th>
                     </tr>
                   </thead>
                     <tbody>
@@ -188,6 +219,17 @@ input:checked + .slider:before {
                 $('#name').on('change',function(e) {
                 this.form.submit();
             }); 
+
+            $('#branch_id').on('change',function(e) {
+
+                this.form.submit();
+            });
+            $('#dept_id').on('change',function(e) {
+                this.form.submit();
+            });
+            $('#position_id').on('change',function(e) {
+                this.form.submit();
+            });
    
         });
             

@@ -20,6 +20,10 @@ class NoticeBoardController extends Controller
      */
     public function index(Request $request)
     {
+        $branches = Branch::all();
+        $departments = Department::all();
+        $positions = Position::all();
+
         $notice_boards = new NoticeBoard();
 
         $notice_boards = $notice_boards->leftjoin('users','users.id','=','notice_boards.uploaded_by')
@@ -34,13 +38,22 @@ class NoticeBoardController extends Controller
                                             'department.name AS department'
                                         );
         if ($request->name != '') {
-            $notice_boards = $notice_boards->where('notice_boards.title',$request->name);
+            $notice_boards = $notice_boards->where('notice_boards.title','like','%'.$request->name.'%');
+        }
+        if ($request->branch_id != '') {
+            $notice_boards = $notice_boards->where('notice_boards.branch_id',$request->branch_id);
+        }
+        if ($request->dept_id != '') {
+            $notice_boards = $notice_boards->where('notice_boards.dept_id',$request->dept_id);
+        }
+        if ($request->position_id != '') {
+            $notice_boards = $notice_boards->where('notice_boards.position_id',$request->position_id);
         }
         $count=$notice_boards->get()->count();
 
         $notice_boards = $notice_boards->orderBy('notice_boards.created_at','desc')->paginate(10);
         // dd($count);
-        return view('admin.notice_board.index',compact('count','notice_boards'))->with('i', (request()->input('page', 1) - 1) * 10);
+        return view('admin.notice_board.index',compact('count','notice_boards','branches','departments','positions'))->with('i', (request()->input('page', 1) - 1) * 10);
     }
 
     /**
