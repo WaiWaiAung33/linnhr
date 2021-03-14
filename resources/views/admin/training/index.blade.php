@@ -7,7 +7,42 @@
     <h5 style="color: blue;">Training Management</h5>
 @stop
 @section('content')
-<a class="btn btn-success unicode" href="{{route('training.create')}}" style="float: right;font-size: 13px"><i class="fas fa-plus"></i> Training</a><br>
+ <?php
+  $name = isset($_GET['name'])?$_GET['name']:''; 
+  $from_date = isset($_GET['from_date'])?$_GET['from_date']:'';
+  $to_date = isset($_GET['to_date'])?$_GET['to_date']:'';
+  ?>
+<br>
+
+<form action="{{route('training.index')}}" method="get" accept-charset="utf-8" class="form-horizontal unicode" >
+            <div class="row form-group" id="adv_filter">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-2">
+                            <label for="" class="unicode">Search by Keyword</label>
+                            <input type="text" name="name" id="name" class="form-control" placeholder="Search..." value="{{ old('name',$name) }}" style="font-size: 13px">
+                        </div> 
+
+                         <div class="col-md-2">
+                            <label for="" class="unicode">From Date</label>
+                             <input type="text" name="from_date" id="from_date"class="form-control unicode" placeholder="01-08-2020" value="{{ old('from_date',$from_date) }}" style="font-size: 13px">
+                        </div> 
+
+                         <div class="col-md-2">
+                            <label for="" class="unicode">To Date</label>
+                             <input type="text" name="to_date" id="to_date"class="form-control unicode" placeholder="01-08-2020" value="{{ old('to_date',$to_date) }}" style="font-size: 13px">
+                        </div> 
+
+                         <div class="col-md-6">
+                           <a class="btn btn-success unicode" href="{{route('training.create')}}" style="float: right;font-size: 13px"><i class="fas fa-plus"></i> Training</a>
+                         </div>
+                    </div>
+                </div>
+               
+            </div>
+</form>
+
+
  <p style="padding-top: 20px">Total record: {{$count}}</p>
   <div class="table-responsive" style="font-size:13px">
                 <table class="table table-bordered styled-table">
@@ -62,19 +97,45 @@
        </div>   
 @stop 
 @section('css')
-
+<link id="bsdp-css" href="{{ asset('/css/bootstrap-datepicker3.min.css') }}" rel="stylesheet">
 @stop
 
 @section('js')
- <script> 
-   @if(Session::has('success'))
+ <script src="{{ asset('js/bootstrap-datepicker.js') }}"></script>
+<script> 
+  @if(Session::has('success'))
             toastr.options =
             {
             "closeButton" : true,
             "progressBar" : true
             }
             toastr.success("{{ session('success') }}");
-        @endif
+  @endif
+
+  $(function(){
+
+     $('#name').on('change',function(e) {
+                this.form.submit();
+     }); 
+
+     
+  });
+
+   $(document).ready(function(){
+
+    $("#from_date").datepicker({ format: 'dd-mm-yyyy' });
+    $("#to_date").datepicker({ format: 'dd-mm-yyyy' });
+
+      $('#from_date').on('change',function(e) {
+                  this.form.submit();
+      });
+
+      $('#to_date').on('change',function(e) {
+                  this.form.submit();
+      });
+
+         
+    });
        
-     </script>
+</script>
 @stop

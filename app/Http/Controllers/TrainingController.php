@@ -10,10 +10,21 @@ class TrainingController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $trainings = new Training();
         $count = $trainings->get()->count();
+        if($request->name != '') {
+        $trainings = $trainings->Where('name','like','%'.$request->name.'%')->orwhere('trainer_name','like','%'.$request->name.'%')->orwhere('trainer_info','like','%'.$request->name.'%');
+        }
+
+        if ($request->from_date != '' || $request->to_date != '') {
+            $startDate =  date('Y-m-d', strtotime($request->from_date));
+            $endDate = date('Y-m-d', strtotime($request->to_date));
+            $trainings = Training::whereBetween('trainings.start_date',[$startDate,$endDate]);
+            // dd($trainings);
+        }
+
         $trainings = $trainings->orderBy('trainings.created_at','desc')->paginate(10);
         return view('admin.training.index',compact('count','trainings'))->with('i', (request()->input('page', 1) - 1) * 10);
     }

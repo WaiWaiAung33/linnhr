@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\TrainingEmployee;
 use App\Training;
+use App\Department;
+use App\Branch;
 use App\Employee;
 use Illuminate\Http\Request;
 
@@ -14,12 +16,35 @@ class TrainingEmployeeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $trainings = new TrainingEmployee();
+        $branches = Branch::where('status',1)->get();
+        $departments = Department::where('status',1)->get();
         $count = $trainings->get()->count();
+
+        $trainings = $trainings->leftjoin('employee','employee.id','=','training_employees.emp_id')
+                              ->leftjoin('trainings','trainings.id','=','training_employees.training_id')
+                              ->select(
+                                        'trainings.*',
+                                        'employee.name As employee_name',
+                                        'trainings.name As training_name'
+                                    );
+
+        if($request->name != '') {
+        $trainings = $trainings->Where('trainings.name','like','%'.$request->name.'%')->orwhere('employee.name','like','%'.$request->name.'%');
+        }
+
+         if ($request->branch_id != '') {
+            $trainings = $trainings->where('employee.branch_id',$request->branch_id);
+        }
+
+         if ($request->dept_id != '') {
+            $trainings = $trainings->where('employee.dep_id',$request->dept_id);
+        }
+
         $trainings = $trainings->orderBy('training_employees.created_at','desc')->paginate(10);
-        return view('admin.training_employee.index',compact('count','trainings'))->with('i', (request()->input('page', 1) - 1) * 10);
+        return view('admin.training_employee.index',compact('count','trainings','branches','departments'))->with('i', (request()->input('page', 1) - 1) * 10);
     }
 
     /**
