@@ -124,7 +124,7 @@ class NoticeBoardController extends Controller
         if ($request->notice_type == 3) {
 
             // dd("Department");
-            $employees = Employee::where('dept_id',$request->department)->where('active',1)->get();
+            $employees = Employee::where('dep_id',$request->department)->where('active',1)->get();
             
             foreach ($employees as $key => $employee) {
 
