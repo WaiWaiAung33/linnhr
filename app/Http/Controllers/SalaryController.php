@@ -22,9 +22,11 @@ class SalaryController extends Controller
     public function index(Request $request)
     {
 
+        $year = isset($request->year)?$request->year:date('Y');
+
         $departments = Department::all();
 
-         $salarys = Salary::all();
+        $salarys = Salary::all();
 
         $employees = new Employee();
         if($request->name != '') {
@@ -35,13 +37,12 @@ class SalaryController extends Controller
             $employees = $employees->where('dep_id',$request->dep_id);
         }
 
-        if ($request->year != '') {
-            $salarys = $salarys->where('year',$request->year);
+        if ($year != '') {
+            $salarys = $salarys->where('year',$year);
             // dd($salarys);
            
         }
 
-        // dd($salarys);
        
         $count = $employees->count();
         $employees = $employees->paginate(10);
@@ -166,18 +167,22 @@ class SalaryController extends Controller
      */
     public function show(Request $request,$id)
     {
+        $year = isset($request->year)?$request->year:date('Y');
+
         $salarys =new Salary();
-        if ($request->year != '') {
-            $salarys = $salarys->where('year',$request->year);
+        if ($year != '') {
+            $salarys = $salarys->where('year',$year);
         }
+        
         if ($request->month != '') {
             $salarys = $salarys->where('pay_date',$request->month);
         }
+
         $employees = Employee::find($id);
         $count = $salarys->count();
         $salarys = $salarys->paginate(12);
        
-        return view('admin.salary.show',compact('employees','salarys','count'))->with('i', (request()->input('page', 1) - 1) * 10);;
+        return view('admin.salary.show',compact('employees','salarys','count'))->with('i', (request()->input('page', 1) - 1) * 12);;
     }
 
     /**
