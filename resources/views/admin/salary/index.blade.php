@@ -76,7 +76,7 @@
             <a class="btn btn-primary btn-sm"  href="{{route('salarys.download.csv')}}"><i class="fa fa-fw fa-download"></i> Demo CSV File</a>
            </div>
            <div style="margin-left: 10px">
-             <a class="btn btn-warning btn-sm" id="export_btn" style="font-size: 13px;" href="{{route('salary.create')}}">Salary</a> 
+             <a class="btn btn-warning btn-sm" id="export_btn" style="font-size: 13px;" href="{{route('salary.create')}}"><i class="fa fa-fw fa-plus"></i>  Add Salary</a> 
            </div>
       </div>
        
