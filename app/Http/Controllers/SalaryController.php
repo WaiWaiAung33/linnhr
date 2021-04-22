@@ -178,9 +178,11 @@ class SalaryController extends Controller
             $salarys = $salarys->where('pay_date',$request->month);
         }
 
+        $salarys = $salarys->where('emp_id',$id);
+
         $employees = Employee::find($id);
         $count = $salarys->count();
-        $salarys = $salarys->paginate(12);
+        $salarys = $salarys->get();
        
         return view('admin.salary.show',compact('employees','salarys','count'))->with('i', (request()->input('page', 1) - 1) * 12);;
     }

@@ -118,7 +118,7 @@
 
 	
 	</table>
-  {!! $salarys->appends(request()->input())->links() !!}
+  {{-- {!! $salarys->appends(request()->input())->links() !!} --}}
 
 </div>
 <p >Total record: {{$count}}</p>
