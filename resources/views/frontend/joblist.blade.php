@@ -255,13 +255,14 @@
         <div class="container">
             <div class="row">
              
-                <div class="col-lg-3 col-md-4 col-12 mt-4 mt-sm-0 pt-2 pt-sm-0">
+                <div class="col-lg-4 col-md-4 col-12 mt-4 mt-sm-0 pt-2 pt-sm-0">
                     <p class="text-white mb-4 footer-list-title">Branch</p>
                       <ul class="social list-inline mb-0">
                                 <li><a href="#" style="color: white" class="unicode">Head Office</a></li>
-                                <li><a href="#" style="color: white" class="unicode">Linn 1</a></li>
-                                <li><a href="#" style="color: white" class="unicode">Linn 2</a></li>
-                            </ul>
+                                <li><a href="#" style="color: white" class="unicode">Linn Naypyitaw Branch</a></li>
+                                <li><a href="#" style="color: white" class="unicode">Linn Pyinmana Branch</a></li>
+                                <li><a href="#" style="color: white" class="unicode">Yangon Showroom</a></li>
+                            </ul><br>
                               <ul class="social-icon social list-inline mb-0">
                             <li class="list-inline-item"><a href="https://www.facebook.com/linncomputerstore/" class="rounded"><i class="mdi mdi-facebook"></i></a></li>
                             <li class="list-inline-item"><a href="#" class="rounded"><i class="mdi mdi-twitter"></i></a></li>
@@ -269,21 +270,24 @@
                             <li class="list-inline-item"><a href="#" class="rounded"><i class="mdi mdi-google"></i></a></li>
                         </ul>
                 </div>
-                <div class="col-lg-3 col-md-4 col-12 mt-4 mt-sm-0 pt-2 pt-sm-0">
+                <div class="col-lg-4 col-md-4 col-12 mt-4 mt-sm-0 pt-2 pt-sm-0">
                     <p class="text-white mb-4 footer-list-title">Phone No</p>
                     <ul class="list-unstyled footer-list">
-                        <li><a href="#" style="color: white" class="unicode">09 400887799</a></li>
-                        <li><a href="#" style="color: white" class="unicode">067-24488, 26884</a></li>
+                        <li><a href="#" style="color: white" class="unicode">09-789799799, 067-22884,23884,24884</a></li>
                         <li><a href="#" style="color: white" class="unicode">067-414884,414885,432884</a></li>
+                        <li><a href="#" style="color: white" class="unicode">067-24488, 26884</a></li>
+                         <li><a href="#" style="color: white" class="unicode">09-422294884, 09-346038884, 09-400558855</a></li>
                     </ul>
                 </div>
             
-                <div class="col-lg-3 col-md-4 col-12 mt-4 mt-sm-0 pt-2 pt-sm-0">
+                <div class="col-lg-4 col-md-4 col-12 mt-4 mt-sm-0 pt-2 pt-sm-0">
                     <p class="text-white mb-4 footer-list-title f-17">Address</p>
                     <ul class="list-unstyled text-foot mt-4 mb-0">
                          <li><a href="#" style="color: white" class="unicode">No. 14/585, 4th Street, Paung Laung Quarter, Pyinmana.</a></li>
+                        <li><a href="#" style="color: white" class="unicode">No.117, Thapyagone Quarter, Naypyitaw </a></li>
                         <li><a href="#" style="color: white" class="unicode">No.11/7, Bogyoke Road, Pyinmana</a></li>
-                        <li><a href="#" style="color: white" class="unicode">No.117, Thapyagone Quarter, Naypyitaw</a></li>
+                        <li><a href="#" style="color: white" class="unicode">Star mart 9 Mile Show Room, Pyay Road</a></li>
+                      
                     </ul>
                 </div>
             </div>
