@@ -134,8 +134,7 @@
                         </div>
                         <div class="contact-details">
                             <h4 class="text-dark mb-1">Website</h4>
-                            <p class="mb-0 text-muted">Brandcode Pvt.Ltd.co.in</p>
-                            <p class="mb-0 text-muted">Themescode Pvt.Ltd.co.in</p>
+                            <a class="mb-0 text-muted" href="http://linncomputer.com/" target="blank">linncomputer.com</a>
                         </div>
                     </div>
                 </div>
@@ -149,8 +148,8 @@
                         </div>
                         <div class="contact-details">
                             <h4 class="text-dark mb-1">Call us</h4>
-                            <p class="mb-0 text-muted">123 456 7890</p>
-                            <p class="mb-0 text-muted">123 456 7890</p>
+                            <p class="mb-0 text-muted">09-789799799</p>
+                            <!-- <p class="mb-0 text-muted">067-414884,414885,432884</p> -->
                         </div>
                     </div>
                 </div>
@@ -164,8 +163,7 @@
                         </div>
                         <div class="contact-details">
                             <h4 class="text-dark mb-1">Email</h4>
-                            <p class="mb-0 text-muted">Themescodeltd@gmail.com</p>
-                            <p class="mb-0 text-muted">Brandcodeltd@gmail.com</p>
+                            <p class="mb-0 text-muted">nfo@linncomputer.com</p>
                         </div>
                     </div>
                 </div>
@@ -173,7 +171,12 @@
         </div>
     </section>
     <!-- CONTACT END -->
-    <section class="section">
+    <!-- <section class="section"> -->
+        <div style="width: 100%; margin-top: 20px;">
+   <iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d2965.0824050173574!2d-93.63905729999999!3d41.998507000000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sWebFilings%2C+University+Boulevard%2C+Ames%2C+IA!5e0!3m2!1sen!2sus!4v1390839289319" width="100%" height="400" frameborder="0" style="border:0"></iframe>
+</div>
+    <!-- </section> -->
+    <!-- <section class="section">
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 col-md-5">
@@ -197,7 +200,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
 
   <!-- footer start -->
     <footer class="footer">
