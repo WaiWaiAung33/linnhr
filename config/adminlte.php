@@ -361,25 +361,25 @@ return [
                 [
                     'text' => 'Training',
                     'url'  => 'training',
-                    'icon' => 'fa fa-clock',
+                    'icon' => 'fa fa-university',
                 ],
 
                  [
                     'text' => 'Training Employee',
                     'url'  => 'training_emp',
-                    'icon' => 'fa fa-clock',
+                    'icon' => 'fa fa-users',
                 ],
 
                  [
                     'text' => 'Training Attendance',
                     'url'  => 'training_attendance',
-                    'icon' => 'fa fa-clock',
+                    'icon' => 'fa fa-transgender-alt',
                 ],
 
                  [
                     'text' => 'Test Result',
                     'url'  => 'test_result',
-                    'icon' => 'fa fa-clock',
+                    'icon' => 'fa fa-list-alt',
                 ],
                
             ],
