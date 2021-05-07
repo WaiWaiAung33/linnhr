@@ -44,6 +44,8 @@
   
   ?>
 
+  
+
         <form class="form-horizontal unicode" action="{{route('import')}}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="row">
@@ -370,7 +372,23 @@
                                ({{ $format }})
                             </td>
                             <td class="phone_no">{{$employee->phone_no}}</td>
-                            <td class="age">{{date('d-m-Y',strtotime($employee->date_of_birth))}}</td>
+
+                            <?php 
+                               $currentyearbirth = date('Y');
+                               $currentdaybitrh = date('m');
+                               $currentmonthbirth = date('d');
+                               $joindaybirth = date('m',strtotime($employee->date_of_birth));
+                               $joinyearbirth = date('Y',strtotime($employee->date_of_birth));
+                               $joinmonthbirth = date('d',strtotime($employee->date_of_birth));
+                               if($currentdaybitrh < $joindaybirth || $currentmonthbirth < $joinmonthbirth) {
+                                 $workbirth = $currentyearbirth - $joinyearbirth;
+                                 $workyearbirth = $workbirth ;
+                               }else {
+                                 $workyearbirth = $currentyearbirth - $joinyearbirth;
+                               }
+                               ?>
+
+                            <td class="age">{{date('d-m-Y',strtotime($employee->date_of_birth))}}  <span>({{ Carbon\Carbon::parse($employee->date_of_birth)->age + 1 }}) years</span></td>
                            <td><a href="{{route('downloadPDF',$employee->id)}}">Download PDF</a></td>
 
                             <td>
