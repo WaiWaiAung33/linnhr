@@ -4,6 +4,22 @@
 	<title>Employee PDF</title>
 </head>
 <body>
+
+   <?php 
+    $currentyearbirth = date('Y');
+    $currentdaybitrh = date('m');
+    $currentmonthbirth = date('d');
+    $joindaybirth = date('m',strtotime($show->date_of_birth));
+    $joinyearbirth = date('Y',strtotime($show->date_of_birth));
+    $joinmonthbirth = date('d',strtotime($show->date_of_birth));
+    if($currentdaybitrh < $joindaybirth || $currentmonthbirth < $joinmonthbirth) {
+      $workbirth = $currentyearbirth - $joinyearbirth;
+      $workyearbirth = $workbirth ;
+    }else {
+      $workyearbirth = $currentyearbirth - $joinyearbirth;
+    }
+    ?>
+
    @if($show->photo == '')
       <div style="text-align: center;">
          <img src="{{ asset('uploads/employeePhoto/default.png') }}" alt="photo" style="width: 20% !important">
@@ -25,7 +41,7 @@
                   <td>Parent's Name<span style="padding-left: 115px">{{$show->father_name ? $show->father_name : "-"}}</span></td>
                </tr>
                <tr>
-                  <td>Date of birth<span style="padding-left: 125px">{{date('d-m-Y',strtotime($show->date_of_birth))}}</span></td>
+                  <td>Age<span style="padding-left:180px">{{date('d-m-Y',strtotime($show->date_of_birth))}}</span><span>({{ Carbon\Carbon::parse($show->date_of_birth)->age + 1 }}) years</span></td>
                </tr>
                <tr>
                   <td>Full Nrc<span style="padding-left: 155px">{{$show->fullnrc ? $show->fullnrc : "-"}}</span></td>
