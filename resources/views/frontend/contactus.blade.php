@@ -29,7 +29,7 @@
 
 </head>
 
-<body>
+<body style="margin-right: 20px;margin-left: 20px">
     <!-- Loader -->
     <div id="preloader">
         <div id="status">
@@ -114,63 +114,40 @@
     <!-- Navbar End -->
 
     <!-- MAP START -->
-    <section class="section pt-0 bg-light">
+    <section class="section pt-0 ">
         <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-12 p-0">
-                   
-                </div>
-            </div>
+           
         </div>
         
-        <div class="container mt-100 mt-60">
-            <div class="row align-items-center">
-                <div class="col-lg-4">
-                    <div class="contact-item mt-40">
-                        <div class="float-left">
-                            <div class="contact-icon d-inline-block border rounded-pill shadow text-primary mt-1 mr-4">
-                                <i class="mdi mdi-earth"></i>
-                            </div>
-                        </div>
-                        <div class="contact-details">
-                            <h4 class="text-dark mb-1">Website</h4>
-                            <a class="mb-0 text-muted" href="http://linncomputer.com/" target="blank">linncomputer.com</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4">
-                    <div class="contact-item mt-40">
-                        <div class="float-left">
-                            <div class="contact-icon d-inline-block border rounded-pill shadow text-primary mt-1 mr-4">
-                                <i class="mdi mdi-cellphone-iphone"></i>
-                            </div>
-                        </div>
-                        <div class="contact-details">
-                            <h4 class="text-dark mb-1">Call us</h4>
-                            <p class="mb-0 text-muted">09-789799799</p>
-                            <!-- <p class="mb-0 text-muted">067-414884,414885,432884</p> -->
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4">
-                    <div class="contact-item mt-40">
-                        <div class="float-left">
-                            <div class="contact-icon d-inline-block border rounded-pill shadow text-primary mt-1 mr-4">
-                                <i class="mdi mdi-email"></i>
-                            </div>
-                        </div>
-                        <div class="contact-details">
-                            <h4 class="text-dark mb-1">Email</h4>
-                            <p class="mb-0 text-muted">nfo@linncomputer.com</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+       
     </section>
     <!-- CONTACT END -->
+
+    <section>
+        <h3>Head Office</h3>
+        <p><i class="mdi mdi-map-marker"></i>No. 14/585, 4th Street, Paung Laung Quarter</p>
+        <p><i class="mdi mdi-cellphone-iphone"></i>09-789799799, 067-22884,23884,24884</p>
+        <p><i class="mdi mdi-email"></i>nfo@linncomputer.com</p><br>
+        <h3>Branches</h3>
+        <div class="row">
+            <div class="col-md-4">
+                <p><i class="mdi mdi-map-marker"></i>No.117, Thapyagone Quarter, Naypyitaw</p>
+                <p><i class="mdi mdi-cellphone-iphone"></i><span>067-414884,414885,432884</span></p>
+                <p><i class="mdi mdi-email"></i><span>nfo@linncomputer.com</span></p>
+            </div>
+             <div class="col-md-4">
+                <p><i class="mdi mdi-map-marker"></i>No.11/7, Bogyoke Road, Pyinmana</p>
+                <p><i class="mdi mdi-cellphone-iphone"></i><span>067-24488,26884</span></p>
+                <p><i class="mdi mdi-email"></i><span>nfo@linncomputer.com</span></p>
+            </div>
+             <div class="col-md-4">
+                <p><i class="mdi mdi-map-marker"></i>Star mart 9 mile Show Room, Pyay Road</p>
+                <p><i class="mdi mdi-cellphone-iphone"></i><span>09-422294884, 09-346038884, 09-400558855</span></p>
+                <p><i class="mdi mdi-email"></i><span>nfo@linncomputer.com</span></p>
+            </div>
+            
+        </div>
+    </section>
     <!-- <section class="section"> -->
         <div style="width: 100%; margin-top: 20px;">
    <iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d2965.0824050173574!2d-93.63905729999999!3d41.998507000000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sWebFilings%2C+University+Boulevard%2C+Ames%2C+IA!5e0!3m2!1sen!2sus!4v1390839289319" width="100%" height="400" frameborder="0" style="border:0"></iframe>
@@ -203,7 +180,7 @@
     </section> -->
 
   <!-- footer start -->
-    <footer class="footer">
+  <!--   <footer class="footer">
         <div class="container">
             <div class="row">
              
@@ -244,9 +221,9 @@
                 </div>
             </div>
         </div>
-    </footer>
+    </footer> -->
     <!-- footer end -->
-    <hr>
+    <!-- <hr>
     <footer class="footer footer-bar">
         <div class="container text-center">
             <div class="row justify-content-center">
@@ -257,7 +234,7 @@
                 </div>
             </div>
         </div><!--end container-->
-    </footer><!--end footer-->
+ <!--    </footer> -->
     <!-- Footer End -->
 
      <!-- Back to top -->
