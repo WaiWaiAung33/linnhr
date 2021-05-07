@@ -7,6 +7,7 @@ use App\Training;
 use App\Employee;
 use App\Department;
 use App\Branch;
+use App\Position;
 use Illuminate\Http\Request;
 
 class TrainingAttendanceController extends Controller
@@ -19,16 +20,20 @@ class TrainingAttendanceController extends Controller
     public function index(Request $request)
     {
         $trainings = new TrainingAttendance();
-         $branches = Branch::where('status',1)->get();
+        $branches = Branch::where('status',1)->get();
         $departments = Department::where('status',1)->get();
+         $positions = Position::All();
         $count = $trainings->get()->count();
 
          $trainings = $trainings->leftjoin('employee','employee.id','=','training_attendances.emp_id')
                               ->leftjoin('trainings','trainings.id','=','training_attendances.training_id')
                               ->select(
-                                        'trainings.*',
+                                        'training_attendances.*',
                                         'employee.name As employee_name',
-                                        'trainings.name As training_name'
+                                        'trainings.name As training_name',
+                                        'employee.dep_id As department_id',
+                                        'employee.branch_id As branch_id',
+                                        'employee.position_id As position_id'
                                     );
 
         if($request->name != '') {
@@ -44,7 +49,7 @@ class TrainingAttendanceController extends Controller
         }
 
         $trainings = $trainings->orderBy('training_attendances.created_at','desc')->paginate(10);
-        return view('admin.training_attendance.index',compact('trainings','count','branches','departments'))->with('i', (request()->input('page', 1) - 1) * 10);
+        return view('admin.training_attendance.index',compact('trainings','count','branches','departments','positions'))->with('i', (request()->input('page', 1) - 1) * 10);
     }
 
     /**

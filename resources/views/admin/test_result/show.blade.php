@@ -12,7 +12,7 @@
         <label class="col-md-2 unicode">Training Name</label>
         <div class="col-md-5">
             
-            <select class="form-control" name="training_id" id="training_id">
+            <select class="form-control" name="training_id" id="training_id" disabled>
                <option value="">Training Name</option>
               @foreach ($trainings as $training )
               <option  value="{{$training->id}}" {{ (old('training_id',$test_result->training_id)==$training->id)?'selected':'' }}>{{$training->name}}</option>
@@ -27,7 +27,7 @@
         <label class="col-md-2 unicode">Employee Name</label>
         <div class="col-md-5">
             
-            <select class="livesearch form-control" name="emp_id">
+            <select class="livesearch form-control" name="emp_id" disabled>
                  @foreach ($employees as $employee )
                   <option  value="{{$employee->id}}" {{ (old('emp_id',$test_result->emp_id)==$employee->id)?'selected':'' }}>{{$employee->name}}</option>
                 @endforeach
@@ -41,7 +41,7 @@
         <label class="col-md-2 unicode">Test Date</label>
         <div class="col-md-5">
             
-            <input type="text" name="test_date" id="test_date" class="form-control" value="{{date('d-m-Y',strtotime($test_result->test_date))}}">
+            <input type="text" name="test_date" id="test_date" class="form-control" value="{{date('d-m-Y',strtotime($test_result->test_date))}}" disabled>
          
         </div>    
         </div><br>
@@ -51,7 +51,7 @@
         <label class="col-md-2 unicode">Mark</label>
         <div class="col-md-5">
             
-            <input type="text" name="marks" id="marks" class="form-control" value="{{$test_result->marks}}">
+            <input type="text" name="marks" id="marks" class="form-control" value="{{$test_result->marks}}" disabled>
          
         </div>    
         </div><br>
@@ -62,7 +62,7 @@
         <label class="col-md-2 unicode">Remark</label>
         <div class="col-md-5">
             
-            <input type="text" name="remark" id="remark" class="form-control" value="{{$test_result->remark}}">
+            <input type="text" name="remark" id="remark" class="form-control" value="{{$test_result->remark}}" disabled>
          
         </div>    
         </div><br>

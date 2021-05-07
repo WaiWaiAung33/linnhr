@@ -58,9 +58,14 @@
                   <thead>
                     <tr> 
                       <th>No</th>
-
-                        <th>Training Name</th>
+                         <th>Image</th>
+                        
                         <th>Employee Name</th>
+
+                        <th>Branch</th>
+                        <th>Department</th>
+                        <th>Position</th>
+                        <th>Training Name</th>
                         <th>Attendance Date</th>
                         <th>Status</th>
                         <th>Remark</th>
@@ -72,9 +77,33 @@
                      @foreach($trainings as $training)
                     <tr>
                       <td>{{++$i}}</td>
-                     
+                     @if($training->photo == '')
+                            <td class="image">
+                            <img src="{{ asset('uploads/employeePhoto/default.png') }}" alt="photo" width="80px" height="80px">
+                            </td>
+                            @else
+                            <td class="image">
+                             <img src="{{ asset('uploads/employeePhoto/'.$training->photo)}}" alt="photo" width="80px" height="80px">
+                             </td>
+                      @endif
+                      <td>{{$training->employee_name}}</td>
+                      
+                       @foreach($branches as $branch)
+                      @if($branch->id == $training->branch_id)
+                      <td>{{$branch->name}}</td>
+                      @endif
+                      @endforeach
+                      @foreach($departments as $department)
+                      @if($department->id == $training->department_id)
+                      <td>{{$department->name}}</td>
+                      @endif
+                      @endforeach
+                      @foreach($positions as $position)
+                      @if($position->id == $training->position_id)
+                      <td>{{$position->name}}</td>
+                      @endif
+                      @endforeach
                       <td>{{$training->training_name}}</td>
-                       <td>{{$training->employee_name}}</td>
                       <td>{{date('d-m-Y',strtotime($training->att_date))}}</td>
                       @if($training->status == 0)
                       <td>Present</td>

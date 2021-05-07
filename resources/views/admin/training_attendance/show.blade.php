@@ -13,7 +13,7 @@
         <label class="col-md-2 unicode">Training Name</label>
         <div class="col-md-5">
             
-           <select class="form-control" name="training_id" id="training_id">
+           <select class="form-control" name="training_id" id="training_id" disabled>
               <option value="">Training Name</option>
               @foreach ($trainings as $training )
               <option  value="{{$training->id}}" {{ (old('training_id',$training_attendances->training_id)==$training->id)?'selected':'' }}>{{$training->name}}</option>
@@ -28,7 +28,7 @@
         <label class="col-md-2 unicode">Employee Name</label>
         <div class="col-md-5">
             
-            <select class="livesearch form-control" name="emp_id">
+            <select class="livesearch form-control" name="emp_id" disabled>
                  @foreach ($employees as $employee )
                   <option  value="{{$employee->id}}" {{ (old('emp_id',$training_attendances->emp_id)==$employee->id)?'selected':'' }}>{{$employee->name}}</option>
                 @endforeach
@@ -42,7 +42,7 @@
         <label class="col-md-2 unicode">Attendance Date</label>
         <div class="col-md-5">
             
-            <input type="text" name="att_date" id="att_date" class="form-control" value="{{date('d-m-Y',strtotime($training_attendances->att_date))}}">
+            <input type="text" name="att_date" id="att_date" class="form-control" value="{{date('d-m-Y',strtotime($training_attendances->att_date))}}" disabled>
          
         </div>    
         </div><br>
@@ -52,7 +52,7 @@
         <label class="col-md-2 unicode">Status</label>
         <div class="col-md-5">
             
-             <select class="form-control" id="status" name="status" style="font-size: 13px">
+             <select class="form-control" id="status" name="status" style="font-size: 13px" disabled>
                 <option value="">All</option>  
                 <option value="0" {{ (old('status',$training_attendances->status)=="0")?'selected':'' }}>Present</option>
                 <option value="1" {{ (old('status',$training_attendances->status)=="1")?'selected':'' }}>Absent</option>
@@ -67,7 +67,7 @@
         <label class="col-md-2 unicode">Remark</label>
         <div class="col-md-5">
             
-            <input type="text" name="remark" id="remark" class="form-control" value="{{$training_attendances->remark}}">
+            <input type="text" name="remark" id="remark" class="form-control" value="{{$training_attendances->remark}}" disabled>
          
         </div>    
         </div><br>

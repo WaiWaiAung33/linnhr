@@ -1,6 +1,10 @@
 <?php
 namespace App\Http\Controllers;
 use App\Training;
+use App\TrainingEmployee;
+use App\Department;
+use App\Branch;
+use App\Position;
 use Illuminate\Http\Request;
 
 class TrainingController extends Controller
@@ -72,7 +76,12 @@ class TrainingController extends Controller
     public function show($id)
     {
         $trainings = Training::find($id);
-        return view('admin.training.show',compact('trainings'));
+         $branches = Branch::where('status',1)->get();
+        $departments = Department::where('status',1)->get();
+         $positions = Position::All();
+        $training_employees = TrainingEmployee::where('training_id',$id)->get();
+        // dd($training_employees);
+        return view('admin.training.show',compact('trainings','training_employees','branches','departments','positions'));
     }
 
     /**

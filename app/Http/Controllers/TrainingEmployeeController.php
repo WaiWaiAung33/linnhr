@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\TrainingEmployee;
+use App\TrainingAttendance;
+use App\TestResult;
 use App\Training;
 use App\Department;
 use App\Branch;
+use App\Position;
 use App\Employee;
 use Illuminate\Http\Request;
 
@@ -21,14 +24,18 @@ class TrainingEmployeeController extends Controller
         $trainings = new TrainingEmployee();
         $branches = Branch::where('status',1)->get();
         $departments = Department::where('status',1)->get();
+        $positions = Position::All();
         $count = $trainings->get()->count();
 
         $trainings = $trainings->leftjoin('employee','employee.id','=','training_employees.emp_id')
                               ->leftjoin('trainings','trainings.id','=','training_employees.training_id')
                               ->select(
-                                        'trainings.*',
+                                        'training_employees.*',
                                         'employee.name As employee_name',
-                                        'trainings.name As training_name'
+                                        'trainings.name As training_name',
+                                        'employee.dep_id As department_id',
+                                        'employee.branch_id As branch_id',
+                                        'employee.position_id As position_id'
                                     );
 
         if($request->name != '') {
@@ -44,7 +51,7 @@ class TrainingEmployeeController extends Controller
         }
 
         $trainings = $trainings->orderBy('training_employees.created_at','desc')->paginate(10);
-        return view('admin.training_employee.index',compact('count','trainings','branches','departments'))->with('i', (request()->input('page', 1) - 1) * 10);
+        return view('admin.training_employee.index',compact('count','trainings','branches','departments','positions'))->with('i', (request()->input('page', 1) - 1) * 10);
     }
 
     /**
@@ -85,10 +92,14 @@ class TrainingEmployeeController extends Controller
      */
     public function show($id)
     {
+        // dd($id);
         $training_employees = TrainingEmployee::find($id);
+        $attendance = TrainingAttendance::where('emp_id',$training_employees->emp_id)->get();
+        $test_results = TestResult::where('emp_id',$training_employees->emp_id)->get();
+        // dd($attendance);
         $trainings = Training::all();
         $employees = Employee::all();
-        return view('admin.training_employee.show',compact('training_employees','trainings','employees'));
+        return view('admin.training_employee.show',compact('training_employees','trainings','employees','attendance','test_results'));
     }
 
     /**

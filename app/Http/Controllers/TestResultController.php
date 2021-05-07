@@ -7,6 +7,7 @@ use App\Training;
 use App\Department;
 use App\Branch;
 use App\Employee;
+use App\Position;
 use Illuminate\Http\Request;
 
 class TestResultController extends Controller
@@ -21,13 +22,17 @@ class TestResultController extends Controller
         $trainings = new TestResult();
         $branches = Branch::where('status',1)->get();
         $departments = Department::where('status',1)->get();
+        $positions = Position::All();
         $count = $trainings->get()->count();
         $trainings = $trainings->leftjoin('employee','employee.id','=','test_results.emp_id')
                               ->leftjoin('trainings','trainings.id','=','test_results.training_id')
                               ->select(
-                                        'trainings.*',
+                                        'test_results.*',
                                         'employee.name As employee_name',
-                                        'trainings.name As training_name'
+                                        'trainings.name As training_name',
+                                        'employee.dep_id As department_id',
+                                        'employee.branch_id As branch_id',
+                                        'employee.position_id As position_id'
                                     );
 
         if($request->name != '') {
@@ -39,7 +44,7 @@ class TestResultController extends Controller
         }
 
         $trainings = $trainings->orderBy('test_results.created_at','desc')->paginate(10);
-        return view('admin.test_result.index',compact('trainings','count','branches','departments'))->with('i', (request()->input('page', 1) - 1) * 10);
+        return view('admin.test_result.index',compact('trainings','count','branches','departments','positions'))->with('i', (request()->input('page', 1) - 1) * 10);
     }
 
     /**
