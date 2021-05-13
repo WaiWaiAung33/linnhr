@@ -17,7 +17,7 @@
     position: absolute;
     top: 2px;
     right: 0px;
-    left: 270px;
+    /*left: 270px;*/
     width: 100px; }
 </style>
 @stop
@@ -37,7 +37,7 @@
             <div class="col-md-6">
                             <div class="row">
                                 <div class="col-md-3">
-                                    <h6 style="font-weight:bold;font-size:15px;">Employee Name</h6>
+                                    <label style="font-weight:bold;font-size:15px;">Employee Name</label>
                                 </div>
 
                                 <div class="col-md-8">
@@ -58,7 +58,7 @@
             <div class="col-md-6">
                             <div class="row">
                                 <div class="col-md-3">
-                                    <h6 style="font-weight:bold;font-size:15px;">Department</h6>
+                                    <label style="font-weight:bold;font-size:15px;">Department</label>
                                 </div>
 
                                 <div class="col-md-8">
@@ -74,7 +74,7 @@
             <div class="col-md-6">
                             <div class="row">
                                 <div class="col-md-3">
-                                    <h6 style="font-weight:bold;font-size:15px;">Branch</h6>
+                                    <label style="font-weight:bold;font-size:15px;">Branch</label>
                                 </div>
 
                                 <div class="col-md-8">
@@ -90,7 +90,7 @@
             <div class="col-md-6">
                             <div class="row">
                                 <div class="col-md-3">
-                                    <h6 style="font-weight:bold;font-size:15px;">Pay Month</h6>
+                                    <label style="font-weight:bold;font-size:15px;">Pay Month</label>
                                 </div>
 
                                 <div class="col-md-8">
@@ -106,7 +106,7 @@
             <div class="col-md-6">
                             <div class="row salary">
                                 <div class="col-md-3">
-                                    <h6 style="font-weight:bold;font-size:15px;">Salary Amout</h6>
+                                    <label style="font-weight:bold;font-size:15px;">Salary Amout</label>
                                 </div>
 
                                 <div class="col-md-8">
@@ -122,7 +122,7 @@
             <div class="col-md-6">
                             <div class="row salary">
                                 <div class="col-md-3">
-                                    <h6 style="font-weight:bold;font-size:15px;">Bonus</h6>
+                                    <label style="font-weight:bold;font-size:15px;">Bonus</label>
                                 </div>
 
                                 <div class="col-md-8">
