@@ -149,15 +149,18 @@
             </div>  
 
                     @foreach($jobopenings as $i=>$jobopening)
+                    <a href="{{route('frontend.jobListdetail',$jobopening->id)}}">
                     @php
                     $todaydate = date("m/d/Y");
 
                     @endphp
                     @if($jobopening->close_date > $todaydate)
-                    <div class="row">
-                        <div class="col-lg-12 mt-4 pt-2">
+                   
+                    <div class="row" >
+                        
+                        <div class="col-lg-12 mt-4 pt-2" >
                             <div class="job-list-box border rounded">
-                                <a href="{{route('frontend.jobListdetail',$jobopening->id)}}">
+                               <!--  <a href="{{route('frontend.jobListdetail',$jobopening->id)}}" style="background-color: red"> -->
                                 <div class="p-3">
                                     <div class="row align-items-center">
                                         <div class="col-lg-2">
@@ -198,11 +201,13 @@
                                         </div>
 
 
-                                    </div>
-                                </div>
-                            </a>
                             </div>
+                        </div>
+                       
+                    </div>
+                    
                             @endif
+                             </a>
                                  @endforeach
                         </div>
                         
