@@ -34,17 +34,30 @@
         {{-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic"> --}}
 
         <link rel="stylesheet" href='https://mmwebfonts.comquas.com/fonts/?font=pyidaungsu' />
+        <link rel="stylesheet" href="//fonts.googleapis.com/earlyaccess/notosansmyanmarui.css" />
         <style type="text/css" media="screen">
+            @font-face {
+                font-family:'Noto Sans Myanmar';
+                src:local('Noto Sans Myanmar'), url('https://www.mmwebfonts.com/fonts/NotoSansMyanmar-Regular.woff') format('woff'), url('https://www.mmwebfonts.com/fonts/NotoSansMyanmar-Regular.ttf') format('ttf');
+            }
+            
+            @font-face {
+                font-family:'Noto Sans Myanmar';
+                src:local('Noto Sans Myanmar'), url('https://www.mmwebfonts.com/fonts/NotoSansMyanmar-Bold.woff') format('woff'), url('https://www.mmwebfonts.com/fonts/NotoSansMyanmar-Bold.ttf') format('ttf');
+                font-weight:bold;
+            }
+
+
             body{
-                font-family:Pyidaungsu,Yunghkio,'Masterpiece Uni Sans' !important;
+                 font-family: "Noto Sans Myanmar","Pyidaungsu" !important;
             }
             .unicode{
-                font-family:Pyidaungsu,Yunghkio,'Masterpiece Uni Sans' !important;
+                 font-family: "Noto Sans Myanmar","Pyidaungsu" !important;
             }
             
             .help-block{
                 color: red;
-                font-family:Pyidaungsu,Yunghkio,'Masterpiece Uni Sans' !important;
+                 font-family: "Noto Sans Myanmar","Pyidaungsu" !important;
                 font-size: 12px;
             }
 
@@ -52,7 +65,7 @@
                 font-size: 14px;
             }
             p,h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 , table, .table, input, select {
-                font-family:Pyidaungsu,Yunghkio,'Masterpiece Uni Sans' !important;
+               font-family: "Noto Sans Myanmar","Pyidaungsu" !important;
             }
 
             p, .btn {
@@ -60,12 +73,13 @@
             }
 
             .size {
-                font-family:Pyidaungsu,Yunghkio,'Masterpiece Uni Sans' !important;
+                font-family: "Noto Sans Myanmar","Pyidaungsu" !important;
                 font-size: 13px;
             }
 
             input, select, textarea {
-                font-size: 14px !important;
+                font-family: "Noto Sans Myanmar","Pyidaungsu" !important;
+                font-size: 13px !important;
             }
         </style>
     @else
