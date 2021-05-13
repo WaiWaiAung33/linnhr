@@ -20,9 +20,9 @@
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="{{asset('vendor/animsition/css/animsition.min.css')}}">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{{asset('vendor/select2/select2.min.css')}}">
+	{{-- <link rel="stylesheet" type="text/css" href="{{asset('vendor/select2/select2.min.css')}}"> --}}
 <!--===============================================================================================-->	
-	<link rel="stylesheet" type="text/css" href="{{asset('vendor/daterangepicker/daterangepicker.css')}}">
+	{{-- <link rel="stylesheet" type="text/css" href="{{asset('vendor/daterangepicker/daterangepicker.css')}}"> --}}
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="{{asset('css/util.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{asset('css/main.css')}}">
@@ -55,6 +55,11 @@
             	font-family: "Noto Sans Myanmar","Pyidaungsu" !important;
             	font-size: 14px !important;
             }
+
+            .login100-form-btn{
+            	background: #365ba9 !important;
+            }
+
     </style>     
 </head>
 <body>
@@ -99,15 +104,15 @@
 <!--===============================================================================================-->
 	<script src="{{asset('vendor/animsition/js/animsition.min.js')}}"></script>
 <!--===============================================================================================-->
-	<script src="{{asset('vendor/bootstrap/js/popper.js')}}"></script>
-	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+	{{-- <script src="{{asset('vendor/bootstrap/js/popper.js')}}"></script> --}}
+	<script src="{{asset('vendor/bootstrap/js/bootstrap.min.js')}}"></script>
 <!--===============================================================================================-->
-	<script src="{{asset('vendor/select2/select2.min.js')}}"></script>
+	{{-- <script src="{{asset('vendor/select2/select2.min.js')}}"></script> --}}
 <!--===============================================================================================-->
-	<script src="{{asset('vendor/daterangepicker/moment.min.js')}}"></script>
-	<script src="{{asset('vendor/daterangepicker/daterangepicker.js')}}"></script>
+	{{-- <script src="{{asset('vendor/daterangepicker/moment.min.js')}}"></script> --}}
+	{{-- <script src="{{asset('vendor/daterangepicker/daterangepicker.js')}}"></script> --}}
 <!--===============================================================================================-->
-	<script src="{{asset('vendor/countdowntime/countdowntime.js')}}"></script>
+	{{-- <script src="{{asset('vendor/countdowntime/countdowntime.js')}}"></script> --}}
 <!--===============================================================================================-->
 	<script src="{{asset('js/main.js')}}"></script>
 

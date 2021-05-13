@@ -279,11 +279,11 @@ iframe {
   -moz-transition: all 0.4s;
   transition: all 0.4s;
 
-  background: #d41872;
-  background: -webkit-linear-gradient(left, #a445b2, #d41872, #fa4299);
-  background: -o-linear-gradient(left, #a445b2, #d41872, #fa4299);
-  background: -moz-linear-gradient(left, #a445b2, #d41872, #fa4299);
-  background: linear-gradient(left, #a445b2, #d41872, #fa4299);
+  background: #365ba9;
+  background: -webkit-linear-gradient(left, #365ba9, #365ba9, #365ba9);
+  background: -o-linear-gradient(left, #365ba9, #365ba9, #365ba9);
+  background: -moz-linear-gradient(left, #365ba9, #365ba9, #365ba9);
+  background: linear-gradient(left, #365ba9, #365ba9, #365ba9);
 }
 
 .focus-input100::after {
@@ -311,7 +311,7 @@ iframe {
 
 .input100:focus + .focus-input100::after {
   left: 23px;
-  color: #d41872;
+  color: #365ba9;
 }
 
 .input100:focus + .focus-input100::before {
@@ -320,7 +320,7 @@ iframe {
 
 .has-val.input100 + .focus-input100::after {
   left: 23px;
-  color: #d41872;
+  color: #365ba9;
 }
 
 .has-val.input100 + .focus-input100::before {
@@ -364,11 +364,11 @@ iframe {
   height: 42px;
   border-radius: 21px;
 
-  background: #d41872;
-  background: -webkit-linear-gradient(left, #a445b2, #d41872, #fa4299);
-  background: -o-linear-gradient(left, #a445b2, #d41872, #fa4299);
-  background: -moz-linear-gradient(left, #a445b2, #d41872, #fa4299);
-  background: linear-gradient(left, #a445b2, #d41872, #fa4299);
+  background: #365ba9;
+  background: -webkit-linear-gradient(left, #a445b2, #365ba9, #fa4299);
+  background: -o-linear-gradient(left, #a445b2, #365ba9, #fa4299);
+  background: -moz-linear-gradient(left, #a445b2, #365ba9, #fa4299);
+  background: linear-gradient(left, #a445b2, #365ba9, #fa4299);
   position: relative;
   z-index: 1;
 
@@ -397,13 +397,13 @@ iframe {
   transition: all 0.4s;
 }
 
-.login100-form-btn:hover {
+/*.login100-form-btn:hover {
   background-color: transparent;
 }
 
 .login100-form-btn:hover:before {
   opacity: 1;
-}
+}*/
 
 
 
