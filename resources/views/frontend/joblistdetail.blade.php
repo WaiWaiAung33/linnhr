@@ -176,7 +176,7 @@
                                 <div class="float-left mr-2">
                                     <i class="mdi mdi-email text-muted"></i>
                                 </div>
-                                <p class="text-muted mb-2">: shopping@linncomputer.com</p>
+                                <p class="text-muted mb-2">: info@linncomputer.com</p>
                             </div>
 
                             <div class="job-details-desc-item">
