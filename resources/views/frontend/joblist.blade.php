@@ -223,7 +223,7 @@
   
 
     <!-- subscribe start -->
-    <section class="section">
+   <!--  <section class="section">
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 col-md-5">
@@ -247,7 +247,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
     <!-- subscribe end -->
 
     <!-- footer start -->
@@ -261,7 +261,7 @@
                                 <li><a href="#" style="color: white" class="unicode">Head Office</a></li>
                                 <li><a href="#" style="color: white" class="unicode">Linn Naypyitaw Branch</a></li>
                                 <li><a href="#" style="color: white" class="unicode">Linn Pyinmana Branch</a></li>
-                                <li><a href="#" style="color: white" class="unicode">Yangon Showroom</a></li>
+                               <!--  <li><a href="#" style="color: white" class="unicode">Yangon Showroom</a></li> -->
                             </ul><br>
                               <ul class="social-icon social list-inline mb-0">
                             <li class="list-inline-item"><a href="https://www.facebook.com/linncomputerstore/" class="rounded"><i class="mdi mdi-facebook"></i></a></li>
@@ -286,7 +286,7 @@
                          <li><a href="#" style="color: white" class="unicode">No. 14/585, 4th Street, Paung Laung Quarter, Pyinmana.</a></li>
                         <li><a href="#" style="color: white" class="unicode">No.117, Thapyagone Quarter, Naypyitaw </a></li>
                         <li><a href="#" style="color: white" class="unicode">No.11/7, Bogyoke Road, Pyinmana</a></li>
-                        <li><a href="#" style="color: white" class="unicode">Star mart 9 Mile Show Room, Pyay Road</a></li>
+                      <!--   <li><a href="#" style="color: white" class="unicode">Star mart 9 Mile Show Room, Pyay Road</a></li> -->
                       
                     </ul>
                 </div>
