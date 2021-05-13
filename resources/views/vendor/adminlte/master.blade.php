@@ -40,7 +40,7 @@
                 font-family:'Noto Sans Myanmar';
                 src:local('Noto Sans Myanmar'), url('https://www.mmwebfonts.com/fonts/NotoSansMyanmar-Regular.woff') format('woff'), url('https://www.mmwebfonts.com/fonts/NotoSansMyanmar-Regular.ttf') format('ttf');
             }
-            
+
             @font-face {
                 font-family:'Noto Sans Myanmar';
                 src:local('Noto Sans Myanmar'), url('https://www.mmwebfonts.com/fonts/NotoSansMyanmar-Bold.woff') format('woff'), url('https://www.mmwebfonts.com/fonts/NotoSansMyanmar-Bold.ttf') format('ttf');
@@ -62,24 +62,31 @@
             }
 
             label{
-                font-size: 14px;
+                font-size: 12px;
             }
             p,h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 , table, .table, input, select {
                font-family: "Noto Sans Myanmar","Pyidaungsu" !important;
             }
+          /*  h3 {
+              font-size: 16px  !important;
+            }*/
 
-            p, .btn {
-                font-size: 13px !important;
+           /* h5 {
+                font-size: 14px  !important;
+            }*/
+
+            a, p, .btn,.page-link {
+                font-size: 12px !important;
             }
 
-            .size {
+            .size, .select2-selection__placeholder, .select2-selection__rendered, .select2-results__option {
                 font-family: "Noto Sans Myanmar","Pyidaungsu" !important;
-                font-size: 13px;
+                font-size: 12px;
             }
 
-            input, select, textarea {
+            label,strong, input, select, textarea, table, tr, td {
                 font-family: "Noto Sans Myanmar","Pyidaungsu" !important;
-                font-size: 13px !important;
+                font-size: 12px !important;
             }
         </style>
     @else
