@@ -74,7 +74,7 @@
 					 @csrf
 
 					<div class="wrap-input100 validate-input" data-validate = "Enter username">
-						<input class="input100 @error('email') is-invalid @enderror" type="email" placeholder="User name" name="email" value="{{ old('email') }}" required>
+						<input class="input100 @error('email') is-invalid @enderror" type="email" placeholder="Email" name="email" value="{{ old('email') }}" required>
 						
 						<span class="focus-input100" data-placeholder="&#xe82a;"></span>
 				
