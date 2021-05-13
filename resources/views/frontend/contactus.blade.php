@@ -140,11 +140,11 @@
                 <p><i class="mdi mdi-cellphone-iphone"></i><span>067-24488,26884</span></p>
                 <p><i class="mdi mdi-email"></i><span>info@linncomputer.com</span></p>
             </div>
-             <div class="col-md-4">
+            <!--  <div class="col-md-4">
                 <p><i class="mdi mdi-map-marker"></i>Star mart 9 mile Show Room, Pyay Road</p>
                 <p><i class="mdi mdi-cellphone-iphone"></i><span>09-422294884, 09-346038884, 09-400558855</span></p>
                 <p><i class="mdi mdi-email"></i><span>info@linncomputer.com</span></p>
-            </div>
+            </div> -->
             
         </div>
     </section>
