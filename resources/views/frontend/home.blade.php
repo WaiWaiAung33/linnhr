@@ -195,9 +195,13 @@
                     </div>
                 </div>
             </div>
-           
-
             @foreach($jobopenings as $i=>$jobopening)
+                    @php
+                    $todaydate = date("m/d/Y");
+
+                    @endphp
+
+            @if($jobopening->close_date > $todaydate)
             <div class="row" >
                 <div class="col-12">
                     <div class="tab-content mt-2" id="pills-tabContent">
@@ -219,7 +223,7 @@
                                             <div class="row align-items-center" >
                                                 <div class="col-md-2">
                                                     <div class="mo-mb-2">
-                                                         @if($jobopening->photo == '')
+                                                      @if($jobopening->photo == '')
 
                                                          <img src="linn3.png" alt="photo" width="100">
                                                        
@@ -234,8 +238,15 @@
 
                                                 <div class="col-md-3">
                                                     <div>
-                                                        <h5 class="f-18"><a href="#" class="text-dark">{{$jobopening->title}}</a></h5>
-                                                        <p class="text-muted mb-0">{{$jobopening->viewPosition->name}}</p>
+                                                         <h6 class="mb-2"><a href="#" class="text-dark">{{$jobopening->title}}</a></h6>
+                                                    <p class="text-muted mb-0"><i class="mdi mdi-bank mr-2"></i>{{$jobopening->viewDepartment->name}}</p>
+                                                    <ul class="list-inline mb-0">
+                                                        <li class="list-inline-item mr-3">
+                                                            <p class="text-muted mb-0">{{$jobopening->viewPosition->name}}</p>
+                                                        </li>
+
+                                                      
+                                                    </ul>
                                                     </div>
                                                 </div>
                                              
@@ -249,7 +260,7 @@
                                             <div class="row">
                                                 <div class="col-md-4">
                                                     <div>
-                                                        <p class="text-muted mb-0 mo-mb-2"><span class="text-dark">Close Date :</span> {{date('d-m-Y',strtotime($jobopening->close_date))}}</p>
+                                                        <span>Close Date : {{date('d-m-Y',strtotime($jobopening->close_date))}}</span>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
@@ -271,7 +282,8 @@
                                 </div>
                             </div>
                         </div>
-                          @endforeach
+                          @endif
+                     @endforeach
 
         
     </section>
