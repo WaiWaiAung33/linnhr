@@ -27,6 +27,35 @@
 	<link rel="stylesheet" type="text/css" href="{{asset('css/util.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{asset('css/main.css')}}">
 <!--===============================================================================================-->
+	<link rel="stylesheet" href='https://mmwebfonts.comquas.com/fonts/?font=pyidaungsu' />
+    <link rel="stylesheet" href="//fonts.googleapis.com/earlyaccess/notosansmyanmarui.css" />
+
+     <style type="text/css" media="screen">
+            @font-face {
+                font-family:'Noto Sans Myanmar';
+                src:local('Noto Sans Myanmar'), url('https://www.mmwebfonts.com/fonts/NotoSansMyanmar-Regular.woff') format('woff'), url('https://www.mmwebfonts.com/fonts/NotoSansMyanmar-Regular.ttf') format('ttf');
+            }
+
+            @font-face {
+                font-family:'Noto Sans Myanmar';
+                src:local('Noto Sans Myanmar'), url('https://www.mmwebfonts.com/fonts/NotoSansMyanmar-Bold.woff') format('woff'), url('https://www.mmwebfonts.com/fonts/NotoSansMyanmar-Bold.ttf') format('ttf');
+                font-weight:bold;
+            }
+
+
+            body{
+                 font-family: "Noto Sans Myanmar","Pyidaungsu" !important;
+
+            }
+
+            .login100-form-title{
+            	font-family: "Noto Sans Myanmar","Pyidaungsu" !important;
+            }
+            input,button{
+            	font-family: "Noto Sans Myanmar","Pyidaungsu" !important;
+            	font-size: 14px !important;
+            }
+    </style>     
 </head>
 <body>
 	
@@ -34,7 +63,7 @@
 		<div class="container-login100" style="background-image: url('uploads/loginbglight.jpg');">
 			<div class="wrap-login100 p-t-30 p-b-50">
 				<span class="login100-form-title p-b-41">
-					Linn HR
+					Linn HR 
 				</span>
 				<form class="login100-form validate-form p-b-33 p-t-5" method="POST" action="{{ route('login') }}">
 					 @csrf
