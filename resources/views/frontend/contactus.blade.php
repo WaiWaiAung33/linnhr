@@ -123,19 +123,23 @@
     </section>
     <!-- CONTACT END -->
 
-    <section>
+    <section >
+        <div style="text-align: center;">
         <h3>Head Office</h3>
         <p><i class="mdi mdi-map-marker"></i>No. 14/585, 4th Street, Paung Laung Quarter</p>
         <p><i class="mdi mdi-cellphone-iphone"></i>09-789799799, 067-22884,23884,24884</p>
-        <p><i class="mdi mdi-email"></i>info@linncomputer.com</p><br>
-        <h3>Branches</h3>
-        <div class="row">
-            <div class="col-md-4">
+        <p><i class="mdi mdi-email"></i>info@linncomputer.com</p>
+        </div><br>
+        <!-- <h3>Branches</h3> -->
+        <div class="row" style="text-align: center;">
+            <div class="col-md-6">
+                <h3>Linn (သပြေကုန်းလမ်း)</h3>
                 <p><i class="mdi mdi-map-marker"></i>No.117, Thapyagone Quarter, Naypyitaw</p>
                 <p><i class="mdi mdi-cellphone-iphone"></i><span>067-414884,414885,432884</span></p>
                 <p><i class="mdi mdi-email"></i><span>info@linncomputer.com</span></p>
             </div>
-             <div class="col-md-4">
+             <div class="col-md-6">
+                <h3>Linn (ဗိုလ်ချုပ်လမ်း)</h3>
                 <p><i class="mdi mdi-map-marker"></i>No.11/7, Bogyoke Road, Pyinmana</p>
                 <p><i class="mdi mdi-cellphone-iphone"></i><span>067-24488,26884</span></p>
                 <p><i class="mdi mdi-email"></i><span>info@linncomputer.com</span></p>
