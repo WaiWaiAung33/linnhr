@@ -375,7 +375,7 @@
                                 <li><a href="#" style="color: white" class="unicode">Head Office</a></li>
                                 <li><a href="#" style="color: white" class="unicode">Linn Naypyitaw Branch</a></li>
                                 <li><a href="#" style="color: white" class="unicode">Linn Pyinmana Branch</a></li>
-                                <li><a href="#" style="color: white" class="unicode">Yangon Showroom</a></li>
+                               <!--  <li><a href="#" style="color: white" class="unicode">Yangon Showroom</a></li> -->
                             </ul><br>
                               <ul class="social-icon social list-inline mb-0">
                             <li class="list-inline-item"><a href="https://www.facebook.com/linncomputerstore/" class="rounded"><i class="mdi mdi-facebook"></i></a></li>
