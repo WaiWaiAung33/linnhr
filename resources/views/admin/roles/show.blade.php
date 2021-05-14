@@ -37,13 +37,13 @@
     <div class="col-xs-1 col-sm-1 col-md-1 text-center">
         <div class="form-group">
             <strong>&nbsp;</strong>
-            <a class="btn btn-primary form-control"  href="{{ route('roles.edit',$role->id) }}"> Edit</a>
+            <a class="btn btn-primary form-control btn-sm"  href="{{ route('roles.edit',$role->id) }}"> Edit</a>
         </div>
     </div>
     <div class="col-xs-1 col-sm-1 col-md-1 text-center">
         <div class="form-group">
             <strong>&nbsp;</strong>
-            <a class="btn btn-secondary form-control"  href="{{ route('roles.index') }}"> Back</a>
+            <a class="btn btn-secondary form-control btn-sm"  href="{{ route('roles.index') }}"> Back</a>
         </div>
     </div>
     <div class="col-xs-4 col-sm-4 col-md-4">
@@ -56,12 +56,12 @@
             <table class="table table-bordered styled-table">
                 <thead>
                     <tr>
-                        <td>No</td>
-                        <td>Name</td>
-                        <td>Read</td>
-                        <td>Create</td>
-                        <td>Update</td>
-                        <td>Delete</td>
+                        <th>No</th>
+                        <th>Name</th>
+                        <th>Read</th>
+                        <th>Create</th>
+                        <th>Update</th>
+                        <th>Delete</th>
                     </tr>
                 </thead>
                 <tbody>

@@ -1,6 +1,6 @@
 
 tr:hover td {
-    background: #c7d4dd !important;
+    background: #cfd9e2 !important;
 }
 
 tr {
@@ -21,7 +21,7 @@ tr {
 }
 .styled-table th,
 .styled-table td {
-    padding: 12px 15px;
+    padding: 10px 15px;
 }
 
 .styled-table tbody tr {
