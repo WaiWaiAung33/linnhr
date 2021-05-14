@@ -8,6 +8,13 @@ use Illuminate\Http\Request;
 
 class PositionController extends Controller
 {
+     public function __construct() 
+    {
+      $this->middleware('permission:rank-list|rank-create|rank-edit|rank-delete', ['only' => ['index','show']]);
+      $this->middleware('permission:rank-create', ['only' => ['create','store']]);
+      $this->middleware('permission:rank-edit', ['only' => ['edit','update']]);
+      $this->middleware('permission:rank-delete', ['only' => ['destroy']]);
+    }
     /**
      * Display a listing of the resource.
      *

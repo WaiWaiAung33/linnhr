@@ -12,7 +12,9 @@
 ?>
 <div>
 
+  @can('rank-create')
      <a class="btn btn-success unicode" href="{{route('position.create')}}" style="float: right;font-size: 13px"><i class="fas fa-plus"></i> Position</a>
+     @endcan
   
       {{-- @if ($message = Session::get('success'))
             <div class="alert alert-success">
@@ -51,10 +53,14 @@
                                     onsubmit="return confirm('Do you want to delete?');">
                                    @csrf
                                    @method('DELETE')
+                                   @can('rank-edit')
                                     <a class="btn btn-sm btn-primary" href="{{route('position.edit',$position->id)}}"><i class="fa fa-fw fa-edit"></i></a>
+                                    @endcan
+                                    @can('rank-delete')
                                     <button class="btn btn-sm btn-danger btn-sm" type="submit">
                                         <i class="fa fa-fw fa-trash" title="Delete"></i>
                                     </button>
+                                    @endcan
                                 </form>
                             </td>
                         </tr>
