@@ -43,7 +43,9 @@
                         </div> 
 
                          <div class="col-md-6">
+                        @can('testresult-create')
                         <a class="btn btn-success unicode" href="{{route('test_result.create')}}" style="float: right;font-size: 13px"><i class="fas fa-plus"></i> Test Result</a>
+                        @endcan
                          </div>
                     </div>
                 </div>
@@ -112,10 +114,14 @@
                                    @csrf
                                    @method('DELETE')
                                     <a class="btn btn-sm btn-info" href="{{route('test_result.show',$training->id)}}"><i class="fa fa-fw fa-eye" /></i></a> 
+                                    @can('testresult-edit')
                                     <a class="btn btn-sm btn-primary" href="{{route('test_result.edit',$training->id)}}"><i class="fa fa-fw fa-edit"></i></a>
+                                    @endcan
+                                    @can('testresult-delete')
                                     <button class="btn btn-sm btn-danger btn-sm" type="submit">
                                         <i class="fa fa-fw fa-trash" title="Delete"></i>
                                     </button>
+                                    @endcan
                                 </form>
                             </td>
                    </tr>

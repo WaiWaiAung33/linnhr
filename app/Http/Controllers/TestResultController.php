@@ -12,6 +12,13 @@ use Illuminate\Http\Request;
 
 class TestResultController extends Controller
 {
+     public function __construct() 
+    {
+      $this->middleware('permission:testresult-list|testresult-create|testresult-edit|testresult-delete', ['only' => ['index','show']]);
+      $this->middleware('permission:testresult-create', ['only' => ['create','store']]);
+      $this->middleware('permission:testresult-edit', ['only' => ['edit','update']]);
+      $this->middleware('permission:testresult-delete', ['only' => ['destroy']]);
+    }
     /**
      * Display a listing of the resource.
      *

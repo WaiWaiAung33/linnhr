@@ -384,6 +384,7 @@ return [
                     'text' => 'Test Result',
                     'url'  => 'test_result',
                     'icon' => 'fa fa-list-alt',
+                    'can'  => 'testresult-list'
                 ],
                
             ],
