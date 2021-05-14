@@ -393,7 +393,7 @@ return [
         [
             'text'    => 'Hostel Management',
             'icon'    => 'fas fa-fw fa-bed',
-            'can' => 'salary-list',
+            'can' => 'hostel-list',
             'submenu' => [
                     [
                                 'text' => 'Hostel',

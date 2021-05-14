@@ -14,6 +14,13 @@ use File;
 
 class SalaryController extends Controller
 {
+   public function __construct() 
+    {
+      $this->middleware('permission:salary-list|salary-create|salary-edit|salary-delete', ['only' => ['index','show']]);
+      $this->middleware('permission:salary-create', ['only' => ['create','store']]);
+      $this->middleware('permission:salary-edit', ['only' => ['edit','update']]);
+      $this->middleware('permission:salary-delete', ['only' => ['destroy']]);
+    }
     /**
      * Display a listing of the resource.
      *

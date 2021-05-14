@@ -94,8 +94,12 @@
                   <form action="{{route('salary.destroy',$salary->id)}}" method="POST" onsubmit="return confirm('Do you really want to delete?');">
                     @csrf
                     @method('DELETE')
+                    @can('salary-edit')
                     <a class="btn btn-sm btn-primary" href="{{route('salary.edit',$salary->id)}}" ><i class="fa fa-fw fa-edit" style="padding-top: 5px;padding-bottom: 5px;padding-left: 2px;padding-right: 5px"/></i></a> 
+                    @endcan
+                    @can('salary-delete')
                      <button type="submit" class="btn btn-sm btn-danger" style="margin-left: 10px"><i class="fa fa-fw fa-trash" /></i></button> 
+                     @endcan
                    </form>
                 </td>
        
