@@ -43,7 +43,9 @@
                         </div> 
 
                          <div class="col-md-6">
+                        @can('trainingemployee-create')
                          <a class="btn btn-success unicode" href="{{route('training_emp.create')}}" style="float: right;font-size: 13px"><i class="fas fa-plus"></i> Training Employee</a>
+                         @endcan
                          </div>
                     </div>
                 </div>
@@ -106,10 +108,14 @@
                                    @csrf
                                    @method('DELETE')
                                     <a class="btn btn-sm btn-info" href="{{route('training_emp.show',$training->id)}}"><i class="fa fa-fw fa-eye" /></i></a> 
+                                    @can('trainingemployee-edit')
                                     <a class="btn btn-sm btn-primary" href="{{route('training_emp.edit',$training->id)}}"><i class="fa fa-fw fa-edit"></i></a>
+                                    @endcan
+                                    @can('trainingemployee-delete')
                                     <button class="btn btn-sm btn-danger btn-sm" type="submit">
                                         <i class="fa fa-fw fa-trash" title="Delete"></i>
                                     </button>
+                                    @endcan
                                 </form>
                             </td>
                     </tr>

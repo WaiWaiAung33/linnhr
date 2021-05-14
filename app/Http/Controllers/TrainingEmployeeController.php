@@ -14,6 +14,13 @@ use Illuminate\Http\Request;
 
 class TrainingEmployeeController extends Controller
 {
+     public function __construct() 
+    {
+      $this->middleware('permission:trainingemployee-list|trainingemployee-create|trainingemployee-edit|trainingemployee-delete', ['only' => ['index','show']]);
+      $this->middleware('permission:trainingemployee-create', ['only' => ['create','store']]);
+      $this->middleware('permission:trainingemployee-edit', ['only' => ['edit','update']]);
+      $this->middleware('permission:trainingemployee-delete', ['only' => ['destroy']]);
+    }
     /**
      * Display a listing of the resource.
      *

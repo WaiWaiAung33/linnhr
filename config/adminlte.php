@@ -370,6 +370,7 @@ return [
                     'text' => 'Training Employee',
                     'url'  => 'training_emp',
                     'icon' => 'fa fa-users',
+                    'can'  => 'trainingemployee-list'
                 ],
 
                  [
