@@ -9,6 +9,13 @@ use File;
 
 class HostelController extends Controller
 {
+     public function __construct() 
+    {
+      $this->middleware('permission:hostel-list|hostel-create|hostel-edit|hostel-delete', ['only' => ['index','show']]);
+      $this->middleware('permission:hostel-create', ['only' => ['create','store']]);
+      $this->middleware('permission:hostel-edit', ['only' => ['edit','update']]);
+      $this->middleware('permission:hostel-delete', ['only' => ['destroy']]);
+    }
     /**
      * Display a listing of the resource.
      *
