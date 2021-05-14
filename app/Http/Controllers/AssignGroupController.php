@@ -10,6 +10,13 @@ use App\Employee;
 
 class AssignGroupController extends Controller
 {
+    public function __construct() 
+    {
+      $this->middleware('permission:assign-list|assign-create|assign-edit|assign-delete', ['only' => ['index','show']]);
+      $this->middleware('permission:assign-create', ['only' => ['create','store']]);
+      $this->middleware('permission:assign-edit', ['only' => ['edit','update']]);
+      $this->middleware('permission:assign-delete', ['only' => ['destroy']]);
+    }
     /**
      * Display a listing of the resource.
      *

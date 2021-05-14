@@ -17,8 +17,9 @@
   ?>
 
 <div>
-
+@can('assign-create')
  <a class="btn btn-success unicode" href="{{route('groups.create')}}" style="float: right;font-size: 13px"><i class="fas fa-plus"></i> Add Employee Group</a><br>
+ @endcan
 
   <form action="{{route('groups.index')}}" method="get" accept-charset="utf-8" class="form-horizontal unicode" >
             <div class="row form-group" id="adv_filter">
@@ -125,10 +126,14 @@
                                     onsubmit="return confirm('Do you want to delete?');">
                                    @csrf
                                    @method('DELETE')
+                                   @can('assign-edit')
                                     <a class="btn btn-sm btn-primary" href="{{route('groups.edit',$dept->id)}}"><i class="fa fa-fw fa-edit"></i></a>
+                                    @endcan
+                                    @can('assign-delete')
                                     <button class="btn btn-sm btn-danger btn-sm" type="submit">
                                         <i class="fa fa-fw fa-trash" title="Delete"></i>
                                     </button>
+                                    @endcan
                                 </form>
                             </td>
                         </tr>
