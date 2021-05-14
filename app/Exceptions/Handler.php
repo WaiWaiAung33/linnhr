@@ -4,6 +4,9 @@ namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
+use App;
+use Symfony\Component\Debug\Exception\FlattenException;
+
 
 class Handler extends ExceptionHandler
 {
@@ -51,14 +54,26 @@ class Handler extends ExceptionHandler
     public function render($request, Throwable $exception)
     {
 
-        if($exception->getStatusCode() == 403){
-           return response()->view('admin.error.403', [], 403);
+        // 404 page when a model is not found
+        if ($exception instanceof ModelNotFoundException) {
+            return response()->view('admin.error.404', [], 404);
         }
 
-        if($exception->getStatusCode() == 500){
-           return response()->view('admin.error.500', [], 500);
-        }
+        if ($this->isHttpException($exception)) {
+            if($exception->getStatusCode() === 403){
+               return response()->view('admin.error.403', [], 403);
+            }
 
-        return parent::render($request, $exception);
+            if($exception->getStatusCode() === 404){
+               return response()->view('admin.error.404', [], 404);
+            }
+        } else {
+            // Custom error 500 view on production
+            if (app()->environment() == 'production') {
+                return response()->view('admin.error.500', [], 500);
+            }
+            return parent::render($request, $exception);
+        }
     }
+
 }
