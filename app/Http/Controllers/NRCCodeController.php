@@ -8,6 +8,13 @@ use Illuminate\Http\Request;
 
 class NRCCodeController extends Controller
 {
+      public function __construct() 
+    {
+      $this->middleware('permission:nrc-code-list|nrc-code-create|nrc-code-edit|nrc-code-delete', ['only' => ['index','show']]);
+      $this->middleware('permission:nrc-code-create', ['only' => ['create','store']]);
+      $this->middleware('permission:nrc-code-edit', ['only' => ['edit','update']]);
+      $this->middleware('permission:nrc-code-delete', ['only' => ['destroy']]);
+    }
     /**
      * Display a listing of the resource.
      *

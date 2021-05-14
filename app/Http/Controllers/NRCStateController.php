@@ -9,6 +9,13 @@ use Illuminate\Http\Request;
 
 class NRCStateController extends Controller
 {
+      public function __construct() 
+    {
+      $this->middleware('permission:nrc-state-list|nrc-state-create|nrc-state-edit|nrc-state-delete', ['only' => ['index','show']]);
+      $this->middleware('permission:nrc-state-create', ['only' => ['create','store']]);
+      $this->middleware('permission:nrc-state-edit', ['only' => ['edit','update']]);
+      $this->middleware('permission:nrc-state-delete', ['only' => ['destroy']]);
+    }
     /**
      * Display a listing of the resource.
      *

@@ -12,7 +12,9 @@
 ?>
 <div>
 
+@can('nrc-code-create')
  <a class="btn btn-success unicode" href="{{route('nrccode.create')}}" style="float: right;font-size: 13px"><i class="fas fa-plus"></i> NRCCode</a>
+ @endcan
  
      {{-- @if ($message = Session::get('success'))
             <div class="alert alert-success">
@@ -49,10 +51,14 @@
                                     onsubmit="return confirm('Do you want to delete?');">
                                    @csrf
                                    @method('DELETE')
+                                   @can('nrc-code-edit')
                                     <a class="btn btn-sm btn-primary" href="{{route('nrccode.edit',$nrccode->id)}}"><i class="fa fa-fw fa-edit"></i></a>
+                                    @endcan
+                                    @can('nrc-code-delete')
                                     <button class="btn btn-sm btn-danger btn-sm" type="submit">
                                         <i class="fa fa-fw fa-trash" title="Delete"></i>
                                     </button>
+                                    @endcan
                                 </form>
                             </td>
                         </tr>
