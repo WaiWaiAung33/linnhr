@@ -11,6 +11,13 @@ use Illuminate\Http\Request;
 
 class OvertimeController extends Controller
 {
+    public function __construct() 
+    {
+      $this->middleware('permission:overtime-list|overtime-create|overtime-edit|overtime-delete', ['only' => ['index','show']]);
+      $this->middleware('permission:overtime-create', ['only' => ['create','store']]);
+      $this->middleware('permission:overtime-edit', ['only' => ['edit','update']]);
+      $this->middleware('permission:overtime-delete', ['only' => ['destroy']]);
+    }
     /**
      * Display a listing of the resource.
      *
