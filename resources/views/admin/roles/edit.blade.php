@@ -56,15 +56,13 @@
             <table class="table table-bordered styled-table">
                 <thead>
                     <tr>
-                       <th>No</th>
+                        <th>No</th>
                         <th>Name</th>
                         <th>Read</th>
                         <th>Create</th>
                         <th>Update</th>
                         <th>Delete</th>
-                        <th>Import</th>
-                        <th>Export</th>
-                        <th></th>
+                        {{-- <th>Export</th> --}}
                     </tr>
                 </thead>
                 <tbody>
