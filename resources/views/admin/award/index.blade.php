@@ -41,10 +41,10 @@
       </form>
 <!-- </div> -->
  
-
+@can('award-create')
    <a class="btn btn-success unicode" href="{{route('award.create')}}" style="float: right;font-size: 13px"><i class="fas fa-plus"></i>Add New!!!</a><br>
 
-
+@endcan
       <p style="padding-left: 10px">Total record:{{$count}}</p>
     <div class="table-responsive" style="font-size:14px">
                 <table class="table table-bordered styled-table">

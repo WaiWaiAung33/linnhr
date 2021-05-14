@@ -11,6 +11,13 @@ use Illuminate\Http\Request;
 
 class AwardController extends Controller
 {
+    public function __construct() 
+    {
+      $this->middleware('permission:award-list|award-create|award-edit|award-delete', ['only' => ['index','show']]);
+      $this->middleware('permission:award-create', ['only' => ['create','store']]);
+      $this->middleware('permission:award-edit', ['only' => ['edit','update']]);
+      $this->middleware('permission:award-delete', ['only' => ['destroy']]);
+    }
     /**
      * Display a listing of the resource.
      *

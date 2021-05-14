@@ -15,10 +15,12 @@
           <form action="{{route('award.destroy',$award->id)}}" method="POST" onsubmit="return confirm('Do you really want to delete?');">
                             @csrf
                             @method('DELETE')
-
+                            @can('award-edit')
                             <a class="btn btn-sm btn-primary" href="{{route('award.edit',$award->id)}}"><i class="fa fa-fw fa-edit" /></i></a>
-
+                            @endcan
+                            @can('award-delete')
                             <button type="submit" class="btn btn-sm btn-danger"><i class="fa fa-fw fa-trash" /></i></button> 
+                            @endcan
           </form>
         </div>
     </div>
