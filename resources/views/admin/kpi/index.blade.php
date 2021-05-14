@@ -38,7 +38,7 @@ $colorArr = ['#FC0107','#FD8008','#0576f4','#00A825','#21FF06'];
       @csrf
 
        <div class="row form-group">
-        @can('kpi-import')
+        
             <div class="col-md-2">
               <input type="file" name="file" class="form-control" style="font-size: 13px">
                 @if ($errors->has('file'))
@@ -50,18 +50,17 @@ $colorArr = ['#FC0107','#FD8008','#0576f4','#00A825','#21FF06'];
             <div class="col-md-1">
             <button class="btn btn-success btn-sm"><i class="fas fa-file-csv"></i> Import</button>
             </div>
-            @endcan
-            @can('kpi-download-csv')
+           
            <div>
            <a class="btn btn-primary btn-sm"  href="{{route('kpis.download.csv')}}"><i class="fa fa-fw fa-download" ></i>Demo CSV File</a>
 
            </div>
-           @endcan
+          
 
            <div style="margin-left: 10px">
-            @can('kpi-export')
+           
              <a class="btn btn-warning btn-sm" id="export_btn" style="font-size: 13px;><i class="fa fa-fw fa-file-excel" style="padding-top: 8px"></i>Export</a> 
-             @endcan
+             
            </div>
       </div>
        

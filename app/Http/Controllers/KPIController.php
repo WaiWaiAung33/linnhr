@@ -17,10 +17,7 @@ class KPIController extends Controller
 {
    public function __construct() 
     {
-      $this->middleware('permission:kpi-list|kpi-create|kpi-edit|kpi-delete|kpi-download-csv|kpi-import|kpi-export', ['only' => ['index','show']]);
-      $this->middleware('permission:kpi-download-csv', ['only' => ['downloadKpisCSV']]);
-      $this->middleware('permission:kpi-import', ['only' => ['import']]);
-      $this->middleware('permission:kpi-export', ['only' => ['kpiexport']]);
+      $this->middleware('permission:kpi-list|kpi-create|kpi-edit|kpi-delete', ['only' => ['index','show']]);
       $this->middleware('permission:kpi-create', ['only' => ['create','store']]);
       $this->middleware('permission:kpi-edit', ['only' => ['edit','update']]);
       $this->middleware('permission:kpi-delete', ['only' => ['destroy']]);
