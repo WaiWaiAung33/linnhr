@@ -42,8 +42,15 @@ class RoleController extends Controller
      */
     public function create()
     {
-        $permission = Permission::get();
-        return view('admin.roles.create',compact('permission'));
+        // $permissions = Permission::get();
+
+        $permissions = Permission::select(DB::raw('group_concat(name) as names'),DB::raw('group_concat(id) as ids'),'model')
+                    ->groupBy(DB::raw('model'))
+                    ->orderBy('model','asc')
+                    ->get();
+        
+        // dd($permissions);
+        return view('admin.roles.create',compact('permissions'));
     }
     
     /**
@@ -73,12 +80,20 @@ class RoleController extends Controller
      */
     public function show($id)
     {
+    //     $role = Role::find($id);
+    //     $rolePermissions = Permission::join("role_has_permissions","role_has_permissions.permission_id","=","permissions.id")
+    //         ->where("role_has_permissions.role_id",$id)
+    //         ->get();
         $role = Role::find($id);
-        $rolePermissions = Permission::join("role_has_permissions","role_has_permissions.permission_id","=","permissions.id")
-            ->where("role_has_permissions.role_id",$id)
-            ->get();
+        $permissions = Permission::select(DB::raw('group_concat(name) as names'),DB::raw('group_concat(id) as ids'),'model')
+                    ->groupBy(DB::raw('model'))
+                    ->orderBy('model','asc')
+                    ->get();
+        $rolePermissions = DB::table("role_has_permissions")->where("role_has_permissions.role_id",$id)
+            ->pluck('role_has_permissions.permission_id','role_has_permissions.permission_id')
+            ->all();
     
-        return view('admin.roles.show',compact('role','rolePermissions'));
+        return view('admin.roles.show',compact('role','rolePermissions','permissions'));
     }
     
     /**
@@ -90,12 +105,16 @@ class RoleController extends Controller
     public function edit($id)
     {
         $role = Role::find($id);
-        $permission = Permission::get();
+        // $permission = Permission::get();
+        $permissions = Permission::select(DB::raw('group_concat(name) as names'),DB::raw('group_concat(id) as ids'),'model')
+                    ->groupBy(DB::raw('model'))
+                    ->orderBy('model','asc')
+                    ->get();
         $rolePermissions = DB::table("role_has_permissions")->where("role_has_permissions.role_id",$id)
             ->pluck('role_has_permissions.permission_id','role_has_permissions.permission_id')
             ->all();
     
-        return view('admin.roles.edit',compact('role','permission','rolePermissions'));
+        return view('admin.roles.edit',compact('role','permissions','rolePermissions'));
     }
     
     /**
