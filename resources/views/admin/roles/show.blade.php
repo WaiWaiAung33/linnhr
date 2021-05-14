@@ -62,6 +62,9 @@
                         <th>Create</th>
                         <th>Update</th>
                         <th>Delete</th>
+                        <th>Import</th>
+                        <th>Export</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>

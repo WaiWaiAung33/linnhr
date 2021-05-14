@@ -64,7 +64,9 @@
                         <th>Create</th>
                         <th>Update</th>
                         <th>Delete</th>
-                        {{-- <td>Export</td> --}}
+                        <th>Import</th>
+                        <th>Export</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
