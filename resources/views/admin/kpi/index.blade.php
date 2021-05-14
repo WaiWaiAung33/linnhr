@@ -38,6 +38,7 @@ $colorArr = ['#FC0107','#FD8008','#0576f4','#00A825','#21FF06'];
       @csrf
 
        <div class="row form-group">
+        @can('kpi-import')
             <div class="col-md-2">
               <input type="file" name="file" class="form-control" style="font-size: 13px">
                 @if ($errors->has('file'))
@@ -49,12 +50,18 @@ $colorArr = ['#FC0107','#FD8008','#0576f4','#00A825','#21FF06'];
             <div class="col-md-1">
             <button class="btn btn-success btn-sm"><i class="fas fa-file-csv"></i> Import</button>
             </div>
-           <!-- <div class="col-md-5"></div> -->
+            @endcan
+            @can('kpi-download-csv')
            <div>
            <a class="btn btn-primary btn-sm"  href="{{route('kpis.download.csv')}}"><i class="fa fa-fw fa-download" ></i>Demo CSV File</a>
+
            </div>
+           @endcan
+
            <div style="margin-left: 10px">
+            @can('kpi-export')
              <a class="btn btn-warning btn-sm" id="export_btn" style="font-size: 13px;><i class="fa fa-fw fa-file-excel" style="padding-top: 8px"></i>Export</a> 
+             @endcan
            </div>
       </div>
        
@@ -179,7 +186,9 @@ $colorArr = ['#FC0107','#FD8008','#0576f4','#00A825','#21FF06'];
                  </div>
                  
                  <div class="col-md-8" align="right">
+                  @can('kpi-create')
                 <a class="btn btn-success unicode" href="{{route('kpi.create')}}" style="float: right;font-size: 13px"><i class="fas fa-plus"></i> &nbsp;Add KPI</a>
+                @endcan
               </div>
                
              </div>
@@ -343,10 +352,14 @@ $colorArr = ['#FC0107','#FD8008','#0576f4','#00A825','#21FF06'];
                                     onsubmit="return confirm('Do you want to delete?');">
                                     @csrf
                                     @method('DELETE')
+                                    @can('kpi-edit')
                                     <a class="btn btn-sm btn-primary" href="{{route('kpi.edit',$kpi->id)}}"><i class="fa fa-fw fa-edit"></i></a>
+                                    @endcan
+                                    @can('kpi-delete')
                                     <button class="btn btn-sm btn-danger btn-sm" type="submit">
                                         <i class="fa fa-fw fa-trash" title="Delete"></i>
                                     </button>
+                                    @endcan
                                 </form>
                             </td>
                         </tr>
