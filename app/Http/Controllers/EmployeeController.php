@@ -47,7 +47,7 @@ class EmployeeController extends Controller
     public function index(Request $request)
     {
         $join_date = date('Y-m-d',strtotime($request->join_date));
-        $join_month = date('Y-m-d',strtotime($request->join_month))
+        $join_month = date('Y-m-d',strtotime($request->join_month));
         // dd($join_date);
         $branchs = Branch::all();
         $departments = Department::orderBy('name','asc')->get();
