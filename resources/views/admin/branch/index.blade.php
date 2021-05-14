@@ -95,7 +95,9 @@ input:checked + .slider:before {
 ?>
 <div>
 
+@can('branch-create')
    <a class="btn btn-success unicode" href="{{route('branch.create')}}" style="float: right;font-size: 13px"><i class="fas fa-plus"></i> Branch</a>
+   @endcan
 
 
      {{-- @if ($message = Session::get('success'))
@@ -147,10 +149,14 @@ input:checked + .slider:before {
                                    @csrf
                                    @method('DELETE')
                                     <a class="btn btn-sm btn-info" href="{{url('employee?branch_id='.$branch->id)}}"><i class="fa fa-fw fa-eye" /></i></a> 
+                                    @can('branch-edit')
                                     <a class="btn btn-sm btn-primary" href="{{route('branch.edit',$branch->id)}}"><i class="fa fa-fw fa-edit"></i></a>
+                                    @endcan
+                                    @can('branch-delete')
                                     <button class="btn btn-sm btn-danger btn-sm" type="submit">
                                         <i class="fa fa-fw fa-trash" title="Delete"></i>
                                     </button>
+                                    @endcan
                                 </form>
                             </td>
                         </tr>
