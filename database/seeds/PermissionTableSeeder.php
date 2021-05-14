@@ -88,6 +88,9 @@ class PermissionTableSeeder extends Seeder
            'room-edit',
            'room-delete',
            'hostel-employee-list',
+           'hostel-employee-create',
+           'hostel-employee-edit',
+           'hostel-employee-delete',
            'backup-list',
            'backup-create',
            'backup-delete'

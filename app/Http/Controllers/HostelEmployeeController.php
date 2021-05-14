@@ -15,6 +15,13 @@ use Validator;
 
 class HostelEmployeeController extends Controller
 {
+      public function __construct() 
+    {
+      $this->middleware('permission:hostel-employee-list|hostel-employee-create|hostel-employee-edit|hostel-employee-delete', ['only' => ['index','show']]);
+      $this->middleware('permission:hostel-employee-create', ['only' => ['create','store']]);
+      $this->middleware('permission:hostel-employee-edit', ['only' => ['edit','update']]);
+      $this->middleware('permission:hostel-employee-delete', ['only' => ['destroy']]);
+    }
     /**
      * Display a listing of the resource.
      *

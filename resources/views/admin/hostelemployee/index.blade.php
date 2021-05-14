@@ -18,7 +18,9 @@
 
 <div>
 
- <a class="btn btn-success unicode" href="{{route('hostelemployee.create')}}" style="float: right;font-size: 13px"><i class="fas fa-plus"></i> Hostel Employee</a><br>
+@can('hostel-employee-create')
+ <a class="btn btn-success unicode" href="{{route('hostelemployee.create')}}" style="float: right;font-size: 13px"><i class="fas fa-plus"></i> Hostel Employee</a>
+ @endcan<br>
 
   <form action="{{route('hostelemployee.index')}}" method="get" accept-charset="utf-8" class="form-horizontal unicode" >
             <div class="row form-group" id="adv_filter">
@@ -127,10 +129,14 @@
                                     onsubmit="return confirm('Do you want to delete?');">
                                    @csrf
                                    @method('DELETE')
+                                   @can('hostel-employee-edit')
                                     <a class="btn btn-sm btn-primary" href="{{route('hostelemployee.edit',$hostelemployee->id)}}"><i class="fa fa-fw fa-edit"></i></a>
+                                    @endcan
+                                    @can('hostel-employee-delete')
                                     <button class="btn btn-sm btn-danger btn-sm" type="submit">
                                         <i class="fa fa-fw fa-trash" title="Delete"></i>
                                     </button>
+                                    @endcan
                                 </form>
                             </td>
                         </tr>
