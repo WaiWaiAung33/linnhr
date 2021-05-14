@@ -363,6 +363,7 @@ return [
                     'text' => 'Training',
                     'url'  => 'training',
                     'icon' => 'fa fa-university',
+                    'can'  => 'training-list'
                 ],
 
                  [

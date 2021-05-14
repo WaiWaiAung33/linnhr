@@ -34,7 +34,9 @@
                         </div> 
 
                          <div class="col-md-6">
+                          @can('training-create')
                            <a class="btn btn-success unicode" href="{{route('training.create')}}" style="float: right;font-size: 13px"><i class="fas fa-plus"></i> Training</a>
+                           @endcan
                          </div>
                     </div>
                 </div>
@@ -76,11 +78,17 @@
                                     onsubmit="return confirm('Do you want to delete?');">
                                    @csrf
                                    @method('DELETE')
+                                  
                                     <a class="btn btn-sm btn-info" href="{{route('training.show',$training->id)}}"><i class="fa fa-fw fa-eye" /></i></a> 
+                                   
+                                    @can('training-edit')
                                     <a class="btn btn-sm btn-primary" href="{{route('training.edit',$training->id)}}"><i class="fa fa-fw fa-edit"></i></a>
+                                    @endcan
+                                    @can('training-delete')
                                     <button class="btn btn-sm btn-danger btn-sm" type="submit">
                                         <i class="fa fa-fw fa-trash" title="Delete"></i>
                                     </button>
+                                    @endcan
                                 </form>
                             </td>
                         </tr>
