@@ -16,6 +16,7 @@
         }
 ?>
 <!-- <div class="row"> -->
+
     <form action="{{route('attendance.index')}}" method="get" accept-charset="utf-8" class="form-horizontal">
      <div class="row">
      
@@ -49,9 +50,9 @@
       </form>
 <!-- </div> -->
  
-
+@can('attendance-create')
    <a class="btn btn-success unicode" href="{{route('attendance.create')}}" style="float: right;font-size: 13px"><i class="fas fa-plus"></i>Add New!!!</a><br>
-
+@endcan
 
       <p style="padding-left: 10px">Total record:{{$count}}</p>
     <div class="table-responsive" style="font-size:14px">

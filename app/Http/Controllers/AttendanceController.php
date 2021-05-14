@@ -12,6 +12,13 @@ use Illuminate\Http\Request;
 
 class AttendanceController extends Controller
 {
+    public function __construct() 
+    {
+      $this->middleware('permission:attendance-list|attendance-create|attendance-edit|attendance-delete', ['only' => ['index','show']]);
+      $this->middleware('permission:attendance-create', ['only' => ['create','store']]);
+      $this->middleware('permission:attendance-edit', ['only' => ['edit','update']]);
+      $this->middleware('permission:attendance-delete', ['only' => ['destroy']]);
+    }
     /**
      * Display a listing of the resource.
      *

@@ -15,10 +15,12 @@
           <form action="{{route('attendance.destroy',$attendance->id)}}" method="POST" onsubmit="return confirm('Do you really want to delete?');">
             @csrf
             @method('DELETE')
-
+            @can('attendance-edit')
             <a class="btn btn-sm btn-primary" href="{{route('attendance.edit',$attendance->id)}}"><i class="fa fa-fw fa-edit" /></i></a>
-
-            <button type="submit" class="btn btn-sm btn-danger"><i class="fa fa-fw fa-trash" /></i></button> 
+            @endcan
+            @can('attendance-delete')
+            <button type="submit" class="btn btn-sm btn-danger"><i class="fa fa-fw fa-trash" /></i></button>
+            @endcan 
           </form>
         </div>
     </div>
