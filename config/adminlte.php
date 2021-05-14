@@ -377,6 +377,7 @@ return [
                     'text' => 'Training Attendance',
                     'url'  => 'training_attendance',
                     'icon' => 'fa fa-transgender-alt',
+                    'can'  => 'trainingattendance-list'
                 ],
 
                  [
