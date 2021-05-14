@@ -328,6 +328,7 @@ return [
                     'text' => 'Day Off',
                     'url'  => 'offday',
                     'icon' => 'fas fa-fw fa-calendar-alt',
+                    'can'  => 'offday-list'
                 ],
                   [
                     'text' => 'Overtime',

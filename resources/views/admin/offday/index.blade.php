@@ -54,7 +54,9 @@
 
 <div>
 
+    @can('offday-create')
      <a class="btn btn-success unicode" href="{{route('offday.create')}}" style="float: right;font-size: 13px"><i class="fas fa-plus"></i> Offday</a>
+     @endcan
 
       <form action="{{route('offday.index')}}" method="get" accept-charset="utf-8" class="form-horizontal">
          <div class="row form-group">
@@ -195,10 +197,14 @@
                       onsubmit="return confirm('Do you want to delete?');">
                       @csrf
                       @method('DELETE')
+                      @can('offday-edit')
                       <a class="btn btn-sm btn-primary" href="{{route('offday.edit',$offday->id)}}"><i class="fa fa-fw fa-edit"></i></a>
+                      @endcan
+                      @can('offday-delete')
                       <button class="btn btn-sm btn-danger btn-sm" type="submit">
                       <i class="fa fa-fw fa-trash" title="Delete"></i>
                       </button>
+                      @endcan
                    </form>
                 </td>
              </tr>

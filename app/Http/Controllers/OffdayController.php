@@ -24,6 +24,13 @@ use PhpOffice\PhpSpreadsheet\Shared\Date;
 
 class OffdayController extends Controller
 {
+     public function __construct() 
+    {
+      $this->middleware('permission:offday-list|offday-create|offday-edit|offday-delete', ['only' => ['index','show']]);
+      $this->middleware('permission:offday-create', ['only' => ['create','store']]);
+      $this->middleware('permission:offday-edit', ['only' => ['edit','update']]);
+      $this->middleware('permission:offday-delete', ['only' => ['destroy']]);
+    }
     /**
      * Display a listing of the resource.
      *
