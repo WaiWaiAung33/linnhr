@@ -53,8 +53,10 @@
     </div>
 </div>
 <div class="row">
-    <strong>Permissions:</strong>
+    <p><strong>Permissions:</strong> </p><br>
+       
         <div class="table-responsive" style="font-size:14px">
+            <label for=""><input type="checkbox" id="checkAll"> Check All</label>
             <table class="table table-bordered styled-table">
                 <thead>
                     <tr>
@@ -90,4 +92,15 @@
 </div>
 {!! Form::close() !!}
 
+@stop
+@section('css')
+@stop
+
+@section('js')
+<script> 
+   
+    $("#checkAll").click(function(){
+        $('input:checkbox').not(this).prop('checked', this.checked);
+    });
+</script>
 @stop
