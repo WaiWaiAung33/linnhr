@@ -99,7 +99,9 @@ input:checked + .slider:before {
 
 <div >
 
+  @can('department-create')
    <a class="btn btn-success unicode" href="{{route('department.create')}}" style="float: right;font-size: 13px"><i class="fas fa-plus"></i> Department</a>
+  @endcan
 
       {{-- @if ($message = Session::get('success'))
             <div class="alert alert-success">
@@ -146,11 +148,16 @@ input:checked + .slider:before {
                                     onsubmit="return confirm('Do you want to delete?');">
                                     @csrf
                                     @method('DELETE')
+
                                      <a class="btn btn-sm btn-info" href="{{url('employee?dep_id='.$department->id)}}"><i class="fa fa-fw fa-eye" /></i></a> 
+                                     @can('department-edit')
                                     <a class="btn btn-sm btn-primary" href="{{route('department.edit',$department->id)}}"><i class="fa fa-fw fa-edit"></i></a>
+                                    @endcan
+                                    @can('department-delete')
                                     <button class="btn btn-sm btn-danger btn-sm" type="submit">
                                         <i class="fa fa-fw fa-trash" title="Delete"></i>
                                     </button>
+                                    @endcan
                                 </form>
                             </td>
                         </tr>
