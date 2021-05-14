@@ -12,6 +12,13 @@ use Illuminate\Http\Request;
  
 class LeaveApplicationController extends Controller
 {
+    public function __construct() 
+    {
+      $this->middleware('permission:leave-list|leave-create|leave-edit|leave-delete', ['only' => ['index','show']]);
+      $this->middleware('permission:leave-create', ['only' => ['create','store']]);
+      $this->middleware('permission:leave-edit', ['only' => ['edit','update']]);
+      $this->middleware('permission:leave-delete', ['only' => ['destroy']]);
+    }
     /**
      * Display a listing of the resource.
      *

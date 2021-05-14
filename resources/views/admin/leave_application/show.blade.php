@@ -15,10 +15,13 @@
           <form action="{{route('leave_application.destroy',$leave_application->id)}}" method="POST" onsubmit="return confirm('Do you really want to delete?');">
                             @csrf
                             @method('DELETE')
-
+                            @can('leave-edit')
                             <a class="btn btn-sm btn-primary" href="{{route('leave_application.edit',$leave_application->id)}}"><i class="fa fa-fw fa-edit" /></i></a>
+                            @endcan
 
+                            @can('leave-delete')
                             <button type="submit" class="btn btn-sm btn-danger"><i class="fa fa-fw fa-trash" /></i></button> 
+                            @endcan
           </form>
         </div>
     </div>
