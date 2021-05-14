@@ -249,7 +249,9 @@
                   <button type="button" class="btn btn-warning "  data-toggle="modal" data-target="#myModal" style="font-size: 13px"><i class="fa fa-filter" aria-hidden="true"></i></button>
             </div>
             <div class="col-md-8" align="right">
+              @can('employee-create')
               <a class="btn btn-success unicode" href="{{route('employee.create')}}" style="float: right;font-size: 13px"><i class="fas fa-plus"></i> Employee</a>
+              @endcan
             </div>
             
   </div>        
