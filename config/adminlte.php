@@ -440,7 +440,7 @@ return [
                     'text' => 'Job Openings',
                     'url' => 'jobopening',
                     'icon' => 'fa fa-briefcase',
-                    'can'  => 'job-list'
+                    'can'  => 'jobopen-list'
                 ],
                 [
                             'text' => 'Job Applications',

@@ -8,7 +8,9 @@
 @section('content')
 
  <div>
+  @can('jobopen-create')
  	 <a class="btn btn-success unicode" href="{{route('jobopening.create')}}" style="float: right;font-size: 13px"><i class="fas fa-plus"></i> Jobopening</a>
+   @endcan
  </div>
 
  <?php
@@ -71,10 +73,14 @@
                                     onsubmit="return confirm('Do you want to delete?');">
                                     @csrf
                                     @method('DELETE')
+                                    @can('jobopen-edit')
                                     <a class="btn btn-sm btn-primary" href="{{route('jobopening.edit',$jobopening->id)}}"><i class="fa fa-fw fa-edit"></i></a>
+                                    @endcan
+                                    @can('jobopen-delete')
                                     <button class="btn btn-sm btn-danger btn-sm" type="submit">
                                         <i class="fa fa-fw fa-trash" title="Delete"></i>
                                     </button>
+                                    @endcan
                                 </form>
                             </td>
                         </tr>

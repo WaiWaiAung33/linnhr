@@ -11,6 +11,13 @@ use Illuminate\Support\Str;
 
 class JobopeningController extends Controller
 {
+     public function __construct() 
+    {
+      $this->middleware('permission:jobopen-list|jobopen-create|jobopen-edit|jobopen-delete', ['only' => ['index','show']]);
+      $this->middleware('permission:jobopen-create', ['only' => ['create','store']]);
+      $this->middleware('permission:jobopen-edit', ['only' => ['edit','update']]);
+      $this->middleware('permission:jobopen-delete', ['only' => ['destroy']]);
+    }
     /**
      * Display a listing of the resource.
      *
