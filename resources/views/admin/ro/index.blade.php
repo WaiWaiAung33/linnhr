@@ -38,7 +38,9 @@
                  </div>
 
                  <div class="col-md-6" align="right">
+                @can('ro-create')
                 <a class="btn btn-success unicode" href="{{route('ro.create')}}" style="float: right;font-size: 13px"><i class="fas fa-plus"></i> Ro</a>
+                @endcan
               </div>
                
              </div>
@@ -91,10 +93,14 @@
                                     onsubmit="return confirm('Do you want to delete?');">
                                    @csrf
                                    @method('DELETE')
+                                    @can('ro-edit')
                                     <a class="btn btn-sm btn-primary" href="{{route('ro.edit',$office_reporter->id)}}"><i class="fa fa-fw fa-edit"></i></a>
+                                    @endcan
+                                    @can('ro-delete')
                                     <button class="btn btn-sm btn-danger btn-sm" type="submit">
                                         <i class="fa fa-fw fa-trash" title="Delete"></i>
                                     </button>
+                                    @endcan
                                 </form>
                             </td>
                          

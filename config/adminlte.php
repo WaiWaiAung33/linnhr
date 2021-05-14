@@ -289,7 +289,7 @@ return [
                     'text' => 'RO',
                     'url'  => 'ro',
                     'icon' => 'fas fa-fw fa-users',
-                    'can'  => 'employee-list'
+                    'can'  => 'ro-list'
                 ] 
             ]
         ],       

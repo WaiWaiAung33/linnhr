@@ -10,6 +10,13 @@ use Illuminate\Http\Request;
 
 class RoController extends Controller
 {
+      public function __construct() 
+    {
+      $this->middleware('permission:ro-list|ro-create|ro-edit|ro-delete', ['only' => ['index','show']]);
+      $this->middleware('permission:ro-create', ['only' => ['create','store']]);
+      $this->middleware('permission:ro-edit', ['only' => ['edit','update']]);
+      $this->middleware('permission:ro-delete', ['only' => ['destroy']]);
+    }
     /**
      * Display a listing of the resource.
      *
