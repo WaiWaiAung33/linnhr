@@ -10,7 +10,9 @@
 
 <div>
 
+@can('room-create')
  <a class="btn btn-success unicode" href="{{route('room.create')}}" style="float: right;font-size: 13px"><i class="fas fa-plus"></i> Room</a>
+ @endcan
  
      {{-- @if ($message = Session::get('success'))
             <div class="alert alert-success">
@@ -42,10 +44,14 @@
                                     onsubmit="return confirm('Do you want to delete?');">
                                    @csrf
                                    @method('DELETE')
+                                   @can('room-edit')
                                     <a class="btn btn-sm btn-primary" href="{{route('room.edit',$room->id)}}"><i class="fa fa-fw fa-edit"></i></a>
+                                    @endcan
+                                    @can('room-delete')
                                     <button class="btn btn-sm btn-danger btn-sm" type="submit">
                                         <i class="fa fa-fw fa-trash" title="Delete"></i>
                                     </button>
+                                    @endcan
                                 </form>
                             </td>
                         </tr>

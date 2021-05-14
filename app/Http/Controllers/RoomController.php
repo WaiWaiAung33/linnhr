@@ -9,6 +9,13 @@ use Illuminate\Http\Request;
 
 class RoomController extends Controller
 {
+     public function __construct() 
+    {
+      $this->middleware('permission:room-list|room-create|room-edit|room-delete', ['only' => ['index','show']]);
+      $this->middleware('permission:room-create', ['only' => ['create','store']]);
+      $this->middleware('permission:room-edit', ['only' => ['edit','update']]);
+      $this->middleware('permission:room-delete', ['only' => ['destroy']]);
+    }
     /**
      * Display a listing of the resource.
      *
