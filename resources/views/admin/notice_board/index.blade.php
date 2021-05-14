@@ -97,9 +97,9 @@ input:checked + .slider:before {
         $position_id = isset($_GET['position_id'])?$_GET['position_id']:'';
 ?>
 <div>
-
-   <a class="btn btn-success unicode" href="{{route('notice_board.create')}}" style="float: right;font-size: 13px"><i class="fas fa-plus"></i> Notice Board</a>
-
+   @can('notice-create')
+      <a class="btn btn-success unicode" href="{{route('notice_board.create')}}" style="float: right;font-size: 13px"><i class="fas fa-plus"></i> Notice Board</a>
+    @endcan
       <form action="{{route('notice_board.index')}}" method="get" accept-charset="utf-8" class="form-horizontal">
      <div class="row form-group">
      
@@ -178,10 +178,14 @@ input:checked + .slider:before {
                                    @csrf
                                    @method('DELETE')
                                     <a class="btn btn-sm btn-info" href="{{route('notice_board.show',$notice_board->id)}}"><i class="fa fa-fw fa-eye" /></i></a> 
+                                    @can('notice-edit')
                                     <a class="btn btn-sm btn-primary" href="{{route('notice_board.edit',$notice_board->id)}}"><i class="fa fa-fw fa-edit"></i></a>
+                                    @endcan
+                                    @can('notice-delete')
                                     <button class="btn btn-sm btn-danger btn-sm" type="submit">
                                         <i class="fa fa-fw fa-trash" title="Delete"></i>
                                     </button>
+                                    @endcan
                                 </form>
                             </td>
                         </tr>

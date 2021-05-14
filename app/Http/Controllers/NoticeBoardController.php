@@ -13,12 +13,19 @@ use Illuminate\Http\Request;
 
 class NoticeBoardController extends Controller
 {
+    public function __construct() 
+    {
+      $this->middleware('permission:notice-list|notice-create|notice-edit|notice-delete', ['only' => ['index','show']]);
+      $this->middleware('permission:notice-create', ['only' => ['create','store']]);
+      $this->middleware('permission:notice-edit', ['only' => ['edit','update']]);
+      $this->middleware('permission:notice-delete', ['only' => ['destroy']]);
+    }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index(Request $request) 
     {
         $branches = Branch::all();
         $departments = Department::all();
