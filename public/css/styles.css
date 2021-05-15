@@ -1625,7 +1625,7 @@ p {
 
 .bg-half {
   padding: 180px 0px 90px 0px;
-  /*background-image: url('uploads/images/laptop_computer.jpg');*/
+  background-image: url('../uploads/laptop.jpg');
   background-size: cover;
   position: relative;
   background-position: center center;
