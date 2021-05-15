@@ -121,8 +121,8 @@
     <!-- Navbar End -->
 
      <!-- Start home -->
-    <section class="bg-half page-next-level" style="background-color: red" style="height: 10%"> 
-        <div class="bg-overlay">
+    <section class="bg-half page-next-level" style="background-image: url('uploads/images/laptop.jpg');"> 
+        <div class="bg-overlay" >
             <!--   <img src="{{ asset('uploads/images/laptop_computer.jpg') }}" alt="" style="height: 600px" width="1800px"> -->
         </div>
         <div class="container">
