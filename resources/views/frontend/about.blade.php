@@ -119,8 +119,7 @@
 
      <!-- Start home -->
     <section class="bg-half page-next-level"> 
-        <div class="bg-overlay" >
-            <!--   <img src="{{ asset('uploads/images/laptop_computer.jpg') }}" alt="" style="height: 600px" width="1800px"> -->
+        <div class="bg-overlay">
         </div>
         <div class="container">
             <div class="row">
