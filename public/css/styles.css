@@ -1624,8 +1624,8 @@ p {
 }
 
 .bg-half {
-  padding: 280px 0px 180px 0px;
-  background-image: url("https://via.placeholder.com/2000X1100//88929f/5a6270C/O https://placeholder.com/");
+  padding: 180px 0px 90px 0px;
+  background-image: url('uploads/images/laptop_computer.jpg');
   background-size: cover;
   position: relative;
   background-position: center center;
