@@ -37,15 +37,10 @@
         </div>
     </div>
     <div class="col-xs-1 col-sm-1 col-md-1 text-center">
-        <div class="form-group">
-            <strong>&nbsp;</strong>
-            <button type="submit" class="btn btn-success btn-sm form-control">Save</button>
-        </div>
-    </div>
-    <div class="col-xs-1 col-sm-1 col-md-1 text-center">
-        <div class="form-group">
-            <strong>&nbsp;</strong>
-            <a class="btn btn-secondary form-control btn-sm"  href="{{ route('roles.index') }}"> Back</a>
+        <div class="form-group" style="margin-top: 5px;">
+            <strong>&nbsp;</strong><br/>
+            <button type="submit" class="btn btn-success btn-sm">Save</button>
+            <a class="btn btn-secondary btn-sm"  href="{{ route('roles.index') }}"> Back</a>
         </div>
     </div>
     <div class="col-xs-4 col-sm-4 col-md-4">
