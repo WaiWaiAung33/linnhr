@@ -152,8 +152,8 @@
                     <div class="about-desc ml-lg-4">
                         <!-- <h4 class="text-dark">About us</h4> -->
 
-                        <p class="text-muted">ကျွန်တော်များ Linn IT Solution Co., Ltd. သည် (၅.၅.၂၀၀၅) ရက်နေ့တွင် ဗိုလ်ချုပ်လမ်း၊ ပျဉ်းမနားမြို့တွင် Linn IT Solution Center အဖြစ် စတင်ဖွင့်လှစ်ခဲ့ပြီး ဝန်ကြီးရုံးများ၊ စစ်ရုံးများနှင့် ပုဂ္ဂလိက ကုမ္ပဏီများ အတွက် လိုအပ်သော IT နှင့်ပတ်သက်သည့် လုပ်ငန်းများကို အချိန်နှင့် တပြေးညီ ဆောင်ရွက်ပေးခဲ့ပါသည်။ထို့အပြင် Computer နှင့် ဆက်စပ်ပစ္စည်းများရောင်းချခြင်း နှင့် Computer နှင့် ပက်သက်သည့် သင်တန်းများကိုလည်း ဖွင့်လှစ်သင်ကြားပေးခဲ့ပါသည်။
-
+                        <p>ကျွန်တော်များ Linn IT Solution Co., Ltd. သည် (၅.၅.၂၀၀၅) ရက်နေ့တွင် ဗိုလ်ချုပ်လမ်း၊ ပျဉ်းမနားမြို့တွင် Linn IT Solution Center အဖြစ် စတင်ဖွင့်လှစ်ခဲ့ပြီး ဝန်ကြီးရုံးများ၊ စစ်ရုံးများနှင့် ပုဂ္ဂလိက ကုမ္ပဏီများ အတွက် လိုအပ်သော IT နှင့်ပတ်သက်သည့် လုပ်ငန်းများကို အချိန်နှင့် တပြေးညီ ဆောင်ရွက်ပေးခဲ့ပါသည်။ထို့အပြင် Computer နှင့် ဆက်စပ်ပစ္စည်းများရောင်းချခြင်း နှင့် Computer နှင့် ပက်သက်သည့် သင်တန်းများကိုလည်း ဖွင့်လှစ်သင်ကြားပေးခဲ့ပါသည်။</p><br>
+                        <p>
                         နေပြည်တော်ကောင်စီနယ်မြေအတွင်းရှိ ဝန်ကြီးရုံးများ၊ ဟိုတယ်များ၊ စစ်ရုံးများနှင့် ကုမ္ပဏီများတွင်လည်း လိုအပ်သော Network, CCTV Camera နှင့် WiFi များအား Installation ဆောင်ရွက်မှုများကိုလည်း တပ်ဆင်ဆောင်ရွက်ပေး လျက်ရှိပါသည်။ ဝန်ကြီးဌာနများတွင်လည်း E-Government စနစ်အကောင်အထည်ဖော်ဆောင်နိုင်ရန်အတွက် Network Infrastructure အား လိုက်လံတပ်ဆင်ဆောင်ရွက်ပေးလျှက်ရှိပါသည်။</p>
 
                        <!--  <p class="text-muted">Maecenas tempus tellus eget as that condimentum rhoncus sem quam semper libero amete adipiscing sem neque sed ipsum Nam quam nunce blandit at luctus pulvinar hendrerit id lorem Maecenas nec et ante tincidunt tempus.</p>
@@ -172,7 +172,7 @@
     <!-- ABOUT US END -->
 
     <!-- COUNTER START -->
-   <footer class="footer primary-footer" style="background-color: #0d4091">
+   <div class="footer primary-footer" style="background-color: #0d4091">
             <div class="container">
                 <div class="row" style="text-align: center;">
                     <div class="col-md-6 col-sm-6" >
@@ -193,10 +193,10 @@
                    
                 </div><!-- end row -->
             </div><!-- end container -->
-        </footer><br><!-- end primary-footer -->
+        </div><br><!-- end primary-footer -->
     <!-- COUNTER END -->
-
-    <div style="margin:30px">
+    <div>
+    <div style="margin:30px;">
         <h3>Our History</h3>
         <p>
             ကျွန်တော်များ Linn IT Solution Co., Ltd. သည် (၅.၅.၂၀၀၅) ရက်နေ့တွင် ဗိုလ်ချုပ်လမ်း၊ ပျဉ်းမနားမြို့တွင် Linn IT Solution Center အဖြစ် စတင်ဖွင့်လှစ်ခဲ့ပြီး ဝန်ကြီးရုံးများ၊ စစ်ရုံးများနှင့် ပုဂ္ဂလိက ကုမ္ပဏီများ အတွက် လိုအပ်သော IT နှင့်ပတ်သက်သည့် လုပ်ငန်းများကို အချိန်နှင့် တပြေးညီ ဆောင်ရွက်ပေးခဲ့ပါသည်။
@@ -211,6 +211,7 @@
 
             (၅.၅.၂၀၀၅) ရက်နေ့မှ စတင် ဖွင့်လှစ်ခဲ့သော ကျွန်တော်တို့ Linn IT Solution Co., Ltd. သည် ယနေ့ အချိန်ထိ ဝန်ထမ်းပေါင်း ၂၉၀ ကျော်နှင့် လည်ပတ် လျက်ရှိပြီး IT နှင့် ဆက်စပ်သော ပစ္စည်းများ၊ ဝန်ဆောင်မှု များကို အချိန်နှင့် တစ်ပြေးညီ ဆောင်ရွက် ပေးလျက် ရှိပါသည်။
         </p>
+    </div>
     </div>
     <div class="row" style="background-color: red">
         <div class="col-md-6" style="background-color: white">
