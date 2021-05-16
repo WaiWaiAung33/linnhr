@@ -152,8 +152,8 @@
                     <div class="about-desc ml-lg-4">
                         <!-- <h4 class="text-dark">About us</h4> -->
 
-                        <p>ကျွန်တော်များ Linn IT Solution Co., Ltd. သည် (၅.၅.၂၀၀၅) ရက်နေ့တွင် ဗိုလ်ချုပ်လမ်း၊ ပျဉ်းမနားမြို့တွင် Linn IT Solution Center အဖြစ် စတင်ဖွင့်လှစ်ခဲ့ပြီး ဝန်ကြီးရုံးများ၊ စစ်ရုံးများနှင့် ပုဂ္ဂလိက ကုမ္ပဏီများ အတွက် လိုအပ်သော IT နှင့်ပတ်သက်သည့် လုပ်ငန်းများကို အချိန်နှင့် တပြေးညီ ဆောင်ရွက်ပေးခဲ့ပါသည်။ထို့အပြင် Computer နှင့် ဆက်စပ်ပစ္စည်းများရောင်းချခြင်း နှင့် Computer နှင့် ပက်သက်သည့် သင်တန်းများကိုလည်း ဖွင့်လှစ်သင်ကြားပေးခဲ့ပါသည်။</p><br>
-                        <p>
+                        <p style="text-align: justify;">ကျွန်တော်များ Linn IT Solution Co., Ltd. သည် (၅.၅.၂၀၀၅) ရက်နေ့တွင် ဗိုလ်ချုပ်လမ်း၊ ပျဉ်းမနားမြို့တွင် Linn IT Solution Center အဖြစ် စတင်ဖွင့်လှစ်ခဲ့ပြီး ဝန်ကြီးရုံးများ၊ စစ်ရုံးများနှင့် ပုဂ္ဂလိက ကုမ္ပဏီများ အတွက် လိုအပ်သော IT နှင့်ပတ်သက်သည့် လုပ်ငန်းများကို အချိန်နှင့် တပြေးညီ ဆောင်ရွက်ပေးခဲ့ပါသည်။ထို့အပြင် Computer နှင့် ဆက်စပ်ပစ္စည်းများရောင်းချခြင်း နှင့် Computer နှင့် ပက်သက်သည့် သင်တန်းများကိုလည်း ဖွင့်လှစ်သင်ကြားပေးခဲ့ပါသည်။</p><br>
+                        <p style="text-align: justify;">
                         နေပြည်တော်ကောင်စီနယ်မြေအတွင်းရှိ ဝန်ကြီးရုံးများ၊ ဟိုတယ်များ၊ စစ်ရုံးများနှင့် ကုမ္ပဏီများတွင်လည်း လိုအပ်သော Network, CCTV Camera နှင့် WiFi များအား Installation ဆောင်ရွက်မှုများကိုလည်း တပ်ဆင်ဆောင်ရွက်ပေး လျက်ရှိပါသည်။ ဝန်ကြီးဌာနများတွင်လည်း E-Government စနစ်အကောင်အထည်ဖော်ဆောင်နိုင်ရန်အတွက် Network Infrastructure အား လိုက်လံတပ်ဆင်ဆောင်ရွက်ပေးလျှက်ရှိပါသည်။</p>
 
                        <!--  <p class="text-muted">Maecenas tempus tellus eget as that condimentum rhoncus sem quam semper libero amete adipiscing sem neque sed ipsum Nam quam nunce blandit at luctus pulvinar hendrerit id lorem Maecenas nec et ante tincidunt tempus.</p>
@@ -172,21 +172,21 @@
     <!-- ABOUT US END -->
 
     <!-- COUNTER START -->
-   <div class="footer primary-footer" style="background-color: #0d4091">
+   <div style="background-color: #0d4091">
             <div class="container">
-                <div class="row" style="text-align: center;">
-                    <div class="col-md-6 col-sm-6" >
-                        <div class="widget clearfix">
+                <div class="row">
+                    <div class="col-md-6 col-sm-6" style="border-right: 5px solid #061985;">
+                        <div class="widget clearfix" style="text-align: center;padding-top: 50px;padding-bottom: 50px">
                             <h5 style="color: white">Our Mission</h5><br>
-                          <p style="color: white">စည်းကမ်းလိုက်နာပြီး အရည်အချင်းပြည်စုံသော ဝန်ထမ်းကောင်းများနှင့် ပူးပေါင်းဆောင်ရွက်မည်။ ၂၀၂၀ ပြည့်နှစ်တွင် ISO Standard ရရှိအောင်ဆောင်ရွက်ပြီး ဝန်ဆောင်မှုအကောင်းဆုံးဖြစ်အောင်လုပ်ဆောင်ပါမည်။</p>
+                          <p style="color: white;">စည်းကမ်းလိုက်နာပြီး အရည်အချင်းပြည်စုံသော ဝန်ထမ်းကောင်းများနှင့် ပူးပေါင်းဆောင်ရွက်မည်။ ၂၀၂၀ ပြည့်နှစ်တွင် ISO Standard ရရှိအောင်ဆောင်ရွက်ပြီး ဝန်ဆောင်မှုအကောင်းဆုံးဖြစ်အောင်လုပ်ဆောင်ပါမည်။</p>
                         </div><!-- end widget -->
                     </div><!-- end col -->
 
                     <div class="col-md-6 col-sm-6">
-                        <div class="widget clearfix">
+                        <div class="widget clearfix" style="text-align: center;padding-top: 50px;padding-bottom: 50px">
                             <i class="fa fa-bar-chart" aria-hidden="true"></i>
                             <h5 style="color: white">Our Vision</h5><br>
-                            <p style="color: white">ကျွန်တော်တို့ Linn IT Solution Co.,Ltd သည် မြန်မာနိုင်ငံတော်တစ်ဝန်းလုံးတွင် ဝန်ဆောင်မှုအကောင်းဆုံးကုမ္ပဏီဖြစ်ရမည်။</p>
+                            <p style="color: white;">ကျွန်တော်တို့ Linn IT Solution Co.,Ltd သည် မြန်မာနိုင်ငံတော်တစ်ဝန်းလုံးတွင် ဝန်ဆောင်မှုအကောင်းဆုံးကုမ္ပဏီဖြစ်ရမည်။</p>
                         </div><!-- end widget -->
                     </div><!-- end col -->
 
@@ -198,7 +198,7 @@
     <div>
     <div style="margin:30px;">
         <h3>Our History</h3>
-        <p>
+        <p style="text-align: justify;">
             ကျွန်တော်များ Linn IT Solution Co., Ltd. သည် (၅.၅.၂၀၀၅) ရက်နေ့တွင် ဗိုလ်ချုပ်လမ်း၊ ပျဉ်းမနားမြို့တွင် Linn IT Solution Center အဖြစ် စတင်ဖွင့်လှစ်ခဲ့ပြီး ဝန်ကြီးရုံးများ၊ စစ်ရုံးများနှင့် ပုဂ္ဂလိက ကုမ္ပဏီများ အတွက် လိုအပ်သော IT နှင့်ပတ်သက်သည့် လုပ်ငန်းများကို အချိန်နှင့် တပြေးညီ ဆောင်ရွက်ပေးခဲ့ပါသည်။
             ထို့အပြင် Computer နှင့် ဆက်စပ်ပစ္စည်းများရောင်းချခြင်း နှင့် Computer နှင့် ပက်သက်သည့် သင်တန်းများကိုလည်း ဖွင့်လှစ်သင်ကြားပေးခဲ့ပါသည်။
 
@@ -213,17 +213,17 @@
         </p>
     </div>
     </div>
-    <div class="row" style="background-color: red">
+    <div class="row" style="background-color: red;margin: 25px">
         <div class="col-md-6" style="background-color: white">
             <img src="{{ asset('uploads/images/frontabout2.jpg') }}" alt="" width="100%" height="500px">
         </div>
         <div class="col-md-6" style="background-color: white">
-            <p>ကျွန်တော်များ Linn IT Solution Co., Ltd. အတွက် သမိုင်းဝင်မှတ်တမ်းတစ်ခုအနေဖြင့် ၂၀၁၃ ခုနှစ်တွင်မြန်မာနိုင်ငံမှ အိမ်ရှင်အဖြစ် လက်ခံကျင်းပခဲ့သည့် (၂၇) ကြိမ်မြောက် အရှေ့တောင်အာရှအားကစားပြိုင်ပွဲကြီးတွင် WiFi Internet တပ်ဆင်ခြင်း၊ Network တည်ဆောက်ခြင်း လုပ်ငန်းများအား မြန်မာ့ဆက်သွယ်ရေးလုပ်ငန်း၏ လမ်းညွှန်မှုများဖြင့် ဂုဏ်ယူစွာဆောင်ရွက်နိုင်ခဲ့သည့်အပြင် (၇) ကြိမ်မြောက် အာဆီယံ မသန်စွမ်းသူများ အားကစားပြိုင်ပွဲ၊ အာဆီယံလူငယ်အားကစားပြိုင်ပွဲများတွင်လည်း ဆက်ဆက်ဆောင်ရွက်နိုင်ခဲ့ပါသည်။</p><br>
+            <p style="text-align: justify;">ကျွန်တော်များ Linn IT Solution Co., Ltd. အတွက် သမိုင်းဝင်မှတ်တမ်းတစ်ခုအနေဖြင့် ၂၀၁၃ ခုနှစ်တွင်မြန်မာနိုင်ငံမှ အိမ်ရှင်အဖြစ် လက်ခံကျင်းပခဲ့သည့် (၂၇) ကြိမ်မြောက် အရှေ့တောင်အာရှအားကစားပြိုင်ပွဲကြီးတွင် WiFi Internet တပ်ဆင်ခြင်း၊ Network တည်ဆောက်ခြင်း လုပ်ငန်းများအား မြန်မာ့ဆက်သွယ်ရေးလုပ်ငန်း၏ လမ်းညွှန်မှုများဖြင့် ဂုဏ်ယူစွာဆောင်ရွက်နိုင်ခဲ့သည့်အပြင် (၇) ကြိမ်မြောက် အာဆီယံ မသန်စွမ်းသူများ အားကစားပြိုင်ပွဲ၊ အာဆီယံလူငယ်အားကစားပြိုင်ပွဲများတွင်လည်း ဆက်ဆက်ဆောင်ရွက်နိုင်ခဲ့ပါသည်။</p><br>
 
-            <p>
+            <p style="text-align: justify;">
                 ၂၀၁၄ ခုနှစ်၊ မတ်လတွင် Myanmar International Convention တွင်ကျင်းပခဲ့သော THIRD BIMSTEC SUMMIT & ITS RELATED MEETINGS တွင်လည်း Wireless Internet Access နှင့်ပတ်သက်၍ တပ်ဆင်ခြင်း၊ ထိန်းသိမ်းခြင်းနှင့် Media User Complain ဖြေရှင်းခြင်းလုပ်ငန်းများကိုလည်း အောင်မြင်စွာ လုပ်ဆောင်နိုင်ခဲ့ပါသည်။ ၂၀၁၄ ခုနှစ်၊ ဩဂုတ်လအတွင်း MYANMAR INTERNATIONAL CONVENTION CENTER တွင် ကျင်းပခဲ့သော 47th AMM/PMC/ 15th APT FMM/ 4th EAS FMM အစည်းအဝေးများအပြင် 46th ASEAN ECONOMIC MINISTER’S (AEM) MEETING များတွင်လည်း Wireless Internet Access နှင့်ပတ်သက်၍ တပ်ဆင်ခြင်း၊ ထိန်းသိမ်းခြင်းနှင့် Media သမားများနှင့် User Complain ဖြေရှင်းပေးခြင်းလုပ်ငန်းများကိုလည်း အောင်မြင်စွာလုပ်ဆောင်နိုင်ခဲ့ပါသည်။
             </p><br>
-            <p>
+            <p style="text-align: justify;">
                 ၂၀၁၄ ခုနှစ်အတွင်း နောက်ဆုံးအနေနှင့် 25th ASEAN SUMMIT AND RELATED SUMMITS အခမ်းအနားတွင်လည်း Wireless Internet Access နှင့်ပတ်သက်၍ တပ်ဆင်ခြင်း၊ ထိန်းသိမ်းခြင်းနှင့် Media သမားများနှင့် User Complain ဖြေရှင်းပေးခြင်းလုပ်ငန်းများကိုလည်း အောင်မြင်စွာလုပ်ဆောင်နိုင်ခဲ့သည်မှာ ထပ်မံကဗ္ဗည်းမော်ကွန်းတင်နိုင်ခဲ့ပါသည်။
             </p>
         </div>
