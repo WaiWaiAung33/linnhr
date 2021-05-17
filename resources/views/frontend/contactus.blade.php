@@ -29,7 +29,7 @@
 
 </head>
 
-<body style="margin-right: 20px;margin-left: 20px">
+<body style="background-color: #F4F7FC">
     <!-- Loader -->
     <div id="preloader">
         <div id="status">
@@ -123,68 +123,50 @@
     </section>
     <!-- CONTACT END -->
 
-    <section >
-        <div style="text-align: center;">
-        <h3>Head Office</h3>
-        <p><i class="mdi mdi-map-marker"></i>No. 14/585, 4th Street, Paung Laung Quarter</p>
-        <p><i class="mdi mdi-cellphone-iphone"></i>09-789799799, 067-22884,23884,24884</p>
-        <p><i class="mdi mdi-email"></i>info@linncomputer.com</p>
+    <section style="margin: 50px">
+         <h1 style="font-weight: bold;">Head Office</h1>
+        <div class="row" style="box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);background-color: white">
+            <div class="col-md-4" style="text-align: center;padding-top: 40px;padding-bottom: 30px;border-right: 2px solid #B3B8C1;">
+                <img src="{{ asset('uploads/images/address.png') }}" alt="photo" width="40px" height="40px"><br><br>
+                <h3 style="font-weight: bold;">Address</h3>
+                <p style="padding-top: 10px">No. 14/585, 4th Street, Paung Laung Quarter, Pyinmana.</p>
+            </div>
+            <div class="col-md-4" style="text-align: center;padding-top: 40px;padding-bottom: 30px;border-right: 2px solid #B3B8C1;">
+                <img src="{{ asset('uploads/images/phone.png') }}" alt="photo" width="40px" height="40px"><br><br>
+                <h3 style="font-weight: bold;">Call Us</h3>
+                <p style="padding-top: 10px">09-789799799, 067-22884,23884,24884</p>
+            </div>
+            <div class="col-md-4" style="text-align: center;padding-top: 40px;padding-bottom: 30px">
+                <img src="{{ asset('uploads/images/email.png') }}" alt="photo" width="50px" height="40px"><br><br>
+                <h3 style="font-weight: bold;">Mail Us</h3>
+                <p style="padding-top: 10px">info@linncomputer.com</p>
+            </div>
         </div><br>
-        <!-- <h3>Branches</h3> -->
-        <div class="row" style="text-align: center;">
-            <div class="col-md-6">
-                <h3>Linn (သပြေကုန်းလမ်း)</h3>
-                <p><i class="mdi mdi-map-marker"></i>No.117, Thapyagone Quarter, Naypyitaw</p>
-                <p><i class="mdi mdi-cellphone-iphone"></i><span>067-414884,414885,432884</span></p>
-                <p><i class="mdi mdi-email"></i><span>info@linncomputer.com</span></p>
-            </div>
-             <div class="col-md-6">
-                <h3>Linn (ဗိုလ်ချုပ်လမ်း)</h3>
-                <p><i class="mdi mdi-map-marker"></i>No.11/7, Bogyoke Road, Pyinmana</p>
-                <p><i class="mdi mdi-cellphone-iphone"></i><span>067-24488,26884</span></p>
-                <p><i class="mdi mdi-email"></i><span>info@linncomputer.com</span></p>
-            </div>
-            <!--  <div class="col-md-4">
-                <p><i class="mdi mdi-map-marker"></i>Star mart 9 mile Show Room, Pyay Road</p>
-                <p><i class="mdi mdi-cellphone-iphone"></i><span>09-422294884, 09-346038884, 09-400558855</span></p>
-                <p><i class="mdi mdi-email"></i><span>info@linncomputer.com</span></p>
-            </div> -->
-            
-        </div>
-    </section>
-    <!-- <section class="section"> -->
-        <div style="width: 100%; margin-top: 20px;">
-   <iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d2965.0824050173574!2d-93.63905729999999!3d41.998507000000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sWebFilings%2C+University+Boulevard%2C+Ames%2C+IA!5e0!3m2!1sen!2sus!4v1390839289319" width="100%" height="400" frameborder="0" style="border:0"></iframe>
-</div>
-    <!-- </section> -->
-    <!-- <section class="section">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-4 col-md-5">
-                    <div class="float-left position-relative notification-icon mr-2">
-                        <i class="mdi mdi-bell-outline text-primary"></i>
-                        <span class="badge badge-pill badge-danger">1</span>
-                    </div>
-                    <h5 class="mt-2 mb-0">Your Job Notification</h5>
-                </div>
-                <div class="col-lg-8 col-md-7 mt-4 mt-sm-0">
-                    <form>
-                        <div class="form-group mb-0">
-                            <div class="input-group mb-0">
-                                <input name="email" id="email" type="email" class="form-control" placeholder="Your email :" required="" aria-describedby="newssubscribebtn">
-                                <div class="input-group-append">
-                                    <button class="btn btn-primary submitBnt" type="submit" id="newssubscribebtn">Subscribe</button>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section> -->
 
-  <!-- footer start -->
-  <!--   <footer class="footer">
+        <div>
+            <h1 style="font-weight: bold;">Branches</h1>
+            <div class="row">
+                <div class="col-md-4" style="box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);background-color: #185BA9;padding-top: 40px;padding-bottom: 30px">
+                    <p style="color: white"><i class="mdi mdi-map-marker"></i> No.117, Thapyagone Quarter, Naypyitaw</p>
+                     <p style="color: white"><i class="mdi mdi-cellphone-iphone"></i><span> 067-414884,414885,432884</span></p>
+                     <p style="color: white"><i class="mdi mdi-email"></i><span> info@linncomputer.com</span></p>
+                </div>
+
+                <div class="col-md-4" style="box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);background-color: #185BA9;padding-top: 40px;padding-bottom: 30px;margin-left: 20px">
+                    <p style="color: white"><i class="mdi mdi-map-marker"></i> No.11/7, Bogyoke Road, Pyinmana</p>
+                    <p style="color: white"><i class="mdi mdi-cellphone-iphone"></i><span> 067-24488,26884</span></p>
+                    <p style="color: white"><i class="mdi mdi-email"></i><span> info@linncomputer.com</span></p>
+                </div>
+            </div>
+        </div>
+       
+    </section>
+
+     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3755.336957395618!2d96.2027726147721!3d19.740833486709946!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30c8ba2f4e0cd0c1%3A0x371a6ba88980820f!2sLinn%20IT%20%26%20Mobile!5e0!3m2!1sen!2sde!4v1621188728715!5m2!1sen!2sde" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+
+  
+     <!-- footer start -->
+    <footer class="footer">
         <div class="container">
             <div class="row">
              
@@ -194,7 +176,7 @@
                                 <li><a href="#" style="color: white" class="unicode">Head Office</a></li>
                                 <li><a href="#" style="color: white" class="unicode">Linn Naypyitaw Branch</a></li>
                                 <li><a href="#" style="color: white" class="unicode">Linn Pyinmana Branch</a></li>
-                                <li><a href="#" style="color: white" class="unicode">Yangon Showroom</a></li>
+                               <!--  <li><a href="#" style="color: white" class="unicode">Yangon Showroom</a></li> -->
                             </ul><br>
                               <ul class="social-icon social list-inline mb-0">
                             <li class="list-inline-item"><a href="https://www.facebook.com/linncomputerstore/" class="rounded"><i class="mdi mdi-facebook"></i></a></li>
@@ -219,15 +201,15 @@
                          <li><a href="#" style="color: white" class="unicode">No. 14/585, 4th Street, Paung Laung Quarter, Pyinmana.</a></li>
                         <li><a href="#" style="color: white" class="unicode">No.117, Thapyagone Quarter, Naypyitaw </a></li>
                         <li><a href="#" style="color: white" class="unicode">No.11/7, Bogyoke Road, Pyinmana</a></li>
-                        <li><a href="#" style="color: white" class="unicode">Star mart 9 Mile Show Room, Pyay Road</a></li>
+                      <!--   <li><a href="#" style="color: white" class="unicode">Star mart 9 Mile Show Room, Pyay Road</a></li> -->
                       
                     </ul>
                 </div>
             </div>
         </div>
-    </footer> -->
+    </footer>
     <!-- footer end -->
-    <!-- <hr>
+    <hr>
     <footer class="footer footer-bar">
         <div class="container text-center">
             <div class="row justify-content-center">
@@ -238,7 +220,7 @@
                 </div>
             </div>
         </div><!--end container-->
- <!--    </footer> -->
+    </footer><!--end footer-->
     <!-- Footer End -->
 
      <!-- Back to top -->
