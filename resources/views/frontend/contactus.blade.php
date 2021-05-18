@@ -146,23 +146,28 @@
         <div>
             <h1 style="font-weight: bold;">Branches</h1>
             <div class="row">
-                <div class="col-md-4" style="box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);background-color: #185BA9;padding-top: 40px;padding-bottom: 30px">
+                <div style="box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);background-color: #185BA9;padding-top: 40px;padding-bottom: 30px;width: 48%;margin-right: 4%;padding-left: 20px">
                     <p style="color: white"><i class="mdi mdi-map-marker"></i> No.117, Thapyagone Quarter, Naypyitaw</p>
                      <p style="color: white"><i class="mdi mdi-cellphone-iphone"></i><span> 067-414884,414885,432884</span></p>
                      <p style="color: white"><i class="mdi mdi-email"></i><span> info@linncomputer.com</span></p>
                 </div>
 
-                <div class="col-md-4" style="box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);background-color: #185BA9;padding-top: 40px;padding-bottom: 30px;margin-left: 20px">
+                <div style="box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);background-color: #185BA9;padding-top: 40px;padding-bottom: 30px;width: 48%;padding-left: 20px">
                     <p style="color: white"><i class="mdi mdi-map-marker"></i> No.11/7, Bogyoke Road, Pyinmana</p>
                     <p style="color: white"><i class="mdi mdi-cellphone-iphone"></i><span> 067-24488,26884</span></p>
                     <p style="color: white"><i class="mdi mdi-email"></i><span> info@linncomputer.com</span></p>
                 </div>
             </div>
         </div>
+
+       
        
     </section>
+     <div style="margin-left: 43px;margin-right: 43px;margin-top: 43px;box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2)">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3755.336957395618!2d96.2027726147721!3d19.740833486709946!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30c8ba2f4e0cd0c1%3A0x371a6ba88980820f!2sLinn%20IT%20%26%20Mobile!5e0!3m2!1sen!2sde!4v1621188728715!5m2!1sen!2sde" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
 
-     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3755.336957395618!2d96.2027726147721!3d19.740833486709946!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30c8ba2f4e0cd0c1%3A0x371a6ba88980820f!2sLinn%20IT%20%26%20Mobile!5e0!3m2!1sen!2sde!4v1621188728715!5m2!1sen!2sde" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+     
 
   
      <!-- footer start -->
