@@ -67,11 +67,15 @@ class Handler extends ExceptionHandler
             if($exception->getStatusCode() === 404){
                return response()->view('admin.error.404', [], 404);
             }
+
+            if($exception->getStatusCode() === 500){
+               return response()->view('admin.error.500', [], 500);
+            }
         } else {
             // Custom error 500 view on production
-            if (app()->environment() == 'production') {
-                return response()->view('admin.error.500', [], 500);
-            }
+            // if (app()->environment() == 'production') {
+            //     return response()->view('admin.error.500', [], 500);
+            // }
             return parent::render($request, $exception);
         }
     }
