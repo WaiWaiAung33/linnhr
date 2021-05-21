@@ -124,7 +124,7 @@
     <!-- CONTACT END -->
 
     <section style="margin: 50px">
-         <h1 style="font-weight: bold;">Head Office</h1>
+         <h4 style="font-weight: bold;">Head Office</h4>
         <div class="row" style="box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);background-color: white">
             <div class="col-md-4" style="text-align: center;padding-top: 40px;padding-bottom: 30px;border-right: 2px solid #B3B8C1;">
                 <img src="{{ asset('uploads/images/address.png') }}" alt="photo" width="40px" height="40px"><br><br>
@@ -144,7 +144,7 @@
         </div><br>
 
         <div>
-            <h1 style="font-weight: bold;">Branches</h1>
+            <h4 style="font-weight: bold;">Branches</h4>
             <div class="row">
                 <div style="box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);background-color: #185BA9;padding-top: 40px;padding-bottom: 30px;width: 48%;margin-right: 4%;padding-left: 20px">
                     <p style="color: white"><i class="mdi mdi-map-marker"></i> No.117, Thapyagone Quarter, Naypyitaw</p>
