@@ -65,24 +65,44 @@
 <body>
 	
 	<div class="limiter">
-		<div class="container-login100" style="background-image: url('uploads/loginbglight.jpg');">
+		<div class="container-login100" style="background-image: url('uploads/hr.jpeg');">
 			<div class="wrap-login100 p-t-30 p-b-50">
 				<span class="login100-form-title p-b-41">
-					Linn HR 
+					HR Management System
 				</span>
 				<form class="login100-form validate-form p-b-33 p-t-5" method="POST" action="{{ route('login') }}">
 					 @csrf
 
+					<div style="text-align: center;">
+						<img src="{{ asset('uploads/images/linn.png') }}" alt="" width="100px;" >
+					</div>
+					 
+					 
 					<div class="wrap-input100 validate-input" data-validate = "Enter username">
 						<input class="input100 @error('email') is-invalid @enderror" type="email" placeholder="Email" name="email" value="{{ old('email') }}" required>
 						
 						<span class="focus-input100" data-placeholder="&#xe82a;"></span>
-				
+						
 					</div>
 
 					<div class="wrap-input100 validate-input" data-validate="Enter password">
 						<input class="input100  @error('password') is-invalid @enderror" type="password" name="password" placeholder="Password">
 						<span class="focus-input100" data-placeholder="&#xe80f;"></span>
+					</div>
+					
+
+		            <div style="width: 100%;position: relative;text-align: center;padding: 15px 0;">
+		            	@if($errors->has('email'))
+			                <div style="color:red !important;font-size: 13px; ">
+			                    <strong>{{ $errors->first('email') }}</strong>
+			                </div>
+			            @endif
+				
+						@if($errors->has('password'))
+			                <div style="color:red !important;font-size: 13px; ">
+			                    <strong>{{ $errors->first('password') }}</strong>
+			                </div>
+			            @endif
 					</div>
 
 					<div class="container-login100-form-btn m-t-32">
