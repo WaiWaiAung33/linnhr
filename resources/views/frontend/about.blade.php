@@ -154,7 +154,7 @@
             <div class="row justify-content-center">
                 <div class="col-12">
                     <div class="section-title text-center mb-4 pb-2">
-                        <h4 class="title title-line pb-5">About Us</h4>
+                        <h4 class="title title-line pb-5" style="margin-top: 30px !important;">About Us</h4>
                     </div>
                 </div>
             </div>
