@@ -147,36 +147,17 @@
     <!--end header-->
     <!-- Navbar End -->
 
-    <!-- Start home -->
-    <section class="bg-half page-next-level">
-        <div class="bg-overlay">
-        </div>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="text-white">
-                        <h4 class="text-uppercase title mb-4">About Us</h4>
-                        <ul class="page-next d-inline-block mb-0">
-                            <li><a href="{{ route('frontend.home') }}"
-                                    class="text-uppercase font-weight-bold">Home</a>
-                            </li>
-
-                            <li>
-                                <span class="text-uppercase text-white font-weight-bold">About</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- end home -->
-
-
 
     <!-- ABOUT US START -->
     <section class="section">
         <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12">
+                    <div class="section-title text-center mb-4 pb-2">
+                        <h4 class="title title-line pb-5">About Us</h4>
+                    </div>
+                </div>
+            </div>
             <div class="row ">
 
 
