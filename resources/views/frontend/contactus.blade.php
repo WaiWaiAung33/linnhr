@@ -166,7 +166,7 @@
                 style="text-align: center;padding-top: 40px;padding-bottom: 30px;border-right: 2px solid #B3B8C1;">
                 <img src="{{ asset('uploads/images/phone.png') }}" alt="photo" width="40px" height="40px"><br><br>
                 <h3 style="font-weight: bold;">Call Us</h3>
-                <p style="padding-top: 10px">09-789799799, 067-22884,23884,24884</p>
+                <p style="padding-top: 10px">067-22884,23884,24884</p>
             </div>
             <div class="col-md-4" style="text-align: center;padding-top: 40px;padding-bottom: 30px">
                 <img src="{{ asset('uploads/images/email.png') }}" alt="photo" width="50px" height="40px"><br><br>

@@ -311,7 +311,7 @@
                 <div class="col-lg-4 col-md-4 col-12 mt-4 mt-sm-0 pt-2 pt-sm-0">
                     <p class="text-white mb-4 footer-list-title" style="font-size: 15px">Phone No</p>
                     <ul class="list-unstyled footer-list">
-                        <li><a href="#" style="color: white;font-size: 13px" class="unicode">09-789799799,
+                        <li><a href="#" style="color: white;font-size: 13px" class="unicode">
                                 067-22884,23884,24884</a></li>
                         <li><a href="#" style="color: white;font-size: 13px"
                                 class="unicode">067-414884,414885,432884</a></li>
