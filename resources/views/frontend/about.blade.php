@@ -204,8 +204,8 @@
                         <!--  <a href="javascript:void(0)" class="btn btn-primary">Apply now</a> -->
                     </div>
                 </div>
-                <div class="col-lg-5 col-md-4">
-                    <img src="{{ asset('uploads/images/frontabout1.jpg') }}" alt="">
+                <div class="col-lg-5 col-md-4 text-center" style="text-align: center">
+                    <img src="{{ asset('uploads/linn.png') }}" alt="" style="margin: auto; width:80%">
                 </div>
             </div>
         </div>
@@ -272,7 +272,7 @@
     </div>
     <div class="row" style="background-color: red;margin: 25px">
         <div class="col-md-6" style="background-color: white">
-            <img src="{{ asset('uploads/images/frontabout2.jpg') }}" alt="" width="100%" height="500px">
+            <img src="{{ asset('uploads/img1.png') }}" alt="" width="100%" height="500px">
         </div>
         <div class="col-md-6" style="background-color: white">
             <p style="text-align: justify;">ကျွန်တော်များ Linn IT Solution Co., Ltd. အတွက်
