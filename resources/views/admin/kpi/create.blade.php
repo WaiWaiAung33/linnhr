@@ -36,7 +36,7 @@
       <div class="col-md-6">
          <div class="row form-group">
             <div class="col-md-3">
-               <h6 style="font-weight:bold;font-size:15px;">Department</h6>
+               <label>Department</label>
             </div>
             <div class="col-md-6">
               <select class="form-control" name="dep_id" id="dep_id" style="font-size: 13px">
@@ -49,7 +49,7 @@
          </div>
           <div class="row form-group">
             <div class="col-md-3">
-               <h6 style="font-weight:bold;font-size:15px;">Employee Name</h6>
+               <label>Employee Name</label>
             </div>
             <div class="col-md-6">
                <select class="livesearch form-control" name="emp_id"></select>
@@ -57,7 +57,7 @@
          </div>
          <div class="row form-group">
             <div class="col-md-3">
-               <h6 style="font-weight:bold;font-size:15px;">Pay Month</h6>
+               <label>Pay Month</label>
             </div>
             <div class="col-md-6">
                <input type="month" name="date" class="form-control unicode" placeholder="" > 
@@ -65,7 +65,7 @@
          </div>
          <div class="row form-group">
             <div class="col-md-3">
-               <h6 style="font-weight:bold;font-size:15px;">Comment</h6>
+               <label>Comment</label>
             </div>
             <div class="col-md-6">
                <textarea name="comment" id=""class="form-control unicode">{{ old('comment') }}</textarea> 
@@ -75,7 +75,7 @@
       <div class="col-md-6">
          <div class="row form-group">
             <div class="col-md-3">
-               <h6 style="font-weight:bold;font-size:15px;">Knowledge</h6>
+               <label>Knowledge</label>
             </div>
             <div class="col-md-6">
                <select class="form-control" name="knowledge" id="knowledge">
@@ -90,7 +90,7 @@
          </div>
          <div class="row form-group">
             <div class="col-md-3">
-               <h6 style="font-weight:bold;font-size:15px;">Discipline</h6>
+               <label>Discipline</label>
             </div>
             <div class="col-md-6">
                <select  class="form-control" name="discipline" id="discipline">
@@ -105,7 +105,7 @@
          </div>
          <div class="row form-group">
             <div class="col-md-3">
-               <h6 style="font-weight:bold;font-size:15px;">Skill Set</h6>
+               <label>Skill Set</label>
             </div>
             <div class="col-md-6">
                <select class="form-control" name="skill_set" id="skill_set">
@@ -120,7 +120,7 @@
          </div>
          <div class="row form-group">
             <div class="col-md-3">
-               <h6 style="font-weight:bold;font-size:15px;">Team Work</h6>
+               <label>Team Work</label>
             </div>
             <div class="col-md-6">
                <select class="form-control" name="team_work" id="team_work">
@@ -135,7 +135,7 @@
          </div>
          <div class="row form-group">
             <div class="col-md-3">
-               <h6 style="font-weight:bold;font-size:15px;">Social</h6>
+               <label>Social</label>
             </div>
             <div class="col-md-6">
                <select class="form-control" name="social" id="social">
@@ -150,7 +150,7 @@
          </div>
          <div class="row form-group">
             <div class="col-md-3">
-               <h6 style="font-weight:bold;font-size:15px;">Motivation</h6>
+               <label>Motivation</label>
             </div>
             <div class="col-md-6">
                <select class="form-control" name="motivation" id="motivation">

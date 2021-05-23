@@ -21,7 +21,7 @@
         	<div class="col-md-6">
                             <div class="row">
                                 <div class="col-md-3">
-                                    <h6 style="font-weight:bold;font-size:15px;">Department</h6>
+                                    <label>Department</label>
                                 </div>
 
                                 <div class="col-md-8 {{ $errors->first('dep_id', 'has-error') }}">
@@ -50,7 +50,7 @@
           <div class="col-md-6">
                             <div class="row">
                                 <div class="col-md-3">
-                                    <h6 style="font-weight:bold;font-size:15px;">Position</h6>
+                                    <label>Position</label>
                                 </div>
 
                                 <div class="col-md-8 {{ $errors->first('position_id', 'has-error') }}">
@@ -78,7 +78,7 @@
             <div class="col-md-6">
                             <div class="row">
                                 <div class="col-md-3">
-                                    <h6 style="font-weight:bold;font-size:15px;">Title</h6>
+                                    <label>Title</label>
                                 </div>
 
                                 <div class="col-md-8 $errors->first('title', 'has-error')">
@@ -100,7 +100,7 @@
             <div class="col-md-6">
                             <div class="row">
                                 <div class="col-md-3">
-                                    <h6 style="font-weight:bold;font-size:15px;">Description</h6>
+                                    <label>Description</label>
                                 </div>
 
                                 <div class="col-md-8 $errors->first('description', 'has-error')">
@@ -121,7 +121,7 @@
             <div class="col-md-6">
                             <div class="row">
                                 <div class="col-md-3">
-                                    <h6 style="font-weight:bold;font-size:15px;">Photo</h6>
+                                    <label>Photo</label>
                                 </div>
 
                                 <div class="col-md-8">
@@ -136,7 +136,7 @@
             <div class="col-md-6">
                             <div class="row">
                                 <div class="col-md-3">
-                                    <h6 style="font-weight:bold;font-size:15px;">Posted Date</h6>
+                                    <label>Posted Date</label>
                                 </div>
 
                                 <div class="col-md-8 $errors->first('posted_date', 'has-error')">
@@ -157,7 +157,7 @@
         	<div class="col-md-6">
                             <div class="row">
                                 <div class="col-md-3">
-                                    <h6 style="font-weight:bold;font-size:15px;">Last Date</h6>
+                                    <label>Last Date</label>
                                 </div>
 
                                 <div class="col-md-8 $errors->first('last_date', 'has-error')">
@@ -178,7 +178,7 @@
         	<div class="col-md-6">
                             <div class="row salary">
                                 <div class="col-md-3">
-                                    <h6 style="font-weight:bold;font-size:15px;">Close Date</h6>
+                                    <label>Close Date</label>
                                 </div>
 
                                 <div class="col-md-8 $errors->first('close_date', 'has-error')">
