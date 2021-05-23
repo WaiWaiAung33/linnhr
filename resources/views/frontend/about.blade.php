@@ -253,7 +253,7 @@
     </div>
     <div class="row" style="background-color: red;margin: 25px">
         <div class="col-md-6" style="background-color: white">
-            <img src="{{ asset('img1.png') }}" alt="" width="100%" height="500px">
+            <img src="{{ asset('img1.png') }}" alt="" width="100%">
         </div>
         <div class="col-md-6" style="background-color: white">
             <p style="text-align: justify;">ကျွန်တော်များ Linn IT Solution Co., Ltd. အတွက်
