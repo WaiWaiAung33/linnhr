@@ -53,39 +53,27 @@
             } */
 
             @font-face {
-                font-family: "Linn";
-                src: url({{ asset('fonts/linn/Linn.woff') }});
-            }
-
-            @font-face {
-                font-family: "Linn";
-                src: url({{ asset('fonts/linn/Linn-Bold.woff') }});
-                font-weight: bold;
+                font-family: "MyanmarSagar";
+                src: url({{ asset('fonts/custom/myanmar_sagar.ttf') }});
             }
 
             @charset "UTF-8";
 
-            /* * {
-                font-family: Linn, sans-serif !important;
-                font-size: 1rem;
-                font-weight: 400;
-            } */
-
             html,
             body {
-                font-family: Linn, sans-serif !important;
+                font-family: MyanmarSagar, sans-serif !important;
                 line-height: 1.72;
                 -webkit-text-size-adjust: 100%;
                 -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
             }
 
             .unicode {
-                font-family: Linn, sans-serif !important;
+                font-family: MyanmarSagar, sans-serif !important;
             }
 
             .help-block {
                 color: red;
-                font-family: Linn, sans-serif !important;
+                font-family: MyanmarSagar, sans-serif !important;
                 font-size: 12px;
             }
 
@@ -110,7 +98,7 @@
             .table,
             input,
             select {
-                font-family: Linn, sans-serif !important;
+                font-family: MyanmarSagar, sans-serif !important;
             }
 
             /*  h3 {
@@ -132,7 +120,7 @@
             .select2-selection__placeholder,
             .select2-selection__rendered,
             .select2-results__option {
-                font-family: Linn, sans-serif !important;
+                font-family: MyanmarSagar, sans-serif !important;
                 font-size: 12px;
             }
 
@@ -144,7 +132,7 @@
             table,
             tr,
             td {
-                font-family: Linn, sans-serif !important;
+                font-family: MyanmarSagar, sans-serif !important;
                 font-size: 12px !important;
             }
 

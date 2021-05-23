@@ -35,43 +35,23 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('toastermin.css') }}">
     <style>
         @font-face {
-            font-family: "Telenor";
-            src: url({{ asset('fonts/telenor/Telenor.woff') }});
+            font-family: "MyanmarSagar";
+            src: url({{ asset('fonts/custom/myanmar_sagar.ttf') }});
         }
 
         @charset "UTF-8";
 
         * {
-            font-family: Telenor, sans-serif !important;
+            font-family: MyanmarSagar, sans-serif !important;
             font-size: 1rem;
-            font-weight: 400;
+            font-weight: 300;
         }
 
         html,
-        body {
-            font-family: Telenor, sans-serif !important;
-            line-height: 1.15;
-            -webkit-text-size-adjust: 100%;
-            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-        }
-
-        @font-face {
-            font-family: "Linn";
-            src: url({{ asset('fonts/linn/Linn-Medium.woff') }});
-        }
-
-        @charset "UTF-8";
-
-        * {
-            font-family: Linn, sans-serif !important;
-            font-size: 1rem;
-            font-weight: 400;
-        }
-
-        html,
-        body {
-            font-family: Linn, sans-serif !important;
-            /* line-height: 1.15; */
+        body,
+        p {
+            font-family: MyanmarSagar, sans-serif !important;
+            line-height: 2.15;
             -webkit-text-size-adjust: 100%;
             -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
         }
