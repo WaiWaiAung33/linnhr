@@ -33,14 +33,14 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/styles.css') }}" />
     <style>
         @font-face {
-            font-family: "Linn";
-            src: url({{ asset('fonts/linn/Linn-Medium.woff') }});
+            font-family: "MyanmarSagar";
+            src: url({{ asset('fonts/custom/myanmar_sagar.ttf') }});
         }
 
         @charset "UTF-8";
 
         * {
-            font-family: Linn, sans-serif !important;
+            font-family: MyanmarSagar, sans-serif !important;
             font-size: 1rem;
             font-weight: 300;
         }
@@ -48,7 +48,7 @@
         html,
         body,
         p {
-            font-family: Linn, sans-serif !important;
+            font-family: MyanmarSagar, sans-serif !important;
             line-height: 2.15;
             -webkit-text-size-adjust: 100%;
             -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
