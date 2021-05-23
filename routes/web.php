@@ -153,6 +153,6 @@ Route::post('offdayexport', [App\Http\Controllers\OffdayController::class, 'offd
 
 Route::get('/downloadPDF/{id}', 'EmployeeController@downloadPDF')->name('downloadPDF');
 
-Route::get('/fonts', function () {
+Route::get('/fonttest', function () {
 	return view('frontend.font');
 });
