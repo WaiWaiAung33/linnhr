@@ -9,7 +9,7 @@
     <meta name="keywords" content="" />
     <meta name="author" content="Themesdesign" />
 
-     <link rel="icon" type="image/png" href="{{ asset('vendor/adminlte/dist/img/linn.png') }}"/>
+    <link rel="icon" type="image/png" href="{{ asset('vendor/adminlte/dist/img/linn.png') }}" />
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="{{ asset('css/bootstraps.min.css') }}" type="text/css">
