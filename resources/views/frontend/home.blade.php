@@ -5,58 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Linn HR</title>
-    <meta name="description" content="" />
-    <meta name="keywords" content="" />
-    <meta name="author" content="Themesdesign" />
-
-    <link rel="icon" type="image/png" href="{{ asset('vendor/adminlte/dist/img/linn.png') }}" />
-
-    <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstraps.min.css') }}">
-
-    <!--Material Icon -->
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/materialdesignicons.min.css') }}" />
-
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/fontawesome.css') }}" />
-
-    <!-- selectize css -->
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/selectize.css') }}" />
-
-    <!--Slider-->
-    <link rel="stylesheet" href="{{ asset('css/owl.carousel.css') }}" />
-    <link rel="stylesheet" href="{{ asset('css/owl.theme.css') }}" />
-    <link rel="stylesheet" href="{{ asset('css/owl.transitions.css') }}" />
-
-    <!-- Custom  Css -->
-    <link rel="stylesheet" type="text/css" href="css/styles.css" />
-
-    <script src=" {{ asset('toasterjquery.js') }}"></script>
-    <link rel="stylesheet" type="text/css" href="{{ asset('toasterbootstrap.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('toastermin.css') }}">
-    <style>
-        @font-face {
-            font-family: "MyanmarSagar";
-            src: url({{ asset('fonts/custom/myanmar_sagar.ttf') }});
-        }
-
-        @charset "UTF-8";
-
-        * {
-            font-family: MyanmarSagar, sans-serif !important;
-            font-size: 1rem;
-            font-weight: 300;
-        }
-
-        html,
-        body,
-        p {
-            font-family: MyanmarSagar, sans-serif !important;
-            line-height: 2.15;
-            -webkit-text-size-adjust: 100%;
-            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-        }
-
-    </style>
+    @include('head')
 
 
 </head>
@@ -86,75 +35,7 @@
 
     <!-- Navigation Bar-->
     <header id="topnav" class="defaultscroll scroll-active" style="background-color: #3498DB;">
-        <!-- Tagline STart -->
-        <div class="tagline">
-            <div class="container">
-
-                <div class="float-right">
-
-                </div>
-                <div class="clearfix"></div>
-            </div>
-        </div>
-        <!-- Tagline End -->
-
-        <!-- Menu Start -->
-        <div class="container">
-            <!-- Logo container-->
-            <div>
-                <a href="index.html" class="logo">
-                    <img src="images/logo-light.png" alt="" class="logo-light" height="18" />
-                    <img src="images/logo-dark.png" alt="" class="logo-dark" height="18" />
-                </a>
-            </div>
-            <div class="buy-button">
-
-            </div>
-            <!--end login button-->
-            <!-- End Logo container-->
-            <div class="menu-extras">
-                <div class="menu-item">
-                    <!-- Mobile menu toggle-->
-                    <a class="navbar-toggle">
-                        <div class="lines">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                        </div>
-                    </a>
-                    <!-- End mobile menu toggle-->
-                </div>
-            </div>
-
-            <div id="navigation">
-                <!-- Navigation Menu-->
-                <ul class="navigation-menu">
-                    <li><a href="{{ route('frontend.home') }}">Home</a></li>
-                    <li><a href="{{ route('joblist.jobList') }}">Job List</a></li>
-                    <!-- <li class="has-submenu"> -->
-                    <!--  <a href="javascript:void(0)">Jobs</a><span class="menu-arrow"></span>
-                        <ul class="submenu">
-                            <li><a href="{{ route('joblist.jobList') }}">Job List</a></li>
-                           
-                            <li><a href="#">Job Details</a></li>
-                           
-                        </ul> -->
-                    <!-- </li> -->
-
-                    <li class="has-submenu">
-                        <a href="{{ route('frontend.jobabout') }}">About us</a>
-
-                    </li>
-                    <li>
-                        <a href="{{ route('frontend.jobcontact') }}">contact</a>
-                    </li>
-                </ul>
-                <!--end navigation menu-->
-            </div>
-            <!--end navigation-->
-        </div>
-        <!--end container-->
-        <!--end end-->
+        @include('header')
     </header>
     <!--end header-->
     <!-- Navbar End -->
