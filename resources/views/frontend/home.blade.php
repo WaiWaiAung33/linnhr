@@ -173,46 +173,6 @@
         </div>
         </div>
     </section>
-    <!-- end home -->
-
-
-    <!-- popular category start -->
-    <!-- <section class="section">
-        <div class="container" >
-            <div class="row justify-content-center">
-                <div class="col-12">
-                    <div class="section-title text-center mb-4 pb-2">
-                        <h4 class="title title-line pb-5">Popular Department</h4>
-                    </div>
-                </div>
-            </div>
-
-          
-            <div class="row">
-             @foreach ($departments as $department)
-                <div class="col-lg-3 col-md-6 mt-4 pt-2">
-                    <a href="javascript:void(0)">
-                        <div class="popu-category-box bg-light rounded text-center p-4">
-                            <div class="popu-category-icon mb-3">
-                                <i class="mdi mdi-account d-inline-block rounded-pill h3 text-primary"></i>
-                            </div>
-                            <div class="popu-category-content">
-                                <h5 class="mb-2 text-dark title">{{ $department->name }}</h5>
-                                <p class="text-success mb-0 rounded">{{ $department->employees->count() }}</p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            @endforeach
-            </div>
-         
-
-            
-        </div>
-    </section> -->
-    <!-- popular category end -->
-
-
 
     <!-- JOB LIST START -->
     <section class="section pt-0">
@@ -305,164 +265,15 @@
     </section>
     <!-- JOB LIST START -->
 
-    <!-- How it Work start -->
-    <!-- <section class="section">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-12">
-                    <div class="section-title text-center mb-4 pb-2">
-                        <h4 class="title title-line pb-5">Top Reasons to Choose Us</h4>
-                      
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-4 mt-4 pt-2">
-                    <div class="how-it-work-box bg-light p-4 text-center rounded shadow">
-                        <div class="how-it-work-img position-relative rounded-pill mb-3">
-
-                            <img src="{{ asset('uploads/images/trophy.png') }}" alt="" class="mx-auto d-block" height="50">
-                        </div>
-                        <div>
-                            <h5>What We Do</h5>
-                            <p class="text-muted">We listen to your feedback. We provide a high level of support. We focus on the quality of our services.</p>
-                            <a href="#" class="text-primary">Read more <i class="mdi mdi-chevron-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 mt-4 pt-2">
-                    <div class="how-it-work-box bg-light p-4 text-center rounded shadow">
-                        <div class="how-it-work-img position-relative rounded-pill mb-3">
-                            <img src="{{ asset('uploads/images/sharing-content.png') }}" alt="" class="mx-auto d-block" height="50">
-                        </div>
-                        <div>
-                            <h5>Who We Are</h5>
-                            <p class="text-muted">We are best service provider.</p>
-                            <a href="#" class="text-primary">Read more <i class="mdi mdi-chevron-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 mt-4 pt-2">
-                    <div class="how-it-work-box bg-light p-4 text-center rounded shadow">
-                        <div class="how-it-work-img position-relative rounded-pill mb-3">
-                            <img src="{{ asset('uploads/images/our-mission.png') }}" alt="" class="mx-auto d-block" height="50">
-                        </div>
-                        <div>
-                            <h5>Our Mission</h5>
-                            <p class="text-muted">To provide our customers with special services "Give us a chance and we will prove our efficiency".</p>
-                            <a href="#" class="text-primary">Read more <i class="mdi mdi-chevron-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section> -->
-    <!-- How it Work end -->
-
-
-
-
-
-
-    <!-- subscribe start -->
-    <!--  <section class="section">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-4 col-md-5">
-                    <div class="float-left position-relative notification-icon mr-2">
-                        <i class="mdi mdi-bell-outline text-primary"></i>
-                        <span class="badge badge-pill badge-danger">1</span>
-                    </div>
-                    <h5 class="mt-2 mb-0">Your Job Notification</h5>
-                </div>
-                <div class="col-lg-8 col-md-7 mt-4 mt-sm-0">
-                    <form>
-                        <div class="form-group mb-0">
-                            <div class="input-group mb-0">
-                                <input name="email" id="email" type="email" class="form-control" placeholder="Your email :" required="" aria-describedby="newssubscribebtn">
-                                <div class="input-group-append">
-                                    <button class="btn btn-primary submitBnt" type="submit" id="newssubscribebtn">Subscribe</button>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section> -->
-    <!-- subscribe end -->
-
-    <!-- footer start -->
     <footer class="footer">
-        <div class="container">
-            <div class="row">
-
-                <div class="col-lg-4 col-md-4 col-12 mt-4 mt-sm-0 pt-2 pt-sm-0">
-                    <p class="text-white mb-4 footer-list-title" style="font-size: 15px">Branch</p>
-                    <ul class="social list-inline mb-0">
-                        <li><a href="#" style="color: white;font-size: 13px" class="unicode">Head Office</a></li>
-                        <li><a href="#" style="color: white;font-size: 13px" class="unicode">Linn Naypyitaw Branch</a>
-                        </li>
-                        <li><a href="#" style="color: white;font-size: 13px" class="unicode">Linn Pyinmana Branch</a>
-                        </li>
-                        <!--  <li><a href="#" style="color: white" class="unicode">Yangon Showroom</a></li> -->
-                    </ul><br>
-                    <ul class="social-icon social list-inline mb-0">
-                        <li class="list-inline-item"><a href="https://www.facebook.com/linncomputerstore/"
-                                class="rounded"><i class="mdi mdi-facebook"></i></a></li>
-                        <li class="list-inline-item"><a href="#" class="rounded"><i class="mdi mdi-twitter"></i></a>
-                        </li>
-                        <li class="list-inline-item"><a href="#" class="rounded"><i class="mdi mdi-instagram"></i></a>
-                        </li>
-                        <li class="list-inline-item"><a href="#" class="rounded"><i class="mdi mdi-google"></i></a></li>
-                    </ul>
-                </div>
-                <div class="col-lg-4 col-md-4 col-12 mt-4 mt-sm-0 pt-2 pt-sm-0">
-                    <p class="text-white mb-4 footer-list-title" style="font-size: 15px">Phone No</p>
-                    <ul class="list-unstyled footer-list">
-                        <li><a href="#" style="color: white;font-size: 13px" class="unicode">
-                                067-22884,23884,24884</a></li>
-                        <li><a href="#" style="color: white;font-size: 13px"
-                                class="unicode">067-414884,414885,432884</a></li>
-                        <li><a href="#" style="color: white;font-size: 13px" class="unicode">067-24488, 26884</a></li>
-                        <li><a href="#" style="color: white;font-size: 13px" class="unicode">09-422294884, 09-346038884,
-                                09-400558855</a></li>
-                    </ul>
-                </div>
-
-                <div class="col-lg-4 col-md-4 col-12 mt-4 mt-sm-0 pt-2 pt-sm-0">
-                    <p class="text-white mb-4 footer-list-title f-17" style="font-size: 15px">Address</p>
-                    <ul class="list-unstyled text-foot mt-4 mb-0">
-                        <li><a href="#" style="color: white;font-size: 13px" class="unicode">No. 14/585, 4th Street,
-                                Paung Laung Quarter, Pyinmana.</a></li>
-                        <li><a href="#" style="color: white;font-size: 13px" class="unicode">No.117, Thapyagone Quarter,
-                                Naypyitaw </a></li>
-                        <li><a href="#" style="color: white;font-size: 13px" class="unicode">No.11/7, Bogyoke Road,
-                                Pyinmana</a></li>
-                        <!--   <li><a href="#" style="color: white" class="unicode">Star mart 9 Mile Show Room, Pyay Road</a></li> -->
-
-                    </ul>
-                </div>
-            </div>
-        </div>
+        @include('footer')
     </footer>
-    <!-- footer end -->
+     <!-- footer end -->
     <hr>
     <footer class="footer footer-bar">
-        <div class="container text-center">
-            <div class="row justify-content-center">
-                <div class="col-12">
-                    <div class="">
-                        <p style="font-size: 13px" class="mb-0">© 2020 -2021 Job. Design with <i
-                                class="mdi mdi-heart text-danger"></i> by Linn.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--end container-->
+        @include('footerbar')
     </footer>
-    <!--end footer-->
-    <!-- Footer End -->
+  
 
     <!-- Back to top -->
     <a href="#" class="back-to-top rounded text-center" id="back-to-top">
