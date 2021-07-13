@@ -34,7 +34,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $total_employees = Employee::count();
+        $total_employees = Employee::where('active',1)->count();
         $total_branches = Branch::count();
         $total_departments = Department::count();
 
@@ -61,8 +61,8 @@ class HomeController extends Controller
             array_push($deptEmpArr, $dep->employees()->count());
         }
 
-        $maleTotal = Employee::where('gender','Male')->count();
-        $femaleTotal = Employee::where('gender','Female')->count();
+        $maleTotal = Employee::where('gender','Male')->where('active',1)->count();
+        $femaleTotal = Employee::where('gender','Female')->where('active',1)->count();
 
 
 
@@ -95,8 +95,8 @@ class HomeController extends Controller
         // $hostelNotStay = Employee::whereNull('hostel')->count();
         // $hostelStay = Employee::whereNotNull('hostel')->count();
 
-        $hostelNotStay = Employee::where('hostel','No')->count();
-        $hostelStay = Employee::where('hostel','!=','No')->count();
+        $hostelNotStay = Employee::where('hostel','No')->where('active',1)->count();
+        $hostelStay = Employee::where('hostel','!=','No')->where('active',1)->count();
 
 
         $date = now();
@@ -108,7 +108,7 @@ class HomeController extends Controller
 
                            })
            // ->orderByRaw("DAYOFMONTH('date_of_birth')",'desc')
-           ->orderByRaw('DATE_FORMAT(date_of_birth, "%m-%d")')
+           ->orderByRaw('DATE_FORMAT(date_of_birth, "%m-%d")')->where('active',1)
            ->get()->toArray();
 
 
@@ -200,7 +200,7 @@ class HomeController extends Controller
 
                            })
                            ->orderByRaw('DATE_FORMAT(date_of_birth, "%m-%d")')
-                           ->get()->toArray();
+                           ->where('active',1)->get()->toArray();
 
 
         $offday_employess = OffDay::select('employee.name as empname','branch.name as branch_name','department.name as dep_name','employee.photo')
