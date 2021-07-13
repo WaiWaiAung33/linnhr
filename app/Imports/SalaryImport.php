@@ -38,14 +38,16 @@ class SalaryImport implements ToCollection,WithHeadingRow
                 foreach ($rows as $row) 
                 {
                     // dd($row);
-                        $month_total = $row['amount']+$row['bonus']; 
+                        $month_total = $row['basic_pay']+$row['performance_allowance']+$row['bonus']; 
+
+                        $amount = $row['basic_pay']+$row['performance_allowance'];
 
                         $employees = Employee::all();
                         $branchs = Branch::all();
                         $departments = Department::all();
 
                         foreach ($employees as $key => $value) {
-                            if($row['emp_id'] == $value->emp_id){
+                            if($row['id'] == $value->emp_id){
                                 $employee_name= $value->name;
                                 $employeeid = $value->id;
                                 // dd( $employee_name);
@@ -54,6 +56,7 @@ class SalaryImport implements ToCollection,WithHeadingRow
 
                       
                         $search_employee = $employees->find($employeeid);
+                        // dd($search_employee);
                         $branchid = $search_employee->branch_id;
                         $departmentid = $search_employee->dep_id;
                         // dd($branchid);
@@ -118,7 +121,7 @@ class SalaryImport implements ToCollection,WithHeadingRow
                                         'branch'=>$branchname,
                                         'pay_date'=>$dates,
                                         'year'=>$row['year'],
-                                        'salary_amt'=>$row['amount'],
+                                        'salary_amt'=>$amount,
                                         'bonus'=>$row['bonus'],
                                         'month_total'=>$month_total,
                                         ];
@@ -135,7 +138,7 @@ class SalaryImport implements ToCollection,WithHeadingRow
                                         'branch'=>$branchname,
                                         'pay_date'=>$dates,
                                         'year'=>$row['year'],
-                                        'salary_amt'=>$row['amount'],
+                                        'salary_amt'=>$amount,
                                         'bonus'=>$row['bonus'],
                                         'month_total'=>$month_total,
                                         ];
