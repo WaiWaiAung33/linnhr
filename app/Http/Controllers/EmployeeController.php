@@ -163,8 +163,8 @@ class EmployeeController extends Controller
             $employees = $employees->where('employment_type',$request->emp_type);
         } 
 
-        $count = $employees->get()->count();
-        $employees = $employees->orderBy('emp_id','asc')->paginate(10);
+        $count = $employees->where('active',1)->get()->count();
+        $employees = $employees->where('active',1)->orderBy('emp_id','asc')->paginate(10);
     
         return view('admin.employee.index',compact('branchs','departments','positions','employees','count'))->with('i', (request()->input('page', 1) - 1) * 10);
     }
