@@ -78,15 +78,14 @@
 
         
         <br>
-        {{-- 
-         <form id="excel_form" action="{{route('export')}}"  method="POST" class="unicode">
+
+         <form id="excel_form" action="{{ route('export') }}"  method="POST" class="unicode">
                 @csrf
                 @method('post')
                 <input type="hidden" id="branch_id" name="branch_id" value="{{ $branch_id }}">
                 <input type="hidden" id="dep_id" name="dep_id" value="{{ $dep_id }}">
                 <input type="hidden" id="position_id" name="position_id" value="{{ $position_id }}">
          </form>
-         --}}
 
 
 
